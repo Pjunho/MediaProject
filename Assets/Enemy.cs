@@ -1,17 +1,2 @@
-using UnityEngine;
-using System.Collections.Generic;
+// 이 파일은 더 이상 사용되지 않습니다. EnemyBase.cs / EnemyTypes.cs 를 사용하세요.
 
-public class Enemy : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}

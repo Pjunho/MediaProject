@@ -99,6 +99,17 @@ public class AllyPlacer : MonoBehaviour
         };
 
         go.name = ally.allyName;
+
+        // 보석 효과 적용
+        float speedMult = GemInventory.GetSpeedMultiplier();
+        float hpMult    = GemInventory.GetHpMultiplier();
+        if (speedMult != 1f) ally.moveSpeed *= speedMult;
+        if (hpMult != 1f)
+        {
+            ally.maxHp    *= hpMult;
+            ally.currentHp = ally.maxHp;
+        }
+
         AddHpBar(go, ally);
 
         ally.OnReachedGoal += a =>

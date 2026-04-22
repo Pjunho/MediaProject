@@ -208,9 +208,9 @@ public class MainMenu : MonoBehaviour
         CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, 90), new Vector2(520, 3));
 
         // 제목 그림자 + 본문
-        CreateTxt(cgo.transform, "역 디 펜 스", COL_TITLE_SH, new Vector2(5, 45),  new Vector2(720, 100), 76);
-        CreateTxt(cgo.transform, "역 디 펜 스", COL_TITLE,    new Vector2(0, 50),  new Vector2(720, 100), 76);
-        CreateTxt(cgo.transform, "REVERSE DEFENSE", new Color(1f, 0.95f, 0.6f), new Vector2(0, -20), new Vector2(600, 55), 34);
+        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE_SH, new Vector2(5, 45),  new Vector2(720, 100), 76);
+        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE,    new Vector2(0, 50),  new Vector2(720, 100), 76);
+        CreateTxt(cgo.transform, "RANDOM OFFENSE", new Color(1f, 0.95f, 0.6f), new Vector2(0, -20), new Vector2(600, 55), 34);
 
         // 하단 장식선
         CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, -55), new Vector2(520, 3));

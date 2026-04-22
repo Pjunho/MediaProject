@@ -17,6 +17,8 @@ public class StageManager : MonoBehaviour
         public int brawlerCount;
         public int allySlots;
         public int startWaveAllyCount;
+        /// <summary>스테이지 시작 시 지급되는 기본 코인 수</summary>
+        public int startingCoins;
         /// <summary>1~5웨이브용 기본 맵 가로 타일 수 (홀수 권장)</summary>
         public int mapWidth;
         /// <summary>1~5웨이브용 기본 맵 세로 타일 수 (홀수 권장)</summary>
@@ -56,7 +58,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 1, stageName = "초원의 전투",
             sniperCount = 2, spearmanCount = 2, brawlerCount = 6,
-            allySlots = 4, startWaveAllyCount = 4,
+            allySlots = 4, startWaveAllyCount = 4, startingCoins = 3,
             mapWidth = 15, mapHeight = 11,
             extraPassageRate = 0.02f
         },
@@ -64,7 +66,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 2, stageName = "사막의 요새",
             sniperCount = 4, spearmanCount = 4, brawlerCount = 4,
-            allySlots = 6, startWaveAllyCount = 5,
+            allySlots = 6, startWaveAllyCount = 5, startingCoins = 5,
             mapWidth = 17, mapHeight = 13,
             extraPassageRate = 0.06f
         },
@@ -72,7 +74,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 3, stageName = "화산의 심판",
             sniperCount = 5, spearmanCount = 4, brawlerCount = 3,
-            allySlots = 6, startWaveAllyCount = 6,
+            allySlots = 6, startWaveAllyCount = 6, startingCoins = 7,
             mapWidth = 19, mapHeight = 15,
             extraPassageRate = 0.10f
         },
@@ -80,7 +82,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 4, stageName = "어둠의 미궁",
             sniperCount = 6, spearmanCount = 5, brawlerCount = 4,
-            allySlots = 6, startWaveAllyCount = 6,
+            allySlots = 6, startWaveAllyCount = 6, startingCoins = 10,
             mapWidth = 21, mapHeight = 15,
             extraPassageRate = 0.16f
         },
@@ -88,7 +90,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 5, stageName = "최후의 요새",
             sniperCount = 7, spearmanCount = 6, brawlerCount = 5,
-            allySlots = 6, startWaveAllyCount = 6,
+            allySlots = 6, startWaveAllyCount = 6, startingCoins = 12,
             mapWidth = 23, mapHeight = 17,
             extraPassageRate = 0.22f
         },

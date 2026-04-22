@@ -16,21 +16,21 @@ public static class GemInventory
         {
             stageIndex = 1,
             gemName = "초원의 보석",
-            effectSummary = "이동 속도 +15% 예정",
+            effectSummary = "아군 이동 속도 +15%",
             color = new Color(0.30f, 0.82f, 0.38f)
         },
         new GemDefinition
         {
             stageIndex = 2,
             gemName = "사막의 보석",
-            effectSummary = "원거리 대응 강화 예정",
+            effectSummary = "아군 최대 HP +20%",
             color = new Color(0.95f, 0.72f, 0.24f)
         },
         new GemDefinition
         {
             stageIndex = 3,
             gemName = "화산의 보석",
-            effectSummary = "공격 버프 계열 예정",
+            effectSummary = "이동 속도 +10%, HP +10%",
             color = new Color(0.95f, 0.34f, 0.24f)
         }
     };
@@ -76,6 +76,24 @@ public static class GemInventory
             PlayerPrefs.SetInt(activeKey, 1);
 
         PlayerPrefs.Save();
+    }
+
+    /// <summary>현재 활성화된 보석들을 기반으로 아군 이동 속도 배율을 반환</summary>
+    public static float GetSpeedMultiplier()
+    {
+        float mult = 1f;
+        if (IsActive(1)) mult += 0.15f;  // 초원의 보석: 속도 +15%
+        if (IsActive(3)) mult += 0.10f;  // 화산의 보석: 속도 +10%
+        return mult;
+    }
+
+    /// <summary>현재 활성화된 보석들을 기반으로 아군 최대 HP 배율을 반환</summary>
+    public static float GetHpMultiplier()
+    {
+        float mult = 1f;
+        if (IsActive(2)) mult += 0.20f;  // 사막의 보석: HP +20%
+        if (IsActive(3)) mult += 0.10f;  // 화산의 보석: HP +10%
+        return mult;
     }
 
     static string BuildActiveKey(int stageIndex) => $"Gem_{stageIndex}_Active";

@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (!gameStarted)
         {
             gameStarted = true;
-            currentCoins = 0;
+            currentCoins = StageManager.GetStageConfig(stageIdx).startingCoins;
             currentWaves = StageManager.GetWaves(stageIdx);
             currentWaveIndex = 0;
             StageManager.Instance?.SetCurrentWaveNumber(1);
