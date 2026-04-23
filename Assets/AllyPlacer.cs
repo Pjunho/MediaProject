@@ -110,6 +110,9 @@ public class AllyPlacer : MonoBehaviour
             ally.currentHp = ally.maxHp;
         }
 
+        // 스킬 효과 적용
+        SkillSystem.ApplyToAlly(ally, type);
+
         AddHpBar(go, ally);
 
         ally.OnReachedGoal += a =>

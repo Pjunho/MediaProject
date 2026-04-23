@@ -47,8 +47,9 @@ public class AllyBase : MonoBehaviour
     public System.Action<AllyBase> OnDied;
     private bool hasCompletedPath = false;
 
-    private float hitStunTimer = 0f;
-    private float walkCycle    = 0f;
+    private bool  hasSkillShield = false;
+    private float hitStunTimer  = 0f;
+    private float walkCycle     = 0f;
     private float facingSign   = 1f;
     private Vector3 lastFramePosition;
     private AllyVisualGenerator.CharDirection currentFacing = AllyVisualGenerator.CharDirection.Side;
@@ -162,13 +163,44 @@ public class AllyBase : MonoBehaviour
         }
     }
 
+    public void EnableSkillShield() => hasSkillShield = true;
+
+    public void EnableSkillRegen() => StartCoroutine(SkillRegenCoroutine());
+
+    IEnumerator SkillRegenCoroutine()
+    {
+        while (!isDead && !hasCompletedPath)
+        {
+            if (currentHp < maxHp)
+                currentHp = Mathf.Min(currentHp + maxHp * 0.03f, maxHp);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
     public virtual void TakeDamage(float damage)
     {
         if (isDead) return;
+        if (hasSkillShield)
+        {
+            hasSkillShield = false;
+            StartCoroutine(ShieldBreakEffect());
+            return;
+        }
         currentHp -= damage;
         OnDamaged();
         if (currentHp <= 0f)
             Die();
+    }
+
+    IEnumerator ShieldBreakEffect()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            SetAllVisualColors(new Color(0.3f, 0.6f, 1f, 1f));
+            yield return new WaitForSeconds(0.06f);
+            SetAllVisualColors(Color.white);
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     protected virtual void OnDamaged()

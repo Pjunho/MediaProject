@@ -137,14 +137,11 @@ public class AllyOrderPanel : MonoBehaviour
         _                => "잠금 스킬"
     };
 
-    static string GetSkillDesc(AllyType t) => t switch
+    static string GetSkillDesc(AllyType t)
     {
-        AllyType.Warrior => "전방의 적을 강하게 밀쳐내어\n이동 경로를 확보합니다.",
-        AllyType.Archer  => "전방 부채꼴 범위에\n화살을 동시에 발사합니다.",
-        AllyType.Mage    => "착탄 지점 주변에\n광역 마법 피해를 줍니다.",
-        AllyType.Cleric  => "주변 아군을 일정 시간마다\n회복시키는 지원 스킬입니다.",
-        _                => "아직 잠겨 있는 스킬입니다."
-    };
+        var skill = SkillSystem.GetSkillForAlly(t);
+        return skill.description;
+    }
 
     static Color GetSkillColor(AllyType t) => t switch
     {
@@ -478,7 +475,10 @@ public class AllyOrderPanel : MonoBehaviour
         HandleDetailSkillHover(mp);
 
         if (!isCollapsed && mouse.leftButton.wasPressedThisFrame)
+        {
+            if (TryHandleSkillUnlock(mp)) return;
             TryBeginDrag(mp);
+        }
 
         if (draggingCard >= 0)
         {
@@ -506,6 +506,22 @@ public class AllyOrderPanel : MonoBehaviour
             skillDescShown = show;
             detailSkillDescOverlay.SetActive(show);
         }
+    }
+
+    bool TryHandleSkillUnlock(Vector2 screenPos)
+    {
+        if (detailSkillBtnRt == null || !detailExpanded || isCollapsed) return false;
+        if (selectedCard < 0 || selectedCard >= cardToSlot.Length) return false;
+        if (!RectTransformUtility.RectangleContainsScreenPoint(detailSkillBtnRt, screenPos, null))
+            return false;
+
+        AllyType type = allyOrder[cardToSlot[selectedCard]];
+        if (SkillSystem.IsUnlocked(type)) return true;
+
+        if (GameManager.Instance != null && GameManager.Instance.TryUnlockSkill(type))
+            RefreshDetailPanel();
+
+        return true;
     }
 
     void UpdateToggleVisual(Vector2 mp)
@@ -725,9 +741,14 @@ public class AllyOrderPanel : MonoBehaviour
         if (detailHpText != null) detailHpText.text = $"HP  {GetHp(type):0}";
         if (detailSpeedText != null) detailSpeedText.text = $"속도  {GetSpeed(type):0.0}";
         if (detailSkillIconImg != null) detailSkillIconImg.color = GetSkillColor(type);
-        if (detailSkillNameText != null) detailSkillNameText.text = $"{GetSkillName(type)}  [잠금]";
+        bool unlocked = SkillSystem.IsUnlocked(type);
+        var  skillData = SkillSystem.GetSkillForAlly(type);
+        if (detailSkillNameText != null)
+            detailSkillNameText.text = unlocked
+                ? $"{GetSkillName(type)}  [해금됨]"
+                : $"{GetSkillName(type)}  [{skillData.cost}코인]";
         if (detailSkillDescText != null) detailSkillDescText.text = GetSkillDesc(type);
-        if (detailSkillLockText != null) detailSkillLockText.text = "🔒";
+        if (detailSkillLockText != null) detailSkillLockText.text = unlocked ? "🔓" : "🔒";
         skillDescShown = false;
         if (detailSkillDescOverlay != null) detailSkillDescOverlay.SetActive(false);
         if (detailPanelRt != null)

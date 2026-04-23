@@ -243,18 +243,7 @@ public class StageManager : MonoBehaviour
 
     static int EnsureOdd(int value) => value % 2 == 0 ? value + 1 : value;
 
-    static int[] GetStarThresholds(int stageIndex)
-    {
-        var waves = GetWaves(stageIndex);
-        int totalPossible = 0;
-        for (int i = 0; i < waves.Length; i++)
-            totalPossible += waves[i].allyCount;
-
-        int one = Mathf.Max(1, Mathf.RoundToInt(totalPossible * 0.30f));
-        int two = Mathf.Max(one + 1, Mathf.RoundToInt(totalPossible * 0.55f));
-        int three = Mathf.Max(two + 1, Mathf.RoundToInt(totalPossible * 0.75f));
-        return new[] { one, two, three };
-    }
+    static int[] GetStarThresholds(int stageIndex) => new[] { 5, 10, 15 };
 
     public static int GetEnemyTotalCount(int stageIndex)
     {
@@ -311,13 +300,13 @@ public class StageManager : MonoBehaviour
         return result;
     }
 
-    public int CalcStars(int goalCount)
+    public int CalcStars(int clearedWaves)
     {
         int[] t = GetStarThresholds(currentStageIndex);
-        if (goalCount <= 0) return 0;
-        if (goalCount >= t[2]) return 3;
-        if (goalCount >= t[1]) return 2;
-        if (goalCount >= t[0]) return 1;
+        if (clearedWaves <= 0) return 0;
+        if (clearedWaves >= t[2]) return 3;
+        if (clearedWaves >= t[1]) return 2;
+        if (clearedWaves >= t[0]) return 1;
         return 0;
     }
 
@@ -325,14 +314,14 @@ public class StageManager : MonoBehaviour
     {
         int[] t = GetStarThresholds(currentStageIndex);
         var w = GetWaves(currentStageIndex);
-        return $"★ {t[0]}명 이상 통과\n★★ {t[1]}명 이상 통과\n★★★ {t[2]}명 이상 통과\n[총 {w.Length}웨이브]";
+        return $"★ {t[0]}웨이브 클리어\n★★ {t[1]}웨이브 클리어\n★★★ {t[2]}웨이브 클리어\n[총 {w.Length}웨이브]";
     }
 
     public static string GetStarConditionTextForStage(int stageIndex)
     {
         int[] t = GetStarThresholds(stageIndex);
         var w = GetWaves(stageIndex);
-        return $"★{t[0]}  ★★{t[1]}  ★★★{t[2]}명  [{w.Length}웨이브]";
+        return $"★{t[0]}웨이브  ★★{t[1]}웨이브  ★★★{t[2]}웨이브  [{w.Length}웨이브]";
     }
 
     public static int GetSavedStars(int stageIndex)

@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
     public int goalCount = 0;
     public int deadCount = 0;
 
-    private bool isPaused    = false;
-    private bool resultShown = false;
-    private bool gameStarted = false;
-    private int  speedIndex  = 0;
-    private int  currentCoins = 0;
+    private bool isPaused       = false;
+    private bool resultShown    = false;
+    private bool gameStarted    = false;
+    private int  speedIndex     = 0;
+    private int  currentCoins   = 0;
+    private int  clearedWaveCount = 0;
 
     static readonly float[]  speedSteps  = { 1f, 1.5f, 2f, 3f };
     static readonly string[] speedLabels = { "1x", "1.5x", "2x", "3x" };
@@ -96,9 +97,11 @@ public class GameManager : MonoBehaviour
         if (!gameStarted)
         {
             gameStarted = true;
-            currentCoins = StageManager.GetStageConfig(stageIdx).startingCoins;
-            currentWaves = StageManager.GetWaves(stageIdx);
-            currentWaveIndex = 0;
+            currentCoins      = StageManager.GetStageConfig(stageIdx).startingCoins;
+            currentWaves      = StageManager.GetWaves(stageIdx);
+            currentWaveIndex  = 0;
+            clearedWaveCount  = 0;
+            SkillSystem.ResetForStage();
             StageManager.Instance?.SetCurrentWaveNumber(1);
             UpdateCoinHUD();
 
@@ -190,12 +193,15 @@ public class GameManager : MonoBehaviour
         else if (currentWaveIndex + 1 >= currentWaves.Length)
         {
             AwardWaveCoins();
-            Debug.Log($"[GameManager] ✓ 최종 웨이브 {currentWaveIndex + 1} 클리어!");
+            clearedWaveCount++;
+            Debug.Log($"[GameManager] ✓ 최종 웨이브 {currentWaveIndex + 1} 클리어! " +
+                      $"(총 클리어 웨이브: {clearedWaveCount})");
             EndStage();
         }
         else
         {
             AwardWaveCoins();
+            clearedWaveCount++;
             Debug.Log($"[GameManager] ✓ 웨이브 {currentWaveIndex + 1} 클리어! " +
                       $"(골 도달: {waveGoalCount}/{wave.goalRequirement})");
             int clearedWaveNumber = currentWaveIndex + 1;
@@ -453,6 +459,21 @@ public class GameManager : MonoBehaviour
     void OnSettings()  => Debug.Log("[GameManager] 설정 (미구현)");
     void OnExit()      { Time.timeScale = 1f; isPaused = false; EndStage(); }
 
+    /// <summary>AllyOrderPanel 등에서 코인으로 스킬 해금 시 호출</summary>
+    public bool TryUnlockSkill(AllyType allyType)
+    {
+        if (SkillSystem.TryUnlock(allyType, currentCoins, out int cost))
+        {
+            currentCoins -= cost;
+            UpdateCoinHUD();
+            Debug.Log($"[GameManager] 스킬 해금: {allyType} (-{cost}코인, 잔여 {currentCoins})");
+            return true;
+        }
+        return false;
+    }
+
+    public int GetCurrentCoins() => currentCoins;
+
     // ── 스테이지 종료 ────────────────────────────────────────────────────
 
     public void EndStage()
@@ -465,9 +486,9 @@ public class GameManager : MonoBehaviour
         if (waveBannerGo != null) waveBannerGo.SetActive(false);
 
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
-        int stars    = StageManager.Instance != null ? StageManager.Instance.CalcStars(goalCount) : 0;
+        int stars    = StageManager.Instance != null ? StageManager.Instance.CalcStars(clearedWaveCount) : 0;
         StageManager.SaveStars(stageIdx, stars);
-        if (stars > 0)
+        if (stars >= 3)
             GemInventory.UnlockForStageClear(stageIdx);
 
         if (pausePanel != null) pausePanel.SetActive(false);
@@ -518,10 +539,8 @@ public class GameManager : MonoBehaviour
         CreateTxtIn(cgo.transform, BuildStarStr(stars), COL_GOLD, new Vector2(0,150), new Vector2(420,70), 56);
 
         // 웨이브 진행 정보
-        int totalWaves   = currentWaves != null ? currentWaves.Length : 0;
-        int clearedWaves = waveInProgress ? currentWaveIndex : currentWaveIndex + 1;
-        clearedWaves = Mathf.Clamp(clearedWaves, 0, totalWaves);
-        CreateTxtIn(cgo.transform, $"웨이브 {clearedWaves} / {totalWaves} 클리어",
+        int totalWaves = currentWaves != null ? currentWaves.Length : 0;
+        CreateTxtIn(cgo.transform, $"웨이브 {clearedWaveCount} / {totalWaves} 클리어",
             new Color(0.75f, 0.85f, 1f), new Vector2(0, 70), new Vector2(460, 40), 22);
 
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
