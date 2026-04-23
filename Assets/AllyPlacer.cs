@@ -110,6 +110,9 @@ public class AllyPlacer : MonoBehaviour
             ally.currentHp = ally.maxHp;
         }
 
+        // 업그레이드 효과 적용 (스킬보다 먼저 기반 스탯에 적용)
+        UpgradeSystem.ApplyToAlly(ally, type);
+
         // 스킬 효과 적용
         SkillSystem.ApplyToAlly(ally, type);
 

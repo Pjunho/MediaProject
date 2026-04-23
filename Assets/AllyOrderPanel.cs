@@ -49,6 +49,10 @@ public class AllyOrderPanel : MonoBehaviour
     private RectTransform    detailSkillBtnRt;
     private GameObject       detailSkillDescOverlay;
     private Text             detailSkillDescText;
+    private RectTransform    detailHpUpgradeBtnRt;
+    private RectTransform    detailSpeedUpgradeBtnRt;
+    private Text             detailHpUpgradeTxt;
+    private Text             detailSpeedUpgradeTxt;
     private bool             isCollapsed;
     private bool             detailExpanded;
     private int              selectedCard = -1;
@@ -277,13 +281,21 @@ public class AllyOrderPanel : MonoBehaviour
 
         detailHpText = CreateTextLabel("DetailHp", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.38f), new Vector2(1f, 0.56f),
-            new Vector2(12f, 0f), new Vector2(-12f, 0f));
+            new Vector2(0f, 0.38f), new Vector2(0.60f, 0.56f),
+            new Vector2(12f, 0f), new Vector2(0f, 0f));
+
+        detailHpUpgradeBtnRt = BuildUpgradeBtn("HpUpgradeBtn", detail.transform,
+            new Vector2(0.60f, 0.38f), new Vector2(1f, 0.56f),
+            out detailHpUpgradeTxt);
 
         detailSpeedText = CreateTextLabel("DetailSpeed", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.20f), new Vector2(1f, 0.38f),
-            new Vector2(12f, 0f), new Vector2(-12f, 0f));
+            new Vector2(0f, 0.20f), new Vector2(0.60f, 0.38f),
+            new Vector2(12f, 0f), new Vector2(0f, 0f));
+
+        detailSpeedUpgradeBtnRt = BuildUpgradeBtn("SpeedUpgradeBtn", detail.transform,
+            new Vector2(0.60f, 0.20f), new Vector2(1f, 0.38f),
+            out detailSpeedUpgradeTxt);
 
         MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Bold,
             COL_TITLE, TextAnchor.MiddleLeft,
@@ -476,6 +488,7 @@ public class AllyOrderPanel : MonoBehaviour
 
         if (!isCollapsed && mouse.leftButton.wasPressedThisFrame)
         {
+            if (TryHandleUpgrade(mp))    return;
             if (TryHandleSkillUnlock(mp)) return;
             TryBeginDrag(mp);
         }
@@ -522,6 +535,63 @@ public class AllyOrderPanel : MonoBehaviour
             RefreshDetailPanel();
 
         return true;
+    }
+
+    bool TryHandleUpgrade(Vector2 screenPos)
+    {
+        if (!detailExpanded || isCollapsed) return false;
+        if (selectedCard < 0 || selectedCard >= cardToSlot.Length) return false;
+
+        AllyType type = allyOrder[cardToSlot[selectedCard]];
+        bool handled = false;
+
+        if (detailHpUpgradeBtnRt != null &&
+            RectTransformUtility.RectangleContainsScreenPoint(detailHpUpgradeBtnRt, screenPos, null))
+        {
+            if (GameManager.Instance != null &&
+                GameManager.Instance.TryUpgrade(type, UpgradeSystem.StatType.Hp))
+                RefreshDetailPanel();
+            handled = true;
+        }
+        else if (detailSpeedUpgradeBtnRt != null &&
+            RectTransformUtility.RectangleContainsScreenPoint(detailSpeedUpgradeBtnRt, screenPos, null))
+        {
+            if (GameManager.Instance != null &&
+                GameManager.Instance.TryUpgrade(type, UpgradeSystem.StatType.Speed))
+                RefreshDetailPanel();
+            handled = true;
+        }
+
+        return handled;
+    }
+
+    void RefreshUpgradeButtons(AllyType type)
+    {
+        RefreshOneStat(type, UpgradeSystem.StatType.Hp,    detailHpUpgradeBtnRt,    detailHpUpgradeTxt);
+        RefreshOneStat(type, UpgradeSystem.StatType.Speed, detailSpeedUpgradeBtnRt, detailSpeedUpgradeTxt);
+    }
+
+    void RefreshOneStat(AllyType type, UpgradeSystem.StatType stat,
+        RectTransform btnRt, Text btnTxt)
+    {
+        if (btnRt == null || btnTxt == null) return;
+        int cost = UpgradeSystem.GetNextCost(type, stat);
+        int level = stat == UpgradeSystem.StatType.Hp
+            ? UpgradeSystem.GetHpLevel(type)
+            : UpgradeSystem.GetSpeedLevel(type);
+
+        if (cost < 0)
+        {
+            btnTxt.text  = "MAX";
+            btnTxt.color = new Color(1f, 0.85f, 0.2f);
+            btnRt.GetComponent<Image>().color = new Color(0.25f, 0.22f, 0.06f, 0.85f);
+        }
+        else
+        {
+            btnTxt.text  = $"▲{cost}c\nLv{level}";
+            btnTxt.color = new Color(0.7f, 0.9f, 1f);
+            btnRt.GetComponent<Image>().color = new Color(0.12f, 0.20f, 0.35f, 0.92f);
+        }
     }
 
     void UpdateToggleVisual(Vector2 mp)
@@ -749,6 +819,8 @@ public class AllyOrderPanel : MonoBehaviour
                 : $"{GetSkillName(type)}  [{skillData.cost}코인]";
         if (detailSkillDescText != null) detailSkillDescText.text = GetSkillDesc(type);
         if (detailSkillLockText != null) detailSkillLockText.text = unlocked ? "🔓" : "🔒";
+
+        RefreshUpgradeButtons(type);
         skillDescShown = false;
         if (detailSkillDescOverlay != null) detailSkillDescOverlay.SetActive(false);
         if (detailPanelRt != null)
@@ -768,6 +840,33 @@ public class AllyOrderPanel : MonoBehaviour
 
         if (detailPanelRt != null)
             detailPanelRt.gameObject.SetActive(detailExpanded && !isCollapsed);
+    }
+
+    RectTransform BuildUpgradeBtn(string id, Transform parent,
+        Vector2 anchorMin, Vector2 anchorMax, out Text label)
+    {
+        var go = MakeUIRect(id, parent);
+        var rt = go.GetComponent<RectTransform>();
+        rt.anchorMin = anchorMin;
+        rt.anchorMax = anchorMax;
+        rt.offsetMin = new Vector2(4f,  3f);
+        rt.offsetMax = new Vector2(-6f, -3f);
+        go.AddComponent<Image>().color = new Color(0.12f, 0.20f, 0.35f, 0.92f);
+
+        var tgo = new GameObject("Lbl", typeof(RectTransform));
+        tgo.transform.SetParent(go.transform, false);
+        var tx = tgo.AddComponent<Text>();
+        tx.text      = "▲";
+        tx.fontSize  = 11;
+        tx.fontStyle = FontStyle.Bold;
+        tx.font      = BuiltinFont();
+        tx.color     = new Color(0.7f, 0.9f, 1f);
+        tx.alignment = TextAnchor.MiddleCenter;
+        var trt = tgo.GetComponent<RectTransform>();
+        trt.anchorMin = Vector2.zero; trt.anchorMax = Vector2.one;
+        trt.offsetMin = Vector2.zero; trt.offsetMax = Vector2.zero;
+        label = tx;
+        return rt;
     }
 
     // ── UI 헬퍼 ──────────────────────────────────────────────────────────

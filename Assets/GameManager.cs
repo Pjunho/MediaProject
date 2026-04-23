@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
             currentWaveIndex  = 0;
             clearedWaveCount  = 0;
             SkillSystem.ResetForStage();
+            UpgradeSystem.ResetForStage();
             StageManager.Instance?.SetCurrentWaveNumber(1);
             UpdateCoinHUD();
 
@@ -473,6 +474,19 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetCurrentCoins() => currentCoins;
+
+    /// <summary>AllyOrderPanel에서 속도/체력 업그레이드 요청 시 호출</summary>
+    public bool TryUpgrade(AllyType allyType, UpgradeSystem.StatType stat)
+    {
+        if (UpgradeSystem.TryUpgrade(allyType, stat, currentCoins, out int cost))
+        {
+            currentCoins -= cost;
+            UpdateCoinHUD();
+            Debug.Log($"[GameManager] 업그레이드: {allyType} {stat} (-{cost}코인, 잔여 {currentCoins})");
+            return true;
+        }
+        return false;
+    }
 
     // ── 스테이지 종료 ────────────────────────────────────────────────────
 
