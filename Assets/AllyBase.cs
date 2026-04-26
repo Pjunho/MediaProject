@@ -48,6 +48,8 @@ public class AllyBase : MonoBehaviour
     private bool hasCompletedPath = false;
 
     private bool  hasSkillShield = false;
+    private GameObject shieldVisual;
+    private SpriteRenderer shieldSr;
     private float hitStunTimer  = 0f;
     private float walkCycle     = 0f;
     private float facingSign   = 1f;
@@ -117,6 +119,15 @@ public class AllyBase : MonoBehaviour
         if (hitStunTimer <= 0f)
             MoveAlongPath();
 
+        if (shieldVisual != null)
+        {
+            shieldVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 40f);
+            float pulse = 0.88f + Mathf.Sin(Time.time * 3f) * 0.07f;
+            shieldVisual.transform.localScale = Vector3.one * pulse;
+            if (shieldSr != null)
+                shieldSr.color = new Color(0.3f, 0.6f, 1f, 0.38f + Mathf.Sin(Time.time * 2.5f) * 0.12f);
+        }
+
         UpdateVisualMotion();
         lastFramePosition = transform.position;
     }
@@ -163,7 +174,57 @@ public class AllyBase : MonoBehaviour
         }
     }
 
-    public void EnableSkillShield() => hasSkillShield = true;
+    public void EnableSkillShield()
+    {
+        hasSkillShield = true;
+        CreateShieldVisual();
+    }
+
+    void CreateShieldVisual()
+    {
+        if (shieldVisual != null) return;
+        shieldVisual = new GameObject("ShieldVisual");
+        shieldVisual.transform.SetParent(transform, false);
+        shieldVisual.transform.localPosition = Vector3.zero;
+
+        shieldSr = shieldVisual.AddComponent<SpriteRenderer>();
+        shieldSr.sprite = CreateShieldSprite();
+        shieldSr.color = new Color(0.3f, 0.6f, 1f, 0.5f);
+        shieldSr.sortingOrder = 25;
+    }
+
+    Sprite CreateShieldSprite()
+    {
+        int size = 64;
+        Texture2D tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Bilinear;
+
+        float cx = size / 2f, cy = size / 2f;
+        float outerR = size / 2f - 1f;
+        float innerR = outerR - 6f;
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            float dx = x - cx, dy = y - cy;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            if (dist >= innerR && dist <= outerR)
+            {
+                float t = (dist - innerR) / (outerR - innerR);
+                float alpha = 1f - Mathf.Abs(t - 0.5f) * 2f;
+                tex.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+            }
+            else if (dist < innerR)
+            {
+                float fill = Mathf.Clamp01(1f - dist / innerR) * 0.18f;
+                tex.SetPixel(x, y, new Color(1f, 1f, 1f, fill));
+            }
+            else
+                tex.SetPixel(x, y, Color.clear);
+        }
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
 
     public void EnableSkillRegen() => StartCoroutine(SkillRegenCoroutine());
 
@@ -172,7 +233,10 @@ public class AllyBase : MonoBehaviour
         while (!isDead && !hasCompletedPath)
         {
             if (currentHp < maxHp)
+            {
                 currentHp = Mathf.Min(currentHp + maxHp * 0.03f, maxHp);
+                HealEffect.Spawn(transform.position);
+            }
             yield return new WaitForSeconds(1f);
         }
     }
@@ -194,6 +258,12 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator ShieldBreakEffect()
     {
+        if (shieldVisual != null)
+        {
+            Destroy(shieldVisual);
+            shieldVisual = null;
+            shieldSr = null;
+        }
         for (int i = 0; i < 3; i++)
         {
             SetAllVisualColors(new Color(0.3f, 0.6f, 1f, 1f));
@@ -226,6 +296,12 @@ public class AllyBase : MonoBehaviour
     {
         if (isDead || hasCompletedPath) return;
         isDead = true;
+        if (shieldVisual != null)
+        {
+            Destroy(shieldVisual);
+            shieldVisual = null;
+            shieldSr = null;
+        }
         OnDied?.Invoke(this);
         StartCoroutine(DeathEffect());
     }
@@ -262,6 +338,12 @@ public class AllyBase : MonoBehaviour
         if (hasCompletedPath) return;
         hasCompletedPath = true;
         isDead = true;
+        if (shieldVisual != null)
+        {
+            Destroy(shieldVisual);
+            shieldVisual = null;
+            shieldSr = null;
+        }
 
         foreach (var sr in visualRenderers)
         {
