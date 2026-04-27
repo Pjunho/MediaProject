@@ -1,0 +1,98 @@
+===================================================
+작업 로그 - 2026-04-27 (자동 점검)
+===================================================
+
+■ 작업 일시: 2026-04-27 오전 10:00 (예약 실행)
+
+---------------------------------------------------
+[1단계] 코드 점검
+---------------------------------------------------
+
+CLAUDE.md의 TODO 항목 현황을 확인하였다.
+
+■ 완료된 항목:
+  - [x] 스킬 기본 해금 여부 (SkillSystem.cs)
+  - [x] 스테이지별 기본 코인 지급량 (StageManager.cs)
+  - [x] 스테이지별 아군 초기 배치 수 (StageManager.cs)
+  - [x] 웨이브 수 최종 확정 (15웨이브)
+  - [x] 아군 업그레이드 시스템 (UpgradeSystem.cs)
+  - [x] 스킬 효과 시각화 (HealEffect.cs, AllyBase.cs)
+
+■ 미완료 항목:
+  - [ ] 스테이지 2, 3 테마명 및 보석 효과
+  - [ ] 설정 화면 구현 ← 오늘 구현 선택
+
+■ 기존 코드 점검 내용:
+  - GameManager.cs의 Update() 버튼 루프에서 activeInHierarchy 체크가 누락된 것을
+    발견하여 수정함 (숨겨진 버튼이 마우스 이벤트에 반응하는 잠재적 버그)
+  - MainMenu.cs: OnSettings()가 Debug.Log만 출력하는 미구현 상태 확인
+  - GameManager.cs: OnSettings()가 Debug.Log만 출력하는 미구현 상태 확인
+
+---------------------------------------------------
+[2단계] TODO 구현: 설정 화면
+---------------------------------------------------
+
+선택 근거:
+  - "설정 화면 구현"은 기획이 명확하고 다른 시스템 의존성이 낮음
+  - 메인 메뉴와 게임 내 일시정지 메뉴에 설정 버튼이 이미 존재하지만
+    모두 Debug.Log만 출력하는 미구현 상태였음
+  - "스테이지 2, 3 테마명"은 기획이 미결정 상태이므로 배제
+
+■ 구현 내용:
+
+1) Assets/SettingsManager.cs (신규 생성)
+   - 마스터 볼륨, 전체화면 설정을 PlayerPrefs에 저장
+   - AudioListener.volume에 즉시 반영 (향후 AudioSource 시스템 추가 시 확장 가능)
+   - Screen.fullScreen 전환 지원
+   - Apply() 메서드: 씬 로드 시 저장된 설정을 적용
+   - 볼륨은 0.1 단위(10%)로 반올림 처리
+
+2) Assets/MainMenu.cs (수정)
+   - Start()에 SettingsManager.Apply() 호출 추가
+   - 필드 추가: settingsPanel, settingsVolumeLbl, settingsFsStatLbl
+   - BuildUI()에 BuildSettingsPanel() 호출 추가
+   - BuildSettingsPanel() 메서드 추가:
+     * 어두운 오버레이 + 패널 배경 (560×380)
+     * "마스터 볼륨" 레이블 + % 표시 + [−] [+] 버튼 (±10%)
+     * "전체화면" 레이블 + ON/OFF 표시 + [전환] 버튼
+     * [← 닫기] 버튼
+   - OnSettings() 수정: 기존 Debug.Log → 설정 패널 표시
+
+3) Assets/GameManager.cs (수정)
+   - Awake()에 SettingsManager.Apply() 호출 추가
+   - 필드 추가: pauseBox, settingsPanel, settingsVolumeLbl, settingsFsStatLbl
+   - Update() 버튼 루프에 activeInHierarchy 체크 추가 (버그 수정)
+   - BuildPausePanel()에서 pauseBox 참조 저장
+   - BuildHUD()에 BuildSettingsPanel() 호출 추가
+   - BuildSettingsPanel() 메서드 추가 (MainMenu와 유사한 구조)
+   - OnSettings() 수정:
+     * pauseBox.SetActive(false) → 일시정지 패널 내용 숨김
+     * settingsPanel.SetActive(true) → 설정 패널 표시
+   - CloseSettingsPanel(): 설정 패널 닫고 pauseBox 복원
+
+■ 구현 방식:
+  - 기존 프로젝트의 절차적 UI 구축 방식(CreateImg, CreateTxt, RegBtn)과 동일한 패턴 유지
+  - MainMenu와 GameManager 각각 독립적인 설정 패널 보유
+  - 설정값은 SettingsManager를 통해 공유됨
+
+---------------------------------------------------
+[3단계] 커밋
+---------------------------------------------------
+
+커밋 해시: 1951c53
+커밋 메시지: 설정 화면 구현 (볼륨/전체화면 토글)
+
+변경 파일:
+  - Assets/SettingsManager.cs (신규)
+  - Assets/MainMenu.cs (수정)
+  - Assets/GameManager.cs (수정)
+  - CLAUDE.md (TODO 완료 표시)
+
+---------------------------------------------------
+[남은 TODO]
+---------------------------------------------------
+
+  - [ ] 스테이지 2, 3 테마명 및 보석 효과
+        (기획 미결정 상태 - 추후 확정 필요)
+
+===================================================
