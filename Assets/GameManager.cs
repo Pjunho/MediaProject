@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     static readonly string[] speedLabels = { "1x", "1.5x", "2x", "3x" };
 
     private GameObject pausePanel;
+    private GameObject pauseBox;       // 일시정지 패널 내부 박스 (설정 패널 표시 시 숨김)
+    private GameObject settingsPanel;
+    private Text       settingsVolumeLbl;
+    private Text       settingsFsStatLbl;
     private Text       speedBtnTxt;
     private Text       goalCountTxt;   // 일시정지 패널 내 골 카운트
     private Text       coinTxt;        // HUD 상단 코인 표시
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         Time.timeScale = 1f;
         speedIndex = 0;
+        SettingsManager.Apply();
         EnsureEventSystem();
         BuildHUD();
         if (pausePanel != null) pausePanel.SetActive(false);
@@ -130,7 +135,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var b in btns)
         {
-            if (b.rt == null) continue;
+            if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
             bool active = b.pauseOnly ? isPaused : true;
             if (!active) continue;
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
@@ -326,6 +331,8 @@ public class GameManager : MonoBehaviour
 
         BuildWaveBanner(cgo.transform);
         waveBannerGo.SetActive(false);
+
+        BuildSettingsPanel(cgo.transform);
     }
 
     Text BuildTopLabel(Transform parent, string id, string text, Vector2 pos, Vector2 size)
@@ -389,6 +396,7 @@ public class GameManager : MonoBehaviour
         var ort = overlay.GetComponent<RectTransform>(); ort.anchoredPosition = Vector2.zero; ort.sizeDelta = new Vector2(1920,1080);
 
         var box = new GameObject("Box"); box.transform.SetParent(pausePanel.transform, false);
+        pauseBox = box;
         box.AddComponent<Image>().color = COL_PANEL;
         var brt = box.GetComponent<RectTransform>(); brt.anchoredPosition = new Vector2(0,40); brt.sizeDelta = new Vector2(460,340);
 
@@ -457,8 +465,64 @@ public class GameManager : MonoBehaviour
     }
 
     void OnResume()    { SetPaused(false); }
-    void OnSettings()  => Debug.Log("[GameManager] 설정 (미구현)");
+    void OnSettings()
+    {
+        if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
+        if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
+        if (pauseBox != null) pauseBox.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+    }
     void OnExit()      { Time.timeScale = 1f; isPaused = false; EndStage(); }
+
+    void BuildSettingsPanel(Transform parent)
+    {
+        settingsPanel = new GameObject("SettingsPanel");
+        settingsPanel.transform.SetParent(parent, false);
+
+        CreateImgIn(settingsPanel.transform, new Color(0f, 0f, 0f, 0.82f), Vector2.zero, new Vector2(1920, 1080));
+        CreateImgIn(settingsPanel.transform, COL_PANEL, new Vector2(0, 40), new Vector2(460, 320));
+        CreateImgIn(settingsPanel.transform, new Color(1f, 1f, 1f, 0.12f), new Vector2(0, 40), new Vector2(464, 324));
+
+        CreateTxtIn(settingsPanel.transform, "⚙  설  정", COL_GOLD, new Vector2(0, 173), new Vector2(380, 46), 30);
+        CreateImgIn(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, 147), new Vector2(420, 2));
+
+        // 볼륨 행
+        CreateTxtIn(settingsPanel.transform, "마스터 볼륨", new Color(0.85f, 0.88f, 0.94f), new Vector2(-90, 100), new Vector2(175, 32), 20);
+        settingsVolumeLbl = CreateTxtIn(settingsPanel.transform, VolumePct(), COL_GOLD, new Vector2(115, 100), new Vector2(110, 32), 20);
+        RegPanelBtn(settingsPanel.transform, "gm_vol_dn", "−", new Vector2(-38, 60), new Vector2(50, 40), COL_BLUE, COL_BLUE_H, () => GmAdjustVolume(-0.1f));
+        RegPanelBtn(settingsPanel.transform, "gm_vol_up", "+", new Vector2(38,  60), new Vector2(50, 40), COL_BLUE, COL_BLUE_H, () => GmAdjustVolume(+0.1f));
+
+        // 전체화면 행
+        CreateTxtIn(settingsPanel.transform, "전체화면", new Color(0.85f, 0.88f, 0.94f), new Vector2(-90, 10), new Vector2(175, 32), 20);
+        settingsFsStatLbl = CreateTxtIn(settingsPanel.transform, FsText(), COL_GOLD, new Vector2(115, 10), new Vector2(110, 32), 20);
+        RegPanelBtn(settingsPanel.transform, "gm_fs", "전환", new Vector2(0, -30), new Vector2(110, 40), COL_BLUE, COL_BLUE_H, GmToggleFs);
+
+        CreateImgIn(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, -65), new Vector2(420, 2));
+        RegPanelBtn(settingsPanel.transform, "gm_set_close", "← 뒤로", new Vector2(0, -95), new Vector2(170, 46), COL_RED, COL_RED_H, CloseSettingsPanel);
+
+        settingsPanel.SetActive(false);
+    }
+
+    void GmAdjustVolume(float delta)
+    {
+        SettingsManager.Volume = SettingsManager.Volume + delta;
+        if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
+    }
+
+    void GmToggleFs()
+    {
+        SettingsManager.IsFullscreen = !SettingsManager.IsFullscreen;
+        if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
+    }
+
+    void CloseSettingsPanel()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (pauseBox != null) pauseBox.SetActive(true);
+    }
+
+    string VolumePct() => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
+    string FsText()    => SettingsManager.IsFullscreen ? "ON" : "OFF";
 
     /// <summary>AllyOrderPanel 등에서 코인으로 스킬 해금 시 호출</summary>
     public bool TryUnlockSkill(AllyType allyType)

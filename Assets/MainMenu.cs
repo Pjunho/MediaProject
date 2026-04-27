@@ -46,6 +46,9 @@ public class MainMenu : MonoBehaviour
     Canvas uiCanvas;
     GameObject gemPanel;
     readonly System.Collections.Generic.List<GemEntryUi> gemEntryUis = new();
+    GameObject settingsPanel;
+    Text settingsVolumeLbl;
+    Text settingsFsStatLbl;
 
     void Start()
     {
@@ -58,6 +61,7 @@ public class MainMenu : MonoBehaviour
         SetupCamera();
         DrawBackground();
         BuildUI();
+        SettingsManager.Apply();
     }
 
     void Update()
@@ -228,6 +232,7 @@ public class MainMenu : MonoBehaviour
         CreateTxt(cgo.transform, "v0.1 Alpha", new Color(1f, 1f, 1f, 0.3f), new Vector2(560, -330), new Vector2(160, 28), 15);
 
         BuildGemPanel(cgo.transform);
+        BuildSettingsPanel(cgo.transform);
     }
 
     void RegBtn(Transform p, string id, string label, Vector2 pos, Vector2 size, Color n, Color h, System.Action cb)
@@ -371,7 +376,62 @@ public class MainMenu : MonoBehaviour
         GemInventory.SetActive(stageIndex, !GemInventory.IsActive(stageIndex));
         RefreshGemPanel();
     }
-    void OnSettings() => Debug.Log("[MainMenu] 설정 (미구현)");
+    void OnSettings()
+    {
+        if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
+        if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
+        settingsPanel.SetActive(true);
+    }
+
+    void BuildSettingsPanel(Transform parent)
+    {
+        settingsPanel = new GameObject("SettingsPanel");
+        settingsPanel.transform.SetParent(parent, false);
+
+        // 어두운 오버레이
+        CreateImg(settingsPanel.transform, new Color(0f, 0f, 0f, 0.78f), Vector2.zero, new Vector2(1920, 1080));
+        // 패널 배경
+        CreateImg(settingsPanel.transform, COL_PANEL, Vector2.zero, new Vector2(560, 380));
+        CreateImg(settingsPanel.transform, new Color(1f, 1f, 1f, 0.12f), Vector2.zero, new Vector2(564, 384));
+
+        CreateTxt(settingsPanel.transform, "설  정", COL_TITLE, new Vector2(0, 148), new Vector2(400, 50), 36);
+        CreateImg(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, 116), new Vector2(500, 2));
+
+        // 볼륨 행
+        CreateTxt(settingsPanel.transform, "마스터 볼륨", new Color(0.85f, 0.88f, 0.94f), new Vector2(-95, 62), new Vector2(190, 36), 22);
+        settingsVolumeLbl = CreateTxtReturn(settingsPanel.transform, VolumePct(), COL_TITLE, new Vector2(130, 62), new Vector2(120, 36), 22);
+        RegBtn(settingsPanel.transform, "vol_dn", "−", new Vector2(-42, 15), new Vector2(52, 44), COL_BTN_SET, COL_BTN_SET_H, () => AdjustVolume(-0.1f));
+        RegBtn(settingsPanel.transform, "vol_up", "+", new Vector2(42,  15), new Vector2(52, 44), COL_BTN_SET, COL_BTN_SET_H, () => AdjustVolume(+0.1f));
+
+        // 전체화면 행
+        CreateTxt(settingsPanel.transform, "전체화면", new Color(0.85f, 0.88f, 0.94f), new Vector2(-95, -52), new Vector2(190, 36), 22);
+        settingsFsStatLbl = CreateTxtReturn(settingsPanel.transform, FsText(), COL_TITLE, new Vector2(130, -52), new Vector2(120, 36), 22);
+        RegBtn(settingsPanel.transform, "fs_toggle", "전환", new Vector2(0, -98), new Vector2(120, 44), COL_BTN_SET, COL_BTN_SET_H, ToggleFs);
+
+        // 구분선 + 닫기
+        CreateImg(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, -136), new Vector2(500, 2));
+        RegBtn(settingsPanel.transform, "set_close", "← 닫기",
+            new Vector2(0, -163), new Vector2(220, 52),
+            COL_BTN_EXIT, COL_BTN_EXIT_H, CloseSettings);
+
+        settingsPanel.SetActive(false);
+    }
+
+    void AdjustVolume(float delta)
+    {
+        SettingsManager.Volume = SettingsManager.Volume + delta;
+        if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
+    }
+
+    void ToggleFs()
+    {
+        SettingsManager.IsFullscreen = !SettingsManager.IsFullscreen;
+        if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
+    }
+
+    void CloseSettings() => settingsPanel.SetActive(false);
+    string VolumePct()  => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
+    string FsText()     => SettingsManager.IsFullscreen ? "ON" : "OFF";
     void OnExit()
     {
 #if UNITY_EDITOR
