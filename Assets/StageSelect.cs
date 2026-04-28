@@ -620,7 +620,7 @@ public class StageSelect : MonoBehaviour
         // ── 좌측 헤더 "선택 가능 아군" ──────────────────────────────
         MkTxtChild(pp, "선택 가능 아군", new Color(0.90f,0.94f,1f),
                    new Vector2(-215, 245), new Vector2(400, 30), 19);
-        MkTxtChild(pp, "클릭하여 추가 (중복 가능)", new Color(1f,1f,1f,0.35f),
+        MkTxtChild(pp, "클릭하여 추가", new Color(1f,1f,1f,0.35f),
                    new Vector2(-215, 218), new Vector2(400, 24), 14);
 
         // ── 좌측: 선택 가능 아군 초상화 그리드 (3열 × 2행, 최대 6) ─
@@ -817,7 +817,8 @@ public class StageSelect : MonoBehaviour
         int midCount = Mathf.Min(cfg.allySlots, cfg.startWaveAllyCount + 1);
         int lateCount = Mathf.Min(cfg.allySlots, cfg.startWaveAllyCount + 2);
         prepTitleTxt.text = $"전투 준비 — STAGE {si}  {cfg.stageName}";
-        prepSlotTxt.text  = $"편성 최대 {cfg.allySlots}명  |  1~5웨이브 {cfg.startWaveAllyCount}명 / 6~10웨이브 {midCount}명 / 11~15웨이브 {lateCount}명";
+        int maxPickable = Mathf.Min(cfg.allySlots, AVAIL_TYPES.Length);
+        prepSlotTxt.text  = $"편성 {maxPickable}명 선택  |  1~5웨이브 {cfg.startWaveAllyCount}명 / 6~10웨이브 {midCount}명 / 11~15웨이브 {lateCount}명";
         ResetPrep();
         RefreshPrep();
     }
@@ -841,6 +842,7 @@ public class StageSelect : MonoBehaviour
     {
         if (prepStageIndex <= 0 || idx < 0 || idx >= AVAIL_TYPES.Length) return;
         if (prepSelected.Count >= StageManager.GetStageConfig(prepStageIndex).allySlots) return;
+        if (availSelectedCount[idx] > 0) return;
         prepSelected.Add(AVAIL_TYPES[idx]);
         availSelectedCount[idx]++;
         RefreshPrep();
@@ -882,18 +884,18 @@ public class StageSelect : MonoBehaviour
             }
         }
 
-        // ── 좌측: 선택 가능 아군 (편성이 가득 찼을 때만 어둡게) ──
-        bool allFull = prepSelected.Count >= slots;
+        // ── 좌측: 선택 가능 아군 (이미 선택된 타입은 어둡게) ──
         for (int i = 0; i < prepAvailItems.Count; i++)
         {
             bool active = i < AVAIL_TYPES.Length;
             prepAvailItems[i].SetActive(active);
             if (!active) continue;
 
-            AllyType ally = AVAIL_TYPES[i];
+            AllyType ally   = AVAIL_TYPES[i];
+            bool dimmed     = availSelectedCount[i] > 0;
 
             prepAvailPortraits[i].sprite = AllyVisualGenerator.CreatePortraitSprite(ally);
-            prepAvailPortraits[i].color  = allFull
+            prepAvailPortraits[i].color  = dimmed
                 ? new Color(0.28f, 0.28f, 0.28f, 1f)
                 : Color.white;
 
@@ -907,9 +909,9 @@ public class StageSelect : MonoBehaviour
     {
         if (prepStageIndex <= 0) return;
         int slots = StageManager.GetStageConfig(prepStageIndex).allySlots;
-        if (prepSelected.Count != slots)
+        if (prepSelected.Count == 0)
         {
-            prepSlotTxt.text = $"출전 인원 {slots}명 필요  (현재 {prepSelected.Count}명)";
+            prepSlotTxt.text = $"아군을 1명 이상 선택하세요  (최대 {Mathf.Min(slots, AVAIL_TYPES.Length)}명)";
             return;
         }
         StageManager.Instance?.SetSelectedAlliesForStage(prepSelected, prepStageIndex);
