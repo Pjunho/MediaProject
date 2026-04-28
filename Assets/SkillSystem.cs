@@ -43,10 +43,24 @@ public static class SkillSystem
             skillName   = "치유 기도",
             description = "신성한 기도로 매 초\n최대 HP의 3%를 회복합니다.",
             cost        = 4
+        },
+        new SkillData
+        {
+            allyType    = AllyType.Rogue,
+            skillName   = "그림자 걸음",
+            description = "어둠 속에 몸을 숨기며\n이동 속도가 40% 증가합니다.",
+            cost        = 2
+        },
+        new SkillData
+        {
+            allyType    = AllyType.Paladin,
+            skillName   = "성전사의 서약",
+            description = "신성한 서약으로 몸을 강화하여\n최대 HP가 2배가 됩니다.",
+            cost        = 6
         }
     };
 
-    static readonly bool[] unlockedSkills = new bool[4];
+    static readonly bool[] unlockedSkills = new bool[6];
 
     public static SkillData[] GetAllSkills() => skills;
 
@@ -109,6 +123,13 @@ public static class SkillSystem
                 break;
             case AllyType.Cleric:
                 ally.EnableSkillRegen();
+                break;
+            case AllyType.Rogue:
+                ally.moveSpeed *= 1.40f;
+                break;
+            case AllyType.Paladin:
+                ally.maxHp    *= 2.00f;
+                ally.currentHp = ally.maxHp;
                 break;
         }
     }

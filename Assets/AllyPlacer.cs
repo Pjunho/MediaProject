@@ -95,6 +95,8 @@ public class AllyPlacer : MonoBehaviour
             AllyType.Archer  => go.AddComponent<Archer>(),
             AllyType.Mage    => go.AddComponent<Mage>(),
             AllyType.Cleric  => go.AddComponent<Cleric>(),
+            AllyType.Rogue   => go.AddComponent<Rogue>(),
+            AllyType.Paladin => go.AddComponent<Paladin>(),
             _                => go.AddComponent<Warrior>()
         };
 

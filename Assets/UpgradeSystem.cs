@@ -13,7 +13,7 @@ public static class UpgradeSystem
     static readonly float   hpBonusPerLevel    = 0.15f;         // 단계당 HP  +15%
 
     const int MAX_LEVEL = 3;
-    const int TYPE_COUNT = 4; // Warrior, Archer, Mage, Cleric
+    const int TYPE_COUNT = 6; // Warrior, Archer, Mage, Cleric, Rogue, Paladin
 
     static readonly int[] speedLevels = new int[TYPE_COUNT];
     static readonly int[] hpLevels    = new int[TYPE_COUNT];

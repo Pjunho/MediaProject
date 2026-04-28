@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // ── 아군 타입 열거형 ────────────────────────────────────────────────
-public enum AllyType { Warrior, Archer, Mage, Cleric }
+public enum AllyType { Warrior, Archer, Mage, Cleric, Rogue, Paladin }
 
 // ── HP바 컴포넌트 ───────────────────────────────────────────────────
 public class HpBar : MonoBehaviour

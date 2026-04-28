@@ -81,6 +81,8 @@ public class AllyOrderPanel : MonoBehaviour
     static readonly Color COL_ARCHER  = new Color(0.12f, 0.42f, 0.18f, 0.93f);
     static readonly Color COL_MAGE    = new Color(0.12f, 0.18f, 0.62f, 0.93f);
     static readonly Color COL_CLERIC  = new Color(0.62f, 0.58f, 0.28f, 0.93f);
+    static readonly Color COL_ROGUE   = new Color(0.30f, 0.12f, 0.42f, 0.93f);
+    static readonly Color COL_PALADIN = new Color(0.55f, 0.45f, 0.10f, 0.93f);
     static readonly Color COL_TITLE   = new Color(1.0f,  0.85f, 0.20f, 1.0f);
     static readonly Color COL_DRAG    = new Color(1.0f,  0.92f, 0.30f, 0.95f);
     static readonly Color COL_TOGGLE  = new Color(0.07f, 0.09f, 0.16f, 0.96f);
@@ -93,6 +95,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => "궁수",
         AllyType.Mage    => "마법사",
         AllyType.Cleric  => "성직자",
+        AllyType.Rogue   => "도적",
+        AllyType.Paladin => "성기사",
         _                => "?"
     };
 
@@ -102,6 +106,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => new[] { "원거리 지원 (HP 140)", "유연 기동  (속도 3.8)" },
         AllyType.Mage    => new[] { "마법 공세  (HP 110)", "쾌속 이동  (속도 4.2)" },
         AllyType.Cleric  => new[] { "신성 방어  (HP 200)", "안정 전진  (속도 2.8)" },
+        AllyType.Rogue   => new[] { "민첩 기습  (HP  90)", "고속 이동  (속도 4.8)" },
+        AllyType.Paladin => new[] { "중장 방어  (HP 280)", "느린 전진  (속도 1.8)" },
         _                => new[] { "-", "-" }
     };
 
@@ -111,6 +117,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => COL_ARCHER,
         AllyType.Mage    => COL_MAGE,
         AllyType.Cleric  => COL_CLERIC,
+        AllyType.Rogue   => COL_ROGUE,
+        AllyType.Paladin => COL_PALADIN,
         _                => Color.gray
     };
 
@@ -120,6 +128,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => 140f,
         AllyType.Mage    => 110f,
         AllyType.Cleric  => 200f,
+        AllyType.Rogue   =>  90f,
+        AllyType.Paladin => 280f,
         _                => 0f
     };
 
@@ -129,6 +139,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => 3.8f,
         AllyType.Mage    => 4.2f,
         AllyType.Cleric  => 2.8f,
+        AllyType.Rogue   => 4.8f,
+        AllyType.Paladin => 1.8f,
         _                => 0f
     };
 
@@ -138,6 +150,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => "쾌속 이동",
         AllyType.Mage    => "생명력 강화",
         AllyType.Cleric  => "치유 기도",
+        AllyType.Rogue   => "그림자 걸음",
+        AllyType.Paladin => "성전사의 서약",
         _                => "잠금 스킬"
     };
 
@@ -153,6 +167,8 @@ public class AllyOrderPanel : MonoBehaviour
         AllyType.Archer  => new Color(0.25f, 0.75f, 0.30f),
         AllyType.Mage    => new Color(0.95f, 0.45f, 0.10f),
         AllyType.Cleric  => new Color(0.90f, 0.85f, 0.30f),
+        AllyType.Rogue   => new Color(0.60f, 0.20f, 0.80f),
+        AllyType.Paladin => new Color(0.90f, 0.75f, 0.10f),
         _                => new Color(0.55f, 0.55f, 0.55f)
     };
 

@@ -489,6 +489,8 @@ public class AllyBase : MonoBehaviour
         if (this is Archer)  return AllyType.Archer;
         if (this is Mage)    return AllyType.Mage;
         if (this is Cleric)  return AllyType.Cleric;
+        if (this is Rogue)   return AllyType.Rogue;
+        if (this is Paladin) return AllyType.Paladin;
         return AllyType.Warrior;
     }
 

@@ -73,6 +73,8 @@ public static class AllyVisualGenerator
         { AllyType.Archer,  new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.12f,0.50f,0.16f), CommonParts) },
         { AllyType.Mage,    new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.14f,0.20f,0.72f), CommonParts) },
         { AllyType.Cleric,  new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.86f,0.80f,0.55f), CommonParts) },
+        { AllyType.Rogue,   new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.35f,0.12f,0.50f), CommonParts) },
+        { AllyType.Paladin, new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.88f,0.72f,0.18f), CommonParts) },
     };
 
     static readonly Dictionary<AllyType, PixelProfile> PixelProfiles = new()
@@ -327,6 +329,8 @@ public static class AllyVisualGenerator
             case AllyType.Archer:  if (front) DrawArcherFront(tex);  else DrawArcherBack(tex);  break;
             case AllyType.Mage:    if (front) DrawMageFront(tex);    else DrawMageBack(tex);    break;
             case AllyType.Cleric:  if (front) DrawClericFront(tex);  else DrawClericBack(tex);  break;
+            case AllyType.Rogue:   if (front) DrawRogueFront(tex);   else DrawRogueBack(tex);   break;
+            case AllyType.Paladin: if (front) DrawPaladinFront(tex); else DrawPaladinBack(tex); break;
         }
         tex.Apply();
         return dirTexCache[key] = tex;
@@ -372,6 +376,8 @@ public static class AllyVisualGenerator
             case AllyType.Archer:  DrawArcher(tex);  break;
             case AllyType.Mage:    DrawMage(tex);    break;
             case AllyType.Cleric:  DrawCleric(tex);  break;
+            case AllyType.Rogue:   DrawRogue(tex);   break;
+            case AllyType.Paladin: DrawPaladin(tex); break;
         }
         tex.Apply();
         return tex;
@@ -847,6 +853,257 @@ public static class AllyVisualGenerator
         DrawCircle(t, 90, 66, 8, gem);
         DrawCircle(t, 90, 66, 5, new Color(0.50f, 0.78f, 1.0f));
         DrawClericHead(t, dark, gold, lgold, silv, white, false);
+    }
+
+    // ── 도적 Side ──────────────────────────────────────────────────
+    static void DrawRogue(Texture2D t)
+    {
+        Color white  = Color.white;
+        Color purp   = new Color(0.32f, 0.10f, 0.48f);
+        Color dpurp  = new Color(0.18f, 0.05f, 0.28f);
+        Color gray   = new Color(0.40f, 0.40f, 0.45f);
+        Color dgray  = new Color(0.22f, 0.22f, 0.26f);
+        Color blade  = new Color(0.78f, 0.80f, 0.88f);
+        Color dark   = new Color(0.08f, 0.08f, 0.08f);
+        Color boot   = new Color(0.20f, 0.14f, 0.22f);
+
+        // 두 다리 — 슬림한 검은 바지
+        DrawRect(t, 32, 5, 13, 28, dgray); DrawRect(t, 53, 5, 13, 28, dgray);
+        DrawRect(t, 32, 5, 13, 10, boot);  DrawRect(t, 53, 5, 13, 10, boot);
+
+        // 몸통 — 자주색 가죽갑옷
+        DrawRect(t, 27, 34, 50, 24, purp);
+        DrawRect(t, 29, 36, 46, 20, dpurp);
+        DrawRect(t, 34, 44, 30,  4, gray);  // 허리띠
+        DrawRect(t, 36, 44,  4,  4, blade); // 버클
+
+        // 뒤팔 — 단검 [14-28]
+        DrawRect(t, 14, 36, 14, 20, dpurp);
+        DrawRect(t,  8, 32,  4, 28, blade); // 단검 날
+        DrawRect(t,  6, 42,  8,  4, gray);  // 가드
+        DrawRect(t,  9, 47,  4,  8, dgray); // 손잡이
+
+        // 앞팔 — 단검 [70-96]
+        DrawRect(t, 70, 36, 14, 20, dpurp);
+        DrawRect(t, 88, 22,  4, 30, blade); // 단검 날
+        DrawRect(t, 84, 36, 10,  4, gray);  // 가드
+        DrawRect(t, 86, 41,  4,  8, dgray); // 손잡이
+
+        // 머리 + 후드 (어두운 자주)
+        DrawCircle(t, 55, 72, 18, white);
+        DrawRect(t, 45, 68, 6, 7, dark); DrawRect(t, 58, 68, 6, 7, dark);
+        DrawCircle(t, 55, 90, 21, dpurp);
+        DrawRect(t, 34, 74, 42, 18, dpurp);
+        DrawCircle(t, 55, 82, 16, purp);
+        DrawRect(t, 34, 74, 42,  5, gray); // 테두리
+        // 후드 꼬리 (오른쪽으로)
+        for (int i = 0; i < 14; i++)
+            DrawRect(t, 70+i, 83+i, Mathf.Max(3, 18-i*2), 1, dpurp);
+        // 마스크 줄
+        DrawRect(t, 38, 68, 34, 4, dgray);
+    }
+
+    // ── 도적 Front ────────────────────────────────────────────────
+    static void DrawRogueFront(Texture2D t)
+    {
+        Color white  = Color.white;
+        Color purp   = new Color(0.32f, 0.10f, 0.48f);
+        Color dpurp  = new Color(0.18f, 0.05f, 0.28f);
+        Color gray   = new Color(0.40f, 0.40f, 0.45f);
+        Color dgray  = new Color(0.22f, 0.22f, 0.26f);
+        Color blade  = new Color(0.78f, 0.80f, 0.88f);
+        Color dark   = new Color(0.08f, 0.08f, 0.08f);
+        Color boot   = new Color(0.20f, 0.14f, 0.22f);
+
+        DrawRect(t, 32, 5, 13, 28, dgray); DrawRect(t, 53, 5, 13, 28, dgray);
+        DrawRect(t, 32, 5, 13, 10, boot);  DrawRect(t, 53, 5, 13, 10, boot);
+        DrawRect(t, 27, 34, 50, 24, purp);
+        DrawRect(t, 29, 36, 46, 20, dpurp);
+        DrawRect(t, 34, 44, 30,  4, gray);
+        DrawRect(t, 14, 36, 14, 20, dpurp);
+        DrawRect(t,  8, 32,  4, 28, blade);
+        DrawRect(t,  6, 42,  8,  4, gray);
+        DrawRect(t, 70, 36, 14, 20, dpurp);
+        DrawRect(t, 88, 22,  4, 30, blade);
+        DrawRect(t, 84, 36, 10,  4, gray);
+        DrawCircle(t, 55, 72, 18, white);
+        DrawRect(t, 43, 68, 7, 7, dark); DrawRect(t, 59, 68, 7, 7, dark);
+        DrawCircle(t, 55, 90, 21, dpurp);
+        DrawRect(t, 34, 74, 42, 18, dpurp);
+        DrawCircle(t, 55, 82, 16, purp);
+        DrawRect(t, 34, 74, 42,  5, gray);
+        DrawRect(t, 38, 68, 34, 4, dgray);
+    }
+
+    // ── 도적 Back ─────────────────────────────────────────────────
+    static void DrawRogueBack(Texture2D t)
+    {
+        Color purp   = new Color(0.32f, 0.10f, 0.48f);
+        Color dpurp  = new Color(0.18f, 0.05f, 0.28f);
+        Color gray   = new Color(0.40f, 0.40f, 0.45f);
+        Color dgray  = new Color(0.22f, 0.22f, 0.26f);
+        Color blade  = new Color(0.78f, 0.80f, 0.88f);
+        Color boot   = new Color(0.20f, 0.14f, 0.22f);
+        Color white  = Color.white;
+
+        DrawRect(t, 32, 5, 13, 28, dgray); DrawRect(t, 53, 5, 13, 28, dgray);
+        DrawRect(t, 32, 5, 13, 10, boot);  DrawRect(t, 53, 5, 13, 10, boot);
+        DrawRect(t, 27, 34, 50, 24, purp);
+        DrawRect(t, 29, 36, 46, 20, dpurp);
+        // 등 — 단검 X자 교차
+        DrawRect(t, 50, 36, 4, 20, dpurp);
+        for (int i = 0; i < 16; i++)
+        { SetPx(t, 34+i, 36+i, gray); SetPx(t, 64-i, 36+i, gray); }
+        DrawRect(t, 14, 36, 14, 20, dpurp);
+        DrawRect(t, 70, 36, 14, 20, dpurp);
+        DrawRect(t, 88, 22,  4, 30, blade);
+        DrawRect(t,  8, 32,  4, 28, blade);
+        DrawCircle(t, 55, 72, 18, white);
+        DrawCircle(t, 55, 90, 21, dpurp);
+        DrawRect(t, 34, 74, 42, 18, dpurp);
+        DrawRect(t, 34, 74, 42,  5, gray);
+        // 꼬리 반대 방향
+        for (int i = 0; i < 14; i++)
+            DrawRect(t, 58+i, 83+i, Mathf.Max(3, 18-i*2), 1, dpurp);
+    }
+
+    // ── 성기사 Side ────────────────────────────────────────────────
+    static void DrawPaladin(Texture2D t)
+    {
+        Color white  = Color.white;
+        Color gold   = new Color(0.92f, 0.74f, 0.12f);
+        Color lgold  = new Color(1.00f, 0.92f, 0.40f);
+        Color silv   = new Color(0.78f, 0.80f, 0.88f);
+        Color dsilv  = new Color(0.50f, 0.52f, 0.60f);
+        Color holy   = new Color(0.96f, 0.96f, 0.80f);
+        Color dark   = new Color(0.08f, 0.08f, 0.08f);
+        Color boot   = new Color(0.30f, 0.24f, 0.10f);
+
+        // 두 다리 — 중장 갑옷 다리
+        DrawRect(t, 28, 5, 18, 28, silv); DrawRect(t, 50, 5, 18, 28, silv);
+        DrawRect(t, 28, 5, 18, 10, boot); DrawRect(t, 50, 5, 18, 10, boot);
+        DrawRect(t, 28,18, 18,  4, dsilv); DrawRect(t, 50,18, 18,  4, dsilv); // 무릎갑옷
+
+        // 몸통 — 황금 흉갑
+        DrawRect(t, 22, 34, 58, 26, silv);
+        DrawRect(t, 24, 36, 54, 22, gold);
+        DrawRect(t, 28, 38, 46, 18, lgold);
+        DrawRect(t, 36, 44, 30,  6, gold); // 허리띠
+        DrawRect(t, 38, 44, 26,  4, lgold);
+        // 십자 문양
+        DrawRect(t, 52, 37,  4, 16, white);
+        DrawRect(t, 46, 43, 16,  4, white);
+
+        // 뒤팔 — 대형 방패 [10-30]
+        DrawRect(t, 10, 32, 20, 28, silv);
+        DrawRect(t,  3, 26, 28, 36, gold);
+        DrawRect(t,  6, 29, 22, 30, lgold);
+        DrawRect(t, 13, 36, 10, 14, gold); // 방패 중앙
+        DrawRect(t, 15, 38,  6, 10, white);
+        DrawRect(t, 17, 37,  2, 12, gold); // 방패 십자
+        DrawRect(t, 14, 42, 10,  2, gold);
+
+        // 앞팔 — 철퇴 [70-100]
+        DrawRect(t, 70, 36, 16, 20, silv);
+        DrawRect(t, 88,  8,  6, 50, boot); // 손잡이
+        DrawRect(t, 82, 55, 18, 12, dsilv); // 헤드
+        DrawRect(t, 80, 56, 22, 10, silv);
+        for (int i = 0; i < 4; i++)
+            DrawRect(t, 84+i*4, 52, 3, 20, gold); // 스파이크
+
+        // 머리 + 황금 투구
+        DrawCircle(t, 55, 72, 19, white);
+        DrawRect(t, 45, 69, 6, 6, dark); DrawRect(t, 57, 69, 6, 6, dark);
+        DrawCircle(t, 55, 90, 20, gold);
+        DrawRect(t, 34, 76, 42, 16, gold);
+        DrawRect(t, 34, 76, 42,  4, lgold); // 챙
+        DrawRect(t, 36, 80, 38, 12, silv);  // 투구 앞판
+        DrawRect(t, 48, 78, 14,  4, gold);  // 정수리 장식
+        DrawRect(t, 53, 76,  4, 14, lgold); // 정수리 볏
+        DrawRect(t, 34, 92, 42,  3, gold);  // 하단 테두리
+        // 신성 빛 (눈 주위)
+        DrawRect(t, 45, 84,  8,  4, holy);
+        DrawRect(t, 57, 84,  8,  4, holy);
+    }
+
+    // ── 성기사 Front ──────────────────────────────────────────────
+    static void DrawPaladinFront(Texture2D t)
+    {
+        Color white  = Color.white;
+        Color gold   = new Color(0.92f, 0.74f, 0.12f);
+        Color lgold  = new Color(1.00f, 0.92f, 0.40f);
+        Color silv   = new Color(0.78f, 0.80f, 0.88f);
+        Color dsilv  = new Color(0.50f, 0.52f, 0.60f);
+        Color holy   = new Color(0.96f, 0.96f, 0.80f);
+        Color dark   = new Color(0.08f, 0.08f, 0.08f);
+        Color boot   = new Color(0.30f, 0.24f, 0.10f);
+
+        DrawRect(t, 28, 5, 18, 28, silv); DrawRect(t, 50, 5, 18, 28, silv);
+        DrawRect(t, 28, 5, 18, 10, boot); DrawRect(t, 50, 5, 18, 10, boot);
+        DrawRect(t, 28,18, 18,  4, dsilv); DrawRect(t, 50,18, 18,  4, dsilv);
+        DrawRect(t, 22, 34, 58, 26, silv);
+        DrawRect(t, 24, 36, 54, 22, gold);
+        DrawRect(t, 28, 38, 46, 18, lgold);
+        DrawRect(t, 36, 44, 30,  6, gold);
+        DrawRect(t, 52, 37,  4, 16, white);
+        DrawRect(t, 46, 43, 16,  4, white);
+        DrawRect(t, 10, 32, 20, 28, silv);
+        DrawRect(t,  3, 26, 28, 36, gold);
+        DrawRect(t,  6, 29, 22, 30, lgold);
+        DrawRect(t, 13, 36, 10, 14, gold);
+        DrawRect(t, 15, 38,  6, 10, white);
+        DrawRect(t, 17, 37,  2, 12, gold);
+        DrawRect(t, 14, 42, 10,  2, gold);
+        DrawRect(t, 70, 36, 16, 20, silv);
+        DrawRect(t, 88,  8,  6, 50, boot);
+        DrawRect(t, 80, 55, 22, 12, dsilv);
+        DrawRect(t, 78, 56, 26, 10, silv);
+        for (int i = 0; i < 4; i++) DrawRect(t, 84+i*4, 52, 3, 20, gold);
+        DrawCircle(t, 55, 72, 19, white);
+        DrawRect(t, 43, 69, 7, 7, dark); DrawRect(t, 59, 69, 7, 7, dark);
+        DrawCircle(t, 55, 90, 20, gold);
+        DrawRect(t, 34, 76, 42, 16, gold);
+        DrawRect(t, 34, 76, 42,  4, lgold);
+        DrawRect(t, 36, 80, 38, 12, silv);
+        DrawRect(t, 48, 78, 14,  4, gold);
+        DrawRect(t, 53, 76,  4, 14, lgold);
+        DrawRect(t, 34, 92, 42,  3, gold);
+        DrawRect(t, 45, 84,  8,  4, holy);
+        DrawRect(t, 57, 84,  8,  4, holy);
+    }
+
+    // ── 성기사 Back ───────────────────────────────────────────────
+    static void DrawPaladinBack(Texture2D t)
+    {
+        Color white  = Color.white;
+        Color gold   = new Color(0.92f, 0.74f, 0.12f);
+        Color lgold  = new Color(1.00f, 0.92f, 0.40f);
+        Color silv   = new Color(0.78f, 0.80f, 0.88f);
+        Color dsilv  = new Color(0.50f, 0.52f, 0.60f);
+        Color boot   = new Color(0.30f, 0.24f, 0.10f);
+
+        DrawRect(t, 28, 5, 18, 28, silv); DrawRect(t, 50, 5, 18, 28, silv);
+        DrawRect(t, 28, 5, 18, 10, boot); DrawRect(t, 50, 5, 18, 10, boot);
+        DrawRect(t, 28,18, 18,  4, dsilv); DrawRect(t, 50,18, 18,  4, dsilv);
+        DrawRect(t, 22, 34, 58, 26, silv);
+        DrawRect(t, 24, 36, 54, 22, gold);
+        DrawRect(t, 28, 38, 46, 18, lgold);
+        // 등 — 황금 망토 자락
+        DrawRect(t, 30, 24, 40, 16, gold);
+        DrawRect(t, 32, 24, 36, 14, lgold);
+        DrawRect(t, 10, 32, 20, 28, silv);
+        DrawRect(t, 70, 36, 16, 20, silv);
+        DrawRect(t, 88,  8,  6, 50, boot);
+        DrawRect(t, 80, 55, 22, 12, dsilv);
+        // 머리 뒤 — 눈 없음
+        DrawCircle(t, 55, 72, 19, white);
+        DrawCircle(t, 55, 90, 20, gold);
+        DrawRect(t, 34, 76, 42, 16, gold);
+        DrawRect(t, 34, 76, 42,  4, lgold);
+        DrawRect(t, 36, 80, 38, 12, silv);
+        DrawRect(t, 48, 78, 14,  4, gold);
+        DrawRect(t, 53, 76,  4, 14, lgold);
+        DrawRect(t, 34, 92, 42,  3, gold);
     }
 
     // ════════════════════════════════════════════════════════════════

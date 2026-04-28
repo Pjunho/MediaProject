@@ -263,7 +263,7 @@ public class StageManager : MonoBehaviour
     public static System.Collections.Generic.List<AllyType> GetDefaultSelectedAllies(int stageIndex)
     {
         int slots = GetStageConfig(stageIndex).allySlots;
-        AllyType[] cycle = { AllyType.Warrior, AllyType.Archer, AllyType.Mage, AllyType.Cleric };
+        AllyType[] cycle = { AllyType.Warrior, AllyType.Archer, AllyType.Mage, AllyType.Cleric, AllyType.Rogue, AllyType.Paladin };
         var result = new System.Collections.Generic.List<AllyType>(slots);
         for (int i = 0; i < slots; i++)
             result.Add(cycle[i % cycle.Length]);

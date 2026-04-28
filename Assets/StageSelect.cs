@@ -120,6 +120,20 @@ public class StageSelect : MonoBehaviour
                 desc="주변 아군의 HP를\n매 3초마다 소량 회복시킨다.",
                 iconColor=new Color(0.90f,0.85f,0.30f) }
         }},
+        { AllyType.Rogue, new AllyDetailData {
+            allyName="도적", role="민첩 기습형",
+            hp=90f, speed=4.8f,
+            skill=new SkillInfo{ name="그림자 걸음",
+                desc="어둠 속에 몸을 숨기며\n이동 속도가 40% 증가합니다.",
+                iconColor=new Color(0.60f,0.20f,0.80f) }
+        }},
+        { AllyType.Paladin, new AllyDetailData {
+            allyName="성기사", role="중장 방어형",
+            hp=280f, speed=1.8f,
+            skill=new SkillInfo{ name="성전사의 서약",
+                desc="신성한 서약으로 몸을 강화하여\n최대 HP가 2배가 됩니다.",
+                iconColor=new Color(0.90f,0.75f,0.10f) }
+        }},
     };
 
     // 상세 팝업
@@ -143,9 +157,9 @@ public class StageSelect : MonoBehaviour
     // ── 준비 패널 ─────────────────────────────────────────────────────
     GameObject prepPanel;
     Text prepTitleTxt, prepSlotTxt;
-    // 선택 가능 아군: 항상 4종 고정 표시 (선택 시 어둡게)
-    static readonly AllyType[] AVAIL_TYPES = { AllyType.Warrior, AllyType.Archer, AllyType.Mage, AllyType.Cleric };
-    readonly int[] availSelectedCount = new int[4]; // 각 타입이 선택된 횟수
+    // 선택 가능 아군: 6종 표시 (선택 시 어둡게)
+    static readonly AllyType[] AVAIL_TYPES = { AllyType.Warrior, AllyType.Archer, AllyType.Mage, AllyType.Cleric, AllyType.Rogue, AllyType.Paladin };
+    readonly int[] availSelectedCount = new int[6]; // 각 타입이 선택된 횟수
 
     readonly System.Collections.Generic.List<AllyType>   prepSelected   = new();
     readonly System.Collections.Generic.List<AllyType>   prepAvailable  = new(); // 하위 호환용 (사용 안 함)
@@ -909,9 +923,9 @@ public class StageSelect : MonoBehaviour
     {
         if (prepStageIndex <= 0) return;
         int slots = StageManager.GetStageConfig(prepStageIndex).allySlots;
-        if (prepSelected.Count == 0)
+        if (prepSelected.Count != slots)
         {
-            prepSlotTxt.text = $"아군을 1명 이상 선택하세요  (최대 {Mathf.Min(slots, AVAIL_TYPES.Length)}명)";
+            prepSlotTxt.text = $"아군을 {slots}명 모두 선택하세요  ({prepSelected.Count}/{slots}명)";
             return;
         }
         StageManager.Instance?.SetSelectedAlliesForStage(prepSelected, prepStageIndex);
@@ -921,7 +935,8 @@ public class StageSelect : MonoBehaviour
 
     string AllyLabel(AllyType t) => t switch
     { AllyType.Warrior=>"전사", AllyType.Archer=>"궁수",
-      AllyType.Mage=>"마법사", AllyType.Cleric=>"성직자", _=>"아군" };
+      AllyType.Mage=>"마법사", AllyType.Cleric=>"성직자",
+      AllyType.Rogue=>"도적", AllyType.Paladin=>"성기사", _=>"아군" };
 
     void OnLockedStage() => Debug.Log("[StageSelect] 잠긴 스테이지 클릭");
     void OnBack()        => SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
