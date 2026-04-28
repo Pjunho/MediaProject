@@ -26,14 +26,14 @@ public static class SkillSystem
         new SkillData
         {
             allyType    = AllyType.Archer,
-            skillName   = "산탄 화살",
+            skillName   = "쾌속 이동",
             description = "빠른 발걸음으로 적을 혼란시켜\n이동 속도가 25% 증가합니다.",
             cost        = 2
         },
         new SkillData
         {
             allyType    = AllyType.Mage,
-            skillName   = "화염구",
+            skillName   = "생명력 강화",
             description = "마법 에너지로 몸을 강화하여\n최대 HP가 30% 증가합니다.",
             cost        = 3
         },

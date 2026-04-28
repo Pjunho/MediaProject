@@ -102,15 +102,15 @@ public class StageSelect : MonoBehaviour
         { AllyType.Archer, new AllyDetailData {
             allyName="궁수", role="중거리 지원형",
             hp=140f, speed=3.8f,
-            skill=new SkillInfo{ name="산탄 화살",
-                desc="전방 부채꼴 범위에\n화살 3발을 동시에 발사한다.",
+            skill=new SkillInfo{ name="쾌속 이동",
+                desc="빠른 발걸음으로 이동 속도가\n25% 증가합니다.",
                 iconColor=new Color(0.25f,0.75f,0.30f) }
         }},
         { AllyType.Mage, new AllyDetailData {
             allyName="마법사", role="원거리 광역형",
             hp=110f, speed=4.2f,
-            skill=new SkillInfo{ name="화염구",
-                desc="착탄 지점 주위의 적에게\n광역 마법 피해를 입힌다.",
+            skill=new SkillInfo{ name="생명력 강화",
+                desc="마법 에너지로 몸을 강화하여\n최대 HP가 30% 증가합니다.",
                 iconColor=new Color(0.95f,0.45f,0.10f) }
         }},
         { AllyType.Cleric, new AllyDetailData {
@@ -620,7 +620,7 @@ public class StageSelect : MonoBehaviour
         // ── 좌측 헤더 "선택 가능 아군" ──────────────────────────────
         MkTxtChild(pp, "선택 가능 아군", new Color(0.90f,0.94f,1f),
                    new Vector2(-215, 245), new Vector2(400, 30), 19);
-        MkTxtChild(pp, "클릭하여 추가", new Color(1f,1f,1f,0.35f),
+        MkTxtChild(pp, "클릭하여 추가 (중복 가능)", new Color(1f,1f,1f,0.35f),
                    new Vector2(-215, 218), new Vector2(400, 24), 14);
 
         // ── 좌측: 선택 가능 아군 초상화 그리드 (3열 × 2행, 최대 6) ─
@@ -841,7 +841,6 @@ public class StageSelect : MonoBehaviour
     {
         if (prepStageIndex <= 0 || idx < 0 || idx >= AVAIL_TYPES.Length) return;
         if (prepSelected.Count >= StageManager.GetStageConfig(prepStageIndex).allySlots) return;
-        if (availSelectedCount[idx] > 0) return;
         prepSelected.Add(AVAIL_TYPES[idx]);
         availSelectedCount[idx]++;
         RefreshPrep();
@@ -883,18 +882,18 @@ public class StageSelect : MonoBehaviour
             }
         }
 
-        // ── 좌측: 선택 가능 아군 (선택되면 어둡게, 중복 선택은 불가) ──
+        // ── 좌측: 선택 가능 아군 (편성이 가득 찼을 때만 어둡게) ──
+        bool allFull = prepSelected.Count >= slots;
         for (int i = 0; i < prepAvailItems.Count; i++)
         {
             bool active = i < AVAIL_TYPES.Length;
             prepAvailItems[i].SetActive(active);
             if (!active) continue;
 
-            AllyType ally   = AVAIL_TYPES[i];
-            bool dimmed     = availSelectedCount[i] > 0;
+            AllyType ally = AVAIL_TYPES[i];
 
             prepAvailPortraits[i].sprite = AllyVisualGenerator.CreatePortraitSprite(ally);
-            prepAvailPortraits[i].color  = dimmed
+            prepAvailPortraits[i].color  = allFull
                 ? new Color(0.28f, 0.28f, 0.28f, 1f)
                 : Color.white;
 

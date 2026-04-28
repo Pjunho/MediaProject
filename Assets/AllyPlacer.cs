@@ -121,6 +121,10 @@ public class AllyPlacer : MonoBehaviour
         ally.OnReachedGoal += a =>
         {
             Debug.Log($"[AllyPlacer] ✅ {a.allyName} 도달!");
+            FloatingText.Spawn(
+                a.transform.position + Vector3.up * 0.5f,
+                "+1 코인",
+                new Color(1f, 0.85f, 0.2f));
             GameManager.Instance?.ReportGoal();
         };
         ally.OnDied += a =>

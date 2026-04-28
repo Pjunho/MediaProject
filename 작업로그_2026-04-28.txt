@@ -58,3 +58,59 @@
 - 웨이브 HUD 별 진행 표시기 항목을 [x]로 추가 완료
 
 ===========================================
+
+====================================================
+2차 자동 점검 — 2026-04-28
+====================================================
+
+■ 작업 일시: 2026-04-28 오전 10시 2차 실행
+
+────────────────────────────────────────────────────
+1단계: 코드 점검 및 수정
+────────────────────────────────────────────────────
+
+【버그 수정 1】 StageSelect.cs — 6칸 스테이지 편성 불가 버그
+  - 위치: SelectPrepAlly() 메서드
+  - 문제: `if (availSelectedCount[idx] > 0) return;` 조건으로 인해
+    같은 아군 타입을 한 번씩만 선택할 수 있어 최대 4명만 편성 가능
+  - 영향: allySlots=6인 스테이지 3, 4, 5에서 ConfirmPrep()의
+    `prepSelected.Count != slots` 조건 충족 불가 → 출전 버튼 동작 안 함
+  - 수정: 중복 선택 제한 조건 삭제 → 같은 타입 여러 번 선택 가능
+  - RefreshPrep() dimming: `availSelectedCount[i] > 0` → `allFull` 방식으로 변경
+  - 힌트 텍스트: "클릭하여 추가" → "클릭하여 추가 (중복 가능)"
+
+【버그 수정 2】 스킬명 / 실제 효과 불일치
+  - 문제: Archer "산탄 화살", Mage "화염구" 스킬명이
+    실제 효과(이동 속도 +25%, 최대 HP +30%)와 맞지 않음
+  - 수정:
+    · Archer: "산탄 화살" → "쾌속 이동"
+    · Mage  : "화염구"   → "생명력 강화"
+  - 관련 파일 3곳 모두 수정:
+    · SkillSystem.cs — skillName 필드
+    · AllyOrderPanel.cs — GetSkillName() 메서드
+    · StageSelect.cs — AllyDetails 딕셔너리 (name + desc 동시 수정)
+
+────────────────────────────────────────────────────
+2단계: 신규 기능 구현 — 골 도달 시 플로팅 텍스트 효과
+────────────────────────────────────────────────────
+
+【신규 기능】 FloatingText.cs 생성
+  - 아군이 골에 도달해 코인을 획득할 때 "+1 코인" 황금색 텍스트가
+    아군 위치에서 위로 떠오르며 페이드 아웃되는 시각 피드백
+  - 구현: Unity TextMesh (world-space), sortingOrder=50
+    애니메이션: 1초 동안 1유닛 위로 이동 + 0.25초 fade in / 0.75초 fade out
+  - 통합: AllyPlacer.cs OnReachedGoal 콜백에서 FloatingText.Spawn() 호출
+  - 신규 파일: FloatingText.cs
+  - 수정 파일: AllyPlacer.cs
+
+────────────────────────────────────────────────────
+변경 파일 요약
+────────────────────────────────────────────────────
+  수정: SkillSystem.cs      — Archer/Mage 스킬명 수정
+  수정: AllyOrderPanel.cs  — GetSkillName() Archer/Mage 수정
+  수정: StageSelect.cs     — AllyDetails 수정 + SelectPrepAlly 버그 수정
+  수정: AllyPlacer.cs      — OnReachedGoal에 FloatingText.Spawn 추가
+  수정: CLAUDE.md          — 새 TODO 추가 및 완료 표시
+  신규: FloatingText.cs    — 플로팅 텍스트 유틸리티
+
+====================================================

@@ -135,8 +135,8 @@ public class AllyOrderPanel : MonoBehaviour
     static string GetSkillName(AllyType t) => t switch
     {
         AllyType.Warrior => "방패 밀치기",
-        AllyType.Archer  => "산탄 화살",
-        AllyType.Mage    => "화염구",
+        AllyType.Archer  => "쾌속 이동",
+        AllyType.Mage    => "생명력 강화",
         AllyType.Cleric  => "치유 기도",
         _                => "잠금 스킬"
     };
