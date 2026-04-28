@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     // 웨이브 HUD
     private Text       waveInfoTxt;   // "웨이브 X / Y" 표시
     private Text       mainGoalTxt;   // HUD 상단 골 카운트 표시
+    private Text       starProgressTxt; // 별 진행 상황 (★☆☆ 등)
     private GameObject waveBannerGo;  // 웨이브 사이 배너
     private Text       waveBannerTxt;
 
@@ -308,6 +309,15 @@ public class GameManager : MonoBehaviour
         waveInfoTxt = BuildTopLabel(cgo.transform, "wave", "웨이브 - / -",
             new Vector2(-400, 320), new Vector2(200, 40));
 
+        // 별 진행 표시 (웨이브 텍스트 아래)
+        starProgressTxt = BuildTopLabel(cgo.transform, "star", "☆ ☆ ☆",
+            new Vector2(-400, 276), new Vector2(200, 34));
+        if (starProgressTxt != null)
+        {
+            starProgressTxt.color    = COL_GOLD;
+            starProgressTxt.fontSize = 14;
+        }
+
         // 골 카운트 (상단 중앙)
         mainGoalTxt = BuildTopLabel(cgo.transform, "goal", "골: 0명",
             new Vector2(-180, 320), new Vector2(160, 40));
@@ -436,8 +446,32 @@ public class GameManager : MonoBehaviour
         if (mainGoalTxt != null)
             mainGoalTxt.text = $"골: {goalCount}명";
 
+        UpdateStarProgressHUD();
         UpdateGoalCount();
         UpdateCoinHUD();
+    }
+
+    void UpdateStarProgressHUD()
+    {
+        if (starProgressTxt == null) return;
+
+        int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
+        int currentStars = StageManager.Instance != null
+            ? StageManager.Instance.CalcStars(clearedWaveCount)
+            : 0;
+
+        // 다음 별까지 남은 웨이브 수 계산
+        int[] thresholds = { 5, 10, 15 };
+        string nextHint = "";
+        if (currentStars < 3)
+        {
+            int nextThreshold = thresholds[currentStars];
+            int remaining = nextThreshold - clearedWaveCount;
+            if (remaining > 0)
+                nextHint = $" (다음★까지 {remaining}웨이브)";
+        }
+
+        starProgressTxt.text = BuildStarStr(currentStars) + nextHint;
     }
 
     // ── 일시정지 / 속도 ───────────────────────────────────────────────────

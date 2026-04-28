@@ -120,3 +120,4 @@
 - [x] 아군 업그레이드 시스템 (속도/체력 각 3단계, 비용 1/3/6코인) → 2026-04-23 구현: UpgradeSystem.cs, 패널 버튼 UI 추가
 - [x] 설정 화면 구현 → 2026-04-27 구현: SettingsManager.cs (볼륨/전체화면 PlayerPrefs 저장), MainMenu.cs·GameManager.cs 설정 패널 추가 (볼륨 ±10% 버튼, 전체화면 전환)
 - [x] 스킬 효과 시각화 (방어막 표시, 회복 파티클 등) → 2026-04-24 구현: HealEffect.cs (초록 파티클), AllyBase.cs (방어막 원형 오버레이/펄싱 애니메이션, 회복 파티클 연동)
+- [x] 웨이브 HUD 별 진행 표시기 → 2026-04-28 구현: GameManager.cs (starProgressTxt 추가, UpdateStarProgressHUD() 메서드 — 웨이브 클리어 시 ★☆☆/★★☆/★★★ 실시간 표시 및 다음 별까지 남은 웨이브 수 힌트)
