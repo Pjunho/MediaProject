@@ -22,9 +22,6 @@ public class Map : MonoBehaviour
     private TileType[,]   tileMap;
     private GameObject[,] tileObjects;
 
-    private Sprite grassSprite;
-    private Sprite dirtSprite;
-
     public bool IsGenerated => tileMap != null &&
                                tileMap.GetLength(0) > 0 &&
                                tileMap.GetLength(1) > 0 &&
@@ -60,9 +57,6 @@ public class Map : MonoBehaviour
         // 홀수 보정 (짝수 크기는 미로 생성 불가)
         int w = mapWidth  % 2 == 0 ? mapWidth  - 1 : mapWidth;
         int h = mapHeight % 2 == 0 ? mapHeight - 1 : mapHeight;
-
-        grassSprite = TileTextureGenerator.GetGrassSprite();
-        dirtSprite  = TileTextureGenerator.GetDirtSprite();
 
         // 기존 맵 오브젝트 제거
         const string holderName = "Generated Map Holder";
@@ -139,17 +133,15 @@ public class Map : MonoBehaviour
 
                     if (type == TileType.Dirt)
                     {
-                        sr.sprite = dirtSprite;
-                        float tint = Random.Range(0.92f, 1.05f);
-                        sr.color = new Color(tint, tint, tint, 1f);
+                        // LPC 흙길 타일 (Earth solid)
+                        sr.sprite = TileTextureGenerator.GetDirtSprite();
                     }
                     else
                     {
-                        sr.sprite = grassSprite;
-                        // 벽 타일에 살짝 다크 틴트 적용해 구분감 강조
-                        float tint = Random.Range(0.72f, 0.88f);
-                        sr.color = new Color(tint, tint, tint, 1f);
+                        // LPC 풀밭 타일 4종 — (x+y)%4 로 위치마다 변형 선택
+                        sr.sprite = TileTextureGenerator.GetGrassSprite((x + y) % 4);
                     }
+                    sr.color = Color.white;   // 픽셀아트 원본 색상 그대로
                 }
 
                 tile.name = $"Tile_{x}_{y}";
