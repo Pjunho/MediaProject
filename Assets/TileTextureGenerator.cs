@@ -1,27 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// LPC Terrain(Resources/Map/terrain.png)에서 스테이지별 타일 스프라이트를 추출.
+/// 스테이지별 타일 스프라이트를 여러 오픈소스 아틀라스에서 추출합니다.
 ///
-/// ┌──────────────────────────────────────────────────────────────────┐
-/// │  스테이지 테마                                                    │
-/// │  Stage 1 (초원의 전투)                                           │
-/// │    벽  : Grass · Dark Grass · Short Grass · Long Grass           │
-/// │    길  : Earth (흙길)                                            │
-/// │                                                                  │
-/// │  Stage 2 (사막의 요새)                                           │
-/// │    벽  : Sand solid × 4 variants                                 │
-/// │    길  : Brick Road × 4 variants (요새 석재 통로)               │
-/// │                                                                  │
-/// │  Stage 3 (화산의 심판)                                           │
-/// │    벽  : Dark Dirt × 3 + Lava × 1 (4타일 중 1개 용암 포켓)     │
-/// │    길  : Red Dirt × 3 variants (붉은 화산암 통로)               │
-/// └──────────────────────────────────────────────────────────────────┘
+/// ┌────────────────────────────────────────────────────────────────────┐
+/// │  사용 텍스처 (모두 Resources/Map/ 에 배치)                        │
+/// │  terrain.png      – LPC_Terrain 기본 아틀라스 (1024×1024, 32px)  │
+/// │  terrain_atlas.png – Atlas 폴더 아틀라스     (1024×1024, 32px)  │
+/// │  base_out_atlas.png – 야외 건물/바위 아틀라스 (1024×1024, 32px)  │
+/// │                                                                    │
+/// │  스테이지 테마                                                     │
+/// │  Stage 1 (초원의 전투)                                            │
+/// │    벽  : terrain_atlas 순수 초록 잔디 (ID 640·641·642·672)       │
+/// │    길  : terrain Earth 흙길 (ID 676)                             │
+/// │                                                                    │
+/// │  Stage 2 (사막의 요새)                                            │
+/// │    벽  : terrain_atlas 황금 모래 타일 (ID 352·353·384·386)       │
+/// │    길  : terrain Brick Road 벽돌길 (ID 491·492·493·494)         │
+/// │                                                                    │
+/// │  Stage 3 (화산의 심판)                                            │
+/// │    벽  : base_out 어두운 화산암·적갈색 화산바위                   │
+/// │            (ID 352·353·288·289 – 보라-회색+적갈 혼합)            │
+/// │    길  : terrain Red Dirt 붉은 화산 통로 (ID 103·166·167)        │
+/// └────────────────────────────────────────────────────────────────────┘
 ///
-/// LPC Terrain 좌표 규칙:
-///   텍스처 1024×1024 px, 타일 32×32 px (열 32개 × 행 32개)
-///   tile id N → col = N % 32,  row = N / 32  (행은 위→아래)
-///   Sprite.Create Rect.y = 1024 − (row + 1) × 32   (하단 = 0 기준)
+/// 타일 ID 규칙 (모든 1024×1024, 32px 아틀라스 공통):
+///   tile id N → col = N % 32,  row = N / 32  (행 0 = 이미지 상단)
+///   Sprite.Create Rect.y = 1024 − (row + 1) × 32  (Unity 하단 기준)
 /// </summary>
 public static class TileTextureGenerator
 {
@@ -29,60 +35,72 @@ public static class TileTextureGenerator
     const int   TEX_W   = 1024;
     const int   TEX_H   = 1024;
     const int   TILE_SZ = 32;
-    const float PPU     = 32f;      // Pixels Per Unit : 타일 1개 = 1 Unity 유닛
+    const float PPU     = 32f;
     static readonly Vector2 PIVOT = new Vector2(0.5f, 0.5f);
 
+    // ── 텍스처 리소스 경로 ──────────────────────────────────────────
+    const string TEX_TERRAIN       = "Map/terrain";
+    const string TEX_TERRAIN_ATLAS = "Map/terrain_atlas";
+    const string TEX_BASE_OUT      = "Map/base_out_atlas";
+
+    // ── 스테이지별 벽 텍스처 ───────────────────────────────────────
+    //   [0] 미사용
+    static readonly string[] STAGE_WALL_TEX =
+    {
+        null,
+        TEX_TERRAIN_ATLAS,   // Stage 1: terrain_atlas 순수 잔디
+        TEX_TERRAIN_ATLAS,   // Stage 2: terrain_atlas 황금 모래
+        TEX_BASE_OUT,        // Stage 3: base_out 화산암
+    };
+
     // ── 스테이지별 벽 타일 ID ────────────────────────────────────────
-    //   (x + y) % Length 로 위치마다 다른 variant 선택 → 자연스러운 분포
     //
-    //   Stage 1 – 초원
-    //     292 Grass solid       row=9,  col=4
-    //     295 Dark Grass solid  row=9,  col=7
-    //     298 Short Grass solid row=9,  col=10
-    //     301 Long Grass solid  row=9,  col=13
+    //   Stage 1 – terrain_atlas.png 순수 초록 잔디 (R=100 G=164 B=44)
+    //     640 row20,col0 · 641 row20,col1 · 642 row20,col2 · 672 row21,col0
     //
-    //   Stage 2 – 사막
-    //     307 Sand solid        row=9,  col=19   (대표)
-    //     370 Sand variant-A    row=11, col=18
-    //     371 Sand variant-B    row=11, col=19
-    //     372 Sand variant-C    row=11, col=20
+    //   Stage 2 – terrain_atlas.png 황금빛 모래 (R=212 G=178 B=43)
+    //     352 row11,col0 · 353 row11,col1 · 384 row12,col0 · 386 row12,col2
     //
-    //   Stage 3 – 화산  (Dark Dirt 3종 + Lava 1개 → 25% 용암 포켓)
-    //     100 Dark Dirt solid   row=3,  col=4
-    //     163 Dark Dirt var-A   row=5,  col=3
-    //     112 Lava solid        row=3,  col=16   ← 드라마틱 포인트
-    //     164 Dark Dirt var-B   row=5,  col=4
+    //   Stage 3 – base_out_atlas.png 화산암 혼합
+    //     352 row11,col0 (R= 77 G= 74 B= 93, 어두운 보라-회색 화산암)
+    //     353 row11,col1 (동일 색조)
+    //     288 row09,col0 (R=144 G= 66 B= 55, 적갈색 화산 바위)
+    //     289 row09,col1 (동일 색조)
     //
     static readonly int[][] STAGE_WALL_IDS =
     {
-        null,                              // [0] 미사용
-        new[] { 292, 295, 298, 301 },      // [1] 초원
-        new[] { 307, 370, 371, 372 },      // [2] 사막
-        new[] { 100, 163, 112, 164 },      // [3] 화산
+        null,
+        new[] { 640, 641, 642, 672 },   // Stage 1
+        new[] { 352, 353, 384, 386 },   // Stage 2
+        new[] { 352, 353, 288, 289 },   // Stage 3
     };
 
-    // ── 스테이지별 길 타일 ID ────────────────────────────────────────
-    //   Stage 1 – 흙길  (Earth solid 단일 → 깔끔한 흙 통로)
-    //     676 Earth solid       row=21, col=4
+    // ── 스테이지별 길 텍스처 (모두 terrain.png) ─────────────────────
+    static readonly string[] STAGE_PATH_TEX =
+    {
+        null,
+        TEX_TERRAIN,   // Stage 1
+        TEX_TERRAIN,   // Stage 2
+        TEX_TERRAIN,   // Stage 3
+    };
+
+    // ── 스테이지별 길 타일 ID (terrain.png) ─────────────────────────
     //
-    //   Stage 2 – 벽돌길 (Brick Road × 4 → 요새 느낌)
-    //     491 Brick Road solid  row=15, col=11
-    //     492 Brick Road var-A  row=15, col=12
-    //     493 Brick Road var-B  row=15, col=13
-    //     494 Brick Road var-C  row=15, col=14
-    //
-    //   Stage 3 – 붉은 흙 (Red Dirt × 3 → 화산암 통로)
-    //     103 Red Dirt solid    row=3,  col=7
-    //     166 Red Dirt var-A    row=5,  col=6
-    //     167 Red Dirt var-B    row=5,  col=7
+    //   Stage 1 – Earth 흙길 (676 row21,col4)
+    //   Stage 2 – Brick Road 벽돌 (491-494 row15,col11-14)
+    //   Stage 3 – Red Dirt 붉은 화산 통로 (103,166,167 row3/5)
     //
     static readonly int[][] STAGE_PATH_IDS =
     {
-        null,                              // [0] 미사용
-        new[] { 676 },                     // [1] 초원 : Earth
-        new[] { 491, 492, 493, 494 },      // [2] 사막 : Brick Road × 4
-        new[] { 103, 166, 167 },           // [3] 화산 : Red Dirt × 3
+        null,
+        new[] { 676 },
+        new[] { 491, 492, 493, 494 },
+        new[] { 103, 166, 167 },
     };
+
+    // ── 텍스처 캐시 ─────────────────────────────────────────────────
+    static readonly Dictionary<string, Texture2D> _texCache
+        = new Dictionary<string, Texture2D>();
 
     // ── 스프라이트 캐시 [stageIdx][variantIdx] ───────────────────────
     static readonly Sprite[][] _wallCache = new Sprite[4][];
@@ -96,40 +114,37 @@ public static class TileTextureGenerator
     //  공개 API
     // ────────────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// 스테이지에 맞는 벽(미로 벽) 스프라이트를 반환합니다.
-    /// <paramref name="variant"/> : (x + y) % 4 등 위치 기반 값을 전달하면
-    ///   각 variant가 공간에 자연스럽게 분포됩니다.
-    /// </summary>
+    /// <summary>스테이지에 맞는 벽(미로 벽) 스프라이트를 반환합니다.</summary>
     public static Sprite GetWallSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
 
         if (_wallCache[idx] == null)
-            _wallCache[idx] = BuildSpriteArray(STAGE_WALL_IDS[idx]);
+        {
+            string texPath = STAGE_WALL_TEX[idx];
+            _wallCache[idx] = BuildSpriteArray(texPath, STAGE_WALL_IDS[idx]);
+        }
 
         if (_wallCache[idx] != null)
             return _wallCache[idx][variant % _wallCache[idx].Length];
 
-        // LPC 텍스처 로드 실패 → 절차적 풀밭 폴백
         return GetFallback(ref _grassFallback, CreateGrassSprite);
     }
 
-    /// <summary>
-    /// 스테이지에 맞는 길(미로 통로) 스프라이트를 반환합니다.
-    /// <paramref name="variant"/> : (x + y) % n 등으로 변형 적용 가능.
-    /// </summary>
+    /// <summary>스테이지에 맞는 길(미로 통로) 스프라이트를 반환합니다.</summary>
     public static Sprite GetPathSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
 
         if (_pathCache[idx] == null)
-            _pathCache[idx] = BuildSpriteArray(STAGE_PATH_IDS[idx]);
+        {
+            string texPath = STAGE_PATH_TEX[idx];
+            _pathCache[idx] = BuildSpriteArray(texPath, STAGE_PATH_IDS[idx]);
+        }
 
         if (_pathCache[idx] != null)
             return _pathCache[idx][variant % _pathCache[idx].Length];
 
-        // LPC 텍스처 로드 실패 → 절차적 흙길 폴백
         return GetFallback(ref _dirtFallback, CreateDirtSprite);
     }
 
@@ -141,27 +156,33 @@ public static class TileTextureGenerator
     //  내부 로더
     // ────────────────────────────────────────────────────────────────
 
-    static Texture2D LoadTerrain()
+    static Texture2D GetOrLoadTex(string resourcePath)
     {
-        var tex = Resources.Load<Texture2D>("Map/terrain");
+        if (_texCache.TryGetValue(resourcePath, out var cached))
+            return cached;
+
+        var tex = Resources.Load<Texture2D>(resourcePath);
         if (tex == null)
         {
             Debug.LogWarning(
-                "[TileTextureGenerator] Resources/Map/terrain.png 로드 실패 " +
-                "→ 절차적 생성으로 폴백합니다.\n" +
-                "해결: Unity Inspector에서 terrain.png의 Texture Type을 'Default'로 변경하세요.");
-            return null;
+                $"[TileTextureGenerator] {resourcePath} 로드 실패 → 절차적 폴백 사용.\n" +
+                "해결: Inspector에서 해당 PNG의 Texture Type을 'Default'로 설정하세요.");
         }
-        tex.filterMode = FilterMode.Point;   // 픽셀아트 선명도 유지
-        tex.wrapMode   = TextureWrapMode.Clamp;
+        else
+        {
+            tex.filterMode = FilterMode.Point;
+            tex.wrapMode   = TextureWrapMode.Clamp;
+        }
+
+        _texCache[resourcePath] = tex;
         return tex;
     }
 
     /// <summary>타일 ID 배열 → Sprite 배열로 변환 (캐시용)</summary>
-    static Sprite[] BuildSpriteArray(int[] ids)
+    static Sprite[] BuildSpriteArray(string texPath, int[] ids)
     {
         if (ids == null || ids.Length == 0) return null;
-        var tex = LoadTerrain();
+        var tex = GetOrLoadTex(texPath);
         if (tex == null) return null;
 
         var arr = new Sprite[ids.Length];
@@ -173,10 +194,10 @@ public static class TileTextureGenerator
     /// <summary>타일 ID → Sprite.Create 용 Rect (y = 텍스처 하단 기준)</summary>
     static Rect TileRect(int id)
     {
-        int col = id % (TEX_W / TILE_SZ);   // 열 (0 = 좌단)
-        int row = id / (TEX_W / TILE_SZ);   // 행 (0 = 상단)
+        int col = id % (TEX_W / TILE_SZ);
+        int row = id / (TEX_W / TILE_SZ);
         float x = col * TILE_SZ;
-        float y = TEX_H - (row + 1) * TILE_SZ;   // Unity Rect: y=0 = 하단
+        float y = TEX_H - (row + 1) * TILE_SZ;
         return new Rect(x, y, TILE_SZ, TILE_SZ);
     }
 
@@ -189,7 +210,7 @@ public static class TileTextureGenerator
     }
 
     // ────────────────────────────────────────────────────────────────
-    //  절차적 폴백 (LPC 텍스처 없을 때 자동 사용)
+    //  절차적 폴백 (아틀라스 로드 실패 시 자동 사용)
     // ────────────────────────────────────────────────────────────────
 
     static Sprite CreateGrassSprite()
