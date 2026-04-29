@@ -81,8 +81,8 @@ public class AllyOrderPanel : MonoBehaviour
     static readonly Color COL_ARCHER  = new Color(0.12f, 0.42f, 0.18f, 0.93f);
     static readonly Color COL_MAGE    = new Color(0.12f, 0.18f, 0.62f, 0.93f);
     static readonly Color COL_CLERIC  = new Color(0.62f, 0.58f, 0.28f, 0.93f);
-    static readonly Color COL_ROGUE   = new Color(0.30f, 0.12f, 0.42f, 0.93f);
-    static readonly Color COL_PALADIN = new Color(0.55f, 0.45f, 0.10f, 0.93f);
+    static readonly Color COL_ROGUE   = new Color(0.32f, 0.10f, 0.48f, 0.93f);  // 보라 (nja1 닌자)
+    static readonly Color COL_PALADIN = new Color(0.50f, 0.12f, 0.12f, 0.93f);  // 진홍 (knt1 기사)
     static readonly Color COL_TITLE   = new Color(1.0f,  0.85f, 0.20f, 1.0f);
     static readonly Color COL_DRAG    = new Color(1.0f,  0.92f, 0.30f, 0.95f);
     static readonly Color COL_TOGGLE  = new Color(0.07f, 0.09f, 0.16f, 0.96f);
