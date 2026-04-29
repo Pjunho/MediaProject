@@ -108,6 +108,10 @@ public class Map : MonoBehaviour
                 tileMap[x, y] = (maze[x, y] == ROAD) ? TileType.Dirt : TileType.Grass;
 
         // ── 5. 타일 오브젝트 생성 ─────────────────────────────
+        // 스테이지 인덱스에 따라 테마 타일 선택
+        int stageIdx = StageManager.Instance != null
+            ? StageManager.Instance.currentStageIndex : 1;
+
         for (int x = 0; x < w; x++)
         {
             for (int y = 0; y < h; y++)
@@ -130,18 +134,18 @@ public class Map : MonoBehaviour
 
                     var sr = tile.AddComponent<SpriteRenderer>();
                     sr.sortingOrder = 0;
+                    sr.color        = Color.white;   // LPC 원본 팔레트 그대로
 
                     if (type == TileType.Dirt)
                     {
-                        // LPC 흙길 타일 (Earth solid)
-                        sr.sprite = TileTextureGenerator.GetDirtSprite();
+                        // 스테이지별 길 타일 — (x+y)로 변형 순환
+                        sr.sprite = TileTextureGenerator.GetPathSprite(stageIdx, (x + y) % 4);
                     }
                     else
                     {
-                        // LPC 풀밭 타일 4종 — (x+y)%4 로 위치마다 변형 선택
-                        sr.sprite = TileTextureGenerator.GetGrassSprite((x + y) % 4);
+                        // 스테이지별 벽 타일 — (x+y)%4 로 위치마다 variant 선택
+                        sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, (x + y) % 4);
                     }
-                    sr.color = Color.white;   // 픽셀아트 원본 색상 그대로
                 }
 
                 tile.name = $"Tile_{x}_{y}";
