@@ -122,3 +122,5 @@
 - [x] 스킬 효과 시각화 (방어막 표시, 회복 파티클 등) → 2026-04-24 구현: HealEffect.cs (초록 파티클), AllyBase.cs (방어막 원형 오버레이/펄싱 애니메이션, 회복 파티클 연동)
 - [x] 웨이브 HUD 별 진행 표시기 → 2026-04-28 구현: GameManager.cs (starProgressTxt 추가, UpdateStarProgressHUD() 메서드 — 웨이브 클리어 시 ★☆☆/★★☆/★★★ 실시간 표시 및 다음 별까지 남은 웨이브 수 힌트)
 - [x] 골 도달 시 플로팅 텍스트 효과 → 2026-04-28 구현: FloatingText.cs (TextMesh 기반 "+1 코인" 황금색 텍스트가 위로 떠오르며 페이드 아웃), AllyPlacer.cs OnReachedGoal 콜백에서 호출
+- [x] 코인 즉시 지급 타이밍 수정 → 2026-04-29 수정: GameManager.cs ReportGoal()에서 즉시 currentCoins++ 처리 (기존 AwardWaveCoins() 웨이브 종료 후 일괄 지급 방식 제거 — 기획서 "아군이 골에 도착하는 즉시 코인이 지급된다" 반영)
+- [x] 스킬/업그레이드 실패 시 토스트 알림 → 2026-04-29 구현: GameManager.cs ShowToast()/ToastCoroutine() 추가, BuildToastUI() 메서드로 HUD에 화면 중앙 하단 알림 패널 생성 — TryUnlockSkill 실패 시 "코인이 부족합니다!" (빨강), TryUpgrade 실패 시 "코인이 부족합니다!" (빨강) 또는 "이미 최고 레벨입니다!" (황금)

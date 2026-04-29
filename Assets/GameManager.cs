@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
     private Text       goalCountTxt;   // 일시정지 패널 내 골 카운트
     private Text       coinTxt;        // HUD 상단 코인 표시
 
+    // ── 토스트 알림 ──────────────────────────────────────────────────────
+    private GameObject toastGo;
+    private Text       toastTxt;
+    private Coroutine  toastCoroutine;
+
     // ── 웨이브 시스템 ──────────────────────────────────────────────────────
     private StageManager.WaveConfig[] currentWaves;
     private int  currentWaveIndex = -1;
@@ -199,7 +204,6 @@ public class GameManager : MonoBehaviour
         }
         else if (currentWaveIndex + 1 >= currentWaves.Length)
         {
-            AwardWaveCoins();
             clearedWaveCount++;
             Debug.Log($"[GameManager] ✓ 최종 웨이브 {currentWaveIndex + 1} 클리어! " +
                       $"(총 클리어 웨이브: {clearedWaveCount})");
@@ -207,7 +211,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AwardWaveCoins();
             clearedWaveCount++;
             Debug.Log($"[GameManager] ✓ 웨이브 {currentWaveIndex + 1} 클리어! " +
                       $"(골 도달: {waveGoalCount}/{wave.goalRequirement})");
@@ -271,9 +274,11 @@ public class GameManager : MonoBehaviour
         goalCount++;
         waveGoalCount++;
         waveAllyDone++;
+        currentCoins++;
         UpdateGoalCount();
+        UpdateCoinHUD();
         UpdateWaveHUD();
-        Debug.Log($"[GameManager] 골 도달 — 총: {goalCount}명, 이번 웨이브: {waveGoalCount}명");
+        Debug.Log($"[GameManager] 골 도달 — 총: {goalCount}명, 이번 웨이브: {waveGoalCount}명 (+1코인, 잔여 {currentCoins})");
         CheckWaveCompletion();
     }
 
@@ -343,6 +348,7 @@ public class GameManager : MonoBehaviour
         waveBannerGo.SetActive(false);
 
         BuildSettingsPanel(cgo.transform);
+        BuildToastUI(cgo.transform);
     }
 
     Text BuildTopLabel(Transform parent, string id, string text, Vector2 pos, Vector2 size)
@@ -537,6 +543,61 @@ public class GameManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
+    void BuildToastUI(Transform parent)
+    {
+        toastGo = new GameObject("Toast");
+        toastGo.transform.SetParent(parent, false);
+        var bg = toastGo.AddComponent<Image>();
+        bg.color = new Color(0.06f, 0.06f, 0.10f, 0.90f);
+        var rt = toastGo.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(0, -200);
+        rt.sizeDelta = new Vector2(310, 48);
+
+        var tgo = new GameObject("Txt");
+        tgo.transform.SetParent(toastGo.transform, false);
+        toastTxt = tgo.AddComponent<Text>();
+        toastTxt.fontSize  = 20;
+        toastTxt.fontStyle = FontStyle.Bold;
+        toastTxt.alignment = TextAnchor.MiddleCenter;
+        toastTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        var tRt = tgo.GetComponent<RectTransform>();
+        tRt.anchoredPosition = Vector2.zero;
+        tRt.sizeDelta        = new Vector2(300, 44);
+        toastGo.SetActive(false);
+    }
+
+    public void ShowToast(string message, Color color)
+    {
+        if (toastGo == null) return;
+        if (toastCoroutine != null) StopCoroutine(toastCoroutine);
+        toastCoroutine = StartCoroutine(ToastCoroutine(message, color));
+    }
+
+    IEnumerator ToastCoroutine(string message, Color baseColor)
+    {
+        if (toastTxt == null || toastGo == null) yield break;
+        toastTxt.text  = message;
+        toastTxt.color = baseColor;
+        toastGo.SetActive(true);
+
+        float elapsed   = 0f;
+        float duration  = 1.8f;
+        float fadeStart = 1.1f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float alpha = elapsed > fadeStart
+                ? 1f - (elapsed - fadeStart) / (duration - fadeStart)
+                : 1f;
+            toastTxt.color = new Color(baseColor.r, baseColor.g, baseColor.b, alpha);
+            yield return null;
+        }
+
+        toastGo.SetActive(false);
+        toastCoroutine = null;
+    }
+
     void GmAdjustVolume(float delta)
     {
         SettingsManager.Volume = SettingsManager.Volume + delta;
@@ -568,6 +629,8 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[GameManager] 스킬 해금: {allyType} (-{cost}코인, 잔여 {currentCoins})");
             return true;
         }
+        if (!SkillSystem.IsUnlocked(allyType))
+            ShowToast("코인이 부족합니다!", new Color(1f, 0.35f, 0.35f));
         return false;
     }
 
@@ -583,6 +646,10 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[GameManager] 업그레이드: {allyType} {stat} (-{cost}코인, 잔여 {currentCoins})");
             return true;
         }
+        if (UpgradeSystem.GetNextCost(allyType, stat) < 0)
+            ShowToast("이미 최고 레벨입니다!", new Color(1f, 0.85f, 0.2f));
+        else
+            ShowToast("코인이 부족합니다!", new Color(1f, 0.35f, 0.35f));
         return false;
     }
 
@@ -610,16 +677,6 @@ public class GameManager : MonoBehaviour
     void UpdateGoalCount()
     {
         if (goalCountTxt != null) goalCountTxt.text = $"현재 통과: {goalCount}명";
-    }
-
-    void AwardWaveCoins()
-    {
-        if (waveGoalCount <= 0)
-            return;
-
-        currentCoins += waveGoalCount;
-        UpdateCoinHUD();
-        Debug.Log($"[GameManager] 코인 획득 +{waveGoalCount} (현재 {currentCoins})");
     }
 
     void UpdateCoinHUD()
