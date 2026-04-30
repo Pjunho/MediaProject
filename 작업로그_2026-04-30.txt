@@ -1,0 +1,106 @@
+========================================================
+작업 로그 — 2026-04-30 (자동 스케줄 작업)
+========================================================
+
+■ 작업 시작 시각: 오전 10:00 (예약 실행)
+■ 담당: Claude Sonnet 4.6 (자동 스케줄)
+
+--------------------------------------------------------
+1단계: 코드 점검 및 기존 변경사항 커밋
+--------------------------------------------------------
+
+■ 점검 대상 파일
+  - EnemyAutoSpawner.cs : git 상태 "MM" (staged + unstaged 양쪽에 변경)
+  - .meta 파일 11개 : 미추적 상태 (FloatingText, HealEffect, Map, Paladin,
+      Rogue, SettingsManager, SkillSystem, UpgradeSystem 등)
+
+■ 발견된 차이 내용
+  - staged 버전: 주석/정렬 개선 + nearRouteSpawned 등 사용 중단 필드 제거
+  - working tree 추가분: ApplyStageConfig()를 StageConfig 기반 → WaveConfig 기반으로
+    전환 (웨이브별 sniperCount/spearmanCount/brawlerCount/minDistFromPath/
+    minEnemySpacing 적용)
+
+■ 수정 내용
+  - 두 변경을 하나의 커밋으로 통합
+  - .meta 파일 11개 함께 추가
+
+■ 커밋 메시지
+  "EnemyAutoSpawner 리팩토링 및 메타 파일 추가"
+  커밋 해시: 2b1db4a
+
+--------------------------------------------------------
+2단계: 새 기능 구현 — 웨이브 클리어 시 상세 통계 배너
+--------------------------------------------------------
+
+■ 구현 배경
+  - CLAUDE.md의 모든 TODO 항목([x])이 이미 완료 상태임
+  - 기획 문서에서 "아군이 골에 도착하는 즉시 코인이 지급"이라는 규칙은 구현됐으나,
+    각 웨이브가 끝날 때 "몇 명이 통과했는지, 코인을 얼마나 얻었는지" 요약 피드백이
+    플레이어에게 제공되지 않고 있었음
+  - 기존 배너: "웨이브 X 클리어!  다음 경로를 설정하세요" (단일 녹색 텍스트, 480×80)
+
+■ 구현 내용 (Assets/GameManager.cs)
+
+  1. 필드 추가
+     - private Text waveBannerStatsTxt
+       (웨이브 클리어 시 통계 서브텍스트 참조용)
+
+  2. BuildWaveBanner() 수정
+     - 배너 배경: 480×80 → 520×110 (서브텍스트 공간 확보)
+     - 주 텍스트 (클리어 메시지):
+         fontSize 36 → 32, anchoredPosition (0,0) → (0,26)
+         sizeDelta 470×70 → 510×44
+     - 서브텍스트 추가 (BannerStatsTxt):
+         fontSize 17, 연파랑색(0.85,0.90,1.0), anchoredPosition (0,-24)
+         sizeDelta 504×34
+
+  3. ShowWaveBanner() 수정
+     - 시그니처: ShowWaveBanner(string text)
+       → ShowWaveBanner(string text, string stats = "")
+     - waveBannerStatsTxt도 함께 갱신하도록 처리
+
+  4. WaveClearTransition() 수정
+     - stats 문자열 구성:
+         $"통과 {waveGoalCount} / {waveAllyCount}명  •  코인 +{waveGoalCount}  •  다음 경로를 설정하세요"
+     - ShowWaveBanner 호출 시 stats 전달
+     - 대기 시간: 1.8초 → 2.2초 (플레이어가 충분히 읽을 시간 확보)
+
+■ 효과
+  - 웨이브 클리어 후 "통과 2/4명 • 코인 +2 • 다음 경로를 설정하세요" 형태로
+    즉각적인 성과 피드백 제공
+  - 코인 획득량과 통과율을 동시에 확인 가능 → 다음 웨이브 전략 수립에 활용
+
+■ 커밋 메시지
+  "웨이브 클리어 시 상세 통계 배너 구현"
+  커밋 해시: 2d84ec5
+
+--------------------------------------------------------
+3단계: CLAUDE.md 업데이트
+--------------------------------------------------------
+
+  - 미결정 사항 섹션에 신규 항목 추가 및 완료([x]) 처리:
+    "웨이브 클리어 시 상세 통계 배너 → 2026-04-30 구현: ..."
+
+  커밋 해시: d993761
+
+--------------------------------------------------------
+총 변경 파일
+--------------------------------------------------------
+
+  Assets/EnemyAutoSpawner.cs    — WaveConfig 기반 적 설정, 필드 정리
+  Assets/GameManager.cs         — 웨이브 배너 상세 통계 표시
+  Assets/FloatingText.cs.meta   — 신규 추가
+  Assets/HealEffect.cs.meta     — 신규 추가
+  Assets/Map.meta               — 신규 추가
+  Assets/Paladin.cs.meta        — 신규 추가
+  Assets/Resources/Map.meta     — 신규 추가
+  Assets/Resources/Map/terrain.png.meta — 신규 추가
+  Assets/Rogue.cs.meta          — 신규 추가
+  Assets/SettingsManager.cs.meta — 신규 추가
+  Assets/SkillSystem.cs.meta    — 신규 추가
+  Assets/UpgradeSystem.cs.meta  — 신규 추가
+  CLAUDE.md                     — TODO 항목 1개 추가 (완료 처리)
+
+========================================================
+작업 종료
+========================================================
