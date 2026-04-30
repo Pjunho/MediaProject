@@ -1,36 +1,44 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// 스테이지·웨이브에 따라 적을 자동 배치하는 컴포넌트.
+///
+/// ▶ 배치 우선순위 (타워 이스케이프 스타일)
+///   - 원거리 적 (저격수·창병): 최단 경로 선분 근처에 먼저 배치
+///     → 플레이어의 경로 선택을 압박하는 핵심 장애물
+///   - 근접 적 (근접병): 경로에서 먼 곳에 배치
+///     → 넓은 영역 커버, 길목 이탈 시 위협
+/// </summary>
 public class EnemyAutoSpawner : MonoBehaviour
 {
+    // ── 내부 데이터 ──────────────────────────────────────────────
     struct SpawnCandidate
     {
         public Vector2Int tile;
-        public Vector3 world;
-        public float distanceFromRoute;
+        public Vector3    world;
+        public float      distanceFromRoute;
     }
 
     [Header("References")]
     public Map map;
 
     [Header("Spawn Settings")]
-    public int sniperCount   = 2;
-    public int spearmanCount = 3;
-    public int brawlerCount  = 4;
+    public int   sniperCount   = 2;
+    public int   spearmanCount = 3;
+    public int   brawlerCount  = 4;
 
-    [Tooltip("경로 타일로부터 최소 거리")]
-    public float minDistFromPath = 1.5f;
+    [Tooltip("이 거리 미만 = '경로 근처' 타일로 분류")]
+    public float minDistFromPath = 1.9f;
 
-    [Tooltip("적끼리 너무 붙지 않게 하는 최소 거리")]
-    public float minEnemySpacing = 2.25f;
+    [Tooltip("적끼리 최소 간격")]
+    public float minEnemySpacing = 2.35f;
 
-    // 배치된 적 목록 (게임 시작 시 활성화)
-    private List<EnemyBase> spawnedEnemies = new List<EnemyBase>();
-    private readonly List<Vector3> reservedPositions = new List<Vector3>();
-    private int minNearRouteSpawns = 0;
-    private int maxNearRouteSpawns = 0;
-    private int nearRouteSpawned = 0;
+    // ── 상태 ─────────────────────────────────────────────────────
+    readonly List<EnemyBase>        spawnedEnemies     = new();
+    readonly List<Vector3>          reservedPositions  = new();
 
+    // ── 라이프사이클 ──────────────────────────────────────────────
     void Start()
     {
         if (map == null) map = FindFirstObjectByType<Map>();
@@ -49,29 +57,32 @@ public class EnemyAutoSpawner : MonoBehaviour
 
         if (map == null || !map.IsGenerated)
         {
-            Debug.LogWarning("[EnemyAutoSpawner] 맵 생성 완료 전에는 적을 배치할 수 없습니다.");
+            Debug.LogWarning("[EnemyAutoSpawner] 맵 생성 완료 전 타임아웃 — 적 배치 취소");
             yield break;
         }
 
         RespawnForCurrentWave();
     }
 
+    // ── 스테이지/웨이브 설정 읽기 ────────────────────────────────
     void ApplyStageConfig()
     {
         if (StageManager.Instance == null) return;
 
+        // 웨이브별로 적 수·거리 파라미터가 달라지므로 WaveConfig 우선 사용
         var waveCfg = StageManager.Instance.GetCurrentWaveConfig();
-        sniperCount   = waveCfg.sniperCount;
-        spearmanCount = waveCfg.spearmanCount;
-        brawlerCount  = waveCfg.brawlerCount;
+        sniperCount     = waveCfg.sniperCount;
+        spearmanCount   = waveCfg.spearmanCount;
+        brawlerCount    = waveCfg.brawlerCount;
         minDistFromPath = waveCfg.minDistFromPath;
         minEnemySpacing = waveCfg.minEnemySpacing;
-        minNearRouteSpawns = waveCfg.minNearRouteSpawns;
-
-        int totalEnemies = sniperCount + spearmanCount + brawlerCount;
-        maxNearRouteSpawns = Mathf.Clamp(waveCfg.maxNearRouteSpawns, minNearRouteSpawns, totalEnemies);
+        // nearRouteRatio·minNearRouteSpawns·maxNearRouteSpawns 는
+        // 새 풀 분리 방식에서 사용하지 않으므로 무시
     }
 
+    // ── 공개 API ─────────────────────────────────────────────────
+
+    /// <summary>웨이브 전환 시 기존 적 제거 후 재배치</summary>
     public void RespawnForCurrentWave()
     {
         if (map == null) map = FindFirstObjectByType<Map>();
@@ -81,59 +92,79 @@ public class EnemyAutoSpawner : MonoBehaviour
         SpawnAll();
     }
 
+    /// <summary>RouteDrawer가 게임 시작 시 호출 — 모든 적 활성화</summary>
+    public void ActivateAllEnemies()
+    {
+        foreach (var e in spawnedEnemies)
+            if (e != null) e.Activate();
+        Debug.Log($"[EnemyAutoSpawner] {spawnedEnemies.Count}명 적 활성화!");
+    }
+
+    // ── 핵심 배치 로직 ────────────────────────────────────────────
+
     void SpawnAll()
     {
         reservedPositions.Clear();
-        nearRouteSpawned = 0;
 
-        var candidates = GetValidGrassTiles();
-        if (candidates.Count == 0) { Debug.LogWarning("[EnemyAutoSpawner] 배치 가능 타일 없음"); return; }
-
-        // 근접 적은 항상 최단 루트 상(경로 근처)에서 먼저 배치한다.
-        SpawnType<EnemyBrawler>  (candidates, brawlerCount,  "근접병", true);
-        SpawnType<EnemySniper>   (candidates, sniperCount,   "저격수", false);
-        SpawnType<EnemySpearman> (candidates, spearmanCount, "창병", false);
-
-        Debug.Log($"[EnemyAutoSpawner] {spawnedEnemies.Count}명 배치 완료 (비활성 대기 중)");
-    }
-
-    void ClearSpawnedEnemies()
-    {
-        for (int i = 0; i < spawnedEnemies.Count; i++)
+        var allCandidates = GetValidGrassTiles();   // far→near 정렬
+        if (allCandidates.Count == 0)
         {
-            if (spawnedEnemies[i] == null) continue;
-            spawnedEnemies[i].gameObject.SetActive(false);
-            Destroy(spawnedEnemies[i].gameObject);
+            Debug.LogWarning("[EnemyAutoSpawner] 배치 가능한 타일이 없습니다.");
+            return;
         }
-        spawnedEnemies.Clear();
-        reservedPositions.Clear();
+
+        // ── near / far 풀 분리 ─────────────────────────────────────
+        // near  : 최단 경로 선분 기준 minDistFromPath 이내
+        // far   : 그 외 (경로에서 먼 영역)
+        var nearPool = new List<SpawnCandidate>();
+        var farPool  = new List<SpawnCandidate>();
+
+        foreach (var c in allCandidates)
+        {
+            if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
+            else                                        farPool.Add(c);
+        }
+
+        // near 풀: 가장 가까운 것부터 시도 (원거리 적이 최근접 자리 독점)
+        nearPool.Sort((a, b) => a.distanceFromRoute.CompareTo(b.distanceFromRoute));
+        // far 풀:  이미 far→near 정렬 (가장 먼 것부터)
+
+        // ── 원거리 적: 경로 근처 우선 → fallback 먼 곳 ───────────────
+        SpawnType<EnemySniper>  (nearPool, farPool,  sniperCount,   "저격수");
+        SpawnType<EnemySpearman>(nearPool, farPool,  spearmanCount, "창병");
+
+        // ── 근접 적: 경로 먼 곳 우선 → fallback 근처 ─────────────────
+        SpawnType<EnemyBrawler> (farPool,  nearPool, brawlerCount,  "근접병");
+
+        Debug.Log($"[EnemyAutoSpawner] 배치 완료 — 합계 {spawnedEnemies.Count}명 " +
+                  $"(저격수 {sniperCount} / 창병 {spearmanCount} / 근접병 {brawlerCount})");
     }
 
-    void SpawnType<T>(List<SpawnCandidate> candidates, int count, string name, bool forceNearRoute) where T : EnemyBase
+    /// <summary>
+    /// primary 풀에서 먼저 배치, 부족하면 secondary 풀 사용.
+    /// </summary>
+    void SpawnType<T>(
+        List<SpawnCandidate> primary,
+        List<SpawnCandidate> secondary,
+        int count, string label) where T : EnemyBase
     {
         int spawned = 0;
-        for (int attempt = 0; attempt < count; attempt++)
+        for (int i = 0; i < count; i++)
         {
-            Vector3 pos;
-            bool took = forceNearRoute
-                ? TryTakeSpawnPosition(candidates, true, out pos)
-                : TryTakeSpawnPosition(candidates, out pos);
-
-            if (!took)
+            if (!TryTakeFrom(primary, out Vector3 pos) &&
+                !TryTakeFrom(secondary, out pos))
             {
-                Debug.LogWarning($"[EnemyAutoSpawner] {name} 배치 위치가 부족해 {spawned}/{count}명만 배치했습니다.");
+                Debug.LogWarning(
+                    $"[EnemyAutoSpawner] {label} 배치 위치 부족 — {spawned}/{count}명만 배치됨");
                 break;
             }
 
             pos.z = -1f;
-
-            var go = new GameObject(name);
+            var go = new GameObject(label);
             go.transform.position = pos;
             go.AddComponent<SpriteRenderer>().sortingOrder = 10;
 
             var enemy = go.AddComponent<T>();
-
-            // ★ 비활성 배치 (isPlaced=false → 공격 안 함)
             enemy.PlaceInactive(pos);
             enemy.ShowRange();
 
@@ -142,51 +173,35 @@ public class EnemyAutoSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>RouteDrawer가 게임 시작 시 호출 - 모든 적 활성화</summary>
-    public void ActivateAllEnemies()
-    {
-        foreach (var e in spawnedEnemies)
-            if (e != null) e.Activate();
-        Debug.Log($"[EnemyAutoSpawner] {spawnedEnemies.Count}명 적 활성화!");
-    }
-
-    bool TryTakeSpawnPosition(List<SpawnCandidate> candidates, out Vector3 pos)
-    {
-        if (nearRouteSpawned < minNearRouteSpawns && TryTakeSpawnPosition(candidates, true, out pos))
-            return true;
-
-        if (TryTakeSpawnPosition(candidates, false, out pos))
-            return true;
-
-        if (nearRouteSpawned < maxNearRouteSpawns && TryTakeSpawnPosition(candidates, true, out pos))
-            return true;
-
-        pos = default;
-        return false;
-    }
-
-    bool TryTakeSpawnPosition(List<SpawnCandidate> candidates, bool allowNearRoute, out Vector3 pos)
+    /// <summary>
+    /// 후보 리스트 앞쪽부터 간격 조건을 만족하는 첫 자리를 확보.
+    /// 확보된 자리 주변의 후보는 즉시 제거해 중복 배치 방지.
+    /// </summary>
+    bool TryTakeFrom(List<SpawnCandidate> candidates, out Vector3 pos)
     {
         for (int i = 0; i < candidates.Count; i++)
         {
-            var candidate = candidates[i];
-            bool isNearRoute = candidate.distanceFromRoute < minDistFromPath;
-            if (isNearRoute && !allowNearRoute) continue;
-            if (!isNearRoute && allowNearRoute) continue;
-
-            Vector3 candidatePos = candidate.world;
+            Vector3 candidatePos = candidates[i].world;
             if (!HasEnoughSpacing(candidatePos)) continue;
 
             pos = candidatePos;
             candidates.RemoveAt(i);
             RemoveNearbyCandidates(candidates, candidatePos);
             reservedPositions.Add(candidatePos);
-            if (isNearRoute) nearRouteSpawned++;
             return true;
         }
-
         pos = default;
         return false;
+    }
+
+    // ── 유틸리티 ─────────────────────────────────────────────────
+
+    void ClearSpawnedEnemies()
+    {
+        foreach (var e in spawnedEnemies)
+            if (e != null) Destroy(e.gameObject);
+        spawnedEnemies.Clear();
+        reservedPositions.Clear();
     }
 
     bool HasEnoughSpacing(Vector3 pos)
@@ -200,20 +215,23 @@ public class EnemyAutoSpawner : MonoBehaviour
     void RemoveNearbyCandidates(List<SpawnCandidate> candidates, Vector3 center)
     {
         for (int i = candidates.Count - 1; i >= 0; i--)
-        {
             if (Vector2.Distance(candidates[i].world, center) < minEnemySpacing)
                 candidates.RemoveAt(i);
-        }
     }
 
+    /// <summary>
+    /// 맵의 모든 풀(Grass) 타일을 후보로 수집.
+    /// 경로 선분(start→goal)까지의 거리를 계산해 far→near 순으로 정렬.
+    /// </summary>
     List<SpawnCandidate> GetValidGrassTiles()
     {
         var result = new List<SpawnCandidate>();
         if (map == null || map.pathWaypoints == null || map.pathWaypoints.Length < 2)
             return result;
 
-        Vector3 start = map.GetWorldPosition(map.pathWaypoints[0].x, map.pathWaypoints[0].y);
-        Vector3 goal = map.GetWorldPosition(
+        Vector3 start = map.GetWorldPosition(
+            map.pathWaypoints[0].x, map.pathWaypoints[0].y);
+        Vector3 goal  = map.GetWorldPosition(
             map.pathWaypoints[map.pathWaypoints.Length - 1].x,
             map.pathWaypoints[map.pathWaypoints.Length - 1].y);
 
@@ -222,41 +240,35 @@ public class EnemyAutoSpawner : MonoBehaviour
         {
             if (map.GetTileType(x, y) != Map.TileType.Grass) continue;
             Vector3 wp = map.GetWorldPosition(x, y);
-            float routeDist = DistanceToSegment(wp, start, goal);
 
             result.Add(new SpawnCandidate
             {
-                tile = new Vector2Int(x, y),
-                world = wp,
-                distanceFromRoute = routeDist
+                tile              = new Vector2Int(x, y),
+                world             = wp,
+                distanceFromRoute = DistanceToSegment(wp, start, goal)
             });
         }
 
+        // 기본 정렬: far→near (farPool의 초기 순서)
         result.Sort((a, b) =>
         {
-            int distCmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
-            if (distCmp != 0) return distCmp;
-            return Random.Range(-1, 2);
+            int cmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
+            return cmp != 0 ? cmp : Random.Range(-1, 2);
         });
 
         return result;
     }
 
+    /// <summary>점 p에서 선분 a-b까지의 최단 거리</summary>
     float DistanceToSegment(Vector3 point, Vector3 a, Vector3 b)
     {
         Vector2 ap = new Vector2(point.x - a.x, point.y - a.y);
-        Vector2 ab = new Vector2(b.x - a.x, b.y - a.y);
+        Vector2 ab = new Vector2(b.x - a.x,     b.y - a.y);
         float abLenSq = ab.sqrMagnitude;
         if (abLenSq <= Mathf.Epsilon) return ap.magnitude;
 
-        float t = Mathf.Clamp01(Vector2.Dot(ap, ab) / abLenSq);
+        float   t       = Mathf.Clamp01(Vector2.Dot(ap, ab) / abLenSq);
         Vector2 closest = new Vector2(a.x, a.y) + ab * t;
         return Vector2.Distance(new Vector2(point.x, point.y), closest);
-    }
-
-    void Shuffle<T>(List<T> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        { int j = Random.Range(0, i + 1); (list[i], list[j]) = (list[j], list[i]); }
     }
 }
