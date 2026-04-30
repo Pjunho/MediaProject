@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     private Text       starProgressTxt; // 별 진행 상황 (★☆☆ 등)
     private GameObject waveBannerGo;  // 웨이브 사이 배너
     private Text       waveBannerTxt;
+    private Text       waveBannerStatsTxt; // 웨이브 클리어 시 통계 서브텍스트
 
     struct BtnData { public RectTransform rt; public Image fill; public Color n, h; public System.Action cb; public bool pauseOnly; }
     System.Collections.Generic.List<BtnData> btns = new();
@@ -222,8 +223,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaveClearTransition(int clearedWaveNumber)
     {
-        ShowWaveBanner($"웨이브 {clearedWaveNumber} 클리어!  다음 경로를 설정하세요");
-        yield return new WaitForSecondsRealtime(1.8f);
+        string stats = $"통과 {waveGoalCount} / {waveAllyCount}명  •  코인 +{waveGoalCount}  •  다음 경로를 설정하세요";
+        ShowWaveBanner($"웨이브 {clearedWaveNumber} 클리어!", stats);
+        yield return new WaitForSecondsRealtime(2.2f);
         HideWaveBanner();
         PrepareWaveEnvironment(currentWaveIndex);
         RouteDrawer.CreateForWavePlanning();
@@ -256,10 +258,11 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] 다음 웨이브 준비 완료 — 웨이브 {waveNumber}");
     }
 
-    void ShowWaveBanner(string text)
+    void ShowWaveBanner(string text, string stats = "")
     {
-        if (waveBannerTxt != null) waveBannerTxt.text = text;
-        if (waveBannerGo  != null) waveBannerGo.SetActive(true);
+        if (waveBannerTxt      != null) waveBannerTxt.text      = text;
+        if (waveBannerStatsTxt != null) waveBannerStatsTxt.text = stats;
+        if (waveBannerGo       != null) waveBannerGo.SetActive(true);
     }
 
     void HideWaveBanner()
@@ -380,26 +383,39 @@ public class GameManager : MonoBehaviour
         waveBannerGo = new GameObject("WaveBanner");
         waveBannerGo.transform.SetParent(parent, false);
 
-        // 반투명 배경
+        // 반투명 배경 (통계 텍스트 공간 확보)
         var bg = waveBannerGo.AddComponent<Image>();
         bg.color = new Color(0f, 0f, 0f, 0.70f);
         var bgRt = waveBannerGo.GetComponent<RectTransform>();
         bgRt.anchoredPosition = new Vector2(0, 60);
-        bgRt.sizeDelta        = new Vector2(480, 80);
+        bgRt.sizeDelta        = new Vector2(520, 110);
 
-        // 텍스트
+        // 주 텍스트 (클리어 메시지)
         var tgo = new GameObject("BannerTxt");
         tgo.transform.SetParent(waveBannerGo.transform, false);
         waveBannerTxt = tgo.AddComponent<Text>();
         waveBannerTxt.text      = "";
         waveBannerTxt.color     = new Color(0.3f, 1f, 0.4f);
-        waveBannerTxt.fontSize  = 36;
+        waveBannerTxt.fontSize  = 32;
         waveBannerTxt.alignment = TextAnchor.MiddleCenter;
         waveBannerTxt.fontStyle = FontStyle.Bold;
         waveBannerTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         var tRt = tgo.GetComponent<RectTransform>();
-        tRt.anchoredPosition = Vector2.zero;
-        tRt.sizeDelta        = new Vector2(470, 70);
+        tRt.anchoredPosition = new Vector2(0, 26);
+        tRt.sizeDelta        = new Vector2(510, 44);
+
+        // 통계 서브텍스트 (통과 인원 / 획득 코인)
+        var sgo = new GameObject("BannerStatsTxt");
+        sgo.transform.SetParent(waveBannerGo.transform, false);
+        waveBannerStatsTxt = sgo.AddComponent<Text>();
+        waveBannerStatsTxt.text      = "";
+        waveBannerStatsTxt.color     = new Color(0.85f, 0.90f, 1f, 0.92f);
+        waveBannerStatsTxt.fontSize  = 17;
+        waveBannerStatsTxt.alignment = TextAnchor.MiddleCenter;
+        waveBannerStatsTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        var sRt = sgo.GetComponent<RectTransform>();
+        sRt.anchoredPosition = new Vector2(0, -24);
+        sRt.sizeDelta        = new Vector2(504, 34);
     }
 
     void BuildPausePanel(Transform parent)
