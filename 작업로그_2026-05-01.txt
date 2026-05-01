@@ -1,0 +1,73 @@
+작업 로그 — 2026-05-01 (자동 스케줄 작업)
+=============================================
+
+## 1단계: 코드 점검
+
+### 검토 파일
+- GameManager.cs (834→845행으로 증가)
+- AllyBase.cs
+- AllyPlacer.cs
+- StageManager.cs
+- GemInventory.cs
+- MainMenu.cs
+- SharedTypes.cs
+- StageSelect.cs
+
+### 발견 사항
+1. HpBar 클래스: AllyPlacer.cs에서 `AddComponent<HpBar>()` 호출 → SharedTypes.cs에 정상 정의 확인 (AllyType 열거형과 함께 위치). 이슈 없음.
+2. HpBar.Update(): HpRatio 기반으로 fillTf.localScale.x와 fillSr.color(빨강↔초록) 자동 갱신 — 정상.
+3. GemInventory: 3개 스테이지 보석 정의 완료 (초원/사막/화산). 스테이지4·5는 기획 미정으로 현재 미구현.
+4. StageSelect: 5스테이지 카드 UI, 준비 패널(팀 편성), 상세 팝업 모두 정상 구현.
+5. ShowResult(): 기존에는 "다시하기"·"스테이지 선택" 2개 버튼만 있어, 클리어 후 다음 스테이지로 바로 이동하는 경로가 없었음 → 신규 구현.
+
+---
+
+## 2단계: 신규 기능 구현
+
+### 구현 항목
+**스테이지 클리어 시 "다음 스테이지" 버튼 추가**
+
+### 구현 내용
+파일: `Assets/GameManager.cs`
+
+`ShowResult(int stars)` 메서드 하단에 조건부 버튼 추가:
+- 조건: `win == true (stars > 0)` && `currentStageIndex < StageManager.GetStageCount()`
+- 버튼 위치: 결과 패널(y=30, 440×440) 아래 y=-250 (패널 하단에서 60px 아래)
+- 버튼 크기: 360×52
+- 버튼 색상: 초록 계열 (normal: #1F6B38, hover: #2E9549)
+- 버튼 텍스트: `▶  STAGE {nextIdx}  {nextStageName}` (예: "▶  STAGE 2  사막의 요새")
+
+추가 메서드 `OnNextStage(int nextStageIdx)`:
+- `StageManager.Instance.currentStageIndex = nextStageIdx` 설정
+- `Time.timeScale = 1f` 초기화 (안전 처리)
+- `SceneManager.LoadScene("StageSelect", Single)` 로드 → 팀 편성 후 바로 다음 스테이지 진입 가능
+
+### 효과
+- 스테이지 1 클리어 → "▶ STAGE 2 사막의 요새" 버튼 즉시 표시
+- 마지막 스테이지(스테이지 5) 클리어 시에는 버튼 미표시
+- 기존 "다시하기"·"스테이지 선택" 버튼은 그대로 유지
+
+---
+
+## 3단계: CLAUDE.md 업데이트
+
+TODO 항목 추가 및 완료 표시:
+```
+- [x] 스테이지 클리어 시 "다음 스테이지" 버튼 → 2026-05-01 구현 ...
+```
+
+---
+
+## Git 커밋
+
+커밋 해시: b7569ec
+커밋 메시지: "스테이지 클리어 시 다음 스테이지 진행 버튼 추가"
+변경 파일: Assets/GameManager.cs, CLAUDE.md
+
+---
+
+## 비고
+
+- 전체 TODO 항목 중 [ ] 미완료 항목 없음. 기획 문서의 모든 결정 사항 구현 완료.
+- 스테이지 4·5 보석 시스템은 기획이 미정이므로 추후 별도 작업 필요.
+- 작업 브랜치: master (origin/master보다 15 커밋 앞선 상태)
