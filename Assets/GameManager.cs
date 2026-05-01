@@ -738,11 +738,29 @@ public class GameManager : MonoBehaviour
 
         RegResultBtn(cgo.transform, "retry",  "↺ 다시하기",     new Vector2(-120,-185), new Vector2(200,52), new Color(0.2f,0.35f,0.6f), new Color(0.3f,0.5f,0.8f), OnRetry);
         RegResultBtn(cgo.transform, "select", "≡ 스테이지 선택", new Vector2(120,-185),  new Vector2(220,52), new Color(0.28f,0.28f,0.28f), new Color(0.48f,0.48f,0.48f), OnStageSelect);
+
+        if (win && stageIdx < StageManager.GetStageCount())
+        {
+            int nextIdx = stageIdx + 1;
+            string nextName = StageManager.GetStageConfig(nextIdx).stageName;
+            RegResultBtn(cgo.transform, "next",
+                $"▶  STAGE {nextIdx}  {nextName}",
+                new Vector2(0, -250), new Vector2(360, 52),
+                new Color(0.12f, 0.42f, 0.22f), new Color(0.18f, 0.58f, 0.30f),
+                () => OnNextStage(nextIdx));
+        }
     }
 
     string BuildStarStr(int s) => s switch { 1=>"★ ☆ ☆", 2=>"★ ★ ☆", 3=>"★ ★ ★", _=>"☆ ☆ ☆" };
     void OnRetry()       => SceneManager.LoadScene("MediaProject", LoadSceneMode.Single);
     void OnStageSelect() => SceneManager.LoadScene("StageSelect",  LoadSceneMode.Single);
+    void OnNextStage(int nextStageIdx)
+    {
+        if (StageManager.Instance != null)
+            StageManager.Instance.currentStageIndex = nextStageIdx;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("StageSelect", LoadSceneMode.Single);
+    }
 
     // ── UI 헬퍼 ──────────────────────────────────────────────────────────
 
