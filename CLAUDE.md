@@ -126,3 +126,4 @@
 - [x] 스킬/업그레이드 실패 시 토스트 알림 → 2026-04-29 구현: GameManager.cs ShowToast()/ToastCoroutine() 추가, BuildToastUI() 메서드로 HUD에 화면 중앙 하단 알림 패널 생성 — TryUnlockSkill 실패 시 "코인이 부족합니다!" (빨강), TryUpgrade 실패 시 "코인이 부족합니다!" (빨강) 또는 "이미 최고 레벨입니다!" (황금)
 - [x] 웨이브 클리어 시 상세 통계 배너 → 2026-04-30 구현: GameManager.cs (waveBannerStatsTxt 추가, 배너 크기 520×110으로 확장, WaveClearTransition에서 "통과 X/Y명 • 코인 +Z • 다음 경로를 설정하세요" 서브텍스트 2.2초 표시 — 클리어 결과를 즉시 확인 가능)
 - [x] 스테이지 클리어 시 "다음 스테이지" 버튼 → 2026-05-01 구현: GameManager.cs ShowResult()에 다음 스테이지 진행 버튼 추가 — win && stageIdx < 전체스테이지수 조건 충족 시 결과 화면 하단 y=-250 위치에 "▶ STAGE N 스테이지명" 초록 버튼 표시, 클릭 시 StageManager.currentStageIndex 설정 후 StageSelect 씬으로 이동
+- [x] 아군 상세 패널 실효 스탯 표시 → 2026-05-02 구현: AllyOrderPanel.cs RefreshDetailPanel() — 업그레이드(UpgradeSystem)·보석(GemInventory)·스킬 효과를 반영한 실효 HP·속도 계산 후 표시, 부스트 시 초록색 강조 및 ↑ 표시 (기존 코드는 기본값만 하드코딩되어 있어 실제 강화 효과가 패널에 반영되지 않는 버그 수정)

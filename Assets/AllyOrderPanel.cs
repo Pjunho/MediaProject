@@ -822,12 +822,41 @@ public class AllyOrderPanel : MonoBehaviour
             return;
         }
 
-        AllyType type = allyOrder[cardToSlot[selectedCard]];
+        AllyType type    = allyOrder[cardToSlot[selectedCard]];
+        bool     unlocked = SkillSystem.IsUnlocked(type);
+
         if (detailNameText != null) detailNameText.text = GetAllyName(type);
-        if (detailHpText != null) detailHpText.text = $"HP  {GetHp(type):0}";
-        if (detailSpeedText != null) detailSpeedText.text = $"속도  {GetSpeed(type):0.0}";
+
+        // 실효 스탯 계산 (업그레이드 + 보석 + 스킬 효과 반영)
+        float baseHp    = GetHp(type);
+        float baseSpeed = GetSpeed(type);
+        float effHp     = baseHp    * UpgradeSystem.GetHpMultiplier(type) * GemInventory.GetHpMultiplier();
+        float effSpeed  = baseSpeed * UpgradeSystem.GetSpeedMultiplier(type) * GemInventory.GetSpeedMultiplier();
+        if (unlocked)
+        {
+            switch (type)
+            {
+                case AllyType.Mage:    effHp    *= 1.30f; break;
+                case AllyType.Paladin: effHp    *= 2.00f; break;
+                case AllyType.Archer:  effSpeed *= 1.25f; break;
+                case AllyType.Rogue:   effSpeed *= 1.40f; break;
+            }
+        }
+        var  boostedCol = new Color(0.45f, 1f, 0.55f);
+        var  normalCol  = new Color(0.92f, 0.94f, 0.98f, 1f);
+        bool hpUp       = effHp    > baseHp    + 0.5f;
+        bool spdUp      = effSpeed > baseSpeed + 0.01f;
+        if (detailHpText != null)
+        {
+            detailHpText.text  = hpUp  ? $"HP  {effHp:0}  ↑" : $"HP  {baseHp:0}";
+            detailHpText.color = hpUp  ? boostedCol : normalCol;
+        }
+        if (detailSpeedText != null)
+        {
+            detailSpeedText.text  = spdUp ? $"속도  {effSpeed:0.0}  ↑" : $"속도  {baseSpeed:0.0}";
+            detailSpeedText.color = spdUp ? boostedCol : normalCol;
+        }
         if (detailSkillIconImg != null) detailSkillIconImg.color = GetSkillColor(type);
-        bool unlocked = SkillSystem.IsUnlocked(type);
         var  skillData = SkillSystem.GetSkillForAlly(type);
         if (detailSkillNameText != null)
             detailSkillNameText.text = unlocked

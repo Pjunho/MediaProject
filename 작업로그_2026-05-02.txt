@@ -1,0 +1,55 @@
+날짜: 2026-05-02 (자동 스케줄 작업)
+작업자: Claude (자동 실행)
+
+=== 1단계: 코드 점검 ===
+
+CLAUDE.md 확인 결과, 기존 미결정 사항(TODO) 항목은 모두 [x]로 완료된 상태.
+
+주요 스크립트 점검 내용:
+- GameManager.cs: 웨이브/코인/결과 화면 정상 구현 확인
+- AllyPlacer.cs: 보석(GemInventory) 및 업그레이드(UpgradeSystem) 효과 적용 코드 존재 확인
+- StageManager.cs: 5개 스테이지 구성 정상 확인
+- GemInventory.cs: 스테이지 1~3 보석 정의 확인
+
+버그 발견:
+- AllyOrderPanel.cs의 RefreshDetailPanel() 메서드에서 HP와 속도를
+  GetHp(type), GetSpeed(type) 하드코딩 값만 표시하고 있었음.
+- UpgradeSystem.GetHpMultiplier() / GetSpeedMultiplier() 적용 안 됨
+- GemInventory.GetHpMultiplier() / GetSpeedMultiplier() 적용 안 됨
+- 스킬 해금 시 스탯 변화(Archer/Rogue 속도 증가, Mage/Paladin HP 증가) 미반영
+- 결과적으로 플레이어가 아군 카드를 클릭해도 실제 강화된 스탯이 아닌
+  기본값만 보이는 UI 오류 존재
+
+=== 2단계: 새 TODO 구현 ===
+
+구현 항목: 아군 상세 패널 실효 스탯 표시
+파일: Assets/AllyOrderPanel.cs
+
+변경 내용:
+1. RefreshDetailPanel() 함수 상단에서 unlocked 변수를 먼저 선언 (기존에는 중간에 선언)
+2. 기본 HP/속도를 baseHp, baseSpeed에 저장
+3. UpgradeSystem 및 GemInventory 배율을 적용해 effHp, effSpeed 계산
+4. 스킬 해금 상태이면 스킬 효과도 추가 반영:
+   - Mage: effHp *= 1.30
+   - Paladin: effHp *= 2.00
+   - Archer: effSpeed *= 1.25
+   - Rogue: effSpeed *= 1.40
+5. 실효값이 기본값보다 높으면:
+   - "HP  {effHp:0}  ↑" 형태로 표시 (초록색)
+   - "속도  {effSpeed:0.0}  ↑" 형태로 표시 (초록색)
+6. 강화 없으면 기존과 동일하게 기본값 표시 (흰색)
+
+효과:
+- 플레이어가 업그레이드나 보석 효과가 적용된 상태에서 아군 카드를
+  클릭하면, 강화된 실제 스탯을 초록색으로 확인 가능
+- ↑ 표시로 직관적으로 버프 상태 인지 가능
+
+CLAUDE.md 업데이트:
+- 새 TODO 항목 [x]로 추가
+
+=== 3단계: 변경 파일 목록 ===
+
+수정된 파일:
+- Assets/AllyOrderPanel.cs (RefreshDetailPanel 실효 스탯 표시 로직 추가)
+- CLAUDE.md (새 TODO 항목 추가 및 완료 처리)
+- 작업로그_2026-05-02.txt (이 파일, 신규 생성)
