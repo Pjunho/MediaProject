@@ -302,9 +302,17 @@ public class RouteDrawer : MonoBehaviour
                     else if (!isNowComplete && wasComplete) OnPathIncomplete();
                 }
 
-                // 스페이스바 → commit (새 세션 시작, 이후 이전 길 교차 허용)
+                // 스페이스바 → 경로 완성 시 게임 시작, 미완성 시 commit
                 if (kb.spaceKey.wasPressedThisFrame && drawnPath.Count > 0)
                 {
+                    if (pathComplete)
+                    {
+                        // 경로가 완성된 상태 → 게임 시작 (Start 버튼과 동일)
+                        OnStartGame();
+                        return;
+                    }
+
+                    // 경로 미완성 → 기존 commit 동작 (이전 길 교차 허용 세션 시작)
                     if (keyboardSessionActive && drawnPath.Count != dragSessionStart)
                         undoHistory.Add(dragSnapshot);
 
@@ -400,7 +408,7 @@ public class RouteDrawer : MonoBehaviour
         if (pulseIndicator != null) pulseIndicator.SetActive(false);
 
         if (instrTxt != null)
-            instrTxt.text = "경로 완성! ▶ Start 버튼을 누르세요  |  경로 위 클릭 → 수정  |  Ctrl+Z → 되돌리기";
+            instrTxt.text = "경로 완성! ▶ Start 버튼 또는 Space로 시작  |  경로 위 클릭 → 수정  |  Ctrl+Z → 되돌리기";
 
         if (startBtnFill != null)
         {
