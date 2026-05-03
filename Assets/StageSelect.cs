@@ -117,7 +117,7 @@ public class StageSelect : MonoBehaviour
             allyName="성직자", role="근접 지원형",
             hp=200f, speed=2.8f,
             skill=new SkillInfo{ name="치유 기도",
-                desc="주변 아군의 HP를\n매 3초마다 소량 회복시킨다.",
+                desc="신성한 기도로 매 초\n최대 HP의 3%를 회복합니다.",
                 iconColor=new Color(0.90f,0.85f,0.30f) }
         }},
         { AllyType.Rogue, new AllyDetailData {
@@ -153,6 +153,11 @@ public class StageSelect : MonoBehaviour
 
     // 우클릭 감지용: 선택 가능 아군 버튼별 AllyType 저장
     readonly System.Collections.Generic.List<(RectTransform rt, AllyType type)> availRightClickTargets = new();
+
+    // ── 토스트 알림 ───────────────────────────────────────────────────
+    GameObject toastGo;
+    Text       toastTxt;
+    System.Collections.IEnumerator toastCoroutine;
 
     // ── 준비 패널 ─────────────────────────────────────────────────────
     GameObject prepPanel;
@@ -490,7 +495,7 @@ public class StageSelect : MonoBehaviour
                 si, locked, saved, desc, cond,
                 locked ? C_LOCKED   : C_STAGE[si],
                 locked ? C_LOCKED_H : C_STAGE_H[si],
-                locked ? (System.Action)OnLockedStage : () => OpenPrep(cap));
+                locked ? () => OnLockedStage(cap) : () => OpenPrep(cap));
 
             cardRects.Add(crt);
         }
@@ -516,6 +521,9 @@ public class StageSelect : MonoBehaviour
 
         // ── 준비 패널 (최상위 렌더) ───────────────────────────────────
         BuildPrepPanel(cv);
+
+        // ── 토스트 알림 ───────────────────────────────────────────────
+        BuildToastUI(cv);
     }
 
     // ── 화살표 생성 ───────────────────────────────────────────────────
@@ -938,7 +946,71 @@ public class StageSelect : MonoBehaviour
       AllyType.Mage=>"마법사", AllyType.Cleric=>"성직자",
       AllyType.Rogue=>"도적", AllyType.Paladin=>"성기사", _=>"아군" };
 
-    void OnLockedStage() => Debug.Log("[StageSelect] 잠긴 스테이지 클릭");
+    void OnLockedStage(int si)
+    {
+        int prevStars = StageManager.GetSavedStars(si - 1);
+        string msg = prevStars > 0
+            ? $"STAGE {si - 1}을 별 1개 이상으로 클리어하면 해금됩니다."
+            : $"STAGE {si - 1}을 먼저 클리어해야 합니다.";
+        ShowToast(msg, new Color(1f, 0.7f, 0.3f));
+    }
+
+    void BuildToastUI(Transform parent)
+    {
+        toastGo = new GameObject("Toast");
+        toastGo.transform.SetParent(parent, false);
+        var bg = toastGo.AddComponent<Image>();
+        bg.color = new Color(0.06f, 0.06f, 0.10f, 0.92f);
+        var rt = toastGo.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(0, -270);
+        rt.sizeDelta = new Vector2(440, 48);
+
+        var tgo = new GameObject("Txt");
+        tgo.transform.SetParent(toastGo.transform, false);
+        toastTxt = tgo.AddComponent<Text>();
+        toastTxt.fontSize  = 19;
+        toastTxt.fontStyle = FontStyle.Bold;
+        toastTxt.alignment = TextAnchor.MiddleCenter;
+        toastTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        var tRt = tgo.GetComponent<RectTransform>();
+        tRt.anchoredPosition = Vector2.zero;
+        tRt.sizeDelta        = new Vector2(430, 44);
+        toastGo.SetActive(false);
+    }
+
+    void ShowToast(string message, Color color)
+    {
+        if (toastGo == null) return;
+        if (toastCoroutine != null) StopCoroutine(toastCoroutine);
+        toastCoroutine = ToastCoroutine(message, color);
+        StartCoroutine(toastCoroutine);
+    }
+
+    System.Collections.IEnumerator ToastCoroutine(string message, Color baseColor)
+    {
+        if (toastTxt == null || toastGo == null) yield break;
+        toastTxt.text  = message;
+        toastTxt.color = baseColor;
+        toastGo.SetActive(true);
+
+        float elapsed   = 0f;
+        float duration  = 2.2f;
+        float fadeStart = 1.4f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float alpha = elapsed > fadeStart
+                ? 1f - (elapsed - fadeStart) / (duration - fadeStart)
+                : 1f;
+            toastTxt.color = new Color(baseColor.r, baseColor.g, baseColor.b, alpha);
+            yield return null;
+        }
+
+        toastGo.SetActive(false);
+        toastCoroutine = null;
+    }
+
     void OnBack()        => SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 
     // ── 버튼 등록 ─────────────────────────────────────────────────────
