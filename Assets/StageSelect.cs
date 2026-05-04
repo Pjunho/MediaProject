@@ -949,9 +949,10 @@ public class StageSelect : MonoBehaviour
     void OnLockedStage(int si)
     {
         bool prevUnlocked = StageManager.IsStageUnlocked(si - 1);
+        string prevStageName = StageManager.GetStageConfig(si - 1).stageName;
         string msg = prevUnlocked
-            ? $"STAGE {si - 1}을 별 1개 이상으로 클리어하면 해금됩니다."
-            : $"STAGE {si - 1}을 먼저 클리어해야 합니다.";
+            ? $"{prevStageName}을 별 1개 이상으로 클리어하면 해금됩니다."
+            : $"{prevStageName}을 먼저 클리어해야 합니다.";
         ShowToast(msg, new Color(1f, 0.7f, 0.3f));
     }
 
