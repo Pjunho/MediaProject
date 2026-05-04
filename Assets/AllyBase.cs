@@ -51,6 +51,13 @@ public class AllyBase : MonoBehaviour
     private GameObject shieldVisual;
     private SpriteRenderer shieldSr;
     private float hitStunTimer  = 0f;
+
+    // ── HP 바 ──────────────────────────────────────────────────────────
+    private GameObject     hpBarRoot;
+    private SpriteRenderer hpBarFill;
+    const float HP_BAR_OFFSET_Y = 0.65f;
+    const float HP_BAR_WIDTH    = 0.50f;
+    const float HP_BAR_HEIGHT   = 0.065f;
     private float walkCycle     = 0f;
     private float facingSign   = 1f;
     private Vector3 lastFramePosition;
@@ -109,6 +116,7 @@ public class AllyBase : MonoBehaviour
         CacheTransformBase(backLegPart, out backLegBaseLocalPosition, out backLegBaseLocalRotation);
 
         lastFramePosition = transform.position;
+        CreateHpBar();
     }
 
     protected virtual void Update()
@@ -236,6 +244,7 @@ public class AllyBase : MonoBehaviour
             {
                 currentHp = Mathf.Min(currentHp + maxHp * 0.03f, maxHp);
                 HealEffect.Spawn(transform.position);
+                UpdateHpBar();
             }
             yield return new WaitForSeconds(1f);
         }
@@ -276,6 +285,7 @@ public class AllyBase : MonoBehaviour
     protected virtual void OnDamaged()
     {
         hitStunTimer = 0.15f;
+        UpdateHpBar();
         StartCoroutine(HitEffect());
     }
 
@@ -533,4 +543,57 @@ public class AllyBase : MonoBehaviour
     }
 
     public float HpRatio => Mathf.Clamp01(currentHp / maxHp);
+
+    // ── HP 바 생성 및 갱신 ─────────────────────────────────────────────
+    void CreateHpBar()
+    {
+        hpBarRoot = new GameObject("HpBar");
+        hpBarRoot.transform.SetParent(transform, false);
+        hpBarRoot.transform.localPosition = Vector3.zero;
+
+        var bgGo = new GameObject("Bg");
+        bgGo.transform.SetParent(hpBarRoot.transform, false);
+        bgGo.transform.localPosition = new Vector3(0f, HP_BAR_OFFSET_Y, -0.1f);
+        bgGo.transform.localScale    = new Vector3(HP_BAR_WIDTH, HP_BAR_HEIGHT, 1f);
+        var bgSr = bgGo.AddComponent<SpriteRenderer>();
+        bgSr.sprite = MakePixelSprite();
+        bgSr.color  = new Color(0.08f, 0.08f, 0.08f, 0.80f);
+        bgSr.sortingOrder = 30;
+
+        var fillGo = new GameObject("Fill");
+        fillGo.transform.SetParent(hpBarRoot.transform, false);
+        hpBarFill = fillGo.AddComponent<SpriteRenderer>();
+        hpBarFill.sprite = MakePixelSprite();
+        hpBarFill.sortingOrder = 31;
+
+        hpBarRoot.SetActive(false);
+    }
+
+    static Sprite MakePixelSprite()
+    {
+        var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+        tex.SetPixel(0, 0, Color.white);
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+    }
+
+    void UpdateHpBar()
+    {
+        if (hpBarRoot == null || hpBarFill == null) return;
+        float ratio = HpRatio;
+        bool  show  = ratio < 0.999f && !isDead;
+        hpBarRoot.SetActive(show);
+        if (!show) return;
+
+        Color barColor;
+        if (ratio > 0.5f)
+            barColor = Color.Lerp(new Color(0.95f, 0.82f, 0.10f), new Color(0.18f, 0.88f, 0.22f), (ratio - 0.5f) * 2f);
+        else
+            barColor = Color.Lerp(new Color(1f, 0.12f, 0.12f), new Color(0.95f, 0.82f, 0.10f), ratio * 2f);
+        hpBarFill.color = barColor;
+
+        float fillW = HP_BAR_WIDTH * ratio;
+        hpBarFill.transform.localPosition = new Vector3(-HP_BAR_WIDTH * 0.5f + fillW * 0.5f, HP_BAR_OFFSET_Y, -0.15f);
+        hpBarFill.transform.localScale    = new Vector3(fillW, HP_BAR_HEIGHT * 0.80f, 1f);
+    }
 }
