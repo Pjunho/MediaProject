@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         public Text title;
         public Text desc;
         public Text status;
+        public int buttonIndex;
     }
 
     System.Collections.Generic.List<BtnData> btns = new();
@@ -237,7 +238,7 @@ public class MainMenu : MonoBehaviour
         BuildSettingsPanel(cgo.transform);
     }
 
-    void RegBtn(Transform p, string id, string label, Vector2 pos, Vector2 size, Color n, Color h, System.Action cb)
+    int RegBtn(Transform p, string id, string label, Vector2 pos, Vector2 size, Color n, Color h, System.Action cb)
     {
         var go = new GameObject("Btn_" + id); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.18f);
@@ -253,7 +254,9 @@ public class MainMenu : MonoBehaviour
         tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
 
+        int index = btns.Count;
         btns.Add(new BtnData { rt = ir, fill = fi, normal = n, hover = h, action = cb });
+        return index;
     }
 
     void BuildGemPanel(Transform parent)
@@ -280,32 +283,34 @@ public class MainMenu : MonoBehaviour
             CreateImg(row.transform, new Color(0f, 0f, 0f, 0.36f), new Vector2(0, y), new Vector2(720, 102));
             CreateImg(row.transform, new Color(1f, 1f, 1f, 0.08f), new Vector2(0, y), new Vector2(724, 106));
 
+            int capturedStage = defs[i].stageIndex;
+            int buttonIndex = RegBtn(row.transform, $"gem_toggle_{capturedStage}", "",
+                new Vector2(-280, y), new Vector2(86, 86),
+                new Color(0.08f, 0.10f, 0.14f), new Color(0.15f, 0.18f, 0.24f),
+                () => ToggleGem(capturedStage));
+
             var iconGo = new GameObject("Icon");
             iconGo.transform.SetParent(row.transform, false);
             var icon = iconGo.AddComponent<Image>();
+            icon.raycastTarget = false;
             var iconRt = iconGo.GetComponent<RectTransform>();
             iconRt.anchoredPosition = new Vector2(-280, y);
             iconRt.sizeDelta = new Vector2(62, 62);
 
-            var title = CreateTxtReturn(row.transform, "", Color.white, new Vector2(-140, y + 18), new Vector2(300, 28), 23);
+            var title = CreateTxtReturn(row.transform, "", Color.white, new Vector2(-130, y + 18), new Vector2(320, 28), 23);
             title.alignment = TextAnchor.MiddleLeft;
-            var desc = CreateTxtReturn(row.transform, "", new Color(0.84f, 0.88f, 0.92f), new Vector2(-110, y - 15), new Vector2(380, 40), 17);
+            var desc = CreateTxtReturn(row.transform, "", new Color(0.84f, 0.88f, 0.92f), new Vector2(-90, y - 15), new Vector2(420, 40), 17);
             desc.alignment = TextAnchor.MiddleLeft;
-            var status = CreateTxtReturn(row.transform, "", COL_TITLE, new Vector2(170, y), new Vector2(150, 28), 20);
+            var status = CreateTxtReturn(row.transform, "", COL_TITLE, new Vector2(230, y), new Vector2(150, 28), 20);
 
             gemEntryUis.Add(new GemEntryUi
             {
                 icon = icon,
                 title = title,
                 desc = desc,
-                status = status
+                status = status,
+                buttonIndex = buttonIndex
             });
-
-            int capturedStage = defs[i].stageIndex;
-            RegBtn(row.transform, $"gem_toggle_{capturedStage}", "",
-                new Vector2(280, y), new Vector2(130, 48),
-                defs[i].color * 0.85f, defs[i].color,
-                () => ToggleGem(capturedStage));
         }
 
         RegBtn(gemPanel.transform, "gem_close", "← 닫기",
@@ -326,7 +331,11 @@ public class MainMenu : MonoBehaviour
             bool active = GemInventory.IsActive(def.stageIndex);
 
             ui.icon.sprite = MakeGemSprite(def.stageIndex, unlocked);
-            ui.icon.color = Color.white;
+            ui.icon.color = !unlocked
+                ? new Color(0.55f, 0.57f, 0.62f, 1f)
+                : (active ? Color.white : new Color(0.42f, 0.44f, 0.48f, 1f));
+            SetButtonColors(ui.buttonIndex, BuildGemButtonColor(def.color, unlocked, active, false),
+                BuildGemButtonColor(def.color, unlocked, active, true));
             ui.title.text = $"STAGE {def.stageIndex}  {def.gemName}";
             ui.desc.text = unlocked ? def.effectSummary : "아직 해금되지 않았습니다";
             ui.status.text = !unlocked ? "잠김" : (active ? "활성" : "비활성");
@@ -334,6 +343,31 @@ public class MainMenu : MonoBehaviour
                 ? new Color(0.65f, 0.68f, 0.74f)
                 : (active ? new Color(0.42f, 1f, 0.52f) : new Color(1f, 0.85f, 0.35f));
         }
+    }
+
+    Color BuildGemButtonColor(Color gemColor, bool unlocked, bool active, bool hover)
+    {
+        if (!unlocked)
+            return hover ? new Color(0.18f, 0.19f, 0.23f) : new Color(0.10f, 0.11f, 0.14f);
+
+        if (!active)
+            return hover ? new Color(0.20f, 0.21f, 0.25f) : new Color(0.12f, 0.13f, 0.16f);
+
+        Color baseColor = Color.Lerp(new Color(0.11f, 0.13f, 0.17f), gemColor, hover ? 0.52f : 0.36f);
+        baseColor.a = 1f;
+        return baseColor;
+    }
+
+    void SetButtonColors(int index, Color normal, Color hover)
+    {
+        if (index < 0 || index >= btns.Count)
+            return;
+
+        var data = btns[index];
+        data.normal = normal;
+        data.hover = hover;
+        data.fill.color = normal;
+        btns[index] = data;
     }
 
     void CreateImg(Transform p, Color c, Vector2 pos, Vector2 size)
