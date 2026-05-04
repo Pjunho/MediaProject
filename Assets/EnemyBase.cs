@@ -16,6 +16,7 @@ public class EnemyBase : MonoBehaviour
     protected AllyBase   currentTarget = null;
     protected SpriteRenderer spriteRenderer;
 
+    private GameObject rangeIndicatorRoot;
     private LineRenderer rangeIndicator;
     private SpriteRenderer rangeFillIndicator;
     private LineRenderer attackLine;
@@ -36,6 +37,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         UpdateBreathAnimation();
+        UpdateRangeIndicatorPosition();
 
         if (!isPlaced) return;
         attackTimer -= Time.deltaTime;
@@ -49,6 +51,12 @@ public class EnemyBase : MonoBehaviour
             if (dist <= attackRange) { Attack(currentTarget); attackTimer = attackCooldown; }
             else currentTarget = null;
         }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (rangeIndicatorRoot != null)
+            Destroy(rangeIndicatorRoot);
     }
 
     protected virtual void Attack(AllyBase target)
@@ -139,24 +147,42 @@ public class EnemyBase : MonoBehaviour
     // ── 사거리 표시 ────────────────────────────────────────────────
     public void ShowRange()
     {
+        if (rangeIndicatorRoot == null) rangeIndicatorRoot = CreateRangeIndicatorRoot();
         if (rangeIndicator == null) rangeIndicator = CreateRangeIndicator();
         if (rangeFillIndicator == null) rangeFillIndicator = CreateRangeFillIndicator();
+        UpdateRangeIndicatorPosition();
+        rangeIndicatorRoot.SetActive(true);
         rangeFillIndicator.gameObject.SetActive(true);
         rangeIndicator.gameObject.SetActive(true);
     }
 
     public void HideRange()
     {
+        if (rangeIndicatorRoot != null)
+            rangeIndicatorRoot.SetActive(false);
         if (rangeFillIndicator != null)
             rangeFillIndicator.gameObject.SetActive(false);
         if (rangeIndicator != null)
             rangeIndicator.gameObject.SetActive(false);
     }
 
+    GameObject CreateRangeIndicatorRoot()
+    {
+        var go = new GameObject($"{enemyName}_RangeIndicatorRoot");
+        go.transform.localScale = Vector3.one;
+        return go;
+    }
+
+    void UpdateRangeIndicatorPosition()
+    {
+        if (rangeIndicatorRoot == null || !rangeIndicatorRoot.activeSelf) return;
+        rangeIndicatorRoot.transform.position = breathBasePosition;
+    }
+
     SpriteRenderer CreateRangeFillIndicator()
     {
         var go = new GameObject("RangeFillIndicator");
-        go.transform.SetParent(transform, false);
+        go.transform.SetParent(rangeIndicatorRoot.transform, false);
         go.transform.localPosition = Vector3.zero;
         go.transform.localScale = Vector3.one * attackRange * 2f;
 
@@ -170,7 +196,7 @@ public class EnemyBase : MonoBehaviour
     LineRenderer CreateRangeIndicator()
     {
         var go = new GameObject("RangeIndicator");
-        go.transform.SetParent(transform, false);
+        go.transform.SetParent(rangeIndicatorRoot.transform, false);
         var lr = go.AddComponent<LineRenderer>();
         lr.useWorldSpace   = false;
         lr.loop            = true;
