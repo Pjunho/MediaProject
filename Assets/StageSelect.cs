@@ -486,9 +486,7 @@ public class StageSelect : MonoBehaviour
             int    cap    = si;
             bool   locked = !StageManager.IsStageUnlocked(si);
             int    saved  = StageManager.GetSavedStars(si);
-            string cond    = locked
-                ? GetUnlockConditionText(si)
-                : StageManager.GetStarConditionTextForStage(si);
+            string cond    = locked ? "" : StageManager.GetStarConditionTextForStage(si);
             string desc    = $"{terrains[si]}\n15웨이브  |  난이도 {difficulties[si]}";
 
             float initX = CardBaseX(si) + scrollX;
@@ -586,12 +584,12 @@ public class StageSelect : MonoBehaviour
 
         // 클리어 조건
         MkTxtChild(card.transform, condText,
-            locked ? new Color(1f, 0.66f, 0.28f, 0.78f) : new Color(1f, 0.85f, 0.2f, 0.80f),
+            locked ? new Color(0.32f, 0.32f, 0.32f) : new Color(1f, 0.85f, 0.2f, 0.80f),
             new Vector2(0, -hy * 0.48f), new Vector2(cw, hy * 0.24f),
             Mathf.Max(12, (int)(16 * scale)));
 
         // 별
-        string starStr = locked ? "[LOCK]" : StarStr(savedStars);
+        string starStr = locked ? "" : StarStr(savedStars);
         MkTxtChild(card.transform, starStr,
             locked ? new Color(0.35f, 0.35f, 0.35f) : new Color(1f, 0.85f, 0.15f),
             new Vector2(0, -hy * 0.69f), new Vector2(cw, hy * 0.28f),
@@ -600,7 +598,7 @@ public class StageSelect : MonoBehaviour
         // 시작 버튼 (inScrollArea=true)
         float btnH = Mathf.Max(32f, size.y * 0.12f);
         RegBtn(card.transform, $"play_{si}",
-               locked ? "[LOCK]  조건 보기" : "▶  시  작",
+               locked ? "조건 보기" : "▶  시  작",
                new Vector2(0, -hy * 0.875f), new Vector2(size.x * 0.75f, btnH),
                btnCol, btnHov, cb, true);
 
@@ -609,12 +607,6 @@ public class StageSelect : MonoBehaviour
 
     string StarStr(int s) => s switch
     { 1 => "★ ☆ ☆", 2 => "★ ★ ☆", 3 => "★ ★ ★", _ => "☆ ☆ ☆" };
-
-    string GetUnlockConditionText(int stageIndex)
-    {
-        if (stageIndex <= 1) return "기본 해금";
-        return $"STAGE {stageIndex - 1} 별 1개 이상\n클리어 시 해금";
-    }
 
     // ── 준비 패널 ─────────────────────────────────────────────────────
     // 레이아웃: 패널 860×540 중앙 배치
