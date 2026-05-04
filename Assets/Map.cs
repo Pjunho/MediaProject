@@ -136,16 +136,10 @@ public class Map : MonoBehaviour
                     sr.sortingOrder = 0;
                     sr.color        = Color.white;   // LPC 원본 팔레트 그대로
 
-                    if (type == TileType.Dirt)
-                    {
-                        // 스테이지별 길 타일 — (x+y)로 변형 순환
-                        sr.sprite = TileTextureGenerator.GetPathSprite(stageIdx, (x + y) % 4);
-                    }
-                    else
-                    {
-                        // 스테이지별 벽 타일 — (x+y)%4 로 위치마다 variant 선택
-                        sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, (x + y) % 4);
-                    }
+                    int variant = StableVariant(stageIdx, x, y);
+                    sr.sprite = (type == TileType.Dirt)
+                        ? TileTextureGenerator.GetPathSprite(stageIdx, variant)
+                        : TileTextureGenerator.GetWallSprite(stageIdx, variant);
                 }
 
                 tile.name = $"Tile_{x}_{y}";
@@ -153,7 +147,152 @@ public class Map : MonoBehaviour
             }
         }
 
+        BuildThemeDetails(mapHolder, stageIdx);
         FitCameraToMap();
+    }
+
+    void BuildThemeDetails(Transform mapHolder, int stageIdx)
+    {
+        if (Camera.main != null)
+            Camera.main.backgroundColor = TileTextureGenerator.GetBackdropColor(stageIdx);
+
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                GameObject tile = tileObjects[x, y];
+                if (tile == null) continue;
+
+                TileType type = tileMap[x, y];
+                if (type == TileType.Dirt)
+                {
+                    int edgeMask = GetPathEdgeMask(x, y);
+                    if (edgeMask != 0)
+                    {
+                        AddSpriteChild(
+                            tile.transform,
+                            $"PathEdge_{edgeMask}",
+                            TileTextureGenerator.GetPathEdgeSprite(stageIdx, edgeMask),
+                            Vector3.zero,
+                            Vector3.one * tileSize,
+                            Quaternion.identity,
+                            1,
+                            Color.white);
+                    }
+
+                    if (Hash01(stageIdx, x, y, 71) < 0.08f)
+                        AddPathDetail(tile.transform, stageIdx, x, y);
+                }
+                else
+                {
+                    int pathNeighbors = CountPathNeighbors(x, y);
+                    float decorChance = pathNeighbors > 0 ? 0.16f : 0.07f;
+                    if (Hash01(stageIdx, x, y, 19) < decorChance)
+                        AddGroundDecor(tile.transform, stageIdx, x, y, pathNeighbors > 0);
+                }
+            }
+        }
+    }
+
+    void AddGroundDecor(Transform parent, int stageIdx, int x, int y, bool nearPath)
+    {
+        Sprite sprite = TileTextureGenerator.GetDecorSprite(stageIdx, StableVariant(stageIdx + 11, x, y));
+        if (sprite == null) return;
+
+        float sx = Mathf.Lerp(-0.18f, 0.18f, Hash01(stageIdx, x, y, 31));
+        float sy = Mathf.Lerp(-0.18f, 0.18f, Hash01(stageIdx, x, y, 37));
+        float scale = Mathf.Lerp(0.46f, nearPath ? 0.70f : 0.92f, Hash01(stageIdx, x, y, 43));
+        float rot = Mathf.Round(Hash01(stageIdx, x, y, 47) * 3f) * 90f;
+
+        AddSpriteChild(
+            parent,
+            "ThemeDecor",
+            sprite,
+            new Vector3(sx, sy, 0f),
+            Vector3.one * (tileSize * scale),
+            Quaternion.Euler(0f, 0f, rot),
+            2,
+            Color.white);
+    }
+
+    void AddPathDetail(Transform parent, int stageIdx, int x, int y)
+    {
+        Sprite sprite = TileTextureGenerator.GetDecorSprite(stageIdx, StableVariant(stageIdx + 23, x, y));
+        if (sprite == null) return;
+
+        Color tint = Color.white;
+        tint.a = 0.34f;
+
+        AddSpriteChild(
+            parent,
+            "PathDetail",
+            sprite,
+            new Vector3(
+                Mathf.Lerp(-0.22f, 0.22f, Hash01(stageIdx, x, y, 53)),
+                Mathf.Lerp(-0.22f, 0.22f, Hash01(stageIdx, x, y, 59)),
+                0f),
+            Vector3.one * (tileSize * Mathf.Lerp(0.28f, 0.48f, Hash01(stageIdx, x, y, 61))),
+            Quaternion.Euler(0f, 0f, Mathf.Round(Hash01(stageIdx, x, y, 67) * 3f) * 90f),
+            2,
+            tint);
+    }
+
+    void AddSpriteChild(
+        Transform parent,
+        string name,
+        Sprite sprite,
+        Vector3 localPosition,
+        Vector3 localScale,
+        Quaternion localRotation,
+        int sortingOrder,
+        Color color)
+    {
+        if (sprite == null) return;
+
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        go.transform.localPosition = localPosition;
+        go.transform.localScale = localScale;
+        go.transform.localRotation = localRotation;
+
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingOrder = sortingOrder;
+        sr.color = color;
+    }
+
+    int GetPathEdgeMask(int x, int y)
+    {
+        int mask = 0;
+        if (GetTileType(x, y + 1) == TileType.Grass) mask |= 1;
+        if (GetTileType(x + 1, y) == TileType.Grass) mask |= 2;
+        if (GetTileType(x, y - 1) == TileType.Grass) mask |= 4;
+        if (GetTileType(x - 1, y) == TileType.Grass) mask |= 8;
+        return mask;
+    }
+
+    int CountPathNeighbors(int x, int y)
+    {
+        int count = 0;
+        if (GetTileType(x, y + 1) == TileType.Dirt) count++;
+        if (GetTileType(x + 1, y) == TileType.Dirt) count++;
+        if (GetTileType(x, y - 1) == TileType.Dirt) count++;
+        if (GetTileType(x - 1, y) == TileType.Dirt) count++;
+        return count;
+    }
+
+    int StableVariant(int stageIdx, int x, int y)
+    {
+        int h = stageIdx * 73856093 ^ x * 19349663 ^ y * 83492791;
+        h ^= h >> 13;
+        return Mathf.Abs(h);
+    }
+
+    float Hash01(int stageIdx, int x, int y, int salt)
+    {
+        uint h = (uint)(stageIdx * 374761393 + x * 668265263 + y * 2246822519u + salt * 3266489917u);
+        h = (h ^ (h >> 13)) * 1274126177u;
+        return (h & 0x00FFFFFF) / 16777215f;
     }
 
     // ──────────────────────────────────────────────────────────

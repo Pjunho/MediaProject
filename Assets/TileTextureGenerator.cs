@@ -3,27 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 스테이지별 타일 스프라이트를 여러 오픈소스 아틀라스에서 추출합니다.
-///
-/// ┌────────────────────────────────────────────────────────────────────┐
-/// │  사용 텍스처 (모두 Resources/Map/ 에 배치)                        │
-/// │  terrain.png      – LPC_Terrain 기본 아틀라스 (1024×1024, 32px)  │
-/// │  terrain_atlas.png – Atlas 폴더 아틀라스     (1024×1024, 32px)  │
-/// │  base_out_atlas.png – 야외 건물/바위 아틀라스 (1024×1024, 32px)  │
-/// │                                                                    │
-/// │  스테이지 테마                                                     │
-/// │  Stage 1 (초원의 전투)                                            │
-/// │    벽  : terrain_atlas 순수 초록 잔디 (ID 640·641·642·672)       │
-/// │    길  : terrain Earth 흙길 (ID 676)                             │
-/// │                                                                    │
-/// │  Stage 2 (사막의 요새)                                            │
-/// │    벽  : terrain_atlas 황금 모래 타일 (ID 352·353·384·386)       │
-/// │    길  : terrain Brick Road 벽돌길 (ID 491·492·493·494)         │
-/// │                                                                    │
-/// │  Stage 3 (화산의 심판)                                            │
-/// │    벽  : base_out 어두운 화산암·적갈색 화산바위                   │
-/// │            (ID 352·353·288·289 – 보라-회색+적갈 혼합)            │
-/// │    길  : terrain Red Dirt 붉은 화산 통로 (ID 103·166·167)        │
-/// └────────────────────────────────────────────────────────────────────┘
+/// 기본 타일, 길 타일, 장식 타일, 경계 블렌드 레이어를 한곳에서 제공합니다.
 ///
 /// 타일 ID 규칙 (모든 1024×1024, 32px 아틀라스 공통):
 ///   tile id N → col = N % 32,  row = N / 32  (행 0 = 이미지 상단)
@@ -43,36 +23,27 @@ public static class TileTextureGenerator
     const string TEX_TERRAIN_ATLAS = "Map/terrain_atlas";
     const string TEX_BASE_OUT      = "Map/base_out_atlas";
 
-    // ── 스테이지별 벽 텍스처 ───────────────────────────────────────
-    //   [0] 미사용
+    const int MAX_STAGE = 5;
+
+    // ── 스테이지별 벽/바닥 텍스처 ──────────────────────────────────
     static readonly string[] STAGE_WALL_TEX =
     {
         null,
-        TEX_TERRAIN_ATLAS,   // Stage 1: terrain_atlas 순수 잔디
-        TEX_TERRAIN_ATLAS,   // Stage 2: terrain_atlas 황금 모래
-        TEX_BASE_OUT,        // Stage 3: base_out 화산암
+        TEX_TERRAIN_ATLAS,   // Stage 1: 초원 잔디
+        TEX_TERRAIN_ATLAS,   // Stage 2: 사막 모래
+        TEX_BASE_OUT,        // Stage 3: 화산암
+        TEX_BASE_OUT,        // Stage 4: 어둠의 미궁
+        TEX_TERRAIN,         // Stage 5: 최후의 요새
     };
 
-    // ── 스테이지별 벽 타일 ID ────────────────────────────────────────
-    //
-    //   Stage 1 – terrain_atlas.png 순수 초록 잔디 (R=100 G=164 B=44)
-    //     640 row20,col0 · 641 row20,col1 · 642 row20,col2 · 672 row21,col0
-    //
-    //   Stage 2 – terrain_atlas.png 황금빛 모래 (R=212 G=178 B=43)
-    //     352 row11,col0 · 353 row11,col1 · 384 row12,col0 · 386 row12,col2
-    //
-    //   Stage 3 – base_out_atlas.png 화산암 혼합
-    //     352 row11,col0 (R= 77 G= 74 B= 93, 어두운 보라-회색 화산암)
-    //     353 row11,col1 (동일 색조)
-    //     288 row09,col0 (R=144 G= 66 B= 55, 적갈색 화산 바위)
-    //     289 row09,col1 (동일 색조)
-    //
     static readonly int[][] STAGE_WALL_IDS =
     {
         null,
-        new[] { 640, 641, 642, 672 },   // Stage 1
-        new[] { 352, 353, 384, 386 },   // Stage 2
-        new[] { 352, 353, 288, 289 },   // Stage 3
+        new[] { 640, 641, 642, 672, 673, 674, 704, 705 },   // Stage 1
+        new[] { 352, 353, 354, 384, 385, 386, 416, 417 },   // Stage 2
+        new[] { 352, 353, 288, 289, 320, 321, 384, 385 },   // Stage 3
+        new[] { 352, 353, 384, 385, 416, 417, 448, 449 },   // Stage 4
+        new[] { 459, 460, 461, 491, 492, 493, 523, 524 },   // Stage 5
     };
 
     // ── 스테이지별 길 텍스처 (모두 terrain.png) ─────────────────────
@@ -82,6 +53,8 @@ public static class TileTextureGenerator
         TEX_TERRAIN,   // Stage 1
         TEX_TERRAIN,   // Stage 2
         TEX_TERRAIN,   // Stage 3
+        TEX_TERRAIN,   // Stage 4
+        TEX_TERRAIN,   // Stage 5
     };
 
     // ── 스테이지별 길 타일 ID (terrain.png) ─────────────────────────
@@ -93,9 +66,51 @@ public static class TileTextureGenerator
     static readonly int[][] STAGE_PATH_IDS =
     {
         null,
-        new[] { 676 },
-        new[] { 491, 492, 493, 494 },
-        new[] { 103, 166, 167 },
+        new[] { 676, 677, 708, 709 },
+        new[] { 491, 492, 493, 494, 523, 524 },
+        new[] { 103, 166, 167, 198, 199 },
+        new[] { 135, 136, 167, 168, 199, 200 },
+        new[] { 491, 492, 493, 523, 524, 525 },
+    };
+
+    static readonly string[] STAGE_DECOR_TEX =
+    {
+        null,
+        TEX_BASE_OUT,
+        TEX_BASE_OUT,
+        TEX_BASE_OUT,
+        TEX_BASE_OUT,
+        TEX_TERRAIN_ATLAS,
+    };
+
+    static readonly int[][] STAGE_DECOR_IDS =
+    {
+        null,
+        new[] { 32, 33, 64, 65, 96, 97, 128, 129 },
+        new[] { 288, 289, 320, 321, 352, 353, 384, 385 },
+        new[] { 224, 225, 256, 257, 288, 289, 352, 353 },
+        new[] { 416, 417, 448, 449, 480, 481, 512, 513 },
+        new[] { 459, 460, 461, 491, 492, 493, 523, 524 },
+    };
+
+    static readonly Color[] STAGE_EDGE_COLORS =
+    {
+        Color.clear,
+        new Color(0.18f, 0.50f, 0.13f, 0.74f),
+        new Color(0.83f, 0.63f, 0.25f, 0.66f),
+        new Color(0.42f, 0.11f, 0.08f, 0.72f),
+        new Color(0.15f, 0.17f, 0.28f, 0.74f),
+        new Color(0.33f, 0.34f, 0.37f, 0.70f),
+    };
+
+    static readonly Color[] STAGE_BACKDROP_COLORS =
+    {
+        Color.black,
+        new Color(0.33f, 0.55f, 0.23f),
+        new Color(0.66f, 0.53f, 0.27f),
+        new Color(0.21f, 0.12f, 0.11f),
+        new Color(0.10f, 0.11f, 0.18f),
+        new Color(0.23f, 0.24f, 0.27f),
     };
 
     // ── 텍스처 캐시 ─────────────────────────────────────────────────
@@ -103,8 +118,10 @@ public static class TileTextureGenerator
         = new Dictionary<string, Texture2D>();
 
     // ── 스프라이트 캐시 [stageIdx][variantIdx] ───────────────────────
-    static readonly Sprite[][] _wallCache = new Sprite[4][];
-    static readonly Sprite[][] _pathCache = new Sprite[4][];
+    static readonly Sprite[][] _wallCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _pathCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _decorCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _edgeCache = new Sprite[MAX_STAGE + 1][];
 
     // 절차적 폴백 캐시
     static Sprite _grassFallback;
@@ -147,6 +164,40 @@ public static class TileTextureGenerator
 
         return GetFallback(ref _dirtFallback, CreateDirtSprite);
     }
+
+    public static Sprite GetDecorSprite(int stageIndex, int variant = 0)
+    {
+        int idx = ClampStage(stageIndex);
+
+        if (_decorCache[idx] == null)
+        {
+            string texPath = STAGE_DECOR_TEX[idx];
+            _decorCache[idx] = BuildSpriteArray(texPath, STAGE_DECOR_IDS[idx]);
+        }
+
+        if (_decorCache[idx] != null)
+            return _decorCache[idx][Mathf.Abs(variant) % _decorCache[idx].Length];
+
+        return null;
+    }
+
+    public static Sprite GetPathEdgeSprite(int stageIndex, int edgeMask)
+    {
+        int idx = ClampStage(stageIndex);
+        edgeMask &= 0x0F;
+
+        if (_edgeCache[idx] == null)
+        {
+            _edgeCache[idx] = new Sprite[16];
+            for (int i = 0; i < _edgeCache[idx].Length; i++)
+                _edgeCache[idx][i] = CreatePathEdgeSprite(STAGE_EDGE_COLORS[idx], i);
+        }
+
+        return _edgeCache[idx][edgeMask];
+    }
+
+    public static Color GetBackdropColor(int stageIndex)
+        => STAGE_BACKDROP_COLORS[ClampStage(stageIndex)];
 
     // ── 하위 호환 API (Stage 1 고정) ─────────────────────────────────
     public static Sprite GetGrassSprite(int variant = 0) => GetWallSprite(1, variant);
@@ -201,7 +252,7 @@ public static class TileTextureGenerator
         return new Rect(x, y, TILE_SZ, TILE_SZ);
     }
 
-    static int ClampStage(int s) => (s >= 1 && s <= 3) ? s : 1;
+    static int ClampStage(int s) => (s >= 1 && s <= MAX_STAGE) ? s : 1;
 
     static Sprite GetFallback(ref Sprite cache, System.Func<Sprite> creator)
     {
@@ -263,6 +314,51 @@ public static class TileTextureGenerator
             if (n > 0.68f && d < 0.08f) c = Color.Lerp(c, new Color(0.60f,0.58f,0.52f), 0.25f);
             tex.SetPixel(x, y, c);
         }
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static Sprite CreatePathEdgeSprite(Color edgeColor, int mask)
+    {
+        const int size = 64;
+        const int edge = 8;
+        const int fringe = 4;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        Color clear = new Color(0f, 0f, 0f, 0f);
+        Color dark = new Color(0f, 0f, 0f, 0.18f);
+        Color light = Color.Lerp(edgeColor, Color.white, 0.14f);
+        light.a = Mathf.Min(0.55f, edgeColor.a);
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            Color c = clear;
+
+            bool top = (mask & 1) != 0 && y >= size - edge;
+            bool right = (mask & 2) != 0 && x >= size - edge;
+            bool bottom = (mask & 4) != 0 && y < edge;
+            bool left = (mask & 8) != 0 && x < edge;
+
+            if (top || right || bottom || left)
+            {
+                c = edgeColor;
+                float checker = ((x / 2 + y / 3) % 3 == 0) ? 0.10f : 0f;
+                c = Color.Lerp(c, light, checker);
+            }
+
+            bool innerTop = (mask & 1) != 0 && y >= size - edge - fringe && y < size - edge;
+            bool innerRight = (mask & 2) != 0 && x >= size - edge - fringe && x < size - edge;
+            bool innerBottom = (mask & 4) != 0 && y >= edge && y < edge + fringe;
+            bool innerLeft = (mask & 8) != 0 && x >= edge && x < edge + fringe;
+
+            if (innerTop || innerRight || innerBottom || innerLeft)
+                c = Color.Lerp(c, dark, c.a > 0f ? 0.20f : 1f);
+
+            tex.SetPixel(x, y, c);
+        }
+
         tex.Apply();
         return SpriteFromTex(tex);
     }
