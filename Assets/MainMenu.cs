@@ -285,7 +285,7 @@ public class MainMenu : MonoBehaviour
 
             int capturedStage = defs[i].stageIndex;
             int buttonIndex = RegBtn(row.transform, $"gem_toggle_{capturedStage}", "",
-                new Vector2(-280, y), new Vector2(86, 86),
+                new Vector2(280, y), new Vector2(86, 86),
                 new Color(0.08f, 0.10f, 0.14f), new Color(0.15f, 0.18f, 0.24f),
                 () => ToggleGem(capturedStage));
 
@@ -294,14 +294,14 @@ public class MainMenu : MonoBehaviour
             var icon = iconGo.AddComponent<Image>();
             icon.raycastTarget = false;
             var iconRt = iconGo.GetComponent<RectTransform>();
-            iconRt.anchoredPosition = new Vector2(-280, y);
+            iconRt.anchoredPosition = new Vector2(280, y);
             iconRt.sizeDelta = new Vector2(62, 62);
 
-            var title = CreateTxtReturn(row.transform, "", Color.white, new Vector2(-130, y + 18), new Vector2(320, 28), 23);
+            var title = CreateTxtReturn(row.transform, "", Color.white, new Vector2(-140, y + 18), new Vector2(300, 28), 23);
             title.alignment = TextAnchor.MiddleLeft;
-            var desc = CreateTxtReturn(row.transform, "", new Color(0.84f, 0.88f, 0.92f), new Vector2(-90, y - 15), new Vector2(420, 40), 17);
+            var desc = CreateTxtReturn(row.transform, "", new Color(0.84f, 0.88f, 0.92f), new Vector2(-110, y - 15), new Vector2(380, 40), 17);
             desc.alignment = TextAnchor.MiddleLeft;
-            var status = CreateTxtReturn(row.transform, "", COL_TITLE, new Vector2(230, y), new Vector2(150, 28), 20);
+            var status = CreateTxtReturn(row.transform, "", COL_TITLE, new Vector2(155, y), new Vector2(120, 28), 20);
 
             gemEntryUis.Add(new GemEntryUi
             {
