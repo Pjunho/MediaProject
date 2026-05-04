@@ -950,10 +950,23 @@ public class StageSelect : MonoBehaviour
     {
         bool prevUnlocked = StageManager.IsStageUnlocked(si - 1);
         string prevStageName = StageManager.GetStageConfig(si - 1).stageName;
+        string prevStageWithParticle = AddObjectParticle(prevStageName);
         string msg = prevUnlocked
-            ? $"{prevStageName}을 별 1개 이상으로 클리어하면 해금됩니다."
-            : $"{prevStageName}을 먼저 클리어해야 합니다.";
+            ? $"{prevStageWithParticle} 별 1개 이상으로 클리어하면 해금됩니다."
+            : $"{prevStageWithParticle} 먼저 클리어해야 합니다.";
         ShowToast(msg, new Color(1f, 0.7f, 0.3f));
+    }
+
+    string AddObjectParticle(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+
+        char last = text[text.Length - 1];
+        bool isHangulSyllable = last >= 0xAC00 && last <= 0xD7A3;
+        if (!isHangulSyllable) return text + "을";
+
+        bool hasFinalConsonant = ((last - 0xAC00) % 28) != 0;
+        return text + (hasFinalConsonant ? "을" : "를");
     }
 
     void BuildToastUI(Transform parent)
