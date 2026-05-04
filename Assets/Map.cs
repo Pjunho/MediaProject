@@ -138,7 +138,7 @@ public class Map : MonoBehaviour
 
                     int variant = StableVariant(stageIdx, x, y);
                     sr.sprite = (type == TileType.Dirt)
-                        ? TileTextureGenerator.GetPathSprite(stageIdx, variant)
+                        ? TileTextureGenerator.GetConnectedPathSprite(stageIdx, GetPathConnectionMask(x, y), variant)
                         : TileTextureGenerator.GetWallSprite(stageIdx, variant);
                 }
 
@@ -166,27 +166,13 @@ public class Map : MonoBehaviour
                 TileType type = tileMap[x, y];
                 if (type == TileType.Dirt)
                 {
-                    int edgeMask = GetPathEdgeMask(x, y);
-                    if (edgeMask != 0)
-                    {
-                        AddSpriteChild(
-                            tile.transform,
-                            $"PathEdge_{edgeMask}",
-                            TileTextureGenerator.GetPathEdgeSprite(stageIdx, edgeMask),
-                            Vector3.zero,
-                            Vector3.one * tileSize,
-                            Quaternion.identity,
-                            1,
-                            Color.white);
-                    }
-
-                    if (Hash01(stageIdx, x, y, 71) < 0.08f)
+                    if (Hash01(stageIdx, x, y, 71) < 0.025f)
                         AddPathDetail(tile.transform, stageIdx, x, y);
                 }
                 else
                 {
                     int pathNeighbors = CountPathNeighbors(x, y);
-                    float decorChance = pathNeighbors > 0 ? 0.16f : 0.07f;
+                    float decorChance = GetDecorChance(stageIdx, pathNeighbors > 0);
                     if (Hash01(stageIdx, x, y, 19) < decorChance)
                         AddGroundDecor(tile.transform, stageIdx, x, y, pathNeighbors > 0);
                 }
@@ -237,6 +223,13 @@ public class Map : MonoBehaviour
             tint);
     }
 
+    float GetDecorChance(int stageIdx, bool nearPath)
+    {
+        if (stageIdx == 1)
+            return nearPath ? 0.055f : 0.025f;
+        return nearPath ? 0.11f : 0.05f;
+    }
+
     void AddSpriteChild(
         Transform parent,
         string name,
@@ -268,6 +261,16 @@ public class Map : MonoBehaviour
         if (GetTileType(x + 1, y) == TileType.Grass) mask |= 2;
         if (GetTileType(x, y - 1) == TileType.Grass) mask |= 4;
         if (GetTileType(x - 1, y) == TileType.Grass) mask |= 8;
+        return mask;
+    }
+
+    int GetPathConnectionMask(int x, int y)
+    {
+        int mask = 0;
+        if (GetTileType(x, y + 1) == TileType.Dirt) mask |= 1;
+        if (GetTileType(x + 1, y) == TileType.Dirt || x == mapWidth - 1) mask |= 2;
+        if (GetTileType(x, y - 1) == TileType.Dirt) mask |= 4;
+        if (GetTileType(x - 1, y) == TileType.Dirt || x == 0) mask |= 8;
         return mask;
     }
 

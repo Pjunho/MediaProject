@@ -113,6 +113,36 @@ public static class TileTextureGenerator
         new Color(0.23f, 0.24f, 0.27f),
     };
 
+    static readonly Color[] STAGE_GROUND_BASE_COLORS =
+    {
+        Color.black,
+        new Color(0.28f, 0.55f, 0.17f),
+        new Color(0.70f, 0.58f, 0.30f),
+        new Color(0.20f, 0.12f, 0.11f),
+        new Color(0.12f, 0.13f, 0.20f),
+        new Color(0.24f, 0.25f, 0.27f),
+    };
+
+    static readonly Color[] STAGE_PATH_MAIN_COLORS =
+    {
+        Color.black,
+        new Color(0.57f, 0.36f, 0.15f),
+        new Color(0.76f, 0.63f, 0.35f),
+        new Color(0.45f, 0.16f, 0.09f),
+        new Color(0.25f, 0.24f, 0.33f),
+        new Color(0.48f, 0.47f, 0.43f),
+    };
+
+    static readonly Color[] STAGE_PATH_EDGE_DARK_COLORS =
+    {
+        Color.black,
+        new Color(0.28f, 0.18f, 0.08f),
+        new Color(0.50f, 0.40f, 0.21f),
+        new Color(0.21f, 0.07f, 0.05f),
+        new Color(0.11f, 0.11f, 0.17f),
+        new Color(0.27f, 0.27f, 0.26f),
+    };
+
     // ── 텍스처 캐시 ─────────────────────────────────────────────────
     static readonly Dictionary<string, Texture2D> _texCache
         = new Dictionary<string, Texture2D>();
@@ -122,6 +152,7 @@ public static class TileTextureGenerator
     static readonly Sprite[][] _pathCache = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _decorCache = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _edgeCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
 
     // 절차적 폴백 캐시
     static Sprite _grassFallback;
@@ -163,6 +194,29 @@ public static class TileTextureGenerator
             return _pathCache[idx][variant % _pathCache[idx].Length];
 
         return GetFallback(ref _dirtFallback, CreateDirtSprite);
+    }
+
+    public static Sprite GetConnectedPathSprite(int stageIndex, int connectionMask, int variant = 0)
+    {
+        int idx = ClampStage(stageIndex);
+        connectionMask &= 0x0F;
+
+        if (_connectedPathCache[idx] == null)
+        {
+            _connectedPathCache[idx] = new Sprite[16];
+            for (int i = 0; i < _connectedPathCache[idx].Length; i++)
+            {
+                _connectedPathCache[idx][i] = CreateConnectedPathSprite(
+                    STAGE_GROUND_BASE_COLORS[idx],
+                    STAGE_PATH_MAIN_COLORS[idx],
+                    STAGE_PATH_EDGE_DARK_COLORS[idx],
+                    i,
+                    idx,
+                    variant);
+            }
+        }
+
+        return _connectedPathCache[idx][connectionMask];
     }
 
     public static Sprite GetDecorSprite(int stageIndex, int variant = 0)
@@ -361,6 +415,95 @@ public static class TileTextureGenerator
 
         tex.Apply();
         return SpriteFromTex(tex);
+    }
+
+    static Sprite CreateConnectedPathSprite(
+        Color ground,
+        Color path,
+        Color pathEdge,
+        int mask,
+        int stageIndex,
+        int variant)
+    {
+        const int size = 64;
+        const int roadHalf = 15;
+        const int edgeHalf = 19;
+        const int center = size / 2;
+
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        bool top = (mask & 1) != 0;
+        bool right = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0;
+        bool left = (mask & 8) != 0;
+        if (mask == 0)
+        {
+            top = right = bottom = left = true;
+        }
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            int dx = x - center;
+            int dy = y - center;
+
+            float groundNoise = HashNoise(stageIndex, variant, x, y, 5);
+            Color c = Color.Lerp(ground * 0.88f, ground * 1.12f, groundNoise);
+
+            bool inCore =
+                Mathf.Abs(dx) <= roadHalf && Mathf.Abs(dy) <= roadHalf;
+
+            bool inConnector =
+                (top && Mathf.Abs(dx) <= roadHalf && dy >= -roadHalf) ||
+                (right && Mathf.Abs(dy) <= roadHalf && dx >= -roadHalf) ||
+                (bottom && Mathf.Abs(dx) <= roadHalf && dy <= roadHalf) ||
+                (left && Mathf.Abs(dy) <= roadHalf && dx <= roadHalf);
+
+            bool inEdgeCore =
+                Mathf.Abs(dx) <= edgeHalf && Mathf.Abs(dy) <= edgeHalf;
+
+            bool inEdgeConnector =
+                (top && Mathf.Abs(dx) <= edgeHalf && dy >= -edgeHalf) ||
+                (right && Mathf.Abs(dy) <= edgeHalf && dx >= -edgeHalf) ||
+                (bottom && Mathf.Abs(dx) <= edgeHalf && dy <= edgeHalf) ||
+                (left && Mathf.Abs(dy) <= edgeHalf && dx <= edgeHalf);
+
+            if (inEdgeCore || inEdgeConnector)
+                c = Color.Lerp(c, pathEdge, 0.88f);
+
+            if (inCore || inConnector)
+            {
+                float pathNoise = HashNoise(stageIndex, variant, x, y, 17);
+                c = Color.Lerp(path * 0.82f, path * 1.18f, pathNoise);
+
+                bool pebble = HashNoise(stageIndex, variant, x / 2, y / 2, 29) > 0.88f;
+                if (pebble)
+                    c = Color.Lerp(c, Color.white, 0.12f);
+            }
+
+            tex.SetPixel(x, y, ClampColor(c));
+        }
+
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static float HashNoise(int stageIndex, int variant, int x, int y, int salt)
+    {
+        uint h = (uint)(stageIndex * 374761393 + variant * 668265263 + x * 2246822519u + y * 3266489917u + salt * 1274126177u);
+        h ^= h >> 13;
+        h *= 1274126177u;
+        return (h & 0x00FFFFFF) / 16777215f;
+    }
+
+    static Color ClampColor(Color c)
+    {
+        c.r = Mathf.Clamp01(c.r);
+        c.g = Mathf.Clamp01(c.g);
+        c.b = Mathf.Clamp01(c.b);
+        c.a = 1f;
+        return c;
     }
 
     static Sprite SpriteFromTex(Texture2D tex)
