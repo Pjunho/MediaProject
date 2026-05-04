@@ -486,13 +486,12 @@ public class StageSelect : MonoBehaviour
             int    cap    = si;
             bool   locked = !StageManager.IsStageUnlocked(si);
             int    saved  = StageManager.GetSavedStars(si);
-            string cond    = locked ? "" : StageManager.GetStarConditionTextForStage(si);
             string desc    = $"{terrains[si]}\n15웨이브  |  난이도 {difficulties[si]}";
 
             float initX = CardBaseX(si) + scrollX;
 
             var crt = BuildCard(cv, new Vector2(initX, CARD_Y), cardSize,
-                si, locked, saved, desc, cond,
+                si, locked, saved, desc,
                 locked ? C_LOCKED   : C_STAGE[si],
                 locked ? C_LOCKED_H : C_STAGE_H[si],
                 locked ? () => OnLockedStage(cap) : () => OpenPrep(cap));
@@ -544,7 +543,7 @@ public class StageSelect : MonoBehaviour
     // ── 스테이지 카드 생성 ────────────────────────────────────────────
     RectTransform BuildCard(Transform parent, Vector2 pos, Vector2 size,
         int si, bool locked, int savedStars,
-        string desc, string condText,
+        string desc,
         Color btnCol, Color btnHov,
         System.Action cb)
     {
@@ -582,11 +581,9 @@ public class StageSelect : MonoBehaviour
             new Vector2(0, hy * 0.12f), new Vector2(cw, hy * 0.38f),
             Mathf.Max(15, (int)(22 * scale)));
 
-        // 클리어 조건
-        MkTxtChild(card.transform, condText,
-            locked ? new Color(0.32f, 0.32f, 0.32f) : new Color(1f, 0.85f, 0.2f, 0.80f),
-            new Vector2(0, -hy * 0.39f), new Vector2(cw, hy * 0.33f),
-            Mathf.Max(13, (int)(17 * scale)));
+        // 별 획득 조건
+        if (!locked)
+            BuildStarRewardRows(card.transform, hy, cw, Mathf.Max(13, (int)(17 * scale)));
 
         // 별
         string starStr = locked ? "" : StarStr(savedStars);
@@ -607,6 +604,25 @@ public class StageSelect : MonoBehaviour
 
     string StarStr(int s) => s switch
     { 1 => "★ ☆ ☆", 2 => "★ ★ ☆", 3 => "★ ★ ★", _ => "☆ ☆ ☆" };
+
+    void BuildStarRewardRows(Transform parent, float hy, float cw, int fontSize)
+    {
+        string[] waves = { "5웨이브", "10웨이브", "15웨이브" };
+        string[] stars = { "★☆☆", "★★☆", "★★★" };
+        float[] rows = { -hy * 0.25f, -hy * 0.38f, -hy * 0.51f };
+        Color waveColor = new Color(1f, 0.92f, 0.58f, 0.82f);
+        Color starColor = new Color(1f, 0.85f, 0.2f, 0.90f);
+
+        for (int i = 0; i < rows.Length; i++)
+        {
+            MkTxtChildAligned(parent, waves[i], waveColor,
+                new Vector2(-cw * 0.25f, rows[i]), new Vector2(cw * 0.33f, hy * 0.11f),
+                fontSize, TextAnchor.MiddleLeft);
+            MkTxtChildAligned(parent, stars[i], starColor,
+                new Vector2(cw * 0.15f, rows[i]), new Vector2(cw * 0.31f, hy * 0.11f),
+                fontSize, TextAnchor.MiddleLeft);
+        }
+    }
 
     // ── 준비 패널 ─────────────────────────────────────────────────────
     // 레이아웃: 패널 860×540 중앙 배치
@@ -1086,6 +1102,18 @@ public class StageSelect : MonoBehaviour
         var tx = go.AddComponent<Text>();
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
+        tx.fontStyle = FontStyle.Bold;
+        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        SR(go.GetComponent<RectTransform>(), pos, size);
+    }
+
+    void MkTxtChildAligned(Transform p, string s, Color c, Vector2 pos, Vector2 size, int fs, TextAnchor alignment)
+    {
+        var go = new GameObject("Txt");
+        go.transform.SetParent(p, false);
+        var tx = go.AddComponent<Text>();
+        tx.text = s; tx.color = c; tx.fontSize = fs;
+        tx.alignment = alignment;
         tx.fontStyle = FontStyle.Bold;
         tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         SR(go.GetComponent<RectTransform>(), pos, size);
