@@ -320,8 +320,7 @@ public class StageManager : MonoBehaviour
     public static string GetStarConditionTextForStage(int stageIndex)
     {
         int[] t = GetStarThresholds(stageIndex);
-        var w = GetWaves(stageIndex);
-        return $"★{t[0]}웨이브  ★★{t[1]}웨이브  ★★★{t[2]}웨이브  [{w.Length}웨이브]";
+        return $"{t[0]}웨이브  ★☆☆\n{t[1]}웨이브  ★★☆\n{t[2]}웨이브  ★★★";
     }
 
     public static int GetSavedStars(int stageIndex)

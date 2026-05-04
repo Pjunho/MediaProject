@@ -579,21 +579,21 @@ public class StageSelect : MonoBehaviour
         // 설명
         MkTxtChild(card.transform, desc,
             locked ? new Color(0.38f, 0.38f, 0.38f) : new Color(0.80f, 0.88f, 0.80f),
-            new Vector2(0, -hy * 0.02f), new Vector2(cw, hy * 0.42f),
-            Mathf.Max(16, (int)(24 * scale)));
+            new Vector2(0, hy * 0.12f), new Vector2(cw, hy * 0.38f),
+            Mathf.Max(15, (int)(22 * scale)));
 
         // 클리어 조건
         MkTxtChild(card.transform, condText,
             locked ? new Color(0.32f, 0.32f, 0.32f) : new Color(1f, 0.85f, 0.2f, 0.80f),
-            new Vector2(0, -hy * 0.48f), new Vector2(cw, hy * 0.24f),
-            Mathf.Max(12, (int)(16 * scale)));
+            new Vector2(0, -hy * 0.39f), new Vector2(cw, hy * 0.33f),
+            Mathf.Max(13, (int)(17 * scale)));
 
         // 별
         string starStr = locked ? "" : StarStr(savedStars);
         MkTxtChild(card.transform, starStr,
             locked ? new Color(0.35f, 0.35f, 0.35f) : new Color(1f, 0.85f, 0.15f),
-            new Vector2(0, -hy * 0.69f), new Vector2(cw, hy * 0.28f),
-            Mathf.Max(16, (int)(28 * scale)));
+            new Vector2(0, -hy * 0.66f), new Vector2(cw, hy * 0.18f),
+            Mathf.Max(15, (int)(24 * scale)));
 
         // 시작 버튼 (inScrollArea=true)
         float btnH = Mathf.Max(32f, size.y * 0.12f);
