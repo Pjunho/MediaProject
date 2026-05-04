@@ -618,10 +618,10 @@ public class StageSelect : MonoBehaviour
         for (int i = 0; i < rows.Length; i++)
         {
             MkTxtChildAligned(parent, waves[i], waveColor,
-                new Vector2(-598f, rows[i]), new Vector2(80f, 30f),
+                new Vector2(-586f, rows[i]), new Vector2(80f, 30f),
                 18, TextAnchor.MiddleLeft);
             MkTxtChildAligned(parent, stars[i], starColor,
-                new Vector2(-524f, rows[i]), new Vector2(76f, 30f),
+                new Vector2(-512f, rows[i]), new Vector2(60f, 30f),
                 20, TextAnchor.MiddleLeft);
         }
     }
