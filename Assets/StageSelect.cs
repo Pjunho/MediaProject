@@ -580,7 +580,7 @@ public class StageSelect : MonoBehaviour
         MkTxtChild(card.transform, desc,
             locked ? new Color(0.38f, 0.38f, 0.38f) : new Color(0.80f, 0.88f, 0.80f),
             new Vector2(0, hy * 0.08f), new Vector2(cw, hy * 0.50f),
-            Mathf.Max(18, (int)(28 * scale)));
+            Mathf.Max(16, (int)(23 * scale)));
 
         // 별
         string starStr = locked ? "" : StarStr(savedStars);
