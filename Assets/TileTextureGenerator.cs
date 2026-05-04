@@ -425,6 +425,9 @@ public static class TileTextureGenerator
         int stageIndex,
         int variant)
     {
+        if (stageIndex == 1)
+            return CreateOrganicGrassPathSprite(ground, path, pathEdge, mask);
+
         const int size = 64;
         const int roadHalf = 15;
         const int edgeHalf = 19;
@@ -487,6 +490,85 @@ public static class TileTextureGenerator
 
         tex.Apply();
         return SpriteFromTex(tex);
+    }
+
+    static Sprite CreateOrganicGrassPathSprite(Color ground, Color path, Color pathEdge, int mask)
+    {
+        const int size = 64;
+        const float center = 31.5f;
+        const float roadHalf = 13.5f;
+        const float edgeHalf = 18f;
+
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        bool top = (mask & 1) != 0;
+        bool right = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0;
+        bool left = (mask & 8) != 0;
+        if (mask == 0)
+            top = right = bottom = left = true;
+
+        Vector2 cpt = new Vector2(center, center);
+        Vector2 topPt = new Vector2(center, size + edgeHalf);
+        Vector2 rightPt = new Vector2(size + edgeHalf, center);
+        Vector2 bottomPt = new Vector2(center, -edgeHalf);
+        Vector2 leftPt = new Vector2(-edgeHalf, center);
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            Vector2 p = new Vector2(x + 0.5f, y + 0.5f);
+            float groundNoise = HashNoise(1, mask, x, y, 5);
+            Color color = Color.Lerp(ground * 0.90f, ground * 1.10f, groundNoise);
+
+            float dist = Vector2.Distance(p, cpt);
+            if (top) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, topPt));
+            if (right) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, rightPt));
+            if (bottom) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, bottomPt));
+            if (left) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, leftPt));
+
+            float rough = (HashNoise(1, mask, x / 2, y / 2, 23) - 0.5f) * 4.8f;
+            rough += Mathf.Sin((x + mask * 7) * 0.33f) * 0.9f;
+            rough += Mathf.Sin((y + mask * 11) * 0.27f) * 0.7f;
+
+            float organicRoad = roadHalf + rough;
+            float organicEdge = edgeHalf + rough * 0.75f;
+
+            if (dist < organicEdge)
+            {
+                float edgeT = Mathf.InverseLerp(organicEdge, organicRoad, dist);
+                color = Color.Lerp(color, pathEdge, Mathf.Lerp(0.55f, 0.95f, edgeT));
+            }
+
+            if (dist < organicRoad)
+            {
+                float pathNoise = HashNoise(1, mask, x, y, 37);
+                Color pathColor = Color.Lerp(path * 0.82f, path * 1.14f, pathNoise);
+
+                float centerWear = Mathf.Clamp01(1f - Mathf.Abs(dist) / (organicRoad + 0.01f));
+                pathColor = Color.Lerp(pathColor, new Color(0.70f, 0.50f, 0.25f), centerWear * 0.16f);
+
+                bool pebble = HashNoise(1, mask, x / 2, y / 2, 47) > 0.91f;
+                if (pebble)
+                    pathColor = Color.Lerp(pathColor, Color.white, 0.11f);
+
+                color = pathColor;
+            }
+
+            tex.SetPixel(x, y, ClampColor(color));
+        }
+
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static float DistanceToSegment(Vector2 p, Vector2 a, Vector2 b)
+    {
+        Vector2 ab = b - a;
+        float t = Vector2.Dot(p - a, ab) / Mathf.Max(0.0001f, Vector2.Dot(ab, ab));
+        t = Mathf.Clamp01(t);
+        return Vector2.Distance(p, a + ab * t);
     }
 
     static float HashNoise(int stageIndex, int variant, int x, int y, int salt)

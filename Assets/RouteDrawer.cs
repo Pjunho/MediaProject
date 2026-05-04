@@ -570,7 +570,7 @@ public class RouteDrawer : MonoBehaviour
     void SetupDirtHighlights()
     {
         dirtHighlightParent = new GameObject("DirtHighlights");
-        var spr = MakeSquareSprite();
+        var spr = MakeSoftHighlightSprite(32);
 
         for (int x = 0; x < map.mapWidth; x++)
         for (int y = 0; y < map.mapHeight; y++)
@@ -586,7 +586,7 @@ public class RouteDrawer : MonoBehaviour
             Vector3 pos = map.GetWorldPosition(x, y);
             pos.z = -0.5f;
             go.transform.position   = pos;
-            go.transform.localScale = Vector3.one * map.tileSize * 0.92f;
+            go.transform.localScale = Vector3.one * map.tileSize * 1.05f;
         }
 
         StartCoroutine(PulseDirtHighlights());
@@ -597,7 +597,7 @@ public class RouteDrawer : MonoBehaviour
         while (dirtHighlightParent != null && !gameStarted)
         {
             float t     = Mathf.PingPong(Time.unscaledTime * 0.9f, 1f);
-            float alpha = Mathf.Lerp(0.10f, 0.28f, t);
+            float alpha = Mathf.Lerp(0.06f, 0.16f, t);
             Color c     = new Color(COL_HIGHLIGHT.r, COL_HIGHLIGHT.g, COL_HIGHLIGHT.b, alpha);
 
             foreach (Transform child in dirtHighlightParent.transform)
@@ -785,6 +785,28 @@ public class RouteDrawer : MonoBehaviour
             t.SetPixel(x, y, Color.white);
         t.Apply();
         return Sprite.Create(t, new Rect(0,0,4,4), Vector2.one*0.5f, 4);
+    }
+
+    Sprite MakeSoftHighlightSprite(int res)
+    {
+        var t = new Texture2D(res, res, TextureFormat.RGBA32, false);
+        t.filterMode = FilterMode.Bilinear;
+        float c = (res - 1) * 0.5f;
+        float inner = res * 0.25f;
+        float outer = res * 0.47f;
+
+        for (int x = 0; x < res; x++)
+        for (int y = 0; y < res; y++)
+        {
+            float dx = x - c;
+            float dy = y - c;
+            float d = Mathf.Sqrt(dx * dx + dy * dy);
+            float a = d <= inner ? 1f : Mathf.Clamp01((outer - d) / (outer - inner));
+            t.SetPixel(x, y, new Color(1f, 1f, 1f, a));
+        }
+
+        t.Apply();
+        return Sprite.Create(t, new Rect(0,0,res,res), Vector2.one*0.5f, res);
     }
 
     Sprite MakeCircleSprite(int res)
