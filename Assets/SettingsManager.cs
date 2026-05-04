@@ -14,7 +14,7 @@ public static class SettingsManager
         get => PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
         set
         {
-            float v = Mathf.Round(Mathf.Clamp01(value) * 10f) / 10f;
+            float v = Mathf.Round(Mathf.Clamp01(value) * 100f) / 100f;
             PlayerPrefs.SetFloat(KEY_VOLUME, v);
             PlayerPrefs.Save();
             AudioListener.volume = v;

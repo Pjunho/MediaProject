@@ -50,6 +50,10 @@ public class MainMenu : MonoBehaviour
     GameObject settingsPanel;
     Text settingsVolumeLbl;
     Text settingsFsStatLbl;
+    RectTransform volumeSliderRt;
+    RectTransform volumeSliderFillRt;
+    RectTransform volumeSliderHandleRt;
+    bool volumeSliderDragging;
     readonly System.Collections.Generic.Dictionary<int, Sprite> gemSpriteCache = new();
     readonly System.Collections.Generic.Dictionary<int, Sprite> lockedGemSpriteCache = new();
 
@@ -78,6 +82,9 @@ public class MainMenu : MonoBehaviour
             b.fill.color = b.normal;
         }
 
+        if (HandleVolumeSlider(mp, mouse))
+            return;
+
         for (int i = btns.Count - 1; i >= 0; i--)
         {
             var b = btns[i];
@@ -100,6 +107,31 @@ public class MainMenu : MonoBehaviour
 
         if (gemPanel != null && gemPanel.activeInHierarchy)
             return rt.transform.IsChildOf(gemPanel.transform);
+
+        return true;
+    }
+
+    bool HandleVolumeSlider(Vector2 mousePos, Mouse mouse)
+    {
+        if (settingsPanel == null || !settingsPanel.activeInHierarchy || volumeSliderRt == null)
+            return false;
+
+        bool over = RectTransformUtility.RectangleContainsScreenPoint(volumeSliderRt, mousePos, null);
+        if (over && mouse.leftButton.wasPressedThisFrame)
+            volumeSliderDragging = true;
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+            volumeSliderDragging = false;
+
+        if (!volumeSliderDragging)
+            return over;
+
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(volumeSliderRt, mousePos, null, out var localPos))
+        {
+            float width = volumeSliderRt.rect.width;
+            float pct = Mathf.InverseLerp(-width * 0.5f, width * 0.5f, localPos.x);
+            SetVolumePercent(Mathf.RoundToInt(Mathf.Clamp01(pct) * 100f));
+        }
 
         return true;
     }
@@ -438,6 +470,7 @@ public class MainMenu : MonoBehaviour
     {
         if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
         if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
+        RefreshVolumeSlider();
         settingsPanel.SetActive(true);
     }
 
@@ -458,8 +491,7 @@ public class MainMenu : MonoBehaviour
         // 볼륨 행
         CreateTxt(settingsPanel.transform, "마스터 볼륨", new Color(0.85f, 0.88f, 0.94f), new Vector2(-95, 62), new Vector2(190, 36), 22);
         settingsVolumeLbl = CreateTxtReturn(settingsPanel.transform, VolumePct(), COL_TITLE, new Vector2(130, 62), new Vector2(120, 36), 22);
-        RegBtn(settingsPanel.transform, "vol_dn", "−", new Vector2(-42, 15), new Vector2(52, 44), COL_BTN_SET, COL_BTN_SET_H, () => AdjustVolume(-0.1f));
-        RegBtn(settingsPanel.transform, "vol_up", "+", new Vector2(42,  15), new Vector2(52, 44), COL_BTN_SET, COL_BTN_SET_H, () => AdjustVolume(+0.1f));
+        CreateVolumeSlider(settingsPanel.transform, new Vector2(0, 15), new Vector2(320, 22));
 
         // 전체화면 행
         CreateTxt(settingsPanel.transform, "전체화면", new Color(0.85f, 0.88f, 0.94f), new Vector2(-95, -52), new Vector2(190, 36), 22);
@@ -475,10 +507,58 @@ public class MainMenu : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
-    void AdjustVolume(float delta)
+    void CreateVolumeSlider(Transform parent, Vector2 pos, Vector2 size)
     {
-        SettingsManager.Volume = SettingsManager.Volume + delta;
+        var trackGo = new GameObject("VolumeSlider");
+        trackGo.transform.SetParent(parent, false);
+        var trackImg = trackGo.AddComponent<Image>();
+        trackImg.color = new Color(0.02f, 0.03f, 0.05f, 0.95f);
+        volumeSliderRt = trackGo.GetComponent<RectTransform>();
+        volumeSliderRt.anchoredPosition = pos;
+        volumeSliderRt.sizeDelta = size;
+
+        var fillGo = new GameObject("Fill");
+        fillGo.transform.SetParent(trackGo.transform, false);
+        var fillImg = fillGo.AddComponent<Image>();
+        fillImg.color = COL_TITLE;
+        volumeSliderFillRt = fillGo.GetComponent<RectTransform>();
+        volumeSliderFillRt.anchorMin = new Vector2(0f, 0f);
+        volumeSliderFillRt.anchorMax = new Vector2(0f, 1f);
+        volumeSliderFillRt.pivot = new Vector2(0f, 0.5f);
+        volumeSliderFillRt.anchoredPosition = Vector2.zero;
+
+        var handleGo = new GameObject("Handle");
+        handleGo.transform.SetParent(trackGo.transform, false);
+        var handleImg = handleGo.AddComponent<Image>();
+        handleImg.color = Color.white;
+        handleImg.raycastTarget = false;
+        volumeSliderHandleRt = handleGo.GetComponent<RectTransform>();
+        volumeSliderHandleRt.anchorMin = new Vector2(0f, 0.5f);
+        volumeSliderHandleRt.anchorMax = new Vector2(0f, 0.5f);
+        volumeSliderHandleRt.pivot = new Vector2(0.5f, 0.5f);
+        volumeSliderHandleRt.sizeDelta = new Vector2(14, 34);
+
+        CreateTxt(parent, "0", new Color(0.60f, 0.64f, 0.72f), pos + new Vector2(-178, -26), new Vector2(40, 20), 13);
+        CreateTxt(parent, "100", new Color(0.60f, 0.64f, 0.72f), pos + new Vector2(178, -26), new Vector2(48, 20), 13);
+        RefreshVolumeSlider();
+    }
+
+    void SetVolumePercent(int percent)
+    {
+        SettingsManager.Volume = Mathf.Clamp(percent, 0, 100) / 100f;
         if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
+        RefreshVolumeSlider();
+    }
+
+    void RefreshVolumeSlider()
+    {
+        if (volumeSliderRt == null || volumeSliderFillRt == null || volumeSliderHandleRt == null)
+            return;
+
+        float pct = Mathf.Clamp01(SettingsManager.Volume);
+        float width = volumeSliderRt.rect.width;
+        volumeSliderFillRt.sizeDelta = new Vector2(width * pct, 0f);
+        volumeSliderHandleRt.anchoredPosition = new Vector2(width * pct, 0f);
     }
 
     void ToggleFs()
