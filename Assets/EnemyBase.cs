@@ -17,6 +17,7 @@ public class EnemyBase : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
 
     private LineRenderer rangeIndicator;
+    private SpriteRenderer rangeFillIndicator;
     private LineRenderer attackLine;
 
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────
@@ -119,12 +120,13 @@ public class EnemyBase : MonoBehaviour
         HideRange();
     }
 
-    /// <summary>비활성 배치 (경로 그리기 단계 - 공격 안 함, 범위 표시)</summary>
+    /// <summary>비활성 배치 (경로 그리기 단계 - 공격 안 함)</summary>
     public virtual void PlaceInactive(Vector3 worldPos)
     {
         transform.position = worldPos;
         breathBasePosition = worldPos;
         isPlaced = false;
+        HideRange();
     }
 
     /// <summary>게임 시작 시 활성화</summary>
@@ -138,13 +140,31 @@ public class EnemyBase : MonoBehaviour
     public void ShowRange()
     {
         if (rangeIndicator == null) rangeIndicator = CreateRangeIndicator();
+        if (rangeFillIndicator == null) rangeFillIndicator = CreateRangeFillIndicator();
+        rangeFillIndicator.gameObject.SetActive(true);
         rangeIndicator.gameObject.SetActive(true);
     }
 
     public void HideRange()
     {
+        if (rangeFillIndicator != null)
+            rangeFillIndicator.gameObject.SetActive(false);
         if (rangeIndicator != null)
             rangeIndicator.gameObject.SetActive(false);
+    }
+
+    SpriteRenderer CreateRangeFillIndicator()
+    {
+        var go = new GameObject("RangeFillIndicator");
+        go.transform.SetParent(transform, false);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localScale = Vector3.one * attackRange * 2f;
+
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = MakeCircleSprite(32);
+        sr.color = new Color(1f, 0.86f, 0f, 0.22f);
+        sr.sortingOrder = 9;
+        return sr;
     }
 
     LineRenderer CreateRangeIndicator()
@@ -154,7 +174,7 @@ public class EnemyBase : MonoBehaviour
         var lr = go.AddComponent<LineRenderer>();
         lr.useWorldSpace   = false;
         lr.loop            = true;
-        lr.widthMultiplier = 0.04f;
+        lr.widthMultiplier = 0.07f;
         lr.sortingOrder    = 20;
         int seg = 40;
         lr.positionCount = seg;
@@ -163,14 +183,14 @@ public class EnemyBase : MonoBehaviour
             float a = (float)i / seg * Mathf.PI * 2f;
             lr.SetPosition(i, new Vector3(Mathf.Cos(a) * attackRange, Mathf.Sin(a) * attackRange, 0f));
         }
-        Color rc = RangeColor();
+        Color rc = new Color(1f, 0.86f, 0f, 0.95f);
         lr.startColor = rc; lr.endColor = rc;
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.material.color = rc;
         return lr;
     }
 
-    protected virtual Color RangeColor() => new Color(1f, 0.3f, 0.3f, 0.7f);
+    protected virtual Color RangeColor() => new Color(1f, 0.86f, 0f, 0.95f);
 
     public float GetClickRadius()
     {

@@ -166,7 +166,6 @@ public class EnemyAutoSpawner : MonoBehaviour
 
             var enemy = go.AddComponent<T>();
             enemy.PlaceInactive(pos);
-            enemy.ShowRange();
 
             spawnedEnemies.Add(enemy);
             spawned++;

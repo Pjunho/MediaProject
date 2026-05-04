@@ -99,10 +99,7 @@ public class EnemyInspector : MonoBehaviour
     void RestoreDefaultRangeVisibility(EnemyBase enemy)
     {
         if (enemy == null) return;
-
-        bool gameStarted = GameManager.Instance != null && GameManager.Instance.IsGameStarted;
-        if (gameStarted || enemy.isPlaced) enemy.HideRange();
-        else enemy.ShowRange();
+        enemy.HideRange();
     }
 
     EnemyBase FindEnemyAtScreenPosition(Vector2 screenPos)
