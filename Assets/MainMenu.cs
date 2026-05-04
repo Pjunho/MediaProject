@@ -49,6 +49,8 @@ public class MainMenu : MonoBehaviour
     GameObject settingsPanel;
     Text settingsVolumeLbl;
     Text settingsFsStatLbl;
+    readonly System.Collections.Generic.Dictionary<int, Sprite> gemSpriteCache = new();
+    readonly System.Collections.Generic.Dictionary<int, Sprite> lockedGemSpriteCache = new();
 
     void Start()
     {
@@ -323,8 +325,8 @@ public class MainMenu : MonoBehaviour
             bool unlocked = GemInventory.IsUnlocked(def.stageIndex);
             bool active = GemInventory.IsActive(def.stageIndex);
 
-            ui.icon.sprite = MakeCircleSprite(32);
-            ui.icon.color = unlocked ? def.color : new Color(0.35f, 0.38f, 0.45f, 0.95f);
+            ui.icon.sprite = MakeGemSprite(def.stageIndex, unlocked);
+            ui.icon.color = Color.white;
             ui.title.text = $"STAGE {def.stageIndex}  {def.gemName}";
             ui.desc.text = unlocked ? def.effectSummary : "아직 해금되지 않았습니다";
             ui.status.text = !unlocked ? "잠김" : (active ? "활성" : "비활성");
@@ -462,5 +464,181 @@ public class MainMenu : MonoBehaviour
         }
         t.Apply();
         return Sprite.Create(t, new Rect(0, 0, res, res), Vector2.one * 0.5f, res);
+    }
+
+    Sprite MakeGemSprite(int stageIndex, bool unlocked)
+    {
+        var cache = unlocked ? gemSpriteCache : lockedGemSpriteCache;
+        int key = stageIndex;
+        if (cache.TryGetValue(key, out var cached) && cached != null)
+            return cached;
+
+        const int res = 96;
+        var t = new Texture2D(res, res, TextureFormat.RGBA32, false);
+        t.filterMode = FilterMode.Point;
+
+        Color baseColor;
+        Color darkColor;
+        Color lightColor;
+        Color accentColor;
+
+        switch (stageIndex)
+        {
+            case 2:
+                baseColor = new Color(0.95f, 0.65f, 0.16f);
+                darkColor = new Color(0.42f, 0.23f, 0.06f);
+                lightColor = new Color(1.00f, 0.92f, 0.40f);
+                accentColor = new Color(1.00f, 0.77f, 0.25f);
+                break;
+            case 3:
+                baseColor = new Color(0.90f, 0.12f, 0.10f);
+                darkColor = new Color(0.25f, 0.03f, 0.04f);
+                lightColor = new Color(1.00f, 0.50f, 0.20f);
+                accentColor = new Color(1.00f, 0.88f, 0.22f);
+                break;
+            default:
+                baseColor = new Color(0.12f, 0.78f, 0.33f);
+                darkColor = new Color(0.03f, 0.25f, 0.13f);
+                lightColor = new Color(0.56f, 1.00f, 0.62f);
+                accentColor = new Color(0.18f, 0.94f, 0.54f);
+                break;
+        }
+
+        if (!unlocked)
+        {
+            baseColor = Color.Lerp(baseColor, new Color(0.38f, 0.40f, 0.45f), 0.82f);
+            darkColor = new Color(0.14f, 0.15f, 0.18f);
+            lightColor = new Color(0.62f, 0.65f, 0.72f);
+            accentColor = new Color(0.50f, 0.52f, 0.58f);
+        }
+
+        var gem = new[]
+        {
+            new Vector2(48, 8),
+            new Vector2(78, 28),
+            new Vector2(68, 70),
+            new Vector2(48, 88),
+            new Vector2(28, 70),
+            new Vector2(18, 28)
+        };
+
+        var topFacet = new[] { gem[0], gem[1], new Vector2(57, 36), new Vector2(39, 36), gem[5] };
+        var leftFacet = new[] { gem[5], new Vector2(39, 36), new Vector2(48, 88), gem[4] };
+        var rightFacet = new[] { gem[1], gem[2], new Vector2(48, 88), new Vector2(57, 36) };
+        var coreFacet = new[] { new Vector2(39, 36), new Vector2(57, 36), new Vector2(48, 88) };
+
+        for (int x = 0; x < res; x++)
+        for (int y = 0; y < res; y++)
+        {
+            float dx = x - 48f;
+            float dy = y - 48f;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            float glow = Mathf.Clamp01(1f - dist / 48f);
+            Color px = new Color(baseColor.r, baseColor.g, baseColor.b, 0.13f * glow * glow);
+
+            if (PointInPolygon(new Vector2(x, y), gem))
+            {
+                float shade = Mathf.InverseLerp(90f, 6f, y);
+                Color c = Color.Lerp(darkColor, baseColor, shade);
+
+                if (PointInPolygon(new Vector2(x, y), topFacet))
+                    c = Color.Lerp(c, lightColor, 0.46f);
+                else if (PointInPolygon(new Vector2(x, y), leftFacet))
+                    c = Color.Lerp(c, darkColor, 0.24f);
+                else if (PointInPolygon(new Vector2(x, y), rightFacet))
+                    c = Color.Lerp(c, accentColor, 0.20f);
+                else if (PointInPolygon(new Vector2(x, y), coreFacet))
+                    c = Color.Lerp(c, lightColor, 0.16f);
+
+                if (stageIndex == 2)
+                    c = Color.Lerp(c, new Color(1f, 0.48f, 0.06f), Mathf.Clamp01((x - 50f) / 50f) * 0.18f);
+                else if (stageIndex == 3)
+                    c = Color.Lerp(c, new Color(0.18f, 0.02f, 0.02f), Mathf.Clamp01((y - 44f) / 44f) * 0.20f);
+
+                c.a = 1f;
+                px = c;
+            }
+
+            t.SetPixel(x, y, px);
+        }
+
+        DrawGemLine(t, gem[0], gem[1], lightColor, 0.95f);
+        DrawGemLine(t, gem[1], gem[2], darkColor, 0.90f);
+        DrawGemLine(t, gem[2], gem[3], darkColor, 0.90f);
+        DrawGemLine(t, gem[3], gem[4], darkColor, 0.90f);
+        DrawGemLine(t, gem[4], gem[5], darkColor, 0.90f);
+        DrawGemLine(t, gem[5], gem[0], lightColor, 0.80f);
+        DrawGemLine(t, gem[5], new Vector2(39, 36), lightColor, 0.52f);
+        DrawGemLine(t, gem[1], new Vector2(57, 36), lightColor, 0.52f);
+        DrawGemLine(t, new Vector2(39, 36), gem[3], lightColor, 0.42f);
+        DrawGemLine(t, new Vector2(57, 36), gem[3], darkColor, 0.36f);
+
+        DrawGemSpark(t, 32, 25, 4, Color.white, unlocked ? 0.95f : 0.45f);
+        DrawGemSpark(t, 61, 31, 3, Color.white, unlocked ? 0.75f : 0.35f);
+
+        if (stageIndex == 3 && unlocked)
+        {
+            DrawGemLine(t, new Vector2(48, 38), new Vector2(42, 56), accentColor, 0.92f);
+            DrawGemLine(t, new Vector2(42, 56), new Vector2(50, 67), accentColor, 0.92f);
+            DrawGemLine(t, new Vector2(55, 44), new Vector2(62, 58), accentColor, 0.75f);
+        }
+        else if (stageIndex == 1 && unlocked)
+        {
+            DrawGemLine(t, new Vector2(35, 61), new Vector2(43, 51), accentColor, 0.65f);
+            DrawGemLine(t, new Vector2(43, 51), new Vector2(52, 61), accentColor, 0.65f);
+        }
+        else if (stageIndex == 2 && unlocked)
+        {
+            DrawGemLine(t, new Vector2(30, 47), new Vector2(66, 43), accentColor, 0.48f);
+            DrawGemLine(t, new Vector2(32, 55), new Vector2(63, 52), accentColor, 0.34f);
+        }
+
+        t.Apply();
+        var sprite = Sprite.Create(t, new Rect(0, 0, res, res), Vector2.one * 0.5f, res);
+        cache[key] = sprite;
+        return sprite;
+    }
+
+    bool PointInPolygon(Vector2 p, Vector2[] poly)
+    {
+        bool inside = false;
+        for (int i = 0, j = poly.Length - 1; i < poly.Length; j = i++)
+        {
+            if (((poly[i].y > p.y) != (poly[j].y > p.y)) &&
+                (p.x < (poly[j].x - poly[i].x) * (p.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x))
+                inside = !inside;
+        }
+        return inside;
+    }
+
+    void DrawGemLine(Texture2D t, Vector2 a, Vector2 b, Color color, float alpha)
+    {
+        int steps = Mathf.CeilToInt(Vector2.Distance(a, b));
+        for (int i = 0; i <= steps; i++)
+        {
+            Vector2 p = Vector2.Lerp(a, b, steps == 0 ? 0f : i / (float)steps);
+            BlendPixel(t, Mathf.RoundToInt(p.x), Mathf.RoundToInt(p.y), color, alpha);
+            BlendPixel(t, Mathf.RoundToInt(p.x) + 1, Mathf.RoundToInt(p.y), color, alpha * 0.45f);
+        }
+    }
+
+    void DrawGemSpark(Texture2D t, int cx, int cy, int r, Color color, float alpha)
+    {
+        for (int i = -r; i <= r; i++)
+        {
+            float a = alpha * (1f - Mathf.Abs(i) / (float)(r + 1));
+            BlendPixel(t, cx + i, cy, color, a);
+            BlendPixel(t, cx, cy + i, color, a);
+        }
+    }
+
+    void BlendPixel(Texture2D t, int x, int y, Color color, float alpha)
+    {
+        if (x < 0 || y < 0 || x >= t.width || y >= t.height)
+            return;
+
+        Color current = t.GetPixel(x, y);
+        color.a = Mathf.Clamp01(alpha);
+        t.SetPixel(x, y, Color.Lerp(current, color, color.a));
     }
 }
