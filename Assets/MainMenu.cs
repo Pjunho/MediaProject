@@ -116,7 +116,10 @@ public class MainMenu : MonoBehaviour
         if (settingsPanel == null || !settingsPanel.activeInHierarchy || volumeSliderRt == null)
             return false;
 
-        bool over = RectTransformUtility.RectangleContainsScreenPoint(volumeSliderRt, mousePos, null);
+        bool overTrack = RectTransformUtility.RectangleContainsScreenPoint(volumeSliderRt, mousePos, null);
+        bool overHandle = volumeSliderHandleRt != null &&
+            RectTransformUtility.RectangleContainsScreenPoint(volumeSliderHandleRt, mousePos, null);
+        bool over = overTrack || overHandle;
         if (over && mouse.leftButton.wasPressedThisFrame)
             volumeSliderDragging = true;
 
