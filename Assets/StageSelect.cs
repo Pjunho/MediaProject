@@ -503,6 +503,7 @@ public class StageSelect : MonoBehaviour
         // 화면 좌우 끝(-640~-455, +455~+640)을 배경색으로 덮어 카드가 보이지 않게
         MkImg(cv, C_BG, new Vector2(-554f, CARD_Y + 10f), new Vector2(180f, 400f));
         MkImg(cv, C_BG, new Vector2( 554f, CARD_Y + 10f), new Vector2(180f, 400f));
+        BuildStarRewardGuide(cv);
 
         // ── 화살표 ───────────────────────────────────────────────────
         arrowLeft  = MakeArrow(cv, "<", new Vector2(-462f, CARD_Y));
@@ -568,8 +569,8 @@ public class StageSelect : MonoBehaviour
         float numY = hy * 0.62f;
         MkTxtChild(card.transform, StageManager.GetStageConfig(si).stageName,
             locked ? new Color(0.40f, 0.40f, 0.40f) : C_STAGE[si],
-            new Vector2(0, numY), new Vector2(cw, hy * 0.40f),
-            Mathf.Max(28, (int)(42 * scale)));
+            new Vector2(0, numY), new Vector2(cw, hy * 0.46f),
+            Mathf.Max(30, (int)(46 * scale)));
 
         // 구분선
         MkImgChild(card.transform, new Color(1f, 1f, 1f, locked ? 0.07f : 0.20f),
@@ -578,19 +579,15 @@ public class StageSelect : MonoBehaviour
         // 설명
         MkTxtChild(card.transform, desc,
             locked ? new Color(0.38f, 0.38f, 0.38f) : new Color(0.80f, 0.88f, 0.80f),
-            new Vector2(0, hy * 0.12f), new Vector2(cw, hy * 0.38f),
-            Mathf.Max(15, (int)(22 * scale)));
-
-        // 별 획득 조건
-        if (!locked)
-            BuildStarRewardRows(card.transform, hy, cw, Mathf.Max(13, (int)(17 * scale)));
+            new Vector2(0, hy * 0.08f), new Vector2(cw, hy * 0.50f),
+            Mathf.Max(18, (int)(28 * scale)));
 
         // 별
         string starStr = locked ? "" : StarStr(savedStars);
         MkTxtChild(card.transform, starStr,
             locked ? new Color(0.35f, 0.35f, 0.35f) : new Color(1f, 0.85f, 0.15f),
-            new Vector2(0, -hy * 0.66f), new Vector2(cw, hy * 0.18f),
-            Mathf.Max(15, (int)(24 * scale)));
+            new Vector2(0, -hy * 0.42f), new Vector2(cw, hy * 0.28f),
+            Mathf.Max(22, (int)(34 * scale)));
 
         // 시작 버튼 (inScrollArea=true)
         float btnH = Mathf.Max(32f, size.y * 0.12f);
@@ -605,22 +602,27 @@ public class StageSelect : MonoBehaviour
     string StarStr(int s) => s switch
     { 1 => "★ ☆ ☆", 2 => "★ ★ ☆", 3 => "★ ★ ★", _ => "☆ ☆ ☆" };
 
-    void BuildStarRewardRows(Transform parent, float hy, float cw, int fontSize)
+    void BuildStarRewardGuide(Transform parent)
     {
         string[] waves = { "5웨이브", "10웨이브", "15웨이브" };
         string[] stars = { "★☆☆", "★★☆", "★★★" };
-        float[] rows = { -hy * 0.25f, -hy * 0.38f, -hy * 0.51f };
+        float[] rows = { 38f, 4f, -30f };
         Color waveColor = new Color(1f, 0.92f, 0.58f, 0.82f);
         Color starColor = new Color(1f, 0.85f, 0.2f, 0.90f);
+
+        MkTxt(parent, "별 획득", new Color(1f, 0.85f, 0.2f, 0.95f),
+            new Vector2(-555f, 132f), new Vector2(150f, 34f), 22);
+        MkImg(parent, new Color(1f, 0.85f, 0.2f, 0.22f),
+            new Vector2(-555f, 110f), new Vector2(136f, 2f));
 
         for (int i = 0; i < rows.Length; i++)
         {
             MkTxtChildAligned(parent, waves[i], waveColor,
-                new Vector2(-cw * 0.25f, rows[i]), new Vector2(cw * 0.33f, hy * 0.11f),
-                fontSize, TextAnchor.MiddleLeft);
+                new Vector2(-598f, rows[i]), new Vector2(80f, 30f),
+                18, TextAnchor.MiddleLeft);
             MkTxtChildAligned(parent, stars[i], starColor,
-                new Vector2(cw * 0.15f, rows[i]), new Vector2(cw * 0.31f, hy * 0.11f),
-                fontSize, TextAnchor.MiddleLeft);
+                new Vector2(-524f, rows[i]), new Vector2(76f, 30f),
+                20, TextAnchor.MiddleLeft);
         }
     }
 
