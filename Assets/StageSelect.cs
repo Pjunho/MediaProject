@@ -611,17 +611,17 @@ public class StageSelect : MonoBehaviour
         Color starColor = new Color(1f, 0.85f, 0.2f, 0.90f);
 
         MkTxt(parent, "별 획득", new Color(1f, 0.85f, 0.2f, 0.95f),
-            new Vector2(-555f, 132f), new Vector2(150f, 34f), 22);
+            new Vector2(-535f, 132f), new Vector2(150f, 34f), 22);
         MkImg(parent, new Color(1f, 0.85f, 0.2f, 0.22f),
-            new Vector2(-555f, 110f), new Vector2(136f, 2f));
+            new Vector2(-535f, 110f), new Vector2(136f, 2f));
 
         for (int i = 0; i < rows.Length; i++)
         {
             MkTxtChildAligned(parent, waves[i], waveColor,
-                new Vector2(-586f, rows[i]), new Vector2(80f, 30f),
+                new Vector2(-567f, rows[i]), new Vector2(80f, 30f),
                 18, TextAnchor.MiddleLeft);
             MkTxtChildAligned(parent, stars[i], starColor,
-                new Vector2(-512f, rows[i]), new Vector2(60f, 30f),
+                new Vector2(-493f, rows[i]), new Vector2(60f, 30f),
                 20, TextAnchor.MiddleLeft);
         }
     }
