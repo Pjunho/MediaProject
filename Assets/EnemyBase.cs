@@ -230,9 +230,7 @@ public class EnemyBase : MonoBehaviour
 
     public string GetInspectionText()
     {
-        string state = isPlaced ? "전투 중" : "배치 대기";
         return
-            $"상태: {state}\n" +
             $"사거리: {attackRange:0.0}\n" +
             $"공격력: {attackDamage:0.0}\n" +
             $"공격 속도: {attackCooldown:0.0}초";
