@@ -82,6 +82,7 @@ public class MainMenu : MonoBehaviour
         {
             var b = btns[i];
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
+            if (!IsButtonInActiveInputLayer(b.rt)) continue;
             if (!RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null)) continue;
 
             b.fill.color = b.hover;
@@ -90,6 +91,17 @@ public class MainMenu : MonoBehaviour
 
             return;
         }
+    }
+
+    bool IsButtonInActiveInputLayer(RectTransform rt)
+    {
+        if (settingsPanel != null && settingsPanel.activeInHierarchy)
+            return rt.transform.IsChildOf(settingsPanel.transform);
+
+        if (gemPanel != null && gemPanel.activeInHierarchy)
+            return rt.transform.IsChildOf(gemPanel.transform);
+
+        return true;
     }
 
     // ── 카메라 ─────────────────────────────────────────────────────
