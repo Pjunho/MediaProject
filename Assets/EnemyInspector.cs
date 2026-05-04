@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class EnemyInspector : MonoBehaviour
 {
@@ -33,7 +34,23 @@ public class EnemyInspector : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         BuildUI();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Instance = null;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        HideSelection();
     }
 
     void Update()
@@ -52,7 +69,7 @@ public class EnemyInspector : MonoBehaviour
 
         if (mouse.leftButton.wasPressedThisFrame)
         {
-            if (IsPointerOverUi(screenPos)) return;
+            if (IsPointerOverBlockingUi(screenPos)) return;
 
             var hitEnemy = FindEnemyAtScreenPosition(screenPos);
             if (hitEnemy != null) SelectEnemy(hitEnemy);
@@ -70,7 +87,7 @@ public class EnemyInspector : MonoBehaviour
 
     public bool IsMouseOverEnemy(Vector2 screenPos)
     {
-        if (IsPointerOverUi(screenPos)) return false;
+        if (IsPointerOverBlockingUi(screenPos)) return false;
         return FindEnemyAtScreenPosition(screenPos) != null;
     }
 
@@ -131,7 +148,7 @@ public class EnemyInspector : MonoBehaviour
         return bestEnemy;
     }
 
-    bool IsPointerOverUi(Vector2 screenPos)
+    bool IsPointerOverBlockingUi(Vector2 screenPos)
     {
         if (EventSystem.current == null)
             return false;
@@ -148,10 +165,12 @@ public class EnemyInspector : MonoBehaviour
             if (hit.gameObject == null)
                 continue;
 
-            if (panelRoot != null && hit.gameObject.transform.IsChildOf(panelRoot.transform))
+            Transform hitTransform = hit.gameObject.transform;
+            if (panelRoot != null && hitTransform.IsChildOf(panelRoot.transform))
                 continue;
 
-            return true;
+            if (hit.gameObject.GetComponentInParent<Selectable>() != null)
+                return true;
         }
 
         return false;
@@ -168,6 +187,7 @@ public class EnemyInspector : MonoBehaviour
     void BuildUI()
     {
         var canvasGo = new GameObject("EnemyInspectorCanvas");
+        canvasGo.transform.SetParent(transform, false);
         panelCanvas = canvasGo.AddComponent<Canvas>();
         panelCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
         panelCanvas.sortingOrder = 65;
