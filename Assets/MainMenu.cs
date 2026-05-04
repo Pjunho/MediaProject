@@ -75,10 +75,20 @@ public class MainMenu : MonoBehaviour
         foreach (var b in btns)
         {
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
-            bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
-            b.fill.color = over ? b.hover : b.normal;
-            if (over && mouse.leftButton.wasPressedThisFrame)
+            b.fill.color = b.normal;
+        }
+
+        for (int i = btns.Count - 1; i >= 0; i--)
+        {
+            var b = btns[i];
+            if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
+            if (!RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null)) continue;
+
+            b.fill.color = b.hover;
+            if (mouse.leftButton.wasPressedThisFrame)
                 b.action?.Invoke();
+
+            return;
         }
     }
 
