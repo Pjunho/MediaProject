@@ -49,6 +49,8 @@ public class StageSelect : MonoBehaviour
     const float MIN_VELOCITY =    2f;     // 이 이하이면 관성 정지
 
     static float CardBaseX(int si) => (si - 3) * CARD_SPACING;
+    static float ScrollMin => StageManager.GetStageCount() <= 3 ? MAX_SCROLL_X : MIN_SCROLL_X;
+    static float ScrollMax => MAX_SCROLL_X;
 
     float scrollX        = MAX_SCROLL_X;
     float scrollVelocity = 0f;
@@ -224,7 +226,7 @@ public class StageSelect : MonoBehaviour
             if (Mathf.Abs(delta) > 5f) scrollConsumed = true;
 
             float prevX = scrollX;
-            scrollX = Mathf.Clamp(dragStartScrollX + delta * 0.70f, MIN_SCROLL_X, MAX_SCROLL_X);
+            scrollX = Mathf.Clamp(dragStartScrollX + delta * 0.70f, ScrollMin, ScrollMax);
 
             // 속도 = 이번 프레임 이동량 / deltaTime (픽셀/초)
             if (Time.deltaTime > 0f)
@@ -247,10 +249,10 @@ public class StageSelect : MonoBehaviour
         if (isDragging) return;
         if (Mathf.Abs(scrollVelocity) < MIN_VELOCITY) { scrollVelocity = 0f; return; }
 
-        scrollX = Mathf.Clamp(scrollX + scrollVelocity * Time.deltaTime, MIN_SCROLL_X, MAX_SCROLL_X);
+        scrollX = Mathf.Clamp(scrollX + scrollVelocity * Time.deltaTime, ScrollMin, ScrollMax);
         scrollVelocity *= Mathf.Pow(FRICTION, Time.deltaTime * 60f); // 프레임레이트 무관 감속
 
-        if (scrollX <= MIN_SCROLL_X || scrollX >= MAX_SCROLL_X)
+        if (scrollX <= ScrollMin || scrollX >= ScrollMax)
             scrollVelocity = 0f;
 
         ApplyScrollToCards();
@@ -268,8 +270,15 @@ public class StageSelect : MonoBehaviour
 
     void UpdateArrows()
     {
-        if (arrowLeft  != null) arrowLeft.SetActive (scrollX < MAX_SCROLL_X - 8f);
-        if (arrowRight != null) arrowRight.SetActive(scrollX > MIN_SCROLL_X + 8f);
+        if (StageManager.GetStageCount() <= 3)
+        {
+            if (arrowLeft  != null) arrowLeft.SetActive(false);
+            if (arrowRight != null) arrowRight.SetActive(false);
+            return;
+        }
+
+        if (arrowLeft  != null) arrowLeft.SetActive (scrollX < ScrollMax - 8f);
+        if (arrowRight != null) arrowRight.SetActive(scrollX > ScrollMin + 8f);
     }
 
     void HandleRightClick(Mouse mouse, Vector2 mp)

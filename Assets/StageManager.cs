@@ -7,6 +7,7 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance { get; private set; }
+    const int IMPLEMENTED_STAGE_COUNT = 3;
 
     public struct StageConfig
     {
@@ -47,7 +48,7 @@ public class StageManager : MonoBehaviour
     }
 
     [Header("현재 스테이지")]
-    public int currentStageIndex = 1; // 1~5
+    public int currentStageIndex = 1; // 1~3
     public int currentWaveNumber = 1; // 1~15
     public System.Collections.Generic.List<AllyType> selectedAllies = new();
 
@@ -105,6 +106,7 @@ public class StageManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        currentStageIndex = Mathf.Clamp(currentStageIndex, 1, GetStageCount());
         selectedAllies = NormalizeSelectedAllies(selectedAllies, currentStageIndex);
         currentWaveNumber = 1;
     }
@@ -119,12 +121,12 @@ public class StageManager : MonoBehaviour
 
     public static StageConfig GetStageConfig(int stageIndex)
     {
-        if (stageIndex < 1 || stageIndex >= stageConfigs.Length)
+        if (stageIndex < 1 || stageIndex > GetStageCount())
             return stageConfigs[1];
         return stageConfigs[stageIndex];
     }
 
-    public static int GetStageCount() => stageConfigs.Length - 1;
+    public static int GetStageCount() => Mathf.Min(IMPLEMENTED_STAGE_COUNT, stageConfigs.Length - 1);
 
     public static int GetWavePhase(int waveNumber)
     {
@@ -256,6 +258,7 @@ public class StageManager : MonoBehaviour
 
     public static bool IsStageUnlocked(int stageIndex)
     {
+        if (stageIndex < 1 || stageIndex > GetStageCount()) return false;
         if (stageIndex <= 2) return true;
         return GetSavedStars(stageIndex - 1) > 0;
     }
@@ -336,9 +339,9 @@ public class StageManager : MonoBehaviour
 
     public void LoadStage(int stageIndex)
     {
-        currentStageIndex = stageIndex;
+        currentStageIndex = Mathf.Clamp(stageIndex, 1, GetStageCount());
         currentWaveNumber = 1;
-        selectedAllies = NormalizeSelectedAllies(selectedAllies, stageIndex);
+        selectedAllies = NormalizeSelectedAllies(selectedAllies, currentStageIndex);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MediaProject",
             UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
