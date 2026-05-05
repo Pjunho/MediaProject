@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
     private Text       waveBannerTxt;
     private Text       waveBannerStatsTxt; // 웨이브 클리어 시 통계 서브텍스트
 
+    // ── 스테이지별 위험 요소 ──────────────────────────────────────────────
+    private VolcanoHazard volcanoHazard;  // Stage 3: 화산 체력 감소
+    private CaveVignette  caveVignette;   // Stage 2: 동굴 화면 비네트
+
     struct BtnData { public RectTransform rt; public Image fill; public Color n, h; public System.Action cb; public bool pauseOnly; }
     System.Collections.Generic.List<BtnData> btns = new();
 
@@ -83,9 +87,33 @@ public class GameManager : MonoBehaviour
         BuildHUD();
         if (pausePanel != null) pausePanel.SetActive(false);
         if (waveBannerGo != null) waveBannerGo.SetActive(false);
+
+        InitStageHazards();
     }
 
     void Start() { }
+
+    /// <summary>
+    /// 현재 스테이지에 맞는 환경 위험 요소를 초기화합니다.
+    ///   Stage 2 – 동굴 비네트 생성
+    ///   Stage 3 – 화산 체력 감소 생성
+    /// </summary>
+    void InitStageHazards()
+    {
+        int stage = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
+
+        if (stage == 2)
+        {
+            var go = new GameObject("CaveVignette");
+            DontDestroyOnLoad(go);
+            caveVignette = go.AddComponent<CaveVignette>();
+        }
+        else if (stage == 3)
+        {
+            var go = new GameObject("VolcanoHazard");
+            volcanoHazard = go.AddComponent<VolcanoHazard>();
+        }
+    }
 
     /// <summary>RouteDrawer가 경로 확정 후 호출 — 해당 경로로 다음 웨이브 시작</summary>
     public void ConfirmRouteAndStartWave(System.Collections.Generic.List<Vector3> worldPath,
@@ -169,6 +197,9 @@ public class GameManager : MonoBehaviour
         waveAllyCount = 0;
         waveInProgress = true;
 
+        // Stage 3 화산 체력 감소 시작
+        volcanoHazard?.StartDrain();
+
         UpdateWaveHUD();
 
         Debug.Log($"[GameManager] ▶ 웨이브 {currentWaveIndex + 1}/{currentWaves.Length} 시작 " +
@@ -194,6 +225,9 @@ public class GameManager : MonoBehaviour
         if (waveAllyDone < waveAllyCount) return;
 
         waveInProgress = false;
+
+        // Stage 3 화산 체력 감소 중단
+        volcanoHazard?.StopDrain();
 
         var wave = currentWaves[currentWaveIndex];
         bool wavePassed = (wave.goalRequirement <= 0) || (waveGoalCount >= wave.goalRequirement);

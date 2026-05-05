@@ -475,7 +475,7 @@ public class StageSelect : MonoBehaviour
         SR(viewportRt, new Vector2(0f, CARD_Y + 10f), new Vector2(950f, 380f));
 
         // ── 스테이지 카드 ─────────────────────────────────────────────
-        string[] terrains     = { "", "평원 지대", "사막 지대", "화산 지대", "어둠 지대", "최종 요새" };
+        string[] terrains     = { "", "평원 지대", "동굴 지대", "화산 지대", "어둠 지대", "최종 요새" };
         string[] difficulties = { "", "쉬움", "보통", "어려움", "매우 어려움", "극한" };
         var cardSize = new Vector2(280f, 350f);
 
