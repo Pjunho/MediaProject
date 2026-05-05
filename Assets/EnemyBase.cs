@@ -19,7 +19,7 @@ public class EnemyBase : MonoBehaviour
     // ── 프레임 애니메이션 ──────────────────────────────────────────────
     protected Sprite   idleSprite;
     protected Sprite[] attackFrameSprites;
-    private   bool     isPlayingAttackAnim;
+    protected bool     isPlayingAttackAnim;
 
     private GameObject rangeIndicatorRoot;
     private LineRenderer rangeIndicator;

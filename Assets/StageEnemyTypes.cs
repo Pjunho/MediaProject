@@ -6,37 +6,77 @@ using System.Collections;
 //  색상: 밝은 초록, 흙갈색, 연두 / 이펙트: 잎사귀·덩굴·가시
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>초원 저격수 — 빠른 잎사귀 화살이 날아가 꽂힘</summary>
+/// <summary>초원 저격수 — 타겟 방향으로 몸을 돌려 화살을 날림</summary>
 public class GrassSniper : EnemyBase
 {
-    static readonly Color Robe   = new Color(0.15f, 0.42f, 0.10f);
-    static readonly Color Dark   = new Color(0.28f, 0.22f, 0.08f);
-    static readonly Color Eye    = new Color(0.30f, 0.90f, 0.20f);
+    static readonly Color Robe = new Color(0.15f, 0.42f, 0.10f);
+    static readonly Color Dark = new Color(0.28f, 0.22f, 0.08f);
+    static readonly Color Eye  = new Color(0.30f, 0.90f, 0.20f);
+
+    // LPC 방향 인덱스: 0=위, 1=왼, 2=아래, 3=오른
+    static readonly int[] IdleRow = { 8, 9, 10, 11 };
+    static readonly int[] AtkRow  = { 16, 17, 18, 19 };
+    const int   AtkFrameCount = 8;
+    const float Ppu           = 44f;
+
+    readonly Sprite[]   idleByDir = new Sprite[4];
+    readonly Sprite[][] atkByDir  = new Sprite[4][];
 
     protected override void Awake()
     {
         enemyName = "숲 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
 
-        Sprite idle =
-            EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10, ppu: 44f) ??
-            EnemyVisualGenerator.TryLoadSprite("s1_sn") ??
-            EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+        Sprite fallback = EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
 
-        // LPC bow-shoot, facing down = row 18, frames 0~7
-        var atk = new Sprite[8];
-        for (int i = 0; i < 8; i++)
-            atk[i] = EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: i, row: 18, ppu: 44f) ?? idle;
+        for (int d = 0; d < 4; d++)
+        {
+            idleByDir[d] = EnemyVisualGenerator.TryLoadSheetFrame(
+                               "s1_archer", 1, IdleRow[d], ppu: Ppu) ?? fallback;
+            atkByDir[d] = new Sprite[AtkFrameCount];
+            for (int f = 0; f < AtkFrameCount; f++)
+                atkByDir[d][f] = EnemyVisualGenerator.TryLoadSheetFrame(
+                                     "s1_archer", f, AtkRow[d], ppu: Ppu) ?? idleByDir[d];
+        }
 
-        SetupSpriteAnimation(idle, atk);
+        SetupSpriteAnimation(idleByDir[2], atkByDir[2]); // 기본: 아래 방향
     }
+
+    // 방향 인덱스 계산 (X 성분이 더 크면 좌우, Y가 크면 상하)
+    int DirIndex(Vector2 diff)
+    {
+        if (Mathf.Abs(diff.x) >= Mathf.Abs(diff.y))
+            return diff.x < 0f ? 1 : 3;   // 왼쪽 or 오른쪽
+        return diff.y > 0f ? 0 : 2;        // 위 or 아래
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        // 공격 중이 아닐 때 타겟 방향으로 대기 프레임 갱신
+        if (!isPlayingAttackAnim && currentTarget != null && spriteRenderer != null)
+        {
+            int d = DirIndex(currentTarget.transform.position - transform.position);
+            spriteRenderer.sprite = idleByDir[d];
+            idleSprite = idleByDir[d];
+        }
+    }
+
     protected override Color RangeColor()      => new Color(0.2f, 0.8f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.4f, 0.9f, 0.1f);
 
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
         const float fps          = 12f;
-        const int   releaseFrame = 6;   // 이 프레임에서 화살 발사 (활을 놓는 순간)
+        const int   releaseFrame = 6;  // 이 프레임에서 화살 발사
+
+        // 공격 시작 전에 타겟 방향으로 프레임 세트 교체
+        if (target != null)
+        {
+            int d = DirIndex(target.transform.position - transform.position);
+            idleSprite         = idleByDir[d];
+            attackFrameSprites = atkByDir[d];
+        }
 
         StartCoroutine(PlayAttackAnim(fps));
         yield return new WaitForSeconds(releaseFrame / fps);
