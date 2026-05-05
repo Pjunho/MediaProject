@@ -27,16 +27,17 @@ public class GrassSniper : EnemyBase
         enemyName = "숲 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
 
+        string sheetName = Random.value < 0.5f ? "s1_archer" : "s1_crossbow_enemy";
         Sprite fallback = EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
 
         for (int d = 0; d < 4; d++)
         {
             idleByDir[d] = EnemyVisualGenerator.TryLoadSheetFrame(
-                               "s1_archer", 1, IdleRow[d], ppu: Ppu) ?? fallback;
+                               sheetName, 1, IdleRow[d], ppu: Ppu) ?? fallback;
             atkByDir[d] = new Sprite[AtkFrameCount];
             for (int f = 0; f < AtkFrameCount; f++)
                 atkByDir[d][f] = EnemyVisualGenerator.TryLoadSheetFrame(
-                                     "s1_archer", f, AtkRow[d], ppu: Ppu) ?? idleByDir[d];
+                                     sheetName, f, AtkRow[d], ppu: Ppu) ?? idleByDir[d];
         }
 
         SetupSpriteAnimation(idleByDir[2], atkByDir[2]); // 기본: 아래 방향
@@ -97,11 +98,11 @@ public class GrassSpearman : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "덩굴 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "숲 새총병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s1_sp") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s1_slingshot_enemy", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
     }
     protected override Color RangeColor()      => new Color(0.3f, 0.75f, 0.15f, 0.7f);
@@ -131,11 +132,11 @@ public class GrassBrawler : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "가시 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        enemyName = "도끼 좀비"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s1_br") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s1_axe_zombie", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
     }
     protected override Color RangeColor()      => new Color(0.4f, 0.9f, 0.1f, 0.7f);
@@ -171,11 +172,11 @@ public class DesertSniper : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "전갈 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "사막 해골 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s2_sn") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s2_archer", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.65f, 0.1f, 0.7f);
@@ -206,11 +207,11 @@ public class DesertSpearman : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "모래 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "사막 봉술병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s2_sp") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s2_rod_enemy", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.75f, 0.2f, 0.7f);
@@ -240,11 +241,11 @@ public class DesertBrawler : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "사막 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        enemyName = "사막 곡괭이병"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s2_br") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s2_pickaxe_enemy", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.70f, 0.2f, 0.7f);
@@ -281,11 +282,11 @@ public class VolcanoSniper : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "마그마 저격수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "화산 해골 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s3_sn") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s3_archer", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.1f, 0.1f, 0.7f);
@@ -316,11 +317,11 @@ public class VolcanoSpearman : EnemyBase
 
     protected override void Awake()
     {
-        enemyName = "화산 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "화산 부메랑병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSprite("s3_sp") ??
+                EnemyVisualGenerator.TryLoadSheetFrame("s3_booberang_enemy", 1, 10, ppu: 44f) ??
                 EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.3f, 0.1f, 0.7f);
@@ -339,6 +340,40 @@ public class VolcanoSpearman : EnemyBase
             StartCoroutine(ZigzagEffect(target,
                 new Color(1.00f, 0.35f, 0.05f),
                 new Color(1.00f, 0.60f, 0.10f), 2, 0.22f));
+    }
+}
+
+/// <summary>화산 도끼병 — 짧은 사거리에서 용암 파편을 분사</summary>
+public class VolcanoBrawler : EnemyBase
+{
+    static readonly Color Armor  = new Color(0.22f, 0.12f, 0.10f);
+    static readonly Color Accent = new Color(0.95f, 0.30f, 0.04f);
+
+    protected override void Awake()
+    {
+        enemyName = "화산 도끼병"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        base.Awake();
+        if (spriteRenderer != null)
+            spriteRenderer.sprite =
+                EnemyVisualGenerator.TryLoadSheetFrame("s3_axe_enemy", 1, 10, ppu: 44f) ??
+                EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+    }
+    protected override Color RangeColor()      => new Color(0.9f, 0.3f, 0.1f, 0.7f);
+    protected override Color AttackLineColor() => new Color(1.0f, 0.4f, 0.05f);
+
+    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    {
+        if (spriteRenderer != null)
+        {
+            Color orig = spriteRenderer.color;
+            spriteRenderer.color = new Color(1.0f, 0.35f, 0.05f);
+            yield return new WaitForSeconds(0.04f);
+            spriteRenderer.color = orig;
+        }
+        if (target != null)
+            StartCoroutine(ParticleSprayEffect(target,
+                new Color(0.65f, 0.08f, 0.02f),
+                new Color(1.00f, 0.55f, 0.10f), 13, 0.38f, 34f));
     }
 }
 
