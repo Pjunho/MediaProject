@@ -19,14 +19,14 @@ public class GrassSniper : EnemyBase
         base.Awake();
 
         Sprite idle =
-            EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10) ??
+            EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10, ppu: 44f) ??
             EnemyVisualGenerator.TryLoadSprite("s1_sn") ??
             EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
 
         // LPC bow-shoot, facing down = row 18, frames 0~7
         var atk = new Sprite[8];
         for (int i = 0; i < 8; i++)
-            atk[i] = EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: i, row: 18) ?? idle;
+            atk[i] = EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: i, row: 18, ppu: 44f) ?? idle;
 
         SetupSpriteAnimation(idle, atk);
     }
@@ -35,12 +35,16 @@ public class GrassSniper : EnemyBase
 
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        StartCoroutine(PlayAttackAnim(12f));
+        const float fps          = 12f;
+        const int   releaseFrame = 6;   // 이 프레임에서 화살 발사 (활을 놓는 순간)
+
+        StartCoroutine(PlayAttackAnim(fps));
+        yield return new WaitForSeconds(releaseFrame / fps);
+
         if (target != null)
             StartCoroutine(ProjectileEffect(target,
                 new Color(0.25f, 0.75f, 0.10f), 17f,
                 new Color(0.40f, 0.95f, 0.20f)));
-        yield break;
     }
 }
 
