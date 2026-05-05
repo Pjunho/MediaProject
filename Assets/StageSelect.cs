@@ -486,12 +486,13 @@ public class StageSelect : MonoBehaviour
             int    cap    = si;
             bool   locked = !StageManager.IsStageUnlocked(si);
             int    saved  = StageManager.GetSavedStars(si);
-            string desc    = $"{terrains[si]}\n15웨이브  |  난이도 {difficulties[si]}";
+            string terrain = terrains[si];
+            string meta    = $"15웨이브  |  난이도 {difficulties[si]}";
 
             float initX = CardBaseX(si) + scrollX;
 
             var crt = BuildCard(cv, new Vector2(initX, CARD_Y), cardSize,
-                si, locked, saved, desc,
+                si, locked, saved, terrain, meta,
                 locked ? C_LOCKED   : C_STAGE[si],
                 locked ? C_LOCKED_H : C_STAGE_H[si],
                 locked ? () => OnLockedStage(cap) : () => OpenPrep(cap));
@@ -544,7 +545,7 @@ public class StageSelect : MonoBehaviour
     // ── 스테이지 카드 생성 ────────────────────────────────────────────
     RectTransform BuildCard(Transform parent, Vector2 pos, Vector2 size,
         int si, bool locked, int savedStars,
-        string desc,
+        string terrain, string meta,
         Color btnCol, Color btnHov,
         System.Action cb)
     {
@@ -577,10 +578,15 @@ public class StageSelect : MonoBehaviour
             new Vector2(0, hy * 0.40f), new Vector2(cw, 2));
 
         // 설명
-        MkTxtChild(card.transform, desc,
+        MkTxtChild(card.transform, terrain,
             locked ? new Color(0.38f, 0.38f, 0.38f) : new Color(0.80f, 0.88f, 0.80f),
-            new Vector2(0, hy * 0.08f), new Vector2(cw, hy * 0.50f),
+            new Vector2(0, hy * 0.15f), new Vector2(cw, hy * 0.22f),
             Mathf.Max(16, (int)(23 * scale)));
+
+        MkTxtChild(card.transform, meta,
+            locked ? new Color(0.38f, 0.38f, 0.38f) : new Color(0.80f, 0.88f, 0.80f),
+            new Vector2(0, -hy * 0.04f), new Vector2(size.x * 0.96f, hy * 0.18f),
+            Mathf.Max(14, (int)(19 * scale)));
 
         // 별
         string starStr = locked ? "" : StarStr(savedStars);
@@ -1003,7 +1009,7 @@ public class StageSelect : MonoBehaviour
         toastTxt.fontSize  = 19;
         toastTxt.fontStyle = FontStyle.Bold;
         toastTxt.alignment = TextAnchor.MiddleCenter;
-        toastTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        toastTxt.font      = UiPixelFont.Get();
         var tRt = tgo.GetComponent<RectTransform>();
         tRt.anchoredPosition = Vector2.zero;
         tRt.sizeDelta        = new Vector2(430, 44);
@@ -1093,7 +1099,7 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
@@ -1105,7 +1111,7 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
@@ -1117,7 +1123,7 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = alignment;
         tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
@@ -1129,7 +1135,7 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;
     }

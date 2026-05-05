@@ -23,8 +23,11 @@ public class FloatingText : MonoBehaviour
         tm.color         = new Color(color.r, color.g, color.b, 0f);
         tm.alignment     = TextAlignment.Center;
         tm.anchor        = TextAnchor.MiddleCenter;
+        tm.font          = UiPixelFont.Get();
         tm.fontStyle     = FontStyle.Bold;
-        GetComponent<MeshRenderer>().sortingOrder = 50;
+        var meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = tm.font.material;
+        meshRenderer.sortingOrder = 50;
         StartCoroutine(Animate(tm, color));
     }
 

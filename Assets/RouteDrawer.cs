@@ -680,7 +680,7 @@ public class RouteDrawer : MonoBehaviour
         tx.fontSize  = 32;
         tx.fontStyle = FontStyle.Bold;
         tx.alignment = TextAnchor.MiddleCenter;
-        tx.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font      = UiPixelFont.Get();
         tgo.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 50);
 
         var parent = new GameObject("MarkerGroup_" + label);
@@ -725,7 +725,7 @@ public class RouteDrawer : MonoBehaviour
         ltx.fontSize  = 22;
         ltx.fontStyle = FontStyle.Bold;
         ltx.alignment = TextAnchor.MiddleCenter;
-        ltx.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        ltx.font      = UiPixelFont.Get();
         var lrt = lgo.GetComponent<RectTransform>();
         lrt.anchoredPosition = Vector2.zero;
         lrt.sizeDelta        = new Vector2(126, 52);
@@ -771,7 +771,7 @@ public class RouteDrawer : MonoBehaviour
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
         return tx;
     }
