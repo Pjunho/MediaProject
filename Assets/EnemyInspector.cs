@@ -94,6 +94,12 @@ public class EnemyInspector : MonoBehaviour
     void SelectEnemy(EnemyBase enemy)
     {
         if (enemy == null) return;
+        if (selectedEnemy == enemy)
+        {
+            HideSelection();
+            return;
+        }
+
         if (selectedEnemy != null && selectedEnemy != enemy)
             RestoreDefaultRangeVisibility(selectedEnemy);
 
@@ -150,6 +156,10 @@ public class EnemyInspector : MonoBehaviour
 
     bool IsPointerOverBlockingUi(Vector2 screenPos)
     {
+        var allyPanel = FindFirstObjectByType<AllyOrderPanel>();
+        if (allyPanel != null && allyPanel.IsMouseOverPanel(screenPos))
+            return true;
+
         if (EventSystem.current == null)
             return false;
 
@@ -165,12 +175,33 @@ public class EnemyInspector : MonoBehaviour
             if (hit.gameObject == null)
                 continue;
 
-            Transform hitTransform = hit.gameObject.transform;
-            if (panelRoot != null && hitTransform.IsChildOf(panelRoot.transform))
-                continue;
-
-            if (hit.gameObject.GetComponentInParent<Selectable>() != null)
+            if (IsBlockingUiElement(hit.gameObject))
                 return true;
+        }
+
+        return false;
+    }
+
+    bool IsBlockingUiElement(GameObject go)
+    {
+        if (go == null || !go.activeInHierarchy)
+            return false;
+
+        if (go.GetComponentInParent<Selectable>() != null)
+            return true;
+
+        for (Transform t = go.transform; t != null; t = t.parent)
+        {
+            string n = t.name;
+            if (n.Contains("Panel") || n.Contains("Popup") || n.Contains("Overlay") ||
+                n.Contains("Window") || n.Contains("Dialog") || n.Contains("Modal") ||
+                n.Contains("Button") || n.Contains("Btn") || n.Contains("Toggle") ||
+                n.Contains("Card") || n.Contains("Slot") || n.Contains("Detail") ||
+                n.Contains("Settings") || n.Contains("Pause") || n.Contains("Result"))
+                return true;
+
+            if (t.GetComponent<Canvas>() != null)
+                break;
         }
 
         return false;
