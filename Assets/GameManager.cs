@@ -374,7 +374,7 @@ public class GameManager : MonoBehaviour
             COL_SPEED, COL_SPEED_H, OnSpeedClicked, out speedBtnTxt);
 
         // 정지 버튼
-        BuildIconBtn(cgo.transform, "pause", "⏸",
+        BuildIconBtn(cgo.transform, "pause", "II",
             new Vector2(610, 320), new Vector2(44, 44),
             COL_PAUSE, COL_PAUSE_H, OnPauseClicked, out _);
 
@@ -423,10 +423,12 @@ public class GameManager : MonoBehaviour
         tx.fontSize           = 18;
         tx.alignment          = TextAnchor.MiddleCenter;
         tx.fontStyle          = FontStyle.Bold;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, size);
+        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(6, 6));
         return tx;
     }
 
@@ -449,6 +451,8 @@ public class GameManager : MonoBehaviour
         waveBannerTxt.fontSize           = 32;
         waveBannerTxt.alignment          = TextAnchor.MiddleCenter;
         waveBannerTxt.fontStyle          = FontStyle.Bold;
+        waveBannerTxt.alignByGeometry    = true;
+        waveBannerTxt.raycastTarget      = false;
         waveBannerTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
         waveBannerTxt.verticalOverflow   = VerticalWrapMode.Overflow;
         waveBannerTxt.font               = UiPixelFont.Get();
@@ -462,6 +466,8 @@ public class GameManager : MonoBehaviour
         waveBannerStatsTxt.color              = new Color(0.85f, 0.90f, 1f, 0.92f);
         waveBannerStatsTxt.fontSize           = 17;
         waveBannerStatsTxt.alignment          = TextAnchor.MiddleCenter;
+        waveBannerStatsTxt.alignByGeometry    = true;
+        waveBannerStatsTxt.raycastTarget      = false;
         waveBannerStatsTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
         waveBannerStatsTxt.verticalOverflow   = VerticalWrapMode.Overflow;
         waveBannerStatsTxt.font               = UiPixelFont.Get();
@@ -623,6 +629,8 @@ public class GameManager : MonoBehaviour
         toastTxt.fontSize           = 20;
         toastTxt.fontStyle          = FontStyle.Bold;
         toastTxt.alignment          = TextAnchor.MiddleCenter;
+        toastTxt.alignByGeometry    = true;
+        toastTxt.raycastTarget      = false;
         toastTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
         toastTxt.verticalOverflow   = VerticalWrapMode.Overflow;
         toastTxt.font               = UiPixelFont.Get();
@@ -826,10 +834,12 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 20;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
         lTxt = tx;
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
         return fi;
@@ -849,10 +859,12 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=true });
     }
 
@@ -870,10 +882,12 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
     }
 
@@ -898,6 +912,8 @@ public class GameManager : MonoBehaviour
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment          = TextAnchor.MiddleCenter;
         tx.fontStyle          = FontStyle.Bold;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
