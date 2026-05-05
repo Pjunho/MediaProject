@@ -155,54 +155,97 @@ public class MainMenu : MonoBehaviour
     // ── 디펜스 배경 ────────────────────────────────────────────────
     void DrawBackground()
     {
-        // 하늘 그라디언트 (상단 어두운 파랑 → 하단 밝은 파랑)
-        CreateWorldQuad("Sky", new Vector3(0, 1f, 5f), new Vector3(22f, 7f), COL_SKY_TOP, -20);
-        CreateWorldQuad("SkyBot", new Vector3(0, -1.5f, 5f), new Vector3(22f, 4f), COL_SKY_BOT, -19);
+        CreateWorldQuad("SkyTop", new Vector3(0, 1.6f, 5f), new Vector3(22f, 6.2f), new Color(0.02f, 0.05f, 0.12f), -30);
+        CreateWorldQuad("SkyBot", new Vector3(0, -1.7f, 5f), new Vector3(22f, 3.8f), new Color(0.05f, 0.08f, 0.18f), -29);
+        CreateWorldQuad("GrassLand", new Vector3(-6.9f, -2.15f, 4f), new Vector3(8.4f, 4.1f), new Color(0.10f, 0.34f, 0.10f), -28);
+        CreateWorldQuad("CrystalLand", new Vector3(0f, -2.15f, 4f), new Vector3(6.0f, 4.1f), new Color(0.10f, 0.10f, 0.20f), -28);
+        CreateWorldQuad("LavaLand", new Vector3(6.9f, -2.15f, 4f), new Vector3(8.4f, 4.1f), new Color(0.22f, 0.08f, 0.05f), -28);
 
-        // 땅
-        CreateWorldQuad("Ground", new Vector3(0, -3.5f, 4f), new Vector3(22f, 3f), COL_GROUND, -18);
+        CreateWorldCircle("MoonHalo", new Vector3(-7.9f, 3.35f, 3.5f), 0.70f, new Color(1f, 0.92f, 0.65f, 0.18f), -23);
+        CreateWorldCircle("Moon", new Vector3(-7.9f, 3.35f, 3.4f), 0.44f, new Color(1f, 0.91f, 0.62f), -22);
 
-        // 흙길 (가로)
-        CreateWorldQuad("Path", new Vector3(0, -2.3f, 3f), new Vector3(22f, 1.0f), COL_PATH, -17);
-
-        // 달 (원형 흰색)
-        CreateWorldCircle("Moon", new Vector3(-6f, 3.2f, 3f), 0.55f, new Color(1f, 0.97f, 0.85f), -16);
-
-        // 달 헤일로
-        CreateWorldCircle("MoonHalo", new Vector3(-6f, 3.2f, 3.1f), 0.72f, new Color(1f, 0.97f, 0.85f, 0.15f), -17);
-
-        // 별들
         var rng = new System.Random(42);
-        for (int i = 0; i < 60; i++)
+        for (int i = 0; i < 90; i++)
         {
             float x = (float)(rng.NextDouble() * 20 - 10);
-            float y = (float)(rng.NextDouble() * 4 + 0.5f);
-            float s = (float)(rng.NextDouble() * 0.06f + 0.02f);
+            float y = (float)(rng.NextDouble() * 4.4f + 0.2f);
+            float s = (float)(rng.NextDouble() * 0.045f + 0.018f);
             float a = (float)(rng.NextDouble() * 0.6f + 0.3f);
             CreateWorldCircle($"Star{i}", new Vector3(x, y, 3.5f), s, new Color(1f, 1f, 1f, a), -15);
         }
 
-        // 탑 3개 (왼쪽, 중앙 오른쪽, 오른쪽)
-        DrawTower(-7.5f, -1.8f, new Color(0.20f, 0.25f, 0.35f), new Color(0.30f, 0.15f, 0.05f));
-        DrawTower(-3.5f, -1.4f, new Color(0.18f, 0.23f, 0.32f), new Color(0.28f, 0.13f, 0.04f));
-        DrawTower(6.5f,  -1.6f, new Color(0.22f, 0.27f, 0.37f), new Color(0.32f, 0.17f, 0.06f));
+        DrawPathSegment(-7.5f, -3.9f, -5.4f, -2.6f, 0);
+        DrawPathSegment(-5.4f, -2.6f, -3.1f, -1.7f, 1);
+        DrawPathSegment(-3.1f, -1.7f, -0.6f, -1.1f, 2);
+        DrawPathSegment(-0.6f, -1.1f, 1.7f, -0.4f, 3);
+        DrawPathSegment(1.7f, -0.4f, 3.7f, -0.9f, 4);
+        DrawPathSegment(3.7f, -0.9f, 5.5f, 0.1f, 5);
+        DrawPathSegment(5.5f, 0.1f, 7.8f, 1.1f, 6);
 
-        // 나무들
-        DrawTree(-9f,  -2.2f);
-        DrawTree(-5.5f,-2.4f);
-        DrawTree(4f,   -2.3f);
-        DrawTree(8.5f, -2.1f);
+        for (int i = 0; i < 18; i++)
+            DrawTree(-9.2f + (i % 6) * 1.0f, -3.2f + (i / 6) * 1.2f);
+        for (int i = 0; i < 12; i++)
+            DrawRock(-1.8f + (i % 4) * 0.9f, -3.1f + (i / 4) * 0.9f);
+        for (int i = 0; i < 7; i++)
+            DrawCrystal(-1.9f + i * 0.7f, -2.0f + (i % 3) * 0.75f, i);
 
-        // 횃불 빛 효과
-        CreateWorldCircle("Torch1Glow", new Vector3(-7.5f, -0.8f, 2f), 0.5f, new Color(1f, 0.5f, 0.1f, 0.25f), -14);
-        CreateWorldCircle("Torch2Glow", new Vector3(-3.5f, -0.4f, 2f), 0.5f, new Color(1f, 0.5f, 0.1f, 0.25f), -14);
-        CreateWorldCircle("Torch3Glow", new Vector3(6.5f,  -0.6f, 2f), 0.5f, new Color(1f, 0.5f, 0.1f, 0.25f), -14);
-        CreateWorldCircle("Torch1",     new Vector3(-7.5f, -0.8f, 1.9f), 0.08f, new Color(1f, 0.7f, 0.2f), -13);
-        CreateWorldCircle("Torch2",     new Vector3(-3.5f, -0.4f, 1.9f), 0.08f, new Color(1f, 0.7f, 0.2f), -13);
-        CreateWorldCircle("Torch3",     new Vector3(6.5f,  -0.6f, 1.9f), 0.08f, new Color(1f, 0.7f, 0.2f), -13);
+        DrawRuins(-6.9f, -0.9f);
+        DrawPortal(0f, 0.1f);
+        DrawVolcano(6.9f, 1.2f, 1.15f);
+        DrawVolcano(8.4f, -2.3f, 0.85f);
+        DrawGoal(8.4f, 1.65f);
 
-        // 안개 느낌 (하단 반투명)
-        CreateWorldQuad("Fog", new Vector3(0, -2.8f, 2f), new Vector3(22f, 1.5f), new Color(0.4f, 0.55f, 0.45f, 0.18f), -12);
+        for (int i = 0; i < 13; i++)
+            CreateWorldQuad($"LavaCrack{i}", new Vector3(4.2f + (i % 5) * 1.05f, -3.4f + (i / 5) * 0.9f, 1.8f),
+                new Vector3(0.58f, 0.055f), new Color(1f, 0.25f, 0.02f, 0.85f), -12);
+    }
+
+    void DrawPathSegment(float x1, float y1, float x2, float y2, int idx)
+    {
+        Vector2 mid = new Vector2((x1 + x2) * 0.5f, (y1 + y2) * 0.5f);
+        float len = Vector2.Distance(new Vector2(x1, y1), new Vector2(x2, y2));
+        float angle = Mathf.Atan2(y2 - y1, x2 - x1) * Mathf.Rad2Deg;
+        CreateWorldQuad($"PathShadow{idx}", new Vector3(mid.x, mid.y - 0.07f, 2.2f), new Vector3(len, 0.58f), new Color(0.18f, 0.10f, 0.04f), -18).transform.rotation = Quaternion.Euler(0, 0, angle);
+        CreateWorldQuad($"Path{idx}", new Vector3(mid.x, mid.y, 2.1f), new Vector3(len, 0.42f), new Color(0.70f, 0.52f, 0.28f), -17).transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    void DrawRock(float x, float y)
+    {
+        CreateWorldCircle($"Rock{x}_{y}", new Vector3(x, y, 2.3f), 0.18f, new Color(0.26f, 0.24f, 0.30f), -14);
+    }
+
+    void DrawCrystal(float x, float y, int i)
+    {
+        CreateWorldCircle($"CrystalGlow{i}", new Vector3(x, y, 2.2f), 0.35f, new Color(0.45f, 0.25f, 1f, 0.22f), -15);
+        CreateWorldQuad($"Crystal{i}", new Vector3(x, y, 2f), new Vector3(0.16f, 0.55f), new Color(0.55f, 0.30f, 1f), -13);
+        CreateWorldQuad($"CrystalHi{i}", new Vector3(x + 0.07f, y + 0.04f, 1.9f), new Vector3(0.05f, 0.42f), new Color(0.86f, 0.72f, 1f), -12);
+    }
+
+    void DrawRuins(float x, float y)
+    {
+        for (int i = 0; i < 3; i++)
+            CreateWorldQuad($"RuinCol{i}", new Vector3(x + i * 0.52f, y + 0.55f, 2f), new Vector3(0.25f, 1.15f - i * 0.25f), new Color(0.45f, 0.45f, 0.42f), -13);
+        CreateWorldQuad("RuinBase", new Vector3(x + 0.5f, y - 0.1f, 2f), new Vector3(1.45f, 0.25f), new Color(0.34f, 0.34f, 0.32f), -12);
+    }
+
+    void DrawPortal(float x, float y)
+    {
+        CreateWorldCircle("PortalGlow", new Vector3(x, y, 2.5f), 0.8f, new Color(0.55f, 0.18f, 1f, 0.25f), -15);
+        CreateWorldCircle("Portal", new Vector3(x, y, 2f), 0.42f, new Color(0.22f, 0.03f, 0.42f), -13);
+        CreateWorldCircle("PortalCore", new Vector3(x, y, 1.9f), 0.24f, new Color(0.80f, 0.25f, 1f), -12);
+    }
+
+    void DrawVolcano(float x, float y, float s)
+    {
+        CreateWorldQuad($"VolcanoBase{x}", new Vector3(x, y - 0.45f, 2.2f), new Vector3(1.3f * s, 1.2f * s), new Color(0.18f, 0.10f, 0.09f), -14);
+        CreateWorldQuad($"VolcanoLava{x}", new Vector3(x, y - 0.15f, 2f), new Vector3(0.18f * s, 1.25f * s), new Color(1f, 0.20f, 0.02f), -12);
+        CreateWorldCircle($"Smoke{x}", new Vector3(x + 0.1f, y + 0.65f * s, 2.2f), 0.34f * s, new Color(0.15f, 0.13f, 0.16f, 0.75f), -13);
+    }
+
+    void DrawGoal(float x, float y)
+    {
+        CreateWorldQuad("GoalBridge", new Vector3(x, y - 0.25f, 2f), new Vector3(2.0f, 0.35f), new Color(0.42f, 0.25f, 0.10f), -12);
+        CreateWorldQuad("GoalSign", new Vector3(x, y + 0.35f, 1.9f), new Vector3(1.25f, 0.58f), new Color(0.16f, 0.08f, 0.02f), -11);
     }
 
     void DrawTower(float x, float baseY, Color wallColor, Color roofColor)
@@ -229,7 +272,7 @@ public class MainMenu : MonoBehaviour
     }
 
     // ── World 오브젝트 생성 헬퍼 ──────────────────────────────────
-    void CreateWorldQuad(string name, Vector3 pos, Vector3 scale, Color color, int order)
+    GameObject CreateWorldQuad(string name, Vector3 pos, Vector3 scale, Color color, int order)
     {
         var go = new GameObject(name);
         var sr = go.AddComponent<SpriteRenderer>();
@@ -238,6 +281,7 @@ public class MainMenu : MonoBehaviour
         sr.sortingOrder = order;
         go.transform.position   = pos;
         go.transform.localScale = scale;
+        return go;
     }
 
     void CreateWorldCircle(string name, Vector3 pos, float radius, Color color, int order)
@@ -266,27 +310,27 @@ public class MainMenu : MonoBehaviour
         cgo.AddComponent<GraphicRaycaster>();
 
         // 상단 반투명 어두운 오버레이 (제목 읽기 쉽도록)
-        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.35f), new Vector2(0, 160), new Vector2(1280, 280));
+        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.28f), new Vector2(0, 170), new Vector2(1280, 250));
 
         // 제목 장식선
-        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, 90), new Vector2(520, 3));
+        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, 118), new Vector2(540, 3));
 
         // 제목 그림자 + 본문
-        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE_SH, new Vector2(5, 45),  new Vector2(720, 100), 76);
-        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE,    new Vector2(0, 50),  new Vector2(720, 100), 76);
-        CreateTxt(cgo.transform, "RANDOM OFFENSE", new Color(1f, 0.95f, 0.6f), new Vector2(0, -20), new Vector2(600, 55), 34);
+        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE_SH, new Vector2(5, 72),  new Vector2(760, 110), 82);
+        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE,    new Vector2(0, 78),  new Vector2(760, 110), 82);
+        CreateTxt(cgo.transform, "RANDOM OFFENSE", new Color(1f, 0.95f, 0.6f), new Vector2(0, 2), new Vector2(620, 55), 34);
 
         // 하단 장식선
-        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, -55), new Vector2(520, 3));
+        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, -32), new Vector2(540, 3));
 
         // 버튼 패널 배경
-        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.45f), new Vector2(0, -215), new Vector2(320, 330));
+        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.42f), new Vector2(0, -215), new Vector2(340, 330));
 
         // 버튼 4개
-        RegBtn(cgo.transform, "start", "▶ 시작", new Vector2(0, -115), new Vector2(260, 54), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
-        RegBtn(cgo.transform, "gem",   "◆ 보석", new Vector2(0, -180), new Vector2(260, 54), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
-        RegBtn(cgo.transform, "set",   "⚙ 설정", new Vector2(0, -245), new Vector2(260, 54), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
-        RegBtn(cgo.transform, "exit",  "✕ 종료", new Vector2(0, -310), new Vector2(260, 54), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
+        RegBtn(cgo.transform, "start", "▶ 시작", new Vector2(0, -112), new Vector2(280, 56), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
+        RegBtn(cgo.transform, "gem",   "◆ 보석", new Vector2(0, -178), new Vector2(280, 56), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
+        RegBtn(cgo.transform, "set",   "⚙ 설정", new Vector2(0, -244), new Vector2(280, 56), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
+        RegBtn(cgo.transform, "exit",  "✕ 종료", new Vector2(0, -310), new Vector2(280, 56), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
 
         // 버전
         CreateTxt(cgo.transform, "v0.1 Alpha", new Color(1f, 1f, 1f, 0.3f), new Vector2(560, -330), new Vector2(160, 28), 15);
