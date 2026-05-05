@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private Text       speedBtnTxt;
     private Text       goalCountTxt;   // 일시정지 패널 내 골 카운트
     private Text       coinTxt;        // HUD 상단 코인 표시
+    private Text       gemBonusTxt;   // 보석 버프 표시 (하단 좌측)
 
     // ── 토스트 알림 ──────────────────────────────────────────────────────
     private GameObject toastGo;
@@ -352,6 +353,26 @@ public class GameManager : MonoBehaviour
 
         BuildSettingsPanel(cgo.transform);
         BuildToastUI(cgo.transform);
+        BuildGemBonusHUD(cgo.transform);
+    }
+
+    void BuildGemBonusHUD(Transform parent)
+    {
+        float speedMult = GemInventory.GetSpeedMultiplier();
+        float hpMult    = GemInventory.GetHpMultiplier();
+        bool  hasBonus  = speedMult > 1.001f || hpMult > 1.001f;
+        if (!hasBonus) return;
+
+        var parts = new System.Collections.Generic.List<string>();
+        if (speedMult > 1.001f) parts.Add($"속도+{Mathf.RoundToInt((speedMult - 1f) * 100)}%");
+        if (hpMult    > 1.001f) parts.Add($"HP+{Mathf.RoundToInt((hpMult - 1f) * 100)}%");
+        string bonusText = "♦ " + string.Join(" • ", parts);
+
+        gemBonusTxt = BuildTopLabel(parent, "gem", bonusText,
+            new Vector2(-490, -310), new Vector2(180, 30));
+        if (gemBonusTxt == null) return;
+        gemBonusTxt.fontSize = 13;
+        gemBonusTxt.color    = new Color(0.95f, 0.80f, 0.20f);
     }
 
     Text BuildTopLabel(Transform parent, string id, string text, Vector2 pos, Vector2 size)
