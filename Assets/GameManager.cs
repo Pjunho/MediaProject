@@ -380,22 +380,20 @@ public class GameManager : MonoBehaviour
         var bg = new GameObject("TopLabel_" + id);
         bg.transform.SetParent(parent, false);
         bg.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
-        var bgRt = bg.GetComponent<RectTransform>();
-        bgRt.anchoredPosition = pos;
-        bgRt.sizeDelta        = size + new Vector2(6, 6);
+        SR(bg.GetComponent<RectTransform>(), pos, size + new Vector2(6, 6));
 
         var tgo = new GameObject("Txt");
         tgo.transform.SetParent(bg.transform, false);
         var tx = tgo.AddComponent<Text>();
-        tx.text      = text;
-        tx.color     = Color.white;
-        tx.fontSize  = 18;
-        tx.alignment = TextAnchor.MiddleCenter;
-        tx.fontStyle = FontStyle.Bold;
-        tx.font      = UiPixelFont.Get();
-        var tRt = tgo.GetComponent<RectTransform>();
-        tRt.anchoredPosition = Vector2.zero;
-        tRt.sizeDelta        = size;
+        tx.text               = text;
+        tx.color              = Color.white;
+        tx.fontSize           = 18;
+        tx.alignment          = TextAnchor.MiddleCenter;
+        tx.fontStyle          = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, size);
         return tx;
     }
 
@@ -407,36 +405,34 @@ public class GameManager : MonoBehaviour
         // 반투명 배경 (통계 텍스트 공간 확보)
         var bg = waveBannerGo.AddComponent<Image>();
         bg.color = new Color(0f, 0f, 0f, 0.70f);
-        var bgRt = waveBannerGo.GetComponent<RectTransform>();
-        bgRt.anchoredPosition = new Vector2(0, 60);
-        bgRt.sizeDelta        = new Vector2(520, 110);
+        SR(waveBannerGo.GetComponent<RectTransform>(), new Vector2(0, 60), new Vector2(520, 110));
 
         // 주 텍스트 (클리어 메시지)
         var tgo = new GameObject("BannerTxt");
         tgo.transform.SetParent(waveBannerGo.transform, false);
         waveBannerTxt = tgo.AddComponent<Text>();
-        waveBannerTxt.text      = "";
-        waveBannerTxt.color     = new Color(0.3f, 1f, 0.4f);
-        waveBannerTxt.fontSize  = 32;
-        waveBannerTxt.alignment = TextAnchor.MiddleCenter;
-        waveBannerTxt.fontStyle = FontStyle.Bold;
-        waveBannerTxt.font      = UiPixelFont.Get();
-        var tRt = tgo.GetComponent<RectTransform>();
-        tRt.anchoredPosition = new Vector2(0, 26);
-        tRt.sizeDelta        = new Vector2(510, 44);
+        waveBannerTxt.text               = "";
+        waveBannerTxt.color              = new Color(0.3f, 1f, 0.4f);
+        waveBannerTxt.fontSize           = 32;
+        waveBannerTxt.alignment          = TextAnchor.MiddleCenter;
+        waveBannerTxt.fontStyle          = FontStyle.Bold;
+        waveBannerTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
+        waveBannerTxt.verticalOverflow   = VerticalWrapMode.Overflow;
+        waveBannerTxt.font               = UiPixelFont.Get();
+        SR(tgo.GetComponent<RectTransform>(), new Vector2(0, 26), new Vector2(510, 44));
 
         // 통계 서브텍스트 (통과 인원 / 획득 코인)
         var sgo = new GameObject("BannerStatsTxt");
         sgo.transform.SetParent(waveBannerGo.transform, false);
         waveBannerStatsTxt = sgo.AddComponent<Text>();
-        waveBannerStatsTxt.text      = "";
-        waveBannerStatsTxt.color     = new Color(0.85f, 0.90f, 1f, 0.92f);
-        waveBannerStatsTxt.fontSize  = 17;
-        waveBannerStatsTxt.alignment = TextAnchor.MiddleCenter;
-        waveBannerStatsTxt.font      = UiPixelFont.Get();
-        var sRt = sgo.GetComponent<RectTransform>();
-        sRt.anchoredPosition = new Vector2(0, -24);
-        sRt.sizeDelta        = new Vector2(504, 34);
+        waveBannerStatsTxt.text               = "";
+        waveBannerStatsTxt.color              = new Color(0.85f, 0.90f, 1f, 0.92f);
+        waveBannerStatsTxt.fontSize           = 17;
+        waveBannerStatsTxt.alignment          = TextAnchor.MiddleCenter;
+        waveBannerStatsTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
+        waveBannerStatsTxt.verticalOverflow   = VerticalWrapMode.Overflow;
+        waveBannerStatsTxt.font               = UiPixelFont.Get();
+        SR(sgo.GetComponent<RectTransform>(), new Vector2(0, -24), new Vector2(504, 34));
     }
 
     void BuildPausePanel(Transform parent)
@@ -471,9 +467,9 @@ public class GameManager : MonoBehaviour
 
         CreateImgIn(box.transform, new Color(1f,1f,1f,0.15f), new Vector2(0,-70), new Vector2(400,1));
 
-        RegPanelBtn(box.transform, "resume",   "▶\n재개",  new Vector2(-130,-130), new Vector2(90,80), COL_GREEN, COL_GREEN_H, OnResume);
-        RegPanelBtn(box.transform, "settings", "⚙\n설정",  new Vector2(0,   -130), new Vector2(90,80), COL_BLUE,  COL_BLUE_H,  OnSettings);
-        RegPanelBtn(box.transform, "exit",     "🚪\n퇴장", new Vector2(130, -130), new Vector2(90,80), COL_RED,   COL_RED_H,   OnExit);
+        RegPanelBtn(box.transform, "resume",   "▶ 재개",  new Vector2(-130,-130), new Vector2(90,80), COL_GREEN, COL_GREEN_H, OnResume);
+        RegPanelBtn(box.transform, "settings", "⚙ 설정",  new Vector2(0,   -130), new Vector2(90,80), COL_BLUE,  COL_BLUE_H,  OnSettings);
+        RegPanelBtn(box.transform, "exit",     "✕ 퇴장",  new Vector2(130, -130), new Vector2(90,80), COL_RED,   COL_RED_H,   OnExit);
     }
 
     void UpdateWaveHUD()
@@ -560,7 +556,7 @@ public class GameManager : MonoBehaviour
         CreateImgIn(settingsPanel.transform, COL_PANEL, new Vector2(0, 40), new Vector2(460, 320));
         CreateImgIn(settingsPanel.transform, new Color(1f, 1f, 1f, 0.12f), new Vector2(0, 40), new Vector2(464, 324));
 
-        CreateTxtIn(settingsPanel.transform, "⚙  설  정", COL_GOLD, new Vector2(0, 173), new Vector2(380, 46), 30);
+        CreateTxtIn(settingsPanel.transform, "⚙ 설정", COL_GOLD, new Vector2(0, 173), new Vector2(380, 46), 30);
         CreateImgIn(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, 147), new Vector2(420, 2));
 
         // 볼륨 행
@@ -586,20 +582,18 @@ public class GameManager : MonoBehaviour
         toastGo.transform.SetParent(parent, false);
         var bg = toastGo.AddComponent<Image>();
         bg.color = new Color(0.06f, 0.06f, 0.10f, 0.90f);
-        var rt = toastGo.GetComponent<RectTransform>();
-        rt.anchoredPosition = new Vector2(0, -200);
-        rt.sizeDelta = new Vector2(310, 48);
+        SR(toastGo.GetComponent<RectTransform>(), new Vector2(0, -200), new Vector2(310, 48));
 
         var tgo = new GameObject("Txt");
         tgo.transform.SetParent(toastGo.transform, false);
         toastTxt = tgo.AddComponent<Text>();
-        toastTxt.fontSize  = 20;
-        toastTxt.fontStyle = FontStyle.Bold;
-        toastTxt.alignment = TextAnchor.MiddleCenter;
-        toastTxt.font      = UiPixelFont.Get();
-        var tRt = tgo.GetComponent<RectTransform>();
-        tRt.anchoredPosition = Vector2.zero;
-        tRt.sizeDelta        = new Vector2(300, 44);
+        toastTxt.fontSize           = 20;
+        toastTxt.fontStyle          = FontStyle.Bold;
+        toastTxt.alignment          = TextAnchor.MiddleCenter;
+        toastTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
+        toastTxt.verticalOverflow   = VerticalWrapMode.Overflow;
+        toastTxt.font               = UiPixelFont.Get();
+        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(300, 44));
         toastGo.SetActive(false);
     }
 
@@ -789,20 +783,22 @@ public class GameManager : MonoBehaviour
     {
         var go = new GameObject("IconBtn_" + id); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = new Color(0f,0f,0f,0.45f);
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size + new Vector2(3,3);
+        SR(go.GetComponent<RectTransform>(), pos, size + new Vector2(3,3));
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
-        var ir = inner.GetComponent<RectTransform>(); ir.anchoredPosition = Vector2.zero; ir.sizeDelta = size;
+        SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
         var btn = inner.AddComponent<Button>();
         btn.targetGraphic = fi;
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 20;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
         lTxt = tx;
-        btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
+        btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
         return fi;
     }
 
@@ -810,54 +806,69 @@ public class GameManager : MonoBehaviour
     {
         var go = new GameObject("PBtn_"+id); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = new Color(1f,1f,1f,0.10f);
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size+new Vector2(3,3);
+        SR(go.GetComponent<RectTransform>(), pos, size + new Vector2(3,3));
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
-        var ir = inner.GetComponent<RectTransform>(); ir.anchoredPosition = Vector2.zero; ir.sizeDelta = size;
+        SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
         var btn = inner.AddComponent<Button>();
         btn.targetGraphic = fi;
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
-        btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=true });
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=true });
     }
 
     void RegResultBtn(Transform p, string id, string label, Vector2 pos, Vector2 size, Color n, Color h, System.Action cb)
     {
         var go = new GameObject("RBtn_"+id); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = new Color(1f,1f,1f,0.12f);
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size+new Vector2(3,3);
+        SR(go.GetComponent<RectTransform>(), pos, size + new Vector2(3,3));
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
-        var ir = inner.GetComponent<RectTransform>(); ir.anchoredPosition = Vector2.zero; ir.sizeDelta = size;
+        SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
         var btn = inner.AddComponent<Button>();
         btn.targetGraphic = fi;
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
-        btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
+    }
+
+    // ── RectTransform 공통 헬퍼 (앵커·피벗 = 중앙(0.5,0.5) 고정) ────
+    static void SR(RectTransform rt, Vector2 pos, Vector2 size)
+    {
+        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta        = size;
     }
 
     void CreateImgIn(Transform p, Color c, Vector2 pos, Vector2 size)
     {
         var go = new GameObject("Img"); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = c;
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
     Text CreateTxtIn(Transform p, string s, Color c, Vector2 pos, Vector2 size, int fs)
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter;
+        tx.fontStyle          = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;
     }
 

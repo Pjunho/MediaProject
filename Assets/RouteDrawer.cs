@@ -713,22 +713,20 @@ public class RouteDrawer : MonoBehaviour
         fillGo.transform.SetParent(cgo.transform, false);
         startBtnFill       = fillGo.AddComponent<Image>();
         startBtnFill.color = COL_BTN_OFF;
-        var frt = fillGo.GetComponent<RectTransform>();
-        frt.anchoredPosition = new Vector2(-548, 318);
-        frt.sizeDelta        = new Vector2(126, 52);
+        SR(fillGo.GetComponent<RectTransform>(), new Vector2(-548, 318), new Vector2(126, 52));
 
         var lgo = new GameObject("StartLbl");
         lgo.transform.SetParent(fillGo.transform, false);
         var ltx = lgo.AddComponent<Text>();
-        ltx.text      = "▶  Start";
-        ltx.color     = new Color(1f, 1f, 1f, 0.55f);
-        ltx.fontSize  = 22;
-        ltx.fontStyle = FontStyle.Bold;
-        ltx.alignment = TextAnchor.MiddleCenter;
-        ltx.font      = UiPixelFont.Get();
-        var lrt = lgo.GetComponent<RectTransform>();
-        lrt.anchoredPosition = Vector2.zero;
-        lrt.sizeDelta        = new Vector2(126, 52);
+        ltx.text              = "▶ Start";
+        ltx.color             = new Color(1f, 1f, 1f, 0.55f);
+        ltx.fontSize          = 22;
+        ltx.fontStyle         = FontStyle.Bold;
+        ltx.alignment         = TextAnchor.MiddleCenter;
+        ltx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        ltx.verticalOverflow   = VerticalWrapMode.Overflow;
+        ltx.font              = UiPixelFont.Get();
+        SR(lgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(126, 52));
 
         StartCoroutine(UpdateBtnLabelColor(ltx));
 
@@ -759,20 +757,29 @@ public class RouteDrawer : MonoBehaviour
     }
 
     // ── UI 헬퍼 ───────────────────────────────────────────────────
+    static void SR(RectTransform rt, Vector2 pos, Vector2 size)
+    {
+        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta        = size;
+    }
+
     void CreateUIImg(Transform p, Color c, Vector2 pos, Vector2 size)
     {
         var go = new GameObject("Img"); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = c;
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
     Text CreateUITxt(Transform p, string s, Color c, Vector2 pos, Vector2 size, int fs)
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;
     }
 

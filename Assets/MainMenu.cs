@@ -283,10 +283,10 @@ public class MainMenu : MonoBehaviour
         CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.45f), new Vector2(0, -215), new Vector2(320, 330));
 
         // 버튼 4개
-        RegBtn(cgo.transform, "start", "▶  시  작", new Vector2(0, -115), new Vector2(260, 54), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
-        RegBtn(cgo.transform, "gem",   "◆  보  석", new Vector2(0, -180), new Vector2(260, 54), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
-        RegBtn(cgo.transform, "set",   "⚙  설  정", new Vector2(0, -245), new Vector2(260, 54), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
-        RegBtn(cgo.transform, "exit",  "✕  종  료", new Vector2(0, -310), new Vector2(260, 54), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
+        RegBtn(cgo.transform, "start", "▶ 시작", new Vector2(0, -115), new Vector2(260, 54), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
+        RegBtn(cgo.transform, "gem",   "◆ 보석", new Vector2(0, -180), new Vector2(260, 54), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
+        RegBtn(cgo.transform, "set",   "⚙ 설정", new Vector2(0, -245), new Vector2(260, 54), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
+        RegBtn(cgo.transform, "exit",  "✕ 종료", new Vector2(0, -310), new Vector2(260, 54), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
 
         // 버전
         CreateTxt(cgo.transform, "v0.1 Alpha", new Color(1f, 1f, 1f, 0.3f), new Vector2(560, -330), new Vector2(160, 28), 15);
@@ -295,24 +295,34 @@ public class MainMenu : MonoBehaviour
         BuildSettingsPanel(cgo.transform);
     }
 
+    // ── RectTransform 공통 헬퍼 ──────────────────────────────────────
+    static void SR(RectTransform rt, Vector2 pos, Vector2 size)
+    {
+        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta        = size;
+    }
+
     int RegBtn(Transform p, string id, string label, Vector2 pos, Vector2 size, Color n, Color h, System.Action cb)
     {
         var go = new GameObject("Btn_" + id); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.18f);
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size + new Vector2(4, 4);
+        SR(go.GetComponent<RectTransform>(), pos, size + new Vector2(4, 4));
 
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
-        var ir = inner.GetComponent<RectTransform>(); ir.anchoredPosition = Vector2.zero; ir.sizeDelta = size;
+        SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
 
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 26;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
 
         int index = btns.Count;
-        btns.Add(new BtnData { rt = ir, fill = fi, normal = n, hover = h, action = cb });
+        btns.Add(new BtnData { rt = inner.GetComponent<RectTransform>(), fill = fi, normal = n, hover = h, action = cb });
         return index;
     }
 
@@ -431,25 +441,29 @@ public class MainMenu : MonoBehaviour
     {
         var go = new GameObject("Img"); go.transform.SetParent(p, false);
         go.AddComponent<Image>().color = c;
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
     void CreateTxt(Transform p, string s, Color c, Vector2 pos, Vector2 size, int fs)
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(go.GetComponent<RectTransform>(), pos, size);
     }
 
     Text CreateTxtReturn(Transform p, string s, Color c, Vector2 pos, Vector2 size, int fs)
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = UiPixelFont.Get();
-        var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.font               = UiPixelFont.Get();
+        SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;
     }
 
@@ -488,7 +502,7 @@ public class MainMenu : MonoBehaviour
         CreateImg(settingsPanel.transform, COL_PANEL, Vector2.zero, new Vector2(560, 380));
         CreateImg(settingsPanel.transform, new Color(1f, 1f, 1f, 0.12f), Vector2.zero, new Vector2(564, 384));
 
-        CreateTxt(settingsPanel.transform, "설  정", COL_TITLE, new Vector2(0, 148), new Vector2(400, 50), 36);
+        CreateTxt(settingsPanel.transform, "설정", COL_TITLE, new Vector2(0, 148), new Vector2(400, 50), 36);
         CreateImg(settingsPanel.transform, new Color(1f, 1f, 1f, 0.15f), new Vector2(0, 116), new Vector2(500, 2));
 
         // 볼륨 행

@@ -933,8 +933,10 @@ public class AllyOrderPanel : MonoBehaviour
         rt.anchorMin = anchorMin; rt.anchorMax = anchorMax;
         rt.offsetMin = offsetMin; rt.offsetMax = offsetMax;
         var tx = go.AddComponent<Text>();
-        tx.text = text; tx.font = BuiltinFont(); tx.fontSize = fontSize;
-        tx.fontStyle = style; tx.color = color; tx.alignment = alignment;
+        tx.text               = text; tx.font = BuiltinFont(); tx.fontSize = fontSize;
+        tx.fontStyle          = style; tx.color = color; tx.alignment = alignment;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
     }
 
     Text CreateTextLabel(string name, Transform parent,
@@ -948,8 +950,10 @@ public class AllyOrderPanel : MonoBehaviour
         rt.anchorMin = anchorMin; rt.anchorMax = anchorMax;
         rt.offsetMin = offsetMin; rt.offsetMax = offsetMax;
         var tx = go.AddComponent<Text>();
-        tx.text = text; tx.font = BuiltinFont(); tx.fontSize = fontSize;
-        tx.fontStyle = style; tx.color = color; tx.alignment = alignment;
+        tx.text               = text; tx.font = BuiltinFont(); tx.fontSize = fontSize;
+        tx.fontStyle          = style; tx.color = color; tx.alignment = alignment;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow   = VerticalWrapMode.Overflow;
         return tx;
     }
 
