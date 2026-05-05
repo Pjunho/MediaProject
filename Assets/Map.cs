@@ -164,12 +164,8 @@ public class Map : MonoBehaviour
                 if (tile == null) continue;
 
                 TileType type = tileMap[x, y];
-                if (type == TileType.Dirt)
-                {
-                    if (Hash01(stageIdx, x, y, 71) < 0.025f)
-                        AddPathDetail(tile.transform, stageIdx, x, y);
-                }
-                else
+                // 길 타일에는 장식 없음 (깔끔한 룩 유지)
+                if (type == TileType.Grass)
                 {
                     int pathNeighbors = CountPathNeighbors(x, y);
                     float decorChance = GetDecorChance(stageIdx, pathNeighbors > 0);
@@ -225,9 +221,10 @@ public class Map : MonoBehaviour
 
     float GetDecorChance(int stageIdx, bool nearPath)
     {
+        // 통일감을 위해 장식 밀도 낮춤: 이전 대비 약 1/3 수준
         if (stageIdx == 1)
-            return nearPath ? 0.055f : 0.025f;
-        return nearPath ? 0.11f : 0.05f;
+            return nearPath ? 0.018f : 0.008f;
+        return nearPath ? 0.025f : 0.012f;
     }
 
     void AddSpriteChild(

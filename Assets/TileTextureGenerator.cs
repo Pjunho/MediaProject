@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 스테이지별 타일 스프라이트를 여러 오픈소스 아틀라스에서 추출합니다.
-/// 기본 타일, 길 타일, 장식 타일, 경계 블렌드 레이어를 한곳에서 제공합니다.
+/// 스테이지별 타일 스프라이트를 terrain_atlas.png (1024×1024, 32px 타일) 단일 아틀라스에서 추출합니다.
+/// 각 스테이지는 terrain_atlas 내 별도 구역을 사용하여 시각적 통일감을 유지합니다.
 ///
-/// 타일 ID 규칙 (모든 1024×1024, 32px 아틀라스 공통):
-///   tile id N → col = N % 32,  row = N / 32  (행 0 = 이미지 상단)
+/// 타일 ID 규칙:
+///   id = col + row * 32   (col = 0~31, row = 0~31)
 ///   Sprite.Create Rect.y = 1024 − (row + 1) × 32  (Unity 하단 기준)
 /// </summary>
 public static class TileTextureGenerator
@@ -19,142 +19,148 @@ public static class TileTextureGenerator
     static readonly Vector2 PIVOT = new Vector2(0.5f, 0.5f);
 
     // ── 텍스처 리소스 경로 ──────────────────────────────────────────
-    const string TEX_TERRAIN       = "Map/terrain";
+    // 전 스테이지 terrain_atlas 단일 아틀라스 사용 (1024×1024 확인됨)
     const string TEX_TERRAIN_ATLAS = "Map/terrain_atlas";
-    const string TEX_BASE_OUT      = "Map/base_out_atlas";
 
     const int MAX_STAGE = 5;
 
-    // ── 스테이지별 벽/바닥 텍스처 ──────────────────────────────────
+    // ── 스테이지별 벽 텍스처 (전부 terrain_atlas) ──────────────────
     static readonly string[] STAGE_WALL_TEX =
     {
         null,
         TEX_TERRAIN_ATLAS,   // Stage 1: 초원 잔디
         TEX_TERRAIN_ATLAS,   // Stage 2: 사막 모래
-        TEX_BASE_OUT,        // Stage 3: 화산암
-        TEX_BASE_OUT,        // Stage 4: 어둠의 미궁
-        TEX_TERRAIN,         // Stage 5: 최후의 요새
+        TEX_TERRAIN_ATLAS,   // Stage 3: 화산 용암암
+        TEX_TERRAIN_ATLAS,   // Stage 4: 어둠의 미궁
+        TEX_TERRAIN_ATLAS,   // Stage 5: 최후의 요새
     };
 
+    // ── 스테이지별 벽 타일 ID (terrain_atlas 기준) ─────────────────
+    //
+    //   Stage 1 – 잔디 지대  (row 20-22, col 0-2 / IDs 640-706)
+    //   Stage 2 – 사막 모래  (row 11-13, col 0-2 / IDs 352-418)
+    //   Stage 3 – 화산 암반  (row 0-1, col 0-3  / IDs 0-35  → 매우 어두운 동굴암)
+    //   Stage 4 – 어두운 석조 (row 4-6, col 0-2 / IDs 128-194)
+    //   Stage 5 – 요새 석벽  (row 14-15, col 0-3 / IDs 448-483)
+    //
     static readonly int[][] STAGE_WALL_IDS =
     {
         null,
-        new[] { 640, 641, 642, 672, 673, 674, 704, 705 },   // Stage 1
-        new[] { 352, 353, 354, 384, 385, 386, 416, 417 },   // Stage 2
-        new[] { 352, 353, 288, 289, 320, 321, 384, 385 },   // Stage 3
-        new[] { 352, 353, 384, 385, 416, 417, 448, 449 },   // Stage 4
-        new[] { 459, 460, 461, 491, 492, 493, 523, 524 },   // Stage 5
+        new[] { 640, 641, 642, 672, 673, 674, 704, 705 },   // Stage 1: 잔디 (기존 동작 확인됨)
+        new[] { 352, 353, 354, 384, 385, 386, 416, 417 },   // Stage 2: 모래 (기존 동작 확인됨)
+        new[] { 0, 1, 2, 3, 32, 33, 34, 35 },               // Stage 3: 화산 암반 (어두운 상단 구역)
+        new[] { 128, 129, 130, 160, 161, 162, 192, 193 },   // Stage 4: 어두운 석조
+        new[] { 448, 449, 450, 480, 481, 482, 512, 513 },   // Stage 5: 요새 석벽
     };
 
-    // ── 스테이지별 길 텍스처 (모두 terrain.png) ─────────────────────
+    // ── 길 타일: 전부 절차적 생성 (GetConnectedPathSprite) ──────────
+    // 아래 PATH_TEX/IDS는 폴백 전용 (기본적으로 사용 안 됨)
     static readonly string[] STAGE_PATH_TEX =
     {
         null,
-        TEX_TERRAIN,   // Stage 1
-        TEX_TERRAIN,   // Stage 2
-        TEX_TERRAIN,   // Stage 3
-        TEX_TERRAIN,   // Stage 4
-        TEX_TERRAIN,   // Stage 5
+        TEX_TERRAIN_ATLAS, TEX_TERRAIN_ATLAS, TEX_TERRAIN_ATLAS,
+        TEX_TERRAIN_ATLAS, TEX_TERRAIN_ATLAS,
     };
 
-    // ── 스테이지별 길 타일 ID (terrain.png) ─────────────────────────
-    //
-    //   Stage 1 – Earth 흙길 (676 row21,col4)
-    //   Stage 2 – Brick Road 벽돌 (491-494 row15,col11-14)
-    //   Stage 3 – Red Dirt 붉은 화산 통로 (103,166,167 row3/5)
-    //
     static readonly int[][] STAGE_PATH_IDS =
     {
         null,
         new[] { 676, 677, 708, 709 },
-        new[] { 491, 492, 493, 494, 523, 524 },
-        new[] { 103, 166, 167, 198, 199 },
-        new[] { 135, 136, 167, 168, 199, 200 },
-        new[] { 491, 492, 493, 523, 524, 525 },
+        new[] { 354, 355, 386, 387 },
+        new[] { 66, 67, 68, 98, 99 },
+        new[] { 130, 131, 162, 163 },
+        new[] { 450, 451, 482, 483 },
     };
 
+    // ── 장식 타일 (전부 terrain_atlas, 낮은 배치율로 사용) ─────────
     static readonly string[] STAGE_DECOR_TEX =
     {
         null,
-        TEX_BASE_OUT,
-        TEX_BASE_OUT,
-        TEX_BASE_OUT,
-        TEX_BASE_OUT,
-        TEX_TERRAIN_ATLAS,
+        TEX_TERRAIN_ATLAS,   // Stage 1
+        TEX_TERRAIN_ATLAS,   // Stage 2
+        TEX_TERRAIN_ATLAS,   // Stage 3
+        TEX_TERRAIN_ATLAS,   // Stage 4
+        TEX_TERRAIN_ATLAS,   // Stage 5
     };
 
+    // 장식 ID: 각 스테이지 벽 구역 인근 타일 사용
     static readonly int[][] STAGE_DECOR_IDS =
     {
         null,
-        new[] { 32, 33, 64, 65, 96, 97, 128, 129 },
-        new[] { 288, 289, 320, 321, 352, 353, 384, 385 },
-        new[] { 224, 225, 256, 257, 288, 289, 352, 353 },
-        new[] { 416, 417, 448, 449, 480, 481, 512, 513 },
-        new[] { 459, 460, 461, 491, 492, 493, 523, 524 },
+        new[] { 707, 708, 709, 739, 740, 741 },   // Stage 1: 잔디 구역 우측
+        new[] { 355, 356, 387, 388, 419, 420 },   // Stage 2: 사막 구역 인근
+        new[] { 66, 67, 68, 98, 99, 100 },        // Stage 3: 용암/화산 구역
+        new[] { 130, 131, 162, 163, 194, 195 },   // Stage 4: 어두운 석조 인근
+        new[] { 450, 451, 482, 483, 514, 515 },   // Stage 5: 요새 구역 인근
     };
 
+    // ── 경계 블렌드 색상 ─────────────────────────────────────────────
     static readonly Color[] STAGE_EDGE_COLORS =
     {
         Color.clear,
-        new Color(0.18f, 0.50f, 0.13f, 0.74f),
-        new Color(0.83f, 0.63f, 0.25f, 0.66f),
-        new Color(0.42f, 0.11f, 0.08f, 0.72f),
-        new Color(0.15f, 0.17f, 0.28f, 0.74f),
-        new Color(0.33f, 0.34f, 0.37f, 0.70f),
+        new Color(0.18f, 0.50f, 0.13f, 0.74f),   // Stage 1: 초록
+        new Color(0.83f, 0.63f, 0.25f, 0.66f),   // Stage 2: 모래색
+        new Color(0.55f, 0.12f, 0.05f, 0.78f),   // Stage 3: 짙은 적색 (용암 크러스트)
+        new Color(0.15f, 0.17f, 0.28f, 0.74f),   // Stage 4: 어두운 청회색
+        new Color(0.33f, 0.34f, 0.37f, 0.70f),   // Stage 5: 회색
     };
 
+    // ── 카메라 배경 색상 ─────────────────────────────────────────────
     static readonly Color[] STAGE_BACKDROP_COLORS =
     {
         Color.black,
-        new Color(0.33f, 0.55f, 0.23f),
-        new Color(0.66f, 0.53f, 0.27f),
-        new Color(0.21f, 0.12f, 0.11f),
-        new Color(0.10f, 0.11f, 0.18f),
-        new Color(0.23f, 0.24f, 0.27f),
+        new Color(0.33f, 0.55f, 0.23f),          // Stage 1: 초원 초록
+        new Color(0.66f, 0.53f, 0.27f),          // Stage 2: 모래색
+        new Color(0.06f, 0.04f, 0.03f),          // Stage 3: 거의 검정 (용암 지하)
+        new Color(0.10f, 0.11f, 0.18f),          // Stage 4: 어두운 청회
+        new Color(0.23f, 0.24f, 0.27f),          // Stage 5: 회색
     };
 
+    // ── 벽 타일 기저 색상 ────────────────────────────────────────────
     static readonly Color[] STAGE_GROUND_BASE_COLORS =
     {
         Color.black,
-        new Color(0.28f, 0.55f, 0.17f),
-        new Color(0.70f, 0.58f, 0.30f),
-        new Color(0.20f, 0.12f, 0.11f),
-        new Color(0.12f, 0.13f, 0.20f),
-        new Color(0.24f, 0.25f, 0.27f),
+        new Color(0.28f, 0.55f, 0.17f),          // Stage 1: 초록
+        new Color(0.70f, 0.58f, 0.30f),          // Stage 2: 모래
+        new Color(0.09f, 0.06f, 0.05f),          // Stage 3: 매우 어두운 화산암
+        new Color(0.12f, 0.13f, 0.20f),          // Stage 4: 어두운 청회
+        new Color(0.24f, 0.25f, 0.27f),          // Stage 5: 회색
     };
 
+    // ── 길 타일 주 색상 (용암/흙길 등) ──────────────────────────────
     static readonly Color[] STAGE_PATH_MAIN_COLORS =
     {
         Color.black,
-        new Color(0.57f, 0.36f, 0.15f),
-        new Color(0.76f, 0.63f, 0.35f),
-        new Color(0.45f, 0.16f, 0.09f),
-        new Color(0.25f, 0.24f, 0.33f),
-        new Color(0.48f, 0.47f, 0.43f),
+        new Color(0.57f, 0.36f, 0.15f),          // Stage 1: 흙길
+        new Color(0.76f, 0.63f, 0.35f),          // Stage 2: 모래길
+        new Color(0.92f, 0.44f, 0.06f),          // Stage 3: 밝은 오렌지 용암 ★
+        new Color(0.25f, 0.24f, 0.33f),          // Stage 4: 어두운 보라회
+        new Color(0.48f, 0.47f, 0.43f),          // Stage 5: 석재
     };
 
+    // ── 길 테두리 어두운 색상 ────────────────────────────────────────
     static readonly Color[] STAGE_PATH_EDGE_DARK_COLORS =
     {
         Color.black,
-        new Color(0.28f, 0.18f, 0.08f),
-        new Color(0.50f, 0.40f, 0.21f),
-        new Color(0.21f, 0.07f, 0.05f),
-        new Color(0.11f, 0.11f, 0.17f),
-        new Color(0.27f, 0.27f, 0.26f),
+        new Color(0.28f, 0.18f, 0.08f),          // Stage 1
+        new Color(0.50f, 0.40f, 0.21f),          // Stage 2
+        new Color(0.52f, 0.14f, 0.04f),          // Stage 3: 어두운 적갈 크러스트 ★
+        new Color(0.11f, 0.11f, 0.17f),          // Stage 4
+        new Color(0.27f, 0.27f, 0.26f),          // Stage 5
     };
 
     // ── 텍스처 캐시 ─────────────────────────────────────────────────
     static readonly Dictionary<string, Texture2D> _texCache
         = new Dictionary<string, Texture2D>();
 
-    // ── 스프라이트 캐시 [stageIdx][variantIdx] ───────────────────────
-    static readonly Sprite[][] _wallCache = new Sprite[MAX_STAGE + 1][];
-    static readonly Sprite[][] _pathCache = new Sprite[MAX_STAGE + 1][];
-    static readonly Sprite[][] _decorCache = new Sprite[MAX_STAGE + 1][];
-    static readonly Sprite[][] _edgeCache = new Sprite[MAX_STAGE + 1][];
+    // ── 스프라이트 캐시 ──────────────────────────────────────────────
+    static readonly Sprite[][] _wallCache          = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _pathCache          = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _decorCache         = new Sprite[MAX_STAGE + 1][];
+    static readonly Sprite[][] _edgeCache          = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
 
-    // 절차적 폴백 캐시
+    // 절차적 폴백
     static Sprite _grassFallback;
     static Sprite _dirtFallback;
 
@@ -162,16 +168,12 @@ public static class TileTextureGenerator
     //  공개 API
     // ────────────────────────────────────────────────────────────────
 
-    /// <summary>스테이지에 맞는 벽(미로 벽) 스프라이트를 반환합니다.</summary>
     public static Sprite GetWallSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
 
         if (_wallCache[idx] == null)
-        {
-            string texPath = STAGE_WALL_TEX[idx];
-            _wallCache[idx] = BuildSpriteArray(texPath, STAGE_WALL_IDS[idx]);
-        }
+            _wallCache[idx] = BuildSpriteArray(STAGE_WALL_TEX[idx], STAGE_WALL_IDS[idx]);
 
         if (_wallCache[idx] != null)
             return _wallCache[idx][variant % _wallCache[idx].Length];
@@ -179,16 +181,12 @@ public static class TileTextureGenerator
         return GetFallback(ref _grassFallback, CreateGrassSprite);
     }
 
-    /// <summary>스테이지에 맞는 길(미로 통로) 스프라이트를 반환합니다.</summary>
     public static Sprite GetPathSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
 
         if (_pathCache[idx] == null)
-        {
-            string texPath = STAGE_PATH_TEX[idx];
-            _pathCache[idx] = BuildSpriteArray(texPath, STAGE_PATH_IDS[idx]);
-        }
+            _pathCache[idx] = BuildSpriteArray(STAGE_PATH_TEX[idx], STAGE_PATH_IDS[idx]);
 
         if (_pathCache[idx] != null)
             return _pathCache[idx][variant % _pathCache[idx].Length];
@@ -204,15 +202,20 @@ public static class TileTextureGenerator
         if (_connectedPathCache[idx] == null)
         {
             _connectedPathCache[idx] = new Sprite[16];
-            for (int i = 0; i < _connectedPathCache[idx].Length; i++)
+            for (int i = 0; i < 16; i++)
             {
-                _connectedPathCache[idx][i] = CreateConnectedPathSprite(
-                    STAGE_GROUND_BASE_COLORS[idx],
-                    STAGE_PATH_MAIN_COLORS[idx],
-                    STAGE_PATH_EDGE_DARK_COLORS[idx],
-                    i,
-                    idx,
-                    variant);
+                // Stage 3는 용암 전용 렌더링
+                _connectedPathCache[idx][i] = (idx == 3)
+                    ? CreateLavaPathSprite(
+                        STAGE_GROUND_BASE_COLORS[idx],
+                        STAGE_PATH_MAIN_COLORS[idx],
+                        STAGE_PATH_EDGE_DARK_COLORS[idx],
+                        i, variant)
+                    : CreateConnectedPathSprite(
+                        STAGE_GROUND_BASE_COLORS[idx],
+                        STAGE_PATH_MAIN_COLORS[idx],
+                        STAGE_PATH_EDGE_DARK_COLORS[idx],
+                        i, idx, variant);
             }
         }
 
@@ -224,10 +227,7 @@ public static class TileTextureGenerator
         int idx = ClampStage(stageIndex);
 
         if (_decorCache[idx] == null)
-        {
-            string texPath = STAGE_DECOR_TEX[idx];
-            _decorCache[idx] = BuildSpriteArray(texPath, STAGE_DECOR_IDS[idx]);
-        }
+            _decorCache[idx] = BuildSpriteArray(STAGE_DECOR_TEX[idx], STAGE_DECOR_IDS[idx]);
 
         if (_decorCache[idx] != null)
             return _decorCache[idx][Mathf.Abs(variant) % _decorCache[idx].Length];
@@ -243,7 +243,7 @@ public static class TileTextureGenerator
         if (_edgeCache[idx] == null)
         {
             _edgeCache[idx] = new Sprite[16];
-            for (int i = 0; i < _edgeCache[idx].Length; i++)
+            for (int i = 0; i < 16; i++)
                 _edgeCache[idx][i] = CreatePathEdgeSprite(STAGE_EDGE_COLORS[idx], i);
         }
 
@@ -253,7 +253,7 @@ public static class TileTextureGenerator
     public static Color GetBackdropColor(int stageIndex)
         => STAGE_BACKDROP_COLORS[ClampStage(stageIndex)];
 
-    // ── 하위 호환 API (Stage 1 고정) ─────────────────────────────────
+    // 하위 호환 API
     public static Sprite GetGrassSprite(int variant = 0) => GetWallSprite(1, variant);
     public static Sprite GetDirtSprite()                  => GetPathSprite(1, 0);
 
@@ -283,7 +283,6 @@ public static class TileTextureGenerator
         return tex;
     }
 
-    /// <summary>타일 ID 배열 → Sprite 배열로 변환 (캐시용)</summary>
     static Sprite[] BuildSpriteArray(string texPath, int[] ids)
     {
         if (ids == null || ids.Length == 0) return null;
@@ -292,17 +291,21 @@ public static class TileTextureGenerator
 
         var arr = new Sprite[ids.Length];
         for (int i = 0; i < ids.Length; i++)
-            arr[i] = Sprite.Create(tex, TileRect(ids[i]), PIVOT, PPU);
+            arr[i] = Sprite.Create(tex, TileRect(ids[i], tex.width, tex.height), PIVOT, PPU);
         return arr;
     }
 
-    /// <summary>타일 ID → Sprite.Create 용 Rect (y = 텍스처 하단 기준)</summary>
-    static Rect TileRect(int id)
+    /// <summary>타일 ID → Sprite.Create 용 Rect (실제 텍스처 크기 기반)</summary>
+    static Rect TileRect(int id, int texW, int texH)
     {
-        int col = id % (TEX_W / TILE_SZ);
-        int row = id / (TEX_W / TILE_SZ);
-        float x = col * TILE_SZ;
-        float y = TEX_H - (row + 1) * TILE_SZ;
+        int cols = texW / TILE_SZ;
+        int col  = id % cols;
+        int row  = id / cols;
+        float x  = col * TILE_SZ;
+        float y  = texH - (row + 1) * TILE_SZ;
+        // 범위 클램프
+        x = Mathf.Clamp(x, 0, texW - TILE_SZ);
+        y = Mathf.Clamp(y, 0, texH - TILE_SZ);
         return new Rect(x, y, TILE_SZ, TILE_SZ);
     }
 
@@ -315,7 +318,7 @@ public static class TileTextureGenerator
     }
 
     // ────────────────────────────────────────────────────────────────
-    //  절차적 폴백 (아틀라스 로드 실패 시 자동 사용)
+    //  절차적 폴백 스프라이트
     // ────────────────────────────────────────────────────────────────
 
     static Sprite CreateGrassSprite()
@@ -330,14 +333,12 @@ public static class TileTextureGenerator
         {
             float nx = (float)x / size * scale + ox;
             float ny = (float)y / size * scale + oy;
-            float n = Mathf.PerlinNoise(nx, ny);
-            float d = Mathf.PerlinNoise(nx * 3f, ny * 3f) * 0.3f;
-            float t = n * 0.7f + d;
-
-            Color c = t < 0.4f
+            float n  = Mathf.PerlinNoise(nx, ny);
+            float d  = Mathf.PerlinNoise(nx * 3f, ny * 3f) * 0.3f;
+            float t  = n * 0.7f + d;
+            Color c  = t < 0.4f
                 ? Color.Lerp(new Color(0.13f, 0.42f, 0.10f), new Color(0.22f, 0.58f, 0.16f), t / 0.4f)
                 : Color.Lerp(new Color(0.22f, 0.58f, 0.16f), new Color(0.34f, 0.70f, 0.22f), (t - 0.4f) / 0.6f);
-            if (n > 0.72f && d > 0.18f) c = Color.Lerp(c, new Color(0.45f, 0.80f, 0.25f), 0.4f);
             tex.SetPixel(x, y, c);
         }
         tex.Apply();
@@ -358,14 +359,11 @@ public static class TileTextureGenerator
             float ny = (float)y / size * scale + oy;
             float n  = Mathf.PerlinNoise(nx, ny);
             float d  = Mathf.PerlinNoise(nx * 4f, ny * 4f) * 0.25f;
-            float tr = Mathf.PerlinNoise(nx * 0.8f, ny * 6f) * 0.15f;
-            float t  = n * 0.6f + d + tr;
-
+            float t  = n * 0.6f + d;
             Color c;
             if      (t < 0.35f) c = Color.Lerp(new Color(0.38f,0.23f,0.08f), new Color(0.55f,0.36f,0.14f), t/0.35f);
             else if (t < 0.65f) c = Color.Lerp(new Color(0.55f,0.36f,0.14f), new Color(0.70f,0.52f,0.26f), (t-0.35f)/0.30f);
             else                c = Color.Lerp(new Color(0.70f,0.52f,0.26f), new Color(0.80f,0.65f,0.38f), (t-0.65f)/0.35f);
-            if (n > 0.68f && d < 0.08f) c = Color.Lerp(c, new Color(0.60f,0.58f,0.52f), 0.25f);
             tex.SetPixel(x, y, c);
         }
         tex.Apply();
@@ -374,14 +372,13 @@ public static class TileTextureGenerator
 
     static Sprite CreatePathEdgeSprite(Color edgeColor, int mask)
     {
-        const int size = 64;
-        const int edge = 8;
+        const int size  = 64;
+        const int edge  = 8;
         const int fringe = 4;
         var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
         tex.filterMode = FilterMode.Point;
 
         Color clear = new Color(0f, 0f, 0f, 0f);
-        Color dark = new Color(0f, 0f, 0f, 0.18f);
         Color light = Color.Lerp(edgeColor, Color.white, 0.14f);
         light.a = Mathf.Min(0.55f, edgeColor.a);
 
@@ -390,10 +387,10 @@ public static class TileTextureGenerator
         {
             Color c = clear;
 
-            bool top = (mask & 1) != 0 && y >= size - edge;
-            bool right = (mask & 2) != 0 && x >= size - edge;
+            bool top    = (mask & 1) != 0 && y >= size - edge;
+            bool right  = (mask & 2) != 0 && x >= size - edge;
             bool bottom = (mask & 4) != 0 && y < edge;
-            bool left = (mask & 8) != 0 && x < edge;
+            bool left   = (mask & 8) != 0 && x < edge;
 
             if (top || right || bottom || left)
             {
@@ -402,13 +399,16 @@ public static class TileTextureGenerator
                 c = Color.Lerp(c, light, checker);
             }
 
-            bool innerTop = (mask & 1) != 0 && y >= size - edge - fringe && y < size - edge;
-            bool innerRight = (mask & 2) != 0 && x >= size - edge - fringe && x < size - edge;
+            bool innerTop    = (mask & 1) != 0 && y >= size - edge - fringe && y < size - edge;
+            bool innerRight  = (mask & 2) != 0 && x >= size - edge - fringe && x < size - edge;
             bool innerBottom = (mask & 4) != 0 && y >= edge && y < edge + fringe;
-            bool innerLeft = (mask & 8) != 0 && x >= edge && x < edge + fringe;
+            bool innerLeft   = (mask & 8) != 0 && x >= edge && x < edge + fringe;
 
             if (innerTop || innerRight || innerBottom || innerLeft)
+            {
+                Color dark = new Color(0f, 0f, 0f, 0.18f);
                 c = Color.Lerp(c, dark, c.a > 0f ? 0.20f : 1f);
+            }
 
             tex.SetPixel(x, y, c);
         }
@@ -417,33 +417,27 @@ public static class TileTextureGenerator
         return SpriteFromTex(tex);
     }
 
+    // ── Stage 1 전용: 유기적 잔디 경계 처리 ─────────────────────────
     static Sprite CreateConnectedPathSprite(
-        Color ground,
-        Color path,
-        Color pathEdge,
-        int mask,
-        int stageIndex,
-        int variant)
+        Color ground, Color path, Color pathEdge,
+        int mask, int stageIndex, int variant)
     {
         if (stageIndex == 1)
             return CreateOrganicGrassPathSprite(ground, path, pathEdge, mask);
 
-        const int size = 64;
+        const int size     = 64;
         const int roadHalf = 15;
         const int edgeHalf = 19;
-        const int center = size / 2;
+        const int center   = size / 2;
 
         var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
         tex.filterMode = FilterMode.Point;
 
-        bool top = (mask & 1) != 0;
-        bool right = (mask & 2) != 0;
+        bool top    = (mask & 1) != 0;
+        bool right  = (mask & 2) != 0;
         bool bottom = (mask & 4) != 0;
-        bool left = (mask & 8) != 0;
-        if (mask == 0)
-        {
-            top = right = bottom = left = true;
-        }
+        bool left   = (mask & 8) != 0;
+        if (mask == 0) top = right = bottom = left = true;
 
         for (int x = 0; x < size; x++)
         for (int y = 0; y < size; y++)
@@ -456,21 +450,18 @@ public static class TileTextureGenerator
 
             bool inCore =
                 Mathf.Abs(dx) <= roadHalf && Mathf.Abs(dy) <= roadHalf;
-
             bool inConnector =
-                (top && Mathf.Abs(dx) <= roadHalf && dy >= -roadHalf) ||
-                (right && Mathf.Abs(dy) <= roadHalf && dx >= -roadHalf) ||
-                (bottom && Mathf.Abs(dx) <= roadHalf && dy <= roadHalf) ||
-                (left && Mathf.Abs(dy) <= roadHalf && dx <= roadHalf);
-
+                (top    && Mathf.Abs(dx) <= roadHalf && dy >= -roadHalf) ||
+                (right  && Mathf.Abs(dy) <= roadHalf && dx >= -roadHalf) ||
+                (bottom && Mathf.Abs(dx) <= roadHalf && dy <= roadHalf)  ||
+                (left   && Mathf.Abs(dy) <= roadHalf && dx <= roadHalf);
             bool inEdgeCore =
                 Mathf.Abs(dx) <= edgeHalf && Mathf.Abs(dy) <= edgeHalf;
-
             bool inEdgeConnector =
-                (top && Mathf.Abs(dx) <= edgeHalf && dy >= -edgeHalf) ||
-                (right && Mathf.Abs(dy) <= edgeHalf && dx >= -edgeHalf) ||
-                (bottom && Mathf.Abs(dx) <= edgeHalf && dy <= edgeHalf) ||
-                (left && Mathf.Abs(dy) <= edgeHalf && dx <= edgeHalf);
+                (top    && Mathf.Abs(dx) <= edgeHalf && dy >= -edgeHalf) ||
+                (right  && Mathf.Abs(dy) <= edgeHalf && dx >= -edgeHalf) ||
+                (bottom && Mathf.Abs(dx) <= edgeHalf && dy <= edgeHalf)  ||
+                (left   && Mathf.Abs(dy) <= edgeHalf && dx <= edgeHalf);
 
             if (inEdgeCore || inEdgeConnector)
                 c = Color.Lerp(c, pathEdge, 0.88f);
@@ -481,8 +472,7 @@ public static class TileTextureGenerator
                 c = Color.Lerp(path * 0.82f, path * 1.18f, pathNoise);
 
                 bool pebble = HashNoise(stageIndex, variant, x / 2, y / 2, 29) > 0.88f;
-                if (pebble)
-                    c = Color.Lerp(c, Color.white, 0.12f);
+                if (pebble) c = Color.Lerp(c, Color.white, 0.12f);
             }
 
             tex.SetPixel(x, y, ClampColor(c));
@@ -492,41 +482,132 @@ public static class TileTextureGenerator
         return SpriteFromTex(tex);
     }
 
+    // ── Stage 3 전용: 용암 흐름 렌더링 ─────────────────────────────
+    /// <summary>
+    /// 중심부 → 밝은 황색 오렌지 (1000°C+ 용암),
+    /// 가장자리 → 어두운 적갈색 (굳어가는 크러스트)
+    /// </summary>
+    static Sprite CreateLavaPathSprite(
+        Color ground, Color lavaMain, Color lavaCrust,
+        int mask, int variant)
+    {
+        const int size     = 64;
+        const int roadHalf = 15;
+        const int edgeHalf = 19;
+        const int center   = size / 2;
+
+        // 용암 중심 밝은 황색-오렌지 (열기 표현)
+        Color lavaCenter = new Color(1.00f, 0.82f, 0.14f);
+
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        bool top    = (mask & 1) != 0;
+        bool right  = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0;
+        bool left   = (mask & 8) != 0;
+        if (mask == 0) top = right = bottom = left = true;
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            int dx = x - center;
+            int dy = y - center;
+
+            // 화산 암반 배경
+            float groundNoise = HashNoise(3, variant, x, y, 5);
+            Color c = Color.Lerp(ground * 0.80f, ground * 1.20f, groundNoise);
+
+            bool inCore =
+                Mathf.Abs(dx) <= roadHalf && Mathf.Abs(dy) <= roadHalf;
+            bool inConnector =
+                (top    && Mathf.Abs(dx) <= roadHalf && dy >= -roadHalf) ||
+                (right  && Mathf.Abs(dy) <= roadHalf && dx >= -roadHalf) ||
+                (bottom && Mathf.Abs(dx) <= roadHalf && dy <= roadHalf)  ||
+                (left   && Mathf.Abs(dy) <= roadHalf && dx <= roadHalf);
+            bool inEdgeCore =
+                Mathf.Abs(dx) <= edgeHalf && Mathf.Abs(dy) <= edgeHalf;
+            bool inEdgeConnector =
+                (top    && Mathf.Abs(dx) <= edgeHalf && dy >= -edgeHalf) ||
+                (right  && Mathf.Abs(dy) <= edgeHalf && dx >= -edgeHalf) ||
+                (bottom && Mathf.Abs(dx) <= edgeHalf && dy <= edgeHalf)  ||
+                (left   && Mathf.Abs(dy) <= edgeHalf && dx <= edgeHalf);
+
+            // 크러스트 테두리 (어두운 적갈)
+            if (inEdgeCore || inEdgeConnector)
+                c = Color.Lerp(c, lavaCrust, 0.88f);
+
+            // 용암 본체: 중심에 가까울수록 밝은 황색
+            if (inCore || inConnector)
+            {
+                // 길 단면 중심으로부터 거리 계산 (연결 방향 기준)
+                float distX = Mathf.Abs(dx);
+                float distY = Mathf.Abs(dy);
+                float crossDist;
+                if ((top || bottom) && !(right || left))
+                    crossDist = distX;                      // 수직 통로: 가로 거리
+                else if ((right || left) && !(top || bottom))
+                    crossDist = distY;                      // 수평 통로: 세로 거리
+                else
+                    crossDist = Mathf.Min(distX, distY);   // 교차점: 최소값
+
+                float centerFactor = 1f - Mathf.Clamp01((float)crossDist / roadHalf);
+                centerFactor = centerFactor * centerFactor; // 제곱 → 중심부만 더 밝게
+
+                float pathNoise = HashNoise(3, variant, x, y, 17);
+                Color lavaColor = Color.Lerp(lavaMain, lavaCenter, centerFactor * 0.72f);
+                lavaColor = Color.Lerp(lavaColor * 0.85f, lavaColor * 1.15f, pathNoise);
+
+                // 간헐적 어두운 크러스트 반점 (식어가는 표면)
+                bool crust = HashNoise(3, variant, x / 3, y / 3, 41) > 0.84f;
+                if (crust)
+                    lavaColor = Color.Lerp(lavaColor, lavaCrust * 1.3f, 0.30f);
+
+                c = lavaColor;
+            }
+
+            tex.SetPixel(x, y, ClampColor(c));
+        }
+
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    // ── Stage 1 유기적 잔디 경계 ────────────────────────────────────
     static Sprite CreateOrganicGrassPathSprite(Color ground, Color path, Color pathEdge, int mask)
     {
-        const int size = 64;
-        const float center = 31.5f;
+        const int size    = 64;
+        const float center   = 31.5f;
         const float roadHalf = 13.5f;
         const float edgeHalf = 18f;
 
         var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
         tex.filterMode = FilterMode.Point;
 
-        bool top = (mask & 1) != 0;
-        bool right = (mask & 2) != 0;
+        bool top    = (mask & 1) != 0;
+        bool right  = (mask & 2) != 0;
         bool bottom = (mask & 4) != 0;
-        bool left = (mask & 8) != 0;
-        if (mask == 0)
-            top = right = bottom = left = true;
+        bool left   = (mask & 8) != 0;
+        if (mask == 0) top = right = bottom = left = true;
 
-        Vector2 cpt = new Vector2(center, center);
-        Vector2 topPt = new Vector2(center, size + edgeHalf);
-        Vector2 rightPt = new Vector2(size + edgeHalf, center);
-        Vector2 bottomPt = new Vector2(center, -edgeHalf);
-        Vector2 leftPt = new Vector2(-edgeHalf, center);
+        Vector2 cpt       = new Vector2(center, center);
+        Vector2 topPt     = new Vector2(center, size + edgeHalf);
+        Vector2 rightPt   = new Vector2(size + edgeHalf, center);
+        Vector2 bottomPt  = new Vector2(center, -edgeHalf);
+        Vector2 leftPt    = new Vector2(-edgeHalf, center);
 
         for (int x = 0; x < size; x++)
         for (int y = 0; y < size; y++)
         {
-            Vector2 p = new Vector2(x + 0.5f, y + 0.5f);
-            float groundNoise = HashNoise(1, mask, x, y, 5);
-            Color color = Color.Lerp(ground * 0.90f, ground * 1.10f, groundNoise);
+            Vector2 p          = new Vector2(x + 0.5f, y + 0.5f);
+            float groundNoise  = HashNoise(1, mask, x, y, 5);
+            Color color        = Color.Lerp(ground * 0.90f, ground * 1.10f, groundNoise);
 
             float dist = Vector2.Distance(p, cpt);
-            if (top) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, topPt));
-            if (right) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, rightPt));
+            if (top)    dist = Mathf.Min(dist, DistanceToSegment(p, cpt, topPt));
+            if (right)  dist = Mathf.Min(dist, DistanceToSegment(p, cpt, rightPt));
             if (bottom) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, bottomPt));
-            if (left) dist = Mathf.Min(dist, DistanceToSegment(p, cpt, leftPt));
+            if (left)   dist = Mathf.Min(dist, DistanceToSegment(p, cpt, leftPt));
 
             float rough = (HashNoise(1, mask, x / 2, y / 2, 23) - 0.5f) * 4.8f;
             rough += Mathf.Sin((x + mask * 7) * 0.33f) * 0.9f;
@@ -545,14 +626,10 @@ public static class TileTextureGenerator
             {
                 float pathNoise = HashNoise(1, mask, x, y, 37);
                 Color pathColor = Color.Lerp(path * 0.82f, path * 1.14f, pathNoise);
-
-                float centerWear = Mathf.Clamp01(1f - Mathf.Abs(dist) / (organicRoad + 0.01f));
+                float centerWear = Mathf.Clamp01(1f - dist / (organicRoad + 0.01f));
                 pathColor = Color.Lerp(pathColor, new Color(0.70f, 0.50f, 0.25f), centerWear * 0.16f);
-
                 bool pebble = HashNoise(1, mask, x / 2, y / 2, 47) > 0.91f;
-                if (pebble)
-                    pathColor = Color.Lerp(pathColor, Color.white, 0.11f);
-
+                if (pebble) pathColor = Color.Lerp(pathColor, Color.white, 0.11f);
                 color = pathColor;
             }
 
@@ -566,14 +643,15 @@ public static class TileTextureGenerator
     static float DistanceToSegment(Vector2 p, Vector2 a, Vector2 b)
     {
         Vector2 ab = b - a;
-        float t = Vector2.Dot(p - a, ab) / Mathf.Max(0.0001f, Vector2.Dot(ab, ab));
+        float t    = Vector2.Dot(p - a, ab) / Mathf.Max(0.0001f, Vector2.Dot(ab, ab));
         t = Mathf.Clamp01(t);
         return Vector2.Distance(p, a + ab * t);
     }
 
     static float HashNoise(int stageIndex, int variant, int x, int y, int salt)
     {
-        uint h = (uint)(stageIndex * 374761393 + variant * 668265263 + x * 2246822519u + y * 3266489917u + salt * 1274126177u);
+        uint h = (uint)(stageIndex * 374761393 + variant * 668265263
+                      + x * 2246822519u + y * 3266489917u + salt * 1274126177u);
         h ^= h >> 13;
         h *= 1274126177u;
         return (h & 0x00FFFFFF) / 16777215f;
