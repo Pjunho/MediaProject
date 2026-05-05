@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Shared UI font selector. Picks one retro-styled font that can render both Korean and English.
+/// Shared UI font selector. Picks one square Korean font for a consistent retro UI tone.
 /// </summary>
 public static class UiPixelFont
 {
@@ -14,19 +14,16 @@ public static class UiPixelFont
 
         string[] candidates =
         {
-            "NewJumja",
-            "D2Coding",
-            "Cascadia Mono",
-            "Consolas",
-            "Hancom Gothic Bold",
-            "HanSantteutDotum-Bold",
+            "HCR Dotum",
+            "Han Santteut Dotum",
+            "Hancom MalangMalang Bold",
             "Malgun Gothic"
         };
 
         foreach (string candidate in candidates)
         {
             var font = Font.CreateDynamicFontFromOSFont(candidate, 16);
-            if (font != null && (candidate == "NewJumja" || SupportsUiText(font)))
+            if (SupportsUiText(font))
             {
                 cachedFont = font;
                 break;
