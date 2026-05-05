@@ -371,7 +371,7 @@ public class GameManager : MonoBehaviour
         tx.fontSize  = 18;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
-        tx.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font      = UiPixelFont.Get();
         var tRt = tgo.GetComponent<RectTransform>();
         tRt.anchoredPosition = Vector2.zero;
         tRt.sizeDelta        = size;
@@ -399,7 +399,7 @@ public class GameManager : MonoBehaviour
         waveBannerTxt.fontSize  = 32;
         waveBannerTxt.alignment = TextAnchor.MiddleCenter;
         waveBannerTxt.fontStyle = FontStyle.Bold;
-        waveBannerTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        waveBannerTxt.font      = UiPixelFont.Get();
         var tRt = tgo.GetComponent<RectTransform>();
         tRt.anchoredPosition = new Vector2(0, 26);
         tRt.sizeDelta        = new Vector2(510, 44);
@@ -412,7 +412,7 @@ public class GameManager : MonoBehaviour
         waveBannerStatsTxt.color     = new Color(0.85f, 0.90f, 1f, 0.92f);
         waveBannerStatsTxt.fontSize  = 17;
         waveBannerStatsTxt.alignment = TextAnchor.MiddleCenter;
-        waveBannerStatsTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        waveBannerStatsTxt.font      = UiPixelFont.Get();
         var sRt = sgo.GetComponent<RectTransform>();
         sRt.anchoredPosition = new Vector2(0, -24);
         sRt.sizeDelta        = new Vector2(504, 34);
@@ -575,7 +575,7 @@ public class GameManager : MonoBehaviour
         toastTxt.fontSize  = 20;
         toastTxt.fontStyle = FontStyle.Bold;
         toastTxt.alignment = TextAnchor.MiddleCenter;
-        toastTxt.font      = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        toastTxt.font      = UiPixelFont.Get();
         var tRt = tgo.GetComponent<RectTransform>();
         tRt.anchoredPosition = Vector2.zero;
         tRt.sizeDelta        = new Vector2(300, 44);
@@ -778,7 +778,7 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 20;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
         lTxt = tx;
         btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
@@ -799,7 +799,7 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
         btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=true });
     }
@@ -818,7 +818,7 @@ public class GameManager : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
         btns.Add(new BtnData { rt=ir, fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
     }
@@ -835,7 +835,7 @@ public class GameManager : MonoBehaviour
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
         return tx;
     }

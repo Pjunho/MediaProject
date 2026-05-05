@@ -953,7 +953,7 @@ public class AllyOrderPanel : MonoBehaviour
         return tx;
     }
 
-    Font BuiltinFont() => Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+    Font BuiltinFont() => UiPixelFont.Get();
 
     Sprite GetAllyPortraitSprite(AllyType t) =>
         AllyVisualGenerator.CreatePortraitSprite(t);

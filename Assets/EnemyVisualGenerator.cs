@@ -158,6 +158,92 @@ public static class EnemyVisualGenerator
         return ToSprite(tex);
     }
 
+    // ── 색상 파라메터 오버로드 (스테이지별 테마 적용용) ───────────────────
+
+    /// <summary>저격수 스프라이트 - 색상 파라메터 버전</summary>
+    public static Sprite CreateSniperSprite(Color robe, Color dark, Color eyeColor)
+    {
+        int size = 32;
+        Texture2D tex = NewTex(size);
+        Color skin = new Color(0.95f, 0.80f, 0.65f);
+        Color bow  = new Color(0.20f, 0.20f, 0.20f);
+
+        DrawRect(tex, 12, 2, 3, 7, robe);
+        DrawRect(tex, 17, 2, 3, 7, robe);
+        DrawRect(tex,  9, 9, 14, 11, robe);
+        DrawRect(tex,  7, 9,  3, 13, dark);
+        DrawRect(tex, 22, 9,  3, 13, dark);
+        DrawRect(tex,  5, 10, 5,  4, robe);
+        DrawRect(tex, 22, 10, 5,  4, robe);
+        DrawCircle(tex, 16, 22, 5, skin);
+        DrawRect(tex, 10, 22, 12, 3, dark);
+        DrawCircle(tex, 16, 24, 5, dark);
+        DrawRect(tex, 12, 21, 3, 1, eyeColor);
+        DrawRect(tex, 17, 21, 3, 1, eyeColor);
+        for (int i = 5; i < 25; i++) SetPx(tex, 4, i, bow);
+        SetPx(tex, 5, 5, bow); SetPx(tex, 5, 24, bow);
+        SetPx(tex, 6, 6, bow); SetPx(tex, 6, 23, bow);
+        for (int i = 6; i < 23; i++) SetPx(tex, 7, i, new Color(0.8f, 0.8f, 0.6f));
+        tex.Apply();
+        return ToSprite(tex);
+    }
+
+    /// <summary>창병 스프라이트 - 색상 파라메터 버전</summary>
+    public static Sprite CreateSpearmanSprite(Color armor, Color accent, Color weapon)
+    {
+        int size = 32;
+        Texture2D tex = NewTex(size);
+        Color skin   = new Color(0.95f, 0.80f, 0.65f);
+        Color helmet = new Color(armor.r * 0.7f, armor.g * 0.7f, armor.b * 0.7f);
+        Color tip    = new Color(0.75f, 0.75f, 0.80f);
+
+        DrawRect(tex, 11, 2, 4, 7, armor);
+        DrawRect(tex, 17, 2, 4, 7, armor);
+        DrawRect(tex,  9, 9, 14, 10, armor);
+        DrawRect(tex, 11, 11, 10, 6, accent);
+        DrawRect(tex, 13, 12,  6,  4, armor);
+        DrawRect(tex,  5, 10, 5, 6, armor);
+        DrawRect(tex, 22, 10, 5, 6, armor);
+        DrawCircle(tex, 16, 22, 5, skin);
+        DrawRect(tex, 10, 22, 12, 4, helmet);
+        DrawRect(tex, 14, 26,  4,  2, helmet);
+        DrawRect(tex, 15, 26,  2,  3, accent);
+        DrawRect(tex, 13, 21, 2, 2, Color.black);
+        DrawRect(tex, 17, 21, 2, 2, Color.black);
+        for (int i = 1; i < 28; i++) SetPx(tex, 26, i, weapon);
+        SetPx(tex, 25, 27, tip); SetPx(tex, 26, 28, tip); SetPx(tex, 27, 27, tip);
+        SetPx(tex, 26, 29, tip); SetPx(tex, 26, 30, tip);
+        tex.Apply();
+        return ToSprite(tex);
+    }
+
+    /// <summary>근접병 스프라이트 - 색상 파라메터 버전</summary>
+    public static Sprite CreateBrawlerSprite(Color armor, Color accent)
+    {
+        int size = 32;
+        Texture2D tex = NewTex(size);
+        Color skin  = new Color(0.95f, 0.80f, 0.65f);
+        Color spike = new Color(0.60f, 0.60f, 0.65f);
+
+        DrawRect(tex, 10, 2, 5, 7, armor);
+        DrawRect(tex, 17, 2, 5, 7, armor);
+        DrawRect(tex,  7, 9, 18, 12, armor);
+        DrawRect(tex,  9, 11, 14, 6, accent);
+        DrawRect(tex, 11, 12, 10,  4, armor);
+        DrawRect(tex,  3,  9, 6, 8, armor);
+        DrawRect(tex, 23,  9, 6, 8, armor);
+        DrawRect(tex,  3, 17, 6, 5, accent);
+        DrawRect(tex, 23, 17, 6, 5, accent);
+        DrawCircle(tex, 16, 23, 6, skin);
+        DrawRect(tex,  9, 22, 14, 5, armor);
+        DrawRect(tex, 10, 19, 12, 4, armor);
+        DrawRect(tex, 11, 22, 10, 2, accent);
+        SetPx(tex, 3, 9, spike); SetPx(tex, 4, 8, spike); SetPx(tex, 5, 7, spike);
+        SetPx(tex, 28, 9, spike); SetPx(tex, 27, 8, spike); SetPx(tex, 26, 7, spike);
+        tex.Apply();
+        return ToSprite(tex);
+    }
+
     // ── 유틸 ───────────────────────────────────────────────────────
     static Texture2D NewTex(int size)
     {
@@ -194,6 +280,13 @@ public static class EnemyVisualGenerator
     static Sprite ToSprite(Texture2D tex)
         => Sprite.Create(tex, new Rect(0,0,tex.width,tex.height),
                          new Vector2(0.5f,0.5f), tex.width);
+
+    /// <summary>
+    /// Resources/Allies/pixel_enemies/{name}.png 를 로드.
+    /// 파일이 없으면 null 반환 → 호출 측에서 절차적 스프라이트로 폴백.
+    /// </summary>
+    public static Sprite TryLoadSprite(string resourceName)
+        => LoadPixelEnemySprite(resourceName);
 
     static Sprite LoadPixelEnemySprite(string resourceName)
     {

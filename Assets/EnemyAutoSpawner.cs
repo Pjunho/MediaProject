@@ -106,47 +106,52 @@ public class EnemyAutoSpawner : MonoBehaviour
     {
         reservedPositions.Clear();
 
-        var allCandidates = GetValidGrassTiles();   // far→near 정렬
+        var allCandidates = GetValidGrassTiles();
         if (allCandidates.Count == 0)
         {
             Debug.LogWarning("[EnemyAutoSpawner] 배치 가능한 타일이 없습니다.");
             return;
         }
 
-        // ── near / far 풀 분리 ─────────────────────────────────────
-        // near  : 최단 경로 선분 기준 minDistFromPath 이내
-        // far   : 그 외 (경로에서 먼 영역)
         var nearPool = new List<SpawnCandidate>();
         var farPool  = new List<SpawnCandidate>();
-
         foreach (var c in allCandidates)
         {
             if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
             else                                        farPool.Add(c);
         }
-
-        // near 풀: 가장 가까운 것부터 시도 (원거리 적이 최근접 자리 독점)
         nearPool.Sort((a, b) => a.distanceFromRoute.CompareTo(b.distanceFromRoute));
-        // far 풀:  이미 far→near 정렬 (가장 먼 것부터)
 
-        // ── 원거리 적: 경로 근처 우선 → fallback 먼 곳 ───────────────
-        SpawnType<EnemySniper>  (nearPool, farPool,  sniperCount,   "저격수");
-        SpawnType<EnemySpearman>(nearPool, farPool,  spearmanCount, "창병");
+        int stage = StageManager.Instance?.currentStageIndex ?? 1;
+        var (sniperType, spearmanType, brawlerType) = GetStageEnemyTypes(stage);
 
-        // ── 근접 적: 경로 먼 곳 우선 → fallback 근처 ─────────────────
-        SpawnType<EnemyBrawler> (farPool,  nearPool, brawlerCount,  "근접병");
+        // 원거리 적: 경로 근처 우선
+        SpawnEnemyType(nearPool, farPool,  sniperCount,   "저격수",  sniperType);
+        SpawnEnemyType(nearPool, farPool,  spearmanCount, "창병",    spearmanType);
+        // 근접 적: 경로 먼 곳 우선
+        SpawnEnemyType(farPool,  nearPool, brawlerCount,  "근접병",  brawlerType);
 
-        Debug.Log($"[EnemyAutoSpawner] 배치 완료 — 합계 {spawnedEnemies.Count}명 " +
-                  $"(저격수 {sniperCount} / 창병 {spearmanCount} / 근접병 {brawlerCount})");
+        Debug.Log($"[EnemyAutoSpawner] Stage {stage} 배치 완료 — {spawnedEnemies.Count}명 " +
+                  $"({sniperType.Name} {sniperCount} / {spearmanType.Name} {spearmanCount} / {brawlerType.Name} {brawlerCount})");
     }
 
-    /// <summary>
-    /// primary 풀에서 먼저 배치, 부족하면 secondary 풀 사용.
-    /// </summary>
-    void SpawnType<T>(
+    /// <summary>스테이지 인덱스 → (저격수 타입, 창병 타입, 근접병 타입)</summary>
+    static (System.Type sniper, System.Type spearman, System.Type brawler) GetStageEnemyTypes(int stage)
+        => stage switch
+        {
+            1 => (typeof(GrassSniper),    typeof(GrassSpearman),   typeof(GrassBrawler)),
+            2 => (typeof(DesertSniper),   typeof(DesertSpearman),  typeof(DesertBrawler)),
+            3 => (typeof(VolcanoSniper),  typeof(VolcanoSpearman), typeof(EnemyBrawler)),
+            4 => (typeof(ShadowSniper),   typeof(ShadowSpearman),  typeof(ShadowBrawler)),
+            5 => (typeof(FortressSniper), typeof(FortressSpearman),typeof(FortressBrawler)),
+            _ => (typeof(EnemySniper),    typeof(EnemySpearman),   typeof(EnemyBrawler))
+        };
+
+    /// <summary>primary → secondary 순서로 배치. 타입은 런타임에 결정.</summary>
+    void SpawnEnemyType(
         List<SpawnCandidate> primary,
         List<SpawnCandidate> secondary,
-        int count, string label) where T : EnemyBase
+        int count, string label, System.Type enemyType)
     {
         int spawned = 0;
         for (int i = 0; i < count; i++)
@@ -164,7 +169,7 @@ public class EnemyAutoSpawner : MonoBehaviour
             go.transform.position = pos;
             go.AddComponent<SpriteRenderer>().sortingOrder = 10;
 
-            var enemy = go.AddComponent<T>();
+            var enemy = (EnemyBase)go.AddComponent(enemyType);
             enemy.PlaceInactive(pos);
 
             spawnedEnemies.Add(enemy);

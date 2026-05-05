@@ -277,7 +277,7 @@ public class EnemyInspector : MonoBehaviour
         text.fontSize = fontSize;
         text.fontStyle = fontStyle;
         text.alignment = anchor;
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        text.font = UiPixelFont.Get();
         text.horizontalOverflow = HorizontalWrapMode.Wrap;
         text.verticalOverflow = VerticalWrapMode.Overflow;
         return text;

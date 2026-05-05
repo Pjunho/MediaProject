@@ -308,7 +308,7 @@ public class MainMenu : MonoBehaviour
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 26;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var tr = tg.GetComponent<RectTransform>(); tr.anchoredPosition = Vector2.zero; tr.sizeDelta = size;
 
         int index = btns.Count;
@@ -439,7 +439,7 @@ public class MainMenu : MonoBehaviour
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
     }
 
@@ -448,7 +448,7 @@ public class MainMenu : MonoBehaviour
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
-        tx.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        tx.font = UiPixelFont.Get();
         var rt = go.GetComponent<RectTransform>(); rt.anchoredPosition = pos; rt.sizeDelta = size;
         return tx;
     }
