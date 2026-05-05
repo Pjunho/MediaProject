@@ -680,6 +680,8 @@ public class RouteDrawer : MonoBehaviour
         tx.fontSize  = 32;
         tx.fontStyle = FontStyle.Bold;
         tx.alignment = TextAnchor.MiddleCenter;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         tx.font      = UiPixelFont.Get();
         tgo.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 50);
 
@@ -725,8 +727,10 @@ public class RouteDrawer : MonoBehaviour
         ltx.alignment         = TextAnchor.MiddleCenter;
         ltx.horizontalOverflow = HorizontalWrapMode.Overflow;
         ltx.verticalOverflow   = VerticalWrapMode.Overflow;
+        ltx.alignByGeometry    = true;
+        ltx.raycastTarget      = false;
         ltx.font              = UiPixelFont.Get();
-        SR(lgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(126, 52));
+        SR(lgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(130, 56));
 
         StartCoroutine(UpdateBtnLabelColor(ltx));
 
@@ -778,6 +782,8 @@ public class RouteDrawer : MonoBehaviour
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.font               = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;

@@ -311,6 +311,8 @@ public class EnemyInspector : MonoBehaviour
         text.font = UiPixelFont.Get();
         text.horizontalOverflow = HorizontalWrapMode.Wrap;
         text.verticalOverflow = VerticalWrapMode.Overflow;
+        text.alignByGeometry = true;
+        text.raycastTarget = false;
         return text;
     }
 }

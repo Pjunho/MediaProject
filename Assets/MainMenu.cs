@@ -318,8 +318,10 @@ public class MainMenu : MonoBehaviour
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(4, 4));
 
         int index = btns.Count;
         btns.Add(new BtnData { rt = inner.GetComponent<RectTransform>(), fill = fi, normal = n, hover = h, action = cb });
@@ -451,6 +453,8 @@ public class MainMenu : MonoBehaviour
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.font               = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
@@ -462,6 +466,8 @@ public class MainMenu : MonoBehaviour
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         tx.font               = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;

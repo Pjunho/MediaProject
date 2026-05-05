@@ -1076,7 +1076,7 @@ public class StageSelect : MonoBehaviour
         SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
 
         if (!string.IsNullOrEmpty(label))
-            MkTxt(inner.transform, label, Color.white, Vector2.zero, size, 21);
+            MkTxt(inner.transform, label, Color.white, Vector2.zero, size + new Vector2(4, 4), 21);
 
         btns.Add(new BtnData { id=id, rt=inner.GetComponent<RectTransform>(), fill=fi,
                                n=n, h=h, cb=cb, inScrollArea=inScroll });
@@ -1108,6 +1108,10 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow = VerticalWrapMode.Overflow;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
@@ -1120,6 +1124,10 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow = VerticalWrapMode.Overflow;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
@@ -1132,6 +1140,10 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = alignment;
         tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow = VerticalWrapMode.Overflow;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
     }
@@ -1144,6 +1156,10 @@ public class StageSelect : MonoBehaviour
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.fontStyle = FontStyle.Bold;
+        tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        tx.verticalOverflow = VerticalWrapMode.Overflow;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         tx.font = UiPixelFont.Get();
         SR(go.GetComponent<RectTransform>(), pos, size);
         return tx;

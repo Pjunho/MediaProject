@@ -907,6 +907,8 @@ public class AllyOrderPanel : MonoBehaviour
         tx.font      = BuiltinFont();
         tx.color     = new Color(0.7f, 0.9f, 1f);
         tx.alignment = TextAnchor.MiddleCenter;
+        tx.alignByGeometry = true;
+        tx.raycastTarget = false;
         var trt = tgo.GetComponent<RectTransform>();
         trt.anchorMin = Vector2.zero; trt.anchorMax = Vector2.one;
         trt.offsetMin = Vector2.zero; trt.offsetMax = Vector2.zero;
@@ -937,6 +939,8 @@ public class AllyOrderPanel : MonoBehaviour
         tx.fontStyle          = style; tx.color = color; tx.alignment = alignment;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
     }
 
     Text CreateTextLabel(string name, Transform parent,
@@ -954,6 +958,8 @@ public class AllyOrderPanel : MonoBehaviour
         tx.fontStyle          = style; tx.color = color; tx.alignment = alignment;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        tx.alignByGeometry    = true;
+        tx.raycastTarget      = false;
         return tx;
     }
 
