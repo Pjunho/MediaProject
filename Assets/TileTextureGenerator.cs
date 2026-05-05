@@ -15,7 +15,7 @@ using UnityEngine;
 /// ▶ 스테이지별 테마
 ///   Stage 1 – 초원의 전투   : terrain_atlas 잔디 구역, 흙길
 ///   Stage 2 – 어둠의 동굴   : terrain.png 어두운 암석, 동굴 바닥 + 화면 비네트
-///   Stage 3 – 화산의 심판   : terrain.png 용암(벽) + 회색 화산암(길), 체력 감소
+///   Stage 3 – 화산의 심판   : terrain.png 용암(벽) + 어두운 화산암 길, 체력 감소
 /// </summary>
 public static class TileTextureGenerator
 {
@@ -47,22 +47,16 @@ public static class TileTextureGenerator
     //     Stage 1 wall : row 20-22, col 0-2  → IDs 640-706
     //
     //   ▶ terrain.png (실제 width 자동 인식, 32px 타일)
-    //     Row 0 IDs는 col 번호와 동일 (id = col + 0 × cols = col)
-    //     ∴ 텍스처 폭과 무관하게 안전
-    //
-    //     terrain.png Row 0 레이아웃 (육안 확인 기준):
-    //       col 0 : 갈색 흙
-    //       col 1 : 매우 어두운 암석 ← Stage 2 동굴 벽
-    //       col 2 : 어두운 갈색 암석 ← Stage 2 동굴 벽 보조
-    //       col 3 : 주황-적색 (용암) ← Stage 3 용암 벽
-    //       col 4 : 밝은 갈색
+    //     terrain.png 주요 32px 타일 좌표:
+    //       row 2~4, col 9~11  : 어두운 회색 지대
+    //       row 2~4, col 15~17 : 용암 지대
     //
     static readonly int[][] STAGE_WALL_IDS =
     {
         null,
         new[] { 640, 641, 642, 672, 673, 674, 704, 705 },  // Stage 1 (terrain_atlas)
         new[] { 1, 2, 1, 2, 1, 2 },                        // Stage 2 (어두운 암석, row 0)
-        new[] { 3, 3, 3, 4, 3, 4 },                        // Stage 3 (용암/lava, row 0)
+        new[] { 78, 79, 80, 110, 111, 112, 142, 143, 144 }, // Stage 3 (terrain.png 용암 지대)
         new[] { 128, 129, 130, 160, 161, 162, 192, 193 },  // Stage 4 (terrain_atlas)
         new[] { 448, 449, 450, 480, 481, 482, 512, 513 },  // Stage 5 (terrain_atlas)
     };
@@ -80,7 +74,7 @@ public static class TileTextureGenerator
         null,
         new[] { 676, 677, 708, 709 },   // Stage 1
         new[] { 1, 2 },                  // Stage 2 (dark cave floor)
-        new[] { 5, 6 },                  // Stage 3 (gray rock — fallback)
+        new[] { 73, 74, 105, 106, 137, 138 },  // Stage 3 (terrain.png 어두운 지대)
         new[] { 130, 131 },              // Stage 4
         new[] { 450, 451 },              // Stage 5
     };
@@ -141,13 +135,13 @@ public static class TileTextureGenerator
 
     // ── PATH 메인 색상 ────────────────────────────────────────────────
     //   Stage 2: 어두운 동굴 바닥 (짙은 회청)
-    //   Stage 3: 회색 화산암 (solidified lava rock) — 용암은 '벽'(WALL)에 배치
+    //   Stage 3: 어두운 화산암 길 — 용암은 '벽'(WALL)에 배치
     static readonly Color[] STAGE_PATH_MAIN_COLORS =
     {
         Color.black,
         new Color(0.57f, 0.36f, 0.15f),          // Stage 1: 흙길
         new Color(0.20f, 0.20f, 0.24f),          // Stage 2: 어두운 동굴 바닥
-        new Color(0.38f, 0.36f, 0.34f),          // Stage 3: 회색 화산암 (길)
+        new Color(0.22f, 0.21f, 0.20f),          // Stage 3: 어두운 화산암 길
         new Color(0.25f, 0.24f, 0.33f),          // Stage 4
         new Color(0.48f, 0.47f, 0.43f),          // Stage 5
     };
@@ -158,7 +152,7 @@ public static class TileTextureGenerator
         Color.black,
         new Color(0.28f, 0.18f, 0.08f),          // Stage 1
         new Color(0.09f, 0.09f, 0.12f),          // Stage 2: 동굴 바닥 깊은 어둠
-        new Color(0.19f, 0.17f, 0.16f),          // Stage 3: 회색암 짙은 테두리
+        new Color(0.10f, 0.09f, 0.085f),         // Stage 3: 어두운 화산암 테두리
         new Color(0.11f, 0.11f, 0.17f),          // Stage 4
         new Color(0.27f, 0.27f, 0.26f),          // Stage 5
     };
@@ -170,6 +164,7 @@ public static class TileTextureGenerator
     static readonly Sprite[][] _decorCache         = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _edgeCache          = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Dictionary<int, Sprite> _volcanoBlockedPathCache = new();
 
     static Sprite _grassFallback;
     static Sprite _dirtFallback;
@@ -208,7 +203,9 @@ public static class TileTextureGenerator
             _connectedPathCache[idx] = new Sprite[16];
             for (int i = 0; i < 16; i++)
             {
-                _connectedPathCache[idx][i] = (idx == 1)
+                _connectedPathCache[idx][i] = (idx == 3)
+                    ? GetPathSprite(idx, variant + i)
+                    : (idx == 1)
                     ? CreateOrganicGrassPathSprite(
                         STAGE_GROUND_BASE_COLORS[idx],
                         STAGE_PATH_MAIN_COLORS[idx],
@@ -221,6 +218,17 @@ public static class TileTextureGenerator
             }
         }
         return _connectedPathCache[idx][connectionMask];
+    }
+
+    public static Sprite GetVolcanoBlockedPathSprite(int variant = 0)
+    {
+        int key = Mathf.Abs(variant) % 16;
+        if (!_volcanoBlockedPathCache.TryGetValue(key, out var sprite))
+        {
+            sprite = GetPathSprite(3, key);
+            _volcanoBlockedPathCache[key] = sprite;
+        }
+        return sprite;
     }
 
     public static Sprite GetDecorSprite(int stageIndex, int variant = 0)

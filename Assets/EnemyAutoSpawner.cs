@@ -18,6 +18,7 @@ public class EnemyAutoSpawner : MonoBehaviour
         public Vector2Int tile;
         public Vector3    world;
         public float      distanceFromRoute;
+        public bool       preferredPlatform;
     }
 
     [Header("References")]
@@ -120,7 +121,8 @@ public class EnemyAutoSpawner : MonoBehaviour
             if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
             else                                        farPool.Add(c);
         }
-        nearPool.Sort((a, b) => a.distanceFromRoute.CompareTo(b.distanceFromRoute));
+        nearPool.Sort(CompareNearCandidates);
+        farPool.Sort(CompareFarCandidates);
 
         int stage = StageManager.Instance?.currentStageIndex ?? 1;
         var (sniperType, spearmanType, brawlerType) = GetStageEnemyTypes(stage);
@@ -249,18 +251,37 @@ public class EnemyAutoSpawner : MonoBehaviour
             {
                 tile              = new Vector2Int(x, y),
                 world             = wp,
-                distanceFromRoute = DistanceToSegment(wp, start, goal)
+                distanceFromRoute = DistanceToSegment(wp, start, goal),
+                preferredPlatform = map.IsEnemyPlatformTile(x, y)
             });
         }
 
         // 기본 정렬: far→near (farPool의 초기 순서)
         result.Sort((a, b) =>
         {
+            int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
+            if (pref != 0) return pref;
             int cmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
             return cmp != 0 ? cmp : Random.Range(-1, 2);
         });
 
         return result;
+    }
+
+    int CompareNearCandidates(SpawnCandidate a, SpawnCandidate b)
+    {
+        int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
+        if (pref != 0) return pref;
+        int cmp = a.distanceFromRoute.CompareTo(b.distanceFromRoute);
+        return cmp != 0 ? cmp : Random.Range(-1, 2);
+    }
+
+    int CompareFarCandidates(SpawnCandidate a, SpawnCandidate b)
+    {
+        int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
+        if (pref != 0) return pref;
+        int cmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
+        return cmp != 0 ? cmp : Random.Range(-1, 2);
     }
 
     /// <summary>점 p에서 선분 a-b까지의 최단 거리</summary>

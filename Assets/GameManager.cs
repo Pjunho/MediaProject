@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
         if (stage == 2)
         {
             var go = new GameObject("CaveVignette");
-            DontDestroyOnLoad(go);
             caveVignette = go.AddComponent<CaveVignette>();
         }
         else if (stage == 3)

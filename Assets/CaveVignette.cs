@@ -12,15 +12,17 @@ public class CaveVignette : MonoBehaviour
 {
     // ── 설정 ─────────────────────────────────────────────────────────
     [Tooltip("타원 X 반경 (0~1, 화면 반폭 기준)")]
-    public float radiusX = 0.48f;   // 가로 반경 (화면 절반보다 약간 좁게)
+    public float radiusX = 1.00f;   // 가로 끝이 화면 가장자리에 닿도록 크게
     [Tooltip("타원 Y 반경 (0~1, 화면 반높이 기준)")]
-    public float radiusY = 0.40f;   // 세로 반경
+    public float radiusY = 0.98f;   // 세로도 화면 끝에 거의 닿는 큰 타원
     [Tooltip("어두워지기 시작하는 가장자리 페이드 폭")]
-    public float fadeWidth = 0.30f;
+    public float fadeWidth = 0.34f;
     [Tooltip("가장자리 최대 어두움 (0=완전투명, 1=완전검정)")]
-    public float maxAlpha = 0.96f;
-    [Tooltip("비네트 텍스처 해상도 (작을수록 성능↑, 128 권장)")]
-    public int texResolution = 128;
+    public float maxAlpha = 0.94f;
+    [Tooltip("어두워지는 경계의 노이즈 강도")]
+    public float noiseStrength = 0.11f;
+    [Tooltip("비네트 텍스처 해상도 (작을수록 성능↑, 256 권장)")]
+    public int texResolution = 256;
 
     // ── 내부 ─────────────────────────────────────────────────────────
     private RawImage vignetteImage;
@@ -92,11 +94,14 @@ public class CaveVignette : MonoBehaviour
             float ey = ny / radiusY;
             float d  = Mathf.Sqrt(ex * ex + ey * ey);  // 0=중심, 1=타원 경계
 
-            // 경계 바깥쪽 fade 계산
-            // d < 1 : 타원 내부 (밝음)
-            // d > 1 : 타원 외부 (어두움)
+            // 화면 중앙부는 완전 투명하게 유지하고, 화면 끝으로 갈수록 어둡게 만든다.
+            // 노이즈는 경계 근처에만 더해 동굴 가장자리처럼 자연스럽게 흔들리게 한다.
             float fadeStart = 1f - fadeWidth;
-            float t = Mathf.Clamp01((d - fadeStart) / fadeWidth);
+            float noiseZone = Mathf.Clamp01((d - (fadeStart - 0.12f)) / 0.24f);
+            float noise = FractalNoise01(x, y, w, h) - 0.5f;
+            float noisyDistance = d + noise * noiseStrength * noiseZone;
+
+            float t = Mathf.Clamp01((noisyDistance - fadeStart) / fadeWidth);
             t = t * t * (3f - 2f * t);  // smoothstep
 
             float alpha = t * maxAlpha;
@@ -105,6 +110,17 @@ public class CaveVignette : MonoBehaviour
 
         tex.Apply();
         return tex;
+    }
+
+    float FractalNoise01(int x, int y, int w, int h)
+    {
+        float nx = (float)x / Mathf.Max(1, w);
+        float ny = (float)y / Mathf.Max(1, h);
+
+        float n1 = Mathf.PerlinNoise(nx * 5.5f + 17.13f, ny * 5.5f + 41.71f);
+        float n2 = Mathf.PerlinNoise(nx * 13.0f + 91.37f, ny * 13.0f + 6.29f);
+        float n3 = Mathf.PerlinNoise(nx * 27.0f + 2.83f, ny * 27.0f + 73.54f);
+        return Mathf.Clamp01(n1 * 0.58f + n2 * 0.30f + n3 * 0.12f);
     }
 
     // ── 런타임 조정 API ──────────────────────────────────────────────

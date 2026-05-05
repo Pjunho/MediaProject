@@ -137,9 +137,18 @@ public class Map : MonoBehaviour
                     sr.color        = Color.white;   // LPC 원본 팔레트 그대로
 
                     int variant = StableVariant(stageIdx, x, y);
-                    sr.sprite = (type == TileType.Dirt)
-                        ? TileTextureGenerator.GetConnectedPathSprite(stageIdx, GetPathConnectionMask(x, y), variant)
-                        : TileTextureGenerator.GetWallSprite(stageIdx, variant);
+                    if (type == TileType.Dirt)
+                    {
+                        sr.sprite = TileTextureGenerator.GetConnectedPathSprite(stageIdx, GetPathConnectionMask(x, y), variant);
+                    }
+                    else if (IsVolcanoBlockedPathTile(stageIdx, x, y))
+                    {
+                        sr.sprite = TileTextureGenerator.GetVolcanoBlockedPathSprite(variant);
+                    }
+                    else
+                    {
+                        sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, variant);
+                    }
                 }
 
                 tile.name = $"Tile_{x}_{y}";
@@ -167,6 +176,8 @@ public class Map : MonoBehaviour
                 // 길 타일에는 장식 없음 (깔끔한 룩 유지)
                 if (type == TileType.Grass)
                 {
+                    if (IsVolcanoBlockedPathTile(stageIdx, x, y)) continue;
+
                     int pathNeighbors = CountPathNeighbors(x, y);
                     float decorChance = GetDecorChance(stageIdx, pathNeighbors > 0);
                     if (Hash01(stageIdx, x, y, 19) < decorChance)
@@ -406,6 +417,26 @@ public class Map : MonoBehaviour
         if (tileMap == null) return TileType.Grass;
         if (!IsInBounds(new Vector2Int(x, y))) return TileType.Grass;
         return tileMap[x, y];
+    }
+
+    public bool IsEnemyPlatformTile(int x, int y)
+    {
+        int stageIdx = StageManager.Instance != null
+            ? StageManager.Instance.currentStageIndex : 1;
+        return IsVolcanoBlockedPathTile(stageIdx, x, y);
+    }
+
+    bool IsVolcanoBlockedPathTile(int stageIdx, int x, int y)
+    {
+        if (stageIdx != 3) return false;
+        if (GetTileType(x, y) != TileType.Grass) return false;
+        if (x <= 0 || x >= mapWidth - 1 || y <= 0 || y >= mapHeight - 1) return false;
+
+        int pathNeighbors = CountPathNeighbors(x, y);
+        if (pathNeighbors > 0)
+            return Hash01(stageIdx, x, y, 101) < 0.34f;
+
+        return Hash01(stageIdx, x, y, 103) < 0.045f;
     }
 
     bool IsInBounds(Vector2Int tile) =>
