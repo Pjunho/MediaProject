@@ -252,7 +252,7 @@ public class EnemyInspector : MonoBehaviour
             string.Empty,
             COL_TITLE,
             22,
-            FontStyle.Bold,
+            FontStyle.Normal,
             TextAnchor.UpperLeft,
             new Vector2(0f, 1f),
             new Vector2(1f, 1f),

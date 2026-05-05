@@ -247,7 +247,7 @@ public class AllyOrderPanel : MonoBehaviour
         tRt.pivot     = new Vector2(0.5f, 1f);
         tRt.anchoredPosition = new Vector2(0f, -3f); tRt.sizeDelta = new Vector2(0f, 26f);
         var tTx = title.AddComponent<Text>();
-        tTx.text = "[ 출전 순서 ]"; tTx.fontSize = 13; tTx.fontStyle = FontStyle.Bold;
+        tTx.text = "[ 출전 순서 ]"; tTx.fontSize = 13; tTx.fontStyle = FontStyle.Normal;
         tTx.font = BuiltinFont(); tTx.color = COL_TITLE; tTx.alignment = TextAnchor.MiddleCenter;
 
         // 힌트
@@ -285,12 +285,12 @@ public class AllyOrderPanel : MonoBehaviour
         detailPanelRt.offsetMax = new Vector2(-INNER_PAD, -26f);
         detail.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.08f);
 
-        MakeLabel("DetailTitle", detail.transform, "선택 정보", 12, FontStyle.Bold,
+        MakeLabel("DetailTitle", detail.transform, "선택 정보", 12, FontStyle.Normal,
             COL_TITLE, TextAnchor.MiddleCenter,
             new Vector2(0f, 0.87f), new Vector2(1f, 0.98f),
             new Vector2(6f, 0f), new Vector2(-6f, 0f));
 
-        detailNameText = CreateTextLabel("DetailName", detail.transform, string.Empty, 18, FontStyle.Bold,
+        detailNameText = CreateTextLabel("DetailName", detail.transform, string.Empty, 18, FontStyle.Normal,
             Color.white, TextAnchor.MiddleCenter,
             new Vector2(0f, 0.62f), new Vector2(1f, 0.84f),
             new Vector2(8f, 0f), new Vector2(-8f, 0f));
@@ -313,7 +313,7 @@ public class AllyOrderPanel : MonoBehaviour
             new Vector2(0.60f, 0.20f), new Vector2(1f, 0.38f),
             out detailSpeedUpgradeTxt);
 
-        MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Bold,
+        MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Normal,
             COL_TITLE, TextAnchor.MiddleLeft,
             new Vector2(0f, 0.10f), new Vector2(1f, 0.20f),
             new Vector2(12f, 0f), new Vector2(-12f, 0f));
@@ -345,12 +345,12 @@ public class AllyOrderPanel : MonoBehaviour
         detailSkillLockText = lockGo.AddComponent<Text>();
         detailSkillLockText.font = BuiltinFont();
         detailSkillLockText.fontSize = 20;
-        detailSkillLockText.fontStyle = FontStyle.Bold;
+        detailSkillLockText.fontStyle = FontStyle.Normal;
         detailSkillLockText.color = Color.white;
         detailSkillLockText.alignment = TextAnchor.MiddleCenter;
         detailSkillLockText.text = "🔒";
 
-        detailSkillNameText = CreateTextLabel("SkillName", skillBtn.transform, string.Empty, 12, FontStyle.Bold,
+        detailSkillNameText = CreateTextLabel("SkillName", skillBtn.transform, string.Empty, 12, FontStyle.Normal,
             new Color(1f, 0.92f, 0.50f, 1f), TextAnchor.MiddleLeft,
             new Vector2(0f, 0f), new Vector2(1f, 1f),
             new Vector2(58f, 0f), new Vector2(-8f, 0f));
@@ -393,7 +393,7 @@ public class AllyOrderPanel : MonoBehaviour
         toggleBtnLabel = label.AddComponent<Text>();
         toggleBtnLabel.font = BuiltinFont();
         toggleBtnLabel.fontSize = 20;
-        toggleBtnLabel.fontStyle = FontStyle.Bold;
+        toggleBtnLabel.fontStyle = FontStyle.Normal;
         toggleBtnLabel.color = Color.white;
         toggleBtnLabel.alignment = TextAnchor.MiddleCenter;
     }
@@ -448,7 +448,7 @@ public class AllyOrderPanel : MonoBehaviour
         numRt.anchorMin = new Vector2(0f, 0.72f); numRt.anchorMax = new Vector2(0.3f, 1f);
         numRt.offsetMin = new Vector2(6f, -2f);   numRt.offsetMax = new Vector2(0f, -2f);
         var numTx = numGo.AddComponent<Text>();
-        numTx.text = $"{cardIdx + 1}"; numTx.fontSize = 17; numTx.fontStyle = FontStyle.Bold;
+        numTx.text = $"{cardIdx + 1}"; numTx.fontSize = 17; numTx.fontStyle = FontStyle.Normal;
         numTx.font = BuiltinFont(); numTx.color = new Color(1f, 1f, 1f, 0.45f);
         numTx.alignment = TextAnchor.UpperLeft;
         numLabels[cardIdx] = numTx;
@@ -464,7 +464,7 @@ public class AllyOrderPanel : MonoBehaviour
         portImg.preserveAspect = true;
 
         // 이름
-        MakeLabel("Name", card.transform, GetAllyName(type), 13, FontStyle.Bold,
+        MakeLabel("Name", card.transform, GetAllyName(type), 13, FontStyle.Normal,
             Color.white, TextAnchor.MiddleCenter,
             new Vector2(0f, 0.25f), new Vector2(1f, 0.40f),
             new Vector2(4f, 0f),    new Vector2(-4f, 0f));
@@ -903,7 +903,7 @@ public class AllyOrderPanel : MonoBehaviour
         var tx = tgo.AddComponent<Text>();
         tx.text      = "▲";
         tx.fontSize  = 11;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.font      = BuiltinFont();
         tx.color     = new Color(0.7f, 0.9f, 1f);
         tx.alignment = TextAnchor.MiddleCenter;

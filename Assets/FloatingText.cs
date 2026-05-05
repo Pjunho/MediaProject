@@ -24,7 +24,7 @@ public class FloatingText : MonoBehaviour
         tm.alignment     = TextAlignment.Center;
         tm.anchor        = TextAnchor.MiddleCenter;
         tm.font          = UiPixelFont.Get();
-        tm.fontStyle     = FontStyle.Bold;
+        tm.fontStyle     = FontStyle.Normal;
         var meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material = tm.font.material;
         meshRenderer.sortingOrder = 50;

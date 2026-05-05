@@ -14,10 +14,7 @@ public static class UiPixelFont
 
         cachedFont = Resources.Load<Font>("Fonts/DNFBitBitv2");
         if (cachedFont != null)
-        {
-            UseCrispTexture(cachedFont);
             return cachedFont;
-        }
 
         string[] candidates =
         {
@@ -35,7 +32,6 @@ public static class UiPixelFont
             if (SupportsUiText(font))
             {
                 cachedFont = font;
-                UseCrispTexture(cachedFont);
                 break;
             }
         }
@@ -46,16 +42,7 @@ public static class UiPixelFont
         if (cachedFont == null)
             cachedFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
-        UseCrispTexture(cachedFont);
         return cachedFont;
-    }
-
-    static void UseCrispTexture(Font font)
-    {
-        if (font == null || font.material == null || font.material.mainTexture == null)
-            return;
-
-        font.material.mainTexture.filterMode = FilterMode.Point;
     }
 
     static bool SupportsUiText(Font font)

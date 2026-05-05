@@ -678,7 +678,7 @@ public class RouteDrawer : MonoBehaviour
         tx.text      = label;
         tx.color     = color;
         tx.fontSize  = 32;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.alignment = TextAnchor.MiddleCenter;
         tx.alignByGeometry = true;
         tx.raycastTarget = false;
@@ -723,7 +723,7 @@ public class RouteDrawer : MonoBehaviour
         ltx.text              = "▶ Start";
         ltx.color             = new Color(1f, 1f, 1f, 0.55f);
         ltx.fontSize          = 22;
-        ltx.fontStyle         = FontStyle.Bold;
+        ltx.fontStyle         = FontStyle.Normal;
         ltx.alignment         = TextAnchor.MiddleCenter;
         ltx.horizontalOverflow = HorizontalWrapMode.Overflow;
         ltx.verticalOverflow   = VerticalWrapMode.Overflow;
@@ -779,7 +779,7 @@ public class RouteDrawer : MonoBehaviour
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.alignByGeometry    = true;

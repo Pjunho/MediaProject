@@ -1032,7 +1032,7 @@ public class StageSelect : MonoBehaviour
         tgo.transform.SetParent(toastGo.transform, false);
         toastTxt = tgo.AddComponent<Text>();
         toastTxt.fontSize  = 19;
-        toastTxt.fontStyle = FontStyle.Bold;
+        toastTxt.fontStyle = FontStyle.Normal;
         toastTxt.alignment = TextAnchor.MiddleCenter;
         toastTxt.font      = UiPixelFont.Get();
         var tRt = tgo.GetComponent<RectTransform>();
@@ -1123,7 +1123,7 @@ public class StageSelect : MonoBehaviour
         var tx = go.AddComponent<Text>();
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow = VerticalWrapMode.Overflow;
         tx.alignByGeometry = true;
@@ -1139,7 +1139,7 @@ public class StageSelect : MonoBehaviour
         var tx = go.AddComponent<Text>();
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow = VerticalWrapMode.Overflow;
         tx.alignByGeometry = true;
@@ -1155,7 +1155,7 @@ public class StageSelect : MonoBehaviour
         var tx = go.AddComponent<Text>();
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = alignment;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow = VerticalWrapMode.Overflow;
         tx.alignByGeometry = true;
@@ -1171,7 +1171,7 @@ public class StageSelect : MonoBehaviour
         var tx = go.AddComponent<Text>();
         tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment = TextAnchor.MiddleCenter;
-        tx.fontStyle = FontStyle.Bold;
+        tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow = VerticalWrapMode.Overflow;
         tx.alignByGeometry = true;

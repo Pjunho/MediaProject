@@ -330,7 +330,7 @@ public class MainMenu : MonoBehaviour
 
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 26;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.alignByGeometry    = true;
@@ -465,7 +465,7 @@ public class MainMenu : MonoBehaviour
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.alignByGeometry    = true;
@@ -478,7 +478,7 @@ public class MainMenu : MonoBehaviour
     {
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.alignByGeometry    = true;
