@@ -155,49 +155,34 @@ public class MainMenu : MonoBehaviour
     // ── 디펜스 배경 ────────────────────────────────────────────────
     void DrawBackground()
     {
-        CreateWorldQuad("SkyTop", new Vector3(0, 1.6f, 5f), new Vector3(22f, 6.2f), new Color(0.02f, 0.05f, 0.12f), -30);
-        CreateWorldQuad("SkyBot", new Vector3(0, -1.7f, 5f), new Vector3(22f, 3.8f), new Color(0.05f, 0.08f, 0.18f), -29);
-        CreateWorldQuad("GrassLand", new Vector3(-6.9f, -2.15f, 4f), new Vector3(8.4f, 4.1f), new Color(0.10f, 0.34f, 0.10f), -28);
-        CreateWorldQuad("CrystalLand", new Vector3(0f, -2.15f, 4f), new Vector3(6.0f, 4.1f), new Color(0.10f, 0.10f, 0.20f), -28);
-        CreateWorldQuad("LavaLand", new Vector3(6.9f, -2.15f, 4f), new Vector3(8.4f, 4.1f), new Color(0.22f, 0.08f, 0.05f), -28);
-
-        CreateWorldCircle("MoonHalo", new Vector3(-7.9f, 3.35f, 3.5f), 0.70f, new Color(1f, 0.92f, 0.65f, 0.18f), -23);
-        CreateWorldCircle("Moon", new Vector3(-7.9f, 3.35f, 3.4f), 0.44f, new Color(1f, 0.91f, 0.62f), -22);
-
-        var rng = new System.Random(42);
-        for (int i = 0; i < 90; i++)
+        var texture = Resources.Load<Texture2D>("UI/MainMenuBackground");
+        if (texture == null)
         {
-            float x = (float)(rng.NextDouble() * 20 - 10);
-            float y = (float)(rng.NextDouble() * 4.4f + 0.2f);
-            float s = (float)(rng.NextDouble() * 0.045f + 0.018f);
-            float a = (float)(rng.NextDouble() * 0.6f + 0.3f);
-            CreateWorldCircle($"Star{i}", new Vector3(x, y, 3.5f), s, new Color(1f, 1f, 1f, a), -15);
+            CreateWorldQuad("SkyFallback", Vector3.zero, new Vector3(22f, 12f), COL_SKY_TOP, -30);
+            return;
         }
 
-        DrawPathSegment(-7.5f, -3.9f, -5.4f, -2.6f, 0);
-        DrawPathSegment(-5.4f, -2.6f, -3.1f, -1.7f, 1);
-        DrawPathSegment(-3.1f, -1.7f, -0.6f, -1.1f, 2);
-        DrawPathSegment(-0.6f, -1.1f, 1.7f, -0.4f, 3);
-        DrawPathSegment(1.7f, -0.4f, 3.7f, -0.9f, 4);
-        DrawPathSegment(3.7f, -0.9f, 5.5f, 0.1f, 5);
-        DrawPathSegment(5.5f, 0.1f, 7.8f, 1.1f, 6);
+        texture.filterMode = FilterMode.Point;
+        texture.wrapMode = TextureWrapMode.Clamp;
 
-        for (int i = 0; i < 18; i++)
-            DrawTree(-9.2f + (i % 6) * 1.0f, -3.2f + (i / 6) * 1.2f);
-        for (int i = 0; i < 12; i++)
-            DrawRock(-1.8f + (i % 4) * 0.9f, -3.1f + (i / 4) * 0.9f);
-        for (int i = 0; i < 7; i++)
-            DrawCrystal(-1.9f + i * 0.7f, -2.0f + (i % 3) * 0.75f, i);
+        var sprite = Sprite.Create(
+            texture,
+            new Rect(0, 0, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f),
+            100f);
 
-        DrawRuins(-6.9f, -0.9f);
-        DrawPortal(0f, 0.1f);
-        DrawVolcano(6.9f, 1.2f, 1.15f);
-        DrawVolcano(8.4f, -2.3f, 0.85f);
-        DrawGoal(8.4f, 1.65f);
+        var go = new GameObject("MainMenuBackground");
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingOrder = -30;
+        go.transform.position = new Vector3(0f, 0f, 5f);
 
-        for (int i = 0; i < 13; i++)
-            CreateWorldQuad($"LavaCrack{i}", new Vector3(4.2f + (i % 5) * 1.05f, -3.4f + (i / 5) * 0.9f, 1.8f),
-                new Vector3(0.58f, 0.055f), new Color(1f, 0.25f, 0.02f, 0.85f), -12);
+        var cam = Camera.main ?? FindFirstObjectByType<Camera>();
+        float worldHeight = cam != null ? cam.orthographicSize * 2f : 10f;
+        float worldWidth = cam != null ? worldHeight * cam.aspect : 17.78f;
+        Vector2 spriteSize = sprite.bounds.size;
+        float scale = Mathf.Max(worldWidth / spriteSize.x, worldHeight / spriteSize.y);
+        go.transform.localScale = Vector3.one * scale;
     }
 
     void DrawPathSegment(float x1, float y1, float x2, float y2, int idx)
@@ -309,28 +294,14 @@ public class MainMenu : MonoBehaviour
         sc.matchWidthOrHeight  = 0.5f;
         cgo.AddComponent<GraphicRaycaster>();
 
-        // 상단 반투명 어두운 오버레이 (제목 읽기 쉽도록)
-        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.28f), new Vector2(0, 170), new Vector2(1280, 250));
-
-        // 제목 장식선
-        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, 118), new Vector2(540, 3));
-
-        // 제목 그림자 + 본문
-        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE_SH, new Vector2(5, 72),  new Vector2(760, 110), 82);
-        CreateTxt(cgo.transform, "랜 덤 오 펜 스", COL_TITLE,    new Vector2(0, 78),  new Vector2(760, 110), 82);
-        CreateTxt(cgo.transform, "RANDOM OFFENSE", new Color(1f, 0.95f, 0.6f), new Vector2(0, 2), new Vector2(620, 55), 34);
-
-        // 하단 장식선
-        CreateImg(cgo.transform, new Color(1f, 0.85f, 0.2f, 0.8f), new Vector2(0, -32), new Vector2(540, 3));
-
         // 버튼 패널 배경
-        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.42f), new Vector2(0, -215), new Vector2(340, 330));
+        CreateImg(cgo.transform, new Color(0f, 0f, 0f, 0.34f), new Vector2(0, -220), new Vector2(350, 320));
 
         // 버튼 4개
-        RegBtn(cgo.transform, "start", "▶ 시작", new Vector2(0, -112), new Vector2(280, 56), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
-        RegBtn(cgo.transform, "gem",   "◆ 보석", new Vector2(0, -178), new Vector2(280, 56), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
-        RegBtn(cgo.transform, "set",   "⚙ 설정", new Vector2(0, -244), new Vector2(280, 56), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
-        RegBtn(cgo.transform, "exit",  "✕ 종료", new Vector2(0, -310), new Vector2(280, 56), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
+        RegBtn(cgo.transform, "start", "▶ 시작", new Vector2(0, -122), new Vector2(286, 58), COL_BTN_START,  COL_BTN_S_HOV,  OnStart);
+        RegBtn(cgo.transform, "gem",   "◆ 보석", new Vector2(0, -188), new Vector2(286, 58), COL_BTN_GEM,    COL_BTN_GEM_H,  OnGemMenu);
+        RegBtn(cgo.transform, "set",   "⚙ 설정", new Vector2(0, -254), new Vector2(286, 58), COL_BTN_SET,    COL_BTN_SET_H,  OnSettings);
+        RegBtn(cgo.transform, "exit",  "✕ 종료", new Vector2(0, -320), new Vector2(286, 58), COL_BTN_EXIT,   COL_BTN_EXIT_H, OnExit);
 
         // 버전
         CreateTxt(cgo.transform, "v0.1 Alpha", new Color(1f, 1f, 1f, 0.3f), new Vector2(560, -330), new Vector2(160, 28), 15);
