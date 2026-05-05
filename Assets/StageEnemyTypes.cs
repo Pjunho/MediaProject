@@ -2,393 +2,293 @@ using UnityEngine;
 using System.Collections;
 
 // ══════════════════════════════════════════════════════════════════
-//  Stage 1 — 초원의 전투  (자연/풀 속성)
-//  색상: 밝은 초록, 흙갈색, 연두 / 이펙트: 잎사귀·덩굴·가시
+//  Stage 1 — 초원의 전투
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>초원 저격수 — 타겟 방향으로 몸을 돌려 화살을 날림</summary>
-public class GrassSniper : EnemyBase
+/// <summary>숲 사수 — 활로 방향을 맞춰 화살을 날림 (s1_archer)</summary>
+public class GrassSniper : SheetEnemyBase
 {
     static readonly Color Robe = new Color(0.15f, 0.42f, 0.10f);
     static readonly Color Dark = new Color(0.28f, 0.22f, 0.08f);
     static readonly Color Eye  = new Color(0.30f, 0.90f, 0.20f);
 
-    // LPC 방향 인덱스: 0=위, 1=왼, 2=아래, 3=오른
-    static readonly int[] IdleRow = { 8, 9, 10, 11 };
-    static readonly int[] AtkRow  = { 16, 17, 18, 19 };
-    const int   AtkFrameCount = 8;
-    const float Ppu           = 44f;
-
-    readonly Sprite[]   idleByDir = new Sprite[4];
-    readonly Sprite[][] atkByDir  = new Sprite[4][];
+    protected override string SheetName     => "s1_archer";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 };
+    protected override int    AtkFrameCount => 8;
+    protected override int    ReleaseFrame  => 6;
+    protected override float  AnimFps       => 12f;
 
     protected override void Awake()
     {
         enemyName = "숲 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
-
-        string sheetName = Random.value < 0.5f ? "s1_archer" : "s1_crossbow_enemy";
-        Sprite fallback = EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
-
-        for (int d = 0; d < 4; d++)
-        {
-            idleByDir[d] = EnemyVisualGenerator.TryLoadSheetFrame(
-                               sheetName, 1, IdleRow[d], ppu: Ppu) ?? fallback;
-            atkByDir[d] = new Sprite[AtkFrameCount];
-            for (int f = 0; f < AtkFrameCount; f++)
-                atkByDir[d][f] = EnemyVisualGenerator.TryLoadSheetFrame(
-                                     sheetName, f, AtkRow[d], ppu: Ppu) ?? idleByDir[d];
-        }
-
-        SetupSpriteAnimation(idleByDir[2], atkByDir[2]); // 기본: 아래 방향
+        LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
-
-    // 방향 인덱스 계산 (X 성분이 더 크면 좌우, Y가 크면 상하)
-    int DirIndex(Vector2 diff)
-    {
-        if (Mathf.Abs(diff.x) >= Mathf.Abs(diff.y))
-            return diff.x < 0f ? 1 : 3;   // 왼쪽 or 오른쪽
-        return diff.y > 0f ? 0 : 2;        // 위 or 아래
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        // 공격 중이 아닐 때 타겟 방향으로 대기 프레임 갱신
-        if (!isPlayingAttackAnim && currentTarget != null && spriteRenderer != null)
-        {
-            int d = DirIndex(currentTarget.transform.position - transform.position);
-            spriteRenderer.sprite = idleByDir[d];
-            idleSprite = idleByDir[d];
-        }
-    }
-
     protected override Color RangeColor()      => new Color(0.2f, 0.8f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.4f, 0.9f, 0.1f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        const float fps          = 12f;
-        const int   releaseFrame = 6;  // 이 프레임에서 화살 발사
-
-        // 공격 시작 전에 타겟 방향으로 프레임 세트 교체
-        if (target != null)
-        {
-            int d = DirIndex(target.transform.position - transform.position);
-            idleSprite         = idleByDir[d];
-            attackFrameSprites = atkByDir[d];
-        }
-
-        StartCoroutine(PlayAttackAnim(fps));
-        yield return new WaitForSeconds(releaseFrame / fps);
-
-        if (target != null)
-            StartCoroutine(ProjectileEffect(target,
-                new Color(0.25f, 0.75f, 0.10f), 17f,
-                new Color(0.40f, 0.95f, 0.20f)));
+        yield return StartCoroutine(ProjectileEffect(target,
+            new Color(0.25f, 0.75f, 0.10f), 17f,
+            new Color(0.40f, 0.95f, 0.20f)));
     }
 }
 
-/// <summary>초원 창병 — 덩굴 채찍이 지그재그로 내리침</summary>
-public class GrassSpearman : EnemyBase
+/// <summary>석궁 저격수 — 석궁으로 빠른 볼트를 날림 (s1_crossbow_enemy)</summary>
+public class GrassSpearman : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.12f, 0.42f, 0.14f);
     static readonly Color Accent = new Color(0.62f, 0.50f, 0.18f);
     static readonly Color Weapon = new Color(0.45f, 0.32f, 0.12f);
 
+    protected override string SheetName     => "s1_crossbow_enemy";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 };
+    protected override int    AtkFrameCount => 8;
+    protected override int    ReleaseFrame  => 5;
+    protected override float  AnimFps       => 14f;
+
     protected override void Awake()
     {
-        enemyName = "숲 새총병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "석궁 사수"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s1_slingshot_enemy", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+        LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
     }
     protected override Color RangeColor()      => new Color(0.3f, 0.75f, 0.15f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.35f, 0.85f, 0.15f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.35f, 0.85f, 0.15f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ZigzagEffect(target,
-                new Color(0.35f, 0.80f, 0.10f),
-                new Color(0.50f, 0.95f, 0.25f), 2, 0.20f));
+        yield return StartCoroutine(ProjectileEffect(target,
+            new Color(0.55f, 0.78f, 0.20f), 20f,
+            new Color(0.60f, 0.95f, 0.25f)));
     }
 }
 
-/// <summary>초원 근접병 — 가시 돌풍이 부채꼴로 분사</summary>
-public class GrassBrawler : EnemyBase
+/// <summary>도끼 좀비 — 도끼를 휘둘러 근접 난타 (s1_axe_zombie)</summary>
+public class GrassBrawler : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.12f, 0.60f, 0.12f);
     static readonly Color Accent = new Color(0.68f, 0.92f, 0.12f);
+
+    protected override string SheetName     => "s1_axe_zombie";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 12, 13, 14, 15 }; // slash
+    protected override int    AtkFrameCount => 6;
+    protected override int    ReleaseFrame  => 3;
+    protected override float  AnimFps       => 12f;
 
     protected override void Awake()
     {
         enemyName = "도끼 좀비"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s1_axe_zombie", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+        LoadSheetFrames(EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent));
     }
     protected override Color RangeColor()      => new Color(0.4f, 0.9f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.5f, 0.95f, 0.1f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.40f, 0.95f, 0.15f);
-            yield return new WaitForSeconds(0.04f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ParticleSprayEffect(target,
-                new Color(0.08f, 0.60f, 0.08f),
-                new Color(0.60f, 0.95f, 0.15f), 12, 0.36f, 32f));
+        yield return StartCoroutine(ParticleSprayEffect(target,
+            new Color(0.08f, 0.60f, 0.08f),
+            new Color(0.60f, 0.95f, 0.15f), 12, 0.36f, 32f));
     }
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  Stage 2 — 사막의 요새  (모래/독 속성)
-//  색상: 모래황, 뼈흰색, 갈색 / 이펙트: 모래폭풍·뼈창·독침
+//  Stage 2 — 사막의 요새
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>전갈 사수 — 독침 투사체가 빠르게 날아가 박힘</summary>
-public class DesertSniper : EnemyBase
+/// <summary>사막 궁수 — 독화살을 멀리 쏨 (s2_archer)</summary>
+public class DesertSniper : SheetEnemyBase
 {
-    static readonly Color Robe   = new Color(0.52f, 0.38f, 0.18f);
-    static readonly Color Dark   = new Color(0.32f, 0.22f, 0.08f);
-    static readonly Color Eye    = new Color(0.92f, 0.55f, 0.05f);
+    static readonly Color Robe = new Color(0.52f, 0.38f, 0.18f);
+    static readonly Color Dark = new Color(0.32f, 0.22f, 0.08f);
+    static readonly Color Eye  = new Color(0.92f, 0.55f, 0.05f);
+
+    protected override string SheetName     => "s2_archer";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 };
+    protected override int    AtkFrameCount => 8;
+    protected override int    ReleaseFrame  => 6;
+    protected override float  AnimFps       => 12f;
 
     protected override void Awake()
     {
-        enemyName = "사막 해골 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "사막 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s2_archer", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+        LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.65f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.85f, 0.70f, 0.10f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.95f, 0.70f, 0.10f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ProjectileEffect(target,
-                new Color(0.85f, 0.80f, 0.20f), 15f,
-                new Color(0.75f, 0.90f, 0.10f)));
+        yield return StartCoroutine(ProjectileEffect(target,
+            new Color(0.85f, 0.80f, 0.20f), 15f,
+            new Color(0.75f, 0.90f, 0.10f)));
     }
 }
 
-/// <summary>모래 창병 — 뼈창이 황사처럼 지그재그로 날아감</summary>
-public class DesertSpearman : EnemyBase
+/// <summary>지팡이 술사 — 마법 지팡이로 지그재그 에너지를 날림 (s2_rod_enemy)</summary>
+public class DesertSpearman : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.82f, 0.72f, 0.48f);
     static readonly Color Accent = new Color(0.88f, 0.78f, 0.38f);
     static readonly Color Weapon = new Color(0.85f, 0.82f, 0.72f);
 
+    protected override string SheetName     => "s2_rod_enemy";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 0, 1, 2, 3 };   // spellcast
+    protected override int    AtkFrameCount => 7;
+    protected override int    ReleaseFrame  => 4;
+    protected override float  AnimFps       => 10f;
+
     protected override void Awake()
     {
-        enemyName = "사막 봉술병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "사막 술사"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s2_rod_enemy", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+        LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.75f, 0.2f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.9f, 0.80f, 0.30f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.95f, 0.82f, 0.30f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ZigzagEffect(target,
-                new Color(0.92f, 0.80f, 0.35f),
-                new Color(0.90f, 0.72f, 0.10f), 2, 0.22f));
+        yield return StartCoroutine(ZigzagEffect(target,
+            new Color(0.92f, 0.80f, 0.35f),
+            new Color(0.90f, 0.72f, 0.10f), 2, 0.22f));
     }
 }
 
-/// <summary>사막 전사 — 모래폭풍이 넓은 부채꼴로 퍼짐</summary>
-public class DesertBrawler : EnemyBase
+/// <summary>곡괭이 전사 — 곡괭이로 근접 강타 (s2_pickaxe_enemy)</summary>
+public class DesertBrawler : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.78f, 0.55f, 0.22f);
     static readonly Color Accent = new Color(0.52f, 0.30f, 0.10f);
 
+    protected override string SheetName     => "s2_pickaxe_enemy";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 12, 13, 14, 15 }; // slash
+    protected override int    AtkFrameCount => 6;
+    protected override int    ReleaseFrame  => 3;
+    protected override float  AnimFps       => 12f;
+
     protected override void Awake()
     {
-        enemyName = "사막 곡괭이병"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        enemyName = "곡괭이 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s2_pickaxe_enemy", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+        LoadSheetFrames(EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.70f, 0.2f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.9f, 0.65f, 0.15f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.95f, 0.70f, 0.20f);
-            yield return new WaitForSeconds(0.04f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ParticleSprayEffect(target,
-                new Color(0.82f, 0.65f, 0.22f),
-                new Color(0.95f, 0.88f, 0.55f), 12, 0.36f, 38f));
+        yield return StartCoroutine(ParticleSprayEffect(target,
+            new Color(0.82f, 0.65f, 0.22f),
+            new Color(0.95f, 0.88f, 0.55f), 12, 0.36f, 38f));
     }
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  Stage 3 — 화산의 심판  (화염/용암 속성)
-//  EnemyBrawler(기존) 그대로 사용 + 창병/저격수 신규
-//  색상: 진홍, 주황, 용암검정 / 이펙트: 용암폭발·마그마빔
+//  Stage 3 — 화산의 심판
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>마그마 저격수 — 진홍 마그마 빔이 순간 관통</summary>
-public class VolcanoSniper : EnemyBase
+/// <summary>화산 궁수 — 불화살로 관통 (s3_archer)</summary>
+public class VolcanoSniper : SheetEnemyBase
 {
-    static readonly Color Robe   = new Color(0.55f, 0.05f, 0.05f);
-    static readonly Color Dark   = new Color(0.20f, 0.02f, 0.02f);
-    static readonly Color Eye    = new Color(1.00f, 0.10f, 0.00f);
+    static readonly Color Robe = new Color(0.55f, 0.05f, 0.05f);
+    static readonly Color Dark = new Color(0.20f, 0.02f, 0.02f);
+    static readonly Color Eye  = new Color(1.00f, 0.10f, 0.00f);
+
+    protected override string SheetName     => "s3_archer";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 };
+    protected override int    AtkFrameCount => 8;
+    protected override int    ReleaseFrame  => 6;
+    protected override float  AnimFps       => 12f;
 
     protected override void Awake()
     {
-        enemyName = "화산 해골 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "화산 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s3_archer", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+        LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.1f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.3f, 0.0f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.9f, 0.05f, 0.05f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ThinBeamEffect(target,
-                new Color(1.00f, 0.10f, 0.00f),
-                new Color(1.00f, 0.40f, 0.05f)));
+        yield return StartCoroutine(ThinBeamEffect(target,
+            new Color(1.00f, 0.10f, 0.00f),
+            new Color(1.00f, 0.40f, 0.05f)));
     }
 }
 
-/// <summary>화산 창병 — 용암 전기가 지그재그로 불길을 남김</summary>
-public class VolcanoSpearman : EnemyBase
+/// <summary>부메랑 투척수 — 부메랑이 지그재그로 날아감 (s3_booberang_enemy)</summary>
+public class VolcanoSpearman : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.22f, 0.14f, 0.12f);
     static readonly Color Accent = new Color(0.90f, 0.32f, 0.04f);
     static readonly Color Weapon = new Color(0.65f, 0.30f, 0.10f);
 
+    protected override string SheetName     => "s3_booberang_enemy";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 }; // throw
+    protected override int    AtkFrameCount => 8;
+    protected override int    ReleaseFrame  => 5;
+    protected override float  AnimFps       => 12f;
+
     protected override void Awake()
     {
-        enemyName = "화산 부메랑병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "부메랑 투척수"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s3_booberang_enemy", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+        LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.3f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.4f, 0.05f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(1.0f, 0.35f, 0.05f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ZigzagEffect(target,
-                new Color(1.00f, 0.35f, 0.05f),
-                new Color(1.00f, 0.60f, 0.10f), 2, 0.22f));
+        yield return StartCoroutine(ZigzagEffect(target,
+            new Color(1.00f, 0.35f, 0.05f),
+            new Color(1.00f, 0.60f, 0.10f), 2, 0.22f));
     }
 }
 
-/// <summary>화산 도끼병 — 짧은 사거리에서 용암 파편을 분사</summary>
-public class VolcanoBrawler : EnemyBase
+/// <summary>화산 도끼전사 — 불도끼로 강타 (s3_axe_enemy)</summary>
+public class VolcanoBrawler : SheetEnemyBase
 {
-    static readonly Color Armor  = new Color(0.22f, 0.12f, 0.10f);
-    static readonly Color Accent = new Color(0.95f, 0.30f, 0.04f);
+    static readonly Color Armor  = new Color(0.25f, 0.10f, 0.08f);
+    static readonly Color Accent = new Color(0.90f, 0.35f, 0.05f);
+
+    protected override string SheetName     => "s3_axe_enemy";
+    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
+    protected override int[]  AtkRows       => new[] { 12, 13, 14, 15 }; // slash
+    protected override int    AtkFrameCount => 6;
+    protected override int    ReleaseFrame  => 3;
+    protected override float  AnimFps       => 12f;
 
     protected override void Awake()
     {
-        enemyName = "화산 도끼병"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        enemyName = "화산 도끼전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                EnemyVisualGenerator.TryLoadSheetFrame("s3_axe_enemy", 1, 10, ppu: 44f) ??
-                EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+        LoadSheetFrames(EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent));
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.3f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.4f, 0.05f);
-
-    protected override IEnumerator ShowAttackEffect(AllyBase target)
+    protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(1.0f, 0.35f, 0.05f);
-            yield return new WaitForSeconds(0.04f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ParticleSprayEffect(target,
-                new Color(0.65f, 0.08f, 0.02f),
-                new Color(1.00f, 0.55f, 0.10f), 13, 0.38f, 34f));
+        yield return StartCoroutine(ParticleSprayEffect(target,
+            new Color(0.90f, 0.25f, 0.02f),
+            new Color(1.00f, 0.60f, 0.10f), 14, 0.40f, 35f));
     }
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  Stage 4 — 어둠의 미궁  (공허/저주 속성)
-//  색상: 흑보라, 심연검정 / 이펙트: 그림자 촉수·공허창·영혼빔
+//  Stage 4 — 어둠의 미궁  (절차적 스프라이트 — 시트 없음)
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>영혼 저격수 — 어둠의 영혼 빔이 무소리로 꿰뚫음</summary>
 public class ShadowSniper : EnemyBase
 {
-    static readonly Color Robe   = new Color(0.22f, 0.05f, 0.38f);
-    static readonly Color Dark   = new Color(0.07f, 0.02f, 0.14f);
-    static readonly Color Eye    = new Color(0.75f, 0.00f, 1.00f);
-
+    static readonly Color Robe = new Color(0.22f, 0.05f, 0.38f);
+    static readonly Color Dark = new Color(0.07f, 0.02f, 0.14f);
+    static readonly Color Eye  = new Color(0.75f, 0.00f, 1.00f);
     protected override void Awake()
     {
         enemyName = "영혼 저격수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
@@ -400,30 +300,18 @@ public class ShadowSniper : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.55f, 0.1f, 0.8f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.65f, 0.1f, 0.9f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.55f, 0.05f, 0.85f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ThinBeamEffect(target,
-                new Color(0.60f, 0.00f, 0.90f),
-                new Color(0.35f, 0.00f, 0.60f)));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(0.55f,0.05f,0.85f); yield return new WaitForSeconds(0.05f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(ThinBeamEffect(target, new Color(0.60f,0.00f,0.90f), new Color(0.35f,0.00f,0.60f)));
     }
 }
 
-/// <summary>공허 창병 — 보이지 않는 공허의 창이 4회 점멸</summary>
 public class ShadowSpearman : EnemyBase
 {
     static readonly Color Armor  = new Color(0.10f, 0.04f, 0.18f);
     static readonly Color Accent = new Color(0.50f, 0.08f, 0.75f);
     static readonly Color Weapon = new Color(0.30f, 0.05f, 0.55f);
-
     protected override void Awake()
     {
         enemyName = "공허 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
@@ -435,29 +323,17 @@ public class ShadowSpearman : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.5f, 0.1f, 0.7f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.55f, 0.08f, 0.8f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.55f, 0.08f, 0.85f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ZigzagEffect(target,
-                new Color(0.55f, 0.05f, 0.85f),
-                new Color(0.30f, 0.00f, 0.55f), 4, 0.25f));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(0.55f,0.08f,0.85f); yield return new WaitForSeconds(0.05f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(ZigzagEffect(target, new Color(0.55f,0.05f,0.85f), new Color(0.30f,0.00f,0.55f), 4, 0.25f));
     }
 }
 
-/// <summary>그림자 전사 — 어둠의 촉수가 소용돌이치며 분사</summary>
 public class ShadowBrawler : EnemyBase
 {
     static readonly Color Armor  = new Color(0.08f, 0.05f, 0.12f);
     static readonly Color Accent = new Color(0.42f, 0.10f, 0.62f);
-
     protected override void Awake()
     {
         enemyName = "그림자 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
@@ -469,35 +345,22 @@ public class ShadowBrawler : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.5f, 0.1f, 0.7f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.5f, 0.08f, 0.75f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.50f, 0.08f, 0.80f);
-            yield return new WaitForSeconds(0.04f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ParticleSprayEffect(target,
-                new Color(0.25f, 0.02f, 0.45f),
-                new Color(0.55f, 0.08f, 0.80f), 14, 0.42f, 28f));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(0.50f,0.08f,0.80f); yield return new WaitForSeconds(0.04f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(ParticleSprayEffect(target, new Color(0.25f,0.02f,0.45f), new Color(0.55f,0.08f,0.80f), 14, 0.42f, 28f));
     }
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  Stage 5 — 최후의 요새  (강철/황금 속성)
-//  색상: 은강철, 황금, 심청 / 이펙트: 에너지 충격파·뇌폭풍·황금빔
+//  Stage 5 — 최후의 요새  (절차적 스프라이트 — 시트 없음)
 // ══════════════════════════════════════════════════════════════════
 
-/// <summary>황금 저격수 — 황금빔 + 강대한 충격 폭발</summary>
 public class FortressSniper : EnemyBase
 {
-    static readonly Color Robe   = new Color(0.68f, 0.52f, 0.10f);
-    static readonly Color Dark   = new Color(0.22f, 0.15f, 0.05f);
-    static readonly Color Eye    = new Color(1.00f, 0.88f, 0.00f);
-
+    static readonly Color Robe = new Color(0.68f, 0.52f, 0.10f);
+    static readonly Color Dark = new Color(0.22f, 0.15f, 0.05f);
+    static readonly Color Eye  = new Color(1.00f, 0.88f, 0.00f);
     protected override void Awake()
     {
         enemyName = "황금 저격수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
@@ -509,52 +372,29 @@ public class FortressSniper : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.75f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.88f, 0.0f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(1.0f, 0.88f, 0.05f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(GoldenBeamEffect(target));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(1.0f,0.88f,0.05f); yield return new WaitForSeconds(0.05f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(GoldenBeamEffect(target));
     }
-
-    // 황금빔 전용: 평범 빔보다 두껍고 폭발이 큼
     IEnumerator GoldenBeamEffect(AllyBase target)
     {
         if (target == null) yield break;
-        Vector3 src = transform.position, dst = target.transform.position;
-
-        var lr = CreateTempLineRenderer(2, new Color(1f, 0.88f, 0f), 0.06f, 28);
-        lr.endColor = new Color(1f, 0.95f, 0.5f, 0.4f);
-        lr.SetPosition(0, src);
-        lr.SetPosition(1, dst);
-
-        float elapsed = 0f;
-        while (elapsed < 0.22f)
-        {
-            elapsed += Time.deltaTime;
-            float a = 1f - (elapsed / 0.22f) * (elapsed / 0.22f);
-            lr.startColor = new Color(1f, 0.88f, 0f,  a);
-            lr.endColor   = new Color(1f, 0.95f, 0.5f, a * 0.4f);
-            yield return null;
-        }
+        var lr = CreateTempLineRenderer(2, new Color(1f,0.88f,0f), 0.06f, 28);
+        lr.endColor = new Color(1f,0.95f,0.5f,0.4f);
+        lr.SetPosition(0, transform.position); lr.SetPosition(1, target.transform.position);
+        float e = 0f;
+        while (e < 0.22f) { e += Time.deltaTime; float a = 1f-(e/0.22f)*(e/0.22f); lr.startColor=new Color(1f,0.88f,0f,a); lr.endColor=new Color(1f,0.95f,0.5f,a*0.4f); yield return null; }
         Destroy(lr.gameObject);
-        SpawnImpactFlash(dst, new Color(1f, 0.90f, 0.10f, 1f), 0.30f);
+        SpawnImpactFlash(target.transform.position, new Color(1f,0.90f,0.10f,1f), 0.30f);
     }
 }
 
-/// <summary>요새 창병 — 청전기 번개가 4회 강타</summary>
 public class FortressSpearman : EnemyBase
 {
     static readonly Color Armor  = new Color(0.40f, 0.44f, 0.55f);
     static readonly Color Accent = new Color(0.15f, 0.30f, 0.80f);
     static readonly Color Weapon = new Color(0.70f, 0.75f, 0.85f);
-
     protected override void Awake()
     {
         enemyName = "요새 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
@@ -566,29 +406,17 @@ public class FortressSpearman : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.2f, 0.4f, 0.9f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.3f, 0.55f, 1.0f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.4f, 0.6f, 1.0f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ZigzagEffect(target,
-                new Color(0.30f, 0.60f, 1.00f),
-                new Color(0.70f, 0.88f, 1.00f), 4, 0.22f));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(0.4f,0.6f,1.0f); yield return new WaitForSeconds(0.05f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(ZigzagEffect(target, new Color(0.30f,0.60f,1.00f), new Color(0.70f,0.88f,1.00f), 4, 0.22f));
     }
 }
 
-/// <summary>철벽 전사 — 황금빛 에너지 충격파가 넓게 분사</summary>
 public class FortressBrawler : EnemyBase
 {
     static readonly Color Armor  = new Color(0.52f, 0.54f, 0.60f);
     static readonly Color Accent = new Color(0.88f, 0.72f, 0.10f);
-
     protected override void Awake()
     {
         enemyName = "철벽 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
@@ -600,19 +428,9 @@ public class FortressBrawler : EnemyBase
     }
     protected override Color RangeColor()      => new Color(0.7f, 0.6f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.9f, 0.75f, 0.1f);
-
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.9f, 0.80f, 0.15f);
-            yield return new WaitForSeconds(0.04f);
-            spriteRenderer.color = orig;
-        }
-        if (target != null)
-            StartCoroutine(ParticleSprayEffect(target,
-                new Color(0.55f, 0.55f, 0.62f),
-                new Color(1.00f, 0.88f, 0.15f), 16, 0.40f, 40f));
+        if (spriteRenderer != null) { Color o = spriteRenderer.color; spriteRenderer.color = new Color(0.9f,0.80f,0.15f); yield return new WaitForSeconds(0.04f); spriteRenderer.color = o; }
+        if (target != null) StartCoroutine(ParticleSprayEffect(target, new Color(0.55f,0.55f,0.62f), new Color(1.00f,0.88f,0.15f), 16, 0.40f, 40f));
     }
 }
