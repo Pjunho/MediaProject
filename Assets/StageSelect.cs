@@ -347,29 +347,46 @@ public class StageSelect : MonoBehaviour
         if (!mouse.leftButton.isPressed && !mouse.leftButton.wasPressedThisFrame)
             scrollConsumed = false;
 
-        foreach (var b in btns)
+        for (int i = 0; i < btns.Count; i++)
         {
+            var b = btns[i];
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
-
-            // 스크롤 영역 버튼은 뷰포트 안에 있을 때만 반응
-            if (b.inScrollArea && viewportRt != null)
-            {
-                Camera cam = mainCanvas != null && mainCanvas.renderMode == RenderMode.ScreenSpaceCamera
-                    ? mainCanvas.worldCamera : null;
-                if (!RectTransformUtility.RectangleContainsScreenPoint(viewportRt, mp, cam))
-                {
-                    if (b.fill != null) b.fill.color = b.n;
-                    continue;
-                }
-            }
-
-            Camera hoverCam = mainCanvas != null && mainCanvas.renderMode == RenderMode.ScreenSpaceCamera
-                ? mainCanvas.worldCamera : null;
-            bool over = GetStrictButtonHit(b, mp, hoverCam);
-            if (b.fill != null) b.fill.color = over ? b.h : b.n;
-            if (over && mouse.leftButton.wasPressedThisFrame && !scrollConsumed)
-                b.cb?.Invoke();
+            if (b.fill != null) b.fill.color = b.n;
         }
+
+        Camera hoverCam = mainCanvas != null && mainCanvas.renderMode == RenderMode.ScreenSpaceCamera
+            ? mainCanvas.worldCamera : null;
+
+        for (int i = btns.Count - 1; i >= 0; i--)
+        {
+            var b = btns[i];
+            if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
+            if (!IsButtonInActiveInputLayer(b)) continue;
+
+            if (b.inScrollArea && viewportRt != null &&
+                !RectTransformUtility.RectangleContainsScreenPoint(viewportRt, mp, hoverCam))
+                continue;
+
+            bool over = GetStrictButtonHit(b, mp, hoverCam);
+            if (!over) continue;
+
+            if (b.fill != null) b.fill.color = b.h;
+            if (mouse.leftButton.wasPressedThisFrame && !scrollConsumed)
+                b.cb?.Invoke();
+
+            return;
+        }
+    }
+
+    bool IsButtonInActiveInputLayer(BtnData b)
+    {
+        if (detailPopup != null && detailPopup.activeSelf)
+            return b.rt != null && b.rt.transform.IsChildOf(detailPopup.transform);
+
+        if (prepPanel != null && prepPanel.activeSelf)
+            return b.rt != null && b.rt.transform.IsChildOf(prepPanel.transform);
+
+        return true;
     }
 
     bool GetStrictButtonHit(BtnData b, Vector2 screenPoint, Camera cam)
