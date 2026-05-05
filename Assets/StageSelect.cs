@@ -670,18 +670,18 @@ public class StageSelect : MonoBehaviour
         prepSlotTxt = MkTxtR(pp, "", new Color(0.80f,0.90f,1f,0.90f), new Vector2(0, 268), new Vector2(820, 30), 18);
 
         // ── 중앙 수직 구분선 ─────────────────────────────────────────
-        MkImgChild(pp, new Color(1f,1f,1f,0.12f), new Vector2(0, 20), new Vector2(2, 480));
+        MkImgChild(pp, new Color(1f,1f,1f,0.12f), new Vector2(0, -35), new Vector2(2, 400));
 
         // ── 좌측 헤더 "선택 가능 아군" ──────────────────────────────
         MkTxtChild(pp, "선택 가능 아군", new Color(0.90f,0.94f,1f),
-                   new Vector2(-215, 245), new Vector2(400, 30), 19);
+                   new Vector2(-215, 210), new Vector2(400, 30), 19);
         MkTxtChild(pp, "클릭하여 추가", new Color(1f,1f,1f,0.35f),
-                   new Vector2(-215, 218), new Vector2(400, 24), 14);
+                   new Vector2(-215, 183), new Vector2(400, 24), 14);
 
         // ── 좌측: 선택 가능 아군 초상화 그리드 (3열 × 2행, 최대 6) ─
-        // 열: -325, -215, -105 / 행: 140, 30
+        // 열: -325, -215, -105 / 행: 105, -5
         float[] availColX = { -325f, -215f, -105f };
-        float[] availRowY = {  140f,   30f };
+        float[] availRowY = {  105f,   -5f };
 
         for (int i = 0; i < 6; i++)
         {
@@ -723,45 +723,44 @@ public class StageSelect : MonoBehaviour
 
         // ── 우측 헤더 "선택된 출전 순서" ────────────────────────────
         MkTxtChild(pp, "선택된 출전 순서", new Color(0.90f,0.94f,1f),
-                   new Vector2(215, 245), new Vector2(400, 30), 19);
+                   new Vector2(215, 210), new Vector2(400, 30), 19);
         MkTxtChild(pp, "클릭하여 제거", new Color(1f,1f,1f,0.35f),
-                   new Vector2(215, 218), new Vector2(400, 24), 14);
+                   new Vector2(215, 183), new Vector2(400, 24), 14);
 
         // ── 우측: 선택된 슬롯 목록 ───────────────────────────────────
-        // 슬롯 높이 70px, 간격 2px → step=72
-        // 좌측 그리드 top = 140+45 = 185 → 첫 슬롯 center = 185-35 = 150
+        // 슬롯 높이 66px, 간격 2px → step=68
         for (int i = 0; i < 6; i++)
         {
             int cap = i;
-            float sy = 150f - i * 72f;   // top: 150+35=185 ✓
+            float sy = 115f - i * 68f;
 
             var slot = new GameObject($"Slot_{i+1}");
             slot.transform.SetParent(pp, false);
             slot.AddComponent<Image>().color = new Color(0,0,0,0);
-            SR(slot.GetComponent<RectTransform>(), new Vector2(215f, sy), new Vector2(380f, 70f));
+            SR(slot.GetComponent<RectTransform>(), new Vector2(215f, sy), new Vector2(380f, 66f));
             prepSlotItems.Add(slot);
 
             // 슬롯 배경
-            MkImgChild(slot.transform, new Color(0.08f,0.10f,0.16f,0.85f), Vector2.zero, new Vector2(380, 70));
-            MkImgChild(slot.transform, new Color(1f,1f,1f,0.10f),           Vector2.zero, new Vector2(382, 72));
+            MkImgChild(slot.transform, new Color(0.08f,0.10f,0.16f,0.85f), Vector2.zero, new Vector2(380, 66));
+            MkImgChild(slot.transform, new Color(1f,1f,1f,0.10f),           Vector2.zero, new Vector2(382, 68));
 
             // 초상화
             var pgo     = new GameObject("Portrait");
             pgo.transform.SetParent(slot.transform, false);
             var portrait = pgo.AddComponent<Image>();
-            SR(pgo.GetComponent<RectTransform>(), new Vector2(-155f, 0f), new Vector2(56, 56));
+            SR(pgo.GetComponent<RectTransform>(), new Vector2(-155f, 0f), new Vector2(52, 52));
             prepSlotPortraits.Add(portrait);
 
             // 이름 라벨 (초상화 오른쪽)
             var lbl = MkTxtR(slot.transform, $"{i+1}. 비어 있음",
                              new Color(1f,1f,1f,0.38f),
-                             new Vector2(55f, 0f), new Vector2(240f, 66f), 18);
+                             new Vector2(55f, 0f), new Vector2(240f, 62f), 18);
             lbl.alignment = TextAnchor.MiddleLeft;
             prepSlotLabels.Add(lbl);
 
             // 클릭 버튼 (슬롯 전체)
             RegBtn(slot.transform, $"slot_{i}", "",
-                   Vector2.zero, new Vector2(380, 70),
+                   Vector2.zero, new Vector2(380, 66),
                    new Color(0f,0f,0f,0.01f), new Color(1f,1f,1f,0.08f),
                    () => RemovePrepAllyAt(cap), false);
         }
