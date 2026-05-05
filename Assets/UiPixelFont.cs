@@ -14,8 +14,7 @@ public static class UiPixelFont
 
         string[] candidates =
         {
-            "Jumja",
-            "JUMJA",
+            "NewJumja",
             "D2Coding",
             "Cascadia Mono",
             "Consolas",
@@ -27,7 +26,7 @@ public static class UiPixelFont
         foreach (string candidate in candidates)
         {
             var font = Font.CreateDynamicFontFromOSFont(candidate, 16);
-            if (SupportsUiText(font))
+            if (font != null && (candidate == "NewJumja" || SupportsUiText(font)))
             {
                 cachedFont = font;
                 break;
