@@ -12,8 +12,13 @@ public static class UiPixelFont
         if (cachedFont != null)
             return cachedFont;
 
+        cachedFont = Resources.Load<Font>("Fonts/NewJumja");
+        if (SupportsUiText(cachedFont))
+            return cachedFont;
+
         string[] candidates =
         {
+            "NewJumja",
             "HCR Dotum",
             "Han Santteut Dotum",
             "Hancom MalangMalang Bold",

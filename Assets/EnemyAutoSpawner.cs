@@ -114,24 +114,46 @@ public class EnemyAutoSpawner : MonoBehaviour
             return;
         }
 
-        var nearPool = new List<SpawnCandidate>();
-        var farPool  = new List<SpawnCandidate>();
-        foreach (var c in allCandidates)
-        {
-            if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
-            else                                        farPool.Add(c);
-        }
-        nearPool.Sort(CompareNearCandidates);
-        farPool.Sort(CompareFarCandidates);
-
         int stage = StageManager.Instance?.currentStageIndex ?? 1;
         var (sniperType, spearmanType, brawlerType) = GetStageEnemyTypes(stage);
 
-        // 원거리 적: 경로 근처 우선
-        SpawnEnemyType(nearPool, farPool,  sniperCount,   "장거리 적", sniperType);
-        SpawnEnemyType(nearPool, farPool,  spearmanCount, "중거리 적", spearmanType);
-        // 근접 적: 경로 먼 곳 우선
-        SpawnEnemyType(farPool,  nearPool, brawlerCount,  "근접 적",  brawlerType);
+        if (stage == 3)
+        {
+            // ── Stage 3 화산 전용 배치 ────────────────────────────────
+            // 어두운 바위섬(플랫폼) 타일을 원거리 적 전용 배치 풀로 분리
+            var platformPool = new List<SpawnCandidate>();
+            var lavaPool     = new List<SpawnCandidate>(); // 일반 용암 벽 타일
+            foreach (var c in allCandidates)
+            {
+                if (c.preferredPlatform) platformPool.Add(c);
+                else                     lavaPool.Add(c);
+            }
+            platformPool.Sort(CompareNearCandidates);
+            lavaPool.Sort(CompareFarCandidates);
+
+            // 원거리: 바위섬 플랫폼 우선 → 부족하면 일반 타일로 폴백
+            SpawnEnemyType(platformPool, lavaPool, sniperCount,   "장거리 적", sniperType);
+            SpawnEnemyType(platformPool, lavaPool, spearmanCount, "중거리 적", spearmanType);
+            // 근접: 일반 용암 타일 우선 → 플랫폼 폴백
+            SpawnEnemyType(lavaPool, platformPool, brawlerCount,  "근접 적",  brawlerType);
+        }
+        else
+        {
+            // ── 일반 스테이지 배치 ────────────────────────────────────
+            var nearPool = new List<SpawnCandidate>();
+            var farPool  = new List<SpawnCandidate>();
+            foreach (var c in allCandidates)
+            {
+                if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
+                else                                        farPool.Add(c);
+            }
+            nearPool.Sort(CompareNearCandidates);
+            farPool.Sort(CompareFarCandidates);
+
+            SpawnEnemyType(nearPool, farPool,  sniperCount,   "장거리 적", sniperType);
+            SpawnEnemyType(nearPool, farPool,  spearmanCount, "중거리 적", spearmanType);
+            SpawnEnemyType(farPool,  nearPool, brawlerCount,  "근접 적",  brawlerType);
+        }
 
         Debug.Log($"[EnemyAutoSpawner] Stage {stage} 배치 완료 — {spawnedEnemies.Count}명 " +
                   $"({sniperType.Name} {sniperCount} / {spearmanType.Name} {spearmanCount} / {brawlerType.Name} {brawlerCount})");

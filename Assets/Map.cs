@@ -22,6 +22,10 @@ public class Map : MonoBehaviour
     private TileType[,]   tileMap;
     private GameObject[,] tileObjects;
 
+    /// <summary>Stage 3 어두운 바위섬 플랫폼 타일 위치 목록 (적 배치에 활용)</summary>
+    public IReadOnlyList<Vector2Int> VolcanoPlatforms => _volcanoPlatforms;
+    private readonly List<Vector2Int> _volcanoPlatforms = new();
+
     public bool IsGenerated => tileMap != null &&
                                tileMap.GetLength(0) > 0 &&
                                tileMap.GetLength(1) > 0 &&
@@ -111,6 +115,7 @@ public class Map : MonoBehaviour
         // 스테이지 인덱스에 따라 테마 타일 선택
         int stageIdx = StageManager.Instance != null
             ? StageManager.Instance.currentStageIndex : 1;
+        _volcanoPlatforms.Clear();
 
         for (int x = 0; x < w; x++)
         {
@@ -144,6 +149,9 @@ public class Map : MonoBehaviour
                     else if (IsVolcanoBlockedPathTile(stageIdx, x, y))
                     {
                         sr.sprite = TileTextureGenerator.GetVolcanoBlockedPathSprite(variant);
+                        // 용암 빛에 달궈진 어두운 바위섬: 약간 붉은 기가 도는 따뜻한 색조
+                        sr.color = new Color(0.88f, 0.72f, 0.62f);
+                        _volcanoPlatforms.Add(new Vector2Int(x, y));
                     }
                     else
                     {
@@ -176,7 +184,13 @@ public class Map : MonoBehaviour
                 // 길 타일에는 장식 없음 (깔끔한 룩 유지)
                 if (type == TileType.Grass)
                 {
-                    if (IsVolcanoBlockedPathTile(stageIdx, x, y)) continue;
+                    if (IsVolcanoBlockedPathTile(stageIdx, x, y))
+                    {
+                        // 바위섬 가장자리에 용암 균열 빛 오버레이 (sortingOrder -1 = 타일 아래)
+                        if (stageIdx == 3)
+                            AddPlatformLavaGlow(tile.transform, x, y);
+                        continue;
+                    }
 
                     int pathNeighbors = CountPathNeighbors(x, y);
                     float decorChance = GetDecorChance(stageIdx, pathNeighbors > 0);
@@ -185,6 +199,44 @@ public class Map : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Stage 3 바위섬 플랫폼 타일 아래 용암 균열 빛 오버레이 추가.
+    /// 단색 주황색 정사각형을 타일 크기보다 약간 크게 배치해
+    /// 바위 가장자리에 주황 빛이 비치는 효과를 만듦.
+    /// </summary>
+    void AddPlatformLavaGlow(Transform parent, int x, int y)
+    {
+        // 이웃이 플랫폼이 아닌 방향 = 용암과 접한 변 → 그 방향에 빛을 강조
+        int stageIdx = 3;
+        float glowAlpha = Mathf.Lerp(0.55f, 0.80f, Hash01(stageIdx, x, y, 77));
+        var glowColor = new Color(0.95f, 0.38f, 0.05f, glowAlpha);
+
+        var glowGo = new GameObject("LavaGlow");
+        glowGo.transform.SetParent(parent, false);
+        glowGo.transform.localPosition = Vector3.zero;
+        glowGo.transform.localScale    = Vector3.one * 1.22f; // 약간 크게 → 테두리 빛
+
+        var sr = glowGo.AddComponent<SpriteRenderer>();
+        sr.sprite       = MakeSolidSprite(glowColor);
+        sr.sortingOrder = -1; // 타일 스프라이트(0) 아래
+        sr.color        = glowColor;
+    }
+
+    /// <summary>단색 1×1 픽셀 텍스처에서 스프라이트 생성 (빛 오버레이용)</summary>
+    static Sprite _solidWhiteSprite;
+    static Sprite MakeSolidSprite(Color color)
+    {
+        if (_solidWhiteSprite == null)
+        {
+            var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            tex.filterMode = FilterMode.Point;
+            tex.SetPixel(0, 0, Color.white);
+            tex.Apply();
+            _solidWhiteSprite = Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+        }
+        return _solidWhiteSprite;
     }
 
     void AddGroundDecor(Transform parent, int stageIdx, int x, int y, bool nearPath)
@@ -426,17 +478,46 @@ public class Map : MonoBehaviour
         return IsVolcanoBlockedPathTile(stageIdx, x, y);
     }
 
+    /// <summary>
+    /// Stage 3 화산 전용 — 벽 타일이지만 시각적으로 어두운 화산암처럼 보이는 "플랫폼" 타일 여부.
+    ///
+    /// ▶ 생성 원리 (2단계 클러스터)
+    ///   1차 레이어 : 걷기 가능한 경로와 직접 맞닿은 벽 타일의 ~28% → "바위섬 씨앗"
+    ///   2차 레이어 : 씨앗 타일과 맞닿은(대각선 제외) 벽 타일의 ~38% → 클러스터 확장
+    ///
+    /// 이 방식으로 경로를 따라 2~4칸짜리 어두운 바위섬이 자연스럽게 형성됨.
+    /// 경로와 전혀 무관한 깊은 용암 지대에는 플랫폼이 생성되지 않음.
+    /// </summary>
     bool IsVolcanoBlockedPathTile(int stageIdx, int x, int y)
     {
         if (stageIdx != 3) return false;
         if (GetTileType(x, y) != TileType.Grass) return false;
         if (x <= 0 || x >= mapWidth - 1 || y <= 0 || y >= mapHeight - 1) return false;
 
-        int pathNeighbors = CountPathNeighbors(x, y);
-        if (pathNeighbors > 0)
-            return Hash01(stageIdx, x, y, 101) < 0.34f;
+        // ── 1차 레이어: 경로 직접 인접 타일 ──────────────────────────
+        if (CountPathNeighbors(x, y) > 0)
+            return Hash01(stageIdx, x, y, 101) < 0.28f;
 
-        return Hash01(stageIdx, x, y, 103) < 0.045f;
+        // ── 2차 레이어: 1차 씨앗 타일에 맞닿은 타일 (클러스터 확장) ──
+        if (IsSeedPlatform(stageIdx, x - 1, y) ||
+            IsSeedPlatform(stageIdx, x + 1, y) ||
+            IsSeedPlatform(stageIdx, x,     y - 1) ||
+            IsSeedPlatform(stageIdx, x,     y + 1))
+        {
+            return Hash01(stageIdx, x, y, 109) < 0.38f;
+        }
+
+        // 경로와 무관한 깊은 용암 지대엔 플랫폼 없음
+        return false;
+    }
+
+    /// <summary>재귀 없이 "1차 씨앗" 조건(경로 인접 + 해시)만 확인</summary>
+    bool IsSeedPlatform(int stageIdx, int x, int y)
+    {
+        if (!IsInBounds(new Vector2Int(x, y))) return false;
+        if (GetTileType(x, y) != TileType.Grass) return false;
+        if (x <= 0 || x >= mapWidth - 1 || y <= 0 || y >= mapHeight - 1) return false;
+        return CountPathNeighbors(x, y) > 0 && Hash01(stageIdx, x, y, 101) < 0.28f;
     }
 
     bool IsInBounds(Vector2Int tile) =>
