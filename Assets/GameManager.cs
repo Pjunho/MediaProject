@@ -89,6 +89,15 @@ public class GameManager : MonoBehaviour
         if (waveBannerGo != null) waveBannerGo.SetActive(false);
 
         InitStageHazards();
+
+        // ── 스테이지 진입 즉시 초기 코인 지급 ─────────────────────────
+        // 경로 설계 단계부터 스킬·업그레이드를 살 수 있도록
+        // (기존: 첫 경로 확정 후 스타트 버튼 눌러야 지급됐음)
+        int stageIdx = StageManager.Instance != null
+            ? StageManager.Instance.currentStageIndex : 1;
+        currentCoins = StageManager.GetStageConfig(stageIdx).startingCoins;
+        UpdateCoinHUD();
+        Debug.Log($"[GameManager] 스테이지 진입 — 초기 코인 {currentCoins}개 지급");
     }
 
     void Start() { }
@@ -137,7 +146,7 @@ public class GameManager : MonoBehaviour
         if (!gameStarted)
         {
             gameStarted = true;
-            currentCoins      = StageManager.GetStageConfig(stageIdx).startingCoins;
+            // currentCoins는 Awake()에서 이미 지급됨 — 여기서 덮어쓰지 않는다
             currentWaves      = StageManager.GetWaves(stageIdx);
             currentWaveIndex  = 0;
             clearedWaveCount  = 0;
@@ -422,7 +431,7 @@ public class GameManager : MonoBehaviour
         tx.color              = Color.white;
         tx.fontSize           = 18;
         tx.alignment          = TextAnchor.MiddleCenter;
-        tx.fontStyle          = FontStyle.Bold;
+        tx.fontStyle          = FontStyle.Normal;
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -450,7 +459,7 @@ public class GameManager : MonoBehaviour
         waveBannerTxt.color              = new Color(0.3f, 1f, 0.4f);
         waveBannerTxt.fontSize           = 32;
         waveBannerTxt.alignment          = TextAnchor.MiddleCenter;
-        waveBannerTxt.fontStyle          = FontStyle.Bold;
+        waveBannerTxt.fontStyle          = FontStyle.Normal;
         waveBannerTxt.alignByGeometry    = true;
         waveBannerTxt.raycastTarget      = false;
         waveBannerTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -627,7 +636,7 @@ public class GameManager : MonoBehaviour
         tgo.transform.SetParent(toastGo.transform, false);
         toastTxt = tgo.AddComponent<Text>();
         toastTxt.fontSize           = 20;
-        toastTxt.fontStyle          = FontStyle.Bold;
+        toastTxt.fontStyle          = FontStyle.Normal;
         toastTxt.alignment          = TextAnchor.MiddleCenter;
         toastTxt.alignByGeometry    = true;
         toastTxt.raycastTarget      = false;
@@ -833,7 +842,7 @@ public class GameManager : MonoBehaviour
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 20;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -858,7 +867,7 @@ public class GameManager : MonoBehaviour
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -881,7 +890,7 @@ public class GameManager : MonoBehaviour
         btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
-        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Bold;
+        tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -911,7 +920,7 @@ public class GameManager : MonoBehaviour
         var go = new GameObject("Txt"); go.transform.SetParent(p, false);
         var tx = go.AddComponent<Text>(); tx.text = s; tx.color = c; tx.fontSize = fs;
         tx.alignment          = TextAnchor.MiddleCenter;
-        tx.fontStyle          = FontStyle.Bold;
+        tx.fontStyle          = FontStyle.Normal;
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
