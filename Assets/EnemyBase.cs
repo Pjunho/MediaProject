@@ -16,6 +16,11 @@ public class EnemyBase : MonoBehaviour
     protected AllyBase   currentTarget = null;
     protected SpriteRenderer spriteRenderer;
 
+    // ── 프레임 애니메이션 ──────────────────────────────────────────────
+    protected Sprite   idleSprite;
+    protected Sprite[] attackFrameSprites;
+    private   bool     isPlayingAttackAnim;
+
     private GameObject rangeIndicatorRoot;
     private LineRenderer rangeIndicator;
     private SpriteRenderer rangeFillIndicator;
@@ -155,6 +160,33 @@ public class EnemyBase : MonoBehaviour
             pts[i] = Vector3.Lerp(from, to, t) + perp * Random.Range(-maxOffset, maxOffset);
         }
         return pts;
+    }
+
+    // ── 프레임 애니메이션 API ──────────────────────────────────────────
+    /// <summary>idle 스프라이트와 공격 프레임 배열을 등록하고 idle 표시</summary>
+    protected void SetupSpriteAnimation(Sprite idle, Sprite[] attackFrames)
+    {
+        idleSprite         = idle;
+        attackFrameSprites = attackFrames;
+        if (spriteRenderer != null && idle != null)
+            spriteRenderer.sprite = idle;
+    }
+
+    /// <summary>공격 프레임을 fps 속도로 재생 후 idle로 복귀</summary>
+    protected IEnumerator PlayAttackAnim(float fps = 10f)
+    {
+        if (attackFrameSprites == null || attackFrameSprites.Length == 0
+            || spriteRenderer == null || isPlayingAttackAnim) yield break;
+
+        isPlayingAttackAnim = true;
+        float delay = 1f / fps;
+        foreach (var frame in attackFrameSprites)
+        {
+            if (frame != null) spriteRenderer.sprite = frame;
+            yield return new WaitForSeconds(delay);
+        }
+        if (idleSprite != null) spriteRenderer.sprite = idleSprite;
+        isPlayingAttackAnim = false;
     }
 
     // ── 재사용 가능한 파라메트릭 이펙트 코루틴 ────────────────────────────

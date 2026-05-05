@@ -17,29 +17,30 @@ public class GrassSniper : EnemyBase
     {
         enemyName = "숲 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
-        if (spriteRenderer != null)
-            spriteRenderer.sprite =
-                // s1_archer.png = 스프라이트 시트, walk-down 방향 대기 프레임 (row 10, col 1)
-                EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10) ??
-                EnemyVisualGenerator.TryLoadSprite("s1_sn") ??
-                EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+
+        Sprite idle =
+            EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10) ??
+            EnemyVisualGenerator.TryLoadSprite("s1_sn") ??
+            EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+
+        // LPC bow-shoot, facing down = row 18, frames 0~7
+        var atk = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+            atk[i] = EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: i, row: 18) ?? idle;
+
+        SetupSpriteAnimation(idle, atk);
     }
     protected override Color RangeColor()      => new Color(0.2f, 0.8f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.4f, 0.9f, 0.1f);
 
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
-        if (spriteRenderer != null)
-        {
-            Color orig = spriteRenderer.color;
-            spriteRenderer.color = new Color(0.3f, 0.9f, 0.15f);
-            yield return new WaitForSeconds(0.05f);
-            spriteRenderer.color = orig;
-        }
+        StartCoroutine(PlayAttackAnim(12f));
         if (target != null)
             StartCoroutine(ProjectileEffect(target,
                 new Color(0.25f, 0.75f, 0.10f), 17f,
                 new Color(0.40f, 0.95f, 0.20f)));
+        yield break;
     }
 }
 
