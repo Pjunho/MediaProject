@@ -288,6 +288,34 @@ public static class EnemyVisualGenerator
     public static Sprite TryLoadSprite(string resourceName)
         => LoadPixelEnemySprite(resourceName);
 
+    /// <summary>
+    /// 스프라이트 시트에서 특정 프레임 하나를 잘라 반환.
+    /// col/row: 0-based 프레임 인덱스. frameW/frameH: 프레임 크기(픽셀).
+    /// 파일 없으면 null 반환.
+    /// </summary>
+    public static Sprite TryLoadSheetFrame(string resourceName,
+        int col, int row, int frameW = 64, int frameH = 64)
+    {
+        string cacheKey = $"{resourceName}_{col}_{row}";
+        if (pixelEnemySpriteCache.TryGetValue(cacheKey, out var cached) && cached != null)
+            return cached;
+
+        Texture2D texture = Resources.Load<Texture2D>($"Allies/pixel_enemies/{resourceName}");
+        if (texture == null) return null;
+
+        texture.filterMode = FilterMode.Point;
+        texture.wrapMode   = TextureWrapMode.Clamp;
+
+        // Unity 텍스처 좌표계는 좌하단 원점 → y 반전
+        int flippedY = texture.height - (row + 1) * frameH;
+        var rect     = new Rect(col * frameW, flippedY, frameW, frameH);
+        var sprite   = Sprite.Create(texture, rect,
+                           new Vector2(0.5f, 0.08f), frameW);
+
+        pixelEnemySpriteCache[cacheKey] = sprite;
+        return sprite;
+    }
+
     static Sprite LoadPixelEnemySprite(string resourceName)
     {
         if (pixelEnemySpriteCache.TryGetValue(resourceName, out var cached) && cached != null)

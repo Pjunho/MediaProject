@@ -19,6 +19,8 @@ public class GrassSniper : EnemyBase
         base.Awake();
         if (spriteRenderer != null)
             spriteRenderer.sprite =
+                // s1_archer.png = 스프라이트 시트, walk-down 방향 대기 프레임 (row 10, col 1)
+                EnemyVisualGenerator.TryLoadSheetFrame("s1_archer", col: 1, row: 10) ??
                 EnemyVisualGenerator.TryLoadSprite("s1_sn") ??
                 EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
     }
