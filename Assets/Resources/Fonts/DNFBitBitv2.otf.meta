@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d622e631d8504e40af4f9109d12fb72
+guid: a6845527098a1bc49887007bde83dcf5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - NewJumja
+  - DNF Bit Bit v2
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
