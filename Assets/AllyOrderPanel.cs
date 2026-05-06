@@ -435,21 +435,21 @@ public class AllyOrderPanel : MonoBehaviour
         numTx.alignment = TextAnchor.UpperLeft;
         numLabels[cardIdx] = numTx;
 
-        // 초상화
+        // 초상화 — 캐릭터를 딱 담을 정도의 정사각 영역(카드 좌측 40%)
         var portGo = MakeUIRect("Portrait", card.transform);
         var portRt = portGo.GetComponent<RectTransform>();
-        portRt.anchorMin = new Vector2(0.03f, 0.33f); portRt.anchorMax = new Vector2(0.58f, 0.98f);
-        portRt.offsetMin = new Vector2(2f, 2f);        portRt.offsetMax = new Vector2(-1f, -1f);
+        portRt.anchorMin = new Vector2(0.04f, 0.05f); portRt.anchorMax = new Vector2(0.44f, 0.95f);
+        portRt.offsetMin = new Vector2(2f, 2f);        portRt.offsetMax = new Vector2(-2f, -2f);
         var portImg = portGo.AddComponent<Image>();
         portImg.sprite = GetAllyPortraitSprite(type);
         portImg.type   = Image.Type.Simple;
         portImg.preserveAspect = true;
 
-        // 이름
-        MakeLabel("Name", card.transform, GetAllyName(type), 13, FontStyle.Normal,
+        // 이름 — 오른쪽 빈 공간에 크게
+        MakeLabel("Name", card.transform, GetAllyName(type), 17, FontStyle.Bold,
             Color.white, TextAnchor.MiddleCenter,
-            new Vector2(0f, 0.25f), new Vector2(1f, 0.40f),
-            new Vector2(4f, 0f),    new Vector2(-4f, 0f));
+            new Vector2(0.45f, 0.05f), new Vector2(0.98f, 0.95f),
+            new Vector2(0f, 0f),       new Vector2(-4f, 0f));
 
         return card;
     }
