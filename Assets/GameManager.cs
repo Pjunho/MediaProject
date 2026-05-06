@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     private int  waveAllyDone     = 0;  // 이번 웨이브에서 완료된 수(골+사망)
     private bool waveInProgress   = false;
     private List<Vector3> currentRoutePath = new List<Vector3>();
+    private List<AllyType> currentSkillOrder = new List<AllyType>();
     private readonly List<BonusCoinPickup> activeBonusCoins = new List<BonusCoinPickup>();
 
     struct BonusCoinCandidate
@@ -116,6 +117,8 @@ public class GameManager : MonoBehaviour
         // (기존: 첫 경로 확정 후 스타트 버튼 눌러야 지급됐음)
         int stageIdx = StageManager.Instance != null
             ? StageManager.Instance.currentStageIndex : 1;
+        SkillSystem.ResetForStage();
+        UpgradeSystem.ResetForStage();
         currentCoins = StageManager.GetStageConfig(stageIdx).startingCoins;
         UpdateCoinHUD();
         Debug.Log($"[GameManager] 스테이지 진입 — 초기 코인 {currentCoins}개 지급");
@@ -145,14 +148,25 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>RouteDrawer가 경로 확정 후 호출 — 해당 경로로 다음 웨이브 시작</summary>
-    public void ConfirmRouteAndStartWave(System.Collections.Generic.List<Vector3> worldPath,
+    public bool ConfirmRouteAndStartWave(System.Collections.Generic.List<Vector3> worldPath,
                                          System.Collections.Generic.List<AllyType> order)
     {
-        if (worldPath == null || worldPath.Count < 2) return;
-        if (waveInProgress) return;
+        if (worldPath == null || worldPath.Count < 2)
+        {
+            ShowToast("경로를 먼저 완성해야 합니다!", new Color(1f, 0.65f, 0.25f));
+            Debug.LogWarning("[GameManager] 시작 실패: 경로가 부족합니다.");
+            return false;
+        }
+        if (waveInProgress)
+        {
+            ShowToast("이미 웨이브가 진행 중입니다!", new Color(1f, 0.65f, 0.25f));
+            Debug.LogWarning("[GameManager] 시작 실패: 이미 웨이브가 진행 중입니다.");
+            return false;
+        }
 
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
         order = StageManager.NormalizeSelectedAllies(order, stageIdx);
+        currentSkillOrder = new List<AllyType>(order);
 
         if (StageManager.Instance != null)
             StageManager.Instance.SetSelectedAlliesForStage(order, stageIdx);
@@ -172,8 +186,6 @@ public class GameManager : MonoBehaviour
             currentWaves      = StageManager.GetWaves(stageIdx);
             currentWaveIndex  = 0;
             clearedWaveCount  = 0;
-            SkillSystem.ResetForStage();
-            UpgradeSystem.ResetForStage();
             StageManager.Instance?.SetCurrentWaveNumber(1);
             UpdateCoinHUD();
 
@@ -185,6 +197,7 @@ public class GameManager : MonoBehaviour
         }
 
         StartCurrentWave();
+        return true;
     }
 
     void Update()
@@ -193,14 +206,17 @@ public class GameManager : MonoBehaviour
 
         var kb = Keyboard.current;
         var mouse = Mouse.current;
-        if (mouse == null) return;
-        Vector2 mp = mouse.position.ReadValue();
+        if (TryHandleSkillHotkey(kb))
+            return;
 
-        if (SkillSystem.HandleTargetingInput(mp, mouse))
+        if (mouse != null && SkillSystem.HandleTargetingInput(mouse.position.ReadValue(), mouse))
             return;
 
         if (kb != null && kb.escapeKey.wasPressedThisFrame)
             TogglePause();
+
+        if (mouse == null) return;
+        Vector2 mp = mouse.position.ReadValue();
 
         bool anyBtnClicked = false;
         foreach (var b in btns)
@@ -403,6 +419,46 @@ public class GameManager : MonoBehaviour
     public bool ShouldBlockGameplayInput()
     {
         return isPaused || resultShown || SkillSystem.IsTargeting;
+    }
+
+    bool TryHandleSkillHotkey(Keyboard keyboard)
+    {
+        if (keyboard == null || isPaused || resultShown || SkillSystem.IsTargeting)
+            return false;
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (!WasNumberPressed(keyboard, i + 1)) continue;
+            if (!gameStarted || currentSkillOrder == null || currentSkillOrder.Count == 0)
+            {
+                ShowToast("전투 시작 후 사용할 수 있습니다!", new Color(1f, 0.65f, 0.25f));
+                return true;
+            }
+            if (i >= currentSkillOrder.Count)
+            {
+                ShowToast("해당 순서의 아군이 없습니다!", new Color(1f, 0.65f, 0.25f));
+                return true;
+            }
+
+            SkillSystem.ActivateSkill(currentSkillOrder[i]);
+            return true;
+        }
+
+        return false;
+    }
+
+    bool WasNumberPressed(Keyboard keyboard, int number)
+    {
+        return number switch
+        {
+            1 => keyboard.digit1Key.wasPressedThisFrame || keyboard.numpad1Key.wasPressedThisFrame,
+            2 => keyboard.digit2Key.wasPressedThisFrame || keyboard.numpad2Key.wasPressedThisFrame,
+            3 => keyboard.digit3Key.wasPressedThisFrame || keyboard.numpad3Key.wasPressedThisFrame,
+            4 => keyboard.digit4Key.wasPressedThisFrame || keyboard.numpad4Key.wasPressedThisFrame,
+            5 => keyboard.digit5Key.wasPressedThisFrame || keyboard.numpad5Key.wasPressedThisFrame,
+            6 => keyboard.digit6Key.wasPressedThisFrame || keyboard.numpad6Key.wasPressedThisFrame,
+            _ => false
+        };
     }
 
     // ── HUD 구성 ──────────────────────────────────────────────────────────

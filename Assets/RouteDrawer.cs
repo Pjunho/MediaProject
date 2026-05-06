@@ -457,8 +457,6 @@ public class RouteDrawer : MonoBehaviour
     // ── 게임 시작 ──────────────────────────────────────────────────
     void OnStartGame()
     {
-        gameStarted = true;
-
         var worldPath = new List<Vector3>();
         foreach (var tile in drawnPath)
         {
@@ -475,7 +473,16 @@ public class RouteDrawer : MonoBehaviour
         int stageIndex = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
         order = StageManager.NormalizeSelectedAllies(order, stageIndex);
 
-        GameManager.Instance?.ConfirmRouteAndStartWave(worldPath, order);
+        if (GameManager.Instance == null)
+        {
+            Debug.LogWarning("[RouteDrawer] 시작 실패: GameManager가 없습니다.");
+            return;
+        }
+
+        if (!GameManager.Instance.ConfirmRouteAndStartWave(worldPath, order))
+            return;
+
+        gameStarted = true;
 
         if (hudCanvas != null)           Destroy(hudCanvas.gameObject);
         if (startMarkerGo != null)       Destroy(startMarkerGo);
