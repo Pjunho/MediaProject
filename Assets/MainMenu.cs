@@ -647,6 +647,13 @@ public class MainMenu : MonoBehaviour
         if (cache.TryGetValue(key, out var cached) && cached != null)
             return cached;
 
+        var resourceSprite = LoadIconSprite(GetGemIconResourceName(stageIndex));
+        if (resourceSprite != null)
+        {
+            cache[key] = resourceSprite;
+            return resourceSprite;
+        }
+
         const int res = 96;
         var t = new Texture2D(res, res, TextureFormat.RGBA32, false);
         t.filterMode = FilterMode.Point;
@@ -771,6 +778,23 @@ public class MainMenu : MonoBehaviour
         var sprite = Sprite.Create(t, new Rect(0, 0, res, res), Vector2.one * 0.5f, res);
         cache[key] = sprite;
         return sprite;
+    }
+
+    string GetGemIconResourceName(int stageIndex) => stageIndex switch
+    {
+        2 => "dark_crystal",
+        3 => "volcano_crystal",
+        _ => "green_crystal"
+    };
+
+    Sprite LoadIconSprite(string iconName)
+    {
+        var sprite = Resources.Load<Sprite>($"Icon/{iconName}");
+        if (sprite != null)
+            return sprite;
+
+        var sprites = Resources.LoadAll<Sprite>($"Icon/{iconName}");
+        return sprites != null && sprites.Length > 0 ? sprites[0] : null;
     }
 
     bool PointInPolygon(Vector2 p, Vector2[] poly)

@@ -818,13 +818,22 @@ public class GameManager : MonoBehaviour
                         new Color(1f, 1f, 1f, 0.04f),
                         new Vector2(0f, cy), new Vector2(panelW - 4f, ROW_H - 2f));
 
+                var iconGo = new GameObject("GemIcon");
+                iconGo.transform.SetParent(gemTabGemsContent.transform, false);
+                var icon = iconGo.AddComponent<Image>();
+                icon.sprite = LoadIconSprite(GetGemIconResourceName(gem.stageIndex));
+                icon.color = icon.sprite != null ? Color.white : gem.color;
+                icon.preserveAspect = true;
+                icon.raycastTarget = false;
+                SR(iconGo.GetComponent<RectTransform>(), new Vector2(-95f, cy + 2f), new Vector2(42f, 42f));
+
                 CreateTxtIn(gemTabGemsContent.transform,
                     gem.gemName, gem.color,
-                    new Vector2(0f, cy + 15f), new Vector2(panelW - 16f, 22f), 15);
+                    new Vector2(22f, cy + 15f), new Vector2(panelW - 82f, 22f), 15);
 
                 CreateTxtIn(gemTabGemsContent.transform,
                     gem.effectSummary, new Color(0.80f, 0.88f, 1f),
-                    new Vector2(0f, cy - 11f), new Vector2(panelW - 16f, 24f), 12);
+                    new Vector2(22f, cy - 11f), new Vector2(panelW - 82f, 24f), 12);
 
                 if (i < activeGems.Count - 1)
                     CreateImgIn(gemTabGemsContent.transform,
@@ -902,6 +911,13 @@ public class GameManager : MonoBehaviour
         var sprites = Resources.LoadAll<Sprite>($"Icon/{iconName}");
         return sprites != null && sprites.Length > 0 ? sprites[0] : null;
     }
+
+    string GetGemIconResourceName(int stageIndex) => stageIndex switch
+    {
+        2 => "dark_crystal",
+        3 => "volcano_crystal",
+        _ => "green_crystal"
+    };
 
     Text BuildTopLabel(Transform parent, string id, string text, Vector2 pos, Vector2 size)
     {
