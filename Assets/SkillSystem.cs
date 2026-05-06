@@ -72,8 +72,10 @@ public static class SkillSystem
     static AllyBase pendingArcher;
     static float previousTimeScale = 1f;
     static int targetingStartFrame = -1;
+    static GameObject archerAimVisualRoot;
 
     const float ArcherTargetRange = 6f;
+    const float ArcherAimDimWorldRadius = 28f;
 
     public static SkillData[] GetAllSkills() => skills;
     public static bool IsTargeting => pendingArcher != null;
@@ -226,18 +228,127 @@ public static class SkillSystem
 
     static void BeginArcherTargeting(AllyBase archer)
     {
+        ClearArcherAimVisual();
         pendingArcher = archer;
         targetingStartFrame = Time.frameCount;
         previousTimeScale = Mathf.Max(Time.timeScale, 0.0001f);
         Time.timeScale = 0.1f;
+        CreateArcherAimVisual(archer);
         GameManager.Instance?.ShowToast("적을 클릭해 마비 화살을 발사하세요", new Color(0.65f, 1f, 0.45f));
     }
 
     static void CancelTargeting()
     {
+        ClearArcherAimVisual();
         pendingArcher = null;
         targetingStartFrame = -1;
         Time.timeScale = previousTimeScale;
+    }
+
+    static void CreateArcherAimVisual(AllyBase archer)
+    {
+        if (archer == null) return;
+
+        archerAimVisualRoot = new GameObject("ArcherAimRange");
+        archerAimVisualRoot.transform.SetParent(archer.transform, false);
+        archerAimVisualRoot.transform.localPosition = Vector3.zero;
+
+        var dimGo = new GameObject("DimOutsideRange");
+        dimGo.transform.SetParent(archerAimVisualRoot.transform, false);
+        var dimSr = dimGo.AddComponent<SpriteRenderer>();
+        dimSr.sprite = CreateRangeDimSprite(ArcherAimDimWorldRadius, ArcherTargetRange);
+        dimSr.color = Color.white;
+        dimSr.sortingOrder = 54;
+
+        var fillGo = new GameObject("RangeFill");
+        fillGo.transform.SetParent(archerAimVisualRoot.transform, false);
+        fillGo.transform.localScale = Vector3.one * ArcherTargetRange * 2f;
+        var fillSr = fillGo.AddComponent<SpriteRenderer>();
+        fillSr.sprite = CreateCircleSprite(64, true);
+        fillSr.color = new Color(0.45f, 1f, 0.35f, 0.10f);
+        fillSr.sortingOrder = 55;
+
+        var ringGo = new GameObject("RangeRing");
+        ringGo.transform.SetParent(archerAimVisualRoot.transform, false);
+        var ring = ringGo.AddComponent<LineRenderer>();
+        ring.useWorldSpace = false;
+        ring.loop = true;
+        ring.positionCount = 96;
+        ring.widthMultiplier = 0.08f;
+        ring.sortingOrder = 56;
+        ring.material = new Material(Shader.Find("Sprites/Default"));
+        Color ringColor = new Color(0.58f, 1f, 0.35f, 0.96f);
+        ring.startColor = ringColor;
+        ring.endColor = ringColor;
+        for (int i = 0; i < ring.positionCount; i++)
+        {
+            float angle = (float)i / ring.positionCount * Mathf.PI * 2f;
+            ring.SetPosition(i, new Vector3(Mathf.Cos(angle) * ArcherTargetRange,
+                                            Mathf.Sin(angle) * ArcherTargetRange,
+                                            0f));
+        }
+    }
+
+    static void ClearArcherAimVisual()
+    {
+        if (archerAimVisualRoot == null) return;
+        Object.Destroy(archerAimVisualRoot);
+        archerAimVisualRoot = null;
+    }
+
+    static Sprite CreateRangeDimSprite(float worldRadius, float clearRadius)
+    {
+        int size = 768;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Bilinear;
+        float center = (size - 1) * 0.5f;
+        float pixelsPerWorld = center / worldRadius;
+        float clearPixels = clearRadius * pixelsPerWorld;
+        float feather = Mathf.Max(8f, pixelsPerWorld * 0.35f);
+
+        for (int y = 0; y < size; y++)
+        for (int x = 0; x < size; x++)
+        {
+            float dx = x - center;
+            float dy = y - center;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            float outside = Mathf.InverseLerp(clearPixels - feather, clearPixels + feather, dist);
+            float alpha = Mathf.Clamp01(outside) * 0.10f;
+            tex.SetPixel(x, y, new Color(0f, 0f, 0f, alpha));
+        }
+
+        tex.Apply();
+        float pixelsPerUnit = size / (worldRadius * 2f);
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), pixelsPerUnit);
+    }
+
+    static Sprite CreateCircleSprite(int radius, bool softEdge)
+    {
+        int size = radius * 2 + 2;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = softEdge ? FilterMode.Bilinear : FilterMode.Point;
+        float cx = size * 0.5f;
+        float cy = size * 0.5f;
+
+        for (int y = 0; y < size; y++)
+        for (int x = 0; x < size; x++)
+        {
+            float dx = x - cx;
+            float dy = y - cy;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            if (dist > radius)
+            {
+                tex.SetPixel(x, y, Color.clear);
+                continue;
+            }
+
+            float edge = Mathf.Clamp01((radius - dist) / Mathf.Max(1f, radius * 0.18f));
+            float alpha = softEdge ? edge : 1f;
+            tex.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+        }
+
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
     }
 
     static AllyBase FindAliveAlly(AllyType type)
