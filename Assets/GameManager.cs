@@ -41,7 +41,16 @@ public class GameManager : MonoBehaviour
     private GameObject    gemPanelGo;
     private RectTransform gemBagBtnRt;
     private Image         gemBagBtnFill;
-    private bool          gemPanelOpen = false;
+    private bool          gemPanelOpen  = false;
+
+    // 탭 상태
+    private GameObject gemTabGemsContent;
+    private GameObject gemTabItemsContent;
+    private Image      gemTabGemsFill;
+    private Image      gemTabItemsFill;
+    private int        gemTabIndex       = 0;   // 0=보석, 1=아이템
+    private int        gemTabGemsBtnIdx  = -1;  // btns 리스트 인덱스
+    private int        gemTabItemsBtnIdx = -1;
 
     // ── 토스트 알림 ──────────────────────────────────────────────────────
     private GameObject toastGo;
@@ -95,8 +104,10 @@ public class GameManager : MonoBehaviour
     static readonly Color COL_SPEED_H= new Color(0.28f,0.35f,0.50f);
     static readonly Color COL_PAUSE  = new Color(0.14f,0.18f,0.28f);
     static readonly Color COL_PAUSE_H= new Color(0.24f,0.30f,0.45f);
-    static readonly Color COL_GEM    = new Color(0.18f,0.14f,0.32f);   // 가방 버튼 기본
-    static readonly Color COL_GEM_H  = new Color(0.30f,0.22f,0.50f);   // 가방 버튼 호버/열림
+    static readonly Color COL_GEM      = new Color(0.18f,0.14f,0.32f);  // 가방 버튼 기본
+    static readonly Color COL_GEM_H   = new Color(0.30f,0.22f,0.50f);  // 가방 버튼 호버/열림
+    static readonly Color COL_TAB_ACT  = new Color(0.28f,0.20f,0.48f); // 활성 탭
+    static readonly Color COL_TAB_IDLE = new Color(0.10f,0.07f,0.18f); // 비활성 탭
 
     void Awake()
     {
@@ -593,8 +604,8 @@ public class GameManager : MonoBehaviour
     void BuildGemBagUI(Transform parent)
     {
         // ── 오른쪽 하단 가방 버튼 ────────────────────────────────────────
-        var btnSize = new Vector2(52f, 52f);
-        var btnPos  = new Vector2(490f, -310f);
+        var btnSize = new Vector2(56f, 56f);
+        var btnPos  = new Vector2(490f, -308f);
 
         // 외곽 테두리 shadow
         var bgGo = new GameObject("GemBagBtn"); bgGo.transform.SetParent(parent, false);
@@ -607,24 +618,36 @@ public class GameManager : MonoBehaviour
         gemBagBtnRt   = fill.GetComponent<RectTransform>();
         SR(gemBagBtnRt, Vector2.zero, btnSize);
 
-        // 아이콘 레이블 (◆ = 보석 기호)
-        var lbl = new GameObject("Lbl"); lbl.transform.SetParent(fill.transform, false);
-        var lTx = lbl.AddComponent<Text>();
-        lTx.text               = "◆";
-        lTx.color              = COL_GOLD;
-        lTx.fontSize           = 28;
-        lTx.alignment          = TextAnchor.MiddleCenter;
-        lTx.alignByGeometry    = true;
-        lTx.raycastTarget      = false;
-        lTx.horizontalOverflow = HorizontalWrapMode.Overflow;
-        lTx.verticalOverflow   = VerticalWrapMode.Overflow;
-        lTx.font               = UiPixelFont.Get();
-        SR(lbl.GetComponent<RectTransform>(), Vector2.zero, btnSize);
+        // 가방 아이콘 이미지 (Resources/Icon/bag_icon)
+        var iconGo  = new GameObject("Icon"); iconGo.transform.SetParent(fill.transform, false);
+        var iconImg = iconGo.AddComponent<Image>();
+        var bagSprite = Resources.Load<Sprite>("Icon/bag_icon");
+        if (bagSprite != null)
+        {
+            iconImg.sprite         = bagSprite;
+            iconImg.color          = Color.white;
+            iconImg.preserveAspect = true;
+        }
+        else
+        {
+            // 스프라이트 없을 때 텍스트 폴백
+            iconImg.color = new Color(0f, 0f, 0f, 0f);
+            var fb = new GameObject("FbLbl"); fb.transform.SetParent(fill.transform, false);
+            var fbTx = fb.AddComponent<Text>();
+            fbTx.text = "◆"; fbTx.color = COL_GOLD; fbTx.fontSize = 28;
+            fbTx.alignment = TextAnchor.MiddleCenter; fbTx.alignByGeometry = true;
+            fbTx.raycastTarget = false;
+            fbTx.horizontalOverflow = HorizontalWrapMode.Overflow;
+            fbTx.verticalOverflow   = VerticalWrapMode.Overflow;
+            fbTx.font = UiPixelFont.Get();
+            SR(fb.GetComponent<RectTransform>(), new Vector2(0f, 4f), new Vector2(btnSize.x, btnSize.y - 16f));
+        }
+        SR(iconGo.GetComponent<RectTransform>(), new Vector2(0f, 5f), new Vector2(btnSize.x - 12f, btnSize.y - 20f));
 
-        // 버튼 하단 소제목 "보석"
+        // 버튼 하단 소제목 "가방"
         var sub = new GameObject("Sub"); sub.transform.SetParent(fill.transform, false);
         var sTx = sub.AddComponent<Text>();
-        sTx.text               = "보석";
+        sTx.text               = "가방";
         sTx.color              = new Color(0.80f, 0.75f, 0.95f);
         sTx.fontSize           = 11;
         sTx.alignment          = TextAnchor.LowerCenter;
@@ -646,86 +669,213 @@ public class GameManager : MonoBehaviour
             pauseOnly= false
         });
 
-        // ── 보석 팝업 패널 (버튼 위에 열림) ─────────────────────────────
+        // ── 가방 팝업 패널 (버튼 위에 열림) ─────────────────────────────
         BuildGemPanel(parent, btnPos, btnSize.y);
     }
 
     void BuildGemPanel(Transform parent, Vector2 btnPos, float btnH)
     {
-        // 활성 보석 수집
-        var defs   = GemInventory.GetDefinitions();
-        var active = new System.Collections.Generic.List<GemInventory.GemDefinition>();
-        foreach (var d in defs)
-            if (GemInventory.IsActive(d.stageIndex)) active.Add(d);
+        var defs = GemInventory.GetDefinitions();
 
-        // 패널 크기 계산
-        const float ROW_H  = 62f;
-        const float HEAD_H = 42f;
-        const float PAD_B  = 14f;
-        float panelH = HEAD_H + Mathf.Max(1, active.Count) * ROW_H + PAD_B;
-        float panelW = 215f;
+        const float TAB_H  = 38f;   // 탭 행 높이
+        const float ROW_H  = 68f;   // 보석 행 높이
+        const float PAD_V  = 12f;   // 세로 패딩
+
+        float contentH = defs.Length * ROW_H + PAD_V * 2f;
+        float panelH   = TAB_H + 2f + contentH;   // 탭 + 구분선 + 콘텐츠
+        float panelW   = 254f;
 
         // 버튼 바로 위에 정렬
-        float panelY = btnPos.y + btnH / 2f + panelH / 2f + 6f;
+        float panelY   = btnPos.y + btnH / 2f + panelH / 2f + 6f;
         var   panelPos = new Vector2(btnPos.x, panelY);
 
-        gemPanelGo = new GameObject("GemPanel"); gemPanelGo.transform.SetParent(parent, false);
-        var bg = gemPanelGo.AddComponent<Image>(); bg.color = COL_PANEL;
+        gemPanelGo = new GameObject("GemPanel");
+        gemPanelGo.transform.SetParent(parent, false);
+        gemPanelGo.AddComponent<Image>().color = COL_PANEL;
         SR(gemPanelGo.GetComponent<RectTransform>(), panelPos, new Vector2(panelW, panelH));
 
-        // 패널 테두리
+        // 외곽 테두리
         var border = new GameObject("Border"); border.transform.SetParent(gemPanelGo.transform, false);
         border.AddComponent<Image>().color = new Color(0.60f, 0.48f, 0.90f, 0.30f);
         SR(border.GetComponent<RectTransform>(), Vector2.zero, new Vector2(panelW + 2f, panelH + 2f));
         border.transform.SetAsFirstSibling();
 
-        // 헤더 "◆ 활성 보석"
         float topEdge = panelH / 2f;
-        float headerY = topEdge - HEAD_H / 2f;
-        CreateTxtIn(gemPanelGo.transform,
-            "◆  활성 보석", COL_GOLD,
-            new Vector2(0f, headerY), new Vector2(panelW - 12f, HEAD_H - 4f), 17);
-        CreateImgIn(gemPanelGo.transform,
-            new Color(0.60f, 0.48f, 0.90f, 0.25f),
-            new Vector2(0f, topEdge - HEAD_H), new Vector2(panelW - 16f, 1f));
+        float halfW   = panelW / 2f;
 
-        // 항목 표시
-        float rowStart = topEdge - HEAD_H - ROW_H / 2f;
+        // ── 탭 버튼 행 ────────────────────────────────────────────────────
+        float tabRowY = topEdge - TAB_H / 2f;
 
-        if (active.Count == 0)
+        // 탭 배경 (어두운 바)
+        var tabBg = new GameObject("TabBg"); tabBg.transform.SetParent(gemPanelGo.transform, false);
+        tabBg.AddComponent<Image>().color = new Color(0.04f, 0.04f, 0.09f, 1f);
+        SR(tabBg.GetComponent<RectTransform>(), new Vector2(0f, tabRowY), new Vector2(panelW, TAB_H));
+
+        // ── 탭 0: "보석" ─────────────────────────────────────────────────
+        var t0Shell = new GameObject("TabGems"); t0Shell.transform.SetParent(gemPanelGo.transform, false);
+        t0Shell.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+        SR(t0Shell.GetComponent<RectTransform>(), new Vector2(-halfW / 2f, tabRowY), new Vector2(halfW, TAB_H));
+
+        var t0Fill = new GameObject("Fill"); t0Fill.transform.SetParent(t0Shell.transform, false);
+        gemTabGemsFill = t0Fill.AddComponent<Image>();
+        gemTabGemsFill.color = COL_TAB_ACT; // 기본 선택
+        SR(t0Fill.GetComponent<RectTransform>(), Vector2.zero, new Vector2(halfW, TAB_H));
+
+        var t0TxtGo = new GameObject("Lbl"); t0TxtGo.transform.SetParent(t0Fill.transform, false);
+        var t0Tx = t0TxtGo.AddComponent<Text>();
+        t0Tx.text = "◆ 보석"; t0Tx.color = COL_GOLD; t0Tx.fontSize = 15;
+        t0Tx.alignment = TextAnchor.MiddleCenter; t0Tx.alignByGeometry = true;
+        t0Tx.raycastTarget = false;
+        t0Tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        t0Tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        t0Tx.font = UiPixelFont.Get();
+        SR(t0TxtGo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(halfW - 4f, TAB_H));
+
+        btns.Add(new BtnData
         {
-            CreateTxtIn(gemPanelGo.transform,
-                "활성화된 보석 없음",
-                new Color(0.55f, 0.55f, 0.65f),
-                new Vector2(0f, rowStart + (ROW_H - 14f) / 2f - 8f),
-                new Vector2(panelW - 16f, ROW_H), 15);
-        }
-        else
+            rt       = t0Fill.GetComponent<RectTransform>(),
+            fill     = gemTabGemsFill,
+            n        = COL_TAB_ACT,
+            h        = new Color(0.38f, 0.28f, 0.62f),
+            cb       = () => SwitchGemTab(0),
+            pauseOnly= false
+        });
+        gemTabGemsBtnIdx = btns.Count - 1;
+
+        // 탭 사이 세로 구분선
+        CreateImgIn(gemPanelGo.transform, new Color(0.60f, 0.48f, 0.90f, 0.25f),
+            new Vector2(0f, tabRowY), new Vector2(1f, TAB_H - 8f));
+
+        // ── 탭 1: "아이템" ────────────────────────────────────────────────
+        var t1Shell = new GameObject("TabItems"); t1Shell.transform.SetParent(gemPanelGo.transform, false);
+        t1Shell.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+        SR(t1Shell.GetComponent<RectTransform>(), new Vector2(halfW / 2f, tabRowY), new Vector2(halfW, TAB_H));
+
+        var t1Fill = new GameObject("Fill"); t1Fill.transform.SetParent(t1Shell.transform, false);
+        gemTabItemsFill = t1Fill.AddComponent<Image>();
+        gemTabItemsFill.color = COL_TAB_IDLE;
+        SR(t1Fill.GetComponent<RectTransform>(), Vector2.zero, new Vector2(halfW, TAB_H));
+
+        var t1TxtGo = new GameObject("Lbl"); t1TxtGo.transform.SetParent(t1Fill.transform, false);
+        var t1Tx = t1TxtGo.AddComponent<Text>();
+        t1Tx.text = "☆ 아이템"; t1Tx.color = new Color(0.70f, 0.70f, 0.82f); t1Tx.fontSize = 15;
+        t1Tx.alignment = TextAnchor.MiddleCenter; t1Tx.alignByGeometry = true;
+        t1Tx.raycastTarget = false;
+        t1Tx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        t1Tx.verticalOverflow   = VerticalWrapMode.Overflow;
+        t1Tx.font = UiPixelFont.Get();
+        SR(t1TxtGo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(halfW - 4f, TAB_H));
+
+        btns.Add(new BtnData
         {
-            for (int i = 0; i < active.Count; i++)
-            {
-                var   gem  = active[i];
-                float cy   = rowStart - i * ROW_H;
+            rt       = t1Fill.GetComponent<RectTransform>(),
+            fill     = gemTabItemsFill,
+            n        = COL_TAB_IDLE,
+            h        = new Color(0.22f, 0.18f, 0.36f),
+            cb       = () => SwitchGemTab(1),
+            pauseOnly= false
+        });
+        gemTabItemsBtnIdx = btns.Count - 1;
 
-                // 보석 이름 (원색)
-                CreateTxtIn(gemPanelGo.transform,
-                    gem.gemName, gem.color,
-                    new Vector2(0f, cy + 14f), new Vector2(panelW - 14f, 24f), 16);
+        // 탭 아래 구분선
+        CreateImgIn(gemPanelGo.transform, new Color(0.60f, 0.48f, 0.90f, 0.40f),
+            new Vector2(0f, topEdge - TAB_H - 1f), new Vector2(panelW, 2f));
 
-                // 효과 설명 (연한 파랑)
-                CreateTxtIn(gemPanelGo.transform,
-                    gem.effectSummary, new Color(0.80f, 0.88f, 1f),
-                    new Vector2(0f, cy - 10f), new Vector2(panelW - 14f, 20f), 13);
+        // ── 콘텐츠 영역 공통 위치 계산 ────────────────────────────────────
+        float contentTopEdge = topEdge - TAB_H - 2f;
+        float contentCenterY = contentTopEdge - contentH / 2f;
 
-                // 구분선
-                if (i < active.Count - 1)
-                    CreateImgIn(gemPanelGo.transform,
-                        new Color(1f, 1f, 1f, 0.10f),
-                        new Vector2(0f, cy - ROW_H / 2f + 2f), new Vector2(panelW - 20f, 1f));
-            }
+        // ── 보석 탭 콘텐츠 ────────────────────────────────────────────────
+        gemTabGemsContent = new GameObject("GemsContent");
+        gemTabGemsContent.transform.SetParent(gemPanelGo.transform, false);
+        SR(gemTabGemsContent.GetComponent<RectTransform>(),
+            new Vector2(0f, contentCenterY),
+            new Vector2(panelW, contentH));
+
+        float rowStart = contentH / 2f - PAD_V - ROW_H / 2f;
+        for (int i = 0; i < defs.Length; i++)
+        {
+            var  gem      = defs[i];
+            float cy      = rowStart - i * ROW_H;
+            bool unlocked = GemInventory.IsUnlocked(gem.stageIndex);
+            bool active   = GemInventory.IsActive(gem.stageIndex);
+
+            // 행 배경 (짝수행 약한 하이라이트)
+            if (i % 2 == 0)
+                CreateImgIn(gemTabGemsContent.transform,
+                    new Color(1f, 1f, 1f, 0.04f),
+                    new Vector2(0f, cy), new Vector2(panelW - 4f, ROW_H - 2f));
+
+            // 보석 이름
+            Color nameCol = unlocked ? gem.color : new Color(0.45f, 0.45f, 0.55f);
+            CreateTxtIn(gemTabGemsContent.transform,
+                gem.gemName, nameCol,
+                new Vector2(-28f, cy + 16f), new Vector2(154f, 22f), 15);
+
+            // 상태 배지
+            string statusTxt;
+            Color  statusCol;
+            if (!unlocked)   { statusTxt = "미획득";   statusCol = new Color(0.55f, 0.45f, 0.45f); }
+            else if (active) { statusTxt = "● 활성";   statusCol = new Color(0.30f, 0.92f, 0.48f); }
+            else             { statusTxt = "○ 비활성"; statusCol = new Color(0.58f, 0.58f, 0.68f); }
+
+            CreateTxtIn(gemTabGemsContent.transform,
+                statusTxt, statusCol,
+                new Vector2(83f, cy + 16f), new Vector2(72f, 22f), 13);
+
+            // 효과 설명
+            Color effectCol = unlocked
+                ? new Color(0.80f, 0.88f, 1f)
+                : new Color(0.44f, 0.44f, 0.54f);
+            CreateTxtIn(gemTabGemsContent.transform,
+                gem.effectSummary, effectCol,
+                new Vector2(0f, cy - 9f), new Vector2(panelW - 16f, 20f), 12);
+
+            // 행 구분선
+            if (i < defs.Length - 1)
+                CreateImgIn(gemTabGemsContent.transform,
+                    new Color(1f, 1f, 1f, 0.09f),
+                    new Vector2(0f, cy - ROW_H / 2f + 2f), new Vector2(panelW - 20f, 1f));
         }
 
+        // ── 아이템 탭 콘텐츠 ──────────────────────────────────────────────
+        gemTabItemsContent = new GameObject("ItemsContent");
+        gemTabItemsContent.transform.SetParent(gemPanelGo.transform, false);
+        SR(gemTabItemsContent.GetComponent<RectTransform>(),
+            new Vector2(0f, contentCenterY),
+            new Vector2(panelW, contentH));
+
+        CreateTxtIn(gemTabItemsContent.transform,
+            "아이템 없음", new Color(0.50f, 0.50f, 0.60f),
+            Vector2.zero, new Vector2(panelW - 16f, 42f), 16);
+
+        gemTabItemsContent.SetActive(false); // 기본: 보석 탭 표시
         gemPanelGo.SetActive(false);
+    }
+
+    /// <summary>가방 팝업 탭 전환 (0=보석, 1=아이템)</summary>
+    void SwitchGemTab(int tabIndex)
+    {
+        gemTabIndex = tabIndex;
+
+        if (gemTabGemsContent  != null) gemTabGemsContent.SetActive(tabIndex == 0);
+        if (gemTabItemsContent != null) gemTabItemsContent.SetActive(tabIndex == 1);
+
+        // btns 리스트의 n 색상을 업데이트해 hover-off 시에도 올바른 색이 유지되도록
+        if (gemTabGemsBtnIdx >= 0 && gemTabGemsBtnIdx < btns.Count)
+        {
+            var b = btns[gemTabGemsBtnIdx];
+            b.n = (tabIndex == 0) ? COL_TAB_ACT : COL_TAB_IDLE;
+            if (gemTabGemsFill != null) gemTabGemsFill.color = b.n;
+            btns[gemTabGemsBtnIdx] = b;
+        }
+        if (gemTabItemsBtnIdx >= 0 && gemTabItemsBtnIdx < btns.Count)
+        {
+            var b = btns[gemTabItemsBtnIdx];
+            b.n = (tabIndex == 1) ? COL_TAB_ACT : COL_TAB_IDLE;
+            if (gemTabItemsFill != null) gemTabItemsFill.color = b.n;
+            btns[gemTabItemsBtnIdx] = b;
+        }
     }
 
     void ToggleGemPanel()
