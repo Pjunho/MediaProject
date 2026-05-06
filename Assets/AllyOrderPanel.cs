@@ -102,12 +102,12 @@ public class AllyOrderPanel : MonoBehaviour
 
     static string[] GetSkills(AllyType t) => t switch
     {
-        AllyType.Warrior => new[] { "검술 돌파  (HP 180)", "중속 전진  (속도 3.2)" },
-        AllyType.Archer  => new[] { "원거리 지원 (HP 140)", "유연 기동  (속도 3.8)" },
-        AllyType.Mage    => new[] { "마법 공세  (HP 110)", "쾌속 이동  (속도 4.2)" },
-        AllyType.Cleric  => new[] { "신성 방어  (HP 200)", "안정 전진  (속도 2.8)" },
-        AllyType.Rogue   => new[] { "민첩 기습  (HP  90)", "고속 이동  (속도 4.8)" },
-        AllyType.Paladin => new[] { "중장 방어  (HP 280)", "느린 전진  (속도 1.8)" },
+        AllyType.Warrior => new[] { "검술 돌파  (HP 180)", "중속 전진  (속도 1.92)" },
+        AllyType.Archer  => new[] { "원거리 지원 (HP 140)", "유연 기동  (속도 2.28)" },
+        AllyType.Mage    => new[] { "마법 공세  (HP 110)", "쾌속 이동  (속도 2.52)" },
+        AllyType.Cleric  => new[] { "신성 방어  (HP 200)", "안정 전진  (속도 1.68)" },
+        AllyType.Rogue   => new[] { "민첩 기습  (HP  90)", "고속 이동  (속도 2.88)" },
+        AllyType.Paladin => new[] { "중장 방어  (HP 280)", "느린 전진  (속도 1.08)" },
         _                => new[] { "-", "-" }
     };
 
@@ -135,12 +135,12 @@ public class AllyOrderPanel : MonoBehaviour
 
     static float GetSpeed(AllyType t) => t switch
     {
-        AllyType.Warrior => 3.2f,
-        AllyType.Archer  => 3.8f,
-        AllyType.Mage    => 4.2f,
-        AllyType.Cleric  => 2.8f,
-        AllyType.Rogue   => 4.8f,
-        AllyType.Paladin => 1.8f,
+        AllyType.Warrior => 1.92f,
+        AllyType.Archer  => 2.28f,
+        AllyType.Mage    => 2.52f,
+        AllyType.Cleric  => 1.68f,
+        AllyType.Rogue   => 2.88f,
+        AllyType.Paladin => 1.08f,
         _                => 0f
     };
 

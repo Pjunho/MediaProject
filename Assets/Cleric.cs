@@ -9,7 +9,7 @@ public class Cleric : AllyBase
     {
         allyName  = "성직자";
         maxHp     = 200f;
-        moveSpeed = 2.8f;
+        moveSpeed = 1.68f;
         base.Awake();
 
         walkBobAmplitude   = 0.030f;

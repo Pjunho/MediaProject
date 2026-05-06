@@ -10,7 +10,7 @@ public class Warrior : AllyBase
     {
         allyName  = "검객";
         maxHp     = 180f;
-        moveSpeed = 3.2f;
+        moveSpeed = 1.92f;
         base.Awake();
 
         walkBobAmplitude   = 0.05f;

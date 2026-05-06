@@ -9,7 +9,7 @@ public class Paladin : AllyBase
     {
         allyName  = "성기사";
         maxHp     = 280f;
-        moveSpeed = 1.8f;
+        moveSpeed = 1.08f;
         base.Awake();
 
         walkBobAmplitude   = 0.04f;

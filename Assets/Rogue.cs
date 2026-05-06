@@ -9,7 +9,7 @@ public class Rogue : AllyBase
     {
         allyName  = "도적";
         maxHp     = 90f;
-        moveSpeed = 4.8f;
+        moveSpeed = 2.88f;
         base.Awake();
 
         walkBobAmplitude   = 0.06f;

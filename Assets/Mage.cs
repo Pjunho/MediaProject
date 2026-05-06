@@ -9,7 +9,7 @@ public class Mage : AllyBase
     {
         allyName  = "마법사";
         maxHp     = 110f;
-        moveSpeed = 4.2f;
+        moveSpeed = 2.52f;
         base.Awake();
 
         walkBobAmplitude   = 0.036f;

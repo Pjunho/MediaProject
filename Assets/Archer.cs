@@ -9,7 +9,7 @@ public class Archer : AllyBase
     {
         allyName  = "궁수";
         maxHp     = 140f;
-        moveSpeed = 3.8f;
+        moveSpeed = 2.28f;
         base.Awake();
 
         walkBobAmplitude   = 0.04f;
