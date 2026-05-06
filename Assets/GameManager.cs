@@ -188,11 +188,10 @@ public class GameManager : MonoBehaviour
             clearedWaveCount  = 0;
             StageManager.Instance?.SetCurrentWaveNumber(1);
             UpdateCoinHUD();
-
-            var enemySpawner = FindFirstObjectByType<EnemyAutoSpawner>();
-            if (enemySpawner != null)
-                enemySpawner.RespawnForCurrentWave();
-
+            // ※ RespawnForCurrentWave()는 여기서 호출하지 않는다.
+            //   적은 씬 로드 직후 EnemyAutoSpawner.InitializeAfterMapReady()에서 이미
+            //   배치되어 있으므로, 여기서 다시 호출하면 위치가 재랜덤화되어
+            //   "준비 단계와 실제 이동 단계의 적 위치가 달라지는" 버그가 발생한다.
             Debug.Log($"[GameManager] 게임 시작! (총 {currentWaves.Length}웨이브)");
         }
 

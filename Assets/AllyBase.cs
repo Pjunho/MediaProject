@@ -371,11 +371,10 @@ public class AllyBase : MonoBehaviour
         Vector3 src = transform.position + Vector3.up * 0.15f;
         Vector3 dst = target.transform.position;
 
-        // 항상 절차적 화살 스프라이트 사용 (리소스 파일 의존 제거)
         var go = new GameObject("ParalysisArrow");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = CreateArrowSprite();
-        sr.color = Color.white;
+        sr.sprite = LoadArrowSprite();
+        sr.color = new Color(0.50f, 0.92f, 1f);   // 마비 화살: 청록 색조
         sr.sortingOrder = 70;
         go.transform.localScale = Vector3.one * 0.65f;
 
@@ -967,6 +966,33 @@ public class AllyBase : MonoBehaviour
         }
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+
+    // ── 화살 스프라이트 캐시 ──────────────────────────────────────────────
+    static Sprite _arrowSpriteCached;
+
+    /// <summary>
+    /// Resources/Allies/pixel_allies/arrow.png 를 로드해 반환.
+    /// 파일이 없으면 절차적 화살 스프라이트(CreateArrowSprite)로 폴백.
+    /// </summary>
+    static Sprite LoadArrowSprite()
+    {
+        if (_arrowSpriteCached != null) return _arrowSpriteCached;
+
+        var tex = Resources.Load<Texture2D>("Allies/pixel_allies/arrow");
+        if (tex != null)
+        {
+            tex.filterMode      = FilterMode.Point;
+            _arrowSpriteCached  = Sprite.Create(
+                tex,
+                new Rect(0f, 0f, tex.width, tex.height),
+                new Vector2(0.5f, 0.5f),
+                tex.height);
+            return _arrowSpriteCached;
+        }
+
+        _arrowSpriteCached = CreateArrowSprite();
+        return _arrowSpriteCached;
     }
 
     /// <summary>절차적으로 생성하는 화살 스프라이트 (오른쪽 방향 기준, SetPixels 방식)</summary>
