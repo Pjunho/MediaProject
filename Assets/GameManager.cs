@@ -227,19 +227,26 @@ public class GameManager : MonoBehaviour
 
         if (mouse == null) return;
         Vector2 mp = mouse.position.ReadValue();
+        bool pointerOnGemPanel = IsPointerOnOpenGemPanel(mp);
+        bool gemPanelWasOpen = gemPanelOpen;
 
         bool anyBtnClicked = false;
         foreach (var b in btns)
         {
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
+            bool gemUiButton = IsGemUiButton(b.rt);
+            if (gemPanelWasOpen && !gemUiButton)
+            {
+                if (b.fill != null) b.fill.color = b.n;
+                continue;
+            }
+
             bool active = b.pauseOnly ? isPaused : true;
             if (!active) continue;
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
             if (b.fill != null) b.fill.color = over ? b.h : b.n;
             if (over && mouse.leftButton.wasPressedThisFrame) { b.cb?.Invoke(); anyBtnClicked = true; }
         }
-
-        bool pointerOnGemPanel = IsPointerOnOpenGemPanel(mp);
 
         // 보석 패널이 열려 있고 버튼/패널 바깥을 클릭하면 닫기
         if (gemPanelOpen && mouse.leftButton.wasPressedThisFrame && !anyBtnClicked)
@@ -251,7 +258,7 @@ public class GameManager : MonoBehaviour
         if (waveInProgress && !alliesFullyDeployed && !isPaused)
         {
             bool spaceDeploy = kb != null && kb.spaceKey.wasPressedThisFrame;
-            bool clickDeploy = !anyBtnClicked && !pointerOnGemPanel && mouse.leftButton.wasPressedThisFrame;
+            bool clickDeploy = !anyBtnClicked && !gemPanelWasOpen && !pointerOnGemPanel && mouse.leftButton.wasPressedThisFrame;
             if (spaceDeploy || clickDeploy)
                 TriggerDeployNext();
         }
@@ -785,14 +792,14 @@ public class GameManager : MonoBehaviour
         float contentCenterY = contentTopEdge - contentH / 2f;
 
         // ── 보석 탭 콘텐츠 ────────────────────────────────────────────────
-        gemTabGemsContent = new GameObject("GemsContent");
+        gemTabGemsContent = new GameObject("GemsContent", typeof(RectTransform));
         gemTabGemsContent.transform.SetParent(gemPanelGo.transform, false);
         SR(gemTabGemsContent.GetComponent<RectTransform>(),
             new Vector2(0f, contentCenterY),
             new Vector2(panelW, contentH));
 
         // ── 아이템 탭 콘텐츠 ──────────────────────────────────────────────
-        gemTabItemsContent = new GameObject("ItemsContent");
+        gemTabItemsContent = new GameObject("ItemsContent", typeof(RectTransform));
         gemTabItemsContent.transform.SetParent(gemPanelGo.transform, false);
         SR(gemTabItemsContent.GetComponent<RectTransform>(),
             new Vector2(0f, contentCenterY),
@@ -858,6 +865,17 @@ public class GameManager : MonoBehaviour
 
         var rt = gemPanelGo.GetComponent<RectTransform>();
         return rt != null && RectTransformUtility.RectangleContainsScreenPoint(rt, screenPoint, null);
+    }
+
+    bool IsGemUiButton(RectTransform rt)
+    {
+        if (rt == null)
+            return false;
+
+        if (rt == gemBagBtnRt)
+            return true;
+
+        return gemPanelGo != null && rt.transform.IsChildOf(gemPanelGo.transform);
     }
 
     void RefreshGemBagContents()
