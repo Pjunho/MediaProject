@@ -336,7 +336,7 @@ public class MainMenu : MonoBehaviour
         tx.alignByGeometry    = true;
         tx.raycastTarget      = false;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(4, 4));
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
 
         int index = btns.Count;
         btns.Add(new BtnData { rt = inner.GetComponent<RectTransform>(), fill = fi, normal = n, hover = h, action = cb });

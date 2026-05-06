@@ -546,7 +546,7 @@ public class StageSelect : MonoBehaviour
               new Color(1f, 1f, 1f, 0.30f), new Vector2(0f, -175f), new Vector2(620f, 32f), 16);
 
         // ── 뒤로 버튼 ─────────────────────────────────────────────────
-        RegBtn(cv, "back", "  뒤로",
+        RegBtn(cv, "back", "뒤로",
                new Vector2(-510f, -310f), new Vector2(180f, 46f),
                C_BACK, C_BACK_H, OnBack, false);
 
@@ -628,7 +628,7 @@ public class StageSelect : MonoBehaviour
         // 시작 버튼 (inScrollArea=true)
         float btnH = Mathf.Max(32f, size.y * 0.12f);
         RegBtn(card.transform, $"play_{si}",
-               locked ? "조건 보기" : "▶  시  작",
+               locked ? "조건 보기" : "▶ 시작",
                new Vector2(0, -hy * 0.875f), new Vector2(size.x * 0.75f, btnH),
                btnCol, btnHov, cb, true);
 
@@ -787,11 +787,11 @@ public class StageSelect : MonoBehaviour
         }
 
         // ── 하단 버튼 ────────────────────────────────────────────────
-        RegBtn(pp, "prep_back",  "  돌아가기",
+        RegBtn(pp, "prep_back",  "돌아가기",
                new Vector2(-220, -295), new Vector2(190, 48), C_BACK,     C_BACK_H,    ClosePrep,  false);
         RegBtn(pp, "prep_reset", "초기화",
                new Vector2(   0, -295), new Vector2(150, 48), C_LOCKED,   C_LOCKED_H,  ResetPrep,  false);
-        RegBtn(pp, "prep_start", "▶  출전",
+        RegBtn(pp, "prep_start", "▶ 출전",
                new Vector2( 220, -295), new Vector2(190, 48), C_STAGE[1], C_STAGE_H[1],ConfirmPrep,false);
 
         prepPanel.SetActive(false);
@@ -1096,7 +1096,7 @@ public class StageSelect : MonoBehaviour
         SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
 
         if (!string.IsNullOrEmpty(label))
-            MkTxt(inner.transform, label, Color.white, Vector2.zero, size + new Vector2(4, 4), 21);
+            MkTxt(inner.transform, label, Color.white, Vector2.zero, size, 21);
 
         btns.Add(new BtnData { id=id, rt=inner.GetComponent<RectTransform>(), fill=fi,
                                n=n, h=h, cb=cb, inScrollArea=inScroll });

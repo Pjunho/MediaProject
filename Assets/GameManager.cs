@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     private Text       settingsVolumeLbl;
     private Text       settingsFsStatLbl;
     private Text       speedBtnTxt;
-    private Text       goalCountTxt;   // 일시정지 패널 내 골 카운트
     private Text       coinTxt;        // HUD 상단 코인 표시
 
     // ── 보석 가방 버튼 / 팝업 패널 ───────────────────────────────────────
@@ -62,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     // 웨이브 HUD
     private Text       waveInfoTxt;   // "웨이브 X / Y" 표시
-    private Text       mainGoalTxt;   // HUD 상단 골 카운트 표시
     private Text       starProgressTxt; // 별 진행 상황 (★☆☆ 등)
     private GameObject waveBannerGo;  // 웨이브 사이 배너
     private Text       waveBannerTxt;
@@ -368,7 +366,6 @@ public class GameManager : MonoBehaviour
         waveGoalCount++;
         waveAllyDone++;
         currentCoins++;
-        UpdateGoalCount();
         UpdateCoinHUD();
         UpdateWaveHUD();
         Debug.Log($"[GameManager] 골 도달 — 총: {goalCount}명, 이번 웨이브: {waveGoalCount}명 (+1코인, 잔여 {currentCoins})");
@@ -416,13 +413,9 @@ public class GameManager : MonoBehaviour
             starProgressTxt.fontSize = 14;
         }
 
-        // 골 카운트 (상단 중앙)
-        mainGoalTxt = BuildTopLabel(cgo.transform, "goal", "골: 0명",
-            new Vector2(-180, 320), new Vector2(160, 40));
-
         // 코인 표시 (배속 버튼 왼쪽)
         coinTxt = BuildTopLabel(cgo.transform, "coin", "코인: 0",
-            new Vector2(440, 320), new Vector2(130, 40));
+            new Vector2(440, 320), new Vector2(140, 40));
 
         // 배속 버튼
         BuildIconBtn(cgo.transform, "speed", speedLabels[0],
@@ -749,11 +742,6 @@ public class GameManager : MonoBehaviour
             : "★ 1명 통과\n★★ 2명 통과\n★★★ 3명 통과";
         CreateTxtIn(box.transform, condText, COL_GOLD, new Vector2(0,30), new Vector2(400,90), 20);
 
-        goalCountTxt = CreateTxtIn(box.transform, $"현재 통과: {goalCount}명",
-            new Color(0.85f,0.9f,0.85f), new Vector2(0,-40), new Vector2(400,35), 20);
-
-        CreateImgIn(box.transform, new Color(1f,1f,1f,0.15f), new Vector2(0,-70), new Vector2(400,1));
-
         RegPanelBtn(box.transform, "resume",   "▶ 재개",  new Vector2(-130,-130), new Vector2(90,80), COL_GREEN, COL_GREEN_H, OnResume);
         RegPanelBtn(box.transform, "settings", "⚙ 설정",  new Vector2(0,   -130), new Vector2(90,80), COL_BLUE,  COL_BLUE_H,  OnSettings);
         RegPanelBtn(box.transform, "exit",     "✕ 퇴장",  new Vector2(130, -130), new Vector2(90,80), COL_RED,   COL_RED_H,   OnExit);
@@ -769,11 +757,7 @@ public class GameManager : MonoBehaviour
             waveInfoTxt.text = waveStr;
         }
 
-        if (mainGoalTxt != null)
-            mainGoalTxt.text = $"골: {goalCount}명";
-
         UpdateStarProgressHUD();
-        UpdateGoalCount();
         UpdateCoinHUD();
     }
 
@@ -821,7 +805,6 @@ public class GameManager : MonoBehaviour
         isPaused = paused;
         if (pausePanel != null) pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : speedSteps[speedIndex];
-        UpdateGoalCount();
     }
 
     void OnResume()    { SetPaused(false); }
@@ -995,11 +978,6 @@ public class GameManager : MonoBehaviour
         ShowResult(stars);
     }
 
-    void UpdateGoalCount()
-    {
-        if (goalCountTxt != null) goalCountTxt.text = $"현재 통과: {goalCount}명";
-    }
-
     void UpdateCoinHUD()
     {
         if (coinTxt != null)
@@ -1088,7 +1066,7 @@ public class GameManager : MonoBehaviour
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
         lTxt = tx;
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
         return fi;
@@ -1113,7 +1091,7 @@ public class GameManager : MonoBehaviour
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=true });
     }
 
@@ -1136,7 +1114,7 @@ public class GameManager : MonoBehaviour
         tx.horizontalOverflow = HorizontalWrapMode.Overflow;
         tx.verticalOverflow   = VerticalWrapMode.Overflow;
         tx.font               = UiPixelFont.Get();
-        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size + new Vector2(3, 3));
+        SR(tg.GetComponent<RectTransform>(), Vector2.zero, size);
         btns.Add(new BtnData { rt=inner.GetComponent<RectTransform>(), fill=fi, n=n, h=h, cb=cb, pauseOnly=false });
     }
 
