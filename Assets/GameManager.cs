@@ -36,7 +36,12 @@ public class GameManager : MonoBehaviour
     private Text       speedBtnTxt;
     private Text       goalCountTxt;   // 일시정지 패널 내 골 카운트
     private Text       coinTxt;        // HUD 상단 코인 표시
-    private Text       gemBonusTxt;   // 보석 버프 표시 (하단 좌측)
+
+    // ── 보석 가방 버튼 / 팝업 패널 ───────────────────────────────────────
+    private GameObject    gemPanelGo;
+    private RectTransform gemBagBtnRt;
+    private Image         gemBagBtnFill;
+    private bool          gemPanelOpen = false;
 
     // ── 토스트 알림 ──────────────────────────────────────────────────────
     private GameObject toastGo;
@@ -82,6 +87,8 @@ public class GameManager : MonoBehaviour
     static readonly Color COL_SPEED_H= new Color(0.28f,0.35f,0.50f);
     static readonly Color COL_PAUSE  = new Color(0.14f,0.18f,0.28f);
     static readonly Color COL_PAUSE_H= new Color(0.24f,0.30f,0.45f);
+    static readonly Color COL_GEM    = new Color(0.18f,0.14f,0.32f);   // 가방 버튼 기본
+    static readonly Color COL_GEM_H  = new Color(0.30f,0.22f,0.50f);   // 가방 버튼 호버/열림
 
     void Awake()
     {
@@ -193,6 +200,15 @@ public class GameManager : MonoBehaviour
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
             if (b.fill != null) b.fill.color = over ? b.h : b.n;
             if (over && mouse.leftButton.wasPressedThisFrame) { b.cb?.Invoke(); anyBtnClicked = true; }
+        }
+
+        // 보석 패널이 열려 있고 버튼/패널 바깥을 클릭하면 닫기
+        if (gemPanelOpen && mouse.leftButton.wasPressedThisFrame && !anyBtnClicked)
+        {
+            bool onPanel = gemPanelGo != null && gemPanelGo.activeSelf &&
+                RectTransformUtility.RectangleContainsScreenPoint(
+                    gemPanelGo.GetComponent<RectTransform>(), mp, null);
+            if (!onPanel) CloseGemPanel();
         }
 
         // Space 또는 UI 외 클릭으로 대기 중인 아군 1명씩 출전
@@ -423,7 +439,7 @@ public class GameManager : MonoBehaviour
 
         BuildSettingsPanel(cgo.transform);
         BuildToastUI(cgo.transform);
-        BuildGemBonusHUD(cgo.transform);
+        BuildGemBagUI(cgo.transform);
         BuildDeployHintUI(cgo.transform);
     }
 
@@ -479,23 +495,162 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void BuildGemBonusHUD(Transform parent)
+    // ── 가방 버튼 & 보석 팝업 패널 ──────────────────────────────────────────
+
+    void BuildGemBagUI(Transform parent)
     {
-        float speedMult = GemInventory.GetSpeedMultiplier();
-        float hpMult    = GemInventory.GetHpMultiplier();
-        bool  hasBonus  = speedMult > 1.001f || hpMult > 1.001f;
-        if (!hasBonus) return;
+        // ── 오른쪽 하단 가방 버튼 ────────────────────────────────────────
+        var btnSize = new Vector2(52f, 52f);
+        var btnPos  = new Vector2(490f, -310f);
 
-        var parts = new System.Collections.Generic.List<string>();
-        if (speedMult > 1.001f) parts.Add($"속도+{Mathf.RoundToInt((speedMult - 1f) * 100)}%");
-        if (hpMult    > 1.001f) parts.Add($"HP+{Mathf.RoundToInt((hpMult - 1f) * 100)}%");
-        string bonusText = "♦ " + string.Join(" • ", parts);
+        // 외곽 테두리 shadow
+        var bgGo = new GameObject("GemBagBtn"); bgGo.transform.SetParent(parent, false);
+        bgGo.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.50f);
+        SR(bgGo.GetComponent<RectTransform>(), btnPos, btnSize + new Vector2(4f, 4f));
 
-        gemBonusTxt = BuildTopLabel(parent, "gem", bonusText,
-            new Vector2(-490, -310), new Vector2(180, 30));
-        if (gemBonusTxt == null) return;
-        gemBonusTxt.fontSize = 13;
-        gemBonusTxt.color    = new Color(0.95f, 0.80f, 0.20f);
+        // 채움 (클릭·호버 색상용)
+        var fill = new GameObject("Fill"); fill.transform.SetParent(bgGo.transform, false);
+        gemBagBtnFill = fill.AddComponent<Image>(); gemBagBtnFill.color = COL_GEM;
+        gemBagBtnRt   = fill.GetComponent<RectTransform>();
+        SR(gemBagBtnRt, Vector2.zero, btnSize);
+
+        // 아이콘 레이블 (◆ = 보석 기호)
+        var lbl = new GameObject("Lbl"); lbl.transform.SetParent(fill.transform, false);
+        var lTx = lbl.AddComponent<Text>();
+        lTx.text               = "◆";
+        lTx.color              = COL_GOLD;
+        lTx.fontSize           = 28;
+        lTx.alignment          = TextAnchor.MiddleCenter;
+        lTx.alignByGeometry    = true;
+        lTx.raycastTarget      = false;
+        lTx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        lTx.verticalOverflow   = VerticalWrapMode.Overflow;
+        lTx.font               = UiPixelFont.Get();
+        SR(lbl.GetComponent<RectTransform>(), Vector2.zero, btnSize);
+
+        // 버튼 하단 소제목 "보석"
+        var sub = new GameObject("Sub"); sub.transform.SetParent(fill.transform, false);
+        var sTx = sub.AddComponent<Text>();
+        sTx.text               = "보석";
+        sTx.color              = new Color(0.80f, 0.75f, 0.95f);
+        sTx.fontSize           = 11;
+        sTx.alignment          = TextAnchor.LowerCenter;
+        sTx.alignByGeometry    = true;
+        sTx.raycastTarget      = false;
+        sTx.horizontalOverflow = HorizontalWrapMode.Overflow;
+        sTx.verticalOverflow   = VerticalWrapMode.Overflow;
+        sTx.font               = UiPixelFont.Get();
+        SR(sub.GetComponent<RectTransform>(), new Vector2(0f, -4f), btnSize);
+
+        // btns 에 등록 (클릭 = 팝업 토글, 호버 = 색 변환)
+        btns.Add(new BtnData
+        {
+            rt       = gemBagBtnRt,
+            fill     = gemBagBtnFill,
+            n        = COL_GEM,
+            h        = COL_GEM_H,
+            cb       = ToggleGemPanel,
+            pauseOnly= false
+        });
+
+        // ── 보석 팝업 패널 (버튼 위에 열림) ─────────────────────────────
+        BuildGemPanel(parent, btnPos, btnSize.y);
+    }
+
+    void BuildGemPanel(Transform parent, Vector2 btnPos, float btnH)
+    {
+        // 활성 보석 수집
+        var defs   = GemInventory.GetDefinitions();
+        var active = new System.Collections.Generic.List<GemInventory.GemDefinition>();
+        foreach (var d in defs)
+            if (GemInventory.IsActive(d.stageIndex)) active.Add(d);
+
+        // 패널 크기 계산
+        const float ROW_H  = 62f;
+        const float HEAD_H = 42f;
+        const float PAD_B  = 14f;
+        float panelH = HEAD_H + Mathf.Max(1, active.Count) * ROW_H + PAD_B;
+        float panelW = 215f;
+
+        // 버튼 바로 위에 정렬
+        float panelY = btnPos.y + btnH / 2f + panelH / 2f + 6f;
+        var   panelPos = new Vector2(btnPos.x, panelY);
+
+        gemPanelGo = new GameObject("GemPanel"); gemPanelGo.transform.SetParent(parent, false);
+        var bg = gemPanelGo.AddComponent<Image>(); bg.color = COL_PANEL;
+        SR(gemPanelGo.GetComponent<RectTransform>(), panelPos, new Vector2(panelW, panelH));
+
+        // 패널 테두리
+        var border = new GameObject("Border"); border.transform.SetParent(gemPanelGo.transform, false);
+        border.AddComponent<Image>().color = new Color(0.60f, 0.48f, 0.90f, 0.30f);
+        SR(border.GetComponent<RectTransform>(), Vector2.zero, new Vector2(panelW + 2f, panelH + 2f));
+        border.transform.SetAsFirstSibling();
+
+        // 헤더 "◆ 활성 보석"
+        float topEdge = panelH / 2f;
+        float headerY = topEdge - HEAD_H / 2f;
+        CreateTxtIn(gemPanelGo.transform,
+            "◆  활성 보석", COL_GOLD,
+            new Vector2(0f, headerY), new Vector2(panelW - 12f, HEAD_H - 4f), 17);
+        CreateImgIn(gemPanelGo.transform,
+            new Color(0.60f, 0.48f, 0.90f, 0.25f),
+            new Vector2(0f, topEdge - HEAD_H), new Vector2(panelW - 16f, 1f));
+
+        // 항목 표시
+        float rowStart = topEdge - HEAD_H - ROW_H / 2f;
+
+        if (active.Count == 0)
+        {
+            CreateTxtIn(gemPanelGo.transform,
+                "활성화된 보석 없음",
+                new Color(0.55f, 0.55f, 0.65f),
+                new Vector2(0f, rowStart + (ROW_H - 14f) / 2f - 8f),
+                new Vector2(panelW - 16f, ROW_H), 15);
+        }
+        else
+        {
+            for (int i = 0; i < active.Count; i++)
+            {
+                var   gem  = active[i];
+                float cy   = rowStart - i * ROW_H;
+
+                // 보석 이름 (원색)
+                CreateTxtIn(gemPanelGo.transform,
+                    gem.gemName, gem.color,
+                    new Vector2(0f, cy + 14f), new Vector2(panelW - 14f, 24f), 16);
+
+                // 효과 설명 (연한 파랑)
+                CreateTxtIn(gemPanelGo.transform,
+                    gem.effectSummary, new Color(0.80f, 0.88f, 1f),
+                    new Vector2(0f, cy - 10f), new Vector2(panelW - 14f, 20f), 13);
+
+                // 구분선
+                if (i < active.Count - 1)
+                    CreateImgIn(gemPanelGo.transform,
+                        new Color(1f, 1f, 1f, 0.10f),
+                        new Vector2(0f, cy - ROW_H / 2f + 2f), new Vector2(panelW - 20f, 1f));
+            }
+        }
+
+        gemPanelGo.SetActive(false);
+    }
+
+    void ToggleGemPanel()
+    {
+        if (gemPanelGo == null) return;
+        gemPanelOpen = !gemPanelOpen;
+        gemPanelGo.SetActive(gemPanelOpen);
+        // 버튼 색상: 열려 있으면 밝게 유지
+        if (gemBagBtnFill != null)
+            gemBagBtnFill.color = gemPanelOpen ? COL_GEM_H : COL_GEM;
+    }
+
+    void CloseGemPanel()
+    {
+        if (!gemPanelOpen) return;
+        gemPanelOpen = false;
+        if (gemPanelGo      != null) gemPanelGo.SetActive(false);
+        if (gemBagBtnFill   != null) gemBagBtnFill.color = COL_GEM;
     }
 
     Text BuildTopLabel(Transform parent, string id, string text, Vector2 pos, Vector2 size)
