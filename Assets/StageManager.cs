@@ -67,7 +67,7 @@ public class StageManager : MonoBehaviour
         {
             stageIndex = 2, stageName = "어둠의 동굴",
             sniperCount = 4, spearmanCount = 4, brawlerCount = 4,
-            allySlots = 6, startWaveAllyCount = 5, startingCoins = 5,
+            allySlots = 5, startWaveAllyCount = 5, startingCoins = 5,
             mapWidth = 17, mapHeight = 13,
             extraPassageRate = 0.06f
         },
