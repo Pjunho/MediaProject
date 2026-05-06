@@ -16,7 +16,7 @@ public class AllyOrderPanel : MonoBehaviour
     const float CARD_GAP   = 6f;
     const float LEFT_OFF   = 5f;
     const float INNER_PAD  = 10f;
-    const float DETAIL_W   = 146f;
+    const float DETAIL_W   = 220f;
     const float TOGGLE_W   = 24f;
     const float TOGGLE_H   = 64f;
     const float TOGGLE_GAP = 4f;
@@ -301,7 +301,7 @@ public class AllyOrderPanel : MonoBehaviour
         var skillBtn = MakeUIRect("SkillButton", detail.transform);
         detailSkillBtnRt = skillBtn.GetComponent<RectTransform>();
         detailSkillBtnRt.anchorMin = new Vector2(0f, 0.01f);
-        detailSkillBtnRt.anchorMax = new Vector2(1f, 0.14f);
+        detailSkillBtnRt.anchorMax = new Vector2(1f, 0.18f);
         detailSkillBtnRt.offsetMin = new Vector2(10f, 0f);
         detailSkillBtnRt.offsetMax = new Vector2(-10f, 0f);
         skillBtn.AddComponent<Image>().color = new Color(0.08f, 0.12f, 0.18f, 0.92f);
@@ -334,6 +334,7 @@ public class AllyOrderPanel : MonoBehaviour
             new Color(1f, 0.92f, 0.50f, 1f), TextAnchor.MiddleLeft,
             new Vector2(0f, 0f), new Vector2(1f, 1f),
             new Vector2(58f, 0f), new Vector2(-8f, 0f));
+        detailSkillNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
 
         var overlay = MakeUIRect("SkillDescOverlay", detail.transform);
         detailSkillDescOverlay = overlay;
@@ -341,14 +342,15 @@ public class AllyOrderPanel : MonoBehaviour
         ovRt.anchorMin = new Vector2(0f, 0f);
         ovRt.anchorMax = new Vector2(1f, 0f);
         ovRt.pivot = new Vector2(0.5f, 0f);
-        ovRt.anchoredPosition = new Vector2(0f, -78f);
-        ovRt.sizeDelta = new Vector2(-16f, 80f);
+        ovRt.anchoredPosition = new Vector2(0f, -108f);
+        ovRt.sizeDelta = new Vector2(-16f, 110f);
         overlay.AddComponent<Image>().color = new Color(0.02f, 0.04f, 0.10f, 0.97f);
 
-        detailSkillDescText = CreateTextLabel("SkillDesc", overlay.transform, string.Empty, 11, FontStyle.Normal,
+        detailSkillDescText = CreateTextLabel("SkillDesc", overlay.transform, string.Empty, 12, FontStyle.Normal,
             new Color(0.88f, 0.92f, 0.98f, 1f), TextAnchor.MiddleLeft,
             new Vector2(0f, 0f), new Vector2(1f, 1f),
-            new Vector2(10f, 6f), new Vector2(-10f, -6f));
+            new Vector2(12f, 8f), new Vector2(-12f, -8f));
+        detailSkillDescText.horizontalOverflow = HorizontalWrapMode.Wrap;
         detailSkillDescOverlay.SetActive(false);
     }
 
