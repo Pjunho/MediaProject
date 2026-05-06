@@ -64,6 +64,7 @@ public class AllyBase : MonoBehaviour
     private Coroutine paladinOathRoutine;
     private static readonly List<AllyBase> activeMageBarriers = new List<AllyBase>();
     private static AllyBase activePaladinProtector;
+    private static Sprite[] paralysisArrowFrames;
     private const float MageBarrierRadius = 1.45f;
 
     // ── HP 바 ──────────────────────────────────────────────────────────
@@ -369,20 +370,28 @@ public class AllyBase : MonoBehaviour
     {
         Vector3 src = transform.position + Vector3.up * 0.15f;
         Vector3 dst = target.transform.position;
+        Sprite[] frames = GetParalysisArrowFrames();
         var go = new GameObject("ParalysisArrow");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = CreateCircleSprite(8);
-        sr.color = new Color(0.55f, 1f, 0.35f, 1f);
-        sr.sortingOrder = 35;
-        go.transform.localScale = new Vector3(0.18f, 0.07f, 1f);
+        sr.sprite = frames != null && frames.Length > 0 ? frames[0] : CreateCircleSprite(8);
+        sr.color = Color.white;
+        sr.sortingOrder = 42;
+        go.transform.localScale = frames != null && frames.Length > 0
+            ? Vector3.one * 0.82f
+            : new Vector3(0.18f, 0.07f, 1f);
 
         float elapsed = 0f;
-        float duration = Mathf.Max(0.08f, Vector3.Distance(src, dst) / 14f);
+        float duration = Mathf.Max(0.10f, Vector3.Distance(src, dst) / 14f);
         while (elapsed < duration && target != null)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            go.transform.position = Vector3.Lerp(src, target.transform.position, t);
+            dst = target.transform.position;
+            Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
+            go.transform.position = Vector3.Lerp(src, dst, t);
+            go.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+            if (frames != null && frames.Length > 0)
+                sr.sprite = frames[Mathf.Min(frames.Length - 1, Mathf.FloorToInt(t * frames.Length))];
             yield return null;
         }
         Destroy(go);
@@ -961,6 +970,30 @@ public class AllyBase : MonoBehaviour
         }
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+
+    static Sprite[] GetParalysisArrowFrames()
+    {
+        if (paralysisArrowFrames != null)
+            return paralysisArrowFrames;
+
+        Texture2D sheet = Resources.Load<Texture2D>("Effect/paralyzing_arrow_effect");
+        if (sheet == null)
+        {
+            paralysisArrowFrames = System.Array.Empty<Sprite>();
+            return paralysisArrowFrames;
+        }
+
+        int frameCount = 8;
+        int frameW = sheet.width / frameCount;
+        int frameH = sheet.height;
+        paralysisArrowFrames = new Sprite[frameCount];
+        for (int i = 0; i < frameCount; i++)
+        {
+            var rect = new Rect(i * frameW, 0, frameW, frameH);
+            paralysisArrowFrames[i] = Sprite.Create(sheet, rect, new Vector2(0.5f, 0.5f), frameH);
+        }
+        return paralysisArrowFrames;
     }
 
     void ClearAllSkillVisuals()

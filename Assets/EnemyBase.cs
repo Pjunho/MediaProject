@@ -29,6 +29,8 @@ public class EnemyBase : MonoBehaviour
     private LineRenderer attackLine;
     private float paralysisTimer;
     private GameObject paralysisVisual;
+    private GameObject paralysisTintVisual;
+    private SpriteRenderer paralysisTintRenderer;
 
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────
     private float     breathCycle;
@@ -851,31 +853,62 @@ public class EnemyBase : MonoBehaviour
 
     void CreateParalysisVisual()
     {
-        if (paralysisVisual != null) return;
-        paralysisVisual = new GameObject("ParalysisVisual");
-        paralysisVisual.transform.SetParent(transform, false);
-        paralysisVisual.transform.localPosition = new Vector3(0f, 0.65f, 0f);
+        if (paralysisVisual == null)
+        {
+            paralysisVisual = new GameObject("ParalysisVisual");
+            paralysisVisual.transform.SetParent(transform, false);
+            paralysisVisual.transform.localPosition = new Vector3(0f, 0.65f, 0f);
 
-        var sr = paralysisVisual.AddComponent<SpriteRenderer>();
-        sr.sprite = MakeCircleSprite(14);
-        sr.color = new Color(0.55f, 1f, 0.35f, 0.72f);
-        sr.sortingOrder = 36;
-        paralysisVisual.transform.localScale = Vector3.one * 0.42f;
+            var sr = paralysisVisual.AddComponent<SpriteRenderer>();
+            sr.sprite = MakeCircleSprite(14);
+            sr.color = new Color(0.95f, 0.92f, 0.22f, 0.78f);
+            sr.sortingOrder = 38;
+            paralysisVisual.transform.localScale = Vector3.one * 0.42f;
+        }
+
+        if (paralysisTintVisual == null && spriteRenderer != null)
+        {
+            paralysisTintVisual = new GameObject("ParalysisTint");
+            paralysisTintVisual.transform.SetParent(transform, false);
+            paralysisTintVisual.transform.localPosition = Vector3.zero;
+            paralysisTintRenderer = paralysisTintVisual.AddComponent<SpriteRenderer>();
+            paralysisTintRenderer.sortingOrder = spriteRenderer.sortingOrder + 1;
+        }
     }
 
     void UpdateParalysisVisual()
     {
-        if (paralysisVisual == null) return;
-        paralysisVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 180f);
-        float pulse = 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
-        paralysisVisual.transform.localScale = Vector3.one * pulse;
+        if (paralysisVisual != null)
+        {
+            paralysisVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 180f);
+            float pulse = 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
+            paralysisVisual.transform.localScale = Vector3.one * pulse;
+        }
+
+        if (paralysisTintRenderer != null && spriteRenderer != null)
+        {
+            paralysisTintRenderer.sprite = spriteRenderer.sprite;
+            paralysisTintRenderer.flipX = spriteRenderer.flipX;
+            paralysisTintRenderer.flipY = spriteRenderer.flipY;
+            paralysisTintRenderer.sortingOrder = spriteRenderer.sortingOrder + 1;
+            float alpha = 0.28f + Mathf.Sin(Time.time * 7f) * 0.07f;
+            paralysisTintRenderer.color = new Color(1f, 0.92f, 0.18f, alpha);
+        }
     }
 
     void ClearParalysisVisual()
     {
-        if (paralysisVisual == null) return;
-        Destroy(paralysisVisual);
-        paralysisVisual = null;
+        if (paralysisVisual != null)
+        {
+            Destroy(paralysisVisual);
+            paralysisVisual = null;
+        }
+        if (paralysisTintVisual != null)
+        {
+            Destroy(paralysisTintVisual);
+            paralysisTintVisual = null;
+            paralysisTintRenderer = null;
+        }
     }
 
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────
