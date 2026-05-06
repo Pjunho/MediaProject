@@ -237,7 +237,7 @@ public class AllyOrderPanel : MonoBehaviour
         hRt.pivot     = new Vector2(0.5f, 0f);
         hRt.anchoredPosition = new Vector2(0f, 4f); hRt.sizeDelta = new Vector2(0f, 14f);
         var hTx = hint.AddComponent<Text>();
-        hTx.text = "드래그로 순서 변경"; hTx.fontSize = 9;
+        hTx.text = "드래그 변경 | 1~6 스킬"; hTx.fontSize = 9;
         hTx.font = BuiltinFont(); hTx.color = new Color(0.6f, 0.6f, 0.6f, 0.75f);
         hTx.alignment = TextAnchor.MiddleCenter;
 
@@ -460,6 +460,10 @@ public class AllyOrderPanel : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.ShouldBlockGameplayInput())
             return;
 
+        var keyboard = Keyboard.current;
+        if (TryHandleSkillHotkey(keyboard))
+            return;
+
         var mouse = Mouse.current;
         if (mouse == null) return;
         Vector2 mp = mouse.position.ReadValue();
@@ -527,6 +531,41 @@ public class AllyOrderPanel : MonoBehaviour
             RefreshDetailPanel();
 
         return true;
+    }
+
+    bool TryHandleSkillHotkey(Keyboard keyboard)
+    {
+        if (keyboard == null) return false;
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (!WasNumberPressed(keyboard, i + 1)) continue;
+            if (i >= allyOrder.Count)
+            {
+                GameManager.Instance?.ShowToast("해당 순서의 아군이 없습니다!", new Color(1f, 0.65f, 0.25f));
+                return true;
+            }
+
+            AllyType type = allyOrder[i];
+            SkillSystem.ActivateSkill(type);
+            return true;
+        }
+
+        return false;
+    }
+
+    bool WasNumberPressed(Keyboard keyboard, int number)
+    {
+        return number switch
+        {
+            1 => keyboard.digit1Key.wasPressedThisFrame || keyboard.numpad1Key.wasPressedThisFrame,
+            2 => keyboard.digit2Key.wasPressedThisFrame || keyboard.numpad2Key.wasPressedThisFrame,
+            3 => keyboard.digit3Key.wasPressedThisFrame || keyboard.numpad3Key.wasPressedThisFrame,
+            4 => keyboard.digit4Key.wasPressedThisFrame || keyboard.numpad4Key.wasPressedThisFrame,
+            5 => keyboard.digit5Key.wasPressedThisFrame || keyboard.numpad5Key.wasPressedThisFrame,
+            6 => keyboard.digit6Key.wasPressedThisFrame || keyboard.numpad6Key.wasPressedThisFrame,
+            _ => false
+        };
     }
 
     bool TryHandleUpgrade(Vector2 screenPos)
