@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyBase : MonoBehaviour
 {
+    static readonly System.Collections.Generic.Dictionary<string, Sprite[]> effectFrameCache = new();
+
     [Header("Stats")]
     public string enemyName    = "Enemy";
     public float  attackRange  = 3f;
@@ -85,7 +87,10 @@ public class EnemyBase : MonoBehaviour
     {
         yield return StartCoroutine(ShowAttackEffect(target));
         if (target != null && !target.isDead)
+        {
             target.TakeDamage(attackDamage);
+            SpawnHitConfirm(target.transform.position);
+        }
     }
 
     protected virtual IEnumerator ShowAttackEffect(AllyBase target)
@@ -110,6 +115,72 @@ public class EnemyBase : MonoBehaviour
     // ── 공격 이펙트 헬퍼 (서브클래스 공용) ─────────────────────────────
     protected void SpawnImpactFlash(Vector3 pos, Color color, float duration)
         => StartCoroutine(ImpactFlashRoutine(pos, color, duration));
+
+    protected void SpawnEffectSheet(string resourceName, Vector3 pos, int frameCount,
+        float ppu, float fps, float scale, int sortingOrder, float rotationDeg = 0f)
+        => StartCoroutine(EffectSheetRoutine(resourceName, pos, frameCount, ppu, fps, scale, sortingOrder, rotationDeg));
+
+    IEnumerator EffectSheetRoutine(string resourceName, Vector3 pos, int frameCount,
+        float ppu, float fps, float scale, int sortingOrder, float rotationDeg)
+    {
+        Sprite[] frames = LoadEffectFrames(resourceName, frameCount, ppu);
+        if (frames == null || frames.Length == 0) yield break;
+
+        var go = new GameObject(resourceName);
+        go.transform.position = pos;
+        go.transform.localScale = Vector3.one * scale;
+        go.transform.rotation = Quaternion.Euler(0f, 0f, rotationDeg);
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sortingOrder = sortingOrder;
+
+        float delay = 1f / Mathf.Max(1f, fps);
+        for (int i = 0; i < frames.Length; i++)
+        {
+            if (frames[i] != null) sr.sprite = frames[i];
+            yield return new WaitForSeconds(delay);
+        }
+        Destroy(go);
+    }
+
+    static Sprite[] LoadEffectFrames(string resourceName, int frameCount, float ppu)
+    {
+        if (string.IsNullOrEmpty(resourceName) || frameCount <= 0) return null;
+        string cacheKey = $"{resourceName}_{frameCount}_{ppu:0.###}";
+        if (effectFrameCache.TryGetValue(cacheKey, out var cached))
+            return cached;
+
+        Texture2D texture = Resources.Load<Texture2D>($"Effect/{resourceName}");
+        if (texture == null) return null;
+
+        texture.filterMode = FilterMode.Point;
+        texture.wrapMode = TextureWrapMode.Clamp;
+
+        int frameW = Mathf.Max(1, texture.width / frameCount);
+        int frameH = texture.height;
+        var frames = new Sprite[frameCount];
+        for (int i = 0; i < frameCount; i++)
+        {
+            int x = Mathf.Min(i * frameW, texture.width - frameW);
+            frames[i] = Sprite.Create(
+                texture,
+                new Rect(x, 0, frameW, frameH),
+                new Vector2(0.5f, 0.5f),
+                ppu);
+        }
+        effectFrameCache[cacheKey] = frames;
+        return frames;
+    }
+
+    void SpawnHitConfirm(Vector3 pos)
+    {
+        Sprite[] frames = LoadEffectFrames("attacked_team", 6, 256f);
+        if (frames != null && frames.Length > 0)
+        {
+            StartCoroutine(EffectSheetRoutine("attacked_team", pos + Vector3.up * 0.10f, 6, 256f, 18f, 0.46f, 42, 0f));
+            return;
+        }
+        SpawnImpactFlash(pos, new Color(1f, 0.35f, 0.15f, 0.95f), 0.14f);
+    }
 
     IEnumerator ImpactFlashRoutine(Vector3 pos, Color color, float duration)
     {
@@ -273,7 +344,7 @@ public class EnemyBase : MonoBehaviour
 
     /// <summary>부채꼴 파티클 분사. Brawler 계열 전용.</summary>
     protected IEnumerator ParticleSprayEffect(AllyBase target, Color colorA, Color colorB,
-        int count = 12, float duration = 0.38f, float spreadDeg = 30f)
+        int count = 12, float duration = 0.38f, float spreadDeg = 30f, string effectSheet = null)
     {
         if (target == null) yield break;
         Vector3 src  = transform.position + Vector3.up * 0.12f;
@@ -281,6 +352,21 @@ public class EnemyBase : MonoBehaviour
         Vector3 dir  = (dst - src).normalized;
         Vector3 perp = new Vector3(-dir.y, dir.x, 0f);
         float dist   = Vector3.Distance(src, dst);
+
+        if (!string.IsNullOrEmpty(effectSheet))
+        {
+            int frameCount = effectSheet.Contains("pickaxe") ? 6 : 8;
+            float ppu = effectSheet.Contains("pickaxe") ? 362f : 443f;
+            if (LoadEffectFrames(effectSheet, frameCount, ppu) != null)
+            {
+                Vector3 center = Vector3.Lerp(src, dst, 0.72f);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                SpawnEffectSheet(effectSheet, center, frameCount, ppu, 24f, 1.12f, 41, angle);
+                yield return new WaitForSeconds(frameCount / 24f);
+                SpawnImpactFlash(dst, colorB, 0.16f);
+                yield break;
+            }
+        }
 
         Sprite spr = MakeCircleSprite(7);
         var slash = CreateTempLineRenderer(12, colorB, 0.16f, 37);
@@ -379,7 +465,7 @@ public class EnemyBase : MonoBehaviour
 
     /// <summary>투사체 이동. Sniper 계열(자연/사막) 전용.</summary>
     protected IEnumerator ProjectileEffect(AllyBase target, Color color,
-        float speed = 16f, Color impactColor = default)
+        float speed = 16f, Color impactColor = default, string impactEffect = null)
     {
         if (target == null) yield break;
         Vector3 src = transform.position + Vector3.up * 0.18f;
@@ -414,11 +500,16 @@ public class EnemyBase : MonoBehaviour
         }
         Destroy(trail.gameObject);
         Destroy(go);
-        SpawnImpactFlash(dst, impactColor.a > 0f ? impactColor : color, 0.26f);
+        Color hitColor = impactColor.a > 0f ? impactColor : color;
+        string sheet = impactEffect ?? (hitColor.r > hitColor.g ? "clean_red_arrow_effect" : "clean_green_arrow_effect");
+        if (LoadEffectFrames(sheet, 8, 443f) != null)
+            SpawnEffectSheet(sheet, dst, 8, 443f, 22f, 1.35f, 40);
+        else
+            SpawnImpactFlash(dst, hitColor, 0.26f);
     }
 
     protected IEnumerator OrbProjectileEffect(AllyBase target, Color color,
-        float speed = 15f, Color impactColor = default, float arcHeight = 0.28f)
+        float speed = 15f, Color impactColor = default, float arcHeight = 0.28f, string impactEffect = null)
     {
         if (target == null) yield break;
         Vector3 src = transform.position + Vector3.up * 0.18f;
@@ -452,7 +543,12 @@ public class EnemyBase : MonoBehaviour
         }
         Destroy(trail.gameObject);
         Destroy(go);
-        SpawnImpactFlash(dst, impactColor.a > 0f ? impactColor : color, 0.23f);
+        Color hitColor = impactColor.a > 0f ? impactColor : color;
+        string sheet = impactEffect ?? "clean_green_arrow_effect";
+        if (LoadEffectFrames(sheet, 8, 443f) != null)
+            SpawnEffectSheet(sheet, dst, 8, 443f, 22f, 1.20f, 40);
+        else
+            SpawnImpactFlash(dst, hitColor, 0.23f);
     }
 
     protected IEnumerator BoomerangEffect(AllyBase target, Color colorA, Color colorB,
@@ -465,12 +561,13 @@ public class EnemyBase : MonoBehaviour
         Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
         Vector3 perp = new Vector3(-dir.y, dir.x, 0f);
 
+        Sprite[] boomerangFrames = LoadEffectFrames("clean_boomerang_effect", 8, 443f);
         var go = new GameObject("BoomerangProj");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = MakeBoomerangSprite();
+        sr.sprite = boomerangFrames != null && boomerangFrames.Length > 0 ? boomerangFrames[0] : MakeBoomerangSprite();
         sr.color = colorA;
         sr.sortingOrder = 36;
-        go.transform.localScale = Vector3.one * 0.30f;
+        go.transform.localScale = Vector3.one * (boomerangFrames != null ? 0.44f : 0.30f);
 
         var trail = CreateTempLineRenderer(7, new Color(colorA.r, colorA.g, colorA.b, 0.55f), 0.08f, 35);
         trail.endColor = new Color(colorB.r, colorB.g, colorB.b, 0f);
@@ -491,6 +588,8 @@ public class EnemyBase : MonoBehaviour
             Vector3 pos = basePos + perp * (Mathf.Sin(t * Mathf.PI) * curveHeight);
             go.transform.position = pos;
             go.transform.rotation = Quaternion.Euler(0f, 0f, Time.time * 900f);
+            if (boomerangFrames != null && boomerangFrames.Length > 0)
+                sr.sprite = boomerangFrames[Mathf.Min((int)(t * boomerangFrames.Length * 1.35f) % boomerangFrames.Length, boomerangFrames.Length - 1)];
             for (int i = trailPts.Length - 1; i > 0; i--) trailPts[i] = trailPts[i - 1];
             trailPts[0] = pos;
             for (int i = 0; i < trailPts.Length; i++) trail.SetPosition(i, trailPts[i]);
@@ -498,7 +597,7 @@ public class EnemyBase : MonoBehaviour
         }
         Destroy(trail.gameObject);
         Destroy(go);
-        SpawnImpactFlash(dst, colorB, 0.25f);
+        SpawnImpactFlash(dst, colorB, 0.22f);
     }
 
     /// <summary>얇은 빔 페이드. Sniper 계열(화산/어둠/요새) 전용.</summary>

@@ -1,0 +1,2288 @@
+fileFormatVersion: 2
+guid: 53f2caeda136bca4c89d11abac983f2c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -979398909617310365
+    second: clean_red_arrow_effect_0
+  - first:
+      213: 6629175240280101021
+    second: clean_red_arrow_effect_1
+  - first:
+      213: -7446951748883095393
+    second: clean_red_arrow_effect_2
+  - first:
+      213: -130206073333436691
+    second: clean_red_arrow_effect_3
+  - first:
+      213: -2145079902931408524
+    second: clean_red_arrow_effect_4
+  - first:
+      213: 1037201229630180613
+    second: clean_red_arrow_effect_5
+  - first:
+      213: 6851475770470080152
+    second: clean_red_arrow_effect_6
+  - first:
+      213: -2293204930565257033
+    second: clean_red_arrow_effect_7
+  - first:
+      213: -8917763064403254830
+    second: clean_red_arrow_effect_8
+  - first:
+      213: -7163022697266961289
+    second: clean_red_arrow_effect_9
+  - first:
+      213: -5644942802336527897
+    second: clean_red_arrow_effect_10
+  - first:
+      213: -5965775221328161559
+    second: clean_red_arrow_effect_11
+  - first:
+      213: -5594963971182217044
+    second: clean_red_arrow_effect_12
+  - first:
+      213: 3983353200830221724
+    second: clean_red_arrow_effect_13
+  - first:
+      213: 873840607403614606
+    second: clean_red_arrow_effect_14
+  - first:
+      213: 2857562251880572353
+    second: clean_red_arrow_effect_15
+  - first:
+      213: -7224989669064823792
+    second: clean_red_arrow_effect_16
+  - first:
+      213: 5488193176429902551
+    second: clean_red_arrow_effect_17
+  - first:
+      213: 5491077207168330087
+    second: clean_red_arrow_effect_18
+  - first:
+      213: -4174380042170558671
+    second: clean_red_arrow_effect_19
+  - first:
+      213: -8591652893324384841
+    second: clean_red_arrow_effect_20
+  - first:
+      213: 8484724891606861020
+    second: clean_red_arrow_effect_21
+  - first:
+      213: 8008831367471068742
+    second: clean_red_arrow_effect_22
+  - first:
+      213: -2291166868406638001
+    second: clean_red_arrow_effect_23
+  - first:
+      213: -2182786162580041814
+    second: clean_red_arrow_effect_24
+  - first:
+      213: 9019596360318427878
+    second: clean_red_arrow_effect_25
+  - first:
+      213: -4535408020977126736
+    second: clean_red_arrow_effect_26
+  - first:
+      213: 6109639773052347055
+    second: clean_red_arrow_effect_27
+  - first:
+      213: -6949699699933286757
+    second: clean_red_arrow_effect_28
+  - first:
+      213: -5815503352033620894
+    second: clean_red_arrow_effect_29
+  - first:
+      213: 4756219306466146609
+    second: clean_red_arrow_effect_30
+  - first:
+      213: 1590540361750296335
+    second: clean_red_arrow_effect_31
+  - first:
+      213: 2908023106772035262
+    second: clean_red_arrow_effect_32
+  - first:
+      213: 1658259419209203791
+    second: clean_red_arrow_effect_33
+  - first:
+      213: 3957172440990764092
+    second: clean_red_arrow_effect_34
+  - first:
+      213: -7718393908195279636
+    second: clean_red_arrow_effect_35
+  - first:
+      213: -795530972463928002
+    second: clean_red_arrow_effect_36
+  - first:
+      213: -1226679131345019915
+    second: clean_red_arrow_effect_37
+  - first:
+      213: -1550780341161097322
+    second: clean_red_arrow_effect_38
+  - first:
+      213: -5478760370842871464
+    second: clean_red_arrow_effect_39
+  - first:
+      213: -2415606606216184653
+    second: clean_red_arrow_effect_40
+  - first:
+      213: -11952571500231914
+    second: clean_red_arrow_effect_41
+  - first:
+      213: -2162790704936863421
+    second: clean_red_arrow_effect_42
+  - first:
+      213: 4886847576985367701
+    second: clean_red_arrow_effect_43
+  - first:
+      213: -6773870455495852094
+    second: clean_red_arrow_effect_44
+  - first:
+      213: -1434561305839181830
+    second: clean_red_arrow_effect_45
+  - first:
+      213: 6337864978084849848
+    second: clean_red_arrow_effect_46
+  - first:
+      213: 3450548961731870316
+    second: clean_red_arrow_effect_47
+  - first:
+      213: -8504175024013005962
+    second: clean_red_arrow_effect_48
+  - first:
+      213: 8298990412482979151
+    second: clean_red_arrow_effect_49
+  - first:
+      213: 2234094130541418262
+    second: clean_red_arrow_effect_50
+  - first:
+      213: 3300488401435507555
+    second: clean_red_arrow_effect_51
+  - first:
+      213: 569348627010831622
+    second: clean_red_arrow_effect_52
+  - first:
+      213: -6652754135430504266
+    second: clean_red_arrow_effect_53
+  - first:
+      213: 8688091309714335291
+    second: clean_red_arrow_effect_54
+  - first:
+      213: -5025109476442190072
+    second: clean_red_arrow_effect_55
+  - first:
+      213: -7959783111105375178
+    second: clean_red_arrow_effect_56
+  - first:
+      213: 5000610821841332302
+    second: clean_red_arrow_effect_57
+  - first:
+      213: -4387996935353939793
+    second: clean_red_arrow_effect_58
+  - first:
+      213: 7506537248362661885
+    second: clean_red_arrow_effect_59
+  - first:
+      213: -6728514456821829905
+    second: clean_red_arrow_effect_60
+  - first:
+      213: -5125986645052275591
+    second: clean_red_arrow_effect_61
+  - first:
+      213: -6242667240329638902
+    second: clean_red_arrow_effect_62
+  - first:
+      213: -6378077658137376164
+    second: clean_red_arrow_effect_63
+  - first:
+      213: -5379444966980230079
+    second: clean_red_arrow_effect_64
+  - first:
+      213: -2566059115371115592
+    second: clean_red_arrow_effect_65
+  - first:
+      213: 1952194581969319952
+    second: clean_red_arrow_effect_66
+  - first:
+      213: -1148539777829266049
+    second: clean_red_arrow_effect_67
+  - first:
+      213: 6901422101127776614
+    second: clean_red_arrow_effect_68
+  - first:
+      213: 6232459973174797616
+    second: clean_red_arrow_effect_69
+  - first:
+      213: -5532014262161878933
+    second: clean_red_arrow_effect_70
+  - first:
+      213: 4569592746558472730
+    second: clean_red_arrow_effect_71
+  - first:
+      213: 2165857094262764070
+    second: clean_red_arrow_effect_72
+  - first:
+      213: 3497001659721580701
+    second: clean_red_arrow_effect_73
+  - first:
+      213: -6116825635286169506
+    second: clean_red_arrow_effect_74
+  - first:
+      213: -8140069912587103435
+    second: clean_red_arrow_effect_75
+  - first:
+      213: -4543379276665857370
+    second: clean_red_arrow_effect_76
+  - first:
+      213: -2653973205049771579
+    second: clean_red_arrow_effect_77
+  - first:
+      213: 1641017711744771710
+    second: clean_red_arrow_effect_78
+  - first:
+      213: 8525025958889696446
+    second: clean_red_arrow_effect_79
+  - first:
+      213: 625039320755848408
+    second: clean_red_arrow_effect_80
+  - first:
+      213: 5974267047024113499
+    second: clean_red_arrow_effect_81
+  - first:
+      213: -7002349909665661464
+    second: clean_red_arrow_effect_82
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_0
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 398
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 365fada71e97862f0800000000000000
+      internalID: -979398909617310365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_1
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 416
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d90d5b612cf8ffb50800000000000000
+      internalID: 6629175240280101021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_2
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 54
+        width: 357
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f90695c07dc17a890800000000000000
+      internalID: -7446951748883095393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_3
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 377
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deeac53244a613ef0800000000000000
+      internalID: -130206073333436691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_4
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 383
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479a1f281352b32e0800000000000000
+      internalID: -2145079902931408524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_5
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 374
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d84b4e501e46e00800000000000000
+      internalID: 1037201229630180613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_6
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 341
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e901e99e4551f50800000000000000
+      internalID: 6851475770470080152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_7
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 356
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8cb7cf346ec20e0800000000000000
+      internalID: -2293204930565257033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_8
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 55
+        width: 248
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d12523cdbdbd3480800000000000000
+      internalID: -8917763064403254830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_9
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 324
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774a753eec4d79c90800000000000000
+      internalID: -7163022697266961289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_10
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 316
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e94551fd6229a1b0800000000000000
+      internalID: -5644942802336527897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_11
+      rect:
+        serializedVersion: 2
+        x: 2449
+        y: 343
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e458e25b0f453da0800000000000000
+      internalID: -5965775221328161559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_12
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 99
+        width: 242
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8339e59e1ba52b0800000000000000
+      internalID: -5594963971182217044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_13
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 324
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9d8666a1a6b74730800000000000000
+      internalID: 3983353200830221724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_14
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 302
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81aa921761802c00800000000000000
+      internalID: 873840607403614606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_15
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 310
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c528e26ab918a720800000000000000
+      internalID: 2857562251880572353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_16
+      rect:
+        serializedVersion: 2
+        x: 2492
+        y: 329
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c2685fc2eabbb90800000000000000
+      internalID: -7224989669064823792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_17
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 302
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dab3d3cd9af92c40800000000000000
+      internalID: 5488193176429902551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_18
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 99
+        width: 178
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 769238f70a9343c40800000000000000
+      internalID: 5491077207168330087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_19
+      rect:
+        serializedVersion: 2
+        x: 2362
+        y: 294
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13791fce77f9116c0800000000000000
+      internalID: -4174380042170558671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_20
+      rect:
+        serializedVersion: 2
+        x: 2881
+        y: 285
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b561fbc63154c880800000000000000
+      internalID: -8591652893324384841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_21
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 157
+        width: 129
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd4442db55ccfb570800000000000000
+      internalID: 8484724891606861020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_22
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 256
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6467e1432b5152f60800000000000000
+      internalID: 8008831367471068742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_23
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 245
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a6a7f4fd32430e0800000000000000
+      internalID: -2291166868406638001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_24
+      rect:
+        serializedVersion: 2
+        x: 2122
+        y: 228
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf47cecc8f25b1e0800000000000000
+      internalID: -2182786162580041814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_25
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 280
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2af221a1b0c2d70800000000000000
+      internalID: 9019596360318427878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_26
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 274
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b2733e3f6efe01c0800000000000000
+      internalID: -4535408020977126736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_27
+      rect:
+        serializedVersion: 2
+        x: 2906
+        y: 273
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2226ad00dc9c450800000000000000
+      internalID: 6109639773052347055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_28
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 245
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9e66d9a1f4bd8f90800000000000000
+      internalID: -6949699699933286757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_29
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 191
+        width: 52
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c41ff538e2b4fa0800000000000000
+      internalID: -5815503352033620894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_30
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 245
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 139f4cb724c710240800000000000000
+      internalID: 4756219306466146609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_31
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 247
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f073c0f280cb21610800000000000000
+      internalID: 1590540361750296335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_32
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 245
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb666c5bb9f5b5820800000000000000
+      internalID: 2908023106772035262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_33
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 245
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40096be722530710800000000000000
+      internalID: 1658259419209203791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_34
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 246
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c483c7e53bae630800000000000000
+      internalID: 3957172440990764092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_35
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 238
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec3b7162a1c2e490800000000000000
+      internalID: -7718393908195279636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_36
+      rect:
+        serializedVersion: 2
+        x: 2797
+        y: 220
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d6772abc4b5f4f0800000000000000
+      internalID: -795530972463928002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_37
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 157
+        width: 85
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb9bca44d5f9fee0800000000000000
+      internalID: -1226679131345019915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_38
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 228
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6970f600f758a7ae0800000000000000
+      internalID: -1550780341161097322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_39
+      rect:
+        serializedVersion: 2
+        x: 3333
+        y: 239
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8595c6e687887f3b0800000000000000
+      internalID: -5478760370842871464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_40
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 220
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bcb56f079a0a7ed0800000000000000
+      internalID: -2415606606216184653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_41
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 219
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6138395133985dff0800000000000000
+      internalID: -11952571500231914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_42
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 219
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349b8b410593cf1e0800000000000000
+      internalID: -2162790704936863421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_43
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 220
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594f0b9caf191d340800000000000000
+      internalID: 4886847576985367701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_44
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 212
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cff7a1d5b06ef1a0800000000000000
+      internalID: -6773870455495852094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_45
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 212
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff5fecc71a671ce0800000000000000
+      internalID: -1434561305839181830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_46
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 212
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b8e22d3e9e94f750800000000000000
+      internalID: 6337864978084849848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_47
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 212
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6efe18bfffc2ef20800000000000000
+      internalID: 3450548961731870316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_48
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 220
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67ba4f96fd91bf980800000000000000
+      internalID: -8504175024013005962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_49
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 220
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45ab6a6fcfeb2370800000000000000
+      internalID: 8298990412482979151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_50
+      rect:
+        serializedVersion: 2
+        x: 2932
+        y: 219
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617d4b566c8110f10800000000000000
+      internalID: 2234094130541418262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_51
+      rect:
+        serializedVersion: 2
+        x: 2953
+        y: 212
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36b3cd0e6b0bdcd20800000000000000
+      internalID: 3300488401435507555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_52
+      rect:
+        serializedVersion: 2
+        x: 2538
+        y: 210
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 605465a4f8bb6e700800000000000000
+      internalID: 569348627010831622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_53
+      rect:
+        serializedVersion: 2
+        x: 3286
+        y: 174
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b067a39c5baca3a0800000000000000
+      internalID: -6652754135430504266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_54
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 182
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b366ea3c30d429870800000000000000
+      internalID: 8688091309714335291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_55
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 180
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80fc63b2e89334ab0800000000000000
+      internalID: -5025109476442190072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_56
+      rect:
+        serializedVersion: 2
+        x: 1854
+        y: 157
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6341965ee6b298190800000000000000
+      internalID: -7959783111105375178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_57
+      rect:
+        serializedVersion: 2
+        x: 2137
+        y: 163
+        width: 44
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e48a3df4c0db56540800000000000000
+      internalID: 5000610821841332302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_58
+      rect:
+        serializedVersion: 2
+        x: 3256
+        y: 164
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa8c9b03904ba13c0800000000000000
+      internalID: -4387996935353939793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_59
+      rect:
+        serializedVersion: 2
+        x: 3350
+        y: 164
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df705e52bd39c2860800000000000000
+      internalID: 7506537248362661885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_60
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 163
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feeed0f20c38f92a0800000000000000
+      internalID: -6728514456821829905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_61
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 146
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97443421e46dcd8b0800000000000000
+      internalID: -5125986645052275591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_62
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 157
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c0f2158379d59a0800000000000000
+      internalID: -6242667240329638902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_63
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 157
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5acdd499248c77a0800000000000000
+      internalID: -6378077658137376164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_64
+      rect:
+        serializedVersion: 2
+        x: 2564
+        y: 157
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1446166dd4f5855b0800000000000000
+      internalID: -5379444966980230079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_65
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 156
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bbc6a384d6836cd0800000000000000
+      internalID: -2566059115371115592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_66
+      rect:
+        serializedVersion: 2
+        x: 3293
+        y: 148
+        width: 12
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01839be01a6971b10800000000000000
+      internalID: 1952194581969319952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_67
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 136
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d941448219f00f0800000000000000
+      internalID: -1148539777829266049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_68
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 136
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66940cee5d6c6cf50800000000000000
+      internalID: 6901422101127776614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_69
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 136
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035ace913552e7650800000000000000
+      internalID: 6232459973174797616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_70
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 146
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b605273a6565a33b0800000000000000
+      internalID: -5532014262161878933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_71
+      rect:
+        serializedVersion: 2
+        x: 2347
+        y: 136
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a12c1da64647a6f30800000000000000
+      internalID: 4569592746558472730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_72
+      rect:
+        serializedVersion: 2
+        x: 2822
+        y: 136
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622bac15d8bae0e10800000000000000
+      internalID: 2165857094262764070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_73
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 101
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9008aa4b78d78030800000000000000
+      internalID: 3497001659721580701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_74
+      rect:
+        serializedVersion: 2
+        x: 2885
+        y: 118
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e58c3c73e7bac1ba0800000000000000
+      internalID: -6116825635286169506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_75
+      rect:
+        serializedVersion: 2
+        x: 2899
+        y: 131
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 533966dda89a80f80800000000000000
+      internalID: -8140069912587103435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_76
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 117
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aad576ae9ca2f0c0800000000000000
+      internalID: -4543379276665857370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_77
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 88
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c97a9d6e613b2bd0800000000000000
+      internalID: -2653973205049771579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_78
+      rect:
+        serializedVersion: 2
+        x: 2445
+        y: 92
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e76eba21ae016c610800000000000000
+      internalID: 1641017711744771710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_79
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 41
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebcaa9c21f9fe4670800000000000000
+      internalID: 8525025958889696446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_80
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 41
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d4cd4c53f59ca800800000000000000
+      internalID: 625039320755848408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_81
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 50
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b57b13be93cd8e250800000000000000
+      internalID: 5974267047024113499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_red_arrow_effect_82
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 25
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8edb3617bd7a2de90800000000000000
+      internalID: -7002349909665661464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      clean_red_arrow_effect_0: -979398909617310365
+      clean_red_arrow_effect_1: 6629175240280101021
+      clean_red_arrow_effect_10: -5644942802336527897
+      clean_red_arrow_effect_11: -5965775221328161559
+      clean_red_arrow_effect_12: -5594963971182217044
+      clean_red_arrow_effect_13: 3983353200830221724
+      clean_red_arrow_effect_14: 873840607403614606
+      clean_red_arrow_effect_15: 2857562251880572353
+      clean_red_arrow_effect_16: -7224989669064823792
+      clean_red_arrow_effect_17: 5488193176429902551
+      clean_red_arrow_effect_18: 5491077207168330087
+      clean_red_arrow_effect_19: -4174380042170558671
+      clean_red_arrow_effect_2: -7446951748883095393
+      clean_red_arrow_effect_20: -8591652893324384841
+      clean_red_arrow_effect_21: 8484724891606861020
+      clean_red_arrow_effect_22: 8008831367471068742
+      clean_red_arrow_effect_23: -2291166868406638001
+      clean_red_arrow_effect_24: -2182786162580041814
+      clean_red_arrow_effect_25: 9019596360318427878
+      clean_red_arrow_effect_26: -4535408020977126736
+      clean_red_arrow_effect_27: 6109639773052347055
+      clean_red_arrow_effect_28: -6949699699933286757
+      clean_red_arrow_effect_29: -5815503352033620894
+      clean_red_arrow_effect_3: -130206073333436691
+      clean_red_arrow_effect_30: 4756219306466146609
+      clean_red_arrow_effect_31: 1590540361750296335
+      clean_red_arrow_effect_32: 2908023106772035262
+      clean_red_arrow_effect_33: 1658259419209203791
+      clean_red_arrow_effect_34: 3957172440990764092
+      clean_red_arrow_effect_35: -7718393908195279636
+      clean_red_arrow_effect_36: -795530972463928002
+      clean_red_arrow_effect_37: -1226679131345019915
+      clean_red_arrow_effect_38: -1550780341161097322
+      clean_red_arrow_effect_39: -5478760370842871464
+      clean_red_arrow_effect_4: -2145079902931408524
+      clean_red_arrow_effect_40: -2415606606216184653
+      clean_red_arrow_effect_41: -11952571500231914
+      clean_red_arrow_effect_42: -2162790704936863421
+      clean_red_arrow_effect_43: 4886847576985367701
+      clean_red_arrow_effect_44: -6773870455495852094
+      clean_red_arrow_effect_45: -1434561305839181830
+      clean_red_arrow_effect_46: 6337864978084849848
+      clean_red_arrow_effect_47: 3450548961731870316
+      clean_red_arrow_effect_48: -8504175024013005962
+      clean_red_arrow_effect_49: 8298990412482979151
+      clean_red_arrow_effect_5: 1037201229630180613
+      clean_red_arrow_effect_50: 2234094130541418262
+      clean_red_arrow_effect_51: 3300488401435507555
+      clean_red_arrow_effect_52: 569348627010831622
+      clean_red_arrow_effect_53: -6652754135430504266
+      clean_red_arrow_effect_54: 8688091309714335291
+      clean_red_arrow_effect_55: -5025109476442190072
+      clean_red_arrow_effect_56: -7959783111105375178
+      clean_red_arrow_effect_57: 5000610821841332302
+      clean_red_arrow_effect_58: -4387996935353939793
+      clean_red_arrow_effect_59: 7506537248362661885
+      clean_red_arrow_effect_6: 6851475770470080152
+      clean_red_arrow_effect_60: -6728514456821829905
+      clean_red_arrow_effect_61: -5125986645052275591
+      clean_red_arrow_effect_62: -6242667240329638902
+      clean_red_arrow_effect_63: -6378077658137376164
+      clean_red_arrow_effect_64: -5379444966980230079
+      clean_red_arrow_effect_65: -2566059115371115592
+      clean_red_arrow_effect_66: 1952194581969319952
+      clean_red_arrow_effect_67: -1148539777829266049
+      clean_red_arrow_effect_68: 6901422101127776614
+      clean_red_arrow_effect_69: 6232459973174797616
+      clean_red_arrow_effect_7: -2293204930565257033
+      clean_red_arrow_effect_70: -5532014262161878933
+      clean_red_arrow_effect_71: 4569592746558472730
+      clean_red_arrow_effect_72: 2165857094262764070
+      clean_red_arrow_effect_73: 3497001659721580701
+      clean_red_arrow_effect_74: -6116825635286169506
+      clean_red_arrow_effect_75: -8140069912587103435
+      clean_red_arrow_effect_76: -4543379276665857370
+      clean_red_arrow_effect_77: -2653973205049771579
+      clean_red_arrow_effect_78: 1641017711744771710
+      clean_red_arrow_effect_79: 8525025958889696446
+      clean_red_arrow_effect_8: -8917763064403254830
+      clean_red_arrow_effect_80: 625039320755848408
+      clean_red_arrow_effect_81: 5974267047024113499
+      clean_red_arrow_effect_82: -7002349909665661464
+      clean_red_arrow_effect_9: -7163022697266961289
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

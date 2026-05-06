@@ -31,7 +31,7 @@ public class GrassSniper : SheetEnemyBase
     {
         yield return StartCoroutine(ProjectileEffect(target,
             new Color(0.25f, 0.75f, 0.10f), 17f,
-            new Color(0.40f, 0.95f, 0.20f)));
+            new Color(0.40f, 0.95f, 0.20f), "clean_green_arrow_effect"));
     }
 }
 
@@ -61,7 +61,7 @@ public class GrassSpearman : SheetEnemyBase
     {
         yield return StartCoroutine(OrbProjectileEffect(target,
             new Color(0.55f, 0.78f, 0.20f), 18f,
-            new Color(0.60f, 0.95f, 0.25f), 0.34f));
+            new Color(0.60f, 0.95f, 0.25f), 0.34f, "clean_green_arrow_effect"));
     }
 }
 
@@ -90,7 +90,7 @@ public class GrassBrawler : SheetEnemyBase
     {
         yield return StartCoroutine(ParticleSprayEffect(target,
             new Color(0.08f, 0.60f, 0.08f),
-            new Color(0.60f, 0.95f, 0.15f), 12, 0.36f, 32f));
+            new Color(0.60f, 0.95f, 0.15f), 12, 0.36f, 32f, "clean_axe_effect"));
     }
 }
 
@@ -124,7 +124,7 @@ public class DesertSniper : SheetEnemyBase
     {
         yield return StartCoroutine(ProjectileEffect(target,
             new Color(0.85f, 0.80f, 0.20f), 15f,
-            new Color(0.75f, 0.90f, 0.10f)));
+            new Color(0.75f, 0.90f, 0.10f), "clean_green_arrow_effect"));
     }
 }
 
@@ -183,7 +183,7 @@ public class DesertBrawler : SheetEnemyBase
     {
         yield return StartCoroutine(ParticleSprayEffect(target,
             new Color(0.82f, 0.65f, 0.22f),
-            new Color(0.95f, 0.88f, 0.55f), 12, 0.36f, 38f));
+            new Color(0.95f, 0.88f, 0.55f), 12, 0.36f, 38f, "clean_pickaxe_effect"));
     }
 }
 
@@ -217,7 +217,7 @@ public class VolcanoSniper : SheetEnemyBase
     {
         yield return StartCoroutine(ProjectileEffect(target,
             new Color(1.00f, 0.28f, 0.05f), 17f,
-            new Color(1.00f, 0.40f, 0.05f)));
+            new Color(1.00f, 0.40f, 0.05f), "clean_red_arrow_effect"));
     }
 }
 
@@ -276,7 +276,7 @@ public class VolcanoBrawler : SheetEnemyBase
     {
         yield return StartCoroutine(ParticleSprayEffect(target,
             new Color(0.90f, 0.25f, 0.02f),
-            new Color(1.00f, 0.60f, 0.10f), 14, 0.40f, 35f));
+            new Color(1.00f, 0.60f, 0.10f), 14, 0.40f, 35f, "clean_axe_effect"));
     }
 }
 

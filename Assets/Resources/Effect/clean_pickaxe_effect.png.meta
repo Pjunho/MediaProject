@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: 66400684ad5cdf34aabf0cf548844f3f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3443146443134912797
+    second: clean_pickaxe_effect_0
+  - first:
+      213: 2316957721298041076
+    second: clean_pickaxe_effect_1
+  - first:
+      213: -7101657403417145378
+    second: clean_pickaxe_effect_2
+  - first:
+      213: 2177931868136801756
+    second: clean_pickaxe_effect_3
+  - first:
+      213: 3559213844273766666
+    second: clean_pickaxe_effect_4
+  - first:
+      213: 1895383863808420891
+    second: clean_pickaxe_effect_5
+  - first:
+      213: 4104814569172984544
+    second: clean_pickaxe_effect_6
+  - first:
+      213: 7330727630679137341
+    second: clean_pickaxe_effect_7
+  - first:
+      213: -3341011795378416536
+    second: clean_pickaxe_effect_8
+  - first:
+      213: -6685475623462513174
+    second: clean_pickaxe_effect_9
+  - first:
+      213: 8750905455624000625
+    second: clean_pickaxe_effect_10
+  - first:
+      213: 7244253355261989031
+    second: clean_pickaxe_effect_11
+  - first:
+      213: 586678546782012911
+    second: clean_pickaxe_effect_12
+  - first:
+      213: -9022360322717094136
+    second: clean_pickaxe_effect_13
+  - first:
+      213: -4640857748129806653
+    second: clean_pickaxe_effect_14
+  - first:
+      213: 7822541256730082624
+    second: clean_pickaxe_effect_15
+  - first:
+      213: 7764824257472213887
+    second: clean_pickaxe_effect_16
+  - first:
+      213: -3263734198237407966
+    second: clean_pickaxe_effect_17
+  - first:
+      213: -1918534944049415755
+    second: clean_pickaxe_effect_18
+  - first:
+      213: -869092986564940586
+    second: clean_pickaxe_effect_19
+  - first:
+      213: 5253964616977319100
+    second: clean_pickaxe_effect_20
+  - first:
+      213: -6595982737276523339
+    second: clean_pickaxe_effect_21
+  - first:
+      213: 410730632433617508
+    second: clean_pickaxe_effect_22
+  - first:
+      213: -7334157809594231434
+    second: clean_pickaxe_effect_23
+  - first:
+      213: -6063083208305594416
+    second: clean_pickaxe_effect_24
+  - first:
+      213: -94698454810512149
+    second: clean_pickaxe_effect_25
+  - first:
+      213: 6258113847407299123
+    second: clean_pickaxe_effect_26
+  - first:
+      213: -1649022594355079697
+    second: clean_pickaxe_effect_27
+  - first:
+      213: 2403737797631857581
+    second: clean_pickaxe_effect_28
+  - first:
+      213: 4559043584935830311
+    second: clean_pickaxe_effect_29
+  - first:
+      213: 3233395065723761619
+    second: clean_pickaxe_effect_30
+  - first:
+      213: 7216787698452354569
+    second: clean_pickaxe_effect_31
+  - first:
+      213: -2272451140187852560
+    second: clean_pickaxe_effect_32
+  - first:
+      213: 6413271122066367464
+    second: clean_pickaxe_effect_33
+  - first:
+      213: -2262996782470508085
+    second: clean_pickaxe_effect_34
+  - first:
+      213: -3985143414467224629
+    second: clean_pickaxe_effect_35
+  - first:
+      213: -2095007207189675274
+    second: clean_pickaxe_effect_36
+  - first:
+      213: -1789161186438278695
+    second: clean_pickaxe_effect_37
+  - first:
+      213: -3681607963645312901
+    second: clean_pickaxe_effect_38
+  - first:
+      213: 469819994128352566
+    second: clean_pickaxe_effect_39
+  - first:
+      213: 924446572138989511
+    second: clean_pickaxe_effect_40
+  - first:
+      213: 1852255196098797827
+    second: clean_pickaxe_effect_41
+  - first:
+      213: 2401800949538588596
+    second: clean_pickaxe_effect_42
+  - first:
+      213: -7205392739504083484
+    second: clean_pickaxe_effect_43
+  - first:
+      213: 9220703824637186835
+    second: clean_pickaxe_effect_44
+  - first:
+      213: -7115178176181652898
+    second: clean_pickaxe_effect_45
+  - first:
+      213: 8296653096481765261
+    second: clean_pickaxe_effect_46
+  - first:
+      213: -1818246631001060997
+    second: clean_pickaxe_effect_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_0
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 562
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e63b437d8c7730d0800000000000000
+      internalID: -3443146443134912797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_1
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 443
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f8719195cc772020800000000000000
+      internalID: 2316957721298041076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_2
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 456
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf4cc0c738d17d90800000000000000
+      internalID: -7101657403417145378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_3
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 192
+        width: 254
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd50c41be71993e10800000000000000
+      internalID: 2177931868136801756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_4
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 441
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a012793422ed46130800000000000000
+      internalID: 3559213844273766666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_5
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 424
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1cee4bf491cd4a10800000000000000
+      internalID: 1895383863808420891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_6
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 425
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e267683a1b37f830800000000000000
+      internalID: 4104814569172984544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_7
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 424
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c55c3b0f9fbb560800000000000000
+      internalID: 7330727630679137341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_8
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 424
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 864541a397752a1d0800000000000000
+      internalID: -3341011795378416536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_9
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 422
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae5dbf4775b6833a0800000000000000
+      internalID: -6685475623462513174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_10
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 408
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1741f79c526717970800000000000000
+      internalID: 8750905455624000625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_11
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 396
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0925f7b02c88460800000000000000
+      internalID: 7244253355261989031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_12
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 192
+        width: 252
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5c84aa70d442800800000000000000
+      internalID: 586678546782012911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_13
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 415
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f6ed8c6132ac280800000000000000
+      internalID: -9022360322717094136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_14
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 408
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c68a95677c589fb0800000000000000
+      internalID: -4640857748129806653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_15
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 404
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04dfb30d3df3f8c60800000000000000
+      internalID: 7822541256730082624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_16
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 399
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73b7f9b58232cb60800000000000000
+      internalID: 7764824257472213887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_17
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 192
+        width: 253
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 225d3c8e903e4b2d0800000000000000
+      internalID: -3263734198237407966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_18
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 391
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9b2ca12aeff55e0800000000000000
+      internalID: -1918534944049415755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_19
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 378
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc630b888c50f3f0800000000000000
+      internalID: -869092986564940586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_20
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 200
+        width: 149
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb487618bf4d9e840800000000000000
+      internalID: 5253964616977319100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_21
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 337
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc2600c5ac5674a0800000000000000
+      internalID: -6595982737276523339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_22
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 340
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ac394855533b500800000000000000
+      internalID: 410730632433617508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_23
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 344
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6759a788456d73a90800000000000000
+      internalID: -7334157809594231434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_24
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 353
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df2f4512f99bdba0800000000000000
+      internalID: -6063083208305594416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_25
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 346
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4bd30d1409faef0800000000000000
+      internalID: -94698454810512149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_26
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 330
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33a4aa6236949d650800000000000000
+      internalID: 6258113847407299123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_27
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 343
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe55fd4ffae7d19e0800000000000000
+      internalID: -1649022594355079697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_28
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 195
+        width: 223
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3d6099acacb5120800000000000000
+      internalID: 2403737797631857581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_29
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 195
+        width: 218
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 723af935cf9f44f30800000000000000
+      internalID: 4559043584935830311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_30
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 321
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d337f65ea35fdc20800000000000000
+      internalID: 3233395065723761619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_31
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 304
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90659a1fc2e272460800000000000000
+      internalID: 7216787698452354569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_32
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 288
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0fbab5ab1a670e0800000000000000
+      internalID: -2272451140187852560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_33
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 279
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e369074b14800950800000000000000
+      internalID: 6413271122066367464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_34
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 272
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc15efc8a683890e0800000000000000
+      internalID: -2262996782470508085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_35
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 197
+        width: 163
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb91b1cd2de1b8c0800000000000000
+      internalID: -3985143414467224629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_36
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 238
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2839d7b0a0de2e0800000000000000
+      internalID: -2095007207189675274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_37
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d11e6c516f9b27e0800000000000000
+      internalID: -1789161186438278695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_38
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 234
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b700ca4201d48ecc0800000000000000
+      internalID: -3681607963645312901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_39
+      rect:
+        serializedVersion: 2
+        x: 2041
+        y: 224
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6358562abc2258600800000000000000
+      internalID: 469819994128352566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_40
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 220
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c70c2a624b44dc00800000000000000
+      internalID: 924446572138989511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_41
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 199
+        width: 104
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30127d4894884b910800000000000000
+      internalID: 1852255196098797827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_42
+      rect:
+        serializedVersion: 2
+        x: 2001
+        y: 212
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b781720d39e45120800000000000000
+      internalID: 2401800949538588596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_43
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 212
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed2eaeaa7d410c90800000000000000
+      internalID: -7205392739504083484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_44
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 212
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313d59e664586ff70800000000000000
+      internalID: 9220703824637186835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_45
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 208
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52b417852fc14d90800000000000000
+      internalID: -7115178176181652898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_46
+      rect:
+        serializedVersion: 2
+        x: 2072
+        y: 201
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87b070a802a32370800000000000000
+      internalID: 8296653096481765261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_pickaxe_effect_47
+      rect:
+        serializedVersion: 2
+        x: 2098
+        y: 208
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b798125925a44c6e0800000000000000
+      internalID: -1818246631001060997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      clean_pickaxe_effect_0: -3443146443134912797
+      clean_pickaxe_effect_1: 2316957721298041076
+      clean_pickaxe_effect_10: 8750905455624000625
+      clean_pickaxe_effect_11: 7244253355261989031
+      clean_pickaxe_effect_12: 586678546782012911
+      clean_pickaxe_effect_13: -9022360322717094136
+      clean_pickaxe_effect_14: -4640857748129806653
+      clean_pickaxe_effect_15: 7822541256730082624
+      clean_pickaxe_effect_16: 7764824257472213887
+      clean_pickaxe_effect_17: -3263734198237407966
+      clean_pickaxe_effect_18: -1918534944049415755
+      clean_pickaxe_effect_19: -869092986564940586
+      clean_pickaxe_effect_2: -7101657403417145378
+      clean_pickaxe_effect_20: 5253964616977319100
+      clean_pickaxe_effect_21: -6595982737276523339
+      clean_pickaxe_effect_22: 410730632433617508
+      clean_pickaxe_effect_23: -7334157809594231434
+      clean_pickaxe_effect_24: -6063083208305594416
+      clean_pickaxe_effect_25: -94698454810512149
+      clean_pickaxe_effect_26: 6258113847407299123
+      clean_pickaxe_effect_27: -1649022594355079697
+      clean_pickaxe_effect_28: 2403737797631857581
+      clean_pickaxe_effect_29: 4559043584935830311
+      clean_pickaxe_effect_3: 2177931868136801756
+      clean_pickaxe_effect_30: 3233395065723761619
+      clean_pickaxe_effect_31: 7216787698452354569
+      clean_pickaxe_effect_32: -2272451140187852560
+      clean_pickaxe_effect_33: 6413271122066367464
+      clean_pickaxe_effect_34: -2262996782470508085
+      clean_pickaxe_effect_35: -3985143414467224629
+      clean_pickaxe_effect_36: -2095007207189675274
+      clean_pickaxe_effect_37: -1789161186438278695
+      clean_pickaxe_effect_38: -3681607963645312901
+      clean_pickaxe_effect_39: 469819994128352566
+      clean_pickaxe_effect_4: 3559213844273766666
+      clean_pickaxe_effect_40: 924446572138989511
+      clean_pickaxe_effect_41: 1852255196098797827
+      clean_pickaxe_effect_42: 2401800949538588596
+      clean_pickaxe_effect_43: -7205392739504083484
+      clean_pickaxe_effect_44: 9220703824637186835
+      clean_pickaxe_effect_45: -7115178176181652898
+      clean_pickaxe_effect_46: 8296653096481765261
+      clean_pickaxe_effect_47: -1818246631001060997
+      clean_pickaxe_effect_5: 1895383863808420891
+      clean_pickaxe_effect_6: 4104814569172984544
+      clean_pickaxe_effect_7: 7330727630679137341
+      clean_pickaxe_effect_8: -3341011795378416536
+      clean_pickaxe_effect_9: -6685475623462513174
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
