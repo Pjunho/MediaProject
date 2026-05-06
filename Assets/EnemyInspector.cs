@@ -14,6 +14,9 @@ public class EnemyInspector : MonoBehaviour
     private Text titleText;
     private Text bodyText;
     private EnemyBase selectedEnemy;
+    private EnemyBase pressedEnemy;
+    private bool pressedEmptyWorld;
+    private bool pressedBlockingUi;
     readonly List<RaycastResult> uiHits = new();
 
     static readonly Color COL_PANEL = new Color(0.05f, 0.06f, 0.10f, 0.92f);
@@ -69,11 +72,29 @@ public class EnemyInspector : MonoBehaviour
 
         if (mouse.leftButton.wasPressedThisFrame)
         {
-            if (IsPointerOverBlockingUi(screenPos)) return;
+            pressedBlockingUi = IsPointerOverBlockingUi(screenPos);
+            pressedEnemy = null;
+            pressedEmptyWorld = false;
+            if (pressedBlockingUi) return;
 
-            var hitEnemy = FindEnemyAtScreenPosition(screenPos);
-            if (hitEnemy != null) SelectEnemy(hitEnemy);
-            else HideSelection();
+            pressedEnemy = FindEnemyAtScreenPosition(screenPos);
+            pressedEmptyWorld = pressedEnemy == null;
+        }
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+        {
+            if (!pressedBlockingUi && !IsPointerOverBlockingUi(screenPos))
+            {
+                var releaseEnemy = FindEnemyAtScreenPosition(screenPos);
+                if (pressedEnemy != null && releaseEnemy == pressedEnemy)
+                    SelectEnemy(pressedEnemy);
+                else if (pressedEmptyWorld && releaseEnemy == null)
+                    HideSelection();
+            }
+
+            pressedEnemy = null;
+            pressedEmptyWorld = false;
+            pressedBlockingUi = false;
         }
 
         if (selectedEnemy == null || !selectedEnemy.gameObject.activeInHierarchy)

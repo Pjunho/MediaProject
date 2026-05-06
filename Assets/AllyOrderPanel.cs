@@ -73,6 +73,8 @@ public class AllyOrderPanel : MonoBehaviour
     private float         dragStartY;          // 드래그 시작 카드 Y (캔버스)
     private int           pressedCard = -1;
     private bool          dragMoved;
+    enum PressAction { None, Toggle, Skill, HpUpgrade, SpeedUpgrade }
+    private PressAction   pressedAction = PressAction.None;
 
     // ── 색상 ─────────────────────────────────────────────────────────────
     static readonly Color COL_PANEL   = new Color(0.05f, 0.06f, 0.12f, 0.90f);
@@ -468,7 +470,15 @@ public class AllyOrderPanel : MonoBehaviour
 
         if (mouse.leftButton.wasPressedThisFrame && IsOverToggleButton(mp))
         {
-            ToggleCollapsed();
+            pressedAction = PressAction.Toggle;
+            return;
+        }
+
+        if (mouse.leftButton.wasReleasedThisFrame && pressedAction == PressAction.Toggle)
+        {
+            if (IsOverToggleButton(mp))
+                ToggleCollapsed();
+            pressedAction = PressAction.None;
             return;
         }
 
@@ -476,9 +486,20 @@ public class AllyOrderPanel : MonoBehaviour
 
         if (!isCollapsed && mouse.leftButton.wasPressedThisFrame)
         {
-            if (TryHandleUpgrade(mp))    return;
-            if (TryHandleSkillUnlock(mp)) return;
+            pressedAction = GetPressActionAt(mp);
+            if (pressedAction != PressAction.None)
+                return;
+
             TryBeginDrag(mp);
+        }
+
+        if (!isCollapsed && mouse.leftButton.wasReleasedThisFrame && pressedAction != PressAction.None)
+        {
+            var releaseAction = GetPressActionAt(mp);
+            if (releaseAction == pressedAction)
+                ExecutePressAction(releaseAction, mp);
+            pressedAction = PressAction.None;
+            return;
         }
 
         if (draggingCard >= 0)
@@ -527,6 +548,40 @@ public class AllyOrderPanel : MonoBehaviour
             RefreshDetailPanel();
 
         return true;
+    }
+
+    PressAction GetPressActionAt(Vector2 screenPos)
+    {
+        if (detailExpanded && !isCollapsed)
+        {
+            if (detailSkillBtnRt != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(detailSkillBtnRt, screenPos, null))
+                return PressAction.Skill;
+
+            if (detailHpUpgradeBtnRt != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(detailHpUpgradeBtnRt, screenPos, null))
+                return PressAction.HpUpgrade;
+
+            if (detailSpeedUpgradeBtnRt != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(detailSpeedUpgradeBtnRt, screenPos, null))
+                return PressAction.SpeedUpgrade;
+        }
+
+        return PressAction.None;
+    }
+
+    void ExecutePressAction(PressAction action, Vector2 screenPos)
+    {
+        switch (action)
+        {
+            case PressAction.Skill:
+                TryHandleSkillUnlock(screenPos);
+                break;
+            case PressAction.HpUpgrade:
+            case PressAction.SpeedUpgrade:
+                TryHandleUpgrade(screenPos);
+                break;
+        }
     }
 
     bool TryHandleUpgrade(Vector2 screenPos)

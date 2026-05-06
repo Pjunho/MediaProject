@@ -71,6 +71,7 @@ public static class SkillSystem
     static readonly bool[] unlockedSkills = new bool[6];
     static AllyBase  pendingArcher;
     static EnemyBase pendingMouseDownEnemy;   // 마우스 누름 시 대상으로 지정한 적
+    static bool      pendingMouseDownStarted;
     static float previousTimeScale = 1f;
     static int targetingStartFrame = -1;
     static GameObject archerAimVisualRoot;
@@ -210,16 +211,8 @@ public static class SkillSystem
         // ── 마우스 버튼 눌림: 대상 예약 ─────────────────────────────────
         if (mouse.leftButton.wasPressedThisFrame && Time.frameCount != targetingStartFrame)
         {
-            EnemyBase under = FindEnemyAtScreenPosition(screenPos);
-            if (under == null)
-            {
-                GameManager.Instance?.ShowToast("마비시킬 적을 클릭하세요!", new Color(1f, 0.65f, 0.25f));
-                pendingMouseDownEnemy = null;
-            }
-            else
-            {
-                pendingMouseDownEnemy = under;
-            }
+            pendingMouseDownStarted = true;
+            pendingMouseDownEnemy = FindEnemyAtScreenPosition(screenPos);
             return true;
         }
 
@@ -228,8 +221,17 @@ public static class SkillSystem
         {
             EnemyBase downEnemy = pendingMouseDownEnemy;
             pendingMouseDownEnemy = null;
+            bool hadMouseDown = pendingMouseDownStarted;
+            pendingMouseDownStarted = false;
 
-            if (downEnemy == null) return true; // 적 없이 눌렀다 뗀 경우
+            if (!hadMouseDown) return true;
+
+            if (downEnemy == null)
+            {
+                if (FindEnemyAtScreenPosition(screenPos) == null)
+                    GameManager.Instance?.ShowToast("마비시킬 적을 클릭하세요!", new Color(1f, 0.65f, 0.25f));
+                return true;
+            }
 
             EnemyBase upEnemy = FindEnemyAtScreenPosition(screenPos);
             if (upEnemy == null || upEnemy != downEnemy)
@@ -270,6 +272,7 @@ public static class SkillSystem
         ClearArcherAimVisual();
         pendingArcher = null;
         pendingMouseDownEnemy = null;
+        pendingMouseDownStarted = false;
         targetingStartFrame = -1;
         Time.timeScale = previousTimeScale;
     }

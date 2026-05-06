@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
     RectTransform volumeSliderFillRt;
     RectTransform volumeSliderHandleRt;
     bool volumeSliderDragging;
+    int pressedButtonIndex = -1;
     readonly System.Collections.Generic.Dictionary<int, Sprite> gemSpriteCache = new();
     readonly System.Collections.Generic.Dictionary<int, Sprite> lockedGemSpriteCache = new();
 
@@ -85,6 +86,7 @@ public class MainMenu : MonoBehaviour
         if (HandleVolumeSlider(mp, mouse))
             return;
 
+        int hoveredButtonIndex = -1;
         for (int i = btns.Count - 1; i >= 0; i--)
         {
             var b = btns[i];
@@ -93,10 +95,25 @@ public class MainMenu : MonoBehaviour
             if (!RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null)) continue;
 
             b.fill.color = b.hover;
-            if (mouse.leftButton.wasPressedThisFrame)
-                b.action?.Invoke();
+            hoveredButtonIndex = i;
 
-            return;
+            break;
+        }
+
+        if (mouse.leftButton.wasPressedThisFrame)
+            pressedButtonIndex = hoveredButtonIndex;
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+        {
+            if (pressedButtonIndex >= 0 &&
+                pressedButtonIndex == hoveredButtonIndex &&
+                pressedButtonIndex < btns.Count)
+            {
+                var b = btns[pressedButtonIndex];
+                if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInActiveInputLayer(b.rt))
+                    b.action?.Invoke();
+            }
+            pressedButtonIndex = -1;
         }
     }
 
@@ -121,7 +138,10 @@ public class MainMenu : MonoBehaviour
             RectTransformUtility.RectangleContainsScreenPoint(volumeSliderHandleRt, mousePos, null);
         bool over = overTrack || overHandle;
         if (over && mouse.leftButton.wasPressedThisFrame)
+        {
             volumeSliderDragging = true;
+            pressedButtonIndex = -1;
+        }
 
         if (mouse.leftButton.wasReleasedThisFrame)
             volumeSliderDragging = false;

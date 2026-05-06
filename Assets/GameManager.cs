@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     private int        gemTabIndex       = 0;   // 0=보석, 1=아이템
     private int        gemTabGemsBtnIdx  = -1;  // btns 리스트 인덱스
     private int        gemTabItemsBtnIdx = -1;
+    private int        pressedButtonIndex = -1;
+    private bool       pressedWorldDeploy;
+    private bool       pressedGemPanelOutside;
 
     // ── 토스트 알림 ──────────────────────────────────────────────────────
     private GameObject toastGo;
@@ -231,8 +234,10 @@ public class GameManager : MonoBehaviour
         bool gemPanelWasOpen = gemPanelOpen;
 
         bool anyBtnClicked = false;
-        foreach (var b in btns)
+        int hoveredButtonIndex = -1;
+        for (int i = 0; i < btns.Count; i++)
         {
+            var b = btns[i];
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
             bool gemUiButton = IsGemUiButton(b.rt);
             if (gemPanelWasOpen && !gemUiButton)
@@ -245,23 +250,47 @@ public class GameManager : MonoBehaviour
             if (!active) continue;
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
             if (b.fill != null) b.fill.color = over ? b.h : b.n;
-            if (over && mouse.leftButton.wasPressedThisFrame) { b.cb?.Invoke(); anyBtnClicked = true; }
+            if (over)
+                hoveredButtonIndex = i;
         }
 
-        // 보석 패널이 열려 있고 버튼/패널 바깥을 클릭하면 닫기
-        if (gemPanelOpen && mouse.leftButton.wasPressedThisFrame && !anyBtnClicked)
+        if (mouse.leftButton.wasPressedThisFrame)
         {
-            if (!pointerOnGemPanel) CloseGemPanel();
+            pressedButtonIndex = hoveredButtonIndex;
+            anyBtnClicked = pressedButtonIndex >= 0;
+            pressedGemPanelOutside = gemPanelOpen && !anyBtnClicked && !pointerOnGemPanel;
+            pressedWorldDeploy = !anyBtnClicked && !gemPanelWasOpen && !pointerOnGemPanel;
+        }
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+        {
+            if (pressedButtonIndex >= 0 && pressedButtonIndex == hoveredButtonIndex && pressedButtonIndex < btns.Count)
+            {
+                var b = btns[pressedButtonIndex];
+                if (b.rt != null && b.rt.gameObject.activeInHierarchy)
+                    b.cb?.Invoke();
+                anyBtnClicked = true;
+            }
+            else if (pressedGemPanelOutside && gemPanelOpen && !pointerOnGemPanel)
+            {
+                CloseGemPanel();
+            }
+
+            pressedButtonIndex = -1;
+            pressedGemPanelOutside = false;
         }
 
         // Space 또는 UI 외 클릭으로 대기 중인 아군 1명씩 출전
         if (waveInProgress && !alliesFullyDeployed && !isPaused)
         {
             bool spaceDeploy = kb != null && kb.spaceKey.wasPressedThisFrame;
-            bool clickDeploy = !anyBtnClicked && !gemPanelWasOpen && !pointerOnGemPanel && mouse.leftButton.wasPressedThisFrame;
+            bool clickDeploy = !anyBtnClicked && pressedWorldDeploy && !pointerOnGemPanel && mouse.leftButton.wasReleasedThisFrame;
             if (spaceDeploy || clickDeploy)
                 TriggerDeployNext();
         }
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+            pressedWorldDeploy = false;
     }
 
     void OnDestroy() => Time.timeScale = 1f;

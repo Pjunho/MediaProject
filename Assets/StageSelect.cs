@@ -74,6 +74,7 @@ public class StageSelect : MonoBehaviour
         public bool inScrollArea;
     }
     readonly System.Collections.Generic.List<BtnData> btns = new();
+    int pressedButtonIndex = -1;
 
     // 뷰포트 경계 RT (스크롤 영역 내 버튼 클릭 필터용)
     RectTransform viewportRt;
@@ -152,9 +153,12 @@ public class StageSelect : MonoBehaviour
     float      skillHoldTimer  = 0f;
     const float HOLD_THRESHOLD = 0.0f;  // 누르는 즉시 표시
     bool       skillDescShown  = false;
+    bool       pressedDetailPopupClose = false;
 
     // 우클릭 감지용: 선택 가능 아군 버튼별 AllyType 저장
     readonly System.Collections.Generic.List<(RectTransform rt, AllyType type)> availRightClickTargets = new();
+    RectTransform pressedRightDetailRt;
+    AllyType      pressedRightDetailType;
 
     // ── 토스트 알림 ───────────────────────────────────────────────────
     GameObject toastGo;
@@ -287,25 +291,44 @@ public class StageSelect : MonoBehaviour
         if (detailPopup != null && detailPopup.activeSelf)
         {
             if (mouse.rightButton.wasPressedThisFrame || mouse.leftButton.wasPressedThisFrame)
+                pressedDetailPopupClose = true;
+
+            if ((mouse.rightButton.wasReleasedThisFrame || mouse.leftButton.wasReleasedThisFrame) && pressedDetailPopupClose)
             {
                 detailPopup.SetActive(false);
                 scrollConsumed = true; // 팝업 닫을 때 하위 버튼 클릭 방지
+                pressedDetailPopupClose = false;
             }
             return;
         }
 
         // 우클릭만 상세 팝업 열기
-        if (!mouse.rightButton.wasPressedThisFrame) return;
         if (prepPanel == null || !prepPanel.activeSelf) return;
 
-        foreach (var (rt, type) in availRightClickTargets)
+        if (mouse.rightButton.wasPressedThisFrame)
         {
-            if (rt == null || !rt.gameObject.activeInHierarchy) continue;
-            if (RectTransformUtility.RectangleContainsScreenPoint(rt, mp, null))
+            pressedRightDetailRt = null;
+            foreach (var (rt, type) in availRightClickTargets)
             {
-                ShowAllyDetail(type);
-                return;
+                if (rt == null || !rt.gameObject.activeInHierarchy) continue;
+                if (RectTransformUtility.RectangleContainsScreenPoint(rt, mp, null))
+                {
+                    pressedRightDetailRt = rt;
+                    pressedRightDetailType = type;
+                    return;
+                }
             }
+        }
+
+        if (mouse.rightButton.wasReleasedThisFrame)
+        {
+            if (pressedRightDetailRt != null &&
+                pressedRightDetailRt.gameObject.activeInHierarchy &&
+                RectTransformUtility.RectangleContainsScreenPoint(pressedRightDetailRt, mp, null))
+            {
+                ShowAllyDetail(pressedRightDetailType);
+            }
+            pressedRightDetailRt = null;
         }
     }
 
@@ -348,7 +371,7 @@ public class StageSelect : MonoBehaviour
     {
         // 드래그 직후 버튼 클릭 방지: wasReleasedThisFrame에도 scrollConsumed를 유지하고
         // 다음 프레임(Press 없음)에서 리셋
-        if (!mouse.leftButton.isPressed && !mouse.leftButton.wasPressedThisFrame)
+        if (!mouse.leftButton.isPressed && !mouse.leftButton.wasPressedThisFrame && !mouse.leftButton.wasReleasedThisFrame)
             scrollConsumed = false;
 
         for (int i = 0; i < btns.Count; i++)
@@ -361,6 +384,7 @@ public class StageSelect : MonoBehaviour
         Camera hoverCam = mainCanvas != null && mainCanvas.renderMode == RenderMode.ScreenSpaceCamera
             ? mainCanvas.worldCamera : null;
 
+        int hoveredButtonIndex = -1;
         for (int i = btns.Count - 1; i >= 0; i--)
         {
             var b = btns[i];
@@ -375,10 +399,26 @@ public class StageSelect : MonoBehaviour
             if (!over) continue;
 
             if (b.fill != null) b.fill.color = b.h;
-            if (mouse.leftButton.wasPressedThisFrame && !scrollConsumed)
-                b.cb?.Invoke();
+            hoveredButtonIndex = i;
 
-            return;
+            break;
+        }
+
+        if (mouse.leftButton.wasPressedThisFrame)
+            pressedButtonIndex = !scrollConsumed ? hoveredButtonIndex : -1;
+
+        if (mouse.leftButton.wasReleasedThisFrame)
+        {
+            if (!scrollConsumed &&
+                pressedButtonIndex >= 0 &&
+                pressedButtonIndex == hoveredButtonIndex &&
+                pressedButtonIndex < btns.Count)
+            {
+                var b = btns[pressedButtonIndex];
+                if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInActiveInputLayer(b))
+                    b.cb?.Invoke();
+            }
+            pressedButtonIndex = -1;
         }
     }
 

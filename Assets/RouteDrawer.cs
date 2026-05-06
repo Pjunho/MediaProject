@@ -64,6 +64,7 @@ public class RouteDrawer : MonoBehaviour
     private Image          startBtnFill;
     private Text           instrTxt;
     private AllyOrderPanel allyOrderPanel;
+    private bool           startButtonPressed;
 
     // ── 색상 ───────────────────────────────────────────────────────
     static readonly Color COL_LINE     = new Color(1.0f, 0.85f, 0.20f, 0.90f);
@@ -146,11 +147,19 @@ public class RouteDrawer : MonoBehaviour
             bool over = RectTransformUtility.RectangleContainsScreenPoint(ir, mp, null);
             if (!IsInPulseCoroutine)
                 startBtnFill.color = over ? COL_BTN_HOV : COL_BTN_ON;
-            if (over && mouse.leftButton.wasPressedThisFrame)
+
+            if (mouse.leftButton.wasPressedThisFrame)
+                startButtonPressed = over;
+
+            if (startButtonPressed && over && mouse.leftButton.wasReleasedThisFrame)
             {
+                startButtonPressed = false;
                 OnStartGame();
                 return;
             }
+
+            if (mouse.leftButton.wasReleasedThisFrame)
+                startButtonPressed = false;
         }
 
         if (GameManager.Instance != null && GameManager.Instance.ShouldBlockGameplayInput())
