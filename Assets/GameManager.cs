@@ -609,24 +609,16 @@ public class GameManager : MonoBehaviour
 
     void BuildGemBagUI(Transform parent)
     {
-        // ── 오른쪽 하단 가방 버튼 ────────────────────────────────────────
-        var btnSize = new Vector2(56f, 56f);
-        var btnPos  = new Vector2(490f, -308f);
+        // ── 오른쪽 하단 가방 아이콘 ─────────────────────────────────────
+        var btnSize = new Vector2(72f, 72f);
+        var btnPos  = new Vector2(458f, -311f); // RouteDrawer 하단 안내 박스(bottom=-347)와 하단 정렬
 
-        // 외곽 테두리 shadow
-        var bgGo = new GameObject("GemBagBtn"); bgGo.transform.SetParent(parent, false);
-        bgGo.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.50f);
-        SR(bgGo.GetComponent<RectTransform>(), btnPos, btnSize + new Vector2(4f, 4f));
-
-        // 채움 (클릭·호버 색상용)
-        var fill = new GameObject("Fill"); fill.transform.SetParent(bgGo.transform, false);
-        gemBagBtnFill = fill.AddComponent<Image>(); gemBagBtnFill.color = COL_GEM;
-        gemBagBtnRt   = fill.GetComponent<RectTransform>();
-        SR(gemBagBtnRt, Vector2.zero, btnSize);
-
-        // 가방 아이콘 이미지 (Resources/Icon/bag_icon)
-        var iconGo  = new GameObject("Icon"); iconGo.transform.SetParent(fill.transform, false);
+        var iconGo = new GameObject("GemBagIcon");
+        iconGo.transform.SetParent(parent, false);
         var iconImg = iconGo.AddComponent<Image>();
+        gemBagBtnFill = iconImg;
+        gemBagBtnRt   = iconGo.GetComponent<RectTransform>();
+
         var bagSprite = LoadIconSprite("bag_icon");
         if (bagSprite != null)
         {
@@ -638,39 +630,25 @@ public class GameManager : MonoBehaviour
         {
             // 스프라이트 없을 때 텍스트 폴백
             iconImg.color = new Color(0f, 0f, 0f, 0f);
-            var fb = new GameObject("FbLbl"); fb.transform.SetParent(fill.transform, false);
+            var fb = new GameObject("FbLbl"); fb.transform.SetParent(iconGo.transform, false);
             var fbTx = fb.AddComponent<Text>();
-            fbTx.text = "◆"; fbTx.color = COL_GOLD; fbTx.fontSize = 28;
+            fbTx.text = "◆"; fbTx.color = COL_GOLD; fbTx.fontSize = 38;
             fbTx.alignment = TextAnchor.MiddleCenter; fbTx.alignByGeometry = true;
             fbTx.raycastTarget = false;
             fbTx.horizontalOverflow = HorizontalWrapMode.Overflow;
             fbTx.verticalOverflow   = VerticalWrapMode.Overflow;
             fbTx.font = UiPixelFont.Get();
-            SR(fb.GetComponent<RectTransform>(), new Vector2(0f, 4f), new Vector2(btnSize.x, btnSize.y - 16f));
+            SR(fb.GetComponent<RectTransform>(), Vector2.zero, btnSize);
         }
-        SR(iconGo.GetComponent<RectTransform>(), new Vector2(0f, 5f), new Vector2(btnSize.x - 12f, btnSize.y - 20f));
+        SR(gemBagBtnRt, btnPos, btnSize);
 
-        // 버튼 하단 소제목 "가방"
-        var sub = new GameObject("Sub"); sub.transform.SetParent(fill.transform, false);
-        var sTx = sub.AddComponent<Text>();
-        sTx.text               = "가방";
-        sTx.color              = new Color(0.80f, 0.75f, 0.95f);
-        sTx.fontSize           = 11;
-        sTx.alignment          = TextAnchor.LowerCenter;
-        sTx.alignByGeometry    = true;
-        sTx.raycastTarget      = false;
-        sTx.horizontalOverflow = HorizontalWrapMode.Overflow;
-        sTx.verticalOverflow   = VerticalWrapMode.Overflow;
-        sTx.font               = UiPixelFont.Get();
-        SR(sub.GetComponent<RectTransform>(), new Vector2(0f, -4f), btnSize);
-
-        // btns 에 등록 (클릭 = 팝업 토글, 호버 = 색 변환)
+        // btns 에 등록 (클릭 = 팝업 토글, 호버 = 아이콘 밝기만 살짝 강조)
         btns.Add(new BtnData
         {
             rt       = gemBagBtnRt,
             fill     = gemBagBtnFill,
-            n        = COL_GEM,
-            h        = COL_GEM_H,
+            n        = Color.white,
+            h        = new Color(1f, 0.95f, 0.72f, 1f),
             cb       = ToggleGemPanel,
             pauseOnly= false
         });
@@ -847,7 +825,7 @@ public class GameManager : MonoBehaviour
         }
         // 버튼 색상: 열려 있으면 밝게 유지
         if (gemBagBtnFill != null)
-            gemBagBtnFill.color = gemPanelOpen ? COL_GEM_H : COL_GEM;
+            gemBagBtnFill.color = gemPanelOpen ? new Color(1f, 0.95f, 0.72f, 1f) : Color.white;
     }
 
     void CloseGemPanel()
@@ -855,7 +833,7 @@ public class GameManager : MonoBehaviour
         if (!gemPanelOpen) return;
         gemPanelOpen = false;
         if (gemPanelGo      != null) gemPanelGo.SetActive(false);
-        if (gemBagBtnFill   != null) gemBagBtnFill.color = COL_GEM;
+        if (gemBagBtnFill   != null) gemBagBtnFill.color = Color.white;
     }
 
     bool IsPointerOnOpenGemPanel(Vector2 screenPoint)
