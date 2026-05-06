@@ -371,14 +371,13 @@ public class AllyBase : MonoBehaviour
         Vector3 src = transform.position + Vector3.up * 0.15f;
         Vector3 dst = target.transform.position;
         Sprite[] frames = GetParalysisArrowFrames();
+        bool hasSheet = frames != null && frames.Length > 0;
         var go = new GameObject("ParalysisArrow");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = frames != null && frames.Length > 0 ? frames[0] : CreateCircleSprite(8);
+        sr.sprite = hasSheet ? frames[0] : CreateArrowSprite();
         sr.color = Color.white;
         sr.sortingOrder = 70;
-        go.transform.localScale = frames != null && frames.Length > 0
-            ? Vector3.one * 0.82f
-            : new Vector3(0.18f, 0.07f, 1f);
+        go.transform.localScale = hasSheet ? Vector3.one * 0.82f : Vector3.one * 0.65f;
 
         float elapsed = 0f;
         float duration = Mathf.Max(0.10f, Vector3.Distance(src, dst) / 14f);
@@ -970,6 +969,51 @@ public class AllyBase : MonoBehaviour
         }
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+
+    /// <summary>스프라이트시트 없을 때 사용하는 절차적 화살 스프라이트 (오른쪽 방향 기준)</summary>
+    static Sprite CreateArrowSprite()
+    {
+        int w = 48, h = 14;
+        var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Bilinear;
+
+        for (int x = 0; x < w; x++)
+        for (int y = 0; y < h; y++)
+            tex.SetPixel(x, y, Color.clear);
+
+        float cy = (h - 1) * 0.5f;
+        int shaftEnd = Mathf.RoundToInt(w * 0.60f);
+
+        // 화살대 — 가운데 얇은 직사각형
+        for (int x = 0; x < shaftEnd; x++)
+        for (int y = 0; y < h; y++)
+        {
+            float dist = Mathf.Abs(y - cy);
+            if (dist <= 1.8f)
+            {
+                float a = Mathf.Clamp01(1.8f - dist) * 0.95f;
+                tex.SetPixel(x, y, new Color(0.45f, 0.90f, 1f, a));
+            }
+        }
+
+        // 화살촉 — 오른쪽 끝으로 갈수록 좁아지는 삼각형
+        for (int x = shaftEnd; x < w; x++)
+        for (int y = 0; y < h; y++)
+        {
+            float t = (float)(x - shaftEnd) / (w - shaftEnd); // 0=밑동, 1=끝
+            float halfH = h * 0.5f * (1f - t);
+            float dist = Mathf.Abs(y - cy);
+            if (dist <= halfH)
+            {
+                float a = Mathf.Clamp01(1f - dist / Mathf.Max(halfH, 0.01f) * 0.4f) * 0.95f;
+                tex.SetPixel(x, y, new Color(0.45f, 0.90f, 1f, a));
+            }
+        }
+
+        tex.Apply();
+        // pixelsPerUnit = h → 스프라이트 높이가 1 월드유닛, 너비는 w/h ≈ 3.4 월드유닛
+        return Sprite.Create(tex, new Rect(0, 0, w, h), new Vector2(0.5f, 0.5f), (float)h);
     }
 
     static Sprite[] GetParalysisArrowFrames()

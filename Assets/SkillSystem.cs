@@ -305,7 +305,7 @@ public static class SkillSystem
             float dy = y - center;
             float dist = Mathf.Sqrt(dx * dx + dy * dy);
             float outside = Mathf.InverseLerp(clearPixels - feather, clearPixels + feather, dist);
-            float alpha = Mathf.Clamp01(outside) * 0.10f;
+            float alpha = Mathf.Clamp01(outside) * 0.45f;
             tex.SetPixel(x, y, new Color(0f, 0f, 0f, alpha));
         }
 
