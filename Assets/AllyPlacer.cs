@@ -19,6 +19,10 @@ public class AllyPlacer : MonoBehaviour
     private List<Vector3>   pathPositions = new List<Vector3>();
     private List<AllyType>  deployOrder   = new List<AllyType>();
 
+    // ── 개별 출전 대기열 (Space / Click 기반) ─────────────────────────────
+    private Queue<AllyType> deployQueue  = new Queue<AllyType>();
+    private int             deployedSoFar = 0;
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -72,6 +76,34 @@ public class AllyPlacer : MonoBehaviour
         Debug.Log($"[AllyPlacer] 웨이브 투입 완료 — {deployed}명 (요청값: {count})");
         return deployed;
     }
+
+    /// <summary>
+    /// Space / Click 기반 개별 출전용 — 출전 대기열을 준비한다.
+    /// 실제 출전은 DeployNextFromQueue() 호출마다 1명씩 이뤄진다.
+    /// </summary>
+    /// <returns>대기열에 올라간 총 인원 수</returns>
+    public int PrepareDeployQueue(int count)
+    {
+        deployQueue.Clear();
+        deployedSoFar = 0;
+        int n = Mathf.Min(Mathf.Max(0, count), deployOrder.Count);
+        for (int i = 0; i < n; i++)
+            deployQueue.Enqueue(deployOrder[i]);
+        Debug.Log($"[AllyPlacer] 출전 대기열 준비 — 총 {n}명 대기");
+        return n;
+    }
+
+    /// <summary>대기열 선두의 아군 1명을 출전시킨다. 대기열이 비었으면 false.</summary>
+    public bool DeployNextFromQueue()
+    {
+        if (deployQueue.Count == 0) return false;
+        DeployAlly(deployQueue.Dequeue(), deployedSoFar);
+        deployedSoFar++;
+        return true;
+    }
+
+    public bool HasPendingDeployments => deployQueue.Count > 0;
+    public int  PendingDeployCount    => deployQueue.Count;
 
     // ── 아군 1명 스폰 ────────────────────────────────────────────────────
     void DeployAlly(AllyType type, int waveSlotIndex)

@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private int  currentCoins   = 0;
     private int  clearedWaveCount = 0;
 
+    // ── 개별 출전 (Space / Click) ─────────────────────────────────────────
+    private bool alliesFullyDeployed = false;
+
     static readonly float[]  speedSteps  = { 1f, 1.5f, 2f, 3f };
     static readonly string[] speedLabels = { "1x", "1.5x", "2x", "3x" };
 
@@ -39,6 +42,10 @@ public class GameManager : MonoBehaviour
     private GameObject toastGo;
     private Text       toastTxt;
     private Coroutine  toastCoroutine;
+
+    // ── 출전 힌트 HUD ─────────────────────────────────────────────────────
+    private GameObject deployHintGo;
+    private Text       deployHintTxt;
 
     // ── 웨이브 시스템 ──────────────────────────────────────────────────────
     private StageManager.WaveConfig[] currentWaves;
@@ -177,6 +184,7 @@ public class GameManager : MonoBehaviour
         if (mouse == null) return;
         Vector2 mp = mouse.position.ReadValue();
 
+        bool anyBtnClicked = false;
         foreach (var b in btns)
         {
             if (b.rt == null || !b.rt.gameObject.activeInHierarchy) continue;
@@ -184,7 +192,16 @@ public class GameManager : MonoBehaviour
             if (!active) continue;
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
             if (b.fill != null) b.fill.color = over ? b.h : b.n;
-            if (over && mouse.leftButton.wasPressedThisFrame) b.cb?.Invoke();
+            if (over && mouse.leftButton.wasPressedThisFrame) { b.cb?.Invoke(); anyBtnClicked = true; }
+        }
+
+        // Space 또는 UI 외 클릭으로 대기 중인 아군 1명씩 출전
+        if (waveInProgress && !alliesFullyDeployed && !isPaused)
+        {
+            bool spaceDeploy = kb != null && kb.spaceKey.wasPressedThisFrame;
+            bool clickDeploy = !anyBtnClicked && mouse.leftButton.wasPressedThisFrame;
+            if (spaceDeploy || clickDeploy)
+                TriggerDeployNext();
         }
     }
 
@@ -219,17 +236,28 @@ public class GameManager : MonoBehaviour
         var placer = AllyPlacer.Instance != null ? AllyPlacer.Instance : FindFirstObjectByType<AllyPlacer>();
         if (placer != null)
         {
-            waveAllyCount = placer.DeployWave(wave.allyCount);
+            waveAllyCount = placer.PrepareDeployQueue(wave.allyCount);
         }
 
-        // 투입 인원이 0이면 즉시 웨이브 완료 처리
-        if (waveAllyCount == 0)
+        alliesFullyDeployed = (waveAllyCount == 0);
+
+        if (!alliesFullyDeployed)
+        {
+            // 출전 힌트 표시
+            RefreshDeployHint();
+            if (deployHintGo != null) deployHintGo.SetActive(true);
+        }
+        else
+        {
+            // 투입 인원이 0이면 즉시 웨이브 완료 처리
             CheckWaveCompletion();
+        }
     }
 
     void CheckWaveCompletion()
     {
         if (!waveInProgress) return;
+        if (!alliesFullyDeployed) return;   // 아직 대기 중인 아군이 있으면 대기
         if (waveAllyDone < waveAllyCount) return;
 
         waveInProgress = false;
@@ -396,6 +424,59 @@ public class GameManager : MonoBehaviour
         BuildSettingsPanel(cgo.transform);
         BuildToastUI(cgo.transform);
         BuildGemBonusHUD(cgo.transform);
+        BuildDeployHintUI(cgo.transform);
+    }
+
+    // ── 개별 출전 힌트 UI ─────────────────────────────────────────────────
+
+    void BuildDeployHintUI(Transform parent)
+    {
+        deployHintGo = new GameObject("DeployHint");
+        deployHintGo.transform.SetParent(parent, false);
+        var bg = deployHintGo.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.72f);
+        SR(deployHintGo.GetComponent<RectTransform>(), new Vector2(0, -305), new Vector2(370, 44));
+
+        var tgo = new GameObject("Txt");
+        tgo.transform.SetParent(deployHintGo.transform, false);
+        deployHintTxt = tgo.AddComponent<Text>();
+        deployHintTxt.text               = "";
+        deployHintTxt.color              = new Color(0.98f, 0.92f, 0.40f);
+        deployHintTxt.fontSize           = 18;
+        deployHintTxt.alignment          = TextAnchor.MiddleCenter;
+        deployHintTxt.fontStyle          = FontStyle.Normal;
+        deployHintTxt.alignByGeometry    = true;
+        deployHintTxt.raycastTarget      = false;
+        deployHintTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
+        deployHintTxt.verticalOverflow   = VerticalWrapMode.Overflow;
+        deployHintTxt.font               = UiPixelFont.Get();
+        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(360, 40));
+
+        deployHintGo.SetActive(false);
+    }
+
+    void RefreshDeployHint()
+    {
+        if (deployHintTxt == null) return;
+        var placer  = AllyPlacer.Instance != null ? AllyPlacer.Instance : FindFirstObjectByType<AllyPlacer>();
+        int pending = placer != null ? placer.PendingDeployCount : 0;
+        deployHintTxt.text = $"[Space / Click]  아군 출전  (대기: {pending}명)";
+    }
+
+    void TriggerDeployNext()
+    {
+        var placer = AllyPlacer.Instance != null ? AllyPlacer.Instance : FindFirstObjectByType<AllyPlacer>();
+        if (placer == null || !placer.HasPendingDeployments) return;
+
+        placer.DeployNextFromQueue();
+        RefreshDeployHint();
+
+        if (!placer.HasPendingDeployments)
+        {
+            alliesFullyDeployed = true;
+            if (deployHintGo != null) deployHintGo.SetActive(false);
+            CheckWaveCompletion();
+        }
     }
 
     void BuildGemBonusHUD(Transform parent)
@@ -743,7 +824,8 @@ public class GameManager : MonoBehaviour
         waveInProgress = false;
         Time.timeScale = 1f;
 
-        if (waveBannerGo != null) waveBannerGo.SetActive(false);
+        if (waveBannerGo  != null) waveBannerGo.SetActive(false);
+        if (deployHintGo  != null) deployHintGo.SetActive(false);
 
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
         int stars    = StageManager.Instance != null ? StageManager.Instance.CalcStars(clearedWaveCount) : 0;
