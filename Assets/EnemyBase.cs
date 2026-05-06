@@ -25,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     private LineRenderer rangeIndicator;
     private SpriteRenderer rangeFillIndicator;
     private LineRenderer attackLine;
+    private float paralysisTimer;
+    private GameObject paralysisVisual;
 
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────
     private float     breathCycle;
@@ -45,6 +47,14 @@ public class EnemyBase : MonoBehaviour
         UpdateRangeIndicatorPosition();
 
         if (!isPlaced) return;
+        if (paralysisTimer > 0f)
+        {
+            paralysisTimer -= Time.deltaTime;
+            UpdateParalysisVisual();
+            if (paralysisTimer <= 0f)
+                ClearParalysisVisual();
+            return;
+        }
         attackTimer -= Time.deltaTime;
 
         if (currentTarget == null || currentTarget.isDead)
@@ -62,6 +72,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (rangeIndicatorRoot != null)
             Destroy(rangeIndicatorRoot);
+        ClearParalysisVisual();
     }
 
     protected virtual void Attack(AllyBase target)
@@ -474,6 +485,42 @@ public class EnemyBase : MonoBehaviour
             $"사거리: {attackRange:0.0}\n" +
             $"공격력: {attackDamage:0.0}\n" +
             $"공격 속도: {attackCooldown:0.0}초";
+    }
+
+    public void ApplyParalysis(float duration)
+    {
+        paralysisTimer = Mathf.Max(paralysisTimer, duration);
+        attackTimer = Mathf.Max(attackTimer, attackCooldown);
+        CreateParalysisVisual();
+    }
+
+    void CreateParalysisVisual()
+    {
+        if (paralysisVisual != null) return;
+        paralysisVisual = new GameObject("ParalysisVisual");
+        paralysisVisual.transform.SetParent(transform, false);
+        paralysisVisual.transform.localPosition = new Vector3(0f, 0.65f, 0f);
+
+        var sr = paralysisVisual.AddComponent<SpriteRenderer>();
+        sr.sprite = MakeCircleSprite(14);
+        sr.color = new Color(0.55f, 1f, 0.35f, 0.72f);
+        sr.sortingOrder = 36;
+        paralysisVisual.transform.localScale = Vector3.one * 0.42f;
+    }
+
+    void UpdateParalysisVisual()
+    {
+        if (paralysisVisual == null) return;
+        paralysisVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 180f);
+        float pulse = 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
+        paralysisVisual.transform.localScale = Vector3.one * pulse;
+    }
+
+    void ClearParalysisVisual()
+    {
+        if (paralysisVisual == null) return;
+        Destroy(paralysisVisual);
+        paralysisVisual = null;
     }
 
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────

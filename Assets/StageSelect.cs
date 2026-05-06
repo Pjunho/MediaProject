@@ -97,43 +97,43 @@ public class StageSelect : MonoBehaviour
         { AllyType.Warrior, new AllyDetailData {
             allyName="검객", role="근접 전투형",
             hp=180f, speed=3.2f,
-            skill=new SkillInfo{ name="방패 밀치기",
-                desc="전방의 적을 강하게 밀쳐내어\n이동 경로를 확보한다.",
+            skill=new SkillInfo{ name="불굴의 의지",
+                desc="2초간 모든 공격 피해를\n받지 않습니다.",
                 iconColor=new Color(0.85f,0.25f,0.20f) }
         }},
         { AllyType.Archer, new AllyDetailData {
             allyName="궁수", role="중거리 지원형",
             hp=140f, speed=3.8f,
-            skill=new SkillInfo{ name="쾌속 이동",
-                desc="빠른 발걸음으로 이동 속도가\n25% 증가합니다.",
+            skill=new SkillInfo{ name="마비 화살",
+                desc="적 하나를 지정해 3초간\n공격할 수 없게 만듭니다.",
                 iconColor=new Color(0.25f,0.75f,0.30f) }
         }},
         { AllyType.Mage, new AllyDetailData {
             allyName="마법사", role="원거리 광역형",
             hp=110f, speed=4.2f,
-            skill=new SkillInfo{ name="생명력 강화",
-                desc="마법 에너지로 몸을 강화하여\n최대 HP가 30% 증가합니다.",
+            skill=new SkillInfo{ name="순간 보호막",
+                desc="1.5초간 주변 아군을\n파란 보호막으로 지킵니다.",
                 iconColor=new Color(0.95f,0.45f,0.10f) }
         }},
         { AllyType.Cleric, new AllyDetailData {
             allyName="성직자", role="근접 지원형",
             hp=200f, speed=2.8f,
-            skill=new SkillInfo{ name="치유 기도",
-                desc="신성한 기도로 매 초\n최대 HP의 3%를 회복합니다.",
+            skill=new SkillInfo{ name="치유의 빛",
+                desc="5초간 생존 아군을 매초\n최대 HP의 3%만큼 회복합니다.",
                 iconColor=new Color(0.90f,0.85f,0.30f) }
         }},
         { AllyType.Rogue, new AllyDetailData {
             allyName="도적", role="민첩 기습형",
             hp=90f, speed=4.8f,
-            skill=new SkillInfo{ name="그림자 걸음",
-                desc="어둠 속에 몸을 숨기며\n이동 속도가 40% 증가합니다.",
+            skill=new SkillInfo{ name="연막탄",
+                desc="5초간 생존 아군의 공격 회피율을\n50%까지 높입니다.",
                 iconColor=new Color(0.60f,0.20f,0.80f) }
         }},
         { AllyType.Paladin, new AllyDetailData {
             allyName="성기사", role="중장 방어형",
             hp=280f, speed=1.8f,
-            skill=new SkillInfo{ name="성전사의 서약",
-                desc="신성한 서약으로 몸을 강화하여\n최대 HP가 2배가 됩니다.",
+            skill=new SkillInfo{ name="수호의 맹세",
+                desc="4초간 아군 피해의 80%를 대신 받고\n초당 최대 HP의 5%를 회복합니다.",
                 iconColor=new Color(0.90f,0.75f,0.10f) }
         }},
     };
@@ -332,9 +332,13 @@ public class StageSelect : MonoBehaviour
         detailNameTxt.text        = d.allyName;
         detailRoleTxt.text        = d.role;
         detailStatTxt.text        = $"HP  {d.hp}     이동속도  {d.speed}";
-        detailSkillIconImg.color  = d.skill.iconColor;
-        detailSkillNameTxt.text   = d.skill.name;
-        detailSkillDescTxt.text   = d.skill.desc;
+        var skillData = SkillSystem.GetSkillForAlly(type);
+        var skillIcon = SkillSystem.GetIconSprite(type);
+        detailSkillIconImg.sprite = skillIcon;
+        detailSkillIconImg.color  = skillIcon != null ? Color.white : d.skill.iconColor;
+        detailSkillIconImg.preserveAspect = true;
+        detailSkillNameTxt.text   = skillData.skillName;
+        detailSkillDescTxt.text   = skillData.description;
         if (detailSkillDescOverlay != null) detailSkillDescOverlay.SetActive(false);
         skillDescShown = false;
         detailPopup.SetActive(true);

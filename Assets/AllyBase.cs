@@ -51,6 +51,20 @@ public class AllyBase : MonoBehaviour
     private GameObject shieldVisual;
     private SpriteRenderer shieldSr;
     private float hitStunTimer  = 0f;
+    private bool skillInvulnerable;
+    private float smokeEvadeChance;
+    private GameObject yellowAuraVisual;
+    private GameObject smokeVisual;
+    private GameObject mageBarrierVisual;
+    private SpriteRenderer mageBarrierSr;
+    private Coroutine warriorWillRoutine;
+    private Coroutine mageBarrierRoutine;
+    private Coroutine clericHealRoutine;
+    private Coroutine rogueSmokeRoutine;
+    private Coroutine paladinOathRoutine;
+    private static readonly List<AllyBase> activeMageBarriers = new List<AllyBase>();
+    private static AllyBase activePaladinProtector;
+    private const float MageBarrierRadius = 1.45f;
 
     // ── HP 바 ──────────────────────────────────────────────────────────
     private GameObject     hpBarRoot;
@@ -135,6 +149,20 @@ public class AllyBase : MonoBehaviour
             if (shieldSr != null)
                 shieldSr.color = new Color(0.3f, 0.6f, 1f, 0.38f + Mathf.Sin(Time.time * 2.5f) * 0.12f);
         }
+        if (mageBarrierVisual != null)
+        {
+            float pulse = 0.96f + Mathf.Sin(Time.time * 5f) * 0.04f;
+            mageBarrierVisual.transform.localScale = Vector3.one * (MageBarrierRadius * 2f * pulse);
+            if (mageBarrierSr != null)
+                mageBarrierSr.color = new Color(0.25f, 0.58f, 1f, 0.24f + Mathf.Sin(Time.time * 4f) * 0.07f);
+        }
+        if (yellowAuraVisual != null)
+        {
+            float pulse = 0.92f + Mathf.Sin(Time.time * 6f) * 0.08f;
+            yellowAuraVisual.transform.localScale = Vector3.one * pulse;
+        }
+        if (smokeVisual != null)
+            smokeVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 35f);
 
         UpdateVisualMotion();
         lastFramePosition = transform.position;
@@ -201,6 +229,14 @@ public class AllyBase : MonoBehaviour
         shieldSr.sortingOrder = 25;
     }
 
+    void ClearShieldVisual()
+    {
+        if (shieldVisual == null) return;
+        Destroy(shieldVisual);
+        shieldVisual = null;
+        shieldSr = null;
+    }
+
     Sprite CreateShieldSprite()
     {
         int size = 64;
@@ -252,7 +288,32 @@ public class AllyBase : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        TakeDamageInternal(damage, true, true);
+    }
+
+    void TakeDamageInternal(float damage, bool allowRedirect, bool applyStun)
+    {
         if (isDead) return;
+        if (damage <= 0f) return;
+        if (skillInvulnerable || IsProtectedByMageBarrier())
+        {
+            SpawnGuardFlash(transform.position, new Color(0.35f, 0.65f, 1f, 0.85f));
+            return;
+        }
+        if (smokeEvadeChance > 0f && Random.value < smokeEvadeChance)
+        {
+            SpawnGuardFlash(transform.position, new Color(0.70f, 0.28f, 1f, 0.85f));
+            return;
+        }
+        if (allowRedirect && activePaladinProtector != null &&
+            activePaladinProtector != this && !activePaladinProtector.isDead)
+        {
+            float redirected = damage * 0.80f;
+            float remaining  = damage - redirected;
+            activePaladinProtector.TakeDamageInternal(redirected, false, true);
+            TakeDamageInternal(remaining, false, false);
+            return;
+        }
         if (hasSkillShield)
         {
             hasSkillShield = false;
@@ -260,9 +321,308 @@ public class AllyBase : MonoBehaviour
             return;
         }
         currentHp -= damage;
-        OnDamaged();
+        if (applyStun) OnDamaged();
+        else UpdateHpBar();
         if (currentHp <= 0f)
             Die();
+    }
+
+    public AllyType GetAllyType()
+    {
+        if (this is Warrior) return AllyType.Warrior;
+        if (this is Archer)  return AllyType.Archer;
+        if (this is Mage)    return AllyType.Mage;
+        if (this is Cleric)  return AllyType.Cleric;
+        if (this is Rogue)   return AllyType.Rogue;
+        if (this is Paladin) return AllyType.Paladin;
+        return AllyType.Warrior;
+    }
+
+    public void ActivateWarriorWill()
+    {
+        if (warriorWillRoutine != null) return;
+        warriorWillRoutine = StartCoroutine(WarriorWillRoutine());
+    }
+
+    IEnumerator WarriorWillRoutine()
+    {
+        skillInvulnerable = true;
+        CreateShieldVisual();
+        float elapsed = 0f;
+        while (elapsed < 2f && !isDead)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        skillInvulnerable = false;
+        ClearShieldVisual();
+        warriorWillRoutine = null;
+    }
+
+    public void FireParalysisArrow(EnemyBase target)
+    {
+        if (target == null || isDead) return;
+        StartCoroutine(ParalysisArrowRoutine(target));
+    }
+
+    IEnumerator ParalysisArrowRoutine(EnemyBase target)
+    {
+        Vector3 src = transform.position + Vector3.up * 0.15f;
+        Vector3 dst = target.transform.position;
+        var go = new GameObject("ParalysisArrow");
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = CreateCircleSprite(8);
+        sr.color = new Color(0.55f, 1f, 0.35f, 1f);
+        sr.sortingOrder = 35;
+        go.transform.localScale = new Vector3(0.18f, 0.07f, 1f);
+
+        float elapsed = 0f;
+        float duration = Mathf.Max(0.08f, Vector3.Distance(src, dst) / 14f);
+        while (elapsed < duration && target != null)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            go.transform.position = Vector3.Lerp(src, target.transform.position, t);
+            yield return null;
+        }
+        Destroy(go);
+        if (target != null)
+            target.ApplyParalysis(3f);
+    }
+
+    public void ActivateMageBarrier()
+    {
+        if (mageBarrierRoutine != null) return;
+        mageBarrierRoutine = StartCoroutine(MageBarrierRoutine());
+    }
+
+    IEnumerator MageBarrierRoutine()
+    {
+        if (!activeMageBarriers.Contains(this))
+            activeMageBarriers.Add(this);
+        CreateMageBarrierVisual();
+        float elapsed = 0f;
+        while (elapsed < 1.5f && !isDead)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        activeMageBarriers.Remove(this);
+        ClearMageBarrierVisual();
+        mageBarrierRoutine = null;
+    }
+
+    public void ActivateClericHeal()
+    {
+        if (clericHealRoutine != null) return;
+        clericHealRoutine = StartCoroutine(GroupHealRoutine(5f, 0.03f, false));
+    }
+
+    public void ActivateRogueSmoke()
+    {
+        if (rogueSmokeRoutine != null) return;
+        rogueSmokeRoutine = StartCoroutine(GroupSmokeRoutine());
+    }
+
+    public void ActivatePaladinOath()
+    {
+        if (paladinOathRoutine != null) return;
+        paladinOathRoutine = StartCoroutine(PaladinOathRoutine());
+    }
+
+    IEnumerator GroupHealRoutine(float duration, float healRatioPerSecond, bool selfOnly)
+    {
+        List<AllyBase> targets = selfOnly ? new List<AllyBase> { this } : GetLivingAllies();
+        foreach (var ally in targets)
+            ally.SetYellowAura(true);
+
+        float elapsed = 0f;
+        float tick = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            tick += Time.deltaTime;
+            if (tick >= 1f)
+            {
+                tick -= 1f;
+                foreach (var ally in targets)
+                    if (ally != null && !ally.isDead)
+                        ally.HealByRatio(healRatioPerSecond);
+            }
+            yield return null;
+        }
+
+        foreach (var ally in targets)
+            if (ally != null)
+                ally.SetYellowAura(false);
+        clericHealRoutine = null;
+    }
+
+    IEnumerator GroupSmokeRoutine()
+    {
+        List<AllyBase> targets = GetLivingAllies();
+        foreach (var ally in targets)
+            if (ally != null && !ally.isDead)
+                ally.SetSmokeEvade(0.50f, true);
+
+        float elapsed = 0f;
+        while (elapsed < 5f)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        foreach (var ally in targets)
+            if (ally != null)
+                ally.SetSmokeEvade(0f, false);
+        rogueSmokeRoutine = null;
+    }
+
+    IEnumerator PaladinOathRoutine()
+    {
+        activePaladinProtector = this;
+        SetYellowAura(true);
+
+        float elapsed = 0f;
+        float tick = 0f;
+        while (elapsed < 4f && !isDead)
+        {
+            elapsed += Time.deltaTime;
+            tick += Time.deltaTime;
+            if (tick >= 1f)
+            {
+                tick -= 1f;
+                HealByRatio(0.05f);
+            }
+            yield return null;
+        }
+
+        if (activePaladinProtector == this)
+            activePaladinProtector = null;
+        SetYellowAura(false);
+        paladinOathRoutine = null;
+    }
+
+    bool IsProtectedByMageBarrier()
+    {
+        for (int i = activeMageBarriers.Count - 1; i >= 0; i--)
+        {
+            var barrier = activeMageBarriers[i];
+            if (barrier == null || barrier.isDead)
+            {
+                activeMageBarriers.RemoveAt(i);
+                continue;
+            }
+            if (Vector3.Distance(transform.position, barrier.transform.position) <= MageBarrierRadius)
+                return true;
+        }
+        return false;
+    }
+
+    static List<AllyBase> GetLivingAllies()
+    {
+        var result = new List<AllyBase>();
+        AllyBase[] allies = FindObjectsByType<AllyBase>(FindObjectsSortMode.None);
+        foreach (var ally in allies)
+            if (ally != null && !ally.isDead)
+                result.Add(ally);
+        return result;
+    }
+
+    void HealByRatio(float ratio)
+    {
+        if (isDead || currentHp >= maxHp) return;
+        currentHp = Mathf.Min(currentHp + maxHp * ratio, maxHp);
+        HealEffect.Spawn(transform.position);
+        UpdateHpBar();
+    }
+
+    void SetSmokeEvade(float chance, bool show)
+    {
+        smokeEvadeChance = chance;
+        if (show) CreateSmokeVisual();
+        else ClearSmokeVisual();
+    }
+
+    void SetYellowAura(bool show)
+    {
+        if (show)
+        {
+            if (yellowAuraVisual != null) return;
+            yellowAuraVisual = CreateAuraVisual("YellowHealAura", new Color(1f, 0.86f, 0.15f, 0.34f), 0.95f, 22);
+        }
+        else if (yellowAuraVisual != null)
+        {
+            Destroy(yellowAuraVisual);
+            yellowAuraVisual = null;
+        }
+    }
+
+    void CreateSmokeVisual()
+    {
+        if (smokeVisual != null) return;
+        smokeVisual = new GameObject("SmokeAura");
+        smokeVisual.transform.SetParent(transform, false);
+        smokeVisual.transform.localPosition = new Vector3(0f, -0.18f, 0f);
+
+        for (int i = 0; i < 6; i++)
+        {
+            var p = new GameObject("SmokePuff");
+            p.transform.SetParent(smokeVisual.transform, false);
+            float angle = i / 6f * Mathf.PI * 2f;
+            p.transform.localPosition = new Vector3(Mathf.Cos(angle) * 0.18f, Mathf.Sin(angle) * 0.05f, 0f);
+            p.transform.localScale = Vector3.one * Random.Range(0.12f, 0.22f);
+            var sr = p.AddComponent<SpriteRenderer>();
+            sr.sprite = CreateCircleSprite(10);
+            sr.color = new Color(0.50f, 0.18f, 0.75f, 0.38f);
+            sr.sortingOrder = 19;
+        }
+    }
+
+    void ClearSmokeVisual()
+    {
+        if (smokeVisual == null) return;
+        Destroy(smokeVisual);
+        smokeVisual = null;
+    }
+
+    void CreateMageBarrierVisual()
+    {
+        if (mageBarrierVisual != null) return;
+        mageBarrierVisual = CreateAuraVisual("MageBarrier", new Color(0.25f, 0.58f, 1f, 0.30f), MageBarrierRadius * 2f, 24);
+        mageBarrierSr = mageBarrierVisual.GetComponent<SpriteRenderer>();
+    }
+
+    void ClearMageBarrierVisual()
+    {
+        if (mageBarrierVisual == null) return;
+        Destroy(mageBarrierVisual);
+        mageBarrierVisual = null;
+        mageBarrierSr = null;
+    }
+
+    GameObject CreateAuraVisual(string name, Color color, float scale, int sortingOrder)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(transform, false);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localScale = Vector3.one * scale;
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = CreateCircleSprite(32);
+        sr.color = color;
+        sr.sortingOrder = sortingOrder;
+        return go;
+    }
+
+    static void SpawnGuardFlash(Vector3 pos, Color color)
+    {
+        var go = new GameObject("GuardFlash");
+        go.transform.position = pos;
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = CreateCircleSprite(10);
+        sr.color = color;
+        sr.sortingOrder = 36;
+        Object.Destroy(go, 0.18f);
     }
 
     IEnumerator ShieldBreakEffect()
@@ -312,6 +672,7 @@ public class AllyBase : MonoBehaviour
             shieldVisual = null;
             shieldSr = null;
         }
+        ClearAllSkillVisuals();
         OnDied?.Invoke(this);
         StartCoroutine(DeathEffect());
     }
@@ -354,6 +715,7 @@ public class AllyBase : MonoBehaviour
             shieldVisual = null;
             shieldSr = null;
         }
+        ClearAllSkillVisuals();
 
         foreach (var sr in visualRenderers)
         {
@@ -495,13 +857,7 @@ public class AllyBase : MonoBehaviour
 
     AllyType GetAllyTypeEnum()
     {
-        if (this is Warrior) return AllyType.Warrior;
-        if (this is Archer)  return AllyType.Archer;
-        if (this is Mage)    return AllyType.Mage;
-        if (this is Cleric)  return AllyType.Cleric;
-        if (this is Rogue)   return AllyType.Rogue;
-        if (this is Paladin) return AllyType.Paladin;
-        return AllyType.Warrior;
+        return GetAllyType();
     }
 
     void SetAllVisualColors(Color color)
@@ -575,6 +931,48 @@ public class AllyBase : MonoBehaviour
         tex.SetPixel(0, 0, Color.white);
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+    }
+
+    static Sprite CreateCircleSprite(int radius)
+    {
+        int size = radius * 2 + 2;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Bilinear;
+        var clear = new Color(0, 0, 0, 0);
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+            tex.SetPixel(x, y, clear);
+
+        float cx = size * 0.5f;
+        float cy = size * 0.5f;
+        float max = radius;
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            float dx = x - cx;
+            float dy = y - cy;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            if (dist <= max)
+            {
+                float edge = Mathf.Clamp01(1f - dist / max);
+                float alpha = Mathf.Lerp(0.16f, 0.95f, edge);
+                tex.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+            }
+        }
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+
+    void ClearAllSkillVisuals()
+    {
+        activeMageBarriers.Remove(this);
+        if (activePaladinProtector == this)
+            activePaladinProtector = null;
+        skillInvulnerable = false;
+        smokeEvadeChance = 0f;
+        ClearMageBarrierVisual();
+        ClearSmokeVisual();
+        SetYellowAura(false);
     }
 
     void UpdateHpBar()

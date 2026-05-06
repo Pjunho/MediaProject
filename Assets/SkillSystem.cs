@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 아군 타입별 스킬 데이터 및 해금 상태 관리.
@@ -12,6 +13,7 @@ public static class SkillSystem
         public string   skillName;
         public string   description;
         public int      cost;
+        public string   iconResource;
     }
 
     static readonly SkillData[] skills = new SkillData[]
@@ -19,50 +21,62 @@ public static class SkillSystem
         new SkillData
         {
             allyType    = AllyType.Warrior,
-            skillName   = "방패 밀치기",
-            description = "방어막을 펼쳐 첫 번째\n피해를 완전히 무효화합니다.",
-            cost        = 3
+            skillName   = "불굴의 의지",
+            description = "2초간 모든 공격 피해를\n받지 않습니다.",
+            cost        = 3,
+            iconResource = "Icon/skill_knight"
         },
         new SkillData
         {
             allyType    = AllyType.Archer,
-            skillName   = "쾌속 이동",
-            description = "빠른 발걸음으로 적을 혼란시켜\n이동 속도가 25% 증가합니다.",
-            cost        = 2
+            skillName   = "마비 화살",
+            description = "적 하나를 지정해 3초간\n공격할 수 없게 만듭니다.",
+            cost        = 2,
+            iconResource = "Icon/skill_archer"
         },
         new SkillData
         {
             allyType    = AllyType.Mage,
-            skillName   = "생명력 강화",
-            description = "마법 에너지로 몸을 강화하여\n최대 HP가 30% 증가합니다.",
-            cost        = 3
+            skillName   = "순간 보호막",
+            description = "1.5초간 주변 아군을\n파란 보호막으로 지킵니다.",
+            cost        = 3,
+            iconResource = "Icon/skill_magician"
         },
         new SkillData
         {
             allyType    = AllyType.Cleric,
-            skillName   = "치유 기도",
-            description = "신성한 기도로 매 초\n최대 HP의 3%를 회복합니다.",
-            cost        = 4
+            skillName   = "치유의 빛",
+            description = "5초간 생존 아군을 매초\n최대 HP의 3%만큼 회복합니다.",
+            cost        = 4,
+            iconResource = "Icon/skill_priest"
         },
         new SkillData
         {
             allyType    = AllyType.Rogue,
-            skillName   = "그림자 걸음",
-            description = "어둠 속에 몸을 숨기며\n이동 속도가 40% 증가합니다.",
-            cost        = 2
+            skillName   = "연막탄",
+            description = "5초간 생존 아군의 공격 회피율을\n50%까지 높입니다.",
+            cost        = 2,
+            iconResource = "Icon/skill_thief"
         },
         new SkillData
         {
             allyType    = AllyType.Paladin,
-            skillName   = "성전사의 서약",
-            description = "신성한 서약으로 몸을 강화하여\n최대 HP가 2배가 됩니다.",
-            cost        = 6
+            skillName   = "수호의 맹세",
+            description = "4초간 아군 피해의 80%를 대신 받고\n초당 최대 HP의 5%를 회복합니다.",
+            cost        = 6,
+            iconResource = "Icon/skill_paladin"
         }
     };
 
     static readonly bool[] unlockedSkills = new bool[6];
+    static AllyBase pendingArcher;
+    static float previousTimeScale = 1f;
+    static int targetingStartFrame = -1;
+
+    const float ArcherTargetRange = 6f;
 
     public static SkillData[] GetAllSkills() => skills;
+    public static bool IsTargeting => pendingArcher != null;
 
     public static SkillData GetSkillForAlly(AllyType allyType)
     {
@@ -81,6 +95,8 @@ public static class SkillSystem
     /// <summary>스테이지 시작/재시작 시 호출 — 모든 스킬 잠금 상태로 초기화</summary>
     public static void ResetForStage()
     {
+        if (IsTargeting)
+            CancelTargeting();
         for (int i = 0; i < unlockedSkills.Length; i++)
             unlockedSkills[i] = false;
     }
@@ -104,33 +120,159 @@ public static class SkillSystem
         return false;
     }
 
-    /// <summary>AllyPlacer에서 스폰 직후 호출 — 해금된 스킬 효과를 ally에 적용</summary>
-    public static void ApplyToAlly(AllyBase ally, AllyType allyType)
+    /// <summary>AllyPlacer에서 스폰 직후 호출. 현재 스킬은 전부 발동형이므로 패시브 적용은 없다.</summary>
+    public static void ApplyToAlly(AllyBase ally, AllyType allyType) { }
+
+    public static Sprite GetIconSprite(AllyType allyType)
     {
-        if (!IsUnlocked(allyType)) return;
+        var data = GetSkillForAlly(allyType);
+        Sprite sprite = Resources.Load<Sprite>(data.iconResource);
+        if (sprite != null) return sprite;
+
+        Texture2D tex = Resources.Load<Texture2D>(data.iconResource);
+        if (tex == null) return null;
+        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
+    }
+
+    public static bool ActivateSkill(AllyType allyType)
+    {
+        if (!IsUnlocked(allyType))
+        {
+            GameManager.Instance?.ShowToast("먼저 스킬을 해금해야 합니다!", new Color(1f, 0.35f, 0.35f));
+            return false;
+        }
+
+        AllyBase caster = FindAliveAlly(allyType);
+        if (caster == null)
+        {
+            GameManager.Instance?.ShowToast("전투 중 생존한 아군이 필요합니다!", new Color(1f, 0.65f, 0.25f));
+            return false;
+        }
 
         switch (allyType)
         {
             case AllyType.Warrior:
-                ally.EnableSkillShield();
-                break;
+                caster.ActivateWarriorWill();
+                GameManager.Instance?.ShowToast("불굴의 의지 발동!", new Color(1f, 0.85f, 0.2f));
+                return true;
             case AllyType.Archer:
-                ally.moveSpeed *= 1.25f;
-                break;
+                BeginArcherTargeting(caster);
+                return true;
             case AllyType.Mage:
-                ally.maxHp     *= 1.30f;
-                ally.currentHp  = ally.maxHp;
-                break;
+                caster.ActivateMageBarrier();
+                GameManager.Instance?.ShowToast("순간 보호막 발동!", new Color(0.45f, 0.75f, 1f));
+                return true;
             case AllyType.Cleric:
-                ally.EnableSkillRegen();
-                break;
+                caster.ActivateClericHeal();
+                GameManager.Instance?.ShowToast("치유의 빛 발동!", new Color(1f, 0.92f, 0.35f));
+                return true;
             case AllyType.Rogue:
-                ally.moveSpeed *= 1.40f;
-                break;
+                caster.ActivateRogueSmoke();
+                GameManager.Instance?.ShowToast("연막탄 발동!", new Color(0.75f, 0.35f, 1f));
+                return true;
             case AllyType.Paladin:
-                ally.maxHp    *= 2.00f;
-                ally.currentHp = ally.maxHp;
-                break;
+                caster.ActivatePaladinOath();
+                GameManager.Instance?.ShowToast("수호의 맹세 발동!", new Color(1f, 0.88f, 0.35f));
+                return true;
         }
+        return false;
+    }
+
+    public static bool HandleTargetingInput(Vector2 screenPos, Mouse mouse)
+    {
+        if (pendingArcher == null) return false;
+        if (pendingArcher.isDead)
+        {
+            CancelTargeting();
+            return true;
+        }
+
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            CancelTargeting();
+            GameManager.Instance?.ShowToast("마비 화살 조준 취소", new Color(0.8f, 0.8f, 0.8f));
+            return true;
+        }
+
+        if (mouse != null && mouse.rightButton.wasPressedThisFrame)
+        {
+            CancelTargeting();
+            GameManager.Instance?.ShowToast("마비 화살 조준 취소", new Color(0.8f, 0.8f, 0.8f));
+            return true;
+        }
+
+        if (mouse == null || !mouse.leftButton.wasPressedThisFrame || Time.frameCount == targetingStartFrame)
+            return true;
+
+        EnemyBase target = FindEnemyAtScreenPosition(screenPos);
+        if (target == null)
+        {
+            GameManager.Instance?.ShowToast("마비시킬 적을 클릭하세요!", new Color(1f, 0.65f, 0.25f));
+            return true;
+        }
+
+        float dist = Vector3.Distance(pendingArcher.transform.position, target.transform.position);
+        if (dist > ArcherTargetRange)
+        {
+            GameManager.Instance?.ShowToast("대상이 사거리 밖입니다!", new Color(1f, 0.35f, 0.35f));
+            return true;
+        }
+
+        pendingArcher.FireParalysisArrow(target);
+        CancelTargeting();
+        GameManager.Instance?.ShowToast("마비 화살 적중!", new Color(0.65f, 1f, 0.45f));
+        return true;
+    }
+
+    static void BeginArcherTargeting(AllyBase archer)
+    {
+        pendingArcher = archer;
+        targetingStartFrame = Time.frameCount;
+        previousTimeScale = Mathf.Max(Time.timeScale, 0.0001f);
+        Time.timeScale = 0.1f;
+        GameManager.Instance?.ShowToast("적을 클릭해 마비 화살을 발사하세요", new Color(0.65f, 1f, 0.45f));
+    }
+
+    static void CancelTargeting()
+    {
+        pendingArcher = null;
+        targetingStartFrame = -1;
+        Time.timeScale = previousTimeScale;
+    }
+
+    static AllyBase FindAliveAlly(AllyType type)
+    {
+        AllyBase[] allies = Object.FindObjectsByType<AllyBase>(FindObjectsSortMode.None);
+        foreach (var ally in allies)
+            if (ally != null && !ally.isDead && ally.GetAllyType() == type)
+                return ally;
+        return null;
+    }
+
+    static EnemyBase FindEnemyAtScreenPosition(Vector2 screenPos)
+    {
+        if (Camera.main == null) return null;
+
+        Vector3 world = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
+        world.z = 0f;
+
+        EnemyBase[] enemies = Object.FindObjectsByType<EnemyBase>(FindObjectsSortMode.None);
+        EnemyBase bestEnemy = null;
+        float bestDist = float.MaxValue;
+
+        foreach (var enemy in enemies)
+        {
+            if (enemy == null || !enemy.gameObject.activeInHierarchy) continue;
+            Vector3 pos = enemy.transform.position;
+            pos.z = 0f;
+            float dist = Vector2.Distance(world, pos);
+            if (dist > Mathf.Max(enemy.GetClickRadius(), 0.9f)) continue;
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                bestEnemy = enemy;
+            }
+        }
+        return bestEnemy;
     }
 }

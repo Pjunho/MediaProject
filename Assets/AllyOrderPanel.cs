@@ -133,16 +133,7 @@ public class AllyOrderPanel : MonoBehaviour
         _                => 0f
     };
 
-    static string GetSkillName(AllyType t) => t switch
-    {
-        AllyType.Warrior => "방패 밀치기",
-        AllyType.Archer  => "쾌속 이동",
-        AllyType.Mage    => "생명력 강화",
-        AllyType.Cleric  => "치유 기도",
-        AllyType.Rogue   => "그림자 걸음",
-        AllyType.Paladin => "성전사의 서약",
-        _                => "잠금 스킬"
-    };
+    static string GetSkillName(AllyType t) => SkillSystem.GetSkillForAlly(t).skillName;
 
     static string GetSkillDesc(AllyType t)
     {
@@ -524,7 +515,11 @@ public class AllyOrderPanel : MonoBehaviour
             return false;
 
         AllyType type = allyOrder[cardToSlot[selectedCard]];
-        if (SkillSystem.IsUnlocked(type)) return true;
+        if (SkillSystem.IsUnlocked(type))
+        {
+            SkillSystem.ActivateSkill(type);
+            return true;
+        }
 
         if (GameManager.Instance != null && GameManager.Instance.TryUnlockSkill(type))
             RefreshDetailPanel();
@@ -811,16 +806,6 @@ public class AllyOrderPanel : MonoBehaviour
         float baseSpeed = GetSpeed(type);
         float effHp     = baseHp    * UpgradeSystem.GetHpMultiplier(type) * GemInventory.GetHpMultiplier();
         float effSpeed  = baseSpeed * UpgradeSystem.GetSpeedMultiplier(type) * GemInventory.GetSpeedMultiplier();
-        if (unlocked)
-        {
-            switch (type)
-            {
-                case AllyType.Mage:    effHp    *= 1.30f; break;
-                case AllyType.Paladin: effHp    *= 2.00f; break;
-                case AllyType.Archer:  effSpeed *= 1.25f; break;
-                case AllyType.Rogue:   effSpeed *= 1.40f; break;
-            }
-        }
         var  boostedCol = new Color(0.45f, 1f, 0.55f);
         var  normalCol  = new Color(0.92f, 0.94f, 0.98f, 1f);
         bool hpUp       = effHp    > baseHp    + 0.5f;
@@ -835,11 +820,17 @@ public class AllyOrderPanel : MonoBehaviour
             detailSpeedText.text  = spdUp ? $"속도  {effSpeed:0.0}  ↑" : $"속도  {baseSpeed:0.0}";
             detailSpeedText.color = spdUp ? boostedCol : normalCol;
         }
-        if (detailSkillIconImg != null) detailSkillIconImg.color = GetSkillColor(type);
+        if (detailSkillIconImg != null)
+        {
+            var skillIcon = SkillSystem.GetIconSprite(type);
+            detailSkillIconImg.sprite = skillIcon;
+            detailSkillIconImg.color = skillIcon != null ? Color.white : GetSkillColor(type);
+            detailSkillIconImg.preserveAspect = true;
+        }
         var  skillData = SkillSystem.GetSkillForAlly(type);
         if (detailSkillNameText != null)
             detailSkillNameText.text = unlocked
-                ? $"{GetSkillName(type)}  [해금됨]"
+                ? $"{GetSkillName(type)}  [발동]"
                 : $"{GetSkillName(type)}  [{skillData.cost}코인]";
         if (detailSkillDescText != null) detailSkillDescText.text = GetSkillDesc(type);
         if (detailSkillLockText != null) detailSkillLockText.text = unlocked ? "🔓" : "🔒";

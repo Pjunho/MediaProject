@@ -184,12 +184,15 @@ public class GameManager : MonoBehaviour
         if (resultShown) return;
 
         var kb = Keyboard.current;
-        if (kb != null && kb.escapeKey.wasPressedThisFrame)
-            TogglePause();
-
         var mouse = Mouse.current;
         if (mouse == null) return;
         Vector2 mp = mouse.position.ReadValue();
+
+        if (SkillSystem.HandleTargetingInput(mp, mouse))
+            return;
+
+        if (kb != null && kb.escapeKey.wasPressedThisFrame)
+            TogglePause();
 
         bool anyBtnClicked = false;
         foreach (var b in btns)
@@ -381,7 +384,7 @@ public class GameManager : MonoBehaviour
 
     public bool ShouldBlockGameplayInput()
     {
-        return isPaused || resultShown;
+        return isPaused || resultShown || SkillSystem.IsTargeting;
     }
 
     // ── HUD 구성 ──────────────────────────────────────────────────────────
