@@ -423,9 +423,26 @@ public class GameManager : MonoBehaviour
 
     bool TryHandleSkillHotkey(Keyboard keyboard)
     {
-        if (keyboard == null || isPaused || resultShown || SkillSystem.IsTargeting)
-            return false;
+        if (keyboard == null || isPaused || resultShown) return false;
 
+        // ── 조준 모드 중: 궁수 슬롯과 같은 번호 키를 다시 누르면 취소 ──
+        if (SkillSystem.IsTargeting)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (!WasNumberPressed(keyboard, i + 1)) continue;
+                // 해당 슬롯이 궁수이면 취소, 아니면 그냥 소비
+                if (i < currentSkillOrder.Count && currentSkillOrder[i] == AllyType.Archer)
+                {
+                    SkillSystem.CancelTargeting();
+                    ShowToast("마비 화살 조준 취소", new Color(0.8f, 0.8f, 0.8f));
+                }
+                return true; // 조준 중엔 다른 숫자 키도 일반 스킬 발동 차단
+            }
+            return false;
+        }
+
+        // ── 일반 스킬 발동 ────────────────────────────────────────────────
         for (int i = 0; i < 6; i++)
         {
             if (!WasNumberPressed(keyboard, i + 1)) continue;

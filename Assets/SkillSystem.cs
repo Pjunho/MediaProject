@@ -69,7 +69,8 @@ public static class SkillSystem
     };
 
     static readonly bool[] unlockedSkills = new bool[6];
-    static AllyBase pendingArcher;
+    static AllyBase  pendingArcher;
+    static EnemyBase pendingMouseDownEnemy;   // 마우스 누름 시 대상으로 지정한 적
     static float previousTimeScale = 1f;
     static int targetingStartFrame = -1;
     static GameObject archerAimVisualRoot;
@@ -99,6 +100,7 @@ public static class SkillSystem
     {
         if (IsTargeting)
             CancelTargeting();
+        pendingMouseDownEnemy = null;
         for (int i = 0; i < unlockedSkills.Length; i++)
             unlockedSkills[i] = false;
     }
@@ -203,26 +205,52 @@ public static class SkillSystem
             return true;
         }
 
-        if (mouse == null || !mouse.leftButton.wasPressedThisFrame || Time.frameCount == targetingStartFrame)
-            return true;
+        if (mouse == null) return true;
 
-        EnemyBase target = FindEnemyAtScreenPosition(screenPos);
-        if (target == null)
+        // ── 마우스 버튼 눌림: 대상 예약 ─────────────────────────────────
+        if (mouse.leftButton.wasPressedThisFrame && Time.frameCount != targetingStartFrame)
         {
-            GameManager.Instance?.ShowToast("마비시킬 적을 클릭하세요!", new Color(1f, 0.65f, 0.25f));
+            EnemyBase under = FindEnemyAtScreenPosition(screenPos);
+            if (under == null)
+            {
+                GameManager.Instance?.ShowToast("마비시킬 적을 클릭하세요!", new Color(1f, 0.65f, 0.25f));
+                pendingMouseDownEnemy = null;
+            }
+            else
+            {
+                pendingMouseDownEnemy = under;
+            }
             return true;
         }
 
-        float dist = Vector3.Distance(pendingArcher.transform.position, target.transform.position);
-        if (dist > ArcherTargetRange)
+        // ── 마우스 버튼 뗌: 같은 적 위에서 뗐을 때만 발사 ──────────────
+        if (mouse.leftButton.wasReleasedThisFrame)
         {
-            GameManager.Instance?.ShowToast("대상이 사거리 밖입니다!", new Color(1f, 0.35f, 0.35f));
+            EnemyBase downEnemy = pendingMouseDownEnemy;
+            pendingMouseDownEnemy = null;
+
+            if (downEnemy == null) return true; // 적 없이 눌렀다 뗀 경우
+
+            EnemyBase upEnemy = FindEnemyAtScreenPosition(screenPos);
+            if (upEnemy == null || upEnemy != downEnemy)
+            {
+                // 다른 곳에서 뗌 → 발사 취소, 토스트 없이 조준 유지
+                return true;
+            }
+
+            float dist = Vector3.Distance(pendingArcher.transform.position, downEnemy.transform.position);
+            if (dist > ArcherTargetRange)
+            {
+                GameManager.Instance?.ShowToast("대상이 사거리 밖입니다!", new Color(1f, 0.35f, 0.35f));
+                return true;
+            }
+
+            pendingArcher.FireParalysisArrow(downEnemy);
+            CancelTargeting();
+            GameManager.Instance?.ShowToast("마비 화살 적중!", new Color(0.65f, 1f, 0.45f));
             return true;
         }
 
-        pendingArcher.FireParalysisArrow(target);
-        CancelTargeting();
-        GameManager.Instance?.ShowToast("마비 화살 적중!", new Color(0.65f, 1f, 0.45f));
         return true;
     }
 
@@ -237,10 +265,11 @@ public static class SkillSystem
         GameManager.Instance?.ShowToast("적을 클릭해 마비 화살을 발사하세요", new Color(0.65f, 1f, 0.45f));
     }
 
-    static void CancelTargeting()
+    public static void CancelTargeting()
     {
         ClearArcherAimVisual();
         pendingArcher = null;
+        pendingMouseDownEnemy = null;
         targetingStartFrame = -1;
         Time.timeScale = previousTimeScale;
     }
