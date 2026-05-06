@@ -100,17 +100,6 @@ public class AllyOrderPanel : MonoBehaviour
         _                => "?"
     };
 
-    static string[] GetSkills(AllyType t) => t switch
-    {
-        AllyType.Warrior => new[] { "검술 돌파  (HP 180)", "중속 전진  (속도 1.92)" },
-        AllyType.Archer  => new[] { "원거리 지원 (HP 140)", "유연 기동  (속도 2.28)" },
-        AllyType.Mage    => new[] { "마법 공세  (HP 110)", "쾌속 이동  (속도 2.52)" },
-        AllyType.Cleric  => new[] { "신성 방어  (HP 200)", "안정 전진  (속도 1.68)" },
-        AllyType.Rogue   => new[] { "민첩 기습  (HP  90)", "고속 이동  (속도 2.88)" },
-        AllyType.Paladin => new[] { "중장 방어  (HP 280)", "느린 전진  (속도 1.08)" },
-        _                => new[] { "-", "-" }
-    };
-
     static Color GetCardColor(AllyType t) => t switch
     {
         AllyType.Warrior => COL_WARRIOR,
@@ -468,16 +457,6 @@ public class AllyOrderPanel : MonoBehaviour
             Color.white, TextAnchor.MiddleCenter,
             new Vector2(0f, 0.25f), new Vector2(1f, 0.40f),
             new Vector2(4f, 0f),    new Vector2(-4f, 0f));
-
-        // 스킬 2개
-        var skills = GetSkills(type);
-        float[] yMins = { 0.15f, 0.01f };
-        float[] yMaxs = { 0.26f, 0.12f };
-        for (int k = 0; k < 2; k++)
-            MakeLabel($"Skill{k}", card.transform, $"• {skills[k]}", 9, FontStyle.Normal,
-                new Color(0.87f, 0.87f, 0.87f, 1f), TextAnchor.MiddleLeft,
-                new Vector2(0.03f, yMins[k]), new Vector2(0.97f, yMaxs[k]),
-                Vector2.zero, Vector2.zero);
 
         return card;
     }
