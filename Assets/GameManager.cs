@@ -611,7 +611,7 @@ public class GameManager : MonoBehaviour
     {
         // ── 오른쪽 하단 가방 아이콘 ─────────────────────────────────────
         var btnSize = new Vector2(72f, 72f);
-        var btnPos  = new Vector2(458f, -311f); // RouteDrawer 하단 안내 박스(bottom=-347)와 하단 정렬
+        var btnPos  = new Vector2(458f, -322f); // 투명 여백을 포함한 원본 아이콘의 실제 그림 아래선을 RouteDrawer 하단 안내 박스에 맞춤
 
         var iconGo = new GameObject("GemBagIcon");
         iconGo.transform.SetParent(parent, false);
