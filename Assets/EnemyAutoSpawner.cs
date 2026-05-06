@@ -181,7 +181,9 @@ public class EnemyAutoSpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             if (!TryTakeFrom(primary, out Vector3 pos) &&
-                !TryTakeFrom(secondary, out pos))
+                !TryTakeFrom(secondary, out pos) &&
+                !TryTakeAny(primary, out pos) &&
+                !TryTakeAny(secondary, out pos))
             {
                 Debug.LogWarning(
                     $"[EnemyAutoSpawner] {label} 배치 위치 부족 — {spawned}/{count}명만 배치됨");
@@ -214,12 +216,26 @@ public class EnemyAutoSpawner : MonoBehaviour
 
             pos = candidatePos;
             candidates.RemoveAt(i);
-            RemoveNearbyCandidates(candidates, candidatePos);
             reservedPositions.Add(candidatePos);
             return true;
         }
         pos = default;
         return false;
+    }
+
+    bool TryTakeAny(List<SpawnCandidate> candidates, out Vector3 pos)
+    {
+        if (candidates.Count == 0)
+        {
+            pos = default;
+            return false;
+        }
+
+        int idx = Random.Range(0, candidates.Count);
+        pos = candidates[idx].world;
+        candidates.RemoveAt(idx);
+        reservedPositions.Add(pos);
+        return true;
     }
 
     // ── 유틸리티 ─────────────────────────────────────────────────
@@ -238,13 +254,6 @@ public class EnemyAutoSpawner : MonoBehaviour
             if (Vector2.Distance(used, pos) < minEnemySpacing)
                 return false;
         return true;
-    }
-
-    void RemoveNearbyCandidates(List<SpawnCandidate> candidates, Vector3 center)
-    {
-        for (int i = candidates.Count - 1; i >= 0; i--)
-            if (Vector2.Distance(candidates[i].world, center) < minEnemySpacing)
-                candidates.RemoveAt(i);
     }
 
     /// <summary>
