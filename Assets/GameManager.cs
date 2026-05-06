@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +59,14 @@ public class GameManager : MonoBehaviour
     private int  waveAllyCount    = 0;  // 이번 웨이브에서 실제 투입된 수
     private int  waveAllyDone     = 0;  // 이번 웨이브에서 완료된 수(골+사망)
     private bool waveInProgress   = false;
+    private List<Vector3> currentRoutePath = new List<Vector3>();
+    private readonly List<BonusCoinPickup> activeBonusCoins = new List<BonusCoinPickup>();
+
+    struct BonusCoinCandidate
+    {
+        public Vector3 position;
+        public float distanceFromShortestRoute;
+    }
 
     // 웨이브 HUD
     private Text       waveInfoTxt;   // "웨이브 X / Y" 표시
@@ -147,6 +156,7 @@ public class GameManager : MonoBehaviour
 
         if (StageManager.Instance != null)
             StageManager.Instance.SetSelectedAlliesForStage(order, stageIdx);
+        currentRoutePath = new List<Vector3>(worldPath);
 
         var placer = AllyPlacer.Instance != null ? AllyPlacer.Instance : FindFirstObjectByType<AllyPlacer>();
         if (placer != null)
@@ -238,6 +248,7 @@ public class GameManager : MonoBehaviour
         waveAllyDone  = 0;
         waveAllyCount = 0;
         waveInProgress = true;
+        SpawnWaveBonusCoins();
 
         // Stage 3 화산 체력 감소 시작
         volcanoHazard?.StartDrain();
@@ -281,6 +292,7 @@ public class GameManager : MonoBehaviour
 
         // Stage 3 화산 체력 감소 중단
         volcanoHazard?.StopDrain();
+        ClearBonusCoins();
 
         var wave = currentWaves[currentWaveIndex];
         bool wavePassed = (wave.goalRequirement <= 0) || (waveGoalCount >= wave.goalRequirement);
@@ -330,6 +342,7 @@ public class GameManager : MonoBehaviour
         var map = FindFirstObjectByType<Map>();
         if (map != null)
             map.GenerateMap();
+        ClearBonusCoins();
 
         var enemySpawner = FindFirstObjectByType<EnemyAutoSpawner>();
         if (enemySpawner != null)
@@ -377,6 +390,14 @@ public class GameManager : MonoBehaviour
         deadCount++;
         waveAllyDone++;
         CheckWaveCompletion();
+    }
+
+    public void CollectBonusCoin(Vector3 worldPosition)
+    {
+        currentCoins++;
+        UpdateCoinHUD();
+        FloatingText.Spawn(worldPosition + Vector3.up * 0.35f, "+1 코인", COL_GOLD);
+        Debug.Log($"[GameManager] 보너스 코인 획득 (+1코인, 잔여 {currentCoins})");
     }
 
     public bool ShouldBlockGameplayInput()
@@ -967,6 +988,7 @@ public class GameManager : MonoBehaviour
 
         if (waveBannerGo  != null) waveBannerGo.SetActive(false);
         if (deployHintGo  != null) deployHintGo.SetActive(false);
+        ClearBonusCoins();
 
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
         int stars    = StageManager.Instance != null ? StageManager.Instance.CalcStars(clearedWaveCount) : 0;
@@ -982,6 +1004,96 @@ public class GameManager : MonoBehaviour
     {
         if (coinTxt != null)
             coinTxt.text = $"코인: {currentCoins}";
+    }
+
+    void SpawnWaveBonusCoins()
+    {
+        ClearBonusCoins();
+
+        int coinCount = RollBonusCoinCount();
+        if (coinCount <= 0 || currentRoutePath == null || currentRoutePath.Count < 3)
+            return;
+
+        var positions = PickBonusCoinPositions(coinCount);
+        for (int i = 0; i < positions.Count; i++)
+        {
+            var go = new GameObject("BonusCoin");
+            var coin = go.AddComponent<BonusCoinPickup>();
+            coin.Init(positions[i]);
+            activeBonusCoins.Add(coin);
+        }
+    }
+
+    int RollBonusCoinCount()
+    {
+        float r = Random.value;
+        if (r < 0.96f) return 0;
+        if (r < 0.99f) return 1;
+        return 2;
+    }
+
+    List<Vector3> PickBonusCoinPositions(int count)
+    {
+        var result = new List<Vector3>(count);
+        var candidates = new List<BonusCoinCandidate>();
+        Vector3 start = currentRoutePath[0];
+        Vector3 goal = currentRoutePath[currentRoutePath.Count - 1];
+
+        for (int i = 1; i < currentRoutePath.Count - 1; i++)
+        {
+            Vector3 pos = currentRoutePath[i];
+            candidates.Add(new BonusCoinCandidate
+            {
+                position = new Vector3(pos.x, pos.y, -1.25f),
+                distanceFromShortestRoute = DistanceToSegment(pos, start, goal)
+            });
+        }
+
+        candidates.Sort((a, b) => b.distanceFromShortestRoute.CompareTo(a.distanceFromShortestRoute));
+
+        for (int i = 0; i < candidates.Count && result.Count < count; i++)
+        {
+            bool farEnough = true;
+            for (int j = 0; j < result.Count; j++)
+            {
+                if (Vector2.Distance(candidates[i].position, result[j]) < 1.2f)
+                {
+                    farEnough = false;
+                    break;
+                }
+            }
+            if (farEnough) result.Add(candidates[i].position);
+        }
+
+        for (int i = 0; i < candidates.Count && result.Count < count; i++)
+        {
+            if (!result.Contains(candidates[i].position))
+                result.Add(candidates[i].position);
+        }
+
+        return result;
+    }
+
+    float DistanceToSegment(Vector3 point, Vector3 a, Vector3 b)
+    {
+        Vector2 ap = new Vector2(point.x - a.x, point.y - a.y);
+        Vector2 ab = new Vector2(b.x - a.x, b.y - a.y);
+        float abLenSq = ab.sqrMagnitude;
+        if (abLenSq <= Mathf.Epsilon) return ap.magnitude;
+
+        float t = Mathf.Clamp01(Vector2.Dot(ap, ab) / abLenSq);
+        Vector2 closest = new Vector2(a.x, a.y) + ab * t;
+        return Vector2.Distance(new Vector2(point.x, point.y), closest);
+    }
+
+    void ClearBonusCoins()
+    {
+        for (int i = activeBonusCoins.Count - 1; i >= 0; i--)
+        {
+            if (activeBonusCoins[i] != null)
+                Destroy(activeBonusCoins[i].gameObject);
+        }
+        activeBonusCoins.Clear();
     }
 
     // ── 결과 화면 ────────────────────────────────────────────────────────
