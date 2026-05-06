@@ -493,9 +493,13 @@ public class GameManager : MonoBehaviour
         sc.matchWidthOrHeight  = 0.5f;
         cgo.AddComponent<GraphicRaycaster>();
 
-        // 웨이브 정보 (상단 좌측)
-        waveInfoTxt = BuildTopLabel(cgo.transform, "wave", "웨이브 - / -",
-            new Vector2(-400, 320), new Vector2(200, 40));
+        // 웨이브 정보 (상단 좌측) — 스테이지 총 웨이브 수를 미리 표시
+        {
+            int si = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
+            int totalWaves = StageManager.GetWaves(si).Length;
+            waveInfoTxt = BuildTopLabel(cgo.transform, "wave", $"웨이브 1 / {totalWaves}",
+                new Vector2(-400, 320), new Vector2(200, 40));
+        }
 
         // 별 진행 표시 (웨이브 텍스트 아래)
         starProgressTxt = BuildTopLabel(cgo.transform, "star", "☆ ☆ ☆",
@@ -842,12 +846,12 @@ public class GameManager : MonoBehaviour
 
     void UpdateWaveHUD()
     {
-        if (waveInfoTxt != null && currentWaves != null)
+        if (waveInfoTxt != null)
         {
-            string waveStr = currentWaveIndex >= 0
-                ? $"웨이브 {currentWaveIndex + 1} / {currentWaves.Length}"
-                : $"웨이브 - / {currentWaves.Length}";
-            waveInfoTxt.text = waveStr;
+            int si         = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
+            int totalWaves = currentWaves?.Length ?? StageManager.GetWaves(si).Length;
+            int displayNum = currentWaveIndex >= 0 ? currentWaveIndex + 1 : 1;
+            waveInfoTxt.text = $"웨이브 {displayNum} / {totalWaves}";
         }
 
         UpdateStarProgressHUD();
