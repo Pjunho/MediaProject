@@ -375,7 +375,7 @@ public class AllyBase : MonoBehaviour
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = frames != null && frames.Length > 0 ? frames[0] : CreateCircleSprite(8);
         sr.color = Color.white;
-        sr.sortingOrder = 42;
+        sr.sortingOrder = 70;
         go.transform.localScale = frames != null && frames.Length > 0
             ? Vector3.one * 0.82f
             : new Vector3(0.18f, 0.07f, 1f);
