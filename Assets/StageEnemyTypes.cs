@@ -35,14 +35,14 @@ public class GrassSniper : SheetEnemyBase
     }
 }
 
-/// <summary>석궁 저격수 — 석궁으로 빠른 볼트를 날림 (s1_crossbow_enemy)</summary>
+/// <summary>숲 새총병 — 새총으로 탄환을 날림 (s1_slingshot_enemy)</summary>
 public class GrassSpearman : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.12f, 0.42f, 0.14f);
     static readonly Color Accent = new Color(0.62f, 0.50f, 0.18f);
     static readonly Color Weapon = new Color(0.45f, 0.32f, 0.12f);
 
-    protected override string SheetName     => "s1_crossbow_enemy";
+    protected override string SheetName     => "s1_slingshot_enemy";
     protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
     protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 };
     protected override int    AtkFrameCount => 8;
@@ -51,7 +51,7 @@ public class GrassSpearman : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "석궁 사수"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "숲 새총병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
     }
@@ -59,9 +59,9 @@ public class GrassSpearman : SheetEnemyBase
     protected override Color AttackLineColor() => new Color(0.35f, 0.85f, 0.15f);
     protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        yield return StartCoroutine(ProjectileEffect(target,
-            new Color(0.55f, 0.78f, 0.20f), 20f,
-            new Color(0.60f, 0.95f, 0.25f)));
+        yield return StartCoroutine(OrbProjectileEffect(target,
+            new Color(0.55f, 0.78f, 0.20f), 18f,
+            new Color(0.60f, 0.95f, 0.25f), 0.34f));
     }
 }
 
@@ -215,8 +215,8 @@ public class VolcanoSniper : SheetEnemyBase
     protected override Color AttackLineColor() => new Color(1.0f, 0.3f, 0.0f);
     protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        yield return StartCoroutine(ThinBeamEffect(target,
-            new Color(1.00f, 0.10f, 0.00f),
+        yield return StartCoroutine(ProjectileEffect(target,
+            new Color(1.00f, 0.28f, 0.05f), 17f,
             new Color(1.00f, 0.40f, 0.05f)));
     }
 }
@@ -245,9 +245,9 @@ public class VolcanoSpearman : SheetEnemyBase
     protected override Color AttackLineColor() => new Color(1.0f, 0.4f, 0.05f);
     protected override IEnumerator OnReleaseEffect(AllyBase target)
     {
-        yield return StartCoroutine(ZigzagEffect(target,
+        yield return StartCoroutine(BoomerangEffect(target,
             new Color(1.00f, 0.35f, 0.05f),
-            new Color(1.00f, 0.60f, 0.10f), 2, 0.22f));
+            new Color(1.00f, 0.60f, 0.10f), 13f, 0.55f));
     }
 }
 

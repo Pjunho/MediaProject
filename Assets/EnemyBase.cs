@@ -78,8 +78,14 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Attack(AllyBase target)
     {
         if (target == null || target.isDead) return;
-        target.TakeDamage(attackDamage);
-        StartCoroutine(ShowAttackEffect(target));
+        StartCoroutine(AttackRoutine(target));
+    }
+
+    IEnumerator AttackRoutine(AllyBase target)
+    {
+        yield return StartCoroutine(ShowAttackEffect(target));
+        if (target != null && !target.isDead)
+            target.TakeDamage(attackDamage);
     }
 
     protected virtual IEnumerator ShowAttackEffect(AllyBase target)
@@ -110,19 +116,70 @@ public class EnemyBase : MonoBehaviour
         var go = new GameObject("ImpactFlash");
         go.transform.position = pos;
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = MakeCircleSprite(8);
+        sr.sprite = MakeCircleSprite(18);
         sr.color = color;
-        sr.sortingOrder = 32;
+        sr.sortingOrder = 38;
+
+        var ringGo = new GameObject("ImpactRing");
+        ringGo.transform.position = pos;
+        var ring = ringGo.AddComponent<LineRenderer>();
+        ring.useWorldSpace = true;
+        ring.loop = true;
+        ring.positionCount = 28;
+        ring.widthMultiplier = 0.055f;
+        ring.sortingOrder = 39;
+        ring.material = new Material(Shader.Find("Sprites/Default"));
+        Color ringColor = new Color(color.r, color.g, color.b, 0.95f);
+        ring.startColor = ringColor;
+        ring.endColor = ringColor;
+
+        const int sparkCount = 8;
+        GameObject[] sparks = new GameObject[sparkCount];
+        Vector3[] sparkDirs = new Vector3[sparkCount];
+        for (int i = 0; i < sparkCount; i++)
+        {
+            float a = (float)i / sparkCount * Mathf.PI * 2f + Random.Range(-0.18f, 0.18f);
+            sparkDirs[i] = new Vector3(Mathf.Cos(a), Mathf.Sin(a), 0f);
+            sparks[i] = CreateSpark(pos, color, Random.Range(0.09f, 0.16f), 40);
+        }
+
         float elapsed = 0f;
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            go.transform.localScale = Vector3.one * Mathf.Lerp(0.25f, 0.55f, t);
+            go.transform.localScale = Vector3.one * Mathf.Lerp(0.18f, 0.82f, t);
             Color c = color; c.a = 1f - t;
             sr.color = c;
+
+            float radius = Mathf.Lerp(0.12f, 0.52f, t);
+            for (int i = 0; i < ring.positionCount; i++)
+            {
+                float a = (float)i / ring.positionCount * Mathf.PI * 2f;
+                ring.SetPosition(i, pos + new Vector3(Mathf.Cos(a), Mathf.Sin(a), 0f) * radius);
+            }
+            ringColor.a = 0.95f * (1f - t);
+            ring.startColor = ringColor;
+            ring.endColor = ringColor;
+
+            for (int i = 0; i < sparks.Length; i++)
+            {
+                if (sparks[i] == null) continue;
+                sparks[i].transform.position += sparkDirs[i] * (2.4f * Time.deltaTime);
+                sparks[i].transform.localScale = Vector3.one * Mathf.Lerp(0.16f, 0.03f, t);
+                var sparkSr = sparks[i].GetComponent<SpriteRenderer>();
+                if (sparkSr != null)
+                {
+                    Color sc = color;
+                    sc.a = 1f - t;
+                    sparkSr.color = sc;
+                }
+            }
             yield return null;
         }
+        for (int i = 0; i < sparks.Length; i++)
+            if (sparks[i] != null) Destroy(sparks[i]);
+        Destroy(ringGo);
         Destroy(go);
     }
 
@@ -156,6 +213,18 @@ public class EnemyBase : MonoBehaviour
         lr.endColor        = new Color(color.r, color.g, color.b, 0.2f);
         lr.material        = new Material(Shader.Find("Sprites/Default"));
         return lr;
+    }
+
+    static GameObject CreateSpark(Vector3 pos, Color color, float scale, int sortOrder)
+    {
+        var go = new GameObject("ImpactSpark");
+        go.transform.position = pos;
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = MakeCircleSprite(5);
+        sr.color = color;
+        sr.sortingOrder = sortOrder;
+        go.transform.localScale = Vector3.one * scale;
+        return go;
     }
 
     protected static Vector3[] BuildLightningPath(Vector3 from, Vector3 to, int segments, float maxOffset)
@@ -214,6 +283,8 @@ public class EnemyBase : MonoBehaviour
         float dist   = Vector3.Distance(src, dst);
 
         Sprite spr = MakeCircleSprite(7);
+        var slash = CreateTempLineRenderer(12, colorB, 0.16f, 37);
+        slash.endColor = new Color(colorA.r, colorA.g, colorA.b, 0.18f);
         var gos    = new GameObject[count];
         var speeds = new float[count];
         var sizes  = new float[count];
@@ -242,6 +313,22 @@ public class EnemyBase : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
+            Vector3 slashCenter = Vector3.Lerp(src, dst, Mathf.SmoothStep(0.12f, 0.86f, t));
+            float slashRadius = Mathf.Lerp(0.15f, 0.48f, t);
+            float startAngle = -65f * Mathf.Deg2Rad;
+            float endAngle = 65f * Mathf.Deg2Rad;
+            for (int i = 0; i < slash.positionCount; i++)
+            {
+                float u = (float)i / (slash.positionCount - 1);
+                float a = Mathf.Lerp(startAngle, endAngle, u);
+                Vector3 arc = dir * Mathf.Cos(a) + perp * Mathf.Sin(a);
+                slash.SetPosition(i, slashCenter + arc * slashRadius);
+            }
+            Color slashColor = colorB;
+            slashColor.a = 0.85f * (1f - t);
+            slash.startColor = slashColor;
+            slash.endColor = new Color(colorA.r, colorA.g, colorA.b, 0.15f * (1f - t));
+
             for (int i = 0; i < count; i++)
             {
                 if (gos[i] == null) continue;
@@ -252,8 +339,10 @@ public class EnemyBase : MonoBehaviour
             }
             yield return null;
         }
+        Destroy(slash.gameObject);
         for (int i = 0; i < count; i++)
             if (gos[i] != null) Destroy(gos[i]);
+        SpawnImpactFlash(dst, colorB, 0.20f);
     }
 
     /// <summary>지그재그 번개. Spearman 계열 전용.</summary>
@@ -264,20 +353,28 @@ public class EnemyBase : MonoBehaviour
         Vector3 src = transform.position;
         Vector3 dst = target.transform.position;
 
-        var lr = CreateTempLineRenderer(10, boltColor, 0.07f, 28);
-        lr.endColor = new Color(boltColor.r * 0.8f, boltColor.g * 0.8f, boltColor.b * 0.8f, 0.25f);
+        var glow = CreateTempLineRenderer(12, new Color(boltColor.r, boltColor.g, boltColor.b, 0.28f), 0.22f, 31);
+        var lr = CreateTempLineRenderer(12, boltColor, 0.09f, 32);
+        lr.endColor = new Color(boltColor.r * 0.8f, boltColor.g * 0.8f, boltColor.b * 0.8f, 0.35f);
 
         for (int flash = 0; flash < flashCount; flash++)
         {
-            Vector3[] pts = BuildLightningPath(src, dst, 9, offsetMax);
-            for (int i = 0; i < pts.Length; i++) lr.SetPosition(i, pts[i]);
+            Vector3[] pts = BuildLightningPath(src, dst, 11, offsetMax);
+            for (int i = 0; i < pts.Length; i++)
+            {
+                lr.SetPosition(i, pts[i]);
+                glow.SetPosition(i, pts[i]);
+            }
+            glow.gameObject.SetActive(true);
             lr.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.045f);
+            yield return new WaitForSeconds(0.06f);
             lr.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.030f);
+            glow.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.025f);
         }
+        Destroy(glow.gameObject);
         Destroy(lr.gameObject);
-        SpawnImpactFlash(dst, impactColor, 0.18f);
+        SpawnImpactFlash(dst, impactColor, 0.24f);
     }
 
     /// <summary>투사체 이동. Sniper 계열(자연/사막) 전용.</summary>
@@ -285,29 +382,123 @@ public class EnemyBase : MonoBehaviour
         float speed = 16f, Color impactColor = default)
     {
         if (target == null) yield break;
-        Vector3 src = transform.position;
+        Vector3 src = transform.position + Vector3.up * 0.18f;
         Vector3 dst = target.transform.position;
         float dist  = Vector3.Distance(src, dst);
 
         var go = new GameObject("Proj");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = MakeCircleSprite(6);
+        sr.sprite = MakeArrowSprite();
         sr.color = color;
-        sr.sortingOrder = 30;
+        sr.sortingOrder = 36;
         go.transform.position = src;
-        go.transform.localScale = Vector3.one * 0.16f;
+        go.transform.localScale = Vector3.one * 0.34f;
 
-        float elapsed = 0f, maxTime = dist / speed;
+        var trail = CreateTempLineRenderer(2, new Color(color.r, color.g, color.b, 0.72f), 0.075f, 35);
+        trail.endColor = new Color(color.r, color.g, color.b, 0f);
+
+        float elapsed = 0f, maxTime = Mathf.Max(0.10f, dist / speed);
         while (elapsed < maxTime)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Min(elapsed / maxTime, 1f);
-            go.transform.position = Vector3.Lerp(src, dst, t);
+            if (target != null) dst = target.transform.position;
+            Vector3 pos = Vector3.Lerp(src, dst, Mathf.SmoothStep(0f, 1f, t));
+            Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
+            go.transform.position = pos;
+            go.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+            trail.SetPosition(0, pos - dir * 0.62f);
+            trail.SetPosition(1, pos);
             if (t >= 1f) break;
             yield return null;
         }
+        Destroy(trail.gameObject);
         Destroy(go);
-        SpawnImpactFlash(dst, impactColor.a > 0f ? impactColor : color, 0.20f);
+        SpawnImpactFlash(dst, impactColor.a > 0f ? impactColor : color, 0.26f);
+    }
+
+    protected IEnumerator OrbProjectileEffect(AllyBase target, Color color,
+        float speed = 15f, Color impactColor = default, float arcHeight = 0.28f)
+    {
+        if (target == null) yield break;
+        Vector3 src = transform.position + Vector3.up * 0.18f;
+        Vector3 dst = target.transform.position;
+        float dist = Vector3.Distance(src, dst);
+
+        var go = new GameObject("OrbProj");
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = MakeCircleSprite(9);
+        sr.color = color;
+        sr.sortingOrder = 36;
+        go.transform.localScale = Vector3.one * 0.22f;
+
+        var trail = CreateTempLineRenderer(2, new Color(color.r, color.g, color.b, 0.52f), 0.09f, 35);
+        trail.endColor = new Color(color.r, color.g, color.b, 0f);
+
+        float elapsed = 0f, duration = Mathf.Max(0.12f, dist / speed);
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            if (target != null) dst = target.transform.position;
+            Vector3 pos = Vector3.Lerp(src, dst, Mathf.SmoothStep(0f, 1f, t));
+            pos += Vector3.up * Mathf.Sin(t * Mathf.PI) * arcHeight;
+            Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
+            go.transform.position = pos;
+            go.transform.localScale = Vector3.one * (0.20f + Mathf.Sin(t * Mathf.PI) * 0.08f);
+            trail.SetPosition(0, pos - dir * 0.42f);
+            trail.SetPosition(1, pos);
+            yield return null;
+        }
+        Destroy(trail.gameObject);
+        Destroy(go);
+        SpawnImpactFlash(dst, impactColor.a > 0f ? impactColor : color, 0.23f);
+    }
+
+    protected IEnumerator BoomerangEffect(AllyBase target, Color colorA, Color colorB,
+        float speed = 13f, float curveHeight = 0.55f)
+    {
+        if (target == null) yield break;
+        Vector3 src = transform.position + Vector3.up * 0.14f;
+        Vector3 dst = target.transform.position;
+        float dist = Vector3.Distance(src, dst);
+        Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
+        Vector3 perp = new Vector3(-dir.y, dir.x, 0f);
+
+        var go = new GameObject("BoomerangProj");
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = MakeBoomerangSprite();
+        sr.color = colorA;
+        sr.sortingOrder = 36;
+        go.transform.localScale = Vector3.one * 0.30f;
+
+        var trail = CreateTempLineRenderer(7, new Color(colorA.r, colorA.g, colorA.b, 0.55f), 0.08f, 35);
+        trail.endColor = new Color(colorB.r, colorB.g, colorB.b, 0f);
+        Vector3[] trailPts = new Vector3[7];
+        for (int i = 0; i < trailPts.Length; i++)
+        {
+            trailPts[i] = src;
+            trail.SetPosition(i, src);
+        }
+
+        float elapsed = 0f, duration = Mathf.Max(0.18f, dist / speed);
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            if (target != null) dst = target.transform.position;
+            Vector3 basePos = Vector3.Lerp(src, dst, Mathf.SmoothStep(0f, 1f, t));
+            Vector3 pos = basePos + perp * (Mathf.Sin(t * Mathf.PI) * curveHeight);
+            go.transform.position = pos;
+            go.transform.rotation = Quaternion.Euler(0f, 0f, Time.time * 900f);
+            for (int i = trailPts.Length - 1; i > 0; i--) trailPts[i] = trailPts[i - 1];
+            trailPts[0] = pos;
+            for (int i = 0; i < trailPts.Length; i++) trail.SetPosition(i, trailPts[i]);
+            yield return null;
+        }
+        Destroy(trail.gameObject);
+        Destroy(go);
+        SpawnImpactFlash(dst, colorB, 0.25f);
     }
 
     /// <summary>얇은 빔 페이드. Sniper 계열(화산/어둠/요새) 전용.</summary>
@@ -318,7 +509,10 @@ public class EnemyBase : MonoBehaviour
         Vector3 src = transform.position;
         Vector3 dst = target.transform.position;
 
-        var lr = CreateTempLineRenderer(2, beamColor, 0.035f, 28);
+        var glow = CreateTempLineRenderer(2, new Color(beamColor.r, beamColor.g, beamColor.b, 0.35f), 0.22f, 32);
+        var lr = CreateTempLineRenderer(2, beamColor, 0.075f, 33);
+        glow.SetPosition(0, src);
+        glow.SetPosition(1, dst);
         lr.SetPosition(0, src);
         lr.SetPosition(1, dst);
 
@@ -330,10 +524,72 @@ public class EnemyBase : MonoBehaviour
             float a = 1f - t * t;
             lr.startColor = new Color(beamColor.r, beamColor.g, beamColor.b, a);
             lr.endColor   = new Color(beamColor.r * 0.6f, beamColor.g * 0.6f, beamColor.b * 0.6f, a * 0.5f);
+            glow.startColor = new Color(beamColor.r, beamColor.g, beamColor.b, a * 0.35f);
+            glow.endColor = new Color(beamColor.r, beamColor.g, beamColor.b, 0f);
             yield return null;
         }
+        Destroy(glow.gameObject);
         Destroy(lr.gameObject);
-        SpawnImpactFlash(dst, impactColor, 0.22f);
+        SpawnImpactFlash(dst, impactColor, 0.28f);
+    }
+
+    static Sprite MakeArrowSprite()
+    {
+        int w = 28, h = 9;
+        var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+        for (int x = 0; x < w; x++)
+        for (int y = 0; y < h; y++)
+            tex.SetPixel(x, y, Color.clear);
+
+        Color shaft = new Color(1f, 0.78f, 0.34f, 1f);
+        Color tip = new Color(1f, 0.96f, 0.72f, 1f);
+        Color shadow = new Color(0.35f, 0.18f, 0.08f, 0.85f);
+        for (int x = 3; x < 22; x++)
+        {
+            tex.SetPixel(x, 4, shaft);
+            tex.SetPixel(x, 3, shadow);
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            tex.SetPixel(22 + i, 4, tip);
+            tex.SetPixel(22 + i, 4 + i / 2, tip);
+            tex.SetPixel(22 + i, 4 - i / 2, tip);
+        }
+        tex.SetPixel(1, 2, shaft);
+        tex.SetPixel(2, 3, shaft);
+        tex.SetPixel(1, 6, shaft);
+        tex.SetPixel(2, 5, shaft);
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, w, h), new Vector2(0.72f, 0.5f), 18f);
+    }
+
+    static Sprite MakeBoomerangSprite()
+    {
+        int size = 24;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+            tex.SetPixel(x, y, Color.clear);
+
+        Color edge = new Color(1f, 0.78f, 0.25f, 1f);
+        Color core = new Color(1f, 0.35f, 0.08f, 1f);
+        for (int i = 0; i < 10; i++)
+        {
+            SetSpritePx(tex, 5 + i, 6 + i, edge);
+            SetSpritePx(tex, 6 + i, 6 + i, core);
+            SetSpritePx(tex, 14 + i / 2, 15 - i, edge);
+            SetSpritePx(tex, 15 + i / 2, 15 - i, core);
+        }
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 18f);
+    }
+
+    static void SetSpritePx(Texture2D tex, int x, int y, Color color)
+    {
+        if (x >= 0 && x < tex.width && y >= 0 && y < tex.height)
+            tex.SetPixel(x, y, color);
     }
 
     void CreateAttackLine()
