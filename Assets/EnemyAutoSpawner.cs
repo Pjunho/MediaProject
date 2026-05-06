@@ -7,8 +7,8 @@ using System.Collections.Generic;
 /// ▶ 배치 우선순위 (타워 이스케이프 스타일)
 ///   - 원거리 적 (저격수·창병): 최단 경로 선분 근처에 먼저 배치
 ///     → 플레이어의 경로 선택을 압박하는 핵심 장애물
-///   - 근접 적 (근접병): 경로에서 먼 곳에 배치
-///     → 넓은 영역 커버, 길목 이탈 시 위협
+///   - 근접 적 (근접병): 최단 경로 주변에 먼저 배치
+///     → 스타트-골 최단 루트를 압박하고 플레이어의 우회 경로 선택을 유도
 /// </summary>
 public class EnemyAutoSpawner : MonoBehaviour
 {
@@ -131,11 +131,11 @@ public class EnemyAutoSpawner : MonoBehaviour
             platformPool.Sort(CompareNearCandidates);
             lavaPool.Sort(CompareFarCandidates);
 
-            // 원거리: 바위섬 플랫폼 우선 → 부족하면 일반 타일로 폴백
+            // 근접: 바위섬 플랫폼 중에서도 최단 경로 가까운 곳을 최우선 사용
+            SpawnEnemyType(platformPool, lavaPool, brawlerCount,  "근접 적",  brawlerType);
+            // 원거리: 남은 플랫폼 우선 → 부족하면 일반 타일로 폴백
             SpawnEnemyType(platformPool, lavaPool, sniperCount,   "장거리 적", sniperType);
             SpawnEnemyType(platformPool, lavaPool, spearmanCount, "중거리 적", spearmanType);
-            // 근접: 일반 용암 타일 우선 → 플랫폼 폴백
-            SpawnEnemyType(lavaPool, platformPool, brawlerCount,  "근접 적",  brawlerType);
         }
         else
         {
@@ -150,9 +150,9 @@ public class EnemyAutoSpawner : MonoBehaviour
             nearPool.Sort(CompareNearCandidates);
             farPool.Sort(CompareFarCandidates);
 
-            SpawnEnemyType(nearPool, farPool,  sniperCount,   "장거리 적", sniperType);
-            SpawnEnemyType(nearPool, farPool,  spearmanCount, "중거리 적", spearmanType);
-            SpawnEnemyType(farPool,  nearPool, brawlerCount,  "근접 적",  brawlerType);
+            SpawnEnemyType(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
+            SpawnEnemyType(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
+            SpawnEnemyType(nearPool, farPool, spearmanCount, "중거리 적", spearmanType);
         }
 
         Debug.Log($"[EnemyAutoSpawner] Stage {stage} 배치 완료 — {spawnedEnemies.Count}명 " +

@@ -232,6 +232,20 @@ public class StageManager : MonoBehaviour
         int sniper = Mathf.Clamp(Mathf.RoundToInt(sniperExact), 0, totalEnemies);
         int spearman = Mathf.Clamp(Mathf.RoundToInt(spearmanExact), 0, totalEnemies - sniper);
         int brawler = Mathf.Max(0, totalEnemies - sniper - spearman);
+        int minBrawler = GetMinimumBrawlerCount(totalEnemies);
+        if (brawler < minBrawler)
+        {
+            int need = minBrawler - brawler;
+            while (need > 0 && (sniper > 0 || spearman > 0))
+            {
+                if (sniper >= spearman && sniper > 0) sniper--;
+                else if (spearman > 0) spearman--;
+                else sniper--;
+
+                brawler++;
+                need--;
+            }
+        }
 
         if (cfg.brawlerCount >= cfg.sniperCount && cfg.brawlerCount >= cfg.spearmanCount && brawler == 0)
         {
@@ -241,6 +255,14 @@ public class StageManager : MonoBehaviour
         }
 
         return new[] { sniper, spearman, brawler };
+    }
+
+    static int GetMinimumBrawlerCount(int totalEnemies)
+    {
+        if (totalEnemies <= 3) return 1;
+        if (totalEnemies <= 5) return 2;
+        if (totalEnemies <= 8) return 3;
+        return Mathf.CeilToInt(totalEnemies * 0.35f);
     }
 
     static int EnsureOdd(int value) => value % 2 == 0 ? value + 1 : value;
