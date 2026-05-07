@@ -212,11 +212,11 @@ public class SkillCooldownHUD : MonoBehaviour
         keyRt.sizeDelta        = new Vector2(0f, KEY_H + 4f);
         var keyTx = keyGo.AddComponent<Text>();
         keyTx.font      = BFont();
-        keyTx.fontSize  = 11;
+        keyTx.fontSize  = 10;
         keyTx.fontStyle = FontStyle.Bold;
-        keyTx.color     = new Color(1f, 1f, 1f, 0.55f);
+        keyTx.color     = new Color(1f, 1f, 1f, 0.60f);
         keyTx.alignment = TextAnchor.MiddleCenter;
-        keyTx.text      = $"[{keyNum}]";
+        keyTx.text      = AllyTypeToKorean(type);
 
         return new SlotUI
         {
@@ -311,6 +311,17 @@ public class SkillCooldownHUD : MonoBehaviour
         img.color = color;
         return go;
     }
+
+    static string AllyTypeToKorean(AllyType type) => type switch
+    {
+        AllyType.Warrior => "전사",
+        AllyType.Archer  => "궁수",
+        AllyType.Mage    => "마법사",
+        AllyType.Cleric  => "성직자",
+        AllyType.Rogue   => "도적",
+        AllyType.Paladin => "성기사",
+        _                => type.ToString()
+    };
 
     static Sprite LoadIcon(AllyType type)
     {

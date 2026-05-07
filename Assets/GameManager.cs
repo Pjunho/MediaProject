@@ -382,6 +382,9 @@ public class GameManager : MonoBehaviour
 
         waveInProgress = false;
 
+        // 웨이브 종료 시 모든 스킬 쿨다운 초기화 (다음 웨이브 시작 시 즉시 사용 가능)
+        SkillSystem.ResetCooldowns();
+
         // Stage 3 화산 체력 감소 중단
         volcanoHazard?.StopDrain();
         ClearBonusCoins();

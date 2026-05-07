@@ -112,6 +112,13 @@ public static class SkillSystem
         return false;
     }
 
+    /// <summary>웨이브 종료 시 호출 — 모든 스킬 쿨다운을 즉시 초기화</summary>
+    public static void ResetCooldowns()
+    {
+        for (int i = 0; i < skillActivationTimes.Length; i++)
+            skillActivationTimes[i] = float.NegativeInfinity;
+    }
+
     /// <summary>스킬 쿨다운 전체 시간(초)</summary>
     public static float GetCooldownTotal(AllyType allyType)
     {
