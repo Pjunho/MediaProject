@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     // ── 개별 출전 (Space / Click) ─────────────────────────────────────────
     private bool alliesFullyDeployed = false;
 
-    static readonly float[]  speedSteps  = { 1f, 1.5f, 2f, 3f };
-    static readonly string[] speedLabels = { "1x", "1.5x", "2x", "3x" };
+    static readonly float[]  speedSteps  = { 1f, 1.5f, 2f };
+    static readonly string[] speedLabels = { "1x", "1.5x", "2x" };
 
     private GameObject pausePanel;
     private GameObject pauseBox;       // 일시정지 패널 내부 박스 (설정 패널 표시 시 숨김)
@@ -246,8 +246,7 @@ public class GameManager : MonoBehaviour
                 continue;
             }
 
-            bool active = b.pauseOnly ? isPaused : true;
-            if (!active) continue;
+            if (!IsButtonInputAllowed(b)) continue;
             bool over = RectTransformUtility.RectangleContainsScreenPoint(b.rt, mp, null);
             if (b.fill != null) b.fill.color = over ? b.h : b.n;
             if (over)
@@ -267,7 +266,7 @@ public class GameManager : MonoBehaviour
             if (pressedButtonIndex >= 0 && pressedButtonIndex == hoveredButtonIndex && pressedButtonIndex < btns.Count)
             {
                 var b = btns[pressedButtonIndex];
-                if (b.rt != null && b.rt.gameObject.activeInHierarchy)
+                if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInputAllowed(b))
                     b.cb?.Invoke();
                 anyBtnClicked = true;
             }
@@ -291,6 +290,20 @@ public class GameManager : MonoBehaviour
 
         if (mouse.leftButton.wasReleasedThisFrame)
             pressedWorldDeploy = false;
+    }
+
+    bool IsButtonInputAllowed(BtnData b)
+    {
+        if (b.rt == null)
+            return false;
+
+        if (settingsPanel != null && settingsPanel.activeInHierarchy)
+            return b.rt.transform.IsChildOf(settingsPanel.transform);
+
+        if (pausePanel != null && pausePanel.activeInHierarchy)
+            return b.rt.transform.IsChildOf(pausePanel.transform);
+
+        return !b.pauseOnly;
     }
 
     void OnDestroy() => Time.timeScale = 1f;
