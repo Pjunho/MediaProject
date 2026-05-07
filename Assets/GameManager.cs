@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     // ── 개별 출전 (Space / Click) ─────────────────────────────────────────
     private bool alliesFullyDeployed = false;
 
-    static readonly float[]  speedSteps  = { 1f, 1.5f, 2f };
-    static readonly string[] speedLabels = { "1x", "1.5x", "2x" };
+    static readonly float[]  speedSteps  = { 1f, 1.5f, 2f, 3f };
+    static readonly string[] speedLabels = { "1배속", "1.5배속", "2배속", "3배속" };
 
     private GameObject pausePanel;
     private GameObject pauseBox;       // 일시정지 패널 내부 박스 (설정 패널 표시 시 숨김)
@@ -577,6 +577,7 @@ public class GameManager : MonoBehaviour
         BuildIconBtn(cgo.transform, "speed", speedLabels[0],
             new Vector2(550, 320), new Vector2(80, 44),
             COL_SPEED, COL_SPEED_H, OnSpeedClicked, out speedBtnTxt);
+        if (speedBtnTxt != null) speedBtnTxt.fontSize = 15;
 
         // 정지 버튼
         BuildIconBtn(cgo.transform, "pause", "II",
@@ -1518,9 +1519,6 @@ public class GameManager : MonoBehaviour
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
         SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
-        var btn = inner.AddComponent<Button>();
-        btn.targetGraphic = fi;
-        btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 20;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
@@ -1543,9 +1541,6 @@ public class GameManager : MonoBehaviour
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
         SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
-        var btn = inner.AddComponent<Button>();
-        btn.targetGraphic = fi;
-        btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
@@ -1566,9 +1561,6 @@ public class GameManager : MonoBehaviour
         var inner = new GameObject("Fill"); inner.transform.SetParent(go.transform, false);
         var fi = inner.AddComponent<Image>(); fi.color = n;
         SR(inner.GetComponent<RectTransform>(), Vector2.zero, size);
-        var btn = inner.AddComponent<Button>();
-        btn.targetGraphic = fi;
-        btn.onClick.AddListener(() => cb?.Invoke());
         var tg = new GameObject("Lbl"); tg.transform.SetParent(inner.transform, false);
         var tx = tg.AddComponent<Text>(); tx.text = label; tx.color = Color.white; tx.fontSize = 22;
         tx.alignment          = TextAnchor.MiddleCenter; tx.fontStyle = FontStyle.Normal;
