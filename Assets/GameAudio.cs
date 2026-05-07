@@ -81,7 +81,11 @@ public class GameAudio : MonoBehaviour
             int stage = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
             PlayStageBgm(stage);
         }
-        else if (scene.name == "MainMenu" || scene.name == "StageSelect")
+        else if (scene.name == "MainMenu")
+        {
+            PlayMenuBgm();
+        }
+        else if (scene.name == "StageSelect")
         {
             FadeOutBgm();
         }
@@ -92,6 +96,11 @@ public class GameAudio : MonoBehaviour
     public static void PlayWaveClear() => Ensure().PlaySfx(Ensure().waveClearClip, 0.82f);
     public static void PlayFail() => Ensure().PlaySfx(Ensure().failClip, 0.86f);
 
+    public void PlayMenuBgm()
+    {
+        PlayBgm("Audio/BGM/main_menu_peaceful");
+    }
+
     public void PlayStageBgm(int stageIndex)
     {
         string path = GetStageBgmPath(stageIndex);
@@ -101,6 +110,11 @@ public class GameAudio : MonoBehaviour
             return;
         }
 
+        PlayBgm(path);
+    }
+
+    void PlayBgm(string path)
+    {
         if (currentBgmPath == path && bgmSource.isPlaying)
             return;
 
