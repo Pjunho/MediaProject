@@ -614,17 +614,27 @@ public class GameManager : MonoBehaviour
         BuildGemBagUI(cgo.transform);
         BuildDeployHintUI(cgo.transform);
 
-        // ── 스킬 쿨다운 HUD 컨테이너 생성 (내용은 경로 확정 후 Build 호출) ──
-        var skillHudGo = new GameObject("SkillCooldownHUD");
+        // ── 스킬 쿨다운 HUD 컨테이너 생성 ──────────────────────────────────
+        // typeof(RectTransform)을 생성자에 전달해 처음부터 RectTransform으로 생성
+        var skillHudGo = new GameObject("SkillCooldownHUD", typeof(RectTransform));
         skillHudGo.transform.SetParent(cgo.transform, false);
-        var skillHudRt = skillHudGo.AddComponent<RectTransform>();
-        // 우측 화면 중앙 기준, 상단 HUD 아래 영역
+        var skillHudRt = (RectTransform)skillHudGo.transform;
+        // 우측 가장자리 수직 중앙에 고정, 상단 버튼(약 300px)을 피해 -30 오프셋
         skillHudRt.anchorMin        = new Vector2(1f, 0.5f);
         skillHudRt.anchorMax        = new Vector2(1f, 0.5f);
         skillHudRt.pivot            = new Vector2(1f, 0.5f);
-        skillHudRt.anchoredPosition = new Vector2(-10f, -20f); // 상단 버튼 아래로 약간 내림
-        skillHudRt.sizeDelta        = new Vector2(88f, 10f);   // Build() 호출 시 높이 재조정
+        skillHudRt.anchoredPosition = new Vector2(-10f, -30f);
+        skillHudRt.sizeDelta        = new Vector2(84f, 10f);    // Build()에서 재설정됨
         skillCdHud = skillHudGo.AddComponent<SkillCooldownHUD>();
+
+        // ── 씬 로드 직후 선택된 아군으로 즉시 빌드 ─────────────────────────
+        var initOrder = StageManager.Instance != null && StageManager.Instance.selectedAllies != null
+                        && StageManager.Instance.selectedAllies.Count > 0
+            ? StageManager.Instance.selectedAllies
+            : new System.Collections.Generic.List<AllyType>
+              { AllyType.Warrior, AllyType.Archer, AllyType.Mage,
+                AllyType.Cleric,  AllyType.Rogue,  AllyType.Paladin };
+        skillCdHud.Build(initOrder);
     }
 
     // ── 개별 출전 힌트 UI ─────────────────────────────────────────────────
