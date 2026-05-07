@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     private int        gemTabItemsBtnIdx = -1;
     private int        pressedButtonIndex = -1;
     private bool       pressedWorldDeploy;
+    private int        suppressWorldDeployFrame = -1;
     private bool       pressedGemPanelOutside;
 
     // ── 토스트 알림 ──────────────────────────────────────────────────────
@@ -283,7 +284,11 @@ public class GameManager : MonoBehaviour
         if (waveInProgress && !alliesFullyDeployed && !isPaused)
         {
             bool spaceDeploy = kb != null && kb.spaceKey.wasPressedThisFrame;
-            bool clickDeploy = !anyBtnClicked && pressedWorldDeploy && !pointerOnGemPanel && mouse.leftButton.wasReleasedThisFrame;
+            bool clickDeploy = !anyBtnClicked
+                && pressedWorldDeploy
+                && suppressWorldDeployFrame != Time.frameCount
+                && !pointerOnGemPanel
+                && mouse.leftButton.wasReleasedThisFrame;
             if (spaceDeploy || clickDeploy)
                 TriggerDeployNext();
         }
@@ -307,6 +312,12 @@ public class GameManager : MonoBehaviour
     }
 
     void OnDestroy() => Time.timeScale = 1f;
+
+    public void SuppressWorldDeployForCurrentFrame()
+    {
+        suppressWorldDeployFrame = Time.frameCount;
+        pressedWorldDeploy = false;
+    }
 
     // ── 웨이브 진행 ────────────────────────────────────────────────────────
 

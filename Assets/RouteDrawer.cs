@@ -141,17 +141,16 @@ public class RouteDrawer : MonoBehaviour
         Vector2 mp = mouse.position.ReadValue();
 
         // ── Start 버튼은 게임 시작 전 언제든지 클릭 가능 (일시정지 중에도) ──
+        bool overStartButton = IsMouseOverStartButton(mp);
         if (!gameStarted && pathComplete && startBtnFill != null)
         {
-            var ir   = startBtnFill.GetComponent<RectTransform>();
-            bool over = RectTransformUtility.RectangleContainsScreenPoint(ir, mp, null);
             if (!IsInPulseCoroutine)
-                startBtnFill.color = over ? COL_BTN_HOV : COL_BTN_ON;
+                startBtnFill.color = overStartButton ? COL_BTN_HOV : COL_BTN_ON;
 
             if (mouse.leftButton.wasPressedThisFrame)
-                startButtonPressed = over;
+                startButtonPressed = overStartButton;
 
-            if (startButtonPressed && over && mouse.leftButton.wasReleasedThisFrame)
+            if (startButtonPressed && overStartButton && mouse.leftButton.wasReleasedThisFrame)
             {
                 startButtonPressed = false;
                 OnStartGame();
@@ -163,6 +162,9 @@ public class RouteDrawer : MonoBehaviour
         }
 
         if (GameManager.Instance != null && GameManager.Instance.ShouldBlockGameplayInput())
+            return;
+
+        if (!gameStarted && overStartButton)
             return;
 
         // ── 경로 그리기 (게임 시작 전까지 언제든지 수정 가능) ──────────
@@ -365,6 +367,15 @@ public class RouteDrawer : MonoBehaviour
 
     bool IsInPulseCoroutine = false;
 
+    bool IsMouseOverStartButton(Vector2 screenPosition)
+    {
+        if (startBtnFill == null)
+            return false;
+
+        var rt = startBtnFill.GetComponent<RectTransform>();
+        return rt != null && RectTransformUtility.RectangleContainsScreenPoint(rt, screenPosition, null);
+    }
+
     // ── 경로 확장 ──────────────────────────────────────────────────
     void ExtendPath(Vector3 worldPos) => ExtendPathByTile(WorldToTile(worldPos));
 
@@ -488,6 +499,7 @@ public class RouteDrawer : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.SuppressWorldDeployForCurrentFrame();
         if (!GameManager.Instance.ConfirmRouteAndStartWave(worldPath, order))
             return;
 
