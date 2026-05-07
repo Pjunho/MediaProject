@@ -105,6 +105,9 @@ public class AllyPlacer : MonoBehaviour
     public bool HasPendingDeployments => deployQueue.Count > 0;
     public int  PendingDeployCount    => deployQueue.Count;
 
+    /// <summary>현재 대기열의 아군 타입 목록을 순서대로 반환 (읽기 전용)</summary>
+    public AllyType[] PeekDeployQueue() => deployQueue.ToArray();
+
     // ── 아군 1명 스폰 ────────────────────────────────────────────────────
     void DeployAlly(AllyType type, int waveSlotIndex)
     {
@@ -150,8 +153,6 @@ public class AllyPlacer : MonoBehaviour
         // 스킬 효과 적용
         SkillSystem.ApplyToAlly(ally, type);
 
-        AddHpBar(go, ally);
-
         ally.OnReachedGoal += a =>
         {
             Debug.Log($"[AllyPlacer] ✅ {a.allyName} 도달!");
@@ -171,36 +172,4 @@ public class AllyPlacer : MonoBehaviour
         Debug.Log($"[AllyPlacer] 🚀 {ally.allyName} 출전! (웨이브 슬롯 {waveSlotIndex})");
     }
 
-    // ── HP 바 생성 ────────────────────────────────────────────────────────
-    void AddHpBar(GameObject parent, AllyBase ally)
-    {
-        var barBg = new GameObject("HpBarBg");
-        barBg.transform.SetParent(parent.transform, false);
-        barBg.transform.localPosition = new Vector3(0f, 0.65f, 0f);
-        var bgSr = barBg.AddComponent<SpriteRenderer>();
-        bgSr.sprite = MakeSq(Color.black);
-        bgSr.sortingOrder = 11;
-        barBg.transform.localScale = new Vector3(0.8f, 0.1f, 1f);
-
-        var barFill = new GameObject("HpBarFill");
-        barFill.transform.SetParent(barBg.transform, false);
-        barFill.transform.localPosition = Vector3.zero;
-        var fillSr = barFill.AddComponent<SpriteRenderer>();
-        fillSr.sprite = MakeSq(Color.green);
-        fillSr.sortingOrder = 12;
-        barFill.transform.localScale = Vector3.one;
-
-        var hpBar = parent.AddComponent<HpBar>();
-        hpBar.ally   = ally;
-        hpBar.fillTf = barFill.transform;
-        hpBar.fillSr = fillSr;
-    }
-
-    Sprite MakeSq(Color c)
-    {
-        var tex = new Texture2D(1, 1);
-        tex.SetPixel(0, 0, c);
-        tex.Apply();
-        return Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
-    }
 }

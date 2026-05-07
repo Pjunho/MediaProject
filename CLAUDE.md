@@ -131,6 +131,7 @@
 - [x] 아군 체력바 표시 → 2026-05-04 구현: AllyBase.cs CreateHpBar()/UpdateHpBar() — Awake 시 SpriteRenderer 기반 체력바 생성(어두운 배경 + 채움바), 피해 수신(OnDamaged) 및 스킬 회복(SkillRegenCoroutine) 시 갱신. 체력 비율에 따라 초록→노랑→빨강 그라디언트, 최대 체력 시 자동 숨김. 함께 StageSelect.cs OnLockedStage() 버그 수정: GetSavedStars(si-1) > 0 조건이 항상 false인 논리 오류를 IsStageUnlocked(si-1)로 수정하여 이전 스테이지 접근 가능 여부에 따라 정확한 안내 메시지 표시
 - [x] 게임플레이 HUD 보석 버프 표시기 → 2026-05-05 구현: GameManager.cs BuildGemBonusHUD() — 활성화된 보석 효과(속도/HP 보너스)를 게임 중 화면 하단 좌측에 황금색 소형 레이블로 표시 ("♦ 속도+X% • HP+Y%"), 보석 미보유 시 자동 숨김. 적 공격 이펙트 강화(EnemyBase ProjectileEffect/ZigzagEffect/ThinBeamEffect/ParticleSprayEffect), 스테이지별 전용 적 타입 동적 스폰(EnemyAutoSpawner), UI 폰트 LegacyRuntime→UiPixelFont 전체 통일도 함께 진행
 - [x] 스페이스바/클릭 아군 수동 출전 시스템 → 2026-05-06 구현: AllyPlacer.cs PrepareDeployQueue()/DeployNextFromQueue() 추가 — 웨이브 시작 시 전체 즉시 스폰 대신 대기열 준비, GameManager.cs TriggerDeployNext()에서 Space키 또는 UI 외 클릭 감지 시 1명씩 출전. 모든 아군 출전 완료 전까지 웨이브 종료 조건(alliesFullyDeployed) 차단. HUD 하단 중앙에 "[Space / Click] 아군 출전 (대기: N명)" 황금색 힌트 표시
+- [x] 출전 대기열 아군 타입 힌트 표시 및 중복 HP 바 버그 수정 → 2026-05-07 구현: (1) AllyPlacer.cs PeekDeployQueue() 추가, GameManager.cs RefreshDeployHint() 개선 — "[Space / Click] 전사 출전 (다음: 궁수 +N명)" 형식으로 다음 출전 아군 타입 실시간 표시. (2) AllyPlacer.AddHpBar() 중복 HP 바 코드 제거 — 2026-05-04 AllyBase.cs CreateHpBar() 구현 이후 AllyPlacer의 구 HP 바 생성 코드가 제거되지 않아 이중 표시되던 버그 수정, SharedTypes.cs HpBar 미사용 클래스 삭제
 
 ---
 
@@ -155,6 +156,10 @@
 
 > 스케줄 작업(매일 오전 10시)이 git log를 기반으로 자동 갱신합니다.
 > 각 세션에서 커밋된 내용이 날짜별로 기록됩니다.
+
+### 2026-05-07
+- 출전 힌트 HUD 개선: "[Space / Click] 전사 출전 (다음: 궁수 +N명)" 형식으로 다음 아군 타입 표시 (AllyPlacer.cs, GameManager.cs)
+- 중복 HP 바 버그 수정: AllyPlacer.AddHpBar() 제거, SharedTypes.cs HpBar 클래스 삭제
 
 ### 2026-05-06
 - cc37ab7: 스페이스바/클릭 기반 아군 수동 출전 시스템 구현 (AllyPlacer.cs, GameManager.cs)

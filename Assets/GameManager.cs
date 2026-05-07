@@ -590,7 +590,7 @@ public class GameManager : MonoBehaviour
         deployHintGo.transform.SetParent(parent, false);
         var bg = deployHintGo.AddComponent<Image>();
         bg.color = new Color(0f, 0f, 0f, 0.72f);
-        SR(deployHintGo.GetComponent<RectTransform>(), new Vector2(0, -305), new Vector2(370, 44));
+        SR(deployHintGo.GetComponent<RectTransform>(), new Vector2(0, -305), new Vector2(460, 44));
 
         var tgo = new GameObject("Txt");
         tgo.transform.SetParent(deployHintGo.transform, false);
@@ -605,7 +605,7 @@ public class GameManager : MonoBehaviour
         deployHintTxt.horizontalOverflow = HorizontalWrapMode.Overflow;
         deployHintTxt.verticalOverflow   = VerticalWrapMode.Overflow;
         deployHintTxt.font               = UiPixelFont.Get();
-        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(360, 40));
+        SR(tgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(450, 40));
 
         deployHintGo.SetActive(false);
     }
@@ -614,9 +614,38 @@ public class GameManager : MonoBehaviour
     {
         if (deployHintTxt == null) return;
         var placer  = AllyPlacer.Instance != null ? AllyPlacer.Instance : FindFirstObjectByType<AllyPlacer>();
-        int pending = placer != null ? placer.PendingDeployCount : 0;
-        deployHintTxt.text = $"[Space / Click]  아군 출전  (대기: {pending}명)";
+        if (placer == null || !placer.HasPendingDeployments)
+        {
+            deployHintTxt.text = "";
+            return;
+        }
+
+        var queue = placer.PeekDeployQueue();
+        string nextName = GetAllyKorName(queue[0]);
+        if (queue.Length > 1)
+        {
+            string afterName = GetAllyKorName(queue[1]);
+            int remaining = queue.Length - 2;
+            deployHintTxt.text = remaining > 0
+                ? $"[Space / Click]  {nextName} 출전  (다음: {afterName} +{remaining}명)"
+                : $"[Space / Click]  {nextName} 출전  (다음: {afterName})";
+        }
+        else
+        {
+            deployHintTxt.text = $"[Space / Click]  {nextName} 출전  (마지막)";
+        }
     }
+
+    static string GetAllyKorName(AllyType t) => t switch
+    {
+        AllyType.Warrior => "전사",
+        AllyType.Archer  => "궁수",
+        AllyType.Mage    => "마법사",
+        AllyType.Cleric  => "성직자",
+        AllyType.Rogue   => "도적",
+        AllyType.Paladin => "성기사",
+        _                => "아군"
+    };
 
     void TriggerDeployNext()
     {
