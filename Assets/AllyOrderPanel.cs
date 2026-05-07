@@ -53,6 +53,8 @@ public class AllyOrderPanel : MonoBehaviour
     private RectTransform    detailSpeedUpgradeBtnRt;
     private Text             detailHpUpgradeTxt;
     private Text             detailSpeedUpgradeTxt;
+    private UpgradeTierButtonGraphic detailHpUpgradeGraphic;
+    private UpgradeTierButtonGraphic detailSpeedUpgradeGraphic;
     private bool             isCollapsed;
     private bool             detailExpanded;
     private int              selectedCard = -1;
@@ -284,7 +286,7 @@ public class AllyOrderPanel : MonoBehaviour
 
         detailHpUpgradeBtnRt = BuildUpgradeBtn("HpUpgradeBtn", detail.transform,
             new Vector2(0.60f, 0.38f), new Vector2(1f, 0.56f),
-            out detailHpUpgradeTxt);
+            out detailHpUpgradeTxt, out detailHpUpgradeGraphic);
 
         detailSpeedText = CreateTextLabel("DetailSpeed", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
@@ -293,7 +295,7 @@ public class AllyOrderPanel : MonoBehaviour
 
         detailSpeedUpgradeBtnRt = BuildUpgradeBtn("SpeedUpgradeBtn", detail.transform,
             new Vector2(0.60f, 0.20f), new Vector2(1f, 0.38f),
-            out detailSpeedUpgradeTxt);
+            out detailSpeedUpgradeTxt, out detailSpeedUpgradeGraphic);
 
         MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Normal,
             COL_TITLE, TextAnchor.MiddleLeft,
@@ -614,12 +616,12 @@ public class AllyOrderPanel : MonoBehaviour
 
     void RefreshUpgradeButtons(AllyType type)
     {
-        RefreshOneStat(type, UpgradeSystem.StatType.Hp,    detailHpUpgradeBtnRt,    detailHpUpgradeTxt);
-        RefreshOneStat(type, UpgradeSystem.StatType.Speed, detailSpeedUpgradeBtnRt, detailSpeedUpgradeTxt);
+        RefreshOneStat(type, UpgradeSystem.StatType.Hp,    detailHpUpgradeBtnRt,    detailHpUpgradeTxt,    detailHpUpgradeGraphic);
+        RefreshOneStat(type, UpgradeSystem.StatType.Speed, detailSpeedUpgradeBtnRt, detailSpeedUpgradeTxt, detailSpeedUpgradeGraphic);
     }
 
     void RefreshOneStat(AllyType type, UpgradeSystem.StatType stat,
-        RectTransform btnRt, Text btnTxt)
+        RectTransform btnRt, Text btnTxt, UpgradeTierButtonGraphic tierGraphic)
     {
         if (btnRt == null || btnTxt == null) return;
         int cost = UpgradeSystem.GetNextCost(type, stat);
@@ -627,17 +629,18 @@ public class AllyOrderPanel : MonoBehaviour
             ? UpgradeSystem.GetHpLevel(type)
             : UpgradeSystem.GetSpeedLevel(type);
 
+        if (tierGraphic != null)
+            tierGraphic.SetLevel(level);
+
         if (cost < 0)
         {
             btnTxt.text  = "MAX";
-            btnTxt.color = new Color(1f, 0.85f, 0.2f);
-            btnRt.GetComponent<Image>().color = new Color(0.25f, 0.22f, 0.06f, 0.85f);
+            btnTxt.color = new Color(0.10f, 0.08f, 0.02f);
         }
         else
         {
-            btnTxt.text  = $"▲{cost}c\nLv{level}";
-            btnTxt.color = new Color(0.7f, 0.9f, 1f);
-            btnRt.GetComponent<Image>().color = new Color(0.12f, 0.20f, 0.35f, 0.92f);
+            btnTxt.text  = $"{cost}c";
+            btnTxt.color = level > 0 ? new Color(0.10f, 0.08f, 0.02f) : new Color(0.78f, 0.84f, 0.92f);
         }
     }
 
@@ -915,7 +918,7 @@ public class AllyOrderPanel : MonoBehaviour
     }
 
     RectTransform BuildUpgradeBtn(string id, Transform parent,
-        Vector2 anchorMin, Vector2 anchorMax, out Text label)
+        Vector2 anchorMin, Vector2 anchorMax, out Text label, out UpgradeTierButtonGraphic tierGraphic)
     {
         var go = MakeUIRect(id, parent);
         var rt = go.GetComponent<RectTransform>();
@@ -923,16 +926,16 @@ public class AllyOrderPanel : MonoBehaviour
         rt.anchorMax = anchorMax;
         rt.offsetMin = new Vector2(4f,  3f);
         rt.offsetMax = new Vector2(-6f, -3f);
-        go.AddComponent<Image>().color = new Color(0.12f, 0.20f, 0.35f, 0.92f);
+        tierGraphic = go.AddComponent<UpgradeTierButtonGraphic>();
 
         var tgo = new GameObject("Lbl", typeof(RectTransform));
         tgo.transform.SetParent(go.transform, false);
         var tx = tgo.AddComponent<Text>();
-        tx.text      = "▲";
-        tx.fontSize  = 11;
+        tx.text      = "1c";
+        tx.fontSize  = 10;
         tx.fontStyle = FontStyle.Normal;
         tx.font      = BuiltinFont();
-        tx.color     = new Color(0.7f, 0.9f, 1f);
+        tx.color     = new Color(0.78f, 0.84f, 0.92f);
         tx.alignment = TextAnchor.MiddleCenter;
         tx.alignByGeometry = true;
         tx.raycastTarget = false;
@@ -994,4 +997,98 @@ public class AllyOrderPanel : MonoBehaviour
 
     Sprite GetAllyPortraitSprite(AllyType t) =>
         AllyVisualGenerator.CreatePortraitSprite(t);
+}
+
+class UpgradeTierButtonGraphic : Graphic
+{
+    int level;
+
+    static readonly Color EmptyColor  = new Color(0.28f, 0.30f, 0.34f, 0.96f);
+    static readonly Color FillColor   = new Color(1f, 0.82f, 0.12f, 1f);
+    static readonly Color EdgeColor   = new Color(0.08f, 0.09f, 0.12f, 0.92f);
+    static readonly Color ShineColor  = new Color(1f, 0.98f, 0.62f, 0.18f);
+
+    public void SetLevel(int newLevel)
+    {
+        newLevel = Mathf.Clamp(newLevel, 0, 3);
+        if (level == newLevel) return;
+        level = newLevel;
+        SetVerticesDirty();
+    }
+
+    protected override void OnPopulateMesh(VertexHelper vh)
+    {
+        vh.Clear();
+
+        Rect r = rectTransform.rect;
+        DrawSegment(vh, r, SegmentPoints(r, 0), level >= 1);
+        DrawSegment(vh, r, SegmentPoints(r, 1), level >= 2);
+        DrawSegment(vh, r, SegmentPoints(r, 2), level >= 3);
+    }
+
+    Vector2[] SegmentPoints(Rect r, int segment)
+    {
+        if (segment == 0)
+        {
+            return new[]
+            {
+                P(r, 0.12f, 0.05f), P(r, 0.88f, 0.05f), P(r, 0.98f, 0.30f),
+                P(r, 0.50f, 0.42f), P(r, 0.02f, 0.30f)
+            };
+        }
+        if (segment == 1)
+        {
+            return new[]
+            {
+                P(r, 0.06f, 0.36f), P(r, 0.94f, 0.36f), P(r, 0.84f, 0.64f),
+                P(r, 0.16f, 0.64f)
+            };
+        }
+        return new[]
+        {
+            P(r, 0.16f, 0.69f), P(r, 0.84f, 0.69f), P(r, 0.98f, 0.96f),
+            P(r, 0.02f, 0.96f)
+        };
+    }
+
+    Vector2 P(Rect r, float x, float y)
+    {
+        return new Vector2(
+            Mathf.Lerp(r.xMin, r.xMax, x),
+            Mathf.Lerp(r.yMin, r.yMax, y));
+    }
+
+    void DrawSegment(VertexHelper vh, Rect r, Vector2[] points, bool filled)
+    {
+        AddPolygon(vh, points, EdgeColor);
+
+        Vector2 center = Vector2.zero;
+        for (int i = 0; i < points.Length; i++)
+            center += points[i];
+        center /= points.Length;
+
+        Vector2[] inner = new Vector2[points.Length];
+        for (int i = 0; i < points.Length; i++)
+            inner[i] = Vector2.Lerp(points[i], center, 0.10f);
+
+        AddPolygon(vh, inner, filled ? FillColor : EmptyColor);
+
+        if (filled)
+        {
+            Vector2[] shine = new Vector2[inner.Length];
+            for (int i = 0; i < inner.Length; i++)
+                shine[i] = new Vector2(inner[i].x, Mathf.Lerp(inner[i].y, r.yMax, 0.10f));
+            AddPolygon(vh, shine, ShineColor);
+        }
+    }
+
+    void AddPolygon(VertexHelper vh, Vector2[] points, Color col)
+    {
+        int start = vh.currentVertCount;
+        for (int i = 0; i < points.Length; i++)
+            vh.AddVert(points[i], col, Vector2.zero);
+
+        for (int i = 1; i < points.Length - 1; i++)
+            vh.AddTriangle(start, start + i, start + i + 1);
+    }
 }
