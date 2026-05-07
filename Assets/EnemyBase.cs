@@ -474,13 +474,15 @@ public class EnemyBase : MonoBehaviour
         Vector3 dst = target.transform.position;
         float dist  = Vector3.Distance(src, dst);
 
+        Sprite[] arrowFrames = ProjectileSpriteLibrary.GetArrowFrames();
+
         var go = new GameObject("Proj");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = MakeArrowSprite();
+        sr.sprite = arrowFrames.Length > 0 ? arrowFrames[0] : ProjectileSpriteLibrary.GetArrowSprite();
         sr.color = color;
         sr.sortingOrder = 36;
         go.transform.position = src;
-        go.transform.localScale = Vector3.one * 0.34f;
+        go.transform.localScale = Vector3.one * 0.46f;
 
         var trail = CreateTempLineRenderer(2, new Color(color.r, color.g, color.b, 0.72f), 0.075f, 35);
         trail.endColor = new Color(color.r, color.g, color.b, 0f);
@@ -495,6 +497,8 @@ public class EnemyBase : MonoBehaviour
             Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
             go.transform.position = pos;
             go.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+            if (arrowFrames.Length > 1)
+                sr.sprite = arrowFrames[Mathf.Min((int)(t * arrowFrames.Length), arrowFrames.Length - 1)];
             trail.SetPosition(0, pos - dir * 0.62f);
             trail.SetPosition(1, pos);
             if (t >= 1f) break;
@@ -632,54 +636,6 @@ public class EnemyBase : MonoBehaviour
         Destroy(glow.gameObject);
         Destroy(lr.gameObject);
         SpawnImpactFlash(dst, impactColor, 0.28f);
-    }
-
-    // ── 화살 스프라이트 — arrow.png 우선 로드, 실패 시 절차적 폴백 ──────────
-    static Sprite _arrowSpriteCached;
-
-    /// <summary>
-    /// Resources/Allies/pixel_allies/arrow.png 를 로드해 스프라이트로 반환.
-    /// 파일이 없으면 절차적 화살 스프라이트를 반환.
-    /// </summary>
-    static Sprite MakeArrowSprite()
-    {
-        if (_arrowSpriteCached != null) return _arrowSpriteCached;
-
-        var tex = Resources.Load<Texture2D>("Allies/pixel_allies/arrow");
-        if (tex != null)
-        {
-            tex.filterMode = FilterMode.Point;
-            _arrowSpriteCached = Sprite.Create(
-                tex,
-                new Rect(0f, 0f, tex.width, tex.height),
-                new Vector2(0.5f, 0.5f),          // 중심 피벗
-                tex.height);                       // PPU = 높이 → 1 유닛 높이
-            return _arrowSpriteCached;
-        }
-
-        // ── 폴백: 절차적 화살 ──────────────────────────────────────────
-        int w = 28, h = 9;
-        var fallback = new Texture2D(w, h, TextureFormat.RGBA32, false);
-        fallback.filterMode = FilterMode.Point;
-        for (int x = 0; x < w; x++)
-        for (int y = 0; y < h; y++)
-            fallback.SetPixel(x, y, Color.clear);
-
-        Color shaft  = new Color(1f, 0.78f, 0.34f, 1f);
-        Color tip    = new Color(1f, 0.96f, 0.72f, 1f);
-        Color shadow = new Color(0.35f, 0.18f, 0.08f, 0.85f);
-        for (int x = 3; x < 22; x++) { fallback.SetPixel(x, 4, shaft); fallback.SetPixel(x, 3, shadow); }
-        for (int i = 0; i < 5; i++)
-        {
-            fallback.SetPixel(22 + i, 4, tip);
-            fallback.SetPixel(22 + i, 4 + i / 2, tip);
-            fallback.SetPixel(22 + i, 4 - i / 2, tip);
-        }
-        fallback.SetPixel(1, 2, shaft); fallback.SetPixel(2, 3, shaft);
-        fallback.SetPixel(1, 6, shaft); fallback.SetPixel(2, 5, shaft);
-        fallback.Apply();
-        _arrowSpriteCached = Sprite.Create(fallback, new Rect(0, 0, w, h), new Vector2(0.72f, 0.5f), 18f);
-        return _arrowSpriteCached;
     }
 
     static Sprite MakeBoomerangSprite()

@@ -371,12 +371,14 @@ public class AllyBase : MonoBehaviour
         Vector3 src = transform.position + Vector3.up * 0.15f;
         Vector3 dst = target.transform.position;
 
+        Sprite[] arrowFrames = ProjectileSpriteLibrary.GetArrowFrames();
+
         var go = new GameObject("ParalysisArrow");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = LoadArrowSprite();
+        sr.sprite = arrowFrames.Length > 0 ? arrowFrames[0] : ProjectileSpriteLibrary.GetArrowSprite();
         sr.color = new Color(0.50f, 0.92f, 1f);   // 마비 화살: 청록 색조
         sr.sortingOrder = 70;
-        go.transform.localScale = Vector3.one * 0.65f;
+        go.transform.localScale = Vector3.one * 0.48f;
 
         float elapsed = 0f;
         float duration = Mathf.Max(0.10f, Vector3.Distance(src, dst) / 14f);
@@ -388,6 +390,8 @@ public class AllyBase : MonoBehaviour
             Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
             go.transform.position = Vector3.Lerp(src, dst, t);
             go.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+            if (arrowFrames.Length > 1)
+                sr.sprite = arrowFrames[Mathf.Min((int)(t * arrowFrames.Length), arrowFrames.Length - 1)];
             yield return null;
         }
         Destroy(go);
@@ -966,79 +970,6 @@ public class AllyBase : MonoBehaviour
         }
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
-    }
-
-    // ── 화살 스프라이트 캐시 ──────────────────────────────────────────────
-    static Sprite _arrowSpriteCached;
-
-    /// <summary>
-    /// Resources/Allies/pixel_allies/arrow.png 를 로드해 반환.
-    /// 파일이 없으면 절차적 화살 스프라이트(CreateArrowSprite)로 폴백.
-    /// </summary>
-    static Sprite LoadArrowSprite()
-    {
-        if (_arrowSpriteCached != null) return _arrowSpriteCached;
-
-        var tex = Resources.Load<Texture2D>("Allies/pixel_allies/arrow");
-        if (tex != null)
-        {
-            tex.filterMode      = FilterMode.Point;
-            _arrowSpriteCached  = Sprite.Create(
-                tex,
-                new Rect(0f, 0f, tex.width, tex.height),
-                new Vector2(0.5f, 0.5f),
-                tex.height);
-            return _arrowSpriteCached;
-        }
-
-        _arrowSpriteCached = CreateArrowSprite();
-        return _arrowSpriteCached;
-    }
-
-    /// <summary>절차적으로 생성하는 화살 스프라이트 (오른쪽 방향 기준, SetPixels 방식)</summary>
-    static Sprite CreateArrowSprite()
-    {
-        int w = 48, h = 14;
-        // Color 배열은 기본값이 (0,0,0,0) = Color.clear 이므로 별도 초기화 불필요
-        Color[] pixels = new Color[w * h];
-
-        float cy  = (h - 1) * 0.5f;
-        int shaftEnd = Mathf.RoundToInt(w * 0.60f);
-        var arrowColor = new Color(0.35f, 0.88f, 1f, 1f);
-
-        // 화살대 — 중앙 3px 폭의 막대
-        for (int x = 0; x < shaftEnd; x++)
-        for (int y = 0; y < h; y++)
-        {
-            float dist = Mathf.Abs(y - cy);
-            if (dist <= 1.8f)
-            {
-                float a = Mathf.Clamp01(1.8f - dist);
-                pixels[y * w + x] = new Color(arrowColor.r, arrowColor.g, arrowColor.b, a * 0.95f);
-            }
-        }
-
-        // 화살촉 — 오른쪽으로 갈수록 좁아지는 삼각형
-        for (int x = shaftEnd; x < w; x++)
-        for (int y = 0; y < h; y++)
-        {
-            float t     = (float)(x - shaftEnd) / Mathf.Max(w - shaftEnd - 1, 1);
-            float halfH = h * 0.5f * (1f - t);
-            float dist  = Mathf.Abs(y - cy);
-            if (dist < halfH)
-            {
-                float a = Mathf.Clamp01(1f - dist / Mathf.Max(halfH, 0.01f) * 0.35f);
-                pixels[y * w + x] = new Color(arrowColor.r, arrowColor.g, arrowColor.b, a * 0.95f);
-            }
-        }
-
-        var tex = new Texture2D(w, h, TextureFormat.RGBA32, false);
-        tex.filterMode = FilterMode.Bilinear;
-        tex.wrapMode   = TextureWrapMode.Clamp;
-        tex.SetPixels(pixels);
-        tex.Apply();
-        // pixelsPerUnit = h(14) → 높이 1 월드유닛, 너비 ≈ 3.4 월드유닛
-        return Sprite.Create(tex, new Rect(0, 0, w, h), new Vector2(0.5f, 0.5f), (float)h);
     }
 
     static Sprite[] GetParalysisArrowFrames()

@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: f47f1aacfcadf774abbe0999d5033df9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7394748979502278072
+    second: clean_arrow_projectile_0
+  - first:
+      213: -8399590234407510492
+    second: clean_arrow_projectile_1
+  - first:
+      213: -3606366134655160363
+    second: clean_arrow_projectile_2
+  - first:
+      213: 7486501376373179506
+    second: clean_arrow_projectile_3
+  - first:
+      213: 4363409904122819896
+    second: clean_arrow_projectile_4
+  - first:
+      213: 2824830898506609277
+    second: clean_arrow_projectile_5
+  - first:
+      213: -9002922546024441915
+    second: clean_arrow_projectile_6
+  - first:
+      213: 556537978663177911
+    second: clean_arrow_projectile_7
+  - first:
+      213: -7335413204930768015
+    second: clean_arrow_projectile_8
+  - first:
+      213: 3333344407992348617
+    second: clean_arrow_projectile_9
+  - first:
+      213: 2448763463211034331
+    second: clean_arrow_projectile_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clean_arrow_projectile_0
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 172
+        width: 266
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b56a6e840d6f9660800000000000000
+      internalID: 7394748979502278072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_1
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 172
+        width: 296
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42edc4b4f29ae6b80800000000000000
+      internalID: -8399590234407510492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_2
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 172
+        width: 319
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df61ed9b1d93fdc0800000000000000
+      internalID: -3606366134655160363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_3
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 209
+        width: 37
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274423d265565e760800000000000000
+      internalID: 7486501376373179506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_4
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 177
+        width: 298
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83579a08032fd8c30800000000000000
+      internalID: 4363409904122819896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_5
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 178
+        width: 324
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72b8005cb0d33720800000000000000
+      internalID: 2824830898506609277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_6
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 177
+        width: 322
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c79bd7d4a13f0380800000000000000
+      internalID: -9002922546024441915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_7
+      rect:
+        serializedVersion: 2
+        x: 2715
+        y: 212
+        width: 38
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7be8b3ac75839b700800000000000000
+      internalID: 556537978663177911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_8
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 175
+        width: 292
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17354670e80633a90800000000000000
+      internalID: -7335413204930768015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_9
+      rect:
+        serializedVersion: 2
+        x: 3153
+        y: 176
+        width: 268
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cf2b68041b624e20800000000000000
+      internalID: 3333344407992348617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_arrow_projectile_10
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 170
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd626ab4561cbf120800000000000000
+      internalID: 2448763463211034331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      clean_arrow_projectile_0: 7394748979502278072
+      clean_arrow_projectile_1: -8399590234407510492
+      clean_arrow_projectile_10: 2448763463211034331
+      clean_arrow_projectile_2: -3606366134655160363
+      clean_arrow_projectile_3: 7486501376373179506
+      clean_arrow_projectile_4: 4363409904122819896
+      clean_arrow_projectile_5: 2824830898506609277
+      clean_arrow_projectile_6: -9002922546024441915
+      clean_arrow_projectile_7: 556537978663177911
+      clean_arrow_projectile_8: -7335413204930768015
+      clean_arrow_projectile_9: 3333344407992348617
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
