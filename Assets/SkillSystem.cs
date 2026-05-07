@@ -14,61 +14,77 @@ public static class SkillSystem
         public string   description;
         public int      cost;
         public string   iconResource;
+        public float    cooldownSeconds; // 발동 후 재사용 대기 시간
     }
 
     static readonly SkillData[] skills = new SkillData[]
     {
         new SkillData
         {
-            allyType    = AllyType.Warrior,
-            skillName   = "불굴의 의지",
-            description = "2초간 모든 공격 피해를\n받지 않습니다.",
-            cost        = 3,
-            iconResource = "Icon/skill_knight"
+            allyType        = AllyType.Warrior,
+            skillName       = "불굴의 의지",
+            description     = "2초간 모든 공격 피해를\n받지 않습니다.",
+            cost            = 3,
+            iconResource    = "Icon/skill_knight",
+            cooldownSeconds = 15f
         },
         new SkillData
         {
-            allyType    = AllyType.Archer,
-            skillName   = "마비 화살",
-            description = "적 하나를 지정해 3초간\n공격할 수 없게 만듭니다.",
-            cost        = 2,
-            iconResource = "Icon/skill_archer"
+            allyType        = AllyType.Archer,
+            skillName       = "마비 화살",
+            description     = "적 하나를 지정해 3초간\n공격할 수 없게 만듭니다.",
+            cost            = 2,
+            iconResource    = "Icon/skill_archer",
+            cooldownSeconds = 12f
         },
         new SkillData
         {
-            allyType    = AllyType.Mage,
-            skillName   = "순간 보호막",
-            description = "1.5초간 주변 아군을\n파란 보호막으로 지킵니다.",
-            cost        = 3,
-            iconResource = "Icon/skill_magician"
+            allyType        = AllyType.Mage,
+            skillName       = "순간 보호막",
+            description     = "1.5초간 주변 아군을\n파란 보호막으로 지킵니다.",
+            cost            = 3,
+            iconResource    = "Icon/skill_magician",
+            cooldownSeconds = 15f
         },
         new SkillData
         {
-            allyType    = AllyType.Cleric,
-            skillName   = "치유의 빛",
-            description = "5초간 생존 아군을 매초\n최대 HP의 3%만큼 회복합니다.",
-            cost        = 4,
-            iconResource = "Icon/skill_priest"
+            allyType        = AllyType.Cleric,
+            skillName       = "치유의 빛",
+            description     = "5초간 생존 아군을 매초\n최대 HP의 3%만큼 회복합니다.",
+            cost            = 4,
+            iconResource    = "Icon/skill_priest",
+            cooldownSeconds = 22f
         },
         new SkillData
         {
-            allyType    = AllyType.Rogue,
-            skillName   = "연막탄",
-            description = "5초간 생존 아군의 공격 회피율을\n50%까지 높입니다.",
-            cost        = 2,
-            iconResource = "Icon/skill_thief"
+            allyType        = AllyType.Rogue,
+            skillName       = "연막탄",
+            description     = "5초간 생존 아군의 공격 회피율을\n50%까지 높입니다.",
+            cost            = 2,
+            iconResource    = "Icon/skill_thief",
+            cooldownSeconds = 18f
         },
         new SkillData
         {
-            allyType    = AllyType.Paladin,
-            skillName   = "수호의 맹세",
-            description = "4초간 아군 피해의 80%를 대신 받고\n초당 최대 HP의 5%를 회복합니다.",
-            cost        = 6,
-            iconResource = "Icon/skill_paladin"
+            allyType        = AllyType.Paladin,
+            skillName       = "수호의 맹세",
+            description     = "4초간 아군 피해의 80%를 대신 받고\n초당 최대 HP의 5%를 회복합니다.",
+            cost            = 6,
+            iconResource    = "Icon/skill_paladin",
+            cooldownSeconds = 20f
         }
     };
 
-    static readonly bool[] unlockedSkills = new bool[6];
+    static readonly bool[]  unlockedSkills      = new bool[6];
+    static readonly float[] skillActivationTimes;   // Time.time 기준 마지막 발동 시각
+
+    static SkillSystem()
+    {
+        skillActivationTimes = new float[6];
+        for (int i = 0; i < skillActivationTimes.Length; i++)
+            skillActivationTimes[i] = float.NegativeInfinity;
+    }
+
     static AllyBase  pendingArcher;
     static EnemyBase pendingMouseDownEnemy;   // 마우스 누름 시 대상으로 지정한 적
     static bool      pendingMouseDownStarted;
@@ -96,6 +112,26 @@ public static class SkillSystem
         return false;
     }
 
+    /// <summary>스킬 쿨다운 전체 시간(초)</summary>
+    public static float GetCooldownTotal(AllyType allyType)
+    {
+        for (int i = 0; i < skills.Length; i++)
+            if (skills[i].allyType == allyType) return skills[i].cooldownSeconds;
+        return 0f;
+    }
+
+    /// <summary>스킬 쿨다운 남은 시간(초). 0이면 사용 가능.</summary>
+    public static float GetCooldownRemaining(AllyType allyType)
+    {
+        for (int i = 0; i < skills.Length; i++)
+        {
+            if (skills[i].allyType != allyType) continue;
+            float elapsed = Time.time - skillActivationTimes[i];
+            return Mathf.Max(0f, skills[i].cooldownSeconds - elapsed);
+        }
+        return 0f;
+    }
+
     /// <summary>스테이지 시작/재시작 시 호출 — 모든 스킬 잠금 상태로 초기화</summary>
     public static void ResetForStage()
     {
@@ -103,7 +139,10 @@ public static class SkillSystem
             CancelTargeting();
         pendingMouseDownEnemy = null;
         for (int i = 0; i < unlockedSkills.Length; i++)
+        {
             unlockedSkills[i] = false;
+            skillActivationTimes[i] = float.NegativeInfinity;
+        }
     }
 
     /// <summary>
@@ -147,6 +186,15 @@ public static class SkillSystem
             return false;
         }
 
+        float cdRemaining = GetCooldownRemaining(allyType);
+        if (cdRemaining > 0f)
+        {
+            GameManager.Instance?.ShowToast(
+                $"쿨다운 중입니다! ({Mathf.CeilToInt(cdRemaining)}초)",
+                new Color(1f, 0.35f, 0.35f));
+            return false;
+        }
+
         AllyBase caster = FindAliveAlly(allyType);
         if (caster == null)
         {
@@ -154,33 +202,42 @@ public static class SkillSystem
             return false;
         }
 
+        bool activated = false;
         switch (allyType)
         {
             case AllyType.Warrior:
                 caster.ActivateWarriorWill();
                 GameManager.Instance?.ShowToast("불굴의 의지 발동!", new Color(1f, 0.85f, 0.2f));
-                return true;
+                activated = true; break;
             case AllyType.Archer:
                 BeginArcherTargeting(caster);
-                return true;
+                activated = true; break;
             case AllyType.Mage:
                 caster.ActivateMageBarrier();
                 GameManager.Instance?.ShowToast("순간 보호막 발동!", new Color(0.45f, 0.75f, 1f));
-                return true;
+                activated = true; break;
             case AllyType.Cleric:
                 caster.ActivateClericHeal();
                 GameManager.Instance?.ShowToast("치유의 빛 발동!", new Color(1f, 0.92f, 0.35f));
-                return true;
+                activated = true; break;
             case AllyType.Rogue:
                 caster.ActivateRogueSmoke();
                 GameManager.Instance?.ShowToast("연막탄 발동!", new Color(0.75f, 0.35f, 1f));
-                return true;
+                activated = true; break;
             case AllyType.Paladin:
                 caster.ActivatePaladinOath();
                 GameManager.Instance?.ShowToast("수호의 맹세 발동!", new Color(1f, 0.88f, 0.35f));
-                return true;
+                activated = true; break;
         }
-        return false;
+
+        if (activated)
+        {
+            // 쿨다운 타이머 기록
+            for (int i = 0; i < skills.Length; i++)
+                if (skills[i].allyType == allyType)
+                { skillActivationTimes[i] = Time.time; break; }
+        }
+        return activated;
     }
 
     public static bool HandleTargetingInput(Vector2 screenPos, Mouse mouse)

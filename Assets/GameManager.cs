@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
     private Text       toastTxt;
     private Coroutine  toastCoroutine;
 
+    // ── 스킬 쿨다운 HUD ──────────────────────────────────────────────────
+    private SkillCooldownHUD skillCdHud;
+    private Canvas           hudCanvas;   // HUDCanvas 참조
+
     // ── 출전 힌트 HUD ─────────────────────────────────────────────────────
     private GameObject deployHintGo;
     private Text       deployHintTxt;
@@ -182,6 +186,9 @@ public class GameManager : MonoBehaviour
         int stageIdx = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
         order = StageManager.NormalizeSelectedAllies(order, stageIdx);
         currentSkillOrder = new List<AllyType>(order);
+
+        // 스킬 HUD 재빌드 (아군 순서가 바뀔 수 있으므로 매 경로 확정 시)
+        skillCdHud?.Build(currentSkillOrder);
 
         if (StageManager.Instance != null)
             StageManager.Instance.SetSelectedAlliesForStage(order, stageIdx);
@@ -557,6 +564,7 @@ public class GameManager : MonoBehaviour
         var cv  = cgo.AddComponent<Canvas>();
         cv.renderMode   = RenderMode.ScreenSpaceOverlay;
         cv.sortingOrder = 50;
+        hudCanvas = cv;
         var sc = cgo.AddComponent<CanvasScaler>();
         sc.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         sc.referenceResolution = new Vector2(1280, 720);
@@ -605,6 +613,18 @@ public class GameManager : MonoBehaviour
         BuildToastUI(cgo.transform);
         BuildGemBagUI(cgo.transform);
         BuildDeployHintUI(cgo.transform);
+
+        // ── 스킬 쿨다운 HUD 컨테이너 생성 (내용은 경로 확정 후 Build 호출) ──
+        var skillHudGo = new GameObject("SkillCooldownHUD");
+        skillHudGo.transform.SetParent(cgo.transform, false);
+        var skillHudRt = skillHudGo.AddComponent<RectTransform>();
+        // 우측 화면 중앙 기준, 상단 HUD 아래 영역
+        skillHudRt.anchorMin        = new Vector2(1f, 0.5f);
+        skillHudRt.anchorMax        = new Vector2(1f, 0.5f);
+        skillHudRt.pivot            = new Vector2(1f, 0.5f);
+        skillHudRt.anchoredPosition = new Vector2(-10f, -20f); // 상단 버튼 아래로 약간 내림
+        skillHudRt.sizeDelta        = new Vector2(88f, 10f);   // Build() 호출 시 높이 재조정
+        skillCdHud = skillHudGo.AddComponent<SkillCooldownHUD>();
     }
 
     // ── 개별 출전 힌트 UI ─────────────────────────────────────────────────
