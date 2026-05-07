@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private GameObject pausePanel;
     private GameObject pauseBox;       // 일시정지 패널 내부 박스 (설정 패널 표시 시 숨김)
     private GameObject settingsPanel;
+    private GameObject resultRoot;
     private Text       settingsVolumeLbl;
     private Text       settingsFsStatLbl;
     private Text       speedBtnTxt;
@@ -223,18 +224,20 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (resultShown) return;
-
         var kb = Keyboard.current;
         var mouse = Mouse.current;
-        if (TryHandleSkillHotkey(kb))
-            return;
 
-        if (mouse != null && SkillSystem.HandleTargetingInput(mouse.position.ReadValue(), mouse))
-            return;
+        if (!resultShown)
+        {
+            if (TryHandleSkillHotkey(kb))
+                return;
 
-        if (kb != null && kb.escapeKey.wasPressedThisFrame)
-            TogglePause();
+            if (mouse != null && SkillSystem.HandleTargetingInput(mouse.position.ReadValue(), mouse))
+                return;
+
+            if (kb != null && kb.escapeKey.wasPressedThisFrame)
+                TogglePause();
+        }
 
         if (mouse == null) return;
         Vector2 mp = mouse.position.ReadValue();
@@ -288,7 +291,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Space 또는 UI 외 클릭으로 대기 중인 아군 1명씩 출전
-        if (waveInProgress && !alliesFullyDeployed && !isPaused)
+        if (!resultShown && waveInProgress && !alliesFullyDeployed && !isPaused)
         {
             bool spaceDeploy = kb != null && kb.spaceKey.wasPressedThisFrame;
             bool clickDeploy = !anyBtnClicked
@@ -312,10 +315,13 @@ public class GameManager : MonoBehaviour
         if (settingsPanel != null && settingsPanel.activeInHierarchy)
             return b.rt.transform.IsChildOf(settingsPanel.transform);
 
+        if (resultShown && resultRoot != null && resultRoot.activeInHierarchy)
+            return b.rt.transform.IsChildOf(resultRoot.transform);
+
         if (pausePanel != null && pausePanel.activeInHierarchy)
             return b.rt.transform.IsChildOf(pausePanel.transform);
 
-        return !b.pauseOnly;
+        return !resultShown && !b.pauseOnly;
     }
 
     void OnDestroy() => Time.timeScale = 1f;
@@ -1509,6 +1515,7 @@ public class GameManager : MonoBehaviour
     void ShowResult(int stars)
     {
         var cgo = new GameObject("ResultCanvas");
+        resultRoot = cgo;
         var cv  = cgo.AddComponent<Canvas>(); cv.renderMode = RenderMode.ScreenSpaceOverlay; cv.sortingOrder = 200;
         var sc  = cgo.AddComponent<CanvasScaler>(); sc.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         sc.referenceResolution = new Vector2(1280,720); sc.matchWidthOrHeight = 0.5f;
