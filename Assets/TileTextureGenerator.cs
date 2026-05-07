@@ -56,7 +56,7 @@ public static class TileTextureGenerator
         null,
         new[] { 640, 641, 642, 672, 673, 674, 704, 705 },  // Stage 1 (terrain_atlas)
         new[] { 1, 2, 1, 2, 1, 2 },                        // Stage 2 (어두운 암석, row 0)
-        new[] { 16, 48 },                                    // Stage 3 (terrain.png 용암 원본, 큰 바닥 타일만)
+        new[] { 16 },                                        // Stage 3 (terrain.png 순수 용암 바닥)
         new[] { 128, 129, 130, 160, 161, 162, 192, 193 },  // Stage 4 (terrain_atlas)
         new[] { 448, 449, 450, 480, 481, 482, 512, 513 },  // Stage 5 (terrain_atlas)
     };
