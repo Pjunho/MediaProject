@@ -614,23 +614,22 @@ public class GameManager : MonoBehaviour
 
         BuildSettingsPanel(cgo.transform);
         BuildToastUI(cgo.transform);
-        BuildGemBagUI(cgo.transform);
         BuildDeployHintUI(cgo.transform);
 
-        // ── 스킬 쿨다운 HUD 컨테이너 생성 ──────────────────────────────────
+        // ── 스킬 쿨다운 HUD 컨테이너 생성 (가방 버튼 배치보다 먼저 필요) ──────
         // typeof(RectTransform)을 생성자에 전달해 처음부터 RectTransform으로 생성
         var skillHudGo = new GameObject("SkillCooldownHUD", typeof(RectTransform));
         skillHudGo.transform.SetParent(cgo.transform, false);
         var skillHudRt = (RectTransform)skillHudGo.transform;
-        // 우측 가장자리 수직 중앙에 고정, 상단 버튼(약 300px)을 피해 -30 오프셋
+        // 우측 가장자리 수직 중앙, 상단 버튼(~298px)과 겹치지 않도록 -20 오프셋
         skillHudRt.anchorMin        = new Vector2(1f, 0.5f);
         skillHudRt.anchorMax        = new Vector2(1f, 0.5f);
         skillHudRt.pivot            = new Vector2(1f, 0.5f);
-        skillHudRt.anchoredPosition = new Vector2(-10f, -30f);
-        skillHudRt.sizeDelta        = new Vector2(84f, 10f);    // Build()에서 재설정됨
+        skillHudRt.anchoredPosition = new Vector2(-10f, -20f);
+        skillHudRt.sizeDelta        = new Vector2(74f, 10f);    // Build()에서 재설정됨
         skillCdHud = skillHudGo.AddComponent<SkillCooldownHUD>();
 
-        // ── 씬 로드 직후 선택된 아군으로 즉시 빌드 ─────────────────────────
+        // ── 씬 로드 직후 선택된 아군으로 즉시 빌드 (sizeDelta 확정) ──────────
         var initOrder = StageManager.Instance != null && StageManager.Instance.selectedAllies != null
                         && StageManager.Instance.selectedAllies.Count > 0
             ? StageManager.Instance.selectedAllies
@@ -638,6 +637,9 @@ public class GameManager : MonoBehaviour
               { AllyType.Warrior, AllyType.Archer, AllyType.Mage,
                 AllyType.Cleric,  AllyType.Rogue,  AllyType.Paladin };
         skillCdHud.Build(initOrder);
+
+        // ── 가방 버튼 (스킬 HUD 아래에 배치, HUD sizeDelta 확정 후 생성) ────
+        BuildGemBagUI(cgo.transform);
     }
 
     // ── 개별 출전 힌트 UI ─────────────────────────────────────────────────
@@ -725,9 +727,18 @@ public class GameManager : MonoBehaviour
 
     void BuildGemBagUI(Transform parent)
     {
-        // ── 오른쪽 하단 가방 아이콘 ─────────────────────────────────────
+        // ── 오른쪽 가방 아이콘 (스킬 HUD 아래에 배치) ──────────────────────
         var btnSize = new Vector2(72f, 72f);
-        var btnPos  = new Vector2(458f, -322f); // 투명 여백을 포함한 원본 아이콘의 실제 그림 아래선을 RouteDrawer 하단 안내 박스에 맞춤
+
+        // 스킬 HUD의 하단 기준으로 Y 계산 (anchor = 캔버스 수직 중앙이므로 anchoredPosition.y = 캔버스 센터 기준)
+        var skillRt = skillCdHud != null ? (RectTransform)skillCdHud.transform : null;
+        float bagY = -322f; // 폴백
+        if (skillRt != null && skillRt.sizeDelta.y > 10f)
+        {
+            float hudBottomY = skillRt.anchoredPosition.y - skillRt.sizeDelta.y * 0.5f;
+            bagY = hudBottomY - 10f - btnSize.y * 0.5f;
+        }
+        var btnPos = new Vector2(458f, bagY);
 
         var iconGo = new GameObject("GemBagIcon");
         iconGo.transform.SetParent(parent, false);

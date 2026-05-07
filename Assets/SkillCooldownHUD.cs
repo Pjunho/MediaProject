@@ -16,10 +16,10 @@ public class SkillCooldownHUD : MonoBehaviour
     public static SkillCooldownHUD Instance { get; private set; }
 
     // ── 레이아웃 상수 ─────────────────────────────────────────────────────
-    const float ICON  = 62f;
-    const float GAP   = 8f;
-    const float PAD   = 10f;
-    const float KEY_H = 15f;
+    const float ICON  = 54f;
+    const float GAP   = 6f;
+    const float PAD   = 8f;
+    const float KEY_H = 12f;
 
     // ── 슬롯 정보 ────────────────────────────────────────────────────────
     class SlotUI
@@ -188,7 +188,7 @@ public class SkillCooldownHUD : MonoBehaviour
         lockTx.fontStyle = FontStyle.Bold;
         lockTx.color     = new Color(1f, 1f, 1f, 0.60f);
         lockTx.alignment = TextAnchor.MiddleCenter;
-        lockTx.text      = "LOCK";
+        lockTx.text      = "잠김";
         lockImg.gameObject.SetActive(false);
 
         // ── 완료 반짝임 ────────────────────────────────────────────────────
@@ -212,7 +212,7 @@ public class SkillCooldownHUD : MonoBehaviour
         keyRt.sizeDelta        = new Vector2(0f, KEY_H + 4f);
         var keyTx = keyGo.AddComponent<Text>();
         keyTx.font      = BFont();
-        keyTx.fontSize  = 10;
+        keyTx.fontSize  = 13;
         keyTx.fontStyle = FontStyle.Bold;
         keyTx.color     = new Color(1f, 1f, 1f, 0.60f);
         keyTx.alignment = TextAnchor.MiddleCenter;
