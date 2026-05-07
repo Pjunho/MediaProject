@@ -39,6 +39,8 @@ public class EnemyBase : MonoBehaviour
     private Vector3   breathBasePosition;
     private Vector3   breathBaseScale;
 
+    protected bool IsParalyzed => paralysisTimer > 0f;
+
     protected virtual void Awake()
     {
         spriteRenderer     = GetComponent<SpriteRenderer>();
@@ -49,11 +51,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        UpdateBreathAnimation();
         UpdateRangeIndicatorPosition();
 
-        if (!isPlaced) return;
-        if (paralysisTimer > 0f)
+        if (IsParalyzed)
         {
             paralysisTimer -= Time.deltaTime;
             UpdateParalysisVisual();
@@ -61,6 +61,10 @@ public class EnemyBase : MonoBehaviour
                 ClearParalysisVisual();
             return;
         }
+
+        UpdateBreathAnimation();
+
+        if (!isPlaced) return;
         attackTimer -= Time.deltaTime;
 
         if (currentTarget == null || currentTarget.isDead)
@@ -90,6 +94,7 @@ public class EnemyBase : MonoBehaviour
     IEnumerator AttackRoutine(AllyBase target)
     {
         yield return StartCoroutine(ShowAttackEffect(target));
+        if (IsParalyzed) yield break;
         if (target != null && !target.isDead)
         {
             target.TakeDamage(attackDamage);
@@ -99,6 +104,7 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual IEnumerator ShowAttackEffect(AllyBase target)
     {
+        if (IsParalyzed) yield break;
         if (spriteRenderer != null)
         {
             Color orig = spriteRenderer.color;
@@ -106,6 +112,7 @@ public class EnemyBase : MonoBehaviour
             yield return new WaitForSeconds(0.06f);
             spriteRenderer.color = orig;
         }
+        if (IsParalyzed) yield break;
         if (attackLine != null && target != null)
         {
             attackLine.gameObject.SetActive(true);
@@ -337,6 +344,7 @@ public class EnemyBase : MonoBehaviour
         float delay = 1f / fps;
         foreach (var frame in attackFrameSprites)
         {
+            if (IsParalyzed) break;
             if (frame != null) spriteRenderer.sprite = frame;
             yield return new WaitForSeconds(delay);
         }

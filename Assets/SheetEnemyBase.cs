@@ -65,7 +65,7 @@ public abstract class SheetEnemyBase : EnemyBase
     protected override void Update()
     {
         base.Update();
-        if (!isPlayingAttackAnim && currentTarget != null && spriteRenderer != null)
+        if (!IsParalyzed && !isPlayingAttackAnim && currentTarget != null && spriteRenderer != null)
         {
             int d = DirIndex(currentTarget.transform.position - transform.position);
             if (spriteRenderer.sprite != IdleByDir[d])
@@ -79,9 +79,11 @@ public abstract class SheetEnemyBase : EnemyBase
     // ── 공격 이펙트: 방향 전환 → 애니메이션 → ReleaseFrame에서 이펙트 ─
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
+        if (IsParalyzed) yield break;
         SetAttackDir(target);
         StartCoroutine(PlayAttackAnim(AnimFps));
         yield return new WaitForSeconds(ReleaseFrame / AnimFps);
+        if (IsParalyzed) yield break;
         if (target != null)
             yield return StartCoroutine(OnReleaseEffect(target));
     }
