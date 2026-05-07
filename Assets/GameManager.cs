@@ -730,15 +730,15 @@ public class GameManager : MonoBehaviour
         // ── 오른쪽 가방 아이콘 (스킬 HUD 아래에 배치) ──────────────────────
         var btnSize = new Vector2(72f, 72f);
 
-        // 스킬 HUD의 하단 기준으로 Y 계산 (anchor = 캔버스 수직 중앙이므로 anchoredPosition.y = 캔버스 센터 기준)
+        // 아이콘 오른쪽 = 스킬 HUD 오른쪽 / 아이콘 아래 = "흙길 안내 박스" 아래줄과 일치
+        // 흙길 안내 박스: center(0, -325), height 44 → bottom = -325 - 22 = -347
+        const float INSTR_BOTTOM = -347f;
         var skillRt = skillCdHud != null ? (RectTransform)skillCdHud.transform : null;
-        float bagY = -322f; // 폴백
-        if (skillRt != null && skillRt.sizeDelta.y > 10f)
-        {
-            float hudBottomY = skillRt.anchoredPosition.y - skillRt.sizeDelta.y * 0.5f;
-            bagY = hudBottomY - 10f - btnSize.y * 0.5f;
-        }
-        var btnPos = new Vector2(458f, bagY);
+        // 스킬 HUD anchor = 캔버스 우측(+640), anchoredPosition.x 는 그로부터의 오프셋
+        float hudRightX = skillRt != null ? 640f + skillRt.anchoredPosition.x : 630f;
+        float bagX = hudRightX - btnSize.x * 0.5f;   // 가방 오른쪽 = HUD 오른쪽
+        float bagY = INSTR_BOTTOM + btnSize.y * 0.5f; // 가방 아래 = 안내 박스 아래
+        var btnPos = new Vector2(bagX, bagY);
 
         var iconGo = new GameObject("GemBagIcon");
         iconGo.transform.SetParent(parent, false);
@@ -780,11 +780,11 @@ public class GameManager : MonoBehaviour
             pauseOnly= false
         });
 
-        // ── 가방 팝업 패널 (버튼 위에 열림) ─────────────────────────────
-        BuildGemPanel(parent, btnPos, btnSize.y);
+        // ── 가방 팝업 패널 (버튼 위에 열림, 패널 오른쪽 = HUD 오른쪽) ────────
+        BuildGemPanel(parent, btnPos, btnSize.y, hudRightX);
     }
 
-    void BuildGemPanel(Transform parent, Vector2 btnPos, float btnH)
+    void BuildGemPanel(Transform parent, Vector2 btnPos, float btnH, float panelRightX = 0f)
     {
         var defs = GemInventory.GetDefinitions();
 
@@ -796,9 +796,10 @@ public class GameManager : MonoBehaviour
         float panelH   = TAB_H + 2f + contentH;   // 탭 + 구분선 + 콘텐츠
         float panelW   = 254f;
 
-        // 버튼 바로 위에 정렬
+        // 버튼 바로 위, 패널 오른쪽 = HUD 오른쪽에 맞춤 (캔버스 밖으로 삐져나가지 않도록)
+        float panelX   = panelRightX > 0f ? panelRightX - panelW * 0.5f : btnPos.x;
         float panelY   = btnPos.y + btnH / 2f + panelH / 2f + 6f;
-        var   panelPos = new Vector2(btnPos.x, panelY);
+        var   panelPos = new Vector2(panelX, panelY);
 
         gemPanelGo = new GameObject("GemPanel");
         gemPanelGo.transform.SetParent(parent, false);
