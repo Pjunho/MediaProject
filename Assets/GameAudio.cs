@@ -81,13 +81,9 @@ public class GameAudio : MonoBehaviour
             int stage = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
             PlayStageBgm(stage);
         }
-        else if (scene.name == "MainMenu")
+        else if (scene.name == "MainMenu" || scene.name == "StageSelect")
         {
             PlayMenuBgm();
-        }
-        else if (scene.name == "StageSelect")
-        {
-            FadeOutBgm();
         }
     }
 
