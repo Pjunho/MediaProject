@@ -281,20 +281,20 @@ public class AllyOrderPanel : MonoBehaviour
 
         detailHpText = CreateTextLabel("DetailHp", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.38f), new Vector2(0.60f, 0.56f),
+            new Vector2(0f, 0.38f), new Vector2(0.68f, 0.56f),
             new Vector2(12f, 0f), new Vector2(0f, 0f));
 
         detailHpUpgradeBtnRt = BuildUpgradeBtn("HpUpgradeBtn", detail.transform,
-            new Vector2(0.60f, 0.38f), new Vector2(1f, 0.56f),
+            new Vector2(0.68f, 0.38f), new Vector2(1f, 0.56f),
             out detailHpUpgradeTxt, out detailHpUpgradeGraphic);
 
         detailSpeedText = CreateTextLabel("DetailSpeed", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.20f), new Vector2(0.60f, 0.38f),
+            new Vector2(0f, 0.20f), new Vector2(0.68f, 0.38f),
             new Vector2(12f, 0f), new Vector2(0f, 0f));
 
         detailSpeedUpgradeBtnRt = BuildUpgradeBtn("SpeedUpgradeBtn", detail.transform,
-            new Vector2(0.60f, 0.20f), new Vector2(1f, 0.38f),
+            new Vector2(0.68f, 0.20f), new Vector2(1f, 0.38f),
             out detailSpeedUpgradeTxt, out detailSpeedUpgradeGraphic);
 
         MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Normal,
@@ -635,12 +635,12 @@ public class AllyOrderPanel : MonoBehaviour
         if (cost < 0)
         {
             btnTxt.text  = "MAX";
-            btnTxt.color = new Color(0.10f, 0.08f, 0.02f);
+            btnTxt.color = new Color(1f, 0.82f, 0.12f, 1f);
         }
         else
         {
             btnTxt.text  = $"{cost}c";
-            btnTxt.color = level > 0 ? new Color(0.10f, 0.08f, 0.02f) : new Color(0.78f, 0.84f, 0.92f);
+            btnTxt.color = new Color(0.96f, 0.86f, 0.48f, 1f);
         }
     }
 
@@ -924,26 +924,35 @@ public class AllyOrderPanel : MonoBehaviour
         var rt = go.GetComponent<RectTransform>();
         rt.anchorMin = anchorMin;
         rt.anchorMax = anchorMax;
-        rt.offsetMin = new Vector2(4f,  3f);
+        rt.offsetMin = new Vector2(0f,  3f);
         rt.offsetMax = new Vector2(-6f, -3f);
-        if (go.GetComponent<CanvasRenderer>() == null)
-            go.AddComponent<CanvasRenderer>();
-        tierGraphic = go.AddComponent<UpgradeTierButtonGraphic>();
 
         var tgo = new GameObject("Lbl", typeof(RectTransform));
         tgo.transform.SetParent(go.transform, false);
         var tx = tgo.AddComponent<Text>();
         tx.text      = "1c";
-        tx.fontSize  = 10;
+        tx.fontSize  = 11;
         tx.fontStyle = FontStyle.Normal;
         tx.font      = BuiltinFont();
-        tx.color     = new Color(0.78f, 0.84f, 0.92f);
-        tx.alignment = TextAnchor.MiddleCenter;
+        tx.color     = new Color(0.96f, 0.86f, 0.48f, 1f);
+        tx.alignment = TextAnchor.MiddleRight;
         tx.alignByGeometry = true;
         tx.raycastTarget = false;
         var trt = tgo.GetComponent<RectTransform>();
-        trt.anchorMin = Vector2.zero; trt.anchorMax = Vector2.one;
-        trt.offsetMin = Vector2.zero; trt.offsetMax = Vector2.zero;
+        trt.anchorMin = new Vector2(0f, 0f);
+        trt.anchorMax = new Vector2(1f, 1f);
+        trt.offsetMin = new Vector2(0f, 0f);
+        trt.offsetMax = new Vector2(-32f, 0f);
+
+        var icon = MakeUIRect("TierButton", go.transform);
+        var iconRt = icon.GetComponent<RectTransform>();
+        iconRt.anchorMin = new Vector2(1f, 0.5f);
+        iconRt.anchorMax = new Vector2(1f, 0.5f);
+        iconRt.pivot = new Vector2(1f, 0.5f);
+        iconRt.anchoredPosition = Vector2.zero;
+        iconRt.sizeDelta = new Vector2(26f, 26f);
+        tierGraphic = icon.AddComponent<UpgradeTierButtonGraphic>();
+
         label = tx;
         return rt;
     }
@@ -1008,7 +1017,8 @@ class UpgradeTierButtonGraphic : Graphic
     static readonly Color EmptyColor  = new Color(0.28f, 0.30f, 0.34f, 0.96f);
     static readonly Color FillColor   = new Color(1f, 0.82f, 0.12f, 1f);
     static readonly Color EdgeColor   = new Color(0.08f, 0.09f, 0.12f, 0.92f);
-    static readonly Color ShineColor  = new Color(1f, 0.98f, 0.62f, 0.18f);
+    static readonly Color LineColor   = new Color(0.05f, 0.06f, 0.08f, 0.95f);
+    static readonly Color ShineColor  = new Color(1f, 0.98f, 0.62f, 0.16f);
 
     public void SetLevel(int newLevel)
     {
@@ -1023,9 +1033,25 @@ class UpgradeTierButtonGraphic : Graphic
         vh.Clear();
 
         Rect r = rectTransform.rect;
-        DrawSegment(vh, r, SegmentPoints(r, 0), level >= 1);
-        DrawSegment(vh, r, SegmentPoints(r, 1), level >= 2);
-        DrawSegment(vh, r, SegmentPoints(r, 2), level >= 3);
+        Vector2[] outer =
+        {
+            P(r, 0.04f, 0.04f), P(r, 0.96f, 0.04f),
+            P(r, 0.96f, 0.96f), P(r, 0.04f, 0.96f)
+        };
+
+        AddPolygon(vh, outer, EdgeColor);
+        AddPolygon(vh, Inset(outer, 0.08f), EmptyColor);
+
+        DrawSegment(vh, SegmentPoints(r, 0), level >= 1);
+        DrawSegment(vh, SegmentPoints(r, 1), level >= 2);
+        DrawSegment(vh, SegmentPoints(r, 2), level >= 3);
+
+        AddLine(vh, P(r, 0.10f, 0.34f), P(r, 0.90f, 0.44f), 2.0f, LineColor);
+        AddLine(vh, P(r, 0.10f, 0.63f), P(r, 0.90f, 0.73f), 2.0f, LineColor);
+        AddLine(vh, P(r, 0.04f, 0.04f), P(r, 0.96f, 0.04f), 2.0f, LineColor);
+        AddLine(vh, P(r, 0.96f, 0.04f), P(r, 0.96f, 0.96f), 2.0f, LineColor);
+        AddLine(vh, P(r, 0.96f, 0.96f), P(r, 0.04f, 0.96f), 2.0f, LineColor);
+        AddLine(vh, P(r, 0.04f, 0.96f), P(r, 0.04f, 0.04f), 2.0f, LineColor);
     }
 
     Vector2[] SegmentPoints(Rect r, int segment)
@@ -1034,22 +1060,22 @@ class UpgradeTierButtonGraphic : Graphic
         {
             return new[]
             {
-                P(r, 0.12f, 0.05f), P(r, 0.88f, 0.05f), P(r, 0.98f, 0.30f),
-                P(r, 0.50f, 0.42f), P(r, 0.02f, 0.30f)
+                P(r, 0.10f, 0.10f), P(r, 0.90f, 0.10f),
+                P(r, 0.90f, 0.40f), P(r, 0.10f, 0.30f)
             };
         }
         if (segment == 1)
         {
             return new[]
             {
-                P(r, 0.06f, 0.36f), P(r, 0.94f, 0.36f), P(r, 0.84f, 0.64f),
-                P(r, 0.16f, 0.64f)
+                P(r, 0.10f, 0.34f), P(r, 0.90f, 0.44f),
+                P(r, 0.90f, 0.69f), P(r, 0.10f, 0.59f)
             };
         }
         return new[]
         {
-            P(r, 0.16f, 0.69f), P(r, 0.84f, 0.69f), P(r, 0.98f, 0.96f),
-            P(r, 0.02f, 0.96f)
+            P(r, 0.10f, 0.63f), P(r, 0.90f, 0.73f),
+            P(r, 0.90f, 0.90f), P(r, 0.10f, 0.90f)
         };
     }
 
@@ -1060,10 +1086,8 @@ class UpgradeTierButtonGraphic : Graphic
             Mathf.Lerp(r.yMin, r.yMax, y));
     }
 
-    void DrawSegment(VertexHelper vh, Rect r, Vector2[] points, bool filled)
+    Vector2[] Inset(Vector2[] points, float amount)
     {
-        AddPolygon(vh, points, EdgeColor);
-
         Vector2 center = Vector2.zero;
         for (int i = 0; i < points.Length; i++)
             center += points[i];
@@ -1071,17 +1095,31 @@ class UpgradeTierButtonGraphic : Graphic
 
         Vector2[] inner = new Vector2[points.Length];
         for (int i = 0; i < points.Length; i++)
-            inner[i] = Vector2.Lerp(points[i], center, 0.10f);
+            inner[i] = Vector2.Lerp(points[i], center, amount);
+        return inner;
+    }
 
-        AddPolygon(vh, inner, filled ? FillColor : EmptyColor);
+    void DrawSegment(VertexHelper vh, Vector2[] points, bool filled)
+    {
+        if (!filled) return;
 
-        if (filled)
+        AddPolygon(vh, points, FillColor);
+
+        Vector2[] shine = new Vector2[points.Length];
+        for (int i = 0; i < points.Length; i++)
+            shine[i] = new Vector2(points[i].x, points[i].y + 2.0f);
+        AddPolygon(vh, shine, ShineColor);
+    }
+
+    void AddLine(VertexHelper vh, Vector2 a, Vector2 b, float width, Color col)
+    {
+        Vector2 dir = (b - a).normalized;
+        Vector2 normal = new Vector2(-dir.y, dir.x) * (width * 0.5f);
+        Vector2[] quad =
         {
-            Vector2[] shine = new Vector2[inner.Length];
-            for (int i = 0; i < inner.Length; i++)
-                shine[i] = new Vector2(inner[i].x, Mathf.Lerp(inner[i].y, r.yMax, 0.10f));
-            AddPolygon(vh, shine, ShineColor);
-        }
+            a - normal, b - normal, b + normal, a + normal
+        };
+        AddPolygon(vh, quad, col);
     }
 
     void AddPolygon(VertexHelper vh, Vector2[] points, Color col)
