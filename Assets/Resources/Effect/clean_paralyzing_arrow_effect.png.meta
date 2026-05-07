@@ -1,0 +1,2054 @@
+fileFormatVersion: 2
+guid: b648837083665984e900f72a51af8fb1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1848646387894382131
+    second: clean_paralyzing_arrow_effect_0
+  - first:
+      213: 1076612732209114451
+    second: clean_paralyzing_arrow_effect_1
+  - first:
+      213: 5805174103741605907
+    second: clean_paralyzing_arrow_effect_2
+  - first:
+      213: 2319931991225982601
+    second: clean_paralyzing_arrow_effect_3
+  - first:
+      213: -7315987620954597740
+    second: clean_paralyzing_arrow_effect_4
+  - first:
+      213: 7999131767970248747
+    second: clean_paralyzing_arrow_effect_5
+  - first:
+      213: -4186671680879068194
+    second: clean_paralyzing_arrow_effect_6
+  - first:
+      213: -5011668167294748509
+    second: clean_paralyzing_arrow_effect_7
+  - first:
+      213: -3259031901352584816
+    second: clean_paralyzing_arrow_effect_8
+  - first:
+      213: 5860726306677185626
+    second: clean_paralyzing_arrow_effect_9
+  - first:
+      213: -6534060323031084821
+    second: clean_paralyzing_arrow_effect_10
+  - first:
+      213: 4484076959884833245
+    second: clean_paralyzing_arrow_effect_11
+  - first:
+      213: 6455192678121729142
+    second: clean_paralyzing_arrow_effect_12
+  - first:
+      213: 4794902868050036731
+    second: clean_paralyzing_arrow_effect_13
+  - first:
+      213: -3424147639794842504
+    second: clean_paralyzing_arrow_effect_14
+  - first:
+      213: 4581144844003401205
+    second: clean_paralyzing_arrow_effect_15
+  - first:
+      213: 8185230736929052320
+    second: clean_paralyzing_arrow_effect_16
+  - first:
+      213: 8119277784833047130
+    second: clean_paralyzing_arrow_effect_17
+  - first:
+      213: 867571528415984562
+    second: clean_paralyzing_arrow_effect_18
+  - first:
+      213: -5282788834657540441
+    second: clean_paralyzing_arrow_effect_19
+  - first:
+      213: 1859782954546410457
+    second: clean_paralyzing_arrow_effect_20
+  - first:
+      213: -1443551103159501088
+    second: clean_paralyzing_arrow_effect_21
+  - first:
+      213: 8648633814728505762
+    second: clean_paralyzing_arrow_effect_22
+  - first:
+      213: -803127597619608881
+    second: clean_paralyzing_arrow_effect_23
+  - first:
+      213: 5586039225966917119
+    second: clean_paralyzing_arrow_effect_24
+  - first:
+      213: 4069031443734265260
+    second: clean_paralyzing_arrow_effect_25
+  - first:
+      213: 7304070305087300530
+    second: clean_paralyzing_arrow_effect_26
+  - first:
+      213: -2176941026945025225
+    second: clean_paralyzing_arrow_effect_27
+  - first:
+      213: -2147766202138001202
+    second: clean_paralyzing_arrow_effect_28
+  - first:
+      213: -8098196994884118415
+    second: clean_paralyzing_arrow_effect_29
+  - first:
+      213: 8384522043825083125
+    second: clean_paralyzing_arrow_effect_30
+  - first:
+      213: 1635923459491081576
+    second: clean_paralyzing_arrow_effect_31
+  - first:
+      213: 2681613881837810194
+    second: clean_paralyzing_arrow_effect_32
+  - first:
+      213: -8832224923046589800
+    second: clean_paralyzing_arrow_effect_33
+  - first:
+      213: -6376757330064119755
+    second: clean_paralyzing_arrow_effect_34
+  - first:
+      213: -4137732220916112246
+    second: clean_paralyzing_arrow_effect_35
+  - first:
+      213: -3409136323979858310
+    second: clean_paralyzing_arrow_effect_36
+  - first:
+      213: -380060154577632731
+    second: clean_paralyzing_arrow_effect_37
+  - first:
+      213: -2323019706255785726
+    second: clean_paralyzing_arrow_effect_38
+  - first:
+      213: -6733907918952181172
+    second: clean_paralyzing_arrow_effect_39
+  - first:
+      213: -6616727530005324947
+    second: clean_paralyzing_arrow_effect_40
+  - first:
+      213: 1508637976215053954
+    second: clean_paralyzing_arrow_effect_41
+  - first:
+      213: -45294536019116424
+    second: clean_paralyzing_arrow_effect_42
+  - first:
+      213: -2769025663728956599
+    second: clean_paralyzing_arrow_effect_43
+  - first:
+      213: -8846164075349119814
+    second: clean_paralyzing_arrow_effect_44
+  - first:
+      213: -361670942510632314
+    second: clean_paralyzing_arrow_effect_45
+  - first:
+      213: 885456277064601156
+    second: clean_paralyzing_arrow_effect_46
+  - first:
+      213: 4492310032674903552
+    second: clean_paralyzing_arrow_effect_47
+  - first:
+      213: -1775206804872144685
+    second: clean_paralyzing_arrow_effect_48
+  - first:
+      213: -4668436297903126503
+    second: clean_paralyzing_arrow_effect_49
+  - first:
+      213: -8926846073395178280
+    second: clean_paralyzing_arrow_effect_50
+  - first:
+      213: 6006618352042660469
+    second: clean_paralyzing_arrow_effect_51
+  - first:
+      213: 4170510822680946542
+    second: clean_paralyzing_arrow_effect_52
+  - first:
+      213: -2282842626298684015
+    second: clean_paralyzing_arrow_effect_53
+  - first:
+      213: -3678701928355940681
+    second: clean_paralyzing_arrow_effect_54
+  - first:
+      213: 8825819145292099204
+    second: clean_paralyzing_arrow_effect_55
+  - first:
+      213: 5990417991016970495
+    second: clean_paralyzing_arrow_effect_56
+  - first:
+      213: -7007806763062208640
+    second: clean_paralyzing_arrow_effect_57
+  - first:
+      213: -7511836050026791324
+    second: clean_paralyzing_arrow_effect_58
+  - first:
+      213: 3069864414752398334
+    second: clean_paralyzing_arrow_effect_59
+  - first:
+      213: -3308678100130612418
+    second: clean_paralyzing_arrow_effect_60
+  - first:
+      213: 3815785139839130707
+    second: clean_paralyzing_arrow_effect_61
+  - first:
+      213: -7568385167690090665
+    second: clean_paralyzing_arrow_effect_62
+  - first:
+      213: 424666745027788556
+    second: clean_paralyzing_arrow_effect_63
+  - first:
+      213: -6397765437720103782
+    second: clean_paralyzing_arrow_effect_64
+  - first:
+      213: -2621118501445441373
+    second: clean_paralyzing_arrow_effect_65
+  - first:
+      213: 5401283765787118672
+    second: clean_paralyzing_arrow_effect_66
+  - first:
+      213: -807696455167138621
+    second: clean_paralyzing_arrow_effect_67
+  - first:
+      213: 1046981565722513806
+    second: clean_paralyzing_arrow_effect_68
+  - first:
+      213: -704492173910769846
+    second: clean_paralyzing_arrow_effect_69
+  - first:
+      213: -1517058977281804627
+    second: clean_paralyzing_arrow_effect_70
+  - first:
+      213: 2490166328360162414
+    second: clean_paralyzing_arrow_effect_71
+  - first:
+      213: -626097463130836656
+    second: clean_paralyzing_arrow_effect_72
+  - first:
+      213: -5940087238335119687
+    second: clean_paralyzing_arrow_effect_73
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_0
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 221
+        width: 172
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc11f3e97e94856e0800000000000000
+      internalID: -1848646387894382131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_1
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 82
+        width: 243
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35dacf76395e0fe00800000000000000
+      internalID: 1076612732209114451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_2
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 57
+        width: 228
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318a0d8171f109050800000000000000
+      internalID: 5805174103741605907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_3
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 44
+        width: 392
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ed610cadd023020800000000000000
+      internalID: 2319931991225982601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_4
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 5
+        width: 411
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49698df3504687a90800000000000000
+      internalID: -7315987620954597740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_5
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 92
+        width: 123
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b28b86536ff920f60800000000000000
+      internalID: 7999131767970248747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_6
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 278
+        width: 108
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edbf306c944f5e5c0800000000000000
+      internalID: -4186671680879068194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_7
+      rect:
+        serializedVersion: 2
+        x: 2394
+        y: 61
+        width: 218
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a87344da5af27ab0800000000000000
+      internalID: -5011668167294748509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_8
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 353
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0999638b0c795c2d0800000000000000
+      internalID: -3259031901352584816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 335
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5cd743468b755150800000000000000
+      internalID: 5860726306677185626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_10
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 328
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be012c051ca5255a0800000000000000
+      internalID: -6534060323031084821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_11
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 324
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1f273cc34aa3e30800000000000000
+      internalID: 4484076959884833245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_12
+      rect:
+        serializedVersion: 2
+        x: 2771
+        y: 319
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67ce5282a83759950800000000000000
+      internalID: 6455192678121729142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_13
+      rect:
+        serializedVersion: 2
+        x: 2819
+        y: 291
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7cf9601caea8240800000000000000
+      internalID: 4794902868050036731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_14
+      rect:
+        serializedVersion: 2
+        x: 3236
+        y: 335
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 874498f0ddbfa70d0800000000000000
+      internalID: -3424147639794842504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_15
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 279
+        width: 61
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd5f63b6fe739f30800000000000000
+      internalID: 4581144844003401205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_16
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 312
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6d34fecf7c79170800000000000000
+      internalID: 8185230736929052320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_17
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 291
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ab1b5a0287da070800000000000000
+      internalID: 8119277784833047130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_18
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 312
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb3a7065bb3a0c00800000000000000
+      internalID: 867571528415984562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_19
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 162
+        width: 137
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a666d65b83cfa6b0800000000000000
+      internalID: -5282788834657540441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_20
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 313
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3b01d5eb64fc910800000000000000
+      internalID: 1859782954546410457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_21
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 288
+        width: 45
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eefd018be977fbe0800000000000000
+      internalID: -1443551103159501088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_22
+      rect:
+        serializedVersion: 2
+        x: 2969
+        y: 302
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9f25fc1ae160870800000000000000
+      internalID: 8648633814728505762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_23
+      rect:
+        serializedVersion: 2
+        x: 3233
+        y: 285
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc2029284b7bad4f0800000000000000
+      internalID: -803127597619608881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_24
+      rect:
+        serializedVersion: 2
+        x: 3319
+        y: 312
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5f7257419958d40800000000000000
+      internalID: 5586039225966917119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_25
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 296
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cadfca71a8a187830800000000000000
+      internalID: 4069031443734265260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_26
+      rect:
+        serializedVersion: 2
+        x: 2752
+        y: 243
+        width: 53
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b3253d6e354d5560800000000000000
+      internalID: 7304070305087300530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_27
+      rect:
+        serializedVersion: 2
+        x: 3380
+        y: 302
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73bb7ff7ba3f9c1e0800000000000000
+      internalID: -2176941026945025225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_28
+      rect:
+        serializedVersion: 2
+        x: 3417
+        y: 296
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec089fcb40a9132e0800000000000000
+      internalID: -2147766202138001202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_29
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 285
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 178dbce3dbc6d9f80800000000000000
+      internalID: -8098196994884118415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_30
+      rect:
+        serializedVersion: 2
+        x: 3218
+        y: 276
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f250a1306ecb5470800000000000000
+      internalID: 8384522043825083125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_31
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 221
+        width: 56
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86da1ba08b7f3b610800000000000000
+      internalID: 1635923459491081576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_32
+      rect:
+        serializedVersion: 2
+        x: 2975
+        y: 221
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212f2b32e91073520800000000000000
+      internalID: 2681613881837810194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_33
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 254
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89ac4754a32ad6580800000000000000
+      internalID: -8832224923046589800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_34
+      rect:
+        serializedVersion: 2
+        x: 3406
+        y: 237
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538e8aa6ef43187a0800000000000000
+      internalID: -6376757330064119755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_35
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 228
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a846b9cb772d396c0800000000000000
+      internalID: -4137732220916112246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_36
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 221
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7eac42639050b0d0800000000000000
+      internalID: -3409136323979858310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_37
+      rect:
+        serializedVersion: 2
+        x: 2777
+        y: 228
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 522ce159d41c9baf0800000000000000
+      internalID: -380060154577632731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_38
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 228
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 201446292e9f2cfd0800000000000000
+      internalID: -2323019706255785726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_39
+      rect:
+        serializedVersion: 2
+        x: 3431
+        y: 230
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c425aacec6a5c82a0800000000000000
+      internalID: -6733907918952181172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_40
+      rect:
+        serializedVersion: 2
+        x: 3447
+        y: 230
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6b1c7e4e59ac24a0800000000000000
+      internalID: -6616727530005324947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_41
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 109
+        width: 80
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28666fa0f32cfe410800000000000000
+      internalID: 1508637976215053954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_42
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 206
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e70560cd41f5ff0800000000000000
+      internalID: -45294536019116424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_43
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 105
+        width: 88
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94bce7b64d17299d0800000000000000
+      internalID: -2769025663728956599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_44
+      rect:
+        serializedVersion: 2
+        x: 2743
+        y: 157
+        width: 57
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc6ef774ac1c3580800000000000000
+      internalID: -8846164075349119814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_45
+      rect:
+        serializedVersion: 2
+        x: 2973
+        y: 190
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682b21aa1361bfaf0800000000000000
+      internalID: -361670942510632314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_46
+      rect:
+        serializedVersion: 2
+        x: 3205
+        y: 160
+        width: 35
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44e439aeac5c94c00800000000000000
+      internalID: 885456277064601156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_47
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 162
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 006d2866c24e75e30800000000000000
+      internalID: 4492310032674903552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_48
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 172
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d85db001d23d57e0800000000000000
+      internalID: -1775206804872144685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_49
+      rect:
+        serializedVersion: 2
+        x: 2984
+        y: 174
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918c1f6ebe1663fb0800000000000000
+      internalID: -4668436297903126503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_50
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 162
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d490beeac87d1480800000000000000
+      internalID: -8926846073395178280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_51
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 88
+        width: 113
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57258d6119bcb5350800000000000000
+      internalID: 6006618352042660469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_52
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 89
+        width: 171
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e67e1d53f71a0e930800000000000000
+      internalID: 4170510822680946542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_53
+      rect:
+        serializedVersion: 2
+        x: 2817
+        y: 122
+        width: 45
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19dd855f9b6b150e0800000000000000
+      internalID: -2282842626298684015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_54
+      rect:
+        serializedVersion: 2
+        x: 2972
+        y: 157
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6bcc53610a2fcc0800000000000000
+      internalID: -3678701928355940681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_55
+      rect:
+        serializedVersion: 2
+        x: 2983
+        y: 150
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48e2afe50cb9b7a70800000000000000
+      internalID: 8825819145292099204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_56
+      rect:
+        serializedVersion: 2
+        x: 3413
+        y: 149
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8fcaa9c6d322350800000000000000
+      internalID: 5990417991016970495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_57
+      rect:
+        serializedVersion: 2
+        x: 2791
+        y: 132
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087d811c0e44fbe90800000000000000
+      internalID: -7007806763062208640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_58
+      rect:
+        serializedVersion: 2
+        x: 2968
+        y: 146
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46efd2379e890c790800000000000000
+      internalID: -7511836050026791324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_59
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 129
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efbdded9b695a9a20800000000000000
+      internalID: 3069864414752398334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_60
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 106
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3bb99d4cc63512d0800000000000000
+      internalID: -3308678100130612418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_61
+      rect:
+        serializedVersion: 2
+        x: 2814
+        y: 133
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c53572e5464f430800000000000000
+      internalID: 3815785139839130707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_62
+      rect:
+        serializedVersion: 2
+        x: 2978
+        y: 122
+        width: 41
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7573f7cf9c1b7f690800000000000000
+      internalID: -7568385167690090665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_63
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 132
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f7d459728b4e500800000000000000
+      internalID: 424666745027788556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_64
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 116
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a94fb603b329637a0800000000000000
+      internalID: -6397765437720103782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_65
+      rect:
+        serializedVersion: 2
+        x: 2787
+        y: 105
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a8e3273c9aef9bd0800000000000000
+      internalID: -2621118501445441373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_66
+      rect:
+        serializedVersion: 2
+        x: 2881
+        y: 94
+        width: 78
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05c43deb7f635fa40800000000000000
+      internalID: 5401283765787118672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_67
+      rect:
+        serializedVersion: 2
+        x: 3223
+        y: 122
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c4ab677a5c7ac4f0800000000000000
+      internalID: -807696455167138621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_68
+      rect:
+        serializedVersion: 2
+        x: 3310
+        y: 115
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81d547df20a78e00800000000000000
+      internalID: 1046981565722513806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_69
+      rect:
+        serializedVersion: 2
+        x: 3349
+        y: 95
+        width: 46
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f7103b9142936f0800000000000000
+      internalID: -704492173910769846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_70
+      rect:
+        serializedVersion: 2
+        x: 3423
+        y: 105
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da6fccbd5e252fae0800000000000000
+      internalID: -1517058977281804627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_71
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 75
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64db890519de8220800000000000000
+      internalID: 2490166328360162414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_72
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 83
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 051305baca7af47f0800000000000000
+      internalID: -626097463130836656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clean_paralyzing_arrow_effect_73
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 22
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be3430f022909da0800000000000000
+      internalID: -5940087238335119687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      clean_paralyzing_arrow_effect_0: -1848646387894382131
+      clean_paralyzing_arrow_effect_1: 1076612732209114451
+      clean_paralyzing_arrow_effect_10: -6534060323031084821
+      clean_paralyzing_arrow_effect_11: 4484076959884833245
+      clean_paralyzing_arrow_effect_12: 6455192678121729142
+      clean_paralyzing_arrow_effect_13: 4794902868050036731
+      clean_paralyzing_arrow_effect_14: -3424147639794842504
+      clean_paralyzing_arrow_effect_15: 4581144844003401205
+      clean_paralyzing_arrow_effect_16: 8185230736929052320
+      clean_paralyzing_arrow_effect_17: 8119277784833047130
+      clean_paralyzing_arrow_effect_18: 867571528415984562
+      clean_paralyzing_arrow_effect_19: -5282788834657540441
+      clean_paralyzing_arrow_effect_2: 5805174103741605907
+      clean_paralyzing_arrow_effect_20: 1859782954546410457
+      clean_paralyzing_arrow_effect_21: -1443551103159501088
+      clean_paralyzing_arrow_effect_22: 8648633814728505762
+      clean_paralyzing_arrow_effect_23: -803127597619608881
+      clean_paralyzing_arrow_effect_24: 5586039225966917119
+      clean_paralyzing_arrow_effect_25: 4069031443734265260
+      clean_paralyzing_arrow_effect_26: 7304070305087300530
+      clean_paralyzing_arrow_effect_27: -2176941026945025225
+      clean_paralyzing_arrow_effect_28: -2147766202138001202
+      clean_paralyzing_arrow_effect_29: -8098196994884118415
+      clean_paralyzing_arrow_effect_3: 2319931991225982601
+      clean_paralyzing_arrow_effect_30: 8384522043825083125
+      clean_paralyzing_arrow_effect_31: 1635923459491081576
+      clean_paralyzing_arrow_effect_32: 2681613881837810194
+      clean_paralyzing_arrow_effect_33: -8832224923046589800
+      clean_paralyzing_arrow_effect_34: -6376757330064119755
+      clean_paralyzing_arrow_effect_35: -4137732220916112246
+      clean_paralyzing_arrow_effect_36: -3409136323979858310
+      clean_paralyzing_arrow_effect_37: -380060154577632731
+      clean_paralyzing_arrow_effect_38: -2323019706255785726
+      clean_paralyzing_arrow_effect_39: -6733907918952181172
+      clean_paralyzing_arrow_effect_4: -7315987620954597740
+      clean_paralyzing_arrow_effect_40: -6616727530005324947
+      clean_paralyzing_arrow_effect_41: 1508637976215053954
+      clean_paralyzing_arrow_effect_42: -45294536019116424
+      clean_paralyzing_arrow_effect_43: -2769025663728956599
+      clean_paralyzing_arrow_effect_44: -8846164075349119814
+      clean_paralyzing_arrow_effect_45: -361670942510632314
+      clean_paralyzing_arrow_effect_46: 885456277064601156
+      clean_paralyzing_arrow_effect_47: 4492310032674903552
+      clean_paralyzing_arrow_effect_48: -1775206804872144685
+      clean_paralyzing_arrow_effect_49: -4668436297903126503
+      clean_paralyzing_arrow_effect_5: 7999131767970248747
+      clean_paralyzing_arrow_effect_50: -8926846073395178280
+      clean_paralyzing_arrow_effect_51: 6006618352042660469
+      clean_paralyzing_arrow_effect_52: 4170510822680946542
+      clean_paralyzing_arrow_effect_53: -2282842626298684015
+      clean_paralyzing_arrow_effect_54: -3678701928355940681
+      clean_paralyzing_arrow_effect_55: 8825819145292099204
+      clean_paralyzing_arrow_effect_56: 5990417991016970495
+      clean_paralyzing_arrow_effect_57: -7007806763062208640
+      clean_paralyzing_arrow_effect_58: -7511836050026791324
+      clean_paralyzing_arrow_effect_59: 3069864414752398334
+      clean_paralyzing_arrow_effect_6: -4186671680879068194
+      clean_paralyzing_arrow_effect_60: -3308678100130612418
+      clean_paralyzing_arrow_effect_61: 3815785139839130707
+      clean_paralyzing_arrow_effect_62: -7568385167690090665
+      clean_paralyzing_arrow_effect_63: 424666745027788556
+      clean_paralyzing_arrow_effect_64: -6397765437720103782
+      clean_paralyzing_arrow_effect_65: -2621118501445441373
+      clean_paralyzing_arrow_effect_66: 5401283765787118672
+      clean_paralyzing_arrow_effect_67: -807696455167138621
+      clean_paralyzing_arrow_effect_68: 1046981565722513806
+      clean_paralyzing_arrow_effect_69: -704492173910769846
+      clean_paralyzing_arrow_effect_7: -5011668167294748509
+      clean_paralyzing_arrow_effect_70: -1517058977281804627
+      clean_paralyzing_arrow_effect_71: 2490166328360162414
+      clean_paralyzing_arrow_effect_72: -626097463130836656
+      clean_paralyzing_arrow_effect_73: -5940087238335119687
+      clean_paralyzing_arrow_effect_8: -3259031901352584816
+      clean_paralyzing_arrow_effect_9: 5860726306677185626
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
