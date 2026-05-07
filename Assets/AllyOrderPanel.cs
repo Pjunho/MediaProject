@@ -53,8 +53,8 @@ public class AllyOrderPanel : MonoBehaviour
     private RectTransform    detailSpeedUpgradeBtnRt;
     private Text             detailHpUpgradeTxt;
     private Text             detailSpeedUpgradeTxt;
-    private UpgradeTierButtonGraphic detailHpUpgradeGraphic;
-    private UpgradeTierButtonGraphic detailSpeedUpgradeGraphic;
+    private UpgradeTierButtonIcon detailHpUpgradeGraphic;
+    private UpgradeTierButtonIcon detailSpeedUpgradeGraphic;
     private bool             isCollapsed;
     private bool             detailExpanded;
     private int              selectedCard = -1;
@@ -621,7 +621,7 @@ public class AllyOrderPanel : MonoBehaviour
     }
 
     void RefreshOneStat(AllyType type, UpgradeSystem.StatType stat,
-        RectTransform btnRt, Text btnTxt, UpgradeTierButtonGraphic tierGraphic)
+        RectTransform btnRt, Text btnTxt, UpgradeTierButtonIcon tierGraphic)
     {
         if (btnRt == null || btnTxt == null) return;
         int cost = UpgradeSystem.GetNextCost(type, stat);
@@ -918,7 +918,7 @@ public class AllyOrderPanel : MonoBehaviour
     }
 
     RectTransform BuildUpgradeBtn(string id, Transform parent,
-        Vector2 anchorMin, Vector2 anchorMax, out Text label, out UpgradeTierButtonGraphic tierGraphic)
+        Vector2 anchorMin, Vector2 anchorMax, out Text label, out UpgradeTierButtonIcon tierGraphic)
     {
         var go = MakeUIRect(id, parent);
         var rt = go.GetComponent<RectTransform>();
@@ -951,10 +951,12 @@ public class AllyOrderPanel : MonoBehaviour
         iconRt.pivot = new Vector2(1f, 0.5f);
         iconRt.anchoredPosition = Vector2.zero;
         iconRt.sizeDelta = new Vector2(26f, 26f);
-        tierGraphic = icon.AddComponent<UpgradeTierButtonGraphic>();
+        var iconImage = icon.AddComponent<Image>();
+        iconImage.raycastTarget = true;
+        tierGraphic = icon.AddComponent<UpgradeTierButtonIcon>();
 
         label = tx;
-        return rt;
+        return iconRt;
     }
 
     // ── UI 헬퍼 ──────────────────────────────────────────────────────────
@@ -1010,125 +1012,148 @@ public class AllyOrderPanel : MonoBehaviour
         AllyVisualGenerator.CreatePortraitSprite(t);
 }
 
-class UpgradeTierButtonGraphic : Graphic
+class UpgradeTierButtonIcon : MonoBehaviour
 {
-    int level;
+    const int Size = 48;
 
-    static readonly Color EmptyColor  = new Color(0.28f, 0.30f, 0.34f, 0.96f);
-    static readonly Color FillColor   = new Color(1f, 0.82f, 0.12f, 1f);
-    static readonly Color EdgeColor   = new Color(0.08f, 0.09f, 0.12f, 0.92f);
-    static readonly Color LineColor   = new Color(0.05f, 0.06f, 0.08f, 0.95f);
-    static readonly Color ShineColor  = new Color(1f, 0.98f, 0.62f, 0.16f);
+    static readonly Color32 EmptyColor = new Color32(72, 77, 86, 245);
+    static readonly Color32 FillColor  = new Color32(255, 210, 31, 255);
+    static readonly Color32 EdgeColor  = new Color32(14, 16, 22, 255);
+    static readonly Color32 LineColor  = new Color32(7, 8, 11, 255);
+    static readonly Color32 ShineColor = new Color32(255, 248, 150, 45);
+    static readonly Sprite[] CachedSprites = new Sprite[4];
+
+    Image img;
 
     public void SetLevel(int newLevel)
     {
         newLevel = Mathf.Clamp(newLevel, 0, 3);
-        if (level == newLevel) return;
-        level = newLevel;
-        SetVerticesDirty();
+        if (img == null)
+            img = GetComponent<Image>();
+        if (img != null)
+            img.sprite = GetSprite(newLevel);
     }
 
-    protected override void OnPopulateMesh(VertexHelper vh)
+    void Awake()
     {
-        vh.Clear();
-
-        Rect r = rectTransform.rect;
-        Vector2[] outer =
-        {
-            P(r, 0.04f, 0.04f), P(r, 0.96f, 0.04f),
-            P(r, 0.96f, 0.96f), P(r, 0.04f, 0.96f)
-        };
-
-        AddPolygon(vh, outer, EdgeColor);
-        AddPolygon(vh, Inset(outer, 0.08f), EmptyColor);
-
-        DrawSegment(vh, SegmentPoints(r, 0), level >= 1);
-        DrawSegment(vh, SegmentPoints(r, 1), level >= 2);
-        DrawSegment(vh, SegmentPoints(r, 2), level >= 3);
-
-        AddLine(vh, P(r, 0.10f, 0.34f), P(r, 0.90f, 0.44f), 2.0f, LineColor);
-        AddLine(vh, P(r, 0.10f, 0.63f), P(r, 0.90f, 0.73f), 2.0f, LineColor);
-        AddLine(vh, P(r, 0.04f, 0.04f), P(r, 0.96f, 0.04f), 2.0f, LineColor);
-        AddLine(vh, P(r, 0.96f, 0.04f), P(r, 0.96f, 0.96f), 2.0f, LineColor);
-        AddLine(vh, P(r, 0.96f, 0.96f), P(r, 0.04f, 0.96f), 2.0f, LineColor);
-        AddLine(vh, P(r, 0.04f, 0.96f), P(r, 0.04f, 0.04f), 2.0f, LineColor);
+        SetLevel(0);
     }
 
-    Vector2[] SegmentPoints(Rect r, int segment)
+    static Sprite GetSprite(int level)
+    {
+        if (CachedSprites[level] != null)
+            return CachedSprites[level];
+
+        var tex = new Texture2D(Size, Size, TextureFormat.RGBA32, false);
+        tex.name = $"upgrade_tier_{level}";
+        tex.filterMode = FilterMode.Point;
+        tex.wrapMode = TextureWrapMode.Clamp;
+
+        Color32[] pixels = new Color32[Size * Size];
+        for (int i = 0; i < pixels.Length; i++)
+            pixels[i] = new Color32(0, 0, 0, 0);
+
+        FillRect(pixels, 2, 2, Size - 3, Size - 3, EdgeColor);
+        FillRect(pixels, 5, 5, Size - 6, Size - 6, EmptyColor);
+
+        if (level >= 1) FillPolygon(pixels, Segment(0), FillColor);
+        if (level >= 2) FillPolygon(pixels, Segment(1), FillColor);
+        if (level >= 3) FillPolygon(pixels, Segment(2), FillColor);
+
+        if (level > 0)
+            FillRect(pixels, 7, 6, Size - 8, 8, ShineColor);
+
+        DrawLine(pixels, Pt(0.10f, 0.34f), Pt(0.90f, 0.44f), 2, LineColor);
+        DrawLine(pixels, Pt(0.10f, 0.63f), Pt(0.90f, 0.73f), 2, LineColor);
+        DrawBorder(pixels);
+
+        tex.SetPixels32(pixels);
+        tex.Apply();
+
+        CachedSprites[level] = Sprite.Create(tex, new Rect(0, 0, Size, Size), new Vector2(0.5f, 0.5f), Size);
+        return CachedSprites[level];
+    }
+
+    static Vector2Int[] Segment(int segment)
     {
         if (segment == 0)
         {
             return new[]
             {
-                P(r, 0.10f, 0.10f), P(r, 0.90f, 0.10f),
-                P(r, 0.90f, 0.40f), P(r, 0.10f, 0.30f)
+                Pt(0.10f, 0.10f), Pt(0.90f, 0.10f),
+                Pt(0.90f, 0.40f), Pt(0.10f, 0.30f)
             };
         }
         if (segment == 1)
         {
             return new[]
             {
-                P(r, 0.10f, 0.34f), P(r, 0.90f, 0.44f),
-                P(r, 0.90f, 0.69f), P(r, 0.10f, 0.59f)
+                Pt(0.10f, 0.34f), Pt(0.90f, 0.44f),
+                Pt(0.90f, 0.69f), Pt(0.10f, 0.59f)
             };
         }
         return new[]
         {
-            P(r, 0.10f, 0.63f), P(r, 0.90f, 0.73f),
-            P(r, 0.90f, 0.90f), P(r, 0.10f, 0.90f)
+            Pt(0.10f, 0.63f), Pt(0.90f, 0.73f),
+            Pt(0.90f, 0.90f), Pt(0.10f, 0.90f)
         };
     }
 
-    Vector2 P(Rect r, float x, float y)
+    static Vector2Int Pt(float x, float y)
     {
-        return new Vector2(
-            Mathf.Lerp(r.xMin, r.xMax, x),
-            Mathf.Lerp(r.yMin, r.yMax, y));
+        return new Vector2Int(
+            Mathf.RoundToInt(Mathf.Lerp(0, Size - 1, x)),
+            Mathf.RoundToInt(Mathf.Lerp(0, Size - 1, y)));
     }
 
-    Vector2[] Inset(Vector2[] points, float amount)
+    static void FillRect(Color32[] pixels, int x0, int y0, int x1, int y1, Color32 color)
     {
-        Vector2 center = Vector2.zero;
-        for (int i = 0; i < points.Length; i++)
-            center += points[i];
-        center /= points.Length;
-
-        Vector2[] inner = new Vector2[points.Length];
-        for (int i = 0; i < points.Length; i++)
-            inner[i] = Vector2.Lerp(points[i], center, amount);
-        return inner;
+        for (int y = Mathf.Max(0, y0); y <= Mathf.Min(Size - 1, y1); y++)
+            for (int x = Mathf.Max(0, x0); x <= Mathf.Min(Size - 1, x1); x++)
+                pixels[y * Size + x] = color;
     }
 
-    void DrawSegment(VertexHelper vh, Vector2[] points, bool filled)
+    static void FillPolygon(Color32[] pixels, Vector2Int[] points, Color32 color)
     {
-        if (!filled) return;
-
-        AddPolygon(vh, points, FillColor);
-
-        Vector2[] shine = new Vector2[points.Length];
-        for (int i = 0; i < points.Length; i++)
-            shine[i] = new Vector2(points[i].x, points[i].y + 2.0f);
-        AddPolygon(vh, shine, ShineColor);
-    }
-
-    void AddLine(VertexHelper vh, Vector2 a, Vector2 b, float width, Color col)
-    {
-        Vector2 dir = (b - a).normalized;
-        Vector2 normal = new Vector2(-dir.y, dir.x) * (width * 0.5f);
-        Vector2[] quad =
+        for (int y = 0; y < Size; y++)
         {
-            a - normal, b - normal, b + normal, a + normal
-        };
-        AddPolygon(vh, quad, col);
+            for (int x = 0; x < Size; x++)
+            {
+                if (ContainsPoint(points, x + 0.5f, y + 0.5f))
+                    pixels[y * Size + x] = color;
+            }
+        }
     }
 
-    void AddPolygon(VertexHelper vh, Vector2[] points, Color col)
+    static bool ContainsPoint(Vector2Int[] points, float x, float y)
     {
-        int start = vh.currentVertCount;
-        for (int i = 0; i < points.Length; i++)
-            vh.AddVert(points[i], col, Vector2.zero);
+        bool inside = false;
+        for (int i = 0, j = points.Length - 1; i < points.Length; j = i++)
+        {
+            if (((points[i].y > y) != (points[j].y > y)) &&
+                (x < (points[j].x - points[i].x) * (y - points[i].y) / (float)(points[j].y - points[i].y) + points[i].x))
+                inside = !inside;
+        }
+        return inside;
+    }
 
-        for (int i = 1; i < points.Length - 1; i++)
-            vh.AddTriangle(start, start + i, start + i + 1);
+    static void DrawLine(Color32[] pixels, Vector2Int a, Vector2Int b, int thickness, Color32 color)
+    {
+        int steps = Mathf.Max(Mathf.Abs(b.x - a.x), Mathf.Abs(b.y - a.y));
+        for (int i = 0; i <= steps; i++)
+        {
+            float t = steps == 0 ? 0f : i / (float)steps;
+            int x = Mathf.RoundToInt(Mathf.Lerp(a.x, b.x, t));
+            int y = Mathf.RoundToInt(Mathf.Lerp(a.y, b.y, t));
+            FillRect(pixels, x - thickness, y - thickness, x + thickness, y + thickness, color);
+        }
+    }
+
+    static void DrawBorder(Color32[] pixels)
+    {
+        FillRect(pixels, 2, 2, Size - 3, 4, LineColor);
+        FillRect(pixels, 2, Size - 5, Size - 3, Size - 3, LineColor);
+        FillRect(pixels, 2, 2, 4, Size - 3, LineColor);
+        FillRect(pixels, Size - 5, 2, Size - 3, Size - 3, LineColor);
     }
 }
