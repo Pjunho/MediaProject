@@ -281,20 +281,20 @@ public class AllyOrderPanel : MonoBehaviour
 
         detailHpText = CreateTextLabel("DetailHp", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.38f), new Vector2(0.68f, 0.56f),
+            new Vector2(0f, 0.38f), new Vector2(0.62f, 0.56f),
             new Vector2(12f, 0f), new Vector2(0f, 0f));
 
         detailHpUpgradeBtnRt = BuildUpgradeBtn("HpUpgradeBtn", detail.transform,
-            new Vector2(0.68f, 0.38f), new Vector2(1f, 0.56f),
+            new Vector2(0.62f, 0.38f), new Vector2(1f, 0.56f),
             out detailHpUpgradeTxt, out detailHpUpgradeGraphic);
 
         detailSpeedText = CreateTextLabel("DetailSpeed", detail.transform, string.Empty, 14, FontStyle.Normal,
             new Color(0.92f, 0.94f, 0.98f, 1f), TextAnchor.MiddleLeft,
-            new Vector2(0f, 0.20f), new Vector2(0.68f, 0.38f),
+            new Vector2(0f, 0.20f), new Vector2(0.62f, 0.38f),
             new Vector2(12f, 0f), new Vector2(0f, 0f));
 
         detailSpeedUpgradeBtnRt = BuildUpgradeBtn("SpeedUpgradeBtn", detail.transform,
-            new Vector2(0.68f, 0.20f), new Vector2(1f, 0.38f),
+            new Vector2(0.62f, 0.20f), new Vector2(1f, 0.38f),
             out detailSpeedUpgradeTxt, out detailSpeedUpgradeGraphic);
 
         MakeLabel("SkillTitle", detail.transform, "스킬", 12, FontStyle.Normal,
@@ -639,7 +639,7 @@ public class AllyOrderPanel : MonoBehaviour
         }
         else
         {
-            btnTxt.text  = $"{cost}c";
+            btnTxt.text  = $"▲ {cost}c";
             btnTxt.color = new Color(0.96f, 0.86f, 0.48f, 1f);
         }
     }
@@ -930,8 +930,8 @@ public class AllyOrderPanel : MonoBehaviour
         var tgo = new GameObject("Lbl", typeof(RectTransform));
         tgo.transform.SetParent(go.transform, false);
         var tx = tgo.AddComponent<Text>();
-        tx.text      = "1c";
-        tx.fontSize  = 11;
+        tx.text      = "▲ 1c";
+        tx.fontSize  = 12;
         tx.fontStyle = FontStyle.Normal;
         tx.font      = BuiltinFont();
         tx.color     = new Color(0.96f, 0.86f, 0.48f, 1f);
@@ -942,7 +942,7 @@ public class AllyOrderPanel : MonoBehaviour
         trt.anchorMin = new Vector2(0f, 0f);
         trt.anchorMax = new Vector2(1f, 1f);
         trt.offsetMin = new Vector2(0f, 0f);
-        trt.offsetMax = new Vector2(-32f, 0f);
+        trt.offsetMax = new Vector2(-46f, 0f);
 
         var icon = MakeUIRect("TierButton", go.transform);
         var iconRt = icon.GetComponent<RectTransform>();
@@ -950,7 +950,7 @@ public class AllyOrderPanel : MonoBehaviour
         iconRt.anchorMax = new Vector2(1f, 0.5f);
         iconRt.pivot = new Vector2(1f, 0.5f);
         iconRt.anchoredPosition = Vector2.zero;
-        iconRt.sizeDelta = new Vector2(26f, 26f);
+        iconRt.sizeDelta = new Vector2(38f, 38f);
         var iconImage = icon.AddComponent<Image>();
         iconImage.raycastTarget = true;
         tierGraphic = icon.AddComponent<UpgradeTierButtonIcon>();
