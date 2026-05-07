@@ -832,7 +832,7 @@ public class EnemyBase : MonoBehaviour
         {
             paralysisVisual = new GameObject("ParalysisVisual");
             paralysisVisual.transform.SetParent(transform, false);
-            paralysisVisual.transform.localPosition = new Vector3(0f, 0.12f, 0f);
+            paralysisVisual.transform.localPosition = new Vector3(0f, 0.18f, 0f);
 
             paralysisVisualRenderer = paralysisVisual.AddComponent<SpriteRenderer>();
             paralysisEffectFrames = LoadEffectFrames("clean_paralyzing_arrow_effect", 8, 443f)
@@ -842,7 +842,9 @@ public class EnemyBase : MonoBehaviour
                 : MakeCircleSprite(14);
             paralysisVisualRenderer.color = new Color(1f, 0.95f, 0.32f, 0.95f);
             paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
-            paralysisVisual.transform.localScale = Vector3.one * (paralysisEffectFrames != null ? 0.92f : 0.42f);
+            paralysisVisual.transform.localScale = paralysisEffectFrames != null
+                ? new Vector3(0.76f, 1.36f, 1f)
+                : new Vector3(0.36f, 0.58f, 1f);
         }
 
         if (paralysisTintVisual == null && spriteRenderer != null)
@@ -859,7 +861,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (paralysisVisual != null)
         {
-            paralysisVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Time.time * 180f);
+            paralysisVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(Time.time * 5.5f) * 4f);
             if (paralysisVisualRenderer != null)
             {
                 if (paralysisEffectFrames != null && paralysisEffectFrames.Length > 0)
@@ -867,9 +869,11 @@ public class EnemyBase : MonoBehaviour
                 paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
             }
             float pulse = paralysisEffectFrames != null
-                ? 0.86f + Mathf.Sin(Time.time * 10f) * 0.08f
+                ? 1f + Mathf.Sin(Time.time * 10f) * 0.06f
                 : 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
-            paralysisVisual.transform.localScale = Vector3.one * pulse;
+            paralysisVisual.transform.localScale = paralysisEffectFrames != null
+                ? new Vector3(0.76f + pulse * 0.035f, 1.36f + pulse * 0.08f, 1f)
+                : Vector3.one * pulse;
         }
 
         if (paralysisTintRenderer != null && spriteRenderer != null)
@@ -878,8 +882,8 @@ public class EnemyBase : MonoBehaviour
             paralysisTintRenderer.flipX = spriteRenderer.flipX;
             paralysisTintRenderer.flipY = spriteRenderer.flipY;
             paralysisTintRenderer.sortingOrder = spriteRenderer.sortingOrder + 1;
-            float alpha = 0.28f + Mathf.Sin(Time.time * 7f) * 0.07f;
-            paralysisTintRenderer.color = new Color(1f, 0.92f, 0.18f, alpha);
+            float alpha = 0.42f + Mathf.Sin(Time.time * 7f) * 0.09f;
+            paralysisTintRenderer.color = new Color(1f, 0.86f, 0.08f, alpha);
         }
     }
 
