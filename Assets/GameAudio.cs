@@ -10,8 +10,8 @@ public class GameAudio : MonoBehaviour
 {
     public static GameAudio Instance { get; private set; }
 
-    const float BGM_VOLUME = 0.42f;
-    const float SFX_VOLUME = 0.75f;
+    const float BGM_VOLUME = 0.34f;
+    const float SFX_VOLUME = 1.00f;
     const float FADE_SECONDS = 0.65f;
 
     AudioSource bgmSource;
@@ -60,10 +60,10 @@ public class GameAudio : MonoBehaviour
         sfxSource.playOnAwake = false;
         sfxSource.volume = SFX_VOLUME;
 
-        uiClickClip = CreateToneClip("UiClick", 660f, 0.045f, 0.12f, Wave.Sine);
-        confirmClip = CreateDualToneClip("Confirm", 523f, 784f, 0.14f, 0.18f);
-        waveClearClip = CreateDualToneClip("WaveClear", 659f, 988f, 0.24f, 0.18f);
-        failClip = CreateDualToneClip("Fail", 220f, 146f, 0.28f, 0.20f);
+        uiClickClip = CreateToneClip("UiClick", 660f, 0.045f, 0.22f, Wave.Sine);
+        confirmClip = CreateDualToneClip("Confirm", 523f, 784f, 0.14f, 0.25f);
+        waveClearClip = CreateDualToneClip("WaveClear", 659f, 988f, 0.24f, 0.26f);
+        failClip = CreateDualToneClip("Fail", 220f, 146f, 0.28f, 0.28f);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -87,10 +87,10 @@ public class GameAudio : MonoBehaviour
         }
     }
 
-    public static void PlayUiClick() => Ensure().PlaySfx(Ensure().uiClickClip, 0.65f);
-    public static void PlayConfirm() => Ensure().PlaySfx(Ensure().confirmClip, 0.80f);
-    public static void PlayWaveClear() => Ensure().PlaySfx(Ensure().waveClearClip, 0.82f);
-    public static void PlayFail() => Ensure().PlaySfx(Ensure().failClip, 0.86f);
+    public static void PlayUiClick() => Ensure().PlaySfx(Ensure().uiClickClip, 0.95f);
+    public static void PlayConfirm() => Ensure().PlaySfx(Ensure().confirmClip, 0.95f);
+    public static void PlayWaveClear() => Ensure().PlaySfx(Ensure().waveClearClip, 1.00f);
+    public static void PlayFail() => Ensure().PlaySfx(Ensure().failClip, 1.00f);
 
     public void PlayMenuBgm()
     {
