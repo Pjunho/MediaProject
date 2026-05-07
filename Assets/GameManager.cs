@@ -205,6 +205,7 @@ public class GameManager : MonoBehaviour
         if (!gameStarted)
         {
             gameStarted = true;
+            GameAudio.PlayConfirm();
             // currentCoins는 Awake()에서 이미 지급됨 — 여기서 덮어쓰지 않는다
             currentWaves      = StageManager.GetWaves(stageIdx);
             currentWaveIndex  = 0;
@@ -278,7 +279,10 @@ public class GameManager : MonoBehaviour
             {
                 var b = btns[pressedButtonIndex];
                 if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInputAllowed(b))
+                {
+                    GameAudio.PlayUiClick();
                     b.cb?.Invoke();
+                }
                 anyBtnClicked = true;
             }
             else if (pressedGemPanelOutside && gemPanelOpen && !pointerOnGemPanel)
@@ -400,6 +404,7 @@ public class GameManager : MonoBehaviour
 
         if (!wavePassed)
         {
+            GameAudio.PlayFail();
             Debug.Log($"[GameManager] ✗ 웨이브 {currentWaveIndex + 1} 실패 " +
                       $"(골 도달: {waveGoalCount}/{wave.goalRequirement})");
             EndStage();
@@ -407,6 +412,7 @@ public class GameManager : MonoBehaviour
         else if (currentWaveIndex + 1 >= currentWaves.Length)
         {
             clearedWaveCount++;
+            GameAudio.PlayWaveClear();
             Debug.Log($"[GameManager] ✓ 최종 웨이브 {currentWaveIndex + 1} 클리어! " +
                       $"(총 클리어 웨이브: {clearedWaveCount})");
             EndStage();
@@ -414,6 +420,7 @@ public class GameManager : MonoBehaviour
         else
         {
             clearedWaveCount++;
+            GameAudio.PlayWaveClear();
             Debug.Log($"[GameManager] ✓ 웨이브 {currentWaveIndex + 1} 클리어! " +
                       $"(골 도달: {waveGoalCount}/{wave.goalRequirement})");
             int clearedWaveNumber = currentWaveIndex + 1;

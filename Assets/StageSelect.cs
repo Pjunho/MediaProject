@@ -416,7 +416,10 @@ public class StageSelect : MonoBehaviour
             {
                 var b = btns[pressedButtonIndex];
                 if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInActiveInputLayer(b))
+                {
+                    GameAudio.PlayUiClick();
                     b.cb?.Invoke();
+                }
             }
             pressedButtonIndex = -1;
         }
@@ -1030,6 +1033,7 @@ public class StageSelect : MonoBehaviour
             return;
         }
         StageManager.Instance?.SetSelectedAlliesForStage(prepSelected, prepStageIndex);
+        GameAudio.PlayConfirm();
         if (StageManager.Instance != null) StageManager.Instance.LoadStage(prepStageIndex);
         else SceneManager.LoadScene("MediaProject", LoadSceneMode.Single);
     }

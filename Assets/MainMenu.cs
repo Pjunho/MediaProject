@@ -111,7 +111,10 @@ public class MainMenu : MonoBehaviour
             {
                 var b = btns[pressedButtonIndex];
                 if (b.rt != null && b.rt.gameObject.activeInHierarchy && IsButtonInActiveInputLayer(b.rt))
+                {
+                    GameAudio.PlayUiClick();
                     b.action?.Invoke();
+                }
             }
             pressedButtonIndex = -1;
         }
