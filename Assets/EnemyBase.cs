@@ -187,10 +187,10 @@ public class EnemyBase : MonoBehaviour
         Sprite[] frames = LoadEffectFrames("attacked_team", 6, 256f);
         if (frames != null && frames.Length > 0)
         {
-            StartCoroutine(EffectSheetRoutine("attacked_team", pos + Vector3.up * 0.10f, 6, 256f, 18f, 0.46f, 42, 0f));
+            StartCoroutine(EffectSheetRoutine("attacked_team", pos + Vector3.up * 0.18f, 6, 256f, 18f, 0.88f, 46, 0f));
             return;
         }
-        SpawnImpactFlash(pos, new Color(1f, 0.35f, 0.15f, 0.95f), 0.14f);
+        SpawnImpactFlash(pos, new Color(1f, 0.35f, 0.15f, 0.95f), 0.18f);
     }
 
     IEnumerator ImpactFlashRoutine(Vector3 pos, Color color, float duration)
@@ -222,7 +222,7 @@ public class EnemyBase : MonoBehaviour
         {
             float a = (float)i / sparkCount * Mathf.PI * 2f + Random.Range(-0.18f, 0.18f);
             sparkDirs[i] = new Vector3(Mathf.Cos(a), Mathf.Sin(a), 0f);
-            sparks[i] = CreateSpark(pos, color, Random.Range(0.09f, 0.16f), 40);
+            sparks[i] = CreateSpark(pos, color, Random.Range(0.14f, 0.24f), 40);
         }
 
         float elapsed = 0f;
@@ -230,11 +230,11 @@ public class EnemyBase : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            go.transform.localScale = Vector3.one * Mathf.Lerp(0.18f, 0.82f, t);
+            go.transform.localScale = Vector3.one * Mathf.Lerp(0.30f, 1.18f, t);
             Color c = color; c.a = 1f - t;
             sr.color = c;
 
-            float radius = Mathf.Lerp(0.12f, 0.52f, t);
+            float radius = Mathf.Lerp(0.20f, 0.78f, t);
             for (int i = 0; i < ring.positionCount; i++)
             {
                 float a = (float)i / ring.positionCount * Mathf.PI * 2f;
@@ -247,8 +247,8 @@ public class EnemyBase : MonoBehaviour
             for (int i = 0; i < sparks.Length; i++)
             {
                 if (sparks[i] == null) continue;
-                sparks[i].transform.position += sparkDirs[i] * (2.4f * Time.deltaTime);
-                sparks[i].transform.localScale = Vector3.one * Mathf.Lerp(0.16f, 0.03f, t);
+                sparks[i].transform.position += sparkDirs[i] * (3.1f * Time.deltaTime);
+                sparks[i].transform.localScale = Vector3.one * Mathf.Lerp(0.24f, 0.05f, t);
                 var sparkSr = sparks[i].GetComponent<SpriteRenderer>();
                 if (sparkSr != null)
                 {
