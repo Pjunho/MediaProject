@@ -164,6 +164,7 @@ public static class TileTextureGenerator
     static readonly Sprite[][] _decorCache         = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _edgeCache          = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
+    static readonly Dictionary<int, Sprite> _volcanoLavaCache = new();
     static readonly Dictionary<int, Sprite> _volcanoBlockedPathCache = new();
 
     static Sprite _grassFallback;
@@ -176,6 +177,9 @@ public static class TileTextureGenerator
     public static Sprite GetWallSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
+        if (idx == 3)
+            return GetVolcanoLavaSprite(variant);
+
         if (_wallCache[idx] == null)
             _wallCache[idx] = BuildSpriteArray(STAGE_WALL_TEX[idx], STAGE_WALL_IDS[idx]);
         if (_wallCache[idx] != null)
@@ -204,7 +208,7 @@ public static class TileTextureGenerator
             for (int i = 0; i < 16; i++)
             {
                 _connectedPathCache[idx][i] = (idx == 3)
-                    ? GetPathSprite(idx, variant + i)
+                    ? CreateVolcanoConnectedPathSprite(i, variant)
                     : (idx == 1)
                     ? CreateOrganicGrassPathSprite(
                         STAGE_GROUND_BASE_COLORS[idx],
@@ -221,11 +225,14 @@ public static class TileTextureGenerator
     }
 
     public static Sprite GetVolcanoBlockedPathSprite(int variant = 0)
+        => GetVolcanoBlockedPathSprite(0x0F, variant);
+
+    public static Sprite GetVolcanoBlockedPathSprite(int connectionMask, int variant = 0)
     {
-        int key = Mathf.Abs(variant) % 16;
+        int key = ((connectionMask & 0x0F) << 8) ^ (Mathf.Abs(variant) % 251);
         if (!_volcanoBlockedPathCache.TryGetValue(key, out var sprite))
         {
-            sprite = GetPathSprite(3, key);
+            sprite = CreateVolcanoPlatformSprite(connectionMask & 0x0F, variant);
             _volcanoBlockedPathCache[key] = sprite;
         }
         return sprite;
@@ -309,6 +316,170 @@ public static class TileTextureGenerator
     // ────────────────────────────────────────────────────────────────
     //  절차적 길(Path) 타일 생성
     // ────────────────────────────────────────────────────────────────
+
+    static Sprite GetVolcanoLavaSprite(int variant)
+    {
+        int key = Mathf.Abs(variant) % 251;
+        if (!_volcanoLavaCache.TryGetValue(key, out var sprite))
+        {
+            sprite = CreateVolcanoLavaSprite(variant);
+            _volcanoLavaCache[key] = sprite;
+        }
+        return sprite;
+    }
+
+    static Sprite CreateVolcanoLavaSprite(int variant)
+    {
+        const int size = 64;
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            float broad = HashNoise(3, variant / 7, x / 8, y / 8, 201);
+            float veinA = Mathf.Abs(Mathf.Sin((x + variant * 3) * 0.17f + y * 0.09f));
+            float veinB = Mathf.Abs(Mathf.Sin((y - variant * 5) * 0.15f - x * 0.07f));
+            float heat = Mathf.Clamp01(broad * 0.58f + veinA * 0.24f + veinB * 0.18f);
+
+            Color crust = Color.Lerp(new Color(0.16f, 0.035f, 0.018f), new Color(0.34f, 0.07f, 0.025f), broad);
+            Color lava  = Color.Lerp(new Color(0.76f, 0.16f, 0.02f), new Color(1.00f, 0.58f, 0.06f), heat);
+            Color c = Color.Lerp(crust, lava, Mathf.SmoothStep(0.50f, 0.88f, heat));
+
+            if (HashNoise(3, variant, x / 2, y / 2, 211) > 0.94f)
+                c = Color.Lerp(c, new Color(1f, 0.82f, 0.18f), 0.20f);
+
+            tex.SetPixel(x, y, ClampColor(c));
+        }
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static Sprite CreateVolcanoConnectedPathSprite(int mask, int variant)
+    {
+        const int size = 64;
+        const float center = 31.5f;
+        const float roadHalf = 18.5f;
+        const float edgeHalf = 24.5f;
+
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        bool top = (mask & 1) != 0; bool right = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0; bool left = (mask & 8) != 0;
+        if (mask == 0) top = right = bottom = left = true;
+
+        Vector2 cpt = new Vector2(center, center);
+        Vector2 topPt = new Vector2(center, size + edgeHalf);
+        Vector2 rightPt = new Vector2(size + edgeHalf, center);
+        Vector2 bottomPt = new Vector2(center, -edgeHalf);
+        Vector2 leftPt = new Vector2(-edgeHalf, center);
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            Vector2 p = new Vector2(x + 0.5f, y + 0.5f);
+            Color lava = SampleVolcanoLavaColor(variant, x, y);
+
+            float dist = Vector2.Distance(p, cpt);
+            if (top) dist = Mathf.Min(dist, DistToSeg(p, cpt, topPt));
+            if (right) dist = Mathf.Min(dist, DistToSeg(p, cpt, rightPt));
+            if (bottom) dist = Mathf.Min(dist, DistToSeg(p, cpt, bottomPt));
+            if (left) dist = Mathf.Min(dist, DistToSeg(p, cpt, leftPt));
+
+            float rough = (HashNoise(3, mask + variant, x / 2, y / 2, 223) - 0.5f) * 4.2f
+                        + Mathf.Sin((x + mask * 13) * 0.23f) * 0.8f
+                        + Mathf.Sin((y + mask * 17) * 0.19f) * 0.7f;
+
+            float inner = roadHalf + rough;
+            float outer = edgeHalf + rough * 0.65f;
+            Color color = lava;
+
+            if (dist < outer)
+            {
+                float t = Mathf.InverseLerp(outer, inner, dist);
+                Color glow = new Color(0.95f, 0.26f, 0.04f);
+                Color rim = Color.Lerp(new Color(0.13f, 0.09f, 0.075f), glow, 0.28f);
+                color = Color.Lerp(lava, rim, Mathf.Lerp(0.25f, 0.92f, t));
+            }
+            if (dist < inner)
+            {
+                float stone = HashNoise(3, variant, x, y, 239);
+                Color dark = Color.Lerp(new Color(0.16f, 0.15f, 0.145f), new Color(0.32f, 0.30f, 0.28f), stone);
+                if (HashNoise(3, variant, x / 2, y / 2, 241) > 0.88f)
+                    dark = Color.Lerp(dark, new Color(0.52f, 0.48f, 0.42f), 0.20f);
+                color = dark;
+            }
+
+            tex.SetPixel(x, y, ClampColor(color));
+        }
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static Sprite CreateVolcanoPlatformSprite(int mask, int variant)
+    {
+        const int size = 64;
+        const float center = 31.5f;
+        const float rockHalf = 22.5f;
+        const float edgeHalf = 28.0f;
+
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        tex.filterMode = FilterMode.Point;
+
+        bool top = (mask & 1) != 0; bool right = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0; bool left = (mask & 8) != 0;
+        Vector2 cpt = new Vector2(center, center);
+        Vector2 topPt = new Vector2(center, size + edgeHalf);
+        Vector2 rightPt = new Vector2(size + edgeHalf, center);
+        Vector2 bottomPt = new Vector2(center, -edgeHalf);
+        Vector2 leftPt = new Vector2(-edgeHalf, center);
+
+        for (int x = 0; x < size; x++)
+        for (int y = 0; y < size; y++)
+        {
+            Vector2 p = new Vector2(x + 0.5f, y + 0.5f);
+            Color lava = SampleVolcanoLavaColor(variant + 17, x, y);
+
+            float dist = Vector2.Distance(p, cpt);
+            if (top) dist = Mathf.Min(dist, DistToSeg(p, cpt, topPt));
+            if (right) dist = Mathf.Min(dist, DistToSeg(p, cpt, rightPt));
+            if (bottom) dist = Mathf.Min(dist, DistToSeg(p, cpt, bottomPt));
+            if (left) dist = Mathf.Min(dist, DistToSeg(p, cpt, leftPt));
+
+            float rough = (HashNoise(3, variant, x / 2, y / 2, 251) - 0.5f) * 5.5f;
+            float inner = rockHalf + rough;
+            float outer = edgeHalf + rough * 0.55f;
+            Color color = lava;
+
+            if (dist < outer)
+            {
+                float t = Mathf.InverseLerp(outer, inner, dist);
+                Color rim = Color.Lerp(new Color(0.09f, 0.07f, 0.06f), new Color(0.92f, 0.24f, 0.03f), 0.30f);
+                color = Color.Lerp(lava, rim, Mathf.Lerp(0.18f, 0.86f, t));
+            }
+            if (dist < inner)
+            {
+                Color stone = Color.Lerp(new Color(0.14f, 0.13f, 0.125f), new Color(0.34f, 0.32f, 0.30f),
+                    HashNoise(3, variant, x, y, 257));
+                color = stone;
+            }
+
+            tex.SetPixel(x, y, ClampColor(color));
+        }
+        tex.Apply();
+        return SpriteFromTex(tex);
+    }
+
+    static Color SampleVolcanoLavaColor(int variant, int x, int y)
+    {
+        float broad = HashNoise(3, variant / 7, x / 8, y / 8, 261);
+        float vein = Mathf.Abs(Mathf.Sin((x + variant * 2) * 0.16f + y * 0.10f));
+        float heat = Mathf.Clamp01(broad * 0.62f + vein * 0.38f);
+        Color crust = Color.Lerp(new Color(0.14f, 0.03f, 0.015f), new Color(0.32f, 0.06f, 0.02f), broad);
+        Color lava = Color.Lerp(new Color(0.70f, 0.12f, 0.015f), new Color(1.00f, 0.47f, 0.04f), heat);
+        return Color.Lerp(crust, lava, Mathf.SmoothStep(0.54f, 0.90f, heat));
+    }
 
     static Sprite CreateConnectedPathSprite(
         Color ground, Color path, Color pathEdge, int mask, int stageIndex, int variant)

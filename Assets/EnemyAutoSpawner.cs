@@ -120,22 +120,20 @@ public class EnemyAutoSpawner : MonoBehaviour
         if (stage == 3)
         {
             // ── Stage 3 화산 전용 배치 ────────────────────────────────
-            // 어두운 바위섬(플랫폼) 타일을 원거리 적 전용 배치 풀로 분리
+            // 적은 용암 위가 아니라 어두운 바위섬(플랫폼) 위에만 배치한다.
             var platformPool = new List<SpawnCandidate>();
-            var lavaPool     = new List<SpawnCandidate>(); // 일반 용암 벽 타일
             foreach (var c in allCandidates)
             {
-                if (c.preferredPlatform) platformPool.Add(c);
-                else                     lavaPool.Add(c);
+                if (c.preferredPlatform)
+                    platformPool.Add(c);
             }
             platformPool.Sort(CompareNearCandidates);
-            lavaPool.Sort(CompareFarCandidates);
 
             // 근접: 바위섬 플랫폼 중에서도 최단 경로 가까운 곳을 최우선 사용
-            SpawnEnemyType(platformPool, lavaPool, brawlerCount,  "근접 적",  brawlerType);
-            // 원거리: 남은 플랫폼 우선 → 부족하면 일반 타일로 폴백
-            SpawnEnemyType(platformPool, lavaPool, sniperCount,   "장거리 적", sniperType);
-            SpawnEnemyType(platformPool, lavaPool, spearmanCount, "중거리 적", spearmanType);
+            SpawnEnemyType(platformPool, null, brawlerCount,  "근접 적",  brawlerType);
+            // 원거리/중거리도 남은 플랫폼만 사용해 용암 위 배치를 방지
+            SpawnEnemyType(platformPool, null, sniperCount,   "장거리 적", sniperType);
+            SpawnEnemyType(platformPool, null, spearmanCount, "중거리 적", spearmanType);
         }
         else
         {
@@ -209,6 +207,12 @@ public class EnemyAutoSpawner : MonoBehaviour
     /// </summary>
     bool TryTakeFrom(List<SpawnCandidate> candidates, out Vector3 pos)
     {
+        if (candidates == null)
+        {
+            pos = default;
+            return false;
+        }
+
         for (int i = 0; i < candidates.Count; i++)
         {
             Vector3 candidatePos = candidates[i].world;
@@ -225,7 +229,7 @@ public class EnemyAutoSpawner : MonoBehaviour
 
     bool TryTakeAny(List<SpawnCandidate> candidates, out Vector3 pos)
     {
-        if (candidates.Count == 0)
+        if (candidates == null || candidates.Count == 0)
         {
             pos = default;
             return false;

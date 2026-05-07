@@ -148,9 +148,8 @@ public class Map : MonoBehaviour
                     }
                     else if (IsVolcanoBlockedPathTile(stageIdx, x, y))
                     {
-                        sr.sprite = TileTextureGenerator.GetVolcanoBlockedPathSprite(variant);
-                        // 용암 빛에 달궈진 어두운 바위섬: 약간 붉은 기가 도는 따뜻한 색조
-                        sr.color = new Color(0.88f, 0.72f, 0.62f);
+                        sr.sprite = TileTextureGenerator.GetVolcanoBlockedPathSprite(
+                            GetVolcanoPlatformConnectionMask(x, y), variant);
                         _volcanoPlatforms.Add(new Vector2Int(x, y));
                     }
                     else
@@ -186,9 +185,6 @@ public class Map : MonoBehaviour
                 {
                     if (IsVolcanoBlockedPathTile(stageIdx, x, y))
                     {
-                        // 바위섬 가장자리에 용암 균열 빛 오버레이 (sortingOrder -1 = 타일 아래)
-                        if (stageIdx == 3)
-                            AddPlatformLavaGlow(tile.transform, x, y);
                         continue;
                     }
 
@@ -482,8 +478,8 @@ public class Map : MonoBehaviour
     /// Stage 3 화산 전용 — 벽 타일이지만 시각적으로 어두운 화산암처럼 보이는 "플랫폼" 타일 여부.
     ///
     /// ▶ 생성 원리 (2단계 클러스터)
-    ///   1차 레이어 : 걷기 가능한 경로와 직접 맞닿은 벽 타일의 ~28% → "바위섬 씨앗"
-    ///   2차 레이어 : 씨앗 타일과 맞닿은(대각선 제외) 벽 타일의 ~38% → 클러스터 확장
+    ///   1차 레이어 : 걷기 가능한 경로와 직접 맞닿은 벽 타일의 ~62% → "바위섬 씨앗"
+    ///   2차 레이어 : 씨앗 타일과 맞닿은(대각선 제외) 벽 타일의 ~58% → 클러스터 확장
     ///
     /// 이 방식으로 경로를 따라 2~4칸짜리 어두운 바위섬이 자연스럽게 형성됨.
     /// 경로와 전혀 무관한 깊은 용암 지대에는 플랫폼이 생성되지 않음.
@@ -496,7 +492,7 @@ public class Map : MonoBehaviour
 
         // ── 1차 레이어: 경로 직접 인접 타일 ──────────────────────────
         if (CountPathNeighbors(x, y) > 0)
-            return Hash01(stageIdx, x, y, 101) < 0.28f;
+            return Hash01(stageIdx, x, y, 101) < 0.62f;
 
         // ── 2차 레이어: 1차 씨앗 타일에 맞닿은 타일 (클러스터 확장) ──
         if (IsSeedPlatform(stageIdx, x - 1, y) ||
@@ -504,7 +500,7 @@ public class Map : MonoBehaviour
             IsSeedPlatform(stageIdx, x,     y - 1) ||
             IsSeedPlatform(stageIdx, x,     y + 1))
         {
-            return Hash01(stageIdx, x, y, 109) < 0.38f;
+            return Hash01(stageIdx, x, y, 109) < 0.58f;
         }
 
         // 경로와 무관한 깊은 용암 지대엔 플랫폼 없음
@@ -517,7 +513,18 @@ public class Map : MonoBehaviour
         if (!IsInBounds(new Vector2Int(x, y))) return false;
         if (GetTileType(x, y) != TileType.Grass) return false;
         if (x <= 0 || x >= mapWidth - 1 || y <= 0 || y >= mapHeight - 1) return false;
-        return CountPathNeighbors(x, y) > 0 && Hash01(stageIdx, x, y, 101) < 0.28f;
+        return CountPathNeighbors(x, y) > 0 && Hash01(stageIdx, x, y, 101) < 0.62f;
+    }
+
+    int GetVolcanoPlatformConnectionMask(int x, int y)
+    {
+        int stageIdx = 3;
+        int mask = 0;
+        if (IsVolcanoBlockedPathTile(stageIdx, x, y + 1)) mask |= 1;
+        if (IsVolcanoBlockedPathTile(stageIdx, x + 1, y)) mask |= 2;
+        if (IsVolcanoBlockedPathTile(stageIdx, x, y - 1)) mask |= 4;
+        if (IsVolcanoBlockedPathTile(stageIdx, x - 1, y)) mask |= 8;
+        return mask;
     }
 
     bool IsInBounds(Vector2Int tile) =>
