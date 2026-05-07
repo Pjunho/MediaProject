@@ -74,6 +74,7 @@ public class RouteDrawer : MonoBehaviour
     static readonly Color COL_BTN_HOV  = new Color(0.18f, 0.88f, 0.32f, 1.00f);
     static readonly Color COL_HIGHLIGHT = new Color(1.0f, 0.85f, 0.20f, 0.18f);
     private bool hasInitialized = false;
+    private readonly Sprite[] pathGlowSprites = new Sprite[16];
 
     // ── 라이프사이클 ───────────────────────────────────────────────
     void Awake()
@@ -598,7 +599,6 @@ public class RouteDrawer : MonoBehaviour
     void SetupDirtHighlights()
     {
         dirtHighlightParent = new GameObject("DirtHighlights");
-        var spr = MakeSoftHighlightSprite(32);
 
         for (int x = 0; x < map.mapWidth; x++)
         for (int y = 0; y < map.mapHeight; y++)
@@ -608,13 +608,13 @@ public class RouteDrawer : MonoBehaviour
             var go = new GameObject($"H_{x}_{y}");
             go.transform.SetParent(dirtHighlightParent.transform);
             var sr = go.AddComponent<SpriteRenderer>();
-            sr.sprite       = spr;
+            sr.sprite       = GetPathGlowSprite(GetPathConnectionMask(x, y));
             sr.color        = COL_HIGHLIGHT;
             sr.sortingOrder = 2;
             Vector3 pos = map.GetWorldPosition(x, y);
             pos.z = -0.5f;
             go.transform.position   = pos;
-            go.transform.localScale = Vector3.one * map.tileSize * 1.05f;
+            go.transform.localScale = Vector3.one * map.tileSize * 1.14f;
         }
 
         StartCoroutine(PulseDirtHighlights());
@@ -624,8 +624,8 @@ public class RouteDrawer : MonoBehaviour
     {
         while (dirtHighlightParent != null && !gameStarted)
         {
-            float t     = Mathf.PingPong(Time.unscaledTime * 0.9f, 1f);
-            float alpha = Mathf.Lerp(0.06f, 0.16f, t);
+            float t     = (Mathf.Sin(Time.unscaledTime * 2.1f) + 1f) * 0.5f;
+            float alpha = Mathf.Lerp(0.055f, 0.155f, t);
             Color c     = new Color(COL_HIGHLIGHT.r, COL_HIGHLIGHT.g, COL_HIGHLIGHT.b, alpha);
 
             foreach (Transform child in dirtHighlightParent.transform)
@@ -635,6 +635,16 @@ public class RouteDrawer : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    int GetPathConnectionMask(int x, int y)
+    {
+        int mask = 0;
+        if (map.GetTileType(x, y + 1) == Map.TileType.Dirt) mask |= 1;
+        if (map.GetTileType(x + 1, y) == Map.TileType.Dirt || x == map.mapWidth - 1) mask |= 2;
+        if (map.GetTileType(x, y - 1) == Map.TileType.Dirt) mask |= 4;
+        if (map.GetTileType(x - 1, y) == Map.TileType.Dirt || x == 0) mask |= 8;
+        return mask;
     }
 
     void SetupPathLine()
@@ -866,6 +876,61 @@ public class RouteDrawer : MonoBehaviour
         }
         t.Apply();
         return Sprite.Create(t, new Rect(0,0,res,res), Vector2.one*0.5f, res);
+    }
+
+    Sprite GetPathGlowSprite(int mask)
+    {
+        mask &= 0x0F;
+        if (pathGlowSprites[mask] == null)
+            pathGlowSprites[mask] = MakePathGlowSprite(mask);
+        return pathGlowSprites[mask];
+    }
+
+    Sprite MakePathGlowSprite(int mask)
+    {
+        const int res = 64;
+        const float center = 31.5f;
+        const float coreHalf = 20.0f;
+        const float glowHalf = 30.5f;
+
+        var t = new Texture2D(res, res, TextureFormat.RGBA32, false);
+        t.filterMode = FilterMode.Bilinear;
+
+        bool top = (mask & 1) != 0; bool right = (mask & 2) != 0;
+        bool bottom = (mask & 4) != 0; bool left = (mask & 8) != 0;
+        if (mask == 0) top = right = bottom = left = true;
+
+        Vector2 c = new Vector2(center, center);
+        Vector2 topPt = new Vector2(center, res + glowHalf);
+        Vector2 rightPt = new Vector2(res + glowHalf, center);
+        Vector2 bottomPt = new Vector2(center, -glowHalf);
+        Vector2 leftPt = new Vector2(-glowHalf, center);
+
+        for (int x = 0; x < res; x++)
+        for (int y = 0; y < res; y++)
+        {
+            Vector2 p = new Vector2(x + 0.5f, y + 0.5f);
+            float dist = Vector2.Distance(p, c);
+            if (top) dist = Mathf.Min(dist, DistToSegment2D(p, c, topPt));
+            if (right) dist = Mathf.Min(dist, DistToSegment2D(p, c, rightPt));
+            if (bottom) dist = Mathf.Min(dist, DistToSegment2D(p, c, bottomPt));
+            if (left) dist = Mathf.Min(dist, DistToSegment2D(p, c, leftPt));
+
+            float core = Mathf.Clamp01((coreHalf - dist) / 5.0f);
+            float glow = Mathf.Clamp01((glowHalf - dist) / (glowHalf - coreHalf));
+            float alpha = Mathf.Clamp01(core * 0.42f + glow * 0.58f);
+            t.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+        }
+
+        t.Apply();
+        return Sprite.Create(t, new Rect(0, 0, res, res), Vector2.one * 0.5f, res);
+    }
+
+    float DistToSegment2D(Vector2 p, Vector2 a, Vector2 b)
+    {
+        Vector2 ab = b - a;
+        float t = Mathf.Clamp01(Vector2.Dot(p - a, ab) / Mathf.Max(0.0001f, ab.sqrMagnitude));
+        return Vector2.Distance(p, a + ab * t);
     }
 
     Sprite MakeArrowSprite()
