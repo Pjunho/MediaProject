@@ -926,6 +926,8 @@ public class AllyOrderPanel : MonoBehaviour
         rt.anchorMax = anchorMax;
         rt.offsetMin = new Vector2(4f,  3f);
         rt.offsetMax = new Vector2(-6f, -3f);
+        if (go.GetComponent<CanvasRenderer>() == null)
+            go.AddComponent<CanvasRenderer>();
         tierGraphic = go.AddComponent<UpgradeTierButtonGraphic>();
 
         var tgo = new GameObject("Lbl", typeof(RectTransform));

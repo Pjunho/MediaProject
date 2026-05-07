@@ -1156,7 +1156,7 @@ public class GameManager : MonoBehaviour
         pausePanel.transform.SetParent(parent, false);
 
         var overlay = new GameObject("Overlay"); overlay.transform.SetParent(pausePanel.transform, false);
-        overlay.AddComponent<Image>().color = new Color(0f,0f,0f,0.65f);
+        overlay.AddComponent<Image>().color = new Color(0f,0f,0f,0.18f);
         var ort = overlay.GetComponent<RectTransform>(); ort.anchoredPosition = Vector2.zero; ort.sizeDelta = new Vector2(1920,1080);
 
         var box = new GameObject("Box"); box.transform.SetParent(pausePanel.transform, false);
