@@ -49,14 +49,14 @@ public static class TileTextureGenerator
     //   ▶ terrain.png (실제 width 자동 인식, 32px 타일)
     //     terrain.png 주요 32px 타일 좌표:
     //       row 2~4, col 9~11  : 어두운 회색 지대
-    //       row 2~4, col 15~17 : 용암 지대
+    //       row 0~2, col 15~16 : 용암 지대
     //
     static readonly int[][] STAGE_WALL_IDS =
     {
         null,
         new[] { 640, 641, 642, 672, 673, 674, 704, 705 },  // Stage 1 (terrain_atlas)
         new[] { 1, 2, 1, 2, 1, 2 },                        // Stage 2 (어두운 암석, row 0)
-        new[] { 78, 79, 80, 110, 111, 112, 142, 143, 144 }, // Stage 3 (terrain.png 용암 지대)
+        new[] { 16, 48 },                                    // Stage 3 (terrain.png 용암 원본, 큰 바닥 타일만)
         new[] { 128, 129, 130, 160, 161, 162, 192, 193 },  // Stage 4 (terrain_atlas)
         new[] { 448, 449, 450, 480, 481, 482, 512, 513 },  // Stage 5 (terrain_atlas)
     };
@@ -164,7 +164,6 @@ public static class TileTextureGenerator
     static readonly Sprite[][] _decorCache         = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _edgeCache          = new Sprite[MAX_STAGE + 1][];
     static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
-    static readonly Dictionary<int, Sprite> _volcanoLavaCache = new();
     static readonly Dictionary<int, Sprite> _volcanoBlockedPathCache = new();
 
     static Sprite _grassFallback;
@@ -177,9 +176,6 @@ public static class TileTextureGenerator
     public static Sprite GetWallSprite(int stageIndex, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
-        if (idx == 3)
-            return GetVolcanoLavaSprite(variant);
-
         if (_wallCache[idx] == null)
             _wallCache[idx] = BuildSpriteArray(STAGE_WALL_TEX[idx], STAGE_WALL_IDS[idx]);
         if (_wallCache[idx] != null)
@@ -316,44 +312,6 @@ public static class TileTextureGenerator
     // ────────────────────────────────────────────────────────────────
     //  절차적 길(Path) 타일 생성
     // ────────────────────────────────────────────────────────────────
-
-    static Sprite GetVolcanoLavaSprite(int variant)
-    {
-        int key = Mathf.Abs(variant) % 251;
-        if (!_volcanoLavaCache.TryGetValue(key, out var sprite))
-        {
-            sprite = CreateVolcanoLavaSprite(variant);
-            _volcanoLavaCache[key] = sprite;
-        }
-        return sprite;
-    }
-
-    static Sprite CreateVolcanoLavaSprite(int variant)
-    {
-        const int size = 64;
-        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
-        tex.filterMode = FilterMode.Point;
-
-        for (int x = 0; x < size; x++)
-        for (int y = 0; y < size; y++)
-        {
-            float broad = HashNoise(3, variant / 7, x / 8, y / 8, 201);
-            float veinA = Mathf.Abs(Mathf.Sin((x + variant * 3) * 0.17f + y * 0.09f));
-            float veinB = Mathf.Abs(Mathf.Sin((y - variant * 5) * 0.15f - x * 0.07f));
-            float heat = Mathf.Clamp01(broad * 0.58f + veinA * 0.24f + veinB * 0.18f);
-
-            Color crust = Color.Lerp(new Color(0.16f, 0.035f, 0.018f), new Color(0.34f, 0.07f, 0.025f), broad);
-            Color lava  = Color.Lerp(new Color(0.76f, 0.16f, 0.02f), new Color(1.00f, 0.58f, 0.06f), heat);
-            Color c = Color.Lerp(crust, lava, Mathf.SmoothStep(0.50f, 0.88f, heat));
-
-            if (HashNoise(3, variant, x / 2, y / 2, 211) > 0.94f)
-                c = Color.Lerp(c, new Color(1f, 0.82f, 0.18f), 0.20f);
-
-            tex.SetPixel(x, y, ClampColor(c));
-        }
-        tex.Apply();
-        return SpriteFromTex(tex);
-    }
 
     static Sprite CreateVolcanoConnectedPathSprite(int mask, int variant)
     {
