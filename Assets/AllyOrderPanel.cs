@@ -479,7 +479,10 @@ public class AllyOrderPanel : MonoBehaviour
         if (mouse.leftButton.wasReleasedThisFrame && pressedAction == PressAction.Toggle)
         {
             if (IsOverToggleButton(mp))
+            {
+                GameAudio.PlayUiClick();
                 ToggleCollapsed();
+            }
             pressedAction = PressAction.None;
             return;
         }
@@ -499,7 +502,10 @@ public class AllyOrderPanel : MonoBehaviour
         {
             var releaseAction = GetPressActionAt(mp);
             if (releaseAction == pressedAction)
+            {
+                GameAudio.PlayUiClick();
                 ExecutePressAction(releaseAction, mp);
+            }
             pressedAction = PressAction.None;
             return;
         }
@@ -781,6 +787,7 @@ public class AllyOrderPanel : MonoBehaviour
 
         if (!dragMoved && pressedCard >= 0)
         {
+            GameAudio.PlayUiClick();
             if (selectedCard == pressedCard && detailExpanded)
             {
                 detailExpanded = false;
