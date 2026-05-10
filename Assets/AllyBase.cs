@@ -977,23 +977,25 @@ public class AllyBase : MonoBehaviour
         if (paralysisArrowFrames != null)
             return paralysisArrowFrames;
 
-        Texture2D sheet = Resources.Load<Texture2D>("Effect/paralyzing_arrow_effect");
-        if (sheet == null)
+        var sprites = Resources.LoadAll<Sprite>("Effect/clean_paralyzing_arrow_effect");
+        if (sprites == null || sprites.Length == 0)
+            sprites = Resources.LoadAll<Sprite>("Effect/paralyzing_arrow_effect");
+
+        if (sprites == null || sprites.Length == 0)
         {
             paralysisArrowFrames = System.Array.Empty<Sprite>();
             return paralysisArrowFrames;
         }
 
-        int frameCount = 8;
-        int frameW = sheet.width / frameCount;
-        int frameH = sheet.height;
-        paralysisArrowFrames = new Sprite[frameCount];
-        for (int i = 0; i < frameCount; i++)
-        {
-            var rect = new Rect(i * frameW, 0, frameW, frameH);
-            paralysisArrowFrames[i] = Sprite.Create(sheet, rect, new Vector2(0.5f, 0.5f), frameH);
-        }
+        System.Array.Sort(sprites, (a, b) => ParseSpriteSuffix(a.name).CompareTo(ParseSpriteSuffix(b.name)));
+        paralysisArrowFrames = sprites;
         return paralysisArrowFrames;
+    }
+
+    static int ParseSpriteSuffix(string name)
+    {
+        int i = name.LastIndexOf('_');
+        return i >= 0 && int.TryParse(name.Substring(i + 1), out int n) ? n : 0;
     }
 
     void ClearAllSkillVisuals()

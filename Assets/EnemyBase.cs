@@ -153,33 +153,24 @@ public class EnemyBase : MonoBehaviour
         Destroy(go);
     }
 
-    static Sprite[] LoadEffectFrames(string resourceName, int frameCount, float ppu)
+    static Sprite[] LoadEffectFrames(string resourceName, int frameCount = 0, float ppu = 0f)
     {
-        if (string.IsNullOrEmpty(resourceName) || frameCount <= 0) return null;
-        string cacheKey = $"{resourceName}_{frameCount}_{ppu:0.###}";
-        if (effectFrameCache.TryGetValue(cacheKey, out var cached))
+        if (string.IsNullOrEmpty(resourceName)) return null;
+        if (effectFrameCache.TryGetValue(resourceName, out var cached))
             return cached;
 
-        Texture2D texture = Resources.Load<Texture2D>($"Effect/{resourceName}");
-        if (texture == null) return null;
+        var sprites = Resources.LoadAll<Sprite>($"Effect/{resourceName}");
+        if (sprites == null || sprites.Length == 0) { effectFrameCache[resourceName] = null; return null; }
 
-        texture.filterMode = FilterMode.Point;
-        texture.wrapMode = TextureWrapMode.Clamp;
+        System.Array.Sort(sprites, (a, b) => ParseSpriteSuffix(a.name).CompareTo(ParseSpriteSuffix(b.name)));
+        effectFrameCache[resourceName] = sprites;
+        return sprites;
+    }
 
-        int frameW = Mathf.Max(1, texture.width / frameCount);
-        int frameH = texture.height;
-        var frames = new Sprite[frameCount];
-        for (int i = 0; i < frameCount; i++)
-        {
-            int x = Mathf.Min(i * frameW, texture.width - frameW);
-            frames[i] = Sprite.Create(
-                texture,
-                new Rect(x, 0, frameW, frameH),
-                new Vector2(0.5f, 0.5f),
-                ppu);
-        }
-        effectFrameCache[cacheKey] = frames;
-        return frames;
+    static int ParseSpriteSuffix(string name)
+    {
+        int i = name.LastIndexOf('_');
+        return i >= 0 && int.TryParse(name.Substring(i + 1), out int n) ? n : 0;
     }
 
     void SpawnHitConfirm(Vector3 pos)
@@ -367,14 +358,13 @@ public class EnemyBase : MonoBehaviour
 
         if (!string.IsNullOrEmpty(effectSheet))
         {
-            int frameCount = effectSheet.Contains("pickaxe") ? 6 : 8;
-            float ppu = effectSheet.Contains("pickaxe") ? 362f : 443f;
-            if (LoadEffectFrames(effectSheet, frameCount, ppu) != null)
+            Sprite[] sheetFrames = LoadEffectFrames(effectSheet);
+            if (sheetFrames != null && sheetFrames.Length > 0)
             {
                 Vector3 center = Vector3.Lerp(src, dst, 0.72f);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                SpawnEffectSheet(effectSheet, center, frameCount, ppu, 24f, 1.12f, 41, angle);
-                yield return new WaitForSeconds(frameCount / 24f);
+                SpawnEffectSheet(effectSheet, center, sheetFrames.Length, 0f, 24f, 1.12f, 41, angle);
+                yield return new WaitForSeconds(sheetFrames.Length / 24f);
                 SpawnImpactFlash(dst, colorB, 0.16f);
                 yield break;
             }

@@ -166,6 +166,10 @@ public static class TileTextureGenerator
     static readonly Sprite[][] _connectedPathCache = new Sprite[MAX_STAGE + 1][];
     static readonly Dictionary<int, Sprite> _volcanoBlockedPathCache = new();
 
+    // terrain.png 슬라이스 스프라이트 캐시 (이름 기반)
+    static readonly Dictionary<int, Sprite> _terrainSliceCache = new();
+    static bool _terrainSlicesLoaded = false;
+
     static Sprite _grassFallback;
     static Sprite _dirtFallback;
 
@@ -281,12 +285,54 @@ public static class TileTextureGenerator
     static Sprite[] BuildSpriteArray(string texPath, int[] ids)
     {
         if (ids == null || ids.Length == 0) return null;
+
+        if (texPath == TEX_TERRAIN)
+        {
+            EnsureTerrainSlicesLoaded();
+            var arr = new Sprite[ids.Length];
+            bool anyFound = false;
+            for (int i = 0; i < ids.Length; i++)
+            {
+                arr[i] = GetTerrainSlice(ids[i]);
+                if (arr[i] != null) anyFound = true;
+            }
+            return anyFound ? arr : null;
+        }
+
         var tex = GetOrLoadTex(texPath);
         if (tex == null) return null;
-        var arr = new Sprite[ids.Length];
+        var result = new Sprite[ids.Length];
         for (int i = 0; i < ids.Length; i++)
-            arr[i] = Sprite.Create(tex, TileRect(ids[i], tex.width, tex.height), PIVOT, PPU);
-        return arr;
+            result[i] = Sprite.Create(tex, TileRect(ids[i], tex.width, tex.height), PIVOT, PPU);
+        return result;
+    }
+
+    static void EnsureTerrainSlicesLoaded()
+    {
+        if (_terrainSlicesLoaded) return;
+        _terrainSlicesLoaded = true;
+
+        var sprites = Resources.LoadAll<Sprite>(TEX_TERRAIN);
+        if (sprites == null || sprites.Length == 0)
+        {
+            Debug.LogWarning("[TileTextureGenerator] terrain.png 슬라이스 로드 실패 → 절차적 폴백 사용");
+            return;
+        }
+
+        foreach (var s in sprites)
+        {
+            if (s.name.StartsWith("terrain_") &&
+                int.TryParse(s.name.Substring(8), out int id))
+            {
+                // PPU=32로 재생성해 기존 타일 크기 유지
+                _terrainSliceCache[id] = Sprite.Create(s.texture, s.rect, PIVOT, PPU);
+            }
+        }
+    }
+
+    static Sprite GetTerrainSlice(int id)
+    {
+        return _terrainSliceCache.TryGetValue(id, out var sp) ? sp : null;
     }
 
     /// <summary>
