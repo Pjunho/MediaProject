@@ -31,6 +31,7 @@ public class EnemyBase : MonoBehaviour
     private GameObject paralysisVisual;
     private SpriteRenderer paralysisVisualRenderer;
     private Sprite[] paralysisEffectFrames;
+    private float _paralysisNormScale = 1f;
     private GameObject paralysisTintVisual;
     private SpriteRenderer paralysisTintRenderer;
 
@@ -859,15 +860,16 @@ public class EnemyBase : MonoBehaviour
             paralysisVisualRenderer.sprite = paralysisEffectFrames != null && paralysisEffectFrames.Length > 0
                 ? paralysisEffectFrames[0]
                 : MakeCircleSprite(14);
-            paralysisVisualRenderer.color = new Color(1f, 0.95f, 0.32f, 0.95f);
+            paralysisVisualRenderer.color = new Color(1f, 0.95f, 0.32f, 0.55f);
             paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
             if (paralysisEffectFrames != null)
             {
-                float norm = NormalizeEffectScale(paralysisEffectFrames, 1f);
-                paralysisVisual.transform.localScale = new Vector3(0.76f * norm, 1.36f * norm, 1f);
+                _paralysisNormScale = NormalizeEffectScale(paralysisEffectFrames, 1f);
+                paralysisVisual.transform.localScale = new Vector3(0.55f * _paralysisNormScale, 0.55f * _paralysisNormScale, 1f);
             }
             else
             {
+                _paralysisNormScale = 1f;
                 paralysisVisual.transform.localScale = new Vector3(0.36f, 0.58f, 1f);
             }
         }
@@ -894,11 +896,9 @@ public class EnemyBase : MonoBehaviour
                 paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
             }
             float pulse = paralysisEffectFrames != null
-                ? 1f + Mathf.Sin(Time.time * 10f) * 0.06f
+                ? (0.55f + Mathf.Sin(Time.time * 10f) * 0.03f) * _paralysisNormScale
                 : 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
-            paralysisVisual.transform.localScale = paralysisEffectFrames != null
-                ? new Vector3(0.76f + pulse * 0.035f, 1.36f + pulse * 0.08f, 1f)
-                : Vector3.one * pulse;
+            paralysisVisual.transform.localScale = Vector3.one * pulse;
         }
 
         if (paralysisTintRenderer != null && spriteRenderer != null)
