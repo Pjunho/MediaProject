@@ -131,15 +131,24 @@ public class EnemyBase : MonoBehaviour
         float ppu, float fps, float scale, int sortingOrder, float rotationDeg = 0f)
         => StartCoroutine(EffectSheetRoutine(resourceName, pos, frameCount, ppu, fps, scale, sortingOrder, rotationDeg));
 
+    // 캐릭터 크기(1.18 Unity units)보다 약간 작은 목표 크기
+    const float EFFECT_TARGET_SIZE = 0.9f;
+
     IEnumerator EffectSheetRoutine(string resourceName, Vector3 pos, int frameCount,
         float ppu, float fps, float scale, int sortingOrder, float rotationDeg)
     {
         Sprite[] frames = LoadEffectFrames(resourceName, frameCount, ppu);
         if (frames == null || frames.Length == 0) yield break;
 
+        // 프레임 중 최대 자연 크기를 기준으로 scale 정규화
+        float maxNaturalDim = 0f;
+        foreach (var f in frames)
+            if (f != null) maxNaturalDim = Mathf.Max(maxNaturalDim, f.bounds.size.x, f.bounds.size.y);
+        float displayScale = maxNaturalDim > 0.01f ? scale * EFFECT_TARGET_SIZE / maxNaturalDim : scale;
+
         var go = new GameObject(resourceName);
         go.transform.position = pos;
-        go.transform.localScale = Vector3.one * scale;
+        go.transform.localScale = Vector3.one * displayScale;
         go.transform.rotation = Quaternion.Euler(0f, 0f, rotationDeg);
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sortingOrder = sortingOrder;
@@ -171,6 +180,16 @@ public class EnemyBase : MonoBehaviour
     {
         int i = name.LastIndexOf('_');
         return i >= 0 && int.TryParse(name.Substring(i + 1), out int n) ? n : 0;
+    }
+
+    // 슬라이스 스프라이트의 최대 자연 크기를 기준으로 표시 스케일을 정규화
+    static float NormalizeEffectScale(Sprite[] frames, float baseScale, float targetSize = EFFECT_TARGET_SIZE)
+    {
+        if (frames == null || frames.Length == 0) return baseScale;
+        float maxDim = 0f;
+        foreach (var f in frames)
+            if (f != null) maxDim = Mathf.Max(maxDim, f.bounds.size.x, f.bounds.size.y);
+        return maxDim > 0.01f ? baseScale * targetSize / maxDim : baseScale;
     }
 
     void SpawnHitConfirm(Vector3 pos)
@@ -573,7 +592,9 @@ public class EnemyBase : MonoBehaviour
         sr.sprite = boomerangFrames != null && boomerangFrames.Length > 0 ? boomerangFrames[0] : MakeBoomerangSprite();
         sr.color = colorA;
         sr.sortingOrder = 36;
-        go.transform.localScale = Vector3.one * (boomerangFrames != null ? 0.44f : 0.30f);
+        go.transform.localScale = Vector3.one * (boomerangFrames != null
+            ? NormalizeEffectScale(boomerangFrames, 0.44f)
+            : 0.30f);
 
         var trail = CreateTempLineRenderer(7, new Color(colorA.r, colorA.g, colorA.b, 0.55f), 0.08f, 35);
         trail.endColor = new Color(colorB.r, colorB.g, colorB.b, 0f);
@@ -840,9 +861,15 @@ public class EnemyBase : MonoBehaviour
                 : MakeCircleSprite(14);
             paralysisVisualRenderer.color = new Color(1f, 0.95f, 0.32f, 0.95f);
             paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
-            paralysisVisual.transform.localScale = paralysisEffectFrames != null
-                ? new Vector3(0.76f, 1.36f, 1f)
-                : new Vector3(0.36f, 0.58f, 1f);
+            if (paralysisEffectFrames != null)
+            {
+                float norm = NormalizeEffectScale(paralysisEffectFrames, 1f);
+                paralysisVisual.transform.localScale = new Vector3(0.76f * norm, 1.36f * norm, 1f);
+            }
+            else
+            {
+                paralysisVisual.transform.localScale = new Vector3(0.36f, 0.58f, 1f);
+            }
         }
 
         if (paralysisTintVisual == null && spriteRenderer != null)
