@@ -1,0 +1,298 @@
+fileFormatVersion: 2
+guid: bc8783fbb92d58f49baaec4ba91874db
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6508168163312045202
+    second: Stage3_Road_Map_0
+  - first:
+      213: -4160630198721314172
+    second: Stage3_Road_Map_1
+  - first:
+      213: 351288920302242664
+    second: Stage3_Road_Map_2
+  - first:
+      213: 1679280786762165866
+    second: Stage3_Road_Map_3
+  - first:
+      213: 8225963130831069254
+    second: Stage3_Road_Map_4
+  - first:
+      213: -3258510394987546193
+    second: Stage3_Road_Map_5
+  - first:
+      213: 4785227586819872561
+    second: Stage3_Road_Map_6
+  - first:
+      213: -6742459822326246853
+    second: Stage3_Road_Map_7
+  - first:
+      213: -8903419464421128329
+    second: Stage3_Road_Map_8
+  - first:
+      213: 8254566295325132346
+    second: Stage3_Road_Map_9
+  - first:
+      213: -4406213251643385122
+    second: Stage3_Road_Map_10
+  - first:
+      213: -3228638467809341911
+    second: Stage3_Road_Map_11
+  - first:
+      213: 1354254285684310885
+    second: Stage3_Road_Map_12
+  - first:
+      213: -2742936953262014727
+    second: Stage3_Road_Map_13
+  - first:
+      213: 1858966859949268859
+    second: Stage3_Road_Map_14
+  - first:
+      213: -7171972972338042039
+    second: Stage3_Road_Map_15
+  - first:
+      213: -4485065690976974212
+    second: Stage3_Road_Map_16
+  - first:
+      213: 2133763656547562378
+    second: Stage3_Road_Map_17
+  - first:
+      213: -7736620152373101274
+    second: Stage3_Road_Map_18
+  - first:
+      213: -4806309031604318362
+    second: Stage3_Road_Map_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage3_Road_Map_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda5d2b846cf9d2c0800000000000000
+      internalID: -4406213251643385122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage3_Road_Map_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ba6159498087c90800000000000000
+      internalID: -7171972972338042039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage3_Road_Map_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a86075488d1c1c0800000000000000
+      internalID: -4485065690976974212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage3_Road_Map_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a83f72f8db6ac9d10800000000000000
+      internalID: 2133763656547562378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 90777ff83c39a2f4597a457e9db41d32
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Stage3_Road_Map_0: 6508168163312045202
+      Stage3_Road_Map_1: -4160630198721314172
+      Stage3_Road_Map_10: -4406213251643385122
+      Stage3_Road_Map_11: -3228638467809341911
+      Stage3_Road_Map_12: 1354254285684310885
+      Stage3_Road_Map_13: -2742936953262014727
+      Stage3_Road_Map_14: 1858966859949268859
+      Stage3_Road_Map_15: -7171972972338042039
+      Stage3_Road_Map_16: -4485065690976974212
+      Stage3_Road_Map_17: 2133763656547562378
+      Stage3_Road_Map_2: 351288920302242664
+      Stage3_Road_Map_3: 1679280786762165866
+      Stage3_Road_Map_4: 8225963130831069254
+      Stage3_Road_Map_5: -3258510394987546193
+      Stage3_Road_Map_6: 4785227586819872561
+      Stage3_Road_Map_7: -6742459822326246853
+      Stage3_Road_Map_8: -8903419464421128329
+      Stage3_Road_Map_9: 8254566295325132346
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
