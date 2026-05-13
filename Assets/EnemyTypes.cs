@@ -23,6 +23,7 @@ public class EnemySniper : EnemyBase
     // 저격 빔: 극세 진홍색 레이저가 순간 발사되고 빠르게 소멸, 피격 지점에 충격 폭발
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
+        GameAudio.PlaySniperShot();
         if (spriteRenderer != null)
         {
             Color orig = spriteRenderer.color;
@@ -78,6 +79,7 @@ public class EnemySpearman : EnemyBase
     // 번개 창: 지그재그 초록 번개가 3회 점멸, 피격 지점에 초록 충격
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
+        GameAudio.PlayBluntSwing();
         if (spriteRenderer != null)
         {
             Color orig = spriteRenderer.color;
@@ -131,6 +133,7 @@ public class EnemyBrawler : EnemyBase
     // 화염 분사: 불꽃 파티클이 ±30° 부채꼴로 퍼지며 소멸
     protected override IEnumerator ShowAttackEffect(AllyBase target)
     {
+        GameAudio.PlayBluntSwing();
         if (spriteRenderer != null)
         {
             Color orig = spriteRenderer.color;

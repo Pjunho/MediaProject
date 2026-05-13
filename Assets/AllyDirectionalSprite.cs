@@ -86,10 +86,7 @@ public class AllyDirectionalSprite : MonoBehaviour
 
     static int GetIdleFrameIndex(int frameCount)
     {
-        if (frameCount <= 1)
-            return 0;
-
-        return frameCount / 2;
+        return 0;
     }
 
     static int GetLoopedFrameIndex(int frameCount, float timeValue)

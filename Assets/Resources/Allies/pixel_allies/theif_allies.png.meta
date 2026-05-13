@@ -1,0 +1,2568 @@
+fileFormatVersion: 2
+guid: 45703e84d66afc9438dbcff06e7ff411
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9214832221389534300
+    second: theif_allies_0
+  - first:
+      213: 6864997080103400691
+    second: theif_allies_1
+  - first:
+      213: 7066871470099731308
+    second: theif_allies_2
+  - first:
+      213: -3955885943764684688
+    second: theif_allies_3
+  - first:
+      213: 7791614525843662693
+    second: theif_allies_4
+  - first:
+      213: -6740804340673629765
+    second: theif_allies_5
+  - first:
+      213: 7554324122220293676
+    second: theif_allies_6
+  - first:
+      213: -3260625207205681177
+    second: theif_allies_7
+  - first:
+      213: 1494373902745532382
+    second: theif_allies_8
+  - first:
+      213: -7125588506437424830
+    second: theif_allies_9
+  - first:
+      213: -7192420510950125351
+    second: theif_allies_10
+  - first:
+      213: 6636300996072882782
+    second: theif_allies_11
+  - first:
+      213: -2999924255984315298
+    second: theif_allies_12
+  - first:
+      213: 5979688343588132132
+    second: theif_allies_13
+  - first:
+      213: 3428358455962014663
+    second: theif_allies_14
+  - first:
+      213: 2462295459208877475
+    second: theif_allies_15
+  - first:
+      213: 4412729108388224048
+    second: theif_allies_16
+  - first:
+      213: 8180654977818258826
+    second: theif_allies_17
+  - first:
+      213: 7134705094221495719
+    second: theif_allies_18
+  - first:
+      213: 5535758155039066597
+    second: theif_allies_19
+  - first:
+      213: 300721754388253649
+    second: theif_allies_20
+  - first:
+      213: -5440517353763507329
+    second: theif_allies_21
+  - first:
+      213: 91520192864194047
+    second: theif_allies_22
+  - first:
+      213: 349758855253600897
+    second: theif_allies_23
+  - first:
+      213: 2180059425881750961
+    second: theif_allies_24
+  - first:
+      213: -3551156405488598577
+    second: theif_allies_25
+  - first:
+      213: 3431781687910724488
+    second: theif_allies_26
+  - first:
+      213: 2561421557744779157
+    second: theif_allies_27
+  - first:
+      213: 4655588146065795275
+    second: theif_allies_28
+  - first:
+      213: -3753724139702153276
+    second: theif_allies_29
+  - first:
+      213: -601916952390740205
+    second: theif_allies_30
+  - first:
+      213: 3979489401122640169
+    second: theif_allies_31
+  - first:
+      213: -7753112270993677492
+    second: theif_allies_32
+  - first:
+      213: 9018704519496688690
+    second: theif_allies_33
+  - first:
+      213: -6987424472141383516
+    second: theif_allies_34
+  - first:
+      213: 7988875001717532274
+    second: theif_allies_35
+  - first:
+      213: 2721268983214910859
+    second: theif_allies_36
+  - first:
+      213: -3197961538235962324
+    second: theif_allies_37
+  - first:
+      213: -2475431501342234507
+    second: theif_allies_38
+  - first:
+      213: 6637353654137219698
+    second: theif_allies_39
+  - first:
+      213: -4433277386201062091
+    second: theif_allies_40
+  - first:
+      213: 5397061074998935395
+    second: theif_allies_41
+  - first:
+      213: 7019641090968134181
+    second: theif_allies_42
+  - first:
+      213: -5986748564991259716
+    second: theif_allies_43
+  - first:
+      213: 2091198221408140487
+    second: theif_allies_44
+  - first:
+      213: -7083732326890745461
+    second: theif_allies_45
+  - first:
+      213: 3235478630061080289
+    second: theif_allies_46
+  - first:
+      213: 2827603861936866835
+    second: theif_allies_47
+  - first:
+      213: 4480388692904890682
+    second: theif_allies_48
+  - first:
+      213: 8100574380752688746
+    second: theif_allies_49
+  - first:
+      213: -2771046202923335888
+    second: theif_allies_50
+  - first:
+      213: -555042162162112519
+    second: theif_allies_51
+  - first:
+      213: 1934152284935319781
+    second: theif_allies_52
+  - first:
+      213: -5344654978235688322
+    second: theif_allies_53
+  - first:
+      213: -6076166274746823487
+    second: theif_allies_54
+  - first:
+      213: 8062037509700625658
+    second: theif_allies_55
+  - first:
+      213: 5567641362483581045
+    second: theif_allies_56
+  - first:
+      213: 4500368503566273880
+    second: theif_allies_57
+  - first:
+      213: -7296001940421677248
+    second: theif_allies_58
+  - first:
+      213: -6562117765852579943
+    second: theif_allies_59
+  - first:
+      213: -8648664314159446640
+    second: theif_allies_60
+  - first:
+      213: -2992158752257718405
+    second: theif_allies_61
+  - first:
+      213: -209976241198977762
+    second: theif_allies_62
+  - first:
+      213: -1398838048053936361
+    second: theif_allies_63
+  - first:
+      213: 8702934226026977980
+    second: theif_allies_64
+  - first:
+      213: 6555631355374843383
+    second: theif_allies_65
+  - first:
+      213: 6181446309152210903
+    second: theif_allies_66
+  - first:
+      213: 7618704265462440114
+    second: theif_allies_67
+  - first:
+      213: -6574215089448087145
+    second: theif_allies_68
+  - first:
+      213: 5480812281895511378
+    second: theif_allies_69
+  - first:
+      213: 9126671028182423911
+    second: theif_allies_70
+  - first:
+      213: -1057697350068524978
+    second: theif_allies_71
+  - first:
+      213: -8146643078306771384
+    second: theif_allies_72
+  - first:
+      213: -1246676576992418745
+    second: theif_allies_73
+  - first:
+      213: -1812100140055909275
+    second: theif_allies_74
+  - first:
+      213: 2850738655821527025
+    second: theif_allies_75
+  - first:
+      213: 7542633464089424997
+    second: theif_allies_76
+  - first:
+      213: -4787163104130658295
+    second: theif_allies_77
+  - first:
+      213: -3527240216429055908
+    second: theif_allies_78
+  - first:
+      213: -6319602104697278911
+    second: theif_allies_79
+  - first:
+      213: -8188026514095362269
+    second: theif_allies_80
+  - first:
+      213: -6855435977817094077
+    second: theif_allies_81
+  - first:
+      213: 6505101518597928969
+    second: theif_allies_82
+  - first:
+      213: -3280435946110059254
+    second: theif_allies_83
+  - first:
+      213: -3344268088264543162
+    second: theif_allies_84
+  - first:
+      213: -7274346940119480569
+    second: theif_allies_85
+  - first:
+      213: 5887433225602090401
+    second: theif_allies_86
+  - first:
+      213: 7863112184776149334
+    second: theif_allies_87
+  - first:
+      213: 1814016004580258069
+    second: theif_allies_88
+  - first:
+      213: -670350081057393445
+    second: theif_allies_89
+  - first:
+      213: -6795952724723720908
+    second: theif_allies_90
+  - first:
+      213: 6151738372837142470
+    second: theif_allies_91
+  - first:
+      213: -5117633140827634130
+    second: theif_allies_92
+  - first:
+      213: 4231244931251445084
+    second: theif_allies_93
+  - first:
+      213: 2588975461032948916
+    second: theif_allies_94
+  - first:
+      213: 8056701455022789466
+    second: theif_allies_95
+  - first:
+      213: 3435635311535614626
+    second: theif_allies_96
+  - first:
+      213: -4236541287106021113
+    second: theif_allies_97
+  - first:
+      213: -2149916435373381133
+    second: theif_allies_98
+  - first:
+      213: -2838914463046821872
+    second: theif_allies_99
+  - first:
+      213: -3720473096774046275
+    second: theif_allies_100
+  - first:
+      213: 2544002494015816460
+    second: theif_allies_101
+  - first:
+      213: 7582307780698979921
+    second: theif_allies_102
+  - first:
+      213: -1618302493954322970
+    second: theif_allies_103
+  - first:
+      213: 3173569276604741130
+    second: theif_allies_104
+  - first:
+      213: 1440787237146943167
+    second: theif_allies_105
+  - first:
+      213: -6662274959274592094
+    second: theif_allies_106
+  - first:
+      213: -508674189319101073
+    second: theif_allies_107
+  - first:
+      213: 481502813654095488
+    second: theif_allies_108
+  - first:
+      213: 461272648298410751
+    second: theif_allies_109
+  - first:
+      213: 3008544287547900000
+    second: theif_allies_110
+  - first:
+      213: -915239474532161976
+    second: theif_allies_111
+  - first:
+      213: 7706724996625227420
+    second: theif_allies_112
+  - first:
+      213: 3196005169610723339
+    second: theif_allies_113
+  - first:
+      213: -7733842226228648727
+    second: theif_allies_114
+  - first:
+      213: 4072120606459181358
+    second: theif_allies_115
+  - first:
+      213: -9155268973224557278
+    second: theif_allies_116
+  - first:
+      213: 1131741925132232736
+    second: theif_allies_117
+  - first:
+      213: -4726715666938677061
+    second: theif_allies_118
+  - first:
+      213: -56514910259441186
+    second: theif_allies_119
+  - first:
+      213: -4144891103738578088
+    second: theif_allies_120
+  - first:
+      213: 8697461532836984129
+    second: theif_allies_121
+  - first:
+      213: 5067982742823611971
+    second: theif_allies_122
+  - first:
+      213: 8435844870930201238
+    second: theif_allies_123
+  - first:
+      213: -2784154164580451430
+    second: theif_allies_124
+  - first:
+      213: 6150561783110966661
+    second: theif_allies_125
+  - first:
+      213: 5765605190167871353
+    second: theif_allies_126
+  - first:
+      213: 8562564755950700903
+    second: theif_allies_127
+  - first:
+      213: 9126801781250920517
+    second: theif_allies_128
+  - first:
+      213: -3963836414288340289
+    second: theif_allies_129
+  - first:
+      213: -8154371228258263289
+    second: theif_allies_130
+  - first:
+      213: -7446310016873486146
+    second: theif_allies_131
+  - first:
+      213: 8874524389586906658
+    second: theif_allies_132
+  - first:
+      213: 7664225825072669396
+    second: theif_allies_133
+  - first:
+      213: 4323528644906553019
+    second: theif_allies_134
+  - first:
+      213: 8061334300950209842
+    second: theif_allies_135
+  - first:
+      213: 2510612405985344169
+    second: theif_allies_136
+  - first:
+      213: 421736937867628187
+    second: theif_allies_137
+  - first:
+      213: 2902991936304751713
+    second: theif_allies_138
+  - first:
+      213: 7447852721165084165
+    second: theif_allies_139
+  - first:
+      213: -8051510280806056132
+    second: theif_allies_140
+  - first:
+      213: -8425376933226224625
+    second: theif_allies_141
+  - first:
+      213: -2262189684775445957
+    second: theif_allies_142
+  - first:
+      213: 1192822581211501909
+    second: theif_allies_143
+  - first:
+      213: 3777612937126246472
+    second: theif_allies_144
+  - first:
+      213: -1150999575400479350
+    second: theif_allies_145
+  - first:
+      213: 3113849574566869237
+    second: theif_allies_146
+  - first:
+      213: 333785924399196049
+    second: theif_allies_147
+  - first:
+      213: -3453310849447043957
+    second: theif_allies_148
+  - first:
+      213: -6837574237427653128
+    second: theif_allies_149
+  - first:
+      213: -8885401305259862742
+    second: theif_allies_150
+  - first:
+      213: 6172608495903073637
+    second: theif_allies_151
+  - first:
+      213: 3313671464938954421
+    second: theif_allies_152
+  - first:
+      213: 8548978835980110763
+    second: theif_allies_153
+  - first:
+      213: 1896884302190429635
+    second: theif_allies_154
+  - first:
+      213: 8505357607371937260
+    second: theif_allies_155
+  - first:
+      213: -4199904557328835471
+    second: theif_allies_156
+  - first:
+      213: 2630015642040969905
+    second: theif_allies_157
+  - first:
+      213: -5887635235061770550
+    second: theif_allies_158
+  - first:
+      213: -6510677227765360764
+    second: theif_allies_159
+  - first:
+      213: 7181733767150125563
+    second: theif_allies_160
+  - first:
+      213: -50176923058753568
+    second: theif_allies_161
+  - first:
+      213: 4347598875888654809
+    second: theif_allies_162
+  - first:
+      213: 4428243293851778351
+    second: theif_allies_163
+  - first:
+      213: 3288337774449430223
+    second: theif_allies_164
+  - first:
+      213: -905457097856419399
+    second: theif_allies_165
+  - first:
+      213: 3650780577064036551
+    second: theif_allies_166
+  - first:
+      213: 293519389165899531
+    second: theif_allies_167
+  - first:
+      213: -7355308635259319239
+    second: theif_allies_168
+  - first:
+      213: 1285926428887297239
+    second: theif_allies_169
+  - first:
+      213: -7368464734326573625
+    second: theif_allies_170
+  - first:
+      213: 3947894570458389192
+    second: theif_allies_171
+  - first:
+      213: 3878520007688328392
+    second: theif_allies_172
+  - first:
+      213: -4776964038905678555
+    second: theif_allies_173
+  - first:
+      213: 2763913153110702867
+    second: theif_allies_174
+  - first:
+      213: 8089879844075136391
+    second: theif_allies_175
+  - first:
+      213: -7600899304766017317
+    second: theif_allies_176
+  - first:
+      213: -2736561091535453907
+    second: theif_allies_177
+  - first:
+      213: -6363253960536069330
+    second: theif_allies_178
+  - first:
+      213: 8553938701115623515
+    second: theif_allies_179
+  - first:
+      213: 8671718887880654593
+    second: theif_allies_180
+  - first:
+      213: -376243083723219407
+    second: theif_allies_181
+  - first:
+      213: 1273148759007576395
+    second: theif_allies_182
+  - first:
+      213: -581942996078658156
+    second: theif_allies_183
+  - first:
+      213: -5935587726736628919
+    second: theif_allies_184
+  - first:
+      213: -5911056478450976450
+    second: theif_allies_185
+  - first:
+      213: -1387252593025074225
+    second: theif_allies_186
+  - first:
+      213: 3910824022013698201
+    second: theif_allies_187
+  - first:
+      213: 5368152828744556755
+    second: theif_allies_188
+  - first:
+      213: 8160832799046890964
+    second: theif_allies_189
+  - first:
+      213: -313798535634589753
+    second: theif_allies_190
+  - first:
+      213: 4491608097048555688
+    second: theif_allies_191
+  - first:
+      213: -6355287140663543351
+    second: theif_allies_192
+  - first:
+      213: -5252543990175154422
+    second: theif_allies_193
+  - first:
+      213: 440334870216802199
+    second: theif_allies_194
+  - first:
+      213: 1052407601222063460
+    second: theif_allies_195
+  - first:
+      213: -5518370524541268018
+    second: theif_allies_196
+  - first:
+      213: -3963451031987411594
+    second: theif_allies_197
+  - first:
+      213: 3480278676102407853
+    second: theif_allies_198
+  - first:
+      213: 4273671430950007040
+    second: theif_allies_199
+  - first:
+      213: -1766958580406128048
+    second: theif_allies_200
+  - first:
+      213: -52732064651475944
+    second: theif_allies_201
+  - first:
+      213: -7226363222144026604
+    second: theif_allies_202
+  - first:
+      213: 5874069338461394849
+    second: theif_allies_203
+  - first:
+      213: 3500862197617932378
+    second: theif_allies_204
+  - first:
+      213: 4599746232637772460
+    second: theif_allies_205
+  - first:
+      213: 1654588849327188024
+    second: theif_allies_206
+  - first:
+      213: 4386169684825499324
+    second: theif_allies_207
+  - first:
+      213: -2705732065679351420
+    second: theif_allies_208
+  - first:
+      213: -4186139429673065944
+    second: theif_allies_209
+  - first:
+      213: 5075731320922969606
+    second: theif_allies_210
+  - first:
+      213: -1293138979831824836
+    second: theif_allies_211
+  - first:
+      213: -7481445420426706755
+    second: theif_allies_212
+  - first:
+      213: 1943105250028736888
+    second: theif_allies_213
+  - first:
+      213: -3353278496404901705
+    second: theif_allies_214
+  - first:
+      213: 7863453602140964917
+    second: theif_allies_215
+  - first:
+      213: 6092798855087227862
+    second: theif_allies_216
+  - first:
+      213: 4827962057144316064
+    second: theif_allies_217
+  - first:
+      213: 5073421666326326943
+    second: theif_allies_218
+  - first:
+      213: -5790866673357810478
+    second: theif_allies_219
+  - first:
+      213: 2181079275400624101
+    second: theif_allies_220
+  - first:
+      213: 6977743346246990690
+    second: theif_allies_221
+  - first:
+      213: 5026033035269079274
+    second: theif_allies_222
+  - first:
+      213: 5059663315875834154
+    second: theif_allies_223
+  - first:
+      213: -2391203274668019378
+    second: theif_allies_224
+  - first:
+      213: 7705225251186729442
+    second: theif_allies_225
+  - first:
+      213: -5791486587585359177
+    second: theif_allies_226
+  - first:
+      213: 3853508681271920483
+    second: theif_allies_227
+  - first:
+      213: 7212827028201493053
+    second: theif_allies_228
+  - first:
+      213: 7453972616583221154
+    second: theif_allies_229
+  - first:
+      213: -4888712445785540743
+    second: theif_allies_230
+  - first:
+      213: -8750953444271942713
+    second: theif_allies_231
+  - first:
+      213: -9028570471811989225
+    second: theif_allies_232
+  - first:
+      213: 7155930450128522808
+    second: theif_allies_233
+  - first:
+      213: -6848781145098686486
+    second: theif_allies_234
+  - first:
+      213: 3426168120960889798
+    second: theif_allies_235
+  - first:
+      213: 7096004187882729857
+    second: theif_allies_236
+  - first:
+      213: 5146464847855864648
+    second: theif_allies_237
+  - first:
+      213: -5183157569399562004
+    second: theif_allies_238
+  - first:
+      213: 3974363181357021165
+    second: theif_allies_239
+  - first:
+      213: 6143786243280506865
+    second: theif_allies_240
+  - first:
+      213: 3928095224311423731
+    second: theif_allies_241
+  - first:
+      213: -3875938955139479487
+    second: theif_allies_242
+  - first:
+      213: -3647138635902234518
+    second: theif_allies_243
+  - first:
+      213: -4974483921701484143
+    second: theif_allies_244
+  - first:
+      213: -2144585306287351462
+    second: theif_allies_245
+  - first:
+      213: -3051859161158158459
+    second: theif_allies_246
+  - first:
+      213: -4981182371624904744
+    second: theif_allies_247
+  - first:
+      213: 2992718231564176356
+    second: theif_allies_248
+  - first:
+      213: 382172465305409573
+    second: theif_allies_249
+  - first:
+      213: -7894494682267126753
+    second: theif_allies_250
+  - first:
+      213: -3945291536988197925
+    second: theif_allies_251
+  - first:
+      213: -304659976263867716
+    second: theif_allies_252
+  - first:
+      213: 5900671983335703763
+    second: theif_allies_253
+  - first:
+      213: 3838321982868062125
+    second: theif_allies_254
+  - first:
+      213: 5905916002724424998
+    second: theif_allies_255
+  - first:
+      213: -698226817581546694
+    second: theif_allies_256
+  - first:
+      213: -2378948214990195969
+    second: theif_allies_257
+  - first:
+      213: -5514097119630948551
+    second: theif_allies_258
+  - first:
+      213: 6417578048682228547
+    second: theif_allies_259
+  - first:
+      213: 4568708576485275080
+    second: theif_allies_260
+  - first:
+      213: -2928620050587727924
+    second: theif_allies_261
+  - first:
+      213: -1862578057358813317
+    second: theif_allies_262
+  - first:
+      213: -5324174095854335127
+    second: theif_allies_263
+  - first:
+      213: 3958591341451925364
+    second: theif_allies_264
+  - first:
+      213: 8320412566381336555
+    second: theif_allies_265
+  - first:
+      213: -7117947184934570419
+    second: theif_allies_266
+  - first:
+      213: 3670761690271002769
+    second: theif_allies_267
+  - first:
+      213: -3517042169958363019
+    second: theif_allies_268
+  - first:
+      213: -5149226070851037259
+    second: theif_allies_269
+  - first:
+      213: -5427405122872376049
+    second: theif_allies_270
+  - first:
+      213: -7188118264592444946
+    second: theif_allies_271
+  - first:
+      213: 2923951152218213054
+    second: theif_allies_272
+  - first:
+      213: 1809582533863328021
+    second: theif_allies_273
+  - first:
+      213: -1073878679068219254
+    second: theif_allies_274
+  - first:
+      213: 7095129947055536138
+    second: theif_allies_275
+  - first:
+      213: -9179258275662843087
+    second: theif_allies_276
+  - first:
+      213: 1437427644697825675
+    second: theif_allies_277
+  - first:
+      213: 4009569051966554712
+    second: theif_allies_278
+  - first:
+      213: 6538818328771488947
+    second: theif_allies_279
+  - first:
+      213: -7905195258093633866
+    second: theif_allies_280
+  - first:
+      213: 776462009800936735
+    second: theif_allies_281
+  - first:
+      213: 8023936495091900744
+    second: theif_allies_282
+  - first:
+      213: -6322821445766243546
+    second: theif_allies_283
+  - first:
+      213: -5288238568582729894
+    second: theif_allies_284
+  - first:
+      213: -797017702683284860
+    second: theif_allies_285
+  - first:
+      213: 80291743137060854
+    second: theif_allies_286
+  - first:
+      213: 8416005539502536142
+    second: theif_allies_287
+  - first:
+      213: 2531285131390513603
+    second: theif_allies_288
+  - first:
+      213: -2377052125973107877
+    second: theif_allies_289
+  - first:
+      213: -7436249613973473780
+    second: theif_allies_290
+  - first:
+      213: 13123224739816825
+    second: theif_allies_291
+  - first:
+      213: -4150272905427482507
+    second: theif_allies_292
+  - first:
+      213: 5689822717944190221
+    second: theif_allies_293
+  - first:
+      213: -840905784239871770
+    second: theif_allies_294
+  - first:
+      213: 7504780188927281515
+    second: theif_allies_295
+  - first:
+      213: -8465376744282208780
+    second: theif_allies_296
+  - first:
+      213: -7875858664902207446
+    second: theif_allies_297
+  - first:
+      213: -5910246887159623954
+    second: theif_allies_298
+  - first:
+      213: -2807091367358379330
+    second: theif_allies_299
+  - first:
+      213: 2677034516680672876
+    second: theif_allies_300
+  - first:
+      213: -225025013597218466
+    second: theif_allies_301
+  - first:
+      213: 2672122750882734136
+    second: theif_allies_302
+  - first:
+      213: -9206632825345796025
+    second: theif_allies_303
+  - first:
+      213: -8605425201112874032
+    second: theif_allies_304
+  - first:
+      213: -6119371339809815015
+    second: theif_allies_305
+  - first:
+      213: 1396800124876356585
+    second: theif_allies_306
+  - first:
+      213: 1586956892945347301
+    second: theif_allies_307
+  - first:
+      213: -6667037253944972862
+    second: theif_allies_308
+  - first:
+      213: 6516834442606652248
+    second: theif_allies_309
+  - first:
+      213: -1866524180246053609
+    second: theif_allies_310
+  - first:
+      213: 6490660331801056011
+    second: theif_allies_311
+  - first:
+      213: 5927013343302090508
+    second: theif_allies_312
+  - first:
+      213: 9164048801324926706
+    second: theif_allies_313
+  - first:
+      213: -3391314228512518483
+    second: theif_allies_314
+  - first:
+      213: -8361765024098277912
+    second: theif_allies_315
+  - first:
+      213: -6136217557122507577
+    second: theif_allies_316
+  - first:
+      213: -5173710548573094353
+    second: theif_allies_317
+  - first:
+      213: -2070772016753960760
+    second: theif_allies_318
+  - first:
+      213: -5276783762833682752
+    second: theif_allies_319
+  - first:
+      213: -626757224857191981
+    second: theif_allies_320
+  - first:
+      213: 6004259238040333874
+    second: theif_allies_321
+  - first:
+      213: 5242840936338353349
+    second: theif_allies_322
+  - first:
+      213: -1328360327489385038
+    second: theif_allies_323
+  - first:
+      213: -655385641069494043
+    second: theif_allies_324
+  - first:
+      213: 8779190404188729285
+    second: theif_allies_325
+  - first:
+      213: -3226091844449459861
+    second: theif_allies_326
+  - first:
+      213: -7224599513731854341
+    second: theif_allies_327
+  - first:
+      213: 871229722322773213
+    second: theif_allies_328
+  - first:
+      213: -6012487629787351325
+    second: theif_allies_329
+  - first:
+      213: -7356669213884598663
+    second: theif_allies_330
+  - first:
+      213: -204979833854505648
+    second: theif_allies_331
+  - first:
+      213: -4290440275354725669
+    second: theif_allies_332
+  - first:
+      213: -5389902851628605160
+    second: theif_allies_333
+  - first:
+      213: 7042868789108009476
+    second: theif_allies_334
+  - first:
+      213: -8204056313182510612
+    second: theif_allies_335
+  - first:
+      213: -7201877973006510077
+    second: theif_allies_336
+  - first:
+      213: -6381941553707699989
+    second: theif_allies_337
+  - first:
+      213: -4646279895995363573
+    second: theif_allies_338
+  - first:
+      213: -2787713533196051237
+    second: theif_allies_339
+  - first:
+      213: -8379352428777808708
+    second: theif_allies_340
+  - first:
+      213: 3377117504537323871
+    second: theif_allies_341
+  - first:
+      213: -7503005235825446718
+    second: theif_allies_342
+  - first:
+      213: 1342590939127379053
+    second: theif_allies_343
+  - first:
+      213: 7702761475310469737
+    second: theif_allies_344
+  - first:
+      213: 3063125003644264248
+    second: theif_allies_345
+  - first:
+      213: 6860693988656588211
+    second: theif_allies_346
+  - first:
+      213: -6170441896713400622
+    second: theif_allies_347
+  - first:
+      213: -2727716963509143698
+    second: theif_allies_348
+  - first:
+      213: -2089616170071969684
+    second: theif_allies_349
+  - first:
+      213: -2428120678175642297
+    second: theif_allies_350
+  - first:
+      213: 1334189434742021861
+    second: theif_allies_351
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: theif_allies_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4abc04bbae65e1080800000000000000
+      internalID: -9214832221389534300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f438a7d87e554f50800000000000000
+      internalID: 6864997080103400691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6313a00922921260800000000000000
+      internalID: 7066871470099731308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 455
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 070f1fd71bed919c0800000000000000
+      internalID: -3955885943764684688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5676fa72120612c60800000000000000
+      internalID: 7791614525843662693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1bcbd9a2ad372a0800000000000000
+      internalID: -6740804340673629765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_6
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2eea1fb3c956d860800000000000000
+      internalID: 7554324122220293676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 455
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e722da46aeefb2d0800000000000000
+      internalID: -3260625207205681177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_8
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 455
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed7f2c2a5251db410800000000000000
+      internalID: 1494373902745532382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 391
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249e032a103dc1d90800000000000000
+      internalID: -7125588506437424830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 391
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0959107a36f2c90800000000000000
+      internalID: -7192420510950125351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_11
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 391
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52ce756890e81c50800000000000000
+      internalID: 6636300996072882782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_12
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 391
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e541af098c02e56d0800000000000000
+      internalID: -2999924255984315298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_13
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 391
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4255d13edde1cf250800000000000000
+      internalID: 5979688343588132132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_14
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 391
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c3925af9d9f39f20800000000000000
+      internalID: 3428358455962014663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_15
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 391
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5d332aca4db2220800000000000000
+      internalID: 2462295459208877475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_16
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 391
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c91839eb92d3d30800000000000000
+      internalID: 4412729108388224048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_17
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 391
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d63eefb56878170800000000000000
+      internalID: 8180654977818258826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7adfd3e5b70930360800000000000000
+      internalID: 7134705094221495719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e9439956b6f2dc40800000000000000
+      internalID: 5535758155039066597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_20
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db4b82a7d06c2400800000000000000
+      internalID: 300721754388253649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_21
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 327
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73f396ba466f74b0800000000000000
+      internalID: -5440517353763507329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_22
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd02796125254100800000000000000
+      internalID: 91520192864194047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_23
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a207463d79ad400800000000000000
+      internalID: 349758855253600897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_24
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bd7ce45f70214e10800000000000000
+      internalID: 2180059425881750961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_25
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 327
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1cff46012c7bec0800000000000000
+      internalID: -3551156405488598577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_26
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 327
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 883fb96434320af20800000000000000
+      internalID: 3431781687910724488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_27
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 263
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59fb765f55ffb8320800000000000000
+      internalID: 2561421557744779157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_28
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 263
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc865c2a0c8fb9040800000000000000
+      internalID: 4655588146065795275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_29
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 263
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf8e3478c718ebc0800000000000000
+      internalID: -3753724139702153276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 263
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 317d67c88bf85a7f0800000000000000
+      internalID: -601916952390740205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_31
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 263
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921d85da68cf93730800000000000000
+      internalID: 3979489401122640169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_32
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 263
+        width: 28
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4323bf9779676490800000000000000
+      internalID: -7753112270993677492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_33
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 263
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2346fc23affd82d70800000000000000
+      internalID: 9018704519496688690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_34
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 263
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8342ba67ea70f90800000000000000
+      internalID: -6987424472141383516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_35
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 263
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2762f58bc7f2ede60800000000000000
+      internalID: 7988875001717532274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 199
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8d20dae8b3e3c520800000000000000
+      internalID: 2721268983214910859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 199
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c651cacee8e93d0800000000000000
+      internalID: -3197961538235962324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_38
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 199
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5782fa83a2085add0800000000000000
+      internalID: -2475431501342234507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_39
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 199
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a6d737bfd9c1c50800000000000000
+      internalID: 6637353654137219698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_40
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 199
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535a6bca4b5d972c0800000000000000
+      internalID: -4433277386201062091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_41
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 199
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f366ee37636ea40800000000000000
+      internalID: 5397061074998935395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_42
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 135
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52224ed6166ca6160800000000000000
+      internalID: 7019641090968134181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_43
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 135
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbbcd1836ebcaeca0800000000000000
+      internalID: -5986748564991259716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 135
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ccf5f5e3bd650d10800000000000000
+      internalID: 2091198221408140487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_45
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 135
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b81d9bbdaf681bd90800000000000000
+      internalID: -7083732326890745461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_46
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 135
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ee7827fbaab6ec20800000000000000
+      internalID: 3235478630061080289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_47
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 135
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 316054c2bbaad3720800000000000000
+      internalID: 2827603861936866835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_48
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 71
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31d54037c98d2e30800000000000000
+      internalID: 4480388692904890682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_49
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 71
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66d4690b750b6070800000000000000
+      internalID: 8100574380752688746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_50
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 71
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f3f8af8244b89d0800000000000000
+      internalID: -2771046202923335888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_51
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 71
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f766f028181c48f0800000000000000
+      internalID: -555042162162112519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_52
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 71
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e0741d614d77da10800000000000000
+      internalID: 1934152284935319781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_53
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 71
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a1d3f4d98f3d5b0800000000000000
+      internalID: -5344654978235688322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_54
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 7
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ccc18d47fe1daba0800000000000000
+      internalID: -6076166274746823487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_55
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 7
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af4a49b866c12ef60800000000000000
+      internalID: 8062037509700625658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_56
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 7
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5701b9f025c344d40800000000000000
+      internalID: 5567641362483581045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_57
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 7
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85d8c6d5f45847e30800000000000000
+      internalID: 4500368503566273880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_58
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 7
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04fea9c14e46fba90800000000000000
+      internalID: -7296001940421677248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theif_allies_59
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 7
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 997b318d8acaee4a0800000000000000
+      internalID: -6562117765852579943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d0c9cf1f16716ce46b013605b0ff06d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      theif_allies_0: -9214832221389534300
+      theif_allies_1: 6864997080103400691
+      theif_allies_10: -7192420510950125351
+      theif_allies_11: 6636300996072882782
+      theif_allies_12: -2999924255984315298
+      theif_allies_13: 5979688343588132132
+      theif_allies_14: 3428358455962014663
+      theif_allies_15: 2462295459208877475
+      theif_allies_16: 4412729108388224048
+      theif_allies_17: 8180654977818258826
+      theif_allies_18: 7134705094221495719
+      theif_allies_19: 5535758155039066597
+      theif_allies_2: 7066871470099731308
+      theif_allies_20: 300721754388253649
+      theif_allies_21: -5440517353763507329
+      theif_allies_22: 91520192864194047
+      theif_allies_23: 349758855253600897
+      theif_allies_24: 2180059425881750961
+      theif_allies_25: -3551156405488598577
+      theif_allies_26: 3431781687910724488
+      theif_allies_27: 2561421557744779157
+      theif_allies_28: 4655588146065795275
+      theif_allies_29: -3753724139702153276
+      theif_allies_3: -3955885943764684688
+      theif_allies_30: -601916952390740205
+      theif_allies_31: 3979489401122640169
+      theif_allies_32: -7753112270993677492
+      theif_allies_33: 9018704519496688690
+      theif_allies_34: -6987424472141383516
+      theif_allies_35: 7988875001717532274
+      theif_allies_36: 2721268983214910859
+      theif_allies_37: -3197961538235962324
+      theif_allies_38: -2475431501342234507
+      theif_allies_39: 6637353654137219698
+      theif_allies_4: 7791614525843662693
+      theif_allies_40: -4433277386201062091
+      theif_allies_41: 5397061074998935395
+      theif_allies_42: 7019641090968134181
+      theif_allies_43: -5986748564991259716
+      theif_allies_44: 2091198221408140487
+      theif_allies_45: -7083732326890745461
+      theif_allies_46: 3235478630061080289
+      theif_allies_47: 2827603861936866835
+      theif_allies_48: 4480388692904890682
+      theif_allies_49: 8100574380752688746
+      theif_allies_5: -6740804340673629765
+      theif_allies_50: -2771046202923335888
+      theif_allies_51: -555042162162112519
+      theif_allies_52: 1934152284935319781
+      theif_allies_53: -5344654978235688322
+      theif_allies_54: -6076166274746823487
+      theif_allies_55: 8062037509700625658
+      theif_allies_56: 5567641362483581045
+      theif_allies_57: 4500368503566273880
+      theif_allies_58: -7296001940421677248
+      theif_allies_59: -6562117765852579943
+      theif_allies_6: 7554324122220293676
+      theif_allies_7: -3260625207205681177
+      theif_allies_8: 1494373902745532382
+      theif_allies_9: -7125588506437424830
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

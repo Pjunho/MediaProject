@@ -1,0 +1,2664 @@
+fileFormatVersion: 2
+guid: 15ee9bd5e41cb3f42aaafc20d577bc22
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5963182320708029199
+    second: wizard_allies_0
+  - first:
+      213: 6141735867647772030
+    second: wizard_allies_1
+  - first:
+      213: 5978997108077873104
+    second: wizard_allies_2
+  - first:
+      213: -1567306310817815126
+    second: wizard_allies_3
+  - first:
+      213: 2704330988751490674
+    second: wizard_allies_4
+  - first:
+      213: -2245279618456338022
+    second: wizard_allies_5
+  - first:
+      213: 3360073441730511083
+    second: wizard_allies_6
+  - first:
+      213: -7430232600737546740
+    second: wizard_allies_7
+  - first:
+      213: 4326313373016114859
+    second: wizard_allies_8
+  - first:
+      213: 1127679773147716618
+    second: wizard_allies_9
+  - first:
+      213: 9153908034464912746
+    second: wizard_allies_10
+  - first:
+      213: 3433171062237822694
+    second: wizard_allies_11
+  - first:
+      213: -1567433376404042129
+    second: wizard_allies_12
+  - first:
+      213: -7064150602736955508
+    second: wizard_allies_13
+  - first:
+      213: -4873922724832757759
+    second: wizard_allies_14
+  - first:
+      213: 4999140036630338108
+    second: wizard_allies_15
+  - first:
+      213: -3707784441163861516
+    second: wizard_allies_16
+  - first:
+      213: -5303257414135491705
+    second: wizard_allies_17
+  - first:
+      213: 6019434212493110075
+    second: wizard_allies_18
+  - first:
+      213: -8890161441154805025
+    second: wizard_allies_19
+  - first:
+      213: -6870273847889219668
+    second: wizard_allies_20
+  - first:
+      213: 2942879762689795373
+    second: wizard_allies_21
+  - first:
+      213: -3618395732250050523
+    second: wizard_allies_22
+  - first:
+      213: 4495923194578428059
+    second: wizard_allies_23
+  - first:
+      213: -1369409319712237701
+    second: wizard_allies_24
+  - first:
+      213: 1691824079120122974
+    second: wizard_allies_25
+  - first:
+      213: -4833555702917006508
+    second: wizard_allies_26
+  - first:
+      213: -7111680851388991060
+    second: wizard_allies_27
+  - first:
+      213: 4613933483011317243
+    second: wizard_allies_28
+  - first:
+      213: -8194127893717552841
+    second: wizard_allies_29
+  - first:
+      213: -777965309994119934
+    second: wizard_allies_30
+  - first:
+      213: -638629193728066531
+    second: wizard_allies_31
+  - first:
+      213: 7804778961970316052
+    second: wizard_allies_32
+  - first:
+      213: 4695543074702536118
+    second: wizard_allies_33
+  - first:
+      213: -132537447672671599
+    second: wizard_allies_34
+  - first:
+      213: 3181351259732056156
+    second: wizard_allies_35
+  - first:
+      213: 5807120360361549311
+    second: wizard_allies_36
+  - first:
+      213: 8954537461883438790
+    second: wizard_allies_37
+  - first:
+      213: -7782515853980595693
+    second: wizard_allies_38
+  - first:
+      213: 9197350570204755827
+    second: wizard_allies_39
+  - first:
+      213: -695632068214710732
+    second: wizard_allies_40
+  - first:
+      213: -1071595504199459452
+    second: wizard_allies_41
+  - first:
+      213: -4700787786956148518
+    second: wizard_allies_42
+  - first:
+      213: 8861812564550160389
+    second: wizard_allies_43
+  - first:
+      213: 9092101608456461005
+    second: wizard_allies_44
+  - first:
+      213: 7812222989618305646
+    second: wizard_allies_45
+  - first:
+      213: -2997646039429658485
+    second: wizard_allies_46
+  - first:
+      213: 2000157241393469892
+    second: wizard_allies_47
+  - first:
+      213: 5239845771132704502
+    second: wizard_allies_48
+  - first:
+      213: -8744438979638115540
+    second: wizard_allies_49
+  - first:
+      213: -1262231861489178904
+    second: wizard_allies_50
+  - first:
+      213: -6258263066070988898
+    second: wizard_allies_51
+  - first:
+      213: 5722008502708202973
+    second: wizard_allies_52
+  - first:
+      213: 4359039691103927023
+    second: wizard_allies_53
+  - first:
+      213: 7638610447502027527
+    second: wizard_allies_54
+  - first:
+      213: 8617223997462785399
+    second: wizard_allies_55
+  - first:
+      213: -2312008617558300195
+    second: wizard_allies_56
+  - first:
+      213: -7956953393776555481
+    second: wizard_allies_57
+  - first:
+      213: 2708194218859953442
+    second: wizard_allies_58
+  - first:
+      213: -3894792444786517128
+    second: wizard_allies_59
+  - first:
+      213: 2040827979583412401
+    second: wizard_allies_60
+  - first:
+      213: -9155653766763169923
+    second: wizard_allies_61
+  - first:
+      213: -1834796120050579336
+    second: wizard_allies_62
+  - first:
+      213: 4094502679439062239
+    second: wizard_allies_63
+  - first:
+      213: 3796300401646322705
+    second: wizard_allies_64
+  - first:
+      213: 3339574082713796116
+    second: wizard_allies_65
+  - first:
+      213: -30927448637811050
+    second: wizard_allies_66
+  - first:
+      213: -1115311316489628740
+    second: wizard_allies_67
+  - first:
+      213: 2370482447861476962
+    second: wizard_allies_68
+  - first:
+      213: 4873808358710577144
+    second: wizard_allies_69
+  - first:
+      213: 4849097978360451337
+    second: wizard_allies_70
+  - first:
+      213: 258871501267128121
+    second: wizard_allies_71
+  - first:
+      213: -3332154536062439174
+    second: wizard_allies_72
+  - first:
+      213: 5656958633442466919
+    second: wizard_allies_73
+  - first:
+      213: 7971319143966162413
+    second: wizard_allies_74
+  - first:
+      213: -3529720237227725243
+    second: wizard_allies_75
+  - first:
+      213: -2129795508410586082
+    second: wizard_allies_76
+  - first:
+      213: -8875512051960678288
+    second: wizard_allies_77
+  - first:
+      213: 1530729852103600162
+    second: wizard_allies_78
+  - first:
+      213: -7292625499867126922
+    second: wizard_allies_79
+  - first:
+      213: -4587171148402855098
+    second: wizard_allies_80
+  - first:
+      213: -5658814490764068202
+    second: wizard_allies_81
+  - first:
+      213: 640276278082469081
+    second: wizard_allies_82
+  - first:
+      213: -7741997424997734989
+    second: wizard_allies_83
+  - first:
+      213: 7875722220394887761
+    second: wizard_allies_84
+  - first:
+      213: 3706572379318969489
+    second: wizard_allies_85
+  - first:
+      213: -7788610903957374085
+    second: wizard_allies_86
+  - first:
+      213: 7013010093845845747
+    second: wizard_allies_87
+  - first:
+      213: 4009135853546159444
+    second: wizard_allies_88
+  - first:
+      213: 7746744519516940313
+    second: wizard_allies_89
+  - first:
+      213: -4495483446790572250
+    second: wizard_allies_90
+  - first:
+      213: 4241485742188558544
+    second: wizard_allies_91
+  - first:
+      213: 3801503446738237954
+    second: wizard_allies_92
+  - first:
+      213: -5577846496018593510
+    second: wizard_allies_93
+  - first:
+      213: -5063003232824367253
+    second: wizard_allies_94
+  - first:
+      213: 8284240731148034496
+    second: wizard_allies_95
+  - first:
+      213: -93627335801192499
+    second: wizard_allies_96
+  - first:
+      213: 7490894321118952784
+    second: wizard_allies_97
+  - first:
+      213: 345767754156252482
+    second: wizard_allies_98
+  - first:
+      213: 8663789812030196000
+    second: wizard_allies_99
+  - first:
+      213: 3288626700857640604
+    second: wizard_allies_100
+  - first:
+      213: -4913236652364310687
+    second: wizard_allies_101
+  - first:
+      213: 3530476748918117973
+    second: wizard_allies_102
+  - first:
+      213: -7556345539112547388
+    second: wizard_allies_103
+  - first:
+      213: 4041358989619433408
+    second: wizard_allies_104
+  - first:
+      213: 6400659122260111018
+    second: wizard_allies_105
+  - first:
+      213: 7204615672331694785
+    second: wizard_allies_106
+  - first:
+      213: -3254215965556450881
+    second: wizard_allies_107
+  - first:
+      213: 2327311406776469648
+    second: wizard_allies_108
+  - first:
+      213: -97412525903677138
+    second: wizard_allies_109
+  - first:
+      213: -2047928687785572499
+    second: wizard_allies_110
+  - first:
+      213: 589668799199262931
+    second: wizard_allies_111
+  - first:
+      213: 753647129250744096
+    second: wizard_allies_112
+  - first:
+      213: -426375782334617550
+    second: wizard_allies_113
+  - first:
+      213: 5153609040699629570
+    second: wizard_allies_114
+  - first:
+      213: -8939056414192454843
+    second: wizard_allies_115
+  - first:
+      213: 6826013893726367734
+    second: wizard_allies_116
+  - first:
+      213: -8383834508360979097
+    second: wizard_allies_117
+  - first:
+      213: -2090603651626394721
+    second: wizard_allies_118
+  - first:
+      213: 8183002863531025438
+    second: wizard_allies_119
+  - first:
+      213: -1238818559873525933
+    second: wizard_allies_120
+  - first:
+      213: -5135867716814998658
+    second: wizard_allies_121
+  - first:
+      213: 8323453223718687831
+    second: wizard_allies_122
+  - first:
+      213: -1984729423048746826
+    second: wizard_allies_123
+  - first:
+      213: 7961652223962033187
+    second: wizard_allies_124
+  - first:
+      213: 1587148915372595183
+    second: wizard_allies_125
+  - first:
+      213: 2363937628025305359
+    second: wizard_allies_126
+  - first:
+      213: 5435950476637429233
+    second: wizard_allies_127
+  - first:
+      213: -7551280595969221963
+    second: wizard_allies_128
+  - first:
+      213: -7849632728994014567
+    second: wizard_allies_129
+  - first:
+      213: -7902381559670878963
+    second: wizard_allies_130
+  - first:
+      213: -9089205927419875154
+    second: wizard_allies_131
+  - first:
+      213: 4608542519931510816
+    second: wizard_allies_132
+  - first:
+      213: -5356266946967869730
+    second: wizard_allies_133
+  - first:
+      213: 5396484075933841928
+    second: wizard_allies_134
+  - first:
+      213: 8772825326718309993
+    second: wizard_allies_135
+  - first:
+      213: 8136387139370814265
+    second: wizard_allies_136
+  - first:
+      213: -4119987476855278410
+    second: wizard_allies_137
+  - first:
+      213: 2728882904004754388
+    second: wizard_allies_138
+  - first:
+      213: -2266414080927613912
+    second: wizard_allies_139
+  - first:
+      213: 7445797818944539402
+    second: wizard_allies_140
+  - first:
+      213: 1269242165256036718
+    second: wizard_allies_141
+  - first:
+      213: -834729818709364117
+    second: wizard_allies_142
+  - first:
+      213: -2985886264372484077
+    second: wizard_allies_143
+  - first:
+      213: -2151956335798497319
+    second: wizard_allies_144
+  - first:
+      213: 269139190152803559
+    second: wizard_allies_145
+  - first:
+      213: -7999886618218954813
+    second: wizard_allies_146
+  - first:
+      213: -1220274760259495857
+    second: wizard_allies_147
+  - first:
+      213: -103756452798774879
+    second: wizard_allies_148
+  - first:
+      213: -7238402967999101144
+    second: wizard_allies_149
+  - first:
+      213: -8679707098461888146
+    second: wizard_allies_150
+  - first:
+      213: 3489954465092597582
+    second: wizard_allies_151
+  - first:
+      213: -5242031755596655905
+    second: wizard_allies_152
+  - first:
+      213: -887279250440084789
+    second: wizard_allies_153
+  - first:
+      213: -730204883873297472
+    second: wizard_allies_154
+  - first:
+      213: 1668319135093497232
+    second: wizard_allies_155
+  - first:
+      213: -6261490135689292925
+    second: wizard_allies_156
+  - first:
+      213: -8359807586797425986
+    second: wizard_allies_157
+  - first:
+      213: 5079760216448100379
+    second: wizard_allies_158
+  - first:
+      213: -6813719861287520617
+    second: wizard_allies_159
+  - first:
+      213: -9042539407803957741
+    second: wizard_allies_160
+  - first:
+      213: 2914955785610344769
+    second: wizard_allies_161
+  - first:
+      213: 2997043467417491290
+    second: wizard_allies_162
+  - first:
+      213: -1987219969723186374
+    second: wizard_allies_163
+  - first:
+      213: 2008246438235500042
+    second: wizard_allies_164
+  - first:
+      213: 4819331701719960418
+    second: wizard_allies_165
+  - first:
+      213: 8431903726544391211
+    second: wizard_allies_166
+  - first:
+      213: 6831943535211382602
+    second: wizard_allies_167
+  - first:
+      213: -2352420379327994082
+    second: wizard_allies_168
+  - first:
+      213: 4147625847239532206
+    second: wizard_allies_169
+  - first:
+      213: -1194137218879085239
+    second: wizard_allies_170
+  - first:
+      213: 7561504079423117727
+    second: wizard_allies_171
+  - first:
+      213: -5784092287859527140
+    second: wizard_allies_172
+  - first:
+      213: -5825399519922414593
+    second: wizard_allies_173
+  - first:
+      213: 8929011414899017863
+    second: wizard_allies_174
+  - first:
+      213: -4805308418751851500
+    second: wizard_allies_175
+  - first:
+      213: -3656274165141380225
+    second: wizard_allies_176
+  - first:
+      213: 6458308267388973891
+    second: wizard_allies_177
+  - first:
+      213: 4026207405928804809
+    second: wizard_allies_178
+  - first:
+      213: 4196002369713582375
+    second: wizard_allies_179
+  - first:
+      213: -3057665583375316835
+    second: wizard_allies_180
+  - first:
+      213: 4878812004555079554
+    second: wizard_allies_181
+  - first:
+      213: -1689887619490382522
+    second: wizard_allies_182
+  - first:
+      213: -4354976270668721086
+    second: wizard_allies_183
+  - first:
+      213: 5432715974555355497
+    second: wizard_allies_184
+  - first:
+      213: -4139913851654176425
+    second: wizard_allies_185
+  - first:
+      213: 8836410836944171536
+    second: wizard_allies_186
+  - first:
+      213: 2840332890113555426
+    second: wizard_allies_187
+  - first:
+      213: 7211418249641657435
+    second: wizard_allies_188
+  - first:
+      213: 2317812368546697302
+    second: wizard_allies_189
+  - first:
+      213: 4013097600281828659
+    second: wizard_allies_190
+  - first:
+      213: -6473792616970820826
+    second: wizard_allies_191
+  - first:
+      213: 8886997984463541644
+    second: wizard_allies_192
+  - first:
+      213: -3647486956905950512
+    second: wizard_allies_193
+  - first:
+      213: -1186753164844713193
+    second: wizard_allies_194
+  - first:
+      213: -4770663727029486041
+    second: wizard_allies_195
+  - first:
+      213: 5918162932233707995
+    second: wizard_allies_196
+  - first:
+      213: 6096142930548732859
+    second: wizard_allies_197
+  - first:
+      213: 8488638128933932221
+    second: wizard_allies_198
+  - first:
+      213: -1142615027749631887
+    second: wizard_allies_199
+  - first:
+      213: -2416135579381561783
+    second: wizard_allies_200
+  - first:
+      213: -5837115584857134212
+    second: wizard_allies_201
+  - first:
+      213: 966118311315499724
+    second: wizard_allies_202
+  - first:
+      213: 4304537303774174297
+    second: wizard_allies_203
+  - first:
+      213: 3827016316028322283
+    second: wizard_allies_204
+  - first:
+      213: -4241677918071498926
+    second: wizard_allies_205
+  - first:
+      213: 6963763273880608397
+    second: wizard_allies_206
+  - first:
+      213: -1225250856908317284
+    second: wizard_allies_207
+  - first:
+      213: -6744198540898006301
+    second: wizard_allies_208
+  - first:
+      213: 2948163105279295915
+    second: wizard_allies_209
+  - first:
+      213: -2402936722989736908
+    second: wizard_allies_210
+  - first:
+      213: 8236082854797212061
+    second: wizard_allies_211
+  - first:
+      213: 6525768427077037396
+    second: wizard_allies_212
+  - first:
+      213: 9020749647299285179
+    second: wizard_allies_213
+  - first:
+      213: 2582971945309311043
+    second: wizard_allies_214
+  - first:
+      213: 6123825625870353169
+    second: wizard_allies_215
+  - first:
+      213: 1359521437732280863
+    second: wizard_allies_216
+  - first:
+      213: -6777737356726357799
+    second: wizard_allies_217
+  - first:
+      213: -2029724785611404067
+    second: wizard_allies_218
+  - first:
+      213: -4249207521633018727
+    second: wizard_allies_219
+  - first:
+      213: 2250463050700746875
+    second: wizard_allies_220
+  - first:
+      213: -7626182293998293047
+    second: wizard_allies_221
+  - first:
+      213: 7617078019091640041
+    second: wizard_allies_222
+  - first:
+      213: -2119236666708851225
+    second: wizard_allies_223
+  - first:
+      213: 89663088304769296
+    second: wizard_allies_224
+  - first:
+      213: -715816173289285304
+    second: wizard_allies_225
+  - first:
+      213: -5824470301799412760
+    second: wizard_allies_226
+  - first:
+      213: -2908436718514208179
+    second: wizard_allies_227
+  - first:
+      213: -1531915424431744906
+    second: wizard_allies_228
+  - first:
+      213: 2405227373420484985
+    second: wizard_allies_229
+  - first:
+      213: 2402122947143013798
+    second: wizard_allies_230
+  - first:
+      213: -6736266668694499472
+    second: wizard_allies_231
+  - first:
+      213: -1265543964953485042
+    second: wizard_allies_232
+  - first:
+      213: 5698848384476116938
+    second: wizard_allies_233
+  - first:
+      213: -2174712177295301437
+    second: wizard_allies_234
+  - first:
+      213: -7933417303764058065
+    second: wizard_allies_235
+  - first:
+      213: 7730129099177989539
+    second: wizard_allies_236
+  - first:
+      213: -2684924368524202562
+    second: wizard_allies_237
+  - first:
+      213: -7685592340303900021
+    second: wizard_allies_238
+  - first:
+      213: 1970528258809504004
+    second: wizard_allies_239
+  - first:
+      213: -7232678328528754310
+    second: wizard_allies_240
+  - first:
+      213: 5204116246206745501
+    second: wizard_allies_241
+  - first:
+      213: -8350404651792317663
+    second: wizard_allies_242
+  - first:
+      213: -7504917620844914565
+    second: wizard_allies_243
+  - first:
+      213: 1588248106818428468
+    second: wizard_allies_244
+  - first:
+      213: -6076529946647297940
+    second: wizard_allies_245
+  - first:
+      213: 4561245018827670384
+    second: wizard_allies_246
+  - first:
+      213: -4942822676143785416
+    second: wizard_allies_247
+  - first:
+      213: -2664657797862696486
+    second: wizard_allies_248
+  - first:
+      213: 6453087533141792216
+    second: wizard_allies_249
+  - first:
+      213: -2846531497823493668
+    second: wizard_allies_250
+  - first:
+      213: -671965941904524414
+    second: wizard_allies_251
+  - first:
+      213: -651989588055880433
+    second: wizard_allies_252
+  - first:
+      213: -4115901036668162458
+    second: wizard_allies_253
+  - first:
+      213: -2929694313578967589
+    second: wizard_allies_254
+  - first:
+      213: 4249936334469566684
+    second: wizard_allies_255
+  - first:
+      213: 691258542871616018
+    second: wizard_allies_256
+  - first:
+      213: -3879480195720551124
+    second: wizard_allies_257
+  - first:
+      213: -6496100751416266458
+    second: wizard_allies_258
+  - first:
+      213: -4340313559749335348
+    second: wizard_allies_259
+  - first:
+      213: 5936090168535266727
+    second: wizard_allies_260
+  - first:
+      213: -8165919461398179364
+    second: wizard_allies_261
+  - first:
+      213: -5180733688671142274
+    second: wizard_allies_262
+  - first:
+      213: -7622042785771590049
+    second: wizard_allies_263
+  - first:
+      213: -4805295055407264946
+    second: wizard_allies_264
+  - first:
+      213: -9103024244657421791
+    second: wizard_allies_265
+  - first:
+      213: -2033004881042547696
+    second: wizard_allies_266
+  - first:
+      213: -6889607952823467745
+    second: wizard_allies_267
+  - first:
+      213: -3433666144948901954
+    second: wizard_allies_268
+  - first:
+      213: -6159254192081651957
+    second: wizard_allies_269
+  - first:
+      213: 7684845969524523606
+    second: wizard_allies_270
+  - first:
+      213: -8023278142842701480
+    second: wizard_allies_271
+  - first:
+      213: 1465766410544130091
+    second: wizard_allies_272
+  - first:
+      213: 7298293661612316412
+    second: wizard_allies_273
+  - first:
+      213: -5179644529420442044
+    second: wizard_allies_274
+  - first:
+      213: 322051496808944828
+    second: wizard_allies_275
+  - first:
+      213: 3776608045775323078
+    second: wizard_allies_276
+  - first:
+      213: -8067191355440218202
+    second: wizard_allies_277
+  - first:
+      213: -1365152521656014923
+    second: wizard_allies_278
+  - first:
+      213: 3280792051380912797
+    second: wizard_allies_279
+  - first:
+      213: -3366039787808146302
+    second: wizard_allies_280
+  - first:
+      213: -8206197785652415587
+    second: wizard_allies_281
+  - first:
+      213: 1478284366785607290
+    second: wizard_allies_282
+  - first:
+      213: -7101399877711526973
+    second: wizard_allies_283
+  - first:
+      213: 2052153106050281930
+    second: wizard_allies_284
+  - first:
+      213: 8367994528713932528
+    second: wizard_allies_285
+  - first:
+      213: -3039660645243573310
+    second: wizard_allies_286
+  - first:
+      213: -6721317771323212862
+    second: wizard_allies_287
+  - first:
+      213: -1687192425843796398
+    second: wizard_allies_288
+  - first:
+      213: -3228809519044298593
+    second: wizard_allies_289
+  - first:
+      213: 208219105384798186
+    second: wizard_allies_290
+  - first:
+      213: -190100155816026590
+    second: wizard_allies_291
+  - first:
+      213: 6987748042273386750
+    second: wizard_allies_292
+  - first:
+      213: 5007536338821351104
+    second: wizard_allies_293
+  - first:
+      213: -1835541346939402490
+    second: wizard_allies_294
+  - first:
+      213: -5383342939129851286
+    second: wizard_allies_295
+  - first:
+      213: -7396747818898731423
+    second: wizard_allies_296
+  - first:
+      213: 448814122432908128
+    second: wizard_allies_297
+  - first:
+      213: -3930681939706020357
+    second: wizard_allies_298
+  - first:
+      213: 3887163154859625356
+    second: wizard_allies_299
+  - first:
+      213: 3668327584802505173
+    second: wizard_allies_300
+  - first:
+      213: 4855401124159323283
+    second: wizard_allies_301
+  - first:
+      213: 1372548596259669751
+    second: wizard_allies_302
+  - first:
+      213: -7891168148056316754
+    second: wizard_allies_303
+  - first:
+      213: -7094890845287827502
+    second: wizard_allies_304
+  - first:
+      213: -4091594458492514462
+    second: wizard_allies_305
+  - first:
+      213: -2737504982328058377
+    second: wizard_allies_306
+  - first:
+      213: 8577509842814954632
+    second: wizard_allies_307
+  - first:
+      213: 3457288467276338584
+    second: wizard_allies_308
+  - first:
+      213: -3655249377073539741
+    second: wizard_allies_309
+  - first:
+      213: 8958949141217419526
+    second: wizard_allies_310
+  - first:
+      213: 8563676048516240396
+    second: wizard_allies_311
+  - first:
+      213: -1542700089835187040
+    second: wizard_allies_312
+  - first:
+      213: -1413677890672559908
+    second: wizard_allies_313
+  - first:
+      213: -4833259203131039979
+    second: wizard_allies_314
+  - first:
+      213: -6827899235469628452
+    second: wizard_allies_315
+  - first:
+      213: 6802762716948462792
+    second: wizard_allies_316
+  - first:
+      213: -8720938230029662941
+    second: wizard_allies_317
+  - first:
+      213: 6301613339655370216
+    second: wizard_allies_318
+  - first:
+      213: -8973970661509057694
+    second: wizard_allies_319
+  - first:
+      213: -5398405278991429666
+    second: wizard_allies_320
+  - first:
+      213: -3829552175640914608
+    second: wizard_allies_321
+  - first:
+      213: -773378812360742675
+    second: wizard_allies_322
+  - first:
+      213: 3736089475767567709
+    second: wizard_allies_323
+  - first:
+      213: 4046525413176171702
+    second: wizard_allies_324
+  - first:
+      213: -7129019672280139572
+    second: wizard_allies_325
+  - first:
+      213: -9019897607441521044
+    second: wizard_allies_326
+  - first:
+      213: -4224567082776629323
+    second: wizard_allies_327
+  - first:
+      213: 2626001791721135628
+    second: wizard_allies_328
+  - first:
+      213: -5126621525790611045
+    second: wizard_allies_329
+  - first:
+      213: -1926750436307430082
+    second: wizard_allies_330
+  - first:
+      213: -5305964617451184942
+    second: wizard_allies_331
+  - first:
+      213: -8161855259843368529
+    second: wizard_allies_332
+  - first:
+      213: -8410296306403856577
+    second: wizard_allies_333
+  - first:
+      213: -4461454582157857228
+    second: wizard_allies_334
+  - first:
+      213: -4257021385675131509
+    second: wizard_allies_335
+  - first:
+      213: 891527706709926564
+    second: wizard_allies_336
+  - first:
+      213: 2445384641604823489
+    second: wizard_allies_337
+  - first:
+      213: -3684700524770624490
+    second: wizard_allies_338
+  - first:
+      213: 6924898686835884969
+    second: wizard_allies_339
+  - first:
+      213: 1704615856083618618
+    second: wizard_allies_340
+  - first:
+      213: 2008373555706150577
+    second: wizard_allies_341
+  - first:
+      213: 9063089457464053501
+    second: wizard_allies_342
+  - first:
+      213: -2852697859176739475
+    second: wizard_allies_343
+  - first:
+      213: 3890750443312638217
+    second: wizard_allies_344
+  - first:
+      213: -1268320552075374984
+    second: wizard_allies_345
+  - first:
+      213: 4823447410403621311
+    second: wizard_allies_346
+  - first:
+      213: 7983360943824652811
+    second: wizard_allies_347
+  - first:
+      213: 4863757087264136027
+    second: wizard_allies_348
+  - first:
+      213: 4808484048765792863
+    second: wizard_allies_349
+  - first:
+      213: -4447746902390007180
+    second: wizard_allies_350
+  - first:
+      213: -8585467817202814750
+    second: wizard_allies_351
+  - first:
+      213: 514756290610955008
+    second: wizard_allies_352
+  - first:
+      213: -8573746219194733155
+    second: wizard_allies_353
+  - first:
+      213: 6538845485219254382
+    second: wizard_allies_354
+  - first:
+      213: -6648159450616280092
+    second: wizard_allies_355
+  - first:
+      213: -3401865790856291584
+    second: wizard_allies_356
+  - first:
+      213: -2991773238179502075
+    second: wizard_allies_357
+  - first:
+      213: -1365444974035116096
+    second: wizard_allies_358
+  - first:
+      213: -998747348447932881
+    second: wizard_allies_359
+  - first:
+      213: 6149215196153339983
+    second: wizard_allies_360
+  - first:
+      213: 6924260572071940720
+    second: wizard_allies_361
+  - first:
+      213: -323364834278116329
+    second: wizard_allies_362
+  - first:
+      213: -2850545146821716591
+    second: wizard_allies_363
+  - first:
+      213: -3371667952079956406
+    second: wizard_allies_364
+  - first:
+      213: -8766650743776944027
+    second: wizard_allies_365
+  - first:
+      213: -571047002317458462
+    second: wizard_allies_366
+  - first:
+      213: -780508540955748920
+    second: wizard_allies_367
+  - first:
+      213: 5021066396472971296
+    second: wizard_allies_368
+  - first:
+      213: 4399274745322823064
+    second: wizard_allies_369
+  - first:
+      213: 1643202325056372172
+    second: wizard_allies_370
+  - first:
+      213: 8848575695414029465
+    second: wizard_allies_371
+  - first:
+      213: -4580735329052009663
+    second: wizard_allies_372
+  - first:
+      213: -8697355619439616288
+    second: wizard_allies_373
+  - first:
+      213: -1392448413065507273
+    second: wizard_allies_374
+  - first:
+      213: 9162066356681924956
+    second: wizard_allies_375
+  - first:
+      213: -7793867796998469238
+    second: wizard_allies_376
+  - first:
+      213: 5819370756824906809
+    second: wizard_allies_377
+  - first:
+      213: -6258167440863494217
+    second: wizard_allies_378
+  - first:
+      213: 6655068859527710130
+    second: wizard_allies_379
+  - first:
+      213: -8300156261156304310
+    second: wizard_allies_380
+  - first:
+      213: -8072112889107656955
+    second: wizard_allies_381
+  - first:
+      213: -8320040634770851638
+    second: wizard_allies_382
+  - first:
+      213: -1938734893833466266
+    second: wizard_allies_383
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wizard_allies_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 454
+        width: 35
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b01b4f9ba71c250800000000000000
+      internalID: 5963182320708029199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 454
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e75cb673b34db3550800000000000000
+      internalID: 6141735867647772030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 454
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7c114113aa9f250800000000000000
+      internalID: 5978997108077873104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 454
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5e979d63fcf3ae0800000000000000
+      internalID: -1567306310817815126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 454
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e0d93c4b6b78520800000000000000
+      internalID: 2704330988751490674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 454
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a914c70451a27d0e0800000000000000
+      internalID: -2245279618456338022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_6
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 454
+        width: 33
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be042992ef061ae20800000000000000
+      internalID: 3360073441730511083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 454
+        width: 32
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0ef28211d282e890800000000000000
+      internalID: -7430232600737546740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_8
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 454
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6c5a947172a0c30800000000000000
+      internalID: 4326313373016114859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 390
+        width: 33
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0cdcda67c256af00800000000000000
+      internalID: 1127679773147716618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 390
+        width: 59
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6510ec9bd6390f70800000000000000
+      internalID: 9153908034464912746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_11
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 390
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eef5d134e215af20800000000000000
+      internalID: 3433171062237822694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_12
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 390
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e885616ab5f3ae0800000000000000
+      internalID: -1567433376404042129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_13
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 390
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8f800c447817fd90800000000000000
+      internalID: -7064150602736955508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_14
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 390
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 108b3abda195c5cb0800000000000000
+      internalID: -4873922724832757759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_15
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 390
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3ad8c17063806540800000000000000
+      internalID: 4999140036630338108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_16
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 390
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f135b802bd4b8cc0800000000000000
+      internalID: -3707784441163861516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_17
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 390
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7835ffdca7b0766b0800000000000000
+      internalID: -5303257414135491705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 326
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b2c702683598350800000000000000
+      internalID: 6019434212493110075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 325
+        width: 34
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd2d718754dcf9480800000000000000
+      internalID: -8890161441154805025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_20
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 326
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caf28eae552e7a0a0800000000000000
+      internalID: -6870273847889219668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_21
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 326
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d25afc75d8537d820800000000000000
+      internalID: 2942879762689795373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_22
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 326
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 520427aa040e8cdc0800000000000000
+      internalID: -3618395732250050523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_23
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 326
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b906946335ab46e30800000000000000
+      internalID: 4495923194578428059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_24
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 326
+        width: 33
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b77517aaa71eefce0800000000000000
+      internalID: -1369409319712237701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_25
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 326
+        width: 32
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54486a49019a7710800000000000000
+      internalID: 1691824079120122974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_26
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 326
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b719d82b2cbecb0800000000000000
+      internalID: -4833555702917006508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_27
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 262
+        width: 33
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9f209e1fb3e4d90800000000000000
+      internalID: -7111680851388991060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_28
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 262
+        width: 59
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd9b20ae0cf70040800000000000000
+      internalID: 4613933483011317243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_29
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 262
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73178d2581c984e80800000000000000
+      internalID: -8194127893717552841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_30
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 262
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d49322cac1435f0800000000000000
+      internalID: -777965309994119934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_31
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 262
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1cf4a4c1222327f0800000000000000
+      internalID: -638629193728066531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_32
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 262
+        width: 34
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413ceaa4d15205c60800000000000000
+      internalID: 7804778961970316052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_33
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 262
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bda0336c8be92140800000000000000
+      internalID: 4695543074702536118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_34
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 262
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1929800c4e1292ef0800000000000000
+      internalID: -132537447672671599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_35
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 262
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58121e7d1e662c20800000000000000
+      internalID: 3181351259732056156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 198
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffdd9474339079050800000000000000
+      internalID: 5807120360361549311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 198
+        width: 30
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c68d7fd068e44c70800000000000000
+      internalID: 8954537461883438790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_38
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 198
+        width: 30
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a04a87013fef390800000000000000
+      internalID: -7782515853980595693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_39
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 198
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3777acb2d9d83af70800000000000000
+      internalID: 9197350570204755827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_40
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 198
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e11bfc15e9856f0800000000000000
+      internalID: -695632068214710732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_41
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 198
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48d1945019de021f0800000000000000
+      internalID: -1071595504199459452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_42
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 134
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad0fbf1e96273ceb0800000000000000
+      internalID: -4700787786956148518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 134
+        width: 29
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5001b18539b7bfa70800000000000000
+      internalID: 8861812564550160389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 134
+        width: 29
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca1ec9ad32ad2e70800000000000000
+      internalID: 9092101608456461005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_45
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 134
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6ad65a0b679a6c60800000000000000
+      internalID: 7812222989618305646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_46
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 134
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8840713fc83666d0800000000000000
+      internalID: -2997646039429658485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_47
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 134
+        width: 33
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c9de2ce96cf1cb10800000000000000
+      internalID: 2000157241393469892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_48
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 70
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6923a87fba7b840800000000000000
+      internalID: 5239845771132704502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_49
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 70
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23479af31385a680800000000000000
+      internalID: -8744438979638115540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_50
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 70
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6e1cf3fc6ab7ee0800000000000000
+      internalID: -1262231861489178904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_51
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 70
+        width: 31
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9744eb26ee2629a0800000000000000
+      internalID: -6258263066070988898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_52
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 70
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dddefadaa68a86f40800000000000000
+      internalID: 5722008502708202973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_53
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 70
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feaf31ef08b6e7c30800000000000000
+      internalID: 4359039691103927023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_54
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 6
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70b22fc1bbbc10a60800000000000000
+      internalID: 7638610447502027527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_55
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 6
+        width: 28
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77dadb6d197869770800000000000000
+      internalID: 8617223997462785399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_56
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 6
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd9abc079681aefd0800000000000000
+      internalID: -2312008617558300195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_57
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 6
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72a0c9dcb09339190800000000000000
+      internalID: -7956953393776555481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_58
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 6
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22df9ed1b40759520800000000000000
+      internalID: 2708194218859953442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard_allies_59
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 6
+        width: 33
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87bdf9e28eae2f9c0800000000000000
+      internalID: -3894792444786517128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3559c23cb83cc1c49979d77741198315
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      wizard_allies_0: 5963182320708029199
+      wizard_allies_1: 6141735867647772030
+      wizard_allies_10: 9153908034464912746
+      wizard_allies_11: 3433171062237822694
+      wizard_allies_12: -1567433376404042129
+      wizard_allies_13: -7064150602736955508
+      wizard_allies_14: -4873922724832757759
+      wizard_allies_15: 4999140036630338108
+      wizard_allies_16: -3707784441163861516
+      wizard_allies_17: -5303257414135491705
+      wizard_allies_18: 6019434212493110075
+      wizard_allies_19: -8890161441154805025
+      wizard_allies_2: 5978997108077873104
+      wizard_allies_20: -6870273847889219668
+      wizard_allies_21: 2942879762689795373
+      wizard_allies_22: -3618395732250050523
+      wizard_allies_23: 4495923194578428059
+      wizard_allies_24: -1369409319712237701
+      wizard_allies_25: 1691824079120122974
+      wizard_allies_26: -4833555702917006508
+      wizard_allies_27: -7111680851388991060
+      wizard_allies_28: 4613933483011317243
+      wizard_allies_29: -8194127893717552841
+      wizard_allies_3: -1567306310817815126
+      wizard_allies_30: -777965309994119934
+      wizard_allies_31: -638629193728066531
+      wizard_allies_32: 7804778961970316052
+      wizard_allies_33: 4695543074702536118
+      wizard_allies_34: -132537447672671599
+      wizard_allies_35: 3181351259732056156
+      wizard_allies_36: 5807120360361549311
+      wizard_allies_37: 8954537461883438790
+      wizard_allies_38: -7782515853980595693
+      wizard_allies_39: 9197350570204755827
+      wizard_allies_4: 2704330988751490674
+      wizard_allies_40: -695632068214710732
+      wizard_allies_41: -1071595504199459452
+      wizard_allies_42: -4700787786956148518
+      wizard_allies_43: 8861812564550160389
+      wizard_allies_44: 9092101608456461005
+      wizard_allies_45: 7812222989618305646
+      wizard_allies_46: -2997646039429658485
+      wizard_allies_47: 2000157241393469892
+      wizard_allies_48: 5239845771132704502
+      wizard_allies_49: -8744438979638115540
+      wizard_allies_5: -2245279618456338022
+      wizard_allies_50: -1262231861489178904
+      wizard_allies_51: -6258263066070988898
+      wizard_allies_52: 5722008502708202973
+      wizard_allies_53: 4359039691103927023
+      wizard_allies_54: 7638610447502027527
+      wizard_allies_55: 8617223997462785399
+      wizard_allies_56: -2312008617558300195
+      wizard_allies_57: -7956953393776555481
+      wizard_allies_58: 2708194218859953442
+      wizard_allies_59: -3894792444786517128
+      wizard_allies_6: 3360073441730511083
+      wizard_allies_7: -7430232600737546740
+      wizard_allies_8: 4326313373016114859
+      wizard_allies_9: 1127679773147716618
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

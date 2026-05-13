@@ -1,0 +1,3523 @@
+fileFormatVersion: 2
+guid: 53b4d20171acb0345a213272e39c9747
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8873403836654113092
+    second: archer_allies_0
+  - first:
+      213: 530640093128698151
+    second: archer_allies_1
+  - first:
+      213: -7428965242967710075
+    second: archer_allies_2
+  - first:
+      213: 2852571101362941902
+    second: archer_allies_3
+  - first:
+      213: 7186325735735387671
+    second: archer_allies_4
+  - first:
+      213: -4642995724493506990
+    second: archer_allies_5
+  - first:
+      213: -9002171726611139593
+    second: archer_allies_6
+  - first:
+      213: -1326262482658670309
+    second: archer_allies_7
+  - first:
+      213: 3499708838182689349
+    second: archer_allies_8
+  - first:
+      213: -995830715473408263
+    second: archer_allies_9
+  - first:
+      213: -3143078576461961291
+    second: archer_allies_10
+  - first:
+      213: -8290455852311831057
+    second: archer_allies_11
+  - first:
+      213: 3683650021792812349
+    second: archer_allies_12
+  - first:
+      213: -4088801425573687348
+    second: archer_allies_13
+  - first:
+      213: -3051637924135753650
+    second: archer_allies_14
+  - first:
+      213: -5765081378650392156
+    second: archer_allies_15
+  - first:
+      213: 939880012442859362
+    second: archer_allies_16
+  - first:
+      213: -4791481209966495125
+    second: archer_allies_17
+  - first:
+      213: 3063034331782055257
+    second: archer_allies_18
+  - first:
+      213: -7881187671200590508
+    second: archer_allies_19
+  - first:
+      213: -124175520303358113
+    second: archer_allies_20
+  - first:
+      213: 5991602280265106209
+    second: archer_allies_21
+  - first:
+      213: 6962919619874100871
+    second: archer_allies_22
+  - first:
+      213: -2197887356679417512
+    second: archer_allies_23
+  - first:
+      213: 5526966637729240766
+    second: archer_allies_24
+  - first:
+      213: 7159940533218129815
+    second: archer_allies_25
+  - first:
+      213: -3059793817717745821
+    second: archer_allies_26
+  - first:
+      213: -8731571988856420227
+    second: archer_allies_27
+  - first:
+      213: -8490166042011452277
+    second: archer_allies_28
+  - first:
+      213: 2168626900846936833
+    second: archer_allies_29
+  - first:
+      213: -8232176761940696819
+    second: archer_allies_30
+  - first:
+      213: -4215488142048372333
+    second: archer_allies_31
+  - first:
+      213: 6382848778714830456
+    second: archer_allies_32
+  - first:
+      213: 7542253723681848069
+    second: archer_allies_33
+  - first:
+      213: -640529882532818442
+    second: archer_allies_34
+  - first:
+      213: 5669996229010724503
+    second: archer_allies_35
+  - first:
+      213: -1201785850689094446
+    second: archer_allies_36
+  - first:
+      213: -8120791468957244152
+    second: archer_allies_37
+  - first:
+      213: -7683532361856312216
+    second: archer_allies_38
+  - first:
+      213: 8180090209659046231
+    second: archer_allies_39
+  - first:
+      213: -7950163261479224555
+    second: archer_allies_40
+  - first:
+      213: -722677032572385678
+    second: archer_allies_41
+  - first:
+      213: -2930612329051599004
+    second: archer_allies_42
+  - first:
+      213: -953037566457378526
+    second: archer_allies_43
+  - first:
+      213: -5686802032482574783
+    second: archer_allies_44
+  - first:
+      213: 4206941649906376300
+    second: archer_allies_45
+  - first:
+      213: -9039826877431591796
+    second: archer_allies_46
+  - first:
+      213: -4029991241074513593
+    second: archer_allies_47
+  - first:
+      213: 679029614578905687
+    second: archer_allies_48
+  - first:
+      213: -8439224899906607322
+    second: archer_allies_49
+  - first:
+      213: 4725316977561662278
+    second: archer_allies_50
+  - first:
+      213: 9061724398704416366
+    second: archer_allies_51
+  - first:
+      213: -8272034933647388886
+    second: archer_allies_52
+  - first:
+      213: 2621676574774163147
+    second: archer_allies_53
+  - first:
+      213: -2498541740995052366
+    second: archer_allies_54
+  - first:
+      213: 7675160964501044730
+    second: archer_allies_55
+  - first:
+      213: -7514643811409699078
+    second: archer_allies_56
+  - first:
+      213: 1959054167435342752
+    second: archer_allies_57
+  - first:
+      213: 5266160840617348708
+    second: archer_allies_58
+  - first:
+      213: -2880960109790446475
+    second: archer_allies_59
+  - first:
+      213: 7018199879460480820
+    second: archer_allies_60
+  - first:
+      213: 2081317729053990394
+    second: archer_allies_61
+  - first:
+      213: -3200579052058484107
+    second: archer_allies_62
+  - first:
+      213: -4894078950325990110
+    second: archer_allies_63
+  - first:
+      213: -5379914356858805615
+    second: archer_allies_64
+  - first:
+      213: -4370786976503658060
+    second: archer_allies_65
+  - first:
+      213: -93565113614022813
+    second: archer_allies_66
+  - first:
+      213: -6381279292665635157
+    second: archer_allies_67
+  - first:
+      213: 5472983935977590082
+    second: archer_allies_68
+  - first:
+      213: 6031853198445904156
+    second: archer_allies_69
+  - first:
+      213: 6512644252558989587
+    second: archer_allies_70
+  - first:
+      213: 6963410254937471142
+    second: archer_allies_71
+  - first:
+      213: 5736615864946643632
+    second: archer_allies_72
+  - first:
+      213: -7204471665481260735
+    second: archer_allies_73
+  - first:
+      213: 3478346486239737456
+    second: archer_allies_74
+  - first:
+      213: 8652122152109771062
+    second: archer_allies_75
+  - first:
+      213: -7855435615314915801
+    second: archer_allies_76
+  - first:
+      213: -5658719548628698964
+    second: archer_allies_77
+  - first:
+      213: 1095595446095811740
+    second: archer_allies_78
+  - first:
+      213: 6724902418108028095
+    second: archer_allies_79
+  - first:
+      213: 6947522230070231297
+    second: archer_allies_80
+  - first:
+      213: -7655744571109455463
+    second: archer_allies_81
+  - first:
+      213: -1521364234758952177
+    second: archer_allies_82
+  - first:
+      213: -5514745296838082746
+    second: archer_allies_83
+  - first:
+      213: -5717760691361527876
+    second: archer_allies_84
+  - first:
+      213: -8329601111952603580
+    second: archer_allies_85
+  - first:
+      213: 1482882188120989786
+    second: archer_allies_86
+  - first:
+      213: 963964807033312654
+    second: archer_allies_87
+  - first:
+      213: -3085758173854450370
+    second: archer_allies_88
+  - first:
+      213: -8491559905937560994
+    second: archer_allies_89
+  - first:
+      213: -2195438393562891877
+    second: archer_allies_90
+  - first:
+      213: 6549148694711718184
+    second: archer_allies_91
+  - first:
+      213: -2167545714313820982
+    second: archer_allies_92
+  - first:
+      213: -6836861673024709383
+    second: archer_allies_93
+  - first:
+      213: -2431621579252210345
+    second: archer_allies_94
+  - first:
+      213: 381429718786931211
+    second: archer_allies_95
+  - first:
+      213: 8244873568396299353
+    second: archer_allies_96
+  - first:
+      213: 6294307535000570413
+    second: archer_allies_97
+  - first:
+      213: 2376857070951887812
+    second: archer_allies_98
+  - first:
+      213: -8298091043982399302
+    second: archer_allies_99
+  - first:
+      213: 3182327858881020078
+    second: archer_allies_100
+  - first:
+      213: 6689402088887635857
+    second: archer_allies_101
+  - first:
+      213: 991579491791942792
+    second: archer_allies_102
+  - first:
+      213: -4832549887460856383
+    second: archer_allies_103
+  - first:
+      213: 3933779762575792289
+    second: archer_allies_104
+  - first:
+      213: 4397623328356214359
+    second: archer_allies_105
+  - first:
+      213: 7426487820890753683
+    second: archer_allies_106
+  - first:
+      213: 6668183655444638612
+    second: archer_allies_107
+  - first:
+      213: 2849488039358605345
+    second: archer_allies_108
+  - first:
+      213: 3882073395859813740
+    second: archer_allies_109
+  - first:
+      213: 5397525492443176495
+    second: archer_allies_110
+  - first:
+      213: 8282939567237590719
+    second: archer_allies_111
+  - first:
+      213: -2848974250255946157
+    second: archer_allies_112
+  - first:
+      213: -4157699982038412134
+    second: archer_allies_113
+  - first:
+      213: -5300713190195644836
+    second: archer_allies_114
+  - first:
+      213: -2089127548264353883
+    second: archer_allies_115
+  - first:
+      213: -2270202170192233146
+    second: archer_allies_116
+  - first:
+      213: 4267289754591818294
+    second: archer_allies_117
+  - first:
+      213: -5809850295682996945
+    second: archer_allies_118
+  - first:
+      213: 4004370911444356562
+    second: archer_allies_119
+  - first:
+      213: -748837211604423065
+    second: archer_allies_120
+  - first:
+      213: -6981294670777779259
+    second: archer_allies_121
+  - first:
+      213: -7038742959113970746
+    second: archer_allies_122
+  - first:
+      213: -1228533182131654475
+    second: archer_allies_123
+  - first:
+      213: -2059529166902674012
+    second: archer_allies_124
+  - first:
+      213: -272935459802362953
+    second: archer_allies_125
+  - first:
+      213: 5247218041903076692
+    second: archer_allies_126
+  - first:
+      213: -7438614298934067825
+    second: archer_allies_127
+  - first:
+      213: 5700468507163683892
+    second: archer_allies_128
+  - first:
+      213: -7827163662568878311
+    second: archer_allies_129
+  - first:
+      213: -5099284640221610156
+    second: archer_allies_130
+  - first:
+      213: -3117365824746786681
+    second: archer_allies_131
+  - first:
+      213: 6934502962870712760
+    second: archer_allies_132
+  - first:
+      213: -1871727371958058715
+    second: archer_allies_133
+  - first:
+      213: -6696309186579544978
+    second: archer_allies_134
+  - first:
+      213: -8256135696082474770
+    second: archer_allies_135
+  - first:
+      213: 4384076873934063284
+    second: archer_allies_136
+  - first:
+      213: -8339233131300552106
+    second: archer_allies_137
+  - first:
+      213: 5723533957617687314
+    second: archer_allies_138
+  - first:
+      213: 1988011541850188748
+    second: archer_allies_139
+  - first:
+      213: 6883999967202499669
+    second: archer_allies_140
+  - first:
+      213: 6761090647065794778
+    second: archer_allies_141
+  - first:
+      213: 1284824921081546419
+    second: archer_allies_142
+  - first:
+      213: -798872096687488099
+    second: archer_allies_143
+  - first:
+      213: -79142706881043841
+    second: archer_allies_144
+  - first:
+      213: -3476584912634943471
+    second: archer_allies_145
+  - first:
+      213: -7309990426224780572
+    second: archer_allies_146
+  - first:
+      213: 493041047336189164
+    second: archer_allies_147
+  - first:
+      213: 5734117573819091390
+    second: archer_allies_148
+  - first:
+      213: 8101350148882684740
+    second: archer_allies_149
+  - first:
+      213: 6370200401059497513
+    second: archer_allies_150
+  - first:
+      213: 2745856017157003182
+    second: archer_allies_151
+  - first:
+      213: -6647461935328824488
+    second: archer_allies_152
+  - first:
+      213: 6664737991157938675
+    second: archer_allies_153
+  - first:
+      213: 2226952377342474363
+    second: archer_allies_154
+  - first:
+      213: -6763982915966610082
+    second: archer_allies_155
+  - first:
+      213: 7512610475079895625
+    second: archer_allies_156
+  - first:
+      213: -1899819460846424366
+    second: archer_allies_157
+  - first:
+      213: 4857014850538691279
+    second: archer_allies_158
+  - first:
+      213: -5249832969870386659
+    second: archer_allies_159
+  - first:
+      213: 8503372829326407396
+    second: archer_allies_160
+  - first:
+      213: -8513782054596346685
+    second: archer_allies_161
+  - first:
+      213: 7824196770512401063
+    second: archer_allies_162
+  - first:
+      213: -1689638760716577935
+    second: archer_allies_163
+  - first:
+      213: 1847879462030036168
+    second: archer_allies_164
+  - first:
+      213: 5929531873294903913
+    second: archer_allies_165
+  - first:
+      213: -783468255317772265
+    second: archer_allies_166
+  - first:
+      213: -5743278756361010668
+    second: archer_allies_167
+  - first:
+      213: 8315264076377673495
+    second: archer_allies_168
+  - first:
+      213: 800081960898752503
+    second: archer_allies_169
+  - first:
+      213: 2289512344049233852
+    second: archer_allies_170
+  - first:
+      213: -5347336146675568849
+    second: archer_allies_171
+  - first:
+      213: 5214859819272453061
+    second: archer_allies_172
+  - first:
+      213: -6227851871488455262
+    second: archer_allies_173
+  - first:
+      213: 947450403957801422
+    second: archer_allies_174
+  - first:
+      213: -8717324816418154216
+    second: archer_allies_175
+  - first:
+      213: 1206669709141221419
+    second: archer_allies_176
+  - first:
+      213: -8340176069604464623
+    second: archer_allies_177
+  - first:
+      213: 5810113228730300441
+    second: archer_allies_178
+  - first:
+      213: 549482709695085560
+    second: archer_allies_179
+  - first:
+      213: -1132849787119733573
+    second: archer_allies_180
+  - first:
+      213: 2071150616450530347
+    second: archer_allies_181
+  - first:
+      213: 4427139673223056928
+    second: archer_allies_182
+  - first:
+      213: 4599100033567257690
+    second: archer_allies_183
+  - first:
+      213: 577742463577195162
+    second: archer_allies_184
+  - first:
+      213: 620878429111095480
+    second: archer_allies_185
+  - first:
+      213: 7837075939099507346
+    second: archer_allies_186
+  - first:
+      213: 1504604086777133220
+    second: archer_allies_187
+  - first:
+      213: -44421194380882366
+    second: archer_allies_188
+  - first:
+      213: -8949770551014830078
+    second: archer_allies_189
+  - first:
+      213: -8973808327892033902
+    second: archer_allies_190
+  - first:
+      213: -113049600268365322
+    second: archer_allies_191
+  - first:
+      213: 4131297140493403149
+    second: archer_allies_192
+  - first:
+      213: -9023616446927328640
+    second: archer_allies_193
+  - first:
+      213: 8034612075629290563
+    second: archer_allies_194
+  - first:
+      213: -6703840336858508547
+    second: archer_allies_195
+  - first:
+      213: -2457208393761890087
+    second: archer_allies_196
+  - first:
+      213: 7562115510907847668
+    second: archer_allies_197
+  - first:
+      213: 6966373676166740392
+    second: archer_allies_198
+  - first:
+      213: -1309008381776535353
+    second: archer_allies_199
+  - first:
+      213: 3413509346028658694
+    second: archer_allies_200
+  - first:
+      213: 3923333679755338215
+    second: archer_allies_201
+  - first:
+      213: -4672845502344044583
+    second: archer_allies_202
+  - first:
+      213: 1115158751658169238
+    second: archer_allies_203
+  - first:
+      213: 4882234874220972121
+    second: archer_allies_204
+  - first:
+      213: -5359283602025913207
+    second: archer_allies_205
+  - first:
+      213: 3367369464398704238
+    second: archer_allies_206
+  - first:
+      213: 390193550601596179
+    second: archer_allies_207
+  - first:
+      213: 7022989907775669928
+    second: archer_allies_208
+  - first:
+      213: 6732440721226231001
+    second: archer_allies_209
+  - first:
+      213: 6445975811267905735
+    second: archer_allies_210
+  - first:
+      213: 3423817475743471762
+    second: archer_allies_211
+  - first:
+      213: -8485565222794656261
+    second: archer_allies_212
+  - first:
+      213: -1881922611192250062
+    second: archer_allies_213
+  - first:
+      213: -7540230273068940188
+    second: archer_allies_214
+  - first:
+      213: -6456129429948576129
+    second: archer_allies_215
+  - first:
+      213: -6961658470661461092
+    second: archer_allies_216
+  - first:
+      213: -3797466297884752681
+    second: archer_allies_217
+  - first:
+      213: 4936100352696863743
+    second: archer_allies_218
+  - first:
+      213: 3844711037321811615
+    second: archer_allies_219
+  - first:
+      213: 5382713701537832781
+    second: archer_allies_220
+  - first:
+      213: 7994074157002255601
+    second: archer_allies_221
+  - first:
+      213: 4750693424456300247
+    second: archer_allies_222
+  - first:
+      213: 7271398843820346877
+    second: archer_allies_223
+  - first:
+      213: 522679923112614781
+    second: archer_allies_224
+  - first:
+      213: 4355584298641459465
+    second: archer_allies_225
+  - first:
+      213: -8226286701543871491
+    second: archer_allies_226
+  - first:
+      213: 9095669834710302467
+    second: archer_allies_227
+  - first:
+      213: -3190374065991687038
+    second: archer_allies_228
+  - first:
+      213: 97702731544208845
+    second: archer_allies_229
+  - first:
+      213: 4349082515384502683
+    second: archer_allies_230
+  - first:
+      213: 2812738141899538004
+    second: archer_allies_231
+  - first:
+      213: -8789088454568536479
+    second: archer_allies_232
+  - first:
+      213: -1469784778624524100
+    second: archer_allies_233
+  - first:
+      213: 5551636496201608356
+    second: archer_allies_234
+  - first:
+      213: 434977962876746277
+    second: archer_allies_235
+  - first:
+      213: -1160185528558218807
+    second: archer_allies_236
+  - first:
+      213: 6253457701202750121
+    second: archer_allies_237
+  - first:
+      213: -6005056109259804314
+    second: archer_allies_238
+  - first:
+      213: 5365228029340550029
+    second: archer_allies_239
+  - first:
+      213: -3466197791779134346
+    second: archer_allies_240
+  - first:
+      213: -6120389429893175099
+    second: archer_allies_241
+  - first:
+      213: -862573075609101016
+    second: archer_allies_242
+  - first:
+      213: -6548970623920695377
+    second: archer_allies_243
+  - first:
+      213: 2039320870825056276
+    second: archer_allies_244
+  - first:
+      213: -4576439874452695802
+    second: archer_allies_245
+  - first:
+      213: 8849838345155134621
+    second: archer_allies_246
+  - first:
+      213: 240445033068103041
+    second: archer_allies_247
+  - first:
+      213: 461280398969967970
+    second: archer_allies_248
+  - first:
+      213: 7767815320215516184
+    second: archer_allies_249
+  - first:
+      213: 8242872609539403696
+    second: archer_allies_250
+  - first:
+      213: -7290831824313318146
+    second: archer_allies_251
+  - first:
+      213: 7287340549432393245
+    second: archer_allies_252
+  - first:
+      213: 1661140393810522899
+    second: archer_allies_253
+  - first:
+      213: -6716640032738676999
+    second: archer_allies_254
+  - first:
+      213: 6978850009687525302
+    second: archer_allies_255
+  - first:
+      213: -4369500153820519517
+    second: archer_allies_256
+  - first:
+      213: -1050262948668351865
+    second: archer_allies_257
+  - first:
+      213: -2455747197796295506
+    second: archer_allies_258
+  - first:
+      213: -5189360856802163681
+    second: archer_allies_259
+  - first:
+      213: -7121258765025366396
+    second: archer_allies_260
+  - first:
+      213: 531847487954009092
+    second: archer_allies_261
+  - first:
+      213: 3312975954967131241
+    second: archer_allies_262
+  - first:
+      213: -597519567581823142
+    second: archer_allies_263
+  - first:
+      213: 6252494062583972804
+    second: archer_allies_264
+  - first:
+      213: 1659587778039236207
+    second: archer_allies_265
+  - first:
+      213: 2491666019568762242
+    second: archer_allies_266
+  - first:
+      213: 2082877903097973981
+    second: archer_allies_267
+  - first:
+      213: -7826372952535192391
+    second: archer_allies_268
+  - first:
+      213: 3737132229251947631
+    second: archer_allies_269
+  - first:
+      213: 1314966234443071905
+    second: archer_allies_270
+  - first:
+      213: 3840410020720582640
+    second: archer_allies_271
+  - first:
+      213: -5220370767316638683
+    second: archer_allies_272
+  - first:
+      213: -5674041664066098042
+    second: archer_allies_273
+  - first:
+      213: -8498050537113708965
+    second: archer_allies_274
+  - first:
+      213: 2134062818959749496
+    second: archer_allies_275
+  - first:
+      213: -8472118910257418581
+    second: archer_allies_276
+  - first:
+      213: 6230693157703379452
+    second: archer_allies_277
+  - first:
+      213: -1645085954890178334
+    second: archer_allies_278
+  - first:
+      213: 4190608208317375538
+    second: archer_allies_279
+  - first:
+      213: 6391300300321643481
+    second: archer_allies_280
+  - first:
+      213: -1763162765036977412
+    second: archer_allies_281
+  - first:
+      213: 5673644549974142628
+    second: archer_allies_282
+  - first:
+      213: -5466132662511884459
+    second: archer_allies_283
+  - first:
+      213: 2104959337477043363
+    second: archer_allies_284
+  - first:
+      213: -6840124547350621828
+    second: archer_allies_285
+  - first:
+      213: 7375791621111121112
+    second: archer_allies_286
+  - first:
+      213: 3470855800925362924
+    second: archer_allies_287
+  - first:
+      213: 1736838239357680427
+    second: archer_allies_288
+  - first:
+      213: -471323307689542679
+    second: archer_allies_289
+  - first:
+      213: 2187892758480769633
+    second: archer_allies_290
+  - first:
+      213: -6144788753700664162
+    second: archer_allies_291
+  - first:
+      213: -1376581597387160062
+    second: archer_allies_292
+  - first:
+      213: -8989612179947543247
+    second: archer_allies_293
+  - first:
+      213: -967749635142900349
+    second: archer_allies_294
+  - first:
+      213: -541988139673630061
+    second: archer_allies_295
+  - first:
+      213: 8360596682559861502
+    second: archer_allies_296
+  - first:
+      213: -2358604612280567133
+    second: archer_allies_297
+  - first:
+      213: -6305802734949550853
+    second: archer_allies_298
+  - first:
+      213: -535389848239051998
+    second: archer_allies_299
+  - first:
+      213: -2982450451341654697
+    second: archer_allies_300
+  - first:
+      213: -359071824061452000
+    second: archer_allies_301
+  - first:
+      213: -1809586071505610249
+    second: archer_allies_302
+  - first:
+      213: 674091553684402331
+    second: archer_allies_303
+  - first:
+      213: 1296495031424664490
+    second: archer_allies_304
+  - first:
+      213: 778996863755874095
+    second: archer_allies_305
+  - first:
+      213: -732756810305418879
+    second: archer_allies_306
+  - first:
+      213: -3911535162932837619
+    second: archer_allies_307
+  - first:
+      213: -1939596809363761295
+    second: archer_allies_308
+  - first:
+      213: -3059397752713514741
+    second: archer_allies_309
+  - first:
+      213: -1078597212406142213
+    second: archer_allies_310
+  - first:
+      213: -3172703225370732894
+    second: archer_allies_311
+  - first:
+      213: -5220105288551934275
+    second: archer_allies_312
+  - first:
+      213: 64389204776636051
+    second: archer_allies_313
+  - first:
+      213: -8471815858341631709
+    second: archer_allies_314
+  - first:
+      213: 7241089713163287637
+    second: archer_allies_315
+  - first:
+      213: -6242451319298011111
+    second: archer_allies_316
+  - first:
+      213: -5846184761553863796
+    second: archer_allies_317
+  - first:
+      213: 4236895749658123185
+    second: archer_allies_318
+  - first:
+      213: 5603692652226182677
+    second: archer_allies_319
+  - first:
+      213: 7555005038863524443
+    second: archer_allies_320
+  - first:
+      213: 5733904858163403887
+    second: archer_allies_321
+  - first:
+      213: -5235196266094590180
+    second: archer_allies_322
+  - first:
+      213: -2223792529107501880
+    second: archer_allies_323
+  - first:
+      213: -744215142119987719
+    second: archer_allies_324
+  - first:
+      213: 1752880012431429823
+    second: archer_allies_325
+  - first:
+      213: 7733522909762601424
+    second: archer_allies_326
+  - first:
+      213: -1317180662652906080
+    second: archer_allies_327
+  - first:
+      213: 3202529103450030833
+    second: archer_allies_328
+  - first:
+      213: 6604429788321365059
+    second: archer_allies_329
+  - first:
+      213: 4243478448844714941
+    second: archer_allies_330
+  - first:
+      213: 877145671906991198
+    second: archer_allies_331
+  - first:
+      213: 5460241165758169436
+    second: archer_allies_332
+  - first:
+      213: -8836978970612261846
+    second: archer_allies_333
+  - first:
+      213: 8510425716453512523
+    second: archer_allies_334
+  - first:
+      213: -795353105675160466
+    second: archer_allies_335
+  - first:
+      213: -4889979956250652240
+    second: archer_allies_336
+  - first:
+      213: 9095284377105814855
+    second: archer_allies_337
+  - first:
+      213: 6935686899452333712
+    second: archer_allies_338
+  - first:
+      213: -4187690902893512237
+    second: archer_allies_339
+  - first:
+      213: -7497253923791957811
+    second: archer_allies_340
+  - first:
+      213: -2463839422945003037
+    second: archer_allies_341
+  - first:
+      213: 4689317750902171865
+    second: archer_allies_342
+  - first:
+      213: 1106978652523513931
+    second: archer_allies_343
+  - first:
+      213: 445855521494136718
+    second: archer_allies_344
+  - first:
+      213: 2990386969129623818
+    second: archer_allies_345
+  - first:
+      213: 2704062378407562260
+    second: archer_allies_346
+  - first:
+      213: 3160633464610687411
+    second: archer_allies_347
+  - first:
+      213: -5464602113589263912
+    second: archer_allies_348
+  - first:
+      213: 5176132363006264213
+    second: archer_allies_349
+  - first:
+      213: 2829247228562660877
+    second: archer_allies_350
+  - first:
+      213: -6802774713923649507
+    second: archer_allies_351
+  - first:
+      213: -8796117281983683580
+    second: archer_allies_352
+  - first:
+      213: -5702566863019210458
+    second: archer_allies_353
+  - first:
+      213: -7489397203916313750
+    second: archer_allies_354
+  - first:
+      213: -4321129195510271930
+    second: archer_allies_355
+  - first:
+      213: -7698504118886047961
+    second: archer_allies_356
+  - first:
+      213: 7265291008806337365
+    second: archer_allies_357
+  - first:
+      213: -383298176501544719
+    second: archer_allies_358
+  - first:
+      213: 883319800578958495
+    second: archer_allies_359
+  - first:
+      213: 5664871330793181584
+    second: archer_allies_360
+  - first:
+      213: -4311385138842098288
+    second: archer_allies_361
+  - first:
+      213: -65546670065200006
+    second: archer_allies_362
+  - first:
+      213: -5246569564672366337
+    second: archer_allies_363
+  - first:
+      213: 8467818229071704541
+    second: archer_allies_364
+  - first:
+      213: -1329368263784185569
+    second: archer_allies_365
+  - first:
+      213: -2464343810216311649
+    second: archer_allies_366
+  - first:
+      213: -7203103221183681777
+    second: archer_allies_367
+  - first:
+      213: -2825827748247040327
+    second: archer_allies_368
+  - first:
+      213: 4289686076950973868
+    second: archer_allies_369
+  - first:
+      213: 5199044492511116511
+    second: archer_allies_370
+  - first:
+      213: -5901212435645263398
+    second: archer_allies_371
+  - first:
+      213: -8135489198042787599
+    second: archer_allies_372
+  - first:
+      213: 4800145862269951904
+    second: archer_allies_373
+  - first:
+      213: 6533228022172070977
+    second: archer_allies_374
+  - first:
+      213: 2679629402197058403
+    second: archer_allies_375
+  - first:
+      213: -7149728075504608902
+    second: archer_allies_376
+  - first:
+      213: -401202311087102204
+    second: archer_allies_377
+  - first:
+      213: -4818226812066357784
+    second: archer_allies_378
+  - first:
+      213: 6079169045076624642
+    second: archer_allies_379
+  - first:
+      213: -8313350791547062140
+    second: archer_allies_380
+  - first:
+      213: -7595757569119437472
+    second: archer_allies_381
+  - first:
+      213: 453726258778161255
+    second: archer_allies_382
+  - first:
+      213: 1602387048223647613
+    second: archer_allies_383
+  - first:
+      213: -4811126857212174255
+    second: archer_allies_384
+  - first:
+      213: 2860310372205926112
+    second: archer_allies_385
+  - first:
+      213: -7146267029462212817
+    second: archer_allies_386
+  - first:
+      213: -4234691887580626525
+    second: archer_allies_387
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: archer_allies_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2870
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbea4af49365bd480800000000000000
+      internalID: -8873403836654113092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 2870
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729248e6a563d5700800000000000000
+      internalID: 530640093128698151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 2870
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 586af2cc87307e890800000000000000
+      internalID: -7428965242967710075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 2870
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf68499d4e569720800000000000000
+      internalID: 2852571101362941902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 2870
+        width: 31
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71661ce8e25fab360800000000000000
+      internalID: 7186325735735387671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2870
+        width: 30
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25638ebfcf3c09fb0800000000000000
+      internalID: -4642995724493506990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 2870
+        width: 32
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f3374c928cd11380800000000000000
+      internalID: -9002171726611139593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 2870
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19c3328c4b289de0800000000000000
+      internalID: -1326262482658670309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 2870
+        width: 33
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a9c2565a6719030800000000000000
+      internalID: 3499708838182689349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 2870
+        width: 32
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fec8cb8d391e22f0800000000000000
+      internalID: -995830715473408263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_10
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 2870
+        width: 32
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b728dcffaa8164d0800000000000000
+      internalID: -3143078576461961291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_11
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2870
+        width: 33
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed15e8b35262fc80800000000000000
+      internalID: -8290455852311831057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_12
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 2870
+        width: 33
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d02d19d24fe1330800000000000000
+      internalID: 3683650021792812349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2807
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccfc19f44c8a147c0800000000000000
+      internalID: -4088801425573687348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_14
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 2807
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4827cce97766a5d0800000000000000
+      internalID: -3051637924135753650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_15
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 2807
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9f254e7015effa0800000000000000
+      internalID: -5765081378650392156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_16
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 2807
+        width: 47
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267752144ef1b0d00800000000000000
+      internalID: 939880012442859362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_17
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 2807
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6afcf3d93d318db0800000000000000
+      internalID: -4791481209966495125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_18
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 2807
+        width: 47
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95502b00f75128a20800000000000000
+      internalID: 3063034331782055257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_19
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 2807
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45596e1c19560a290800000000000000
+      internalID: -7881187671200590508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_20
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 2807
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5fd48ea507d64ef0800000000000000
+      internalID: -124175520303358113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_21
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 2807
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1234f9e6782762350800000000000000
+      internalID: 5991602280265106209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_22
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 2807
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 786913ec08241a060800000000000000
+      internalID: 6962919619874100871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_23
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 2807
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8511dc018198f71e0800000000000000
+      internalID: -2197887356679417512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_24
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 2807
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb65947bfdab3bc40800000000000000
+      internalID: 5526966637729240766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_25
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 2807
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 797336fdaf73d5360800000000000000
+      internalID: 7159940533218129815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_26
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 2742
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3675ff8fbbd6985d0800000000000000
+      internalID: -3059793817717745821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_27
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2742
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d784679b98933d680800000000000000
+      internalID: -8731571988856420227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_28
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 2742
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8cb2d5b7fedc2a80800000000000000
+      internalID: -8490166042011452277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_29
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 2742
+        width: 33
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103865b2da2881e10800000000000000
+      internalID: 2168626900846936833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_30
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 2742
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01ac48d9de61cd80800000000000000
+      internalID: -8232176761940696819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_31
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2742
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 399d5529ed39f75c0800000000000000
+      internalID: -4215488142048372333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_32
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 2742
+        width: 31
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876555e752f649850800000000000000
+      internalID: 6382848778714830456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_33
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 2742
+        width: 31
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b7ce51dc77ba860800000000000000
+      internalID: 7542253723681848069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_34
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 2742
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1db9b27716c17f0800000000000000
+      internalID: -640529882532818442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_35
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 2742
+        width: 31
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7961df3878fdfae40800000000000000
+      internalID: 5669996229010724503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_36
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 2742
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dcf599d226625fe0800000000000000
+      internalID: -1201785850689094446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_37
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2742
+        width: 32
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805e7cd4f272d4f80800000000000000
+      internalID: -8120791468957244152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_38
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2742
+        width: 32
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c1657a60c9e5590800000000000000
+      internalID: -7683532361856312216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_39
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2679
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759c069a4b4858170800000000000000
+      internalID: 8180090209659046231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_40
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 2679
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b7b2da2a85ba190800000000000000
+      internalID: -7950163261479224555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_41
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 2679
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 276803a511988f5f0800000000000000
+      internalID: -722677032572385678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_42
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 2679
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46fcf702d9f5457d0800000000000000
+      internalID: -2930612329051599004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_43
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 2679
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22984b9f16126c2f0800000000000000
+      internalID: -953037566457378526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_44
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 2679
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e18e17eab6411b0800000000000000
+      internalID: -5686802032482574783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_45
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 2679
+        width: 50
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6e1779242f026a30800000000000000
+      internalID: 4206941649906376300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_46
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 2679
+        width: 47
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8c49ab99551c8280800000000000000
+      internalID: -9039826877431591796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_47
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 2679
+        width: 47
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74961db61589218c0800000000000000
+      internalID: -4029991241074513593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_48
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 2679
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75232f836d56c6900800000000000000
+      internalID: 679029614578905687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_49
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 2679
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6276f6d9aa9d1ea80800000000000000
+      internalID: -8439224899906607322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_50
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 2679
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6437faa51c2b39140800000000000000
+      internalID: 4725316977561662278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_51
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 2679
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66544d5456b1cd70800000000000000
+      internalID: 9061724398704416366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_99
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 1898
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab82491292247dc80800000000000000
+      internalID: -8298091043982399302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_233
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb02fc5f7864a9be0800000000000000
+      internalID: -1469784778624524100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_234
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ace03ebaff5b0d40800000000000000
+      internalID: 5551636496201608356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_235
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a3462172a590600800000000000000
+      internalID: 434977962876746277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_236
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 406
+        width: 56
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c11db0a86136efe0800000000000000
+      internalID: -1160185528558218807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_237
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aaee12a5aeb8c650800000000000000
+      internalID: 6253457701202750121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_238
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661b747e841c9aca0800000000000000
+      internalID: -6005056109259804314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_239
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8300db677e157a40800000000000000
+      internalID: 5365228029340550029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_240
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 406
+        width: 57
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 674e2cb197795efc0800000000000000
+      internalID: -3466197791779134346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_241
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 406
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c86920ad32001ba0800000000000000
+      internalID: -6120389429893175099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_242
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 279
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82dd08b9b568704f0800000000000000
+      internalID: -862573075609101016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_243
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 279
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa71dbc5ae16d15a0800000000000000
+      internalID: -6548970623920695377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_244
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 279
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4185198f68f1d4c10800000000000000
+      internalID: 2039320870825056276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_245
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 279
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60550536e283d70c0800000000000000
+      internalID: -4576439874452695802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_246
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 279
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d944a922611f0da70800000000000000
+      internalID: 8849838345155134621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_247
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 279
+        width: 50
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1850800db7b365300800000000000000
+      internalID: 240445033068103041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_248
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 279
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2659472341cc66600800000000000000
+      internalID: 461280398969967970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_249
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 279
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814784ac0e2dccb60800000000000000
+      internalID: 7767815320215516184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_250
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 279
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfa46c37f0946270800000000000000
+      internalID: 8242872609539403696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_251
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef401b29513c1da90800000000000000
+      internalID: -7290831824313318146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_252
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1eb736ae95d12560800000000000000
+      internalID: 7287340549432393245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_253
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313f027136e8d0710800000000000000
+      internalID: 1661140393810522899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_254
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 151
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe617cf973b9c2a0800000000000000
+      internalID: -6716640032738676999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_255
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b70828bb1bd9d060800000000000000
+      internalID: 6978850009687525302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_256
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3638db2ca6c53c0800000000000000
+      internalID: -4369500153820519517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_257
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a5ed7a967bc61f0800000000000000
+      internalID: -1050262948668351865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_258
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 151
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eacd0394fee6bedd0800000000000000
+      internalID: -2455747197796295506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_259
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 151
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f148dfe8bcfabf7b0800000000000000
+      internalID: -5189360856802163681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_260
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 22
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48ea60d12e43c2d90800000000000000
+      internalID: -7121258765025366396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_261
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 22
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40cbe22f870816700800000000000000
+      internalID: 531847487954009092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_262
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 24
+        width: 59
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964f931041e0afd20800000000000000
+      internalID: 3312975954967131241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_263
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 20
+        width: 53
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5fb0fb7e1f25b7f0800000000000000
+      internalID: -597519567581823142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_264
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 21
+        width: 55
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c38e88093255c650800000000000000
+      internalID: 6252494062583972804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_265
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 25
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f66cb9f8a4a080710800000000000000
+      internalID: 1659587778039236207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_266
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 24
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28dbe4b1b0d249220800000000000000
+      internalID: 2491666019568762242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_267
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 22
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddc4aa4da6ed7ec10800000000000000
+      internalID: 2082877903097973981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: archer_allies_268
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 22
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc2a6cf343236390800000000000000
+      internalID: -7826372952535192391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 061d68d9be1e02a48a138a21d147c86e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      archer_allies_0: -8873403836654113092
+      archer_allies_1: 530640093128698151
+      archer_allies_10: -3143078576461961291
+      archer_allies_100: 3182327858881020078
+      archer_allies_101: 6689402088887635857
+      archer_allies_102: 991579491791942792
+      archer_allies_103: -4832549887460856383
+      archer_allies_104: 3933779762575792289
+      archer_allies_105: 4397623328356214359
+      archer_allies_106: 7426487820890753683
+      archer_allies_107: 6668183655444638612
+      archer_allies_108: 2849488039358605345
+      archer_allies_109: 3882073395859813740
+      archer_allies_11: -8290455852311831057
+      archer_allies_110: 5397525492443176495
+      archer_allies_111: 8282939567237590719
+      archer_allies_112: -2848974250255946157
+      archer_allies_113: -4157699982038412134
+      archer_allies_114: -5300713190195644836
+      archer_allies_115: -2089127548264353883
+      archer_allies_116: -2270202170192233146
+      archer_allies_117: 4267289754591818294
+      archer_allies_118: -5809850295682996945
+      archer_allies_119: 4004370911444356562
+      archer_allies_12: 3683650021792812349
+      archer_allies_120: -748837211604423065
+      archer_allies_121: -6981294670777779259
+      archer_allies_122: -7038742959113970746
+      archer_allies_123: -1228533182131654475
+      archer_allies_124: -2059529166902674012
+      archer_allies_125: -272935459802362953
+      archer_allies_126: 5247218041903076692
+      archer_allies_127: -7438614298934067825
+      archer_allies_128: 5700468507163683892
+      archer_allies_129: -7827163662568878311
+      archer_allies_13: -4088801425573687348
+      archer_allies_130: -5099284640221610156
+      archer_allies_131: -3117365824746786681
+      archer_allies_132: 6934502962870712760
+      archer_allies_133: -1871727371958058715
+      archer_allies_134: -6696309186579544978
+      archer_allies_135: -8256135696082474770
+      archer_allies_136: 4384076873934063284
+      archer_allies_137: -8339233131300552106
+      archer_allies_138: 5723533957617687314
+      archer_allies_139: 1988011541850188748
+      archer_allies_14: -3051637924135753650
+      archer_allies_140: 6883999967202499669
+      archer_allies_141: 6761090647065794778
+      archer_allies_142: 1284824921081546419
+      archer_allies_143: -798872096687488099
+      archer_allies_144: -79142706881043841
+      archer_allies_145: -3476584912634943471
+      archer_allies_146: -7309990426224780572
+      archer_allies_147: 493041047336189164
+      archer_allies_148: 5734117573819091390
+      archer_allies_149: 8101350148882684740
+      archer_allies_15: -5765081378650392156
+      archer_allies_150: 6370200401059497513
+      archer_allies_151: 2745856017157003182
+      archer_allies_152: -6647461935328824488
+      archer_allies_153: 6664737991157938675
+      archer_allies_154: 2226952377342474363
+      archer_allies_155: -6763982915966610082
+      archer_allies_156: 7512610475079895625
+      archer_allies_157: -1899819460846424366
+      archer_allies_158: 4857014850538691279
+      archer_allies_159: -5249832969870386659
+      archer_allies_16: 939880012442859362
+      archer_allies_160: 8503372829326407396
+      archer_allies_161: -8513782054596346685
+      archer_allies_162: 7824196770512401063
+      archer_allies_163: -1689638760716577935
+      archer_allies_164: 1847879462030036168
+      archer_allies_165: 5929531873294903913
+      archer_allies_166: -783468255317772265
+      archer_allies_167: -5743278756361010668
+      archer_allies_168: 8315264076377673495
+      archer_allies_169: 800081960898752503
+      archer_allies_17: -4791481209966495125
+      archer_allies_170: 2289512344049233852
+      archer_allies_171: -5347336146675568849
+      archer_allies_172: 5214859819272453061
+      archer_allies_173: -6227851871488455262
+      archer_allies_174: 947450403957801422
+      archer_allies_175: -8717324816418154216
+      archer_allies_176: 1206669709141221419
+      archer_allies_177: -8340176069604464623
+      archer_allies_178: 5810113228730300441
+      archer_allies_179: 549482709695085560
+      archer_allies_18: 3063034331782055257
+      archer_allies_180: -1132849787119733573
+      archer_allies_181: 2071150616450530347
+      archer_allies_182: 4427139673223056928
+      archer_allies_183: 4599100033567257690
+      archer_allies_184: 577742463577195162
+      archer_allies_185: 620878429111095480
+      archer_allies_186: 7837075939099507346
+      archer_allies_187: 1504604086777133220
+      archer_allies_188: -44421194380882366
+      archer_allies_189: -8949770551014830078
+      archer_allies_19: -7881187671200590508
+      archer_allies_190: -8973808327892033902
+      archer_allies_191: -113049600268365322
+      archer_allies_192: 4131297140493403149
+      archer_allies_193: -9023616446927328640
+      archer_allies_194: 8034612075629290563
+      archer_allies_195: -6703840336858508547
+      archer_allies_196: -2457208393761890087
+      archer_allies_197: 7562115510907847668
+      archer_allies_198: 6966373676166740392
+      archer_allies_199: -1309008381776535353
+      archer_allies_2: -7428965242967710075
+      archer_allies_20: -124175520303358113
+      archer_allies_200: 3413509346028658694
+      archer_allies_201: 3923333679755338215
+      archer_allies_202: -4672845502344044583
+      archer_allies_203: 1115158751658169238
+      archer_allies_204: 4882234874220972121
+      archer_allies_205: -5359283602025913207
+      archer_allies_206: 3367369464398704238
+      archer_allies_207: 390193550601596179
+      archer_allies_208: 7022989907775669928
+      archer_allies_209: 6732440721226231001
+      archer_allies_21: 5991602280265106209
+      archer_allies_210: 6445975811267905735
+      archer_allies_211: 3423817475743471762
+      archer_allies_212: -8485565222794656261
+      archer_allies_213: -1881922611192250062
+      archer_allies_214: -7540230273068940188
+      archer_allies_215: -6456129429948576129
+      archer_allies_216: -6961658470661461092
+      archer_allies_217: -3797466297884752681
+      archer_allies_218: 4936100352696863743
+      archer_allies_219: 3844711037321811615
+      archer_allies_22: 6962919619874100871
+      archer_allies_220: 5382713701537832781
+      archer_allies_221: 7994074157002255601
+      archer_allies_222: 4750693424456300247
+      archer_allies_223: 7271398843820346877
+      archer_allies_224: 522679923112614781
+      archer_allies_225: 4355584298641459465
+      archer_allies_226: -8226286701543871491
+      archer_allies_227: 9095669834710302467
+      archer_allies_228: -3190374065991687038
+      archer_allies_229: 97702731544208845
+      archer_allies_23: -2197887356679417512
+      archer_allies_230: 4349082515384502683
+      archer_allies_231: 2812738141899538004
+      archer_allies_232: -8789088454568536479
+      archer_allies_233: -1469784778624524100
+      archer_allies_234: 5551636496201608356
+      archer_allies_235: 434977962876746277
+      archer_allies_236: -1160185528558218807
+      archer_allies_237: 6253457701202750121
+      archer_allies_238: -6005056109259804314
+      archer_allies_239: 5365228029340550029
+      archer_allies_24: 5526966637729240766
+      archer_allies_240: -3466197791779134346
+      archer_allies_241: -6120389429893175099
+      archer_allies_242: -862573075609101016
+      archer_allies_243: -6548970623920695377
+      archer_allies_244: 2039320870825056276
+      archer_allies_245: -4576439874452695802
+      archer_allies_246: 8849838345155134621
+      archer_allies_247: 240445033068103041
+      archer_allies_248: 461280398969967970
+      archer_allies_249: 7767815320215516184
+      archer_allies_25: 7159940533218129815
+      archer_allies_250: 8242872609539403696
+      archer_allies_251: -7290831824313318146
+      archer_allies_252: 7287340549432393245
+      archer_allies_253: 1661140393810522899
+      archer_allies_254: -6716640032738676999
+      archer_allies_255: 6978850009687525302
+      archer_allies_256: -4369500153820519517
+      archer_allies_257: -1050262948668351865
+      archer_allies_258: -2455747197796295506
+      archer_allies_259: -5189360856802163681
+      archer_allies_26: -3059793817717745821
+      archer_allies_260: -7121258765025366396
+      archer_allies_261: 531847487954009092
+      archer_allies_262: 3312975954967131241
+      archer_allies_263: -597519567581823142
+      archer_allies_264: 6252494062583972804
+      archer_allies_265: 1659587778039236207
+      archer_allies_266: 2491666019568762242
+      archer_allies_267: 2082877903097973981
+      archer_allies_268: -7826372952535192391
+      archer_allies_27: -8731571988856420227
+      archer_allies_28: -8490166042011452277
+      archer_allies_29: 2168626900846936833
+      archer_allies_3: 2852571101362941902
+      archer_allies_30: -8232176761940696819
+      archer_allies_31: -4215488142048372333
+      archer_allies_32: 6382848778714830456
+      archer_allies_33: 7542253723681848069
+      archer_allies_34: -640529882532818442
+      archer_allies_35: 5669996229010724503
+      archer_allies_36: -1201785850689094446
+      archer_allies_37: -8120791468957244152
+      archer_allies_38: -7683532361856312216
+      archer_allies_39: 8180090209659046231
+      archer_allies_4: 7186325735735387671
+      archer_allies_40: -7950163261479224555
+      archer_allies_41: -722677032572385678
+      archer_allies_42: -2930612329051599004
+      archer_allies_43: -953037566457378526
+      archer_allies_44: -5686802032482574783
+      archer_allies_45: 4206941649906376300
+      archer_allies_46: -9039826877431591796
+      archer_allies_47: -4029991241074513593
+      archer_allies_48: 679029614578905687
+      archer_allies_49: -8439224899906607322
+      archer_allies_5: -4642995724493506990
+      archer_allies_50: 4725316977561662278
+      archer_allies_51: 9061724398704416366
+      archer_allies_52: -8272034933647388886
+      archer_allies_53: 2621676574774163147
+      archer_allies_54: -2498541740995052366
+      archer_allies_55: 7675160964501044730
+      archer_allies_56: -7514643811409699078
+      archer_allies_57: 1959054167435342752
+      archer_allies_58: 5266160840617348708
+      archer_allies_59: -2880960109790446475
+      archer_allies_6: -9002171726611139593
+      archer_allies_60: 7018199879460480820
+      archer_allies_61: 2081317729053990394
+      archer_allies_62: -3200579052058484107
+      archer_allies_63: -4894078950325990110
+      archer_allies_64: -5379914356858805615
+      archer_allies_65: -4370786976503658060
+      archer_allies_66: -93565113614022813
+      archer_allies_67: -6381279292665635157
+      archer_allies_68: 5472983935977590082
+      archer_allies_69: 6031853198445904156
+      archer_allies_7: -1326262482658670309
+      archer_allies_70: 6512644252558989587
+      archer_allies_71: 6963410254937471142
+      archer_allies_72: 5736615864946643632
+      archer_allies_73: -7204471665481260735
+      archer_allies_74: 3478346486239737456
+      archer_allies_75: 8652122152109771062
+      archer_allies_76: -7855435615314915801
+      archer_allies_77: -5658719548628698964
+      archer_allies_78: 1095595446095811740
+      archer_allies_79: 6724902418108028095
+      archer_allies_8: 3499708838182689349
+      archer_allies_80: 6947522230070231297
+      archer_allies_81: -7655744571109455463
+      archer_allies_82: -1521364234758952177
+      archer_allies_83: -5514745296838082746
+      archer_allies_84: -5717760691361527876
+      archer_allies_85: -8329601111952603580
+      archer_allies_86: 1482882188120989786
+      archer_allies_87: 963964807033312654
+      archer_allies_88: -3085758173854450370
+      archer_allies_89: -8491559905937560994
+      archer_allies_9: -995830715473408263
+      archer_allies_90: -2195438393562891877
+      archer_allies_91: 6549148694711718184
+      archer_allies_92: -2167545714313820982
+      archer_allies_93: -6836861673024709383
+      archer_allies_94: -2431621579252210345
+      archer_allies_95: 381429718786931211
+      archer_allies_96: 8244873568396299353
+      archer_allies_97: 6294307535000570413
+      archer_allies_98: 2376857070951887812
+      archer_allies_99: -8298091043982399302
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

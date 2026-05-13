@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -347,6 +347,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator WarriorWillRoutine()
     {
+        GameAudio.PlayBarrier();
         skillInvulnerable = true;
         CreateShieldVisual();
         float elapsed = 0f;
@@ -368,6 +369,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator ParalysisArrowRoutine(EnemyBase target)
     {
+        GameAudio.PlayParalysisShoot();
         Vector3 src = transform.position + Vector3.up * 0.15f;
         Vector3 dst = target.transform.position;
 
@@ -407,6 +409,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator MageBarrierRoutine()
     {
+        GameAudio.PlayBarrier();
         if (!activeMageBarriers.Contains(this))
             activeMageBarriers.Add(this);
         CreateMageBarrierVisual();
@@ -441,6 +444,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator GroupHealRoutine(float duration, float healRatioPerSecond, bool selfOnly)
     {
+        GameAudio.PlayHeal();
         List<AllyBase> targets = selfOnly ? new List<AllyBase> { this } : GetLivingAllies();
         foreach (var ally in targets)
             ally.SetYellowAura(true);
@@ -469,6 +473,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator GroupSmokeRoutine()
     {
+        GameAudio.PlaySmokeBomb();
         List<AllyBase> targets = GetLivingAllies();
         foreach (var ally in targets)
             if (ally != null && !ally.isDead)
@@ -489,6 +494,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator PaladinOathRoutine()
     {
+        GameAudio.PlayBarrier();
         activePaladinProtector = this;
         SetYellowAura(true);
 
@@ -636,6 +642,7 @@ public class AllyBase : MonoBehaviour
 
     IEnumerator ShieldBreakEffect()
     {
+        GameAudio.PlayShieldBlock();
         if (shieldVisual != null)
         {
             Destroy(shieldVisual);
@@ -655,6 +662,7 @@ public class AllyBase : MonoBehaviour
     {
         hitStunTimer = 0.15f;
         UpdateHpBar();
+        GameAudio.PlayHitDamage();
         StartCoroutine(HitEffect());
     }
 
@@ -682,6 +690,7 @@ public class AllyBase : MonoBehaviour
             shieldSr = null;
         }
         ClearAllSkillVisuals();
+        GameAudio.PlayAllyDeath();
         OnDied?.Invoke(this);
         StartCoroutine(DeathEffect());
     }

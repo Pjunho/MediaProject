@@ -1,0 +1,2877 @@
+fileFormatVersion: 2
+guid: 629dde583ea5697499f110de8771feba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 680345223357277661
+    second: paladin_allies_0
+  - first:
+      213: -5283775715006751475
+    second: paladin_allies_1
+  - first:
+      213: 2049122652522054772
+    second: paladin_allies_2
+  - first:
+      213: -5810221803847727391
+    second: paladin_allies_3
+  - first:
+      213: -1055166501749523705
+    second: paladin_allies_4
+  - first:
+      213: 7223499979143250299
+    second: paladin_allies_5
+  - first:
+      213: -5793480400096005939
+    second: paladin_allies_6
+  - first:
+      213: -7509641742189493595
+    second: paladin_allies_7
+  - first:
+      213: 3588496417361438636
+    second: paladin_allies_8
+  - first:
+      213: 1540310472633954989
+    second: paladin_allies_9
+  - first:
+      213: -8124991693730335816
+    second: paladin_allies_10
+  - first:
+      213: 961403725963845821
+    second: paladin_allies_11
+  - first:
+      213: -6594068628872256825
+    second: paladin_allies_12
+  - first:
+      213: 6453555468468578736
+    second: paladin_allies_13
+  - first:
+      213: -5662546599644893398
+    second: paladin_allies_14
+  - first:
+      213: -2963137134122160776
+    second: paladin_allies_15
+  - first:
+      213: 4635878307702678622
+    second: paladin_allies_16
+  - first:
+      213: 1886526829210767933
+    second: paladin_allies_17
+  - first:
+      213: -5951168822357913347
+    second: paladin_allies_18
+  - first:
+      213: -2211499250675411223
+    second: paladin_allies_19
+  - first:
+      213: -5284812015541115225
+    second: paladin_allies_20
+  - first:
+      213: 438796103210548090
+    second: paladin_allies_21
+  - first:
+      213: 5102165585238254701
+    second: paladin_allies_22
+  - first:
+      213: 6621484848719524842
+    second: paladin_allies_23
+  - first:
+      213: -205358454720143547
+    second: paladin_allies_24
+  - first:
+      213: 83334308933057795
+    second: paladin_allies_25
+  - first:
+      213: 1026951520126216175
+    second: paladin_allies_26
+  - first:
+      213: 7198188840345396414
+    second: paladin_allies_27
+  - first:
+      213: -8082598652824136139
+    second: paladin_allies_28
+  - first:
+      213: 1998396853974901428
+    second: paladin_allies_29
+  - first:
+      213: 7353317980952696392
+    second: paladin_allies_30
+  - first:
+      213: -5470669763382020063
+    second: paladin_allies_31
+  - first:
+      213: 7233169342639105452
+    second: paladin_allies_32
+  - first:
+      213: -550249916961512537
+    second: paladin_allies_33
+  - first:
+      213: 8773739417441324328
+    second: paladin_allies_34
+  - first:
+      213: -6722614192999190376
+    second: paladin_allies_35
+  - first:
+      213: -158833949061522582
+    second: paladin_allies_36
+  - first:
+      213: 4132849230854585961
+    second: paladin_allies_37
+  - first:
+      213: 3186796192625165256
+    second: paladin_allies_38
+  - first:
+      213: -1253009574874160468
+    second: paladin_allies_39
+  - first:
+      213: 5898806129934243246
+    second: paladin_allies_40
+  - first:
+      213: -3995897465556670399
+    second: paladin_allies_41
+  - first:
+      213: -3741238151974540429
+    second: paladin_allies_42
+  - first:
+      213: 607898317395988951
+    second: paladin_allies_43
+  - first:
+      213: 3770077523438195680
+    second: paladin_allies_44
+  - first:
+      213: 3892348815734695230
+    second: paladin_allies_45
+  - first:
+      213: 712540461624615450
+    second: paladin_allies_46
+  - first:
+      213: 5012145509871051774
+    second: paladin_allies_47
+  - first:
+      213: -5563840673512873893
+    second: paladin_allies_48
+  - first:
+      213: 2539288046067978896
+    second: paladin_allies_49
+  - first:
+      213: -2912977039997184048
+    second: paladin_allies_50
+  - first:
+      213: -7669461482518939981
+    second: paladin_allies_51
+  - first:
+      213: -2140548563358319049
+    second: paladin_allies_52
+  - first:
+      213: 7875855585214249493
+    second: paladin_allies_53
+  - first:
+      213: 1970055228796738880
+    second: paladin_allies_54
+  - first:
+      213: 6192264036464129150
+    second: paladin_allies_55
+  - first:
+      213: -4253284543196648874
+    second: paladin_allies_56
+  - first:
+      213: -2140906664075368209
+    second: paladin_allies_57
+  - first:
+      213: 980071639333201245
+    second: paladin_allies_58
+  - first:
+      213: -544539131692401639
+    second: paladin_allies_59
+  - first:
+      213: -8131564845911274485
+    second: paladin_allies_60
+  - first:
+      213: 4569739634064570184
+    second: paladin_allies_61
+  - first:
+      213: -9083967188476053101
+    second: paladin_allies_62
+  - first:
+      213: 4262802270652940176
+    second: paladin_allies_63
+  - first:
+      213: 3790910007123057344
+    second: paladin_allies_64
+  - first:
+      213: -2788082680558286798
+    second: paladin_allies_65
+  - first:
+      213: -6697436740702206498
+    second: paladin_allies_66
+  - first:
+      213: -4751957584424838020
+    second: paladin_allies_67
+  - first:
+      213: -1247714897561135035
+    second: paladin_allies_68
+  - first:
+      213: 7674862171160216272
+    second: paladin_allies_69
+  - first:
+      213: 7119625487414737625
+    second: paladin_allies_70
+  - first:
+      213: -729946775408190460
+    second: paladin_allies_71
+  - first:
+      213: 789383886676745770
+    second: paladin_allies_72
+  - first:
+      213: 2472864866179756800
+    second: paladin_allies_73
+  - first:
+      213: 7383976747534673726
+    second: paladin_allies_74
+  - first:
+      213: -6226105976122957457
+    second: paladin_allies_75
+  - first:
+      213: -334901579573356600
+    second: paladin_allies_76
+  - first:
+      213: 7832518151590711135
+    second: paladin_allies_77
+  - first:
+      213: -6741814984062929092
+    second: paladin_allies_78
+  - first:
+      213: -4818618261192547130
+    second: paladin_allies_79
+  - first:
+      213: 3221563261655425570
+    second: paladin_allies_80
+  - first:
+      213: -3298236955504689712
+    second: paladin_allies_81
+  - first:
+      213: -5615306450588284123
+    second: paladin_allies_82
+  - first:
+      213: -6753008786745833869
+    second: paladin_allies_83
+  - first:
+      213: -8929949525101553454
+    second: paladin_allies_84
+  - first:
+      213: -3649711646819754670
+    second: paladin_allies_85
+  - first:
+      213: -3309686283861720762
+    second: paladin_allies_86
+  - first:
+      213: 5085225709260805114
+    second: paladin_allies_87
+  - first:
+      213: 3170818604704210995
+    second: paladin_allies_88
+  - first:
+      213: 2622842978390782151
+    second: paladin_allies_89
+  - first:
+      213: 8841756752970843161
+    second: paladin_allies_90
+  - first:
+      213: -5599172148516741264
+    second: paladin_allies_91
+  - first:
+      213: -1585794816671278143
+    second: paladin_allies_92
+  - first:
+      213: 5216489566000608003
+    second: paladin_allies_93
+  - first:
+      213: 774804149033391189
+    second: paladin_allies_94
+  - first:
+      213: -5361409835637235635
+    second: paladin_allies_95
+  - first:
+      213: -1618057152553438532
+    second: paladin_allies_96
+  - first:
+      213: 3438079079675601187
+    second: paladin_allies_97
+  - first:
+      213: -2127247313268684388
+    second: paladin_allies_98
+  - first:
+      213: 5423362171755015504
+    second: paladin_allies_99
+  - first:
+      213: -3553172525344859916
+    second: paladin_allies_100
+  - first:
+      213: -3192617536319633149
+    second: paladin_allies_101
+  - first:
+      213: -2315484054197201947
+    second: paladin_allies_102
+  - first:
+      213: 8265030233768799241
+    second: paladin_allies_103
+  - first:
+      213: 5618301867999529085
+    second: paladin_allies_104
+  - first:
+      213: -8528842008108958678
+    second: paladin_allies_105
+  - first:
+      213: -8926450737555089480
+    second: paladin_allies_106
+  - first:
+      213: -3735921873681996647
+    second: paladin_allies_107
+  - first:
+      213: 3678922787404757836
+    second: paladin_allies_108
+  - first:
+      213: -3124797395026310829
+    second: paladin_allies_109
+  - first:
+      213: 7641236770727037567
+    second: paladin_allies_110
+  - first:
+      213: -5521937384459274748
+    second: paladin_allies_111
+  - first:
+      213: 3971098836909441095
+    second: paladin_allies_112
+  - first:
+      213: -6962304712776338255
+    second: paladin_allies_113
+  - first:
+      213: -4852587895390788648
+    second: paladin_allies_114
+  - first:
+      213: 8449050837937295982
+    second: paladin_allies_115
+  - first:
+      213: 2565510718865351110
+    second: paladin_allies_116
+  - first:
+      213: 7240140279935802899
+    second: paladin_allies_117
+  - first:
+      213: -6056086555349000207
+    second: paladin_allies_118
+  - first:
+      213: 1395242175314752333
+    second: paladin_allies_119
+  - first:
+      213: -6705269164197808533
+    second: paladin_allies_120
+  - first:
+      213: 9181237025025116674
+    second: paladin_allies_121
+  - first:
+      213: -2873399922034719786
+    second: paladin_allies_122
+  - first:
+      213: -2478641971827339594
+    second: paladin_allies_123
+  - first:
+      213: -4908714673389847833
+    second: paladin_allies_124
+  - first:
+      213: 7242584465660565296
+    second: paladin_allies_125
+  - first:
+      213: 4189545381281848109
+    second: paladin_allies_126
+  - first:
+      213: 7883252533327666988
+    second: paladin_allies_127
+  - first:
+      213: -2192049539791820034
+    second: paladin_allies_128
+  - first:
+      213: 6360670396650582410
+    second: paladin_allies_129
+  - first:
+      213: 3061416076190424516
+    second: paladin_allies_130
+  - first:
+      213: 1737572915762642114
+    second: paladin_allies_131
+  - first:
+      213: -6823160733400129144
+    second: paladin_allies_132
+  - first:
+      213: 3422224469122731514
+    second: paladin_allies_133
+  - first:
+      213: -2944501793821935078
+    second: paladin_allies_134
+  - first:
+      213: -698191814552544537
+    second: paladin_allies_135
+  - first:
+      213: -173559843372774950
+    second: paladin_allies_136
+  - first:
+      213: 648868292163476248
+    second: paladin_allies_137
+  - first:
+      213: -8587722442795923855
+    second: paladin_allies_138
+  - first:
+      213: -5759341904826168402
+    second: paladin_allies_139
+  - first:
+      213: -7817916965982261193
+    second: paladin_allies_140
+  - first:
+      213: 2686438756554626628
+    second: paladin_allies_141
+  - first:
+      213: 8992364117633103238
+    second: paladin_allies_142
+  - first:
+      213: 65398035023831731
+    second: paladin_allies_143
+  - first:
+      213: -4984483227594041320
+    second: paladin_allies_144
+  - first:
+      213: 845436507393036291
+    second: paladin_allies_145
+  - first:
+      213: 6106841716273317357
+    second: paladin_allies_146
+  - first:
+      213: 7627289828063246629
+    second: paladin_allies_147
+  - first:
+      213: -527165327271919070
+    second: paladin_allies_148
+  - first:
+      213: 371276339830825485
+    second: paladin_allies_149
+  - first:
+      213: -2596651640748840922
+    second: paladin_allies_150
+  - first:
+      213: -398830778211480430
+    second: paladin_allies_151
+  - first:
+      213: 8634047828892161169
+    second: paladin_allies_152
+  - first:
+      213: 1225876927290024503
+    second: paladin_allies_153
+  - first:
+      213: -8444548970422732029
+    second: paladin_allies_154
+  - first:
+      213: 7913139163650110795
+    second: paladin_allies_155
+  - first:
+      213: 5721679283995411024
+    second: paladin_allies_156
+  - first:
+      213: 5024591780885902223
+    second: paladin_allies_157
+  - first:
+      213: -8914947345818272972
+    second: paladin_allies_158
+  - first:
+      213: 4248076806326764659
+    second: paladin_allies_159
+  - first:
+      213: -3127871781087528519
+    second: paladin_allies_160
+  - first:
+      213: -4536212506719859089
+    second: paladin_allies_161
+  - first:
+      213: 4177115926011803546
+    second: paladin_allies_162
+  - first:
+      213: 5324008453373127705
+    second: paladin_allies_163
+  - first:
+      213: 4219038992888383718
+    second: paladin_allies_164
+  - first:
+      213: 4009015974681765746
+    second: paladin_allies_165
+  - first:
+      213: -3565392183833499575
+    second: paladin_allies_166
+  - first:
+      213: -8501662933194677749
+    second: paladin_allies_167
+  - first:
+      213: 1145261191884424717
+    second: paladin_allies_168
+  - first:
+      213: 7205079548248106780
+    second: paladin_allies_169
+  - first:
+      213: -3410920155143624428
+    second: paladin_allies_170
+  - first:
+      213: 8248065426531253810
+    second: paladin_allies_171
+  - first:
+      213: 4280935261865497349
+    second: paladin_allies_172
+  - first:
+      213: 9090443314113196321
+    second: paladin_allies_173
+  - first:
+      213: 1392617576260910543
+    second: paladin_allies_174
+  - first:
+      213: -8038498348580475825
+    second: paladin_allies_175
+  - first:
+      213: 95716773952046691
+    second: paladin_allies_176
+  - first:
+      213: -2913319359322829486
+    second: paladin_allies_177
+  - first:
+      213: -8155323331067083755
+    second: paladin_allies_178
+  - first:
+      213: 3786814496141068561
+    second: paladin_allies_179
+  - first:
+      213: -5237555200923006830
+    second: paladin_allies_180
+  - first:
+      213: -5513563439007080715
+    second: paladin_allies_181
+  - first:
+      213: 3981438841181020901
+    second: paladin_allies_182
+  - first:
+      213: -922077148233405673
+    second: paladin_allies_183
+  - first:
+      213: 5971538313437226900
+    second: paladin_allies_184
+  - first:
+      213: -5758027060745664184
+    second: paladin_allies_185
+  - first:
+      213: 2766973667638351525
+    second: paladin_allies_186
+  - first:
+      213: -2952991800677798882
+    second: paladin_allies_187
+  - first:
+      213: 1640105301493249033
+    second: paladin_allies_188
+  - first:
+      213: -7132557556176431658
+    second: paladin_allies_189
+  - first:
+      213: 319296804619052094
+    second: paladin_allies_190
+  - first:
+      213: -3677253083178432436
+    second: paladin_allies_191
+  - first:
+      213: 2034733498360260039
+    second: paladin_allies_192
+  - first:
+      213: -5257993928598393024
+    second: paladin_allies_193
+  - first:
+      213: 4338185150097827657
+    second: paladin_allies_194
+  - first:
+      213: -4254271946852933902
+    second: paladin_allies_195
+  - first:
+      213: 4890509630323213881
+    second: paladin_allies_196
+  - first:
+      213: 4385242668468385183
+    second: paladin_allies_197
+  - first:
+      213: 4111108249901775934
+    second: paladin_allies_198
+  - first:
+      213: 7314895555759905509
+    second: paladin_allies_199
+  - first:
+      213: -3183515078571358307
+    second: paladin_allies_200
+  - first:
+      213: 6989848377676117315
+    second: paladin_allies_201
+  - first:
+      213: -3112704804622431298
+    second: paladin_allies_202
+  - first:
+      213: -8426043140788757393
+    second: paladin_allies_203
+  - first:
+      213: 900432751383263729
+    second: paladin_allies_204
+  - first:
+      213: 4889697567797765352
+    second: paladin_allies_205
+  - first:
+      213: 4387171210094944134
+    second: paladin_allies_206
+  - first:
+      213: 442766001619752884
+    second: paladin_allies_207
+  - first:
+      213: -7483171037837711920
+    second: paladin_allies_208
+  - first:
+      213: 4444361931287429468
+    second: paladin_allies_209
+  - first:
+      213: 2576547018071711905
+    second: paladin_allies_210
+  - first:
+      213: -7358688321953822561
+    second: paladin_allies_211
+  - first:
+      213: 41047808286112800
+    second: paladin_allies_212
+  - first:
+      213: -5523310962733571197
+    second: paladin_allies_213
+  - first:
+      213: 1480094442371504250
+    second: paladin_allies_214
+  - first:
+      213: -4882964513377789849
+    second: paladin_allies_215
+  - first:
+      213: 4704383217089806482
+    second: paladin_allies_216
+  - first:
+      213: -8920960489366452245
+    second: paladin_allies_217
+  - first:
+      213: 7176531288850187425
+    second: paladin_allies_218
+  - first:
+      213: 8415013234865448003
+    second: paladin_allies_219
+  - first:
+      213: -7497280204138412991
+    second: paladin_allies_220
+  - first:
+      213: 5404791282833558014
+    second: paladin_allies_221
+  - first:
+      213: -3133842452056213169
+    second: paladin_allies_222
+  - first:
+      213: -2344430574892767479
+    second: paladin_allies_223
+  - first:
+      213: 98344386435905005
+    second: paladin_allies_224
+  - first:
+      213: -4022935509627276007
+    second: paladin_allies_225
+  - first:
+      213: 7744897639872429363
+    second: paladin_allies_226
+  - first:
+      213: 1428451857762417634
+    second: paladin_allies_227
+  - first:
+      213: 4731946974780702467
+    second: paladin_allies_228
+  - first:
+      213: 7866618423976236203
+    second: paladin_allies_229
+  - first:
+      213: 1891181036960948882
+    second: paladin_allies_230
+  - first:
+      213: -8171556528401533876
+    second: paladin_allies_231
+  - first:
+      213: 3973360525687061170
+    second: paladin_allies_232
+  - first:
+      213: 3331074439113118354
+    second: paladin_allies_233
+  - first:
+      213: -8780912603491620886
+    second: paladin_allies_234
+  - first:
+      213: 6376155094520181488
+    second: paladin_allies_235
+  - first:
+      213: 7795092534863532729
+    second: paladin_allies_236
+  - first:
+      213: -8329971305548934526
+    second: paladin_allies_237
+  - first:
+      213: 5181827289828159082
+    second: paladin_allies_238
+  - first:
+      213: 3957839768419313402
+    second: paladin_allies_239
+  - first:
+      213: -8254685089228508915
+    second: paladin_allies_240
+  - first:
+      213: -3383023593939487770
+    second: paladin_allies_241
+  - first:
+      213: -214814737522604883
+    second: paladin_allies_242
+  - first:
+      213: -881550556526993730
+    second: paladin_allies_243
+  - first:
+      213: -2829990803882247456
+    second: paladin_allies_244
+  - first:
+      213: 7774513059403467467
+    second: paladin_allies_245
+  - first:
+      213: -3401020666605096840
+    second: paladin_allies_246
+  - first:
+      213: 1114419175110608868
+    second: paladin_allies_247
+  - first:
+      213: 5580358865563360501
+    second: paladin_allies_248
+  - first:
+      213: -3227359796385653966
+    second: paladin_allies_249
+  - first:
+      213: -6413261867166779000
+    second: paladin_allies_250
+  - first:
+      213: 6042919318041483034
+    second: paladin_allies_251
+  - first:
+      213: 3940166161541262079
+    second: paladin_allies_252
+  - first:
+      213: 1047823682260183388
+    second: paladin_allies_253
+  - first:
+      213: 3801498310534660211
+    second: paladin_allies_254
+  - first:
+      213: -1913613269387555789
+    second: paladin_allies_255
+  - first:
+      213: 1343016700842428561
+    second: paladin_allies_256
+  - first:
+      213: 2526613919000187150
+    second: paladin_allies_257
+  - first:
+      213: 7438701075511450599
+    second: paladin_allies_258
+  - first:
+      213: 4859090693800674355
+    second: paladin_allies_259
+  - first:
+      213: 398779850711571028
+    second: paladin_allies_260
+  - first:
+      213: -7131055240855448153
+    second: paladin_allies_261
+  - first:
+      213: 3207247196044158709
+    second: paladin_allies_262
+  - first:
+      213: 1784788767826209257
+    second: paladin_allies_263
+  - first:
+      213: -3866695241278797984
+    second: paladin_allies_264
+  - first:
+      213: 138609148441818300
+    second: paladin_allies_265
+  - first:
+      213: 5695478131502436179
+    second: paladin_allies_266
+  - first:
+      213: -1824427780008537438
+    second: paladin_allies_267
+  - first:
+      213: 2738738717757505419
+    second: paladin_allies_268
+  - first:
+      213: -3953341476438619463
+    second: paladin_allies_269
+  - first:
+      213: -2563693705314345210
+    second: paladin_allies_270
+  - first:
+      213: 5139886505993652431
+    second: paladin_allies_271
+  - first:
+      213: -8175773152954119577
+    second: paladin_allies_272
+  - first:
+      213: -8523965277470548581
+    second: paladin_allies_273
+  - first:
+      213: -2114867725063820666
+    second: paladin_allies_274
+  - first:
+      213: -7070881218698741978
+    second: paladin_allies_275
+  - first:
+      213: -8309553531607571547
+    second: paladin_allies_276
+  - first:
+      213: -3836927404240418461
+    second: paladin_allies_277
+  - first:
+      213: -5442316514101653717
+    second: paladin_allies_278
+  - first:
+      213: 3692261627674013232
+    second: paladin_allies_279
+  - first:
+      213: 3950867618973874154
+    second: paladin_allies_280
+  - first:
+      213: -8323992911458235772
+    second: paladin_allies_281
+  - first:
+      213: -2582532378814852554
+    second: paladin_allies_282
+  - first:
+      213: 2778710211909458544
+    second: paladin_allies_283
+  - first:
+      213: 6333627336502296314
+    second: paladin_allies_284
+  - first:
+      213: 1394166680626752545
+    second: paladin_allies_285
+  - first:
+      213: 5581360211418200229
+    second: paladin_allies_286
+  - first:
+      213: 5494526585448464733
+    second: paladin_allies_287
+  - first:
+      213: 7407672042325169670
+    second: paladin_allies_288
+  - first:
+      213: -8870008055818663302
+    second: paladin_allies_289
+  - first:
+      213: -3096918750589253108
+    second: paladin_allies_290
+  - first:
+      213: -6200914676967845550
+    second: paladin_allies_291
+  - first:
+      213: -4200187254329183108
+    second: paladin_allies_292
+  - first:
+      213: 5756443736186819268
+    second: paladin_allies_293
+  - first:
+      213: 7270562035196091306
+    second: paladin_allies_294
+  - first:
+      213: 292145879185708888
+    second: paladin_allies_295
+  - first:
+      213: 5216091086865410736
+    second: paladin_allies_296
+  - first:
+      213: 8207065952268263173
+    second: paladin_allies_297
+  - first:
+      213: 5965446211693570342
+    second: paladin_allies_298
+  - first:
+      213: -1075801473915765001
+    second: paladin_allies_299
+  - first:
+      213: 1526870372527879226
+    second: paladin_allies_300
+  - first:
+      213: 5382667628934975973
+    second: paladin_allies_301
+  - first:
+      213: -5891662971906260416
+    second: paladin_allies_302
+  - first:
+      213: 8628762476948471880
+    second: paladin_allies_303
+  - first:
+      213: 3316495655934355743
+    second: paladin_allies_304
+  - first:
+      213: 4506414520342992105
+    second: paladin_allies_305
+  - first:
+      213: 2494760265250216166
+    second: paladin_allies_306
+  - first:
+      213: -8386295245795140852
+    second: paladin_allies_307
+  - first:
+      213: 7847477959192660651
+    second: paladin_allies_308
+  - first:
+      213: 522948959894519019
+    second: paladin_allies_309
+  - first:
+      213: 454938170397672502
+    second: paladin_allies_310
+  - first:
+      213: 1083273451412107453
+    second: paladin_allies_311
+  - first:
+      213: 7413786606058055742
+    second: paladin_allies_312
+  - first:
+      213: -7279777162619956715
+    second: paladin_allies_313
+  - first:
+      213: 5437745742778677455
+    second: paladin_allies_314
+  - first:
+      213: -7754178651389812494
+    second: paladin_allies_315
+  - first:
+      213: -9176592058404459504
+    second: paladin_allies_316
+  - first:
+      213: 5133856402057779390
+    second: paladin_allies_317
+  - first:
+      213: -7064923411229349003
+    second: paladin_allies_318
+  - first:
+      213: -1451820527341759441
+    second: paladin_allies_319
+  - first:
+      213: 4403928279123923669
+    second: paladin_allies_320
+  - first:
+      213: 3352653215157659503
+    second: paladin_allies_321
+  - first:
+      213: -2063604253938064369
+    second: paladin_allies_322
+  - first:
+      213: 9085173112355291491
+    second: paladin_allies_323
+  - first:
+      213: -2425085391247238415
+    second: paladin_allies_324
+  - first:
+      213: -942064947374114518
+    second: paladin_allies_325
+  - first:
+      213: 9165525226724557843
+    second: paladin_allies_326
+  - first:
+      213: 8337837211086291714
+    second: paladin_allies_327
+  - first:
+      213: -44146586114242939
+    second: paladin_allies_328
+  - first:
+      213: -4630300306678514918
+    second: paladin_allies_329
+  - first:
+      213: 1812600112009510807
+    second: paladin_allies_330
+  - first:
+      213: -5100295252994975365
+    second: paladin_allies_331
+  - first:
+      213: 6803189737498629717
+    second: paladin_allies_332
+  - first:
+      213: -5375997452410964523
+    second: paladin_allies_333
+  - first:
+      213: 6078344545614698186
+    second: paladin_allies_334
+  - first:
+      213: 5624007884164164020
+    second: paladin_allies_335
+  - first:
+      213: -6247809588514108076
+    second: paladin_allies_336
+  - first:
+      213: 8799026601090511464
+    second: paladin_allies_337
+  - first:
+      213: -390894619875524921
+    second: paladin_allies_338
+  - first:
+      213: 4646040517243604488
+    second: paladin_allies_339
+  - first:
+      213: -4267852233611636011
+    second: paladin_allies_340
+  - first:
+      213: -6029028466487745093
+    second: paladin_allies_341
+  - first:
+      213: 3950911809122439906
+    second: paladin_allies_342
+  - first:
+      213: 3144404728099334669
+    second: paladin_allies_343
+  - first:
+      213: -6338025776754779129
+    second: paladin_allies_344
+  - first:
+      213: 1300561618195736666
+    second: paladin_allies_345
+  - first:
+      213: -8485152479697150573
+    second: paladin_allies_346
+  - first:
+      213: -380960235816507106
+    second: paladin_allies_347
+  - first:
+      213: 453755433886647016
+    second: paladin_allies_348
+  - first:
+      213: 8870734362304772122
+    second: paladin_allies_349
+  - first:
+      213: -7731854840525060250
+    second: paladin_allies_350
+  - first:
+      213: 1270599733466657640
+    second: paladin_allies_351
+  - first:
+      213: -4786448173683449321
+    second: paladin_allies_352
+  - first:
+      213: -1242328920745866099
+    second: paladin_allies_353
+  - first:
+      213: 9222478672344796979
+    second: paladin_allies_354
+  - first:
+      213: 1612760058390556060
+    second: paladin_allies_355
+  - first:
+      213: 5256532846423572741
+    second: paladin_allies_356
+  - first:
+      213: 450003600598139077
+    second: paladin_allies_357
+  - first:
+      213: -5176912204425818243
+    second: paladin_allies_358
+  - first:
+      213: 684342041653318934
+    second: paladin_allies_359
+  - first:
+      213: -6661016753150149775
+    second: paladin_allies_360
+  - first:
+      213: 4380167405483564136
+    second: paladin_allies_361
+  - first:
+      213: -2949183243257165773
+    second: paladin_allies_362
+  - first:
+      213: 5977434285736256137
+    second: paladin_allies_363
+  - first:
+      213: 2942548473933319606
+    second: paladin_allies_364
+  - first:
+      213: 4676533616503589283
+    second: paladin_allies_365
+  - first:
+      213: 4366173914848507078
+    second: paladin_allies_366
+  - first:
+      213: -4432293657376329715
+    second: paladin_allies_367
+  - first:
+      213: 5409019919096042239
+    second: paladin_allies_368
+  - first:
+      213: -8451195207705785682
+    second: paladin_allies_369
+  - first:
+      213: -5617230957651867539
+    second: paladin_allies_370
+  - first:
+      213: 1471701030969372857
+    second: paladin_allies_371
+  - first:
+      213: -2764772497924438446
+    second: paladin_allies_372
+  - first:
+      213: -9199661804940051057
+    second: paladin_allies_373
+  - first:
+      213: -6716255512330887307
+    second: paladin_allies_374
+  - first:
+      213: -1063417504546153492
+    second: paladin_allies_375
+  - first:
+      213: 8864775569755083552
+    second: paladin_allies_376
+  - first:
+      213: 559615180934919742
+    second: paladin_allies_377
+  - first:
+      213: 5288920889298954127
+    second: paladin_allies_378
+  - first:
+      213: 2847513250441707834
+    second: paladin_allies_379
+  - first:
+      213: 73512531919605051
+    second: paladin_allies_380
+  - first:
+      213: 8245798506856056224
+    second: paladin_allies_381
+  - first:
+      213: -3402462458644851370
+    second: paladin_allies_382
+  - first:
+      213: 2929648236482225653
+    second: paladin_allies_383
+  - first:
+      213: -5001288828655290309
+    second: paladin_allies_384
+  - first:
+      213: -8382124133363542703
+    second: paladin_allies_385
+  - first:
+      213: 9212593419601320471
+    second: paladin_allies_386
+  - first:
+      213: 4907494159608950030
+    second: paladin_allies_387
+  - first:
+      213: -3579347002016443727
+    second: paladin_allies_388
+  - first:
+      213: -8891018558412174640
+    second: paladin_allies_389
+  - first:
+      213: -3807373109706451347
+    second: paladin_allies_390
+  - first:
+      213: 3658087345800098985
+    second: paladin_allies_391
+  - first:
+      213: 984584250896925099
+    second: paladin_allies_392
+  - first:
+      213: 7018277858954334687
+    second: paladin_allies_393
+  - first:
+      213: 1834784858487902638
+    second: paladin_allies_394
+  - first:
+      213: -6250889725725176259
+    second: paladin_allies_395
+  - first:
+      213: 6547583966592498658
+    second: paladin_allies_396
+  - first:
+      213: 1277347725883217279
+    second: paladin_allies_397
+  - first:
+      213: 9188873109523068971
+    second: paladin_allies_398
+  - first:
+      213: 2707026673856919436
+    second: paladin_allies_399
+  - first:
+      213: 2378461189769589661
+    second: paladin_allies_400
+  - first:
+      213: -4746488619460521801
+    second: paladin_allies_401
+  - first:
+      213: 4316227468489495121
+    second: paladin_allies_402
+  - first:
+      213: -4310060881909454525
+    second: paladin_allies_403
+  - first:
+      213: 1260994233500774403
+    second: paladin_allies_404
+  - first:
+      213: -2299052990816544944
+    second: paladin_allies_405
+  - first:
+      213: -7401666970669893145
+    second: paladin_allies_406
+  - first:
+      213: -9039156436410183738
+    second: paladin_allies_407
+  - first:
+      213: 5007520303817584253
+    second: paladin_allies_408
+  - first:
+      213: 7036916219094456673
+    second: paladin_allies_409
+  - first:
+      213: -5764430084401224617
+    second: paladin_allies_410
+  - first:
+      213: -5658424724297291535
+    second: paladin_allies_411
+  - first:
+      213: 112289915178644341
+    second: paladin_allies_412
+  - first:
+      213: 6674635364841354824
+    second: paladin_allies_413
+  - first:
+      213: 2889517266699880729
+    second: paladin_allies_414
+  - first:
+      213: -6565137208929283790
+    second: paladin_allies_415
+  - first:
+      213: 5394828955624904437
+    second: paladin_allies_416
+  - first:
+      213: 6087007444552126018
+    second: paladin_allies_417
+  - first:
+      213: -6455583306345841689
+    second: paladin_allies_418
+  - first:
+      213: -9084741122340812171
+    second: paladin_allies_419
+  - first:
+      213: 6656504373780359955
+    second: paladin_allies_420
+  - first:
+      213: 5244721625917398604
+    second: paladin_allies_421
+  - first:
+      213: -2728666731274647227
+    second: paladin_allies_422
+  - first:
+      213: 8782550134189305245
+    second: paladin_allies_423
+  - first:
+      213: 336556512255109032
+    second: paladin_allies_424
+  - first:
+      213: -4865883738380526506
+    second: paladin_allies_425
+  - first:
+      213: -2997691616189997642
+    second: paladin_allies_426
+  - first:
+      213: 4651399755123970258
+    second: paladin_allies_427
+  - first:
+      213: 6910296999636799099
+    second: paladin_allies_428
+  - first:
+      213: 3067977083026116106
+    second: paladin_allies_429
+  - first:
+      213: -2672047528235034448
+    second: paladin_allies_430
+  - first:
+      213: 4383181250876922875
+    second: paladin_allies_431
+  - first:
+      213: -6947211897692931974
+    second: paladin_allies_432
+  - first:
+      213: -2452950454908156956
+    second: paladin_allies_433
+  - first:
+      213: 6927543411872406156
+    second: paladin_allies_434
+  - first:
+      213: -9072558641540247214
+    second: paladin_allies_435
+  - first:
+      213: 8204207403839227646
+    second: paladin_allies_436
+  - first:
+      213: -2563272344424723752
+    second: paladin_allies_437
+  - first:
+      213: -4288168029467234066
+    second: paladin_allies_438
+  - first:
+      213: -3360222581456855196
+    second: paladin_allies_439
+  - first:
+      213: -4480033068886288041
+    second: paladin_allies_440
+  - first:
+      213: 8871505471692014965
+    second: paladin_allies_441
+  - first:
+      213: -4722103943997317963
+    second: paladin_allies_442
+  - first:
+      213: -7083783722667169105
+    second: paladin_allies_443
+  - first:
+      213: -6279907710936708611
+    second: paladin_allies_444
+  - first:
+      213: 571300822332521114
+    second: paladin_allies_445
+  - first:
+      213: 2492102582666323356
+    second: paladin_allies_446
+  - first:
+      213: 5051892730667622962
+    second: paladin_allies_447
+  - first:
+      213: 1217321766266238645
+    second: paladin_allies_448
+  - first:
+      213: -3097662588256554650
+    second: paladin_allies_449
+  - first:
+      213: 4858343428501626218
+    second: paladin_allies_450
+  - first:
+      213: -2811845681377620057
+    second: paladin_allies_451
+  - first:
+      213: -9021265966198589286
+    second: paladin_allies_452
+  - first:
+      213: 8694435346850923340
+    second: paladin_allies_453
+  - first:
+      213: -6151776262175184398
+    second: paladin_allies_454
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: paladin_allies_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 453
+        width: 47
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd528d24062117900800000000000000
+      internalID: 680345223357277661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 454
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ddf2a5bf14ca6b0800000000000000
+      internalID: -5283775715006751475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 454
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47488cc1232ff6c10800000000000000
+      internalID: 2049122652522054772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 454
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e64d63ad02fd5fa0800000000000000
+      internalID: -5810221803847727391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_4
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 454
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70bf35c38ab4b51f0800000000000000
+      internalID: -1055166501749523705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_5
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 454
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7100e395f60f3460800000000000000
+      internalID: 7223499979143250299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_6
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 454
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0f613754c699fa0800000000000000
+      internalID: -5793480400096005939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_7
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 454
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a2895e8f9468c790800000000000000
+      internalID: -7509641742189493595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_8
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 454
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca7279a9a76ecc130800000000000000
+      internalID: 3588496417361438636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 390
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da23925c638406510800000000000000
+      internalID: 1540310472633954989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 390
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b334344a1b3e3f80800000000000000
+      internalID: -8124991693730335816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_11
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 390
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0efc35897975d00800000000000000
+      internalID: 961403725963845821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_12
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 390
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2a587d4892d74a0800000000000000
+      internalID: -6594068628872256825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_13
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 390
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b969549182af8950800000000000000
+      internalID: 6453555468468578736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_14
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 390
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2fe11c7ed79a61b0800000000000000
+      internalID: -5662546599644893398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_15
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 390
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d21e3d972d0e6d0800000000000000
+      internalID: -2963137134122160776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_16
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 390
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54ae8842c2f55040800000000000000
+      internalID: 4635878307702678622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_17
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 390
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d321a5ae72a4e2a10800000000000000
+      internalID: 1886526829210767933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_18
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 326
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df01af89c73396da0800000000000000
+      internalID: -5951168822357913347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_19
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 326
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e61376062d2f41e0800000000000000
+      internalID: -2211499250675411223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_20
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 326
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a6a4f4d87398a6b0800000000000000
+      internalID: -5284812015541115225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_21
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 326
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7bb0b42bbae61600800000000000000
+      internalID: 438796103210548090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_22
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 326
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64695d31988ec640800000000000000
+      internalID: 5102165585238254701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_23
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 326
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3fe85436d34eb50800000000000000
+      internalID: 6621484848719524842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_24
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 326
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f58cec29b662df0800000000000000
+      internalID: -205358454720143547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_25
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 326
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30dbe89cc10182100800000000000000
+      internalID: 83334308933057795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_26
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 326
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7abae67f6704e00800000000000000
+      internalID: 1026951520126216175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_27
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 262
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb4e7f6dc9a15e360800000000000000
+      internalID: 7198188840345396414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_28
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 262
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536dd544957d4df80800000000000000
+      internalID: -8082598652824136139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_29
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 262
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2ae69c95bbbbb10800000000000000
+      internalID: 1998396853974901428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_30
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 262
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8469d2f7ebb3c0660800000000000000
+      internalID: 7353317980952696392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_31
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 262
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128f426c5d64414b0800000000000000
+      internalID: -5470669763382020063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_32
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 262
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5ef34b131616460800000000000000
+      internalID: 7233169342639105452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_33
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 262
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a322d9ad9e1d58f0800000000000000
+      internalID: -550249916961512537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_34
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 262
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82dce60d38592c970800000000000000
+      internalID: 8773739417441324328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_35
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 262
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 890b848620a74b2a0800000000000000
+      internalID: -6722614192999190376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 197
+        width: 47
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b5ae76d55bbcdf0800000000000000
+      internalID: -158833949061522582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_37
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 198
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96e755b8a74da5930800000000000000
+      internalID: 4132849230854585961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_38
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c38df8b046c93c20800000000000000
+      internalID: 3186796192625165256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_39
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 198
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca2667d2e6a6c9ee0800000000000000
+      internalID: -1253009574874160468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_40
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 198
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea590a50ce4ccd150800000000000000
+      internalID: 5898806129934243246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_41
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 198
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1486c9e1d68bb88c0800000000000000
+      internalID: -3995897465556670399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_42
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 134
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b2b6309b3741cc0800000000000000
+      internalID: -3741238151974540429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 134
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d112f38c40bf6800800000000000000
+      internalID: 607898317395988951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 134
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e3d7386881025430800000000000000
+      internalID: 3770077523438195680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_45
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 134
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3567c710a6640630800000000000000
+      internalID: 3892348815734695230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_46
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 134
+        width: 44
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a126a3f46c373e900800000000000000
+      internalID: 712540461624615450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_47
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 134
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3ee6629c7be8540800000000000000
+      internalID: 5012145509871051774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_48
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 70
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50256cc26449c2b0800000000000000
+      internalID: -5563840673512873893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_49
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 69
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0921740360d5d3320800000000000000
+      internalID: 2539288046067978896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_50
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 70
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d75914d0d60397d0800000000000000
+      internalID: -2912977039997184048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_51
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 70
+        width: 33
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6faeb8a69909590800000000000000
+      internalID: -7669461482518939981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_52
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 70
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73efd883c6e3b42e0800000000000000
+      internalID: -2140548563358319049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_53
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 70
+        width: 43
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ab8fa3de8ac4d60800000000000000
+      internalID: 7875855585214249493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_54
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 6
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d9454faca075b10800000000000000
+      internalID: 1970055228796738880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_55
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 6
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e74fed845575fe550800000000000000
+      internalID: 6192264036464129150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_56
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 6
+        width: 33
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65aaa1a2e3c49f4c0800000000000000
+      internalID: -4253284543196648874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_57
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 6
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe865866bb8f942e0800000000000000
+      internalID: -2140906664075368209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_58
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 6
+        width: 44
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d55e3ec96f9e99d00800000000000000
+      internalID: 980071639333201245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladin_allies_59
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 6
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91cbc297b886178f0800000000000000
+      internalID: -544539131692401639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9244eb71438d65048b087cc93b179983
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      paladin_allies_0: 680345223357277661
+      paladin_allies_1: -5283775715006751475
+      paladin_allies_10: -8124991693730335816
+      paladin_allies_11: 961403725963845821
+      paladin_allies_12: -6594068628872256825
+      paladin_allies_13: 6453555468468578736
+      paladin_allies_14: -5662546599644893398
+      paladin_allies_15: -2963137134122160776
+      paladin_allies_16: 4635878307702678622
+      paladin_allies_17: 1886526829210767933
+      paladin_allies_18: -5951168822357913347
+      paladin_allies_19: -2211499250675411223
+      paladin_allies_2: 2049122652522054772
+      paladin_allies_20: -5284812015541115225
+      paladin_allies_21: 438796103210548090
+      paladin_allies_22: 5102165585238254701
+      paladin_allies_23: 6621484848719524842
+      paladin_allies_24: -205358454720143547
+      paladin_allies_25: 83334308933057795
+      paladin_allies_26: 1026951520126216175
+      paladin_allies_27: 7198188840345396414
+      paladin_allies_28: -8082598652824136139
+      paladin_allies_29: 1998396853974901428
+      paladin_allies_3: -5810221803847727391
+      paladin_allies_30: 7353317980952696392
+      paladin_allies_31: -5470669763382020063
+      paladin_allies_32: 7233169342639105452
+      paladin_allies_33: -550249916961512537
+      paladin_allies_34: 8773739417441324328
+      paladin_allies_35: -6722614192999190376
+      paladin_allies_36: -158833949061522582
+      paladin_allies_37: 4132849230854585961
+      paladin_allies_38: 3186796192625165256
+      paladin_allies_39: -1253009574874160468
+      paladin_allies_4: -1055166501749523705
+      paladin_allies_40: 5898806129934243246
+      paladin_allies_41: -3995897465556670399
+      paladin_allies_42: -3741238151974540429
+      paladin_allies_43: 607898317395988951
+      paladin_allies_44: 3770077523438195680
+      paladin_allies_45: 3892348815734695230
+      paladin_allies_46: 712540461624615450
+      paladin_allies_47: 5012145509871051774
+      paladin_allies_48: -5563840673512873893
+      paladin_allies_49: 2539288046067978896
+      paladin_allies_5: 7223499979143250299
+      paladin_allies_50: -2912977039997184048
+      paladin_allies_51: -7669461482518939981
+      paladin_allies_52: -2140548563358319049
+      paladin_allies_53: 7875855585214249493
+      paladin_allies_54: 1970055228796738880
+      paladin_allies_55: 6192264036464129150
+      paladin_allies_56: -4253284543196648874
+      paladin_allies_57: -2140906664075368209
+      paladin_allies_58: 980071639333201245
+      paladin_allies_59: -544539131692401639
+      paladin_allies_6: -5793480400096005939
+      paladin_allies_7: -7509641742189493595
+      paladin_allies_8: 3588496417361438636
+      paladin_allies_9: 1540310472633954989
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -45,14 +45,24 @@ public static class AllyVisualGenerator
         { portraitCrop = c; fallbackColor = f; parts = p; }
     }
 
-    struct PixelProfile
+    struct SheetProfile
     {
-        public string prefix;
+        public string sheetPath;
+        public string namePrefix;
         public float animationSpeedMultiplier;
-        public PixelProfile(string prefix, float animationSpeedMultiplier = 1f)
+        public int downStart, leftStart, rightStart, upStart;
+        public int framesPerDir;
+
+        public SheetProfile(string path, string prefix, int down, int left, int right, int up, int frames = 9, float speed = 1f)
         {
-            this.prefix = prefix;
-            this.animationSpeedMultiplier = animationSpeedMultiplier;
+            sheetPath = path;
+            namePrefix = prefix;
+            animationSpeedMultiplier = speed;
+            downStart = down;
+            leftStart = left;
+            rightStart = right;
+            upStart = up;
+            framesPerDir = frames;
         }
     }
 
@@ -77,14 +87,16 @@ public static class AllyVisualGenerator
         { AllyType.Paladin, new VisualSpec(new Rect(0.12f,0.44f,0.76f,0.50f), new Color(0.14f,0.28f,0.72f), CommonParts) },
     };
 
-    static readonly Dictionary<AllyType, PixelProfile> PixelProfiles = new()
+    // 스프라이트시트 프로필: (down, left, right, up) 시작 인덱스 × 방향당 9프레임
+    // Row 0 = 뒤(up), Row 1 = 왼쪽, Row 2 = 앞(down), Row 3 = 오른쪽
+    static readonly Dictionary<AllyType, SheetProfile> SheetProfiles = new()
     {
-        { AllyType.Warrior, new PixelProfile("kin1") },
-        { AllyType.Archer,  new PixelProfile("thf1") },
-        { AllyType.Mage,    new PixelProfile("wmg1") },
-        { AllyType.Cleric,  new PixelProfile("pdn1") },
-        { AllyType.Rogue,   new PixelProfile("nja1") },   // 닌자 — 기민한 도적
-        { AllyType.Paladin, new PixelProfile("knt1") },   // 기사 — 중갑 성기사
+        { AllyType.Warrior, new SheetProfile("Allies/pixel_allies/warrior_allies", "warrior_allies",  18,   9,  27,   0) },
+        { AllyType.Archer,  new SheetProfile("Allies/pixel_allies/archer_allies",  "archer_allies",  251, 242, 260, 233) },
+        { AllyType.Mage,    new SheetProfile("Allies/pixel_allies/wizard_allies",  "wizard_allies",   18,   9,  27,   0) },
+        { AllyType.Cleric,  new SheetProfile("Allies/pixel_allies/priest_allies",  "priest_allies",   18,   9,  27,   0) },
+        { AllyType.Rogue,   new SheetProfile("Allies/pixel_allies/theif_allies",   "theif_allies",    18,   9,  27,   0) },
+        { AllyType.Paladin, new SheetProfile("Allies/pixel_allies/paladin_allies", "paladin_allies",  18,   9,  27,   0) },
     };
 
     // ── 캐시 ────────────────────────────────────────────────────────
@@ -94,9 +106,21 @@ public static class AllyVisualGenerator
     static readonly Dictionary<(AllyType,CharDirection), Texture2D> dirTexCache   = new();
     static readonly Dictionary<string,  Sprite>                     dirSprCache   = new();
     static readonly Dictionary<string,  Sprite>                     warriorSheetSpriteCache = new();
-    static readonly Dictionary<string,  Texture2D>                  pixelTextureCache = new();
-    static readonly Dictionary<string,  Sprite>                     pixelSpriteCache = new();
+    static readonly Dictionary<string,  Dictionary<string, Sprite>> sheetDictCache = new();
+    static readonly Dictionary<string,  Sprite>                     sheetSpriteCache = new();
     static RuntimeAnimatorController warriorController;
+
+    // Archer 첫 down 프레임 높이를 기준으로 모든 아군 크기를 통일
+    static float cachedArcherRefH = -1f;
+    static float GetArcherReferenceHeight()
+    {
+        if (cachedArcherRefH > 0f) return cachedArcherRefH;
+        if (!SheetProfiles.TryGetValue(AllyType.Archer, out var p)) return 0f;
+        var spr = LoadSheetSprite(p.sheetPath, $"{p.namePrefix}_{p.downStart}", 28f, new Vector2(0.5f, 0.08f));
+        // 1.02f를 곱해 기존 Archer 크기를 그대로 유지하는 기준값으로 사용
+        cachedArcherRefH = (spr != null ? spr.bounds.size.y : 0f) * 1.02f;
+        return cachedArcherRefH;
+    }
 
     // ════════════════════════════════════════════════════════════════
     //   공개 API
@@ -104,10 +128,11 @@ public static class AllyVisualGenerator
 
     public static Sprite CreatePortraitSprite(AllyType type)
     {
-        if (PixelProfiles.TryGetValue(type, out var pixelProfile))
+        if (SheetProfiles.TryGetValue(type, out var sheetProfile))
         {
-            if (portraitCache.TryGetValue(type, out var pixelPortrait) && pixelPortrait != null) return pixelPortrait;
-            return portraitCache[type] = LoadPixelSprite($"{pixelProfile.prefix}_fr1", 20f, new Vector2(0.5f, 0.12f));
+            if (portraitCache.TryGetValue(type, out var sheetPortrait) && sheetPortrait != null) return sheetPortrait;
+            string name = $"{sheetProfile.namePrefix}_{sheetProfile.downStart}";
+            return portraitCache[type] = LoadSheetSprite(sheetProfile.sheetPath, name, 20f, new Vector2(0.5f, 0.12f));
         }
 
         if (type == AllyType.Warrior)
@@ -133,7 +158,7 @@ public static class AllyVisualGenerator
 
     public static bool BuildCharacterVisual(AllyType type, Transform parent, int sortingBaseOrder)
     {
-        if (PixelProfiles.ContainsKey(type))
+        if (SheetProfiles.ContainsKey(type))
             return BuildPixelCharacterVisual(type, parent, sortingBaseOrder);
 
         if (type == AllyType.Warrior)
@@ -155,34 +180,32 @@ public static class AllyVisualGenerator
         return true;
     }
 
-    /// <summary>Walk animation frames — multi-part 시스템에서는 사용하지 않으므로 null 반환.</summary>
+    /// <summary>방향별 보행 애니메이션 프레임 배열을 반환한다.</summary>
     public static Sprite[] GetWalkFrames(AllyType type, AllyFacingDirection dir)
     {
-        if (PixelProfiles.TryGetValue(type, out var pixelProfile))
+        if (!SheetProfiles.TryGetValue(type, out var profile))
+            return null;
+
+        int start = dir switch
         {
-            string dirCode = dir switch
-            {
-                AllyFacingDirection.Down => "fr",
-                AllyFacingDirection.Up => "bk",
-                AllyFacingDirection.Left => "lf",
-                AllyFacingDirection.Right => "rt",
-                _ => "fr"
-            };
+            AllyFacingDirection.Down  => profile.downStart,
+            AllyFacingDirection.Up    => profile.upStart,
+            AllyFacingDirection.Left  => profile.leftStart,
+            AllyFacingDirection.Right => profile.rightStart,
+            _                         => profile.downStart
+        };
 
-            return new[]
-            {
-                LoadPixelSprite($"{pixelProfile.prefix}_{dirCode}1", 28f, new Vector2(0.5f, 0.08f)),
-                LoadPixelSprite($"{pixelProfile.prefix}_{dirCode}2", 28f, new Vector2(0.5f, 0.08f)),
-            };
-        }
+        var frames = new Sprite[profile.framesPerDir];
+        for (int i = 0; i < profile.framesPerDir; i++)
+            frames[i] = LoadSheetSprite(profile.sheetPath, $"{profile.namePrefix}_{start + i}", 28f, new Vector2(0.5f, 0.08f));
 
-        return null;
+        return frames;
     }
 
     /// <summary>이미 생성된 Visual 파츠의 스프라이트를 지정 방향으로 교체한다.</summary>
     public static void ApplyDirectionSprites(AllyType type, Transform visualParent, CharDirection dir)
     {
-        if (type == AllyType.Warrior || PixelProfiles.ContainsKey(type))
+        if (type == AllyType.Warrior || SheetProfiles.ContainsKey(type))
             return;
 
         float     ppu = TexSize / WorldHeightUnits;
@@ -204,7 +227,7 @@ public static class AllyVisualGenerator
 
     static bool BuildPixelCharacterVisual(AllyType type, Transform parent, int sortingBaseOrder)
     {
-        if (!PixelProfiles.TryGetValue(type, out var pixelProfile))
+        if (!SheetProfiles.TryGetValue(type, out var profile))
             return false;
 
         Sprite[] downFrames = GetWalkFrames(type, AllyFacingDirection.Down);
@@ -213,14 +236,19 @@ public static class AllyVisualGenerator
 
         var body = new GameObject(PartBody);
         body.transform.SetParent(parent, false);
-        body.transform.localScale = Vector3.one * 1.02f;
+
+        // 궁수 첫 프레임 높이를 기준으로 모든 아군 크기를 통일
+        float refH     = GetArcherReferenceHeight();
+        float spriteH  = downFrames[0].bounds.size.y;
+        float scale    = (refH > 0.001f && spriteH > 0.001f) ? refH / spriteH : 1.02f;
+        body.transform.localScale = Vector3.one * scale;
 
         var sr = body.AddComponent<SpriteRenderer>();
         sr.sortingOrder = sortingBaseOrder;
         sr.sprite = downFrames[0];
 
         var driver = parent.gameObject.AddComponent<AllyDirectionalSprite>();
-        driver.Initialize(type, sr, pixelProfile.animationSpeedMultiplier);
+        driver.Initialize(type, sr, profile.animationSpeedMultiplier);
         return true;
     }
 
@@ -267,38 +295,37 @@ public static class AllyVisualGenerator
         return found;
     }
 
-    static Sprite LoadPixelSprite(string resourceName, float ppu, Vector2 pivot)
+    static Dictionary<string, Sprite> LoadSheetDict(string sheetPath)
     {
-        string key = $"{resourceName}_{ppu}_{pivot.x}_{pivot.y}";
-        if (pixelSpriteCache.TryGetValue(key, out var cached) && cached != null)
+        if (sheetDictCache.TryGetValue(sheetPath, out var cached) && cached != null)
             return cached;
 
-        Texture2D texture = LoadPixelTexture(resourceName);
-        if (texture == null)
-            return null;
+        var sprites = Resources.LoadAll<Sprite>(sheetPath);
+        var dict = new Dictionary<string, Sprite>(sprites.Length);
+        foreach (var spr in sprites) dict[spr.name] = spr;
 
-        texture.filterMode = FilterMode.Point;
-        texture.wrapMode = TextureWrapMode.Clamp;
+        // 픽셀 아트는 Point(Nearest) 필터로 선명하게 렌더링
+        if (sprites.Length > 0)
+        {
+            sprites[0].texture.filterMode = FilterMode.Point;
+            sprites[0].texture.wrapMode   = TextureWrapMode.Clamp;
+        }
 
-        var sprite = Sprite.Create(
-            texture,
-            new Rect(0, 0, texture.width, texture.height),
-            pivot,
-            ppu);
-
-        pixelSpriteCache[key] = sprite;
-        return sprite;
+        return sheetDictCache[sheetPath] = dict;
     }
 
-    static Texture2D LoadPixelTexture(string resourceName)
+    static Sprite LoadSheetSprite(string sheetPath, string spriteName, float ppu, Vector2 pivot)
     {
-        string path = $"Allies/pixel_allies/{resourceName}";
-        if (pixelTextureCache.TryGetValue(path, out var cached) && cached != null)
+        string key = $"{sheetPath}/{spriteName}_{ppu}_{pivot.x}_{pivot.y}";
+        if (sheetSpriteCache.TryGetValue(key, out var cached) && cached != null)
             return cached;
 
-        Texture2D texture = Resources.Load<Texture2D>(path);
-        pixelTextureCache[path] = texture;
-        return texture;
+        var dict = LoadSheetDict(sheetPath);
+        if (!dict.TryGetValue(spriteName, out var src) || src == null)
+            return null;
+
+        var spr = Sprite.Create(src.texture, src.rect, pivot, ppu);
+        return sheetSpriteCache[key] = spr;
     }
 
     // ════════════════════════════════════════════════════════════════

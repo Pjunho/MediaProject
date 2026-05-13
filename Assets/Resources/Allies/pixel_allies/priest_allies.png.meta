@@ -1,0 +1,2568 @@
+fileFormatVersion: 2
+guid: 3fb762e0475feec40a1b01827a090921
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 960095887996358000
+    second: priest_allies_0
+  - first:
+      213: 1989940548776622080
+    second: priest_allies_1
+  - first:
+      213: 1725474870686106751
+    second: priest_allies_2
+  - first:
+      213: 6762872791180643293
+    second: priest_allies_3
+  - first:
+      213: -2100908996923268448
+    second: priest_allies_4
+  - first:
+      213: -6603727867445136082
+    second: priest_allies_5
+  - first:
+      213: -9199010562546505946
+    second: priest_allies_6
+  - first:
+      213: 8457759816987771861
+    second: priest_allies_7
+  - first:
+      213: -8808930290653657216
+    second: priest_allies_8
+  - first:
+      213: 5324570255369421983
+    second: priest_allies_9
+  - first:
+      213: 9082592772260678733
+    second: priest_allies_10
+  - first:
+      213: -2747645790856581647
+    second: priest_allies_11
+  - first:
+      213: 4439252119155585401
+    second: priest_allies_12
+  - first:
+      213: -380708058150606044
+    second: priest_allies_13
+  - first:
+      213: 1279354736802095966
+    second: priest_allies_14
+  - first:
+      213: -6272722182186823966
+    second: priest_allies_15
+  - first:
+      213: -8284909735948819494
+    second: priest_allies_16
+  - first:
+      213: -6505301039741861684
+    second: priest_allies_17
+  - first:
+      213: 237430669110439239
+    second: priest_allies_18
+  - first:
+      213: -2280434364164270991
+    second: priest_allies_19
+  - first:
+      213: 1823340226562162152
+    second: priest_allies_20
+  - first:
+      213: -5106743763102137445
+    second: priest_allies_21
+  - first:
+      213: -6318203077366378216
+    second: priest_allies_22
+  - first:
+      213: -2446039963473874525
+    second: priest_allies_23
+  - first:
+      213: -6542923271428841581
+    second: priest_allies_24
+  - first:
+      213: -6553061635576507841
+    second: priest_allies_25
+  - first:
+      213: 7737282359539752719
+    second: priest_allies_26
+  - first:
+      213: 4138346982546268372
+    second: priest_allies_27
+  - first:
+      213: 8156043322854082537
+    second: priest_allies_28
+  - first:
+      213: -362172120772563440
+    second: priest_allies_29
+  - first:
+      213: -9058569479711513598
+    second: priest_allies_30
+  - first:
+      213: -4380011418790470142
+    second: priest_allies_31
+  - first:
+      213: 7380869021167415857
+    second: priest_allies_32
+  - first:
+      213: -8534065030135946289
+    second: priest_allies_33
+  - first:
+      213: -4428148558646269970
+    second: priest_allies_34
+  - first:
+      213: -7429455564536196906
+    second: priest_allies_35
+  - first:
+      213: 6649332175662472656
+    second: priest_allies_36
+  - first:
+      213: -105502267122845240
+    second: priest_allies_37
+  - first:
+      213: 945990960693204185
+    second: priest_allies_38
+  - first:
+      213: -7258870631231529949
+    second: priest_allies_39
+  - first:
+      213: 6196636233926431458
+    second: priest_allies_40
+  - first:
+      213: 4823366295020802990
+    second: priest_allies_41
+  - first:
+      213: -28055448952666816
+    second: priest_allies_42
+  - first:
+      213: 5157745730990855066
+    second: priest_allies_43
+  - first:
+      213: 5373122486658416197
+    second: priest_allies_44
+  - first:
+      213: -2408068050734579812
+    second: priest_allies_45
+  - first:
+      213: 3413528275979684509
+    second: priest_allies_46
+  - first:
+      213: 9032349071713348913
+    second: priest_allies_47
+  - first:
+      213: -8018834876343406225
+    second: priest_allies_48
+  - first:
+      213: -5213445068055095016
+    second: priest_allies_49
+  - first:
+      213: -2451651982793577726
+    second: priest_allies_50
+  - first:
+      213: 3456920291548023771
+    second: priest_allies_51
+  - first:
+      213: 1437453828425851920
+    second: priest_allies_52
+  - first:
+      213: -7345805590725262454
+    second: priest_allies_53
+  - first:
+      213: -7247236348951135155
+    second: priest_allies_54
+  - first:
+      213: -3826863892317942321
+    second: priest_allies_55
+  - first:
+      213: 95747759069827359
+    second: priest_allies_56
+  - first:
+      213: 8233573650357365828
+    second: priest_allies_57
+  - first:
+      213: -3866430532287404706
+    second: priest_allies_58
+  - first:
+      213: 4856485190293219755
+    second: priest_allies_59
+  - first:
+      213: 7335300573295780722
+    second: priest_allies_60
+  - first:
+      213: 1442610665502723837
+    second: priest_allies_61
+  - first:
+      213: 8248474118144097014
+    second: priest_allies_62
+  - first:
+      213: 1532630218131733496
+    second: priest_allies_63
+  - first:
+      213: -2840109187590580713
+    second: priest_allies_64
+  - first:
+      213: -7762171892010827336
+    second: priest_allies_65
+  - first:
+      213: -6595955528666486539
+    second: priest_allies_66
+  - first:
+      213: -1594220737292090284
+    second: priest_allies_67
+  - first:
+      213: 5319697654044745257
+    second: priest_allies_68
+  - first:
+      213: -3960104717739419678
+    second: priest_allies_69
+  - first:
+      213: 7828323503541000177
+    second: priest_allies_70
+  - first:
+      213: 6967817687917526790
+    second: priest_allies_71
+  - first:
+      213: 5658588587734102161
+    second: priest_allies_72
+  - first:
+      213: 3453617349645628389
+    second: priest_allies_73
+  - first:
+      213: 5220490944468364315
+    second: priest_allies_74
+  - first:
+      213: 6014081764916321310
+    second: priest_allies_75
+  - first:
+      213: 4413305520851016192
+    second: priest_allies_76
+  - first:
+      213: -5598595562409864795
+    second: priest_allies_77
+  - first:
+      213: 263053118741406603
+    second: priest_allies_78
+  - first:
+      213: -1833937622150406454
+    second: priest_allies_79
+  - first:
+      213: 3885010805118887146
+    second: priest_allies_80
+  - first:
+      213: 6548863694565617783
+    second: priest_allies_81
+  - first:
+      213: -6418037864452420687
+    second: priest_allies_82
+  - first:
+      213: -3322142871495820304
+    second: priest_allies_83
+  - first:
+      213: 3173949111095419041
+    second: priest_allies_84
+  - first:
+      213: 5928277391225853309
+    second: priest_allies_85
+  - first:
+      213: -3447319127031374621
+    second: priest_allies_86
+  - first:
+      213: -6435944799464662494
+    second: priest_allies_87
+  - first:
+      213: -5039385122830547157
+    second: priest_allies_88
+  - first:
+      213: 6027288442232052517
+    second: priest_allies_89
+  - first:
+      213: 3130725091023336381
+    second: priest_allies_90
+  - first:
+      213: -6923104803129473436
+    second: priest_allies_91
+  - first:
+      213: 6317670352631477241
+    second: priest_allies_92
+  - first:
+      213: -1862615261977392670
+    second: priest_allies_93
+  - first:
+      213: 8460098664446328937
+    second: priest_allies_94
+  - first:
+      213: 5835325613543235953
+    second: priest_allies_95
+  - first:
+      213: -5531802246366422279
+    second: priest_allies_96
+  - first:
+      213: -3941567004238380594
+    second: priest_allies_97
+  - first:
+      213: 394175054202300487
+    second: priest_allies_98
+  - first:
+      213: -8748029713335075841
+    second: priest_allies_99
+  - first:
+      213: -7464887062085461171
+    second: priest_allies_100
+  - first:
+      213: 4140531072756049166
+    second: priest_allies_101
+  - first:
+      213: 65550436523637399
+    second: priest_allies_102
+  - first:
+      213: 8452679350986814409
+    second: priest_allies_103
+  - first:
+      213: 9173184936526420410
+    second: priest_allies_104
+  - first:
+      213: -3322175841287610687
+    second: priest_allies_105
+  - first:
+      213: -4553307635591931564
+    second: priest_allies_106
+  - first:
+      213: 8468047985058165191
+    second: priest_allies_107
+  - first:
+      213: -2421108365971368692
+    second: priest_allies_108
+  - first:
+      213: 1499920917524606791
+    second: priest_allies_109
+  - first:
+      213: 4628611905560635506
+    second: priest_allies_110
+  - first:
+      213: -7672018701779933820
+    second: priest_allies_111
+  - first:
+      213: -3765399893332340879
+    second: priest_allies_112
+  - first:
+      213: 3280909321139275410
+    second: priest_allies_113
+  - first:
+      213: -5556012019610836804
+    second: priest_allies_114
+  - first:
+      213: 8894451225712475189
+    second: priest_allies_115
+  - first:
+      213: 4675131461688729174
+    second: priest_allies_116
+  - first:
+      213: -8832389693166110630
+    second: priest_allies_117
+  - first:
+      213: -4601354775747903909
+    second: priest_allies_118
+  - first:
+      213: -7617148599491097550
+    second: priest_allies_119
+  - first:
+      213: 2436166429090827850
+    second: priest_allies_120
+  - first:
+      213: -7304876471445021766
+    second: priest_allies_121
+  - first:
+      213: -1715253951447616924
+    second: priest_allies_122
+  - first:
+      213: -4902371167320049821
+    second: priest_allies_123
+  - first:
+      213: 8705577301804713461
+    second: priest_allies_124
+  - first:
+      213: 5700276910071937875
+    second: priest_allies_125
+  - first:
+      213: -1312737032203542351
+    second: priest_allies_126
+  - first:
+      213: 6100705291666582735
+    second: priest_allies_127
+  - first:
+      213: 591117605706020538
+    second: priest_allies_128
+  - first:
+      213: 408267740667892725
+    second: priest_allies_129
+  - first:
+      213: 5515731238600475483
+    second: priest_allies_130
+  - first:
+      213: 6158359626998586850
+    second: priest_allies_131
+  - first:
+      213: -2993231045301792728
+    second: priest_allies_132
+  - first:
+      213: -5684641564633554434
+    second: priest_allies_133
+  - first:
+      213: 7750092694027744641
+    second: priest_allies_134
+  - first:
+      213: 7154048095327212165
+    second: priest_allies_135
+  - first:
+      213: 5680448194194822174
+    second: priest_allies_136
+  - first:
+      213: 5294414892880347611
+    second: priest_allies_137
+  - first:
+      213: 216074837663859095
+    second: priest_allies_138
+  - first:
+      213: 3553871535659580363
+    second: priest_allies_139
+  - first:
+      213: -6230557520722739514
+    second: priest_allies_140
+  - first:
+      213: 8264652204815414581
+    second: priest_allies_141
+  - first:
+      213: -7098978691165679642
+    second: priest_allies_142
+  - first:
+      213: -9049787286390222146
+    second: priest_allies_143
+  - first:
+      213: -5720515910151377748
+    second: priest_allies_144
+  - first:
+      213: 3153648818731545191
+    second: priest_allies_145
+  - first:
+      213: 8122589278894087909
+    second: priest_allies_146
+  - first:
+      213: 3457774661153986336
+    second: priest_allies_147
+  - first:
+      213: 6384295629992350904
+    second: priest_allies_148
+  - first:
+      213: -1783417154121043063
+    second: priest_allies_149
+  - first:
+      213: 708804177319712055
+    second: priest_allies_150
+  - first:
+      213: 8088042222035627020
+    second: priest_allies_151
+  - first:
+      213: 5029246646231467479
+    second: priest_allies_152
+  - first:
+      213: 1171725320084982334
+    second: priest_allies_153
+  - first:
+      213: -1777526303691896017
+    second: priest_allies_154
+  - first:
+      213: -7397509034808910611
+    second: priest_allies_155
+  - first:
+      213: 8220723825064025952
+    second: priest_allies_156
+  - first:
+      213: 3603290487018510852
+    second: priest_allies_157
+  - first:
+      213: 2339424627479645958
+    second: priest_allies_158
+  - first:
+      213: 9036107621735515999
+    second: priest_allies_159
+  - first:
+      213: -2566212940709882714
+    second: priest_allies_160
+  - first:
+      213: -4131024491926866627
+    second: priest_allies_161
+  - first:
+      213: 1963454546805145874
+    second: priest_allies_162
+  - first:
+      213: -4083620838200828929
+    second: priest_allies_163
+  - first:
+      213: 4446888081994358893
+    second: priest_allies_164
+  - first:
+      213: 702202217910296026
+    second: priest_allies_165
+  - first:
+      213: -2256081356440680222
+    second: priest_allies_166
+  - first:
+      213: -105272212574772616
+    second: priest_allies_167
+  - first:
+      213: -2916408328737107228
+    second: priest_allies_168
+  - first:
+      213: 452111097204340083
+    second: priest_allies_169
+  - first:
+      213: 915637009565049885
+    second: priest_allies_170
+  - first:
+      213: -692354091023868165
+    second: priest_allies_171
+  - first:
+      213: -2834637894366393455
+    second: priest_allies_172
+  - first:
+      213: -6545130028727379292
+    second: priest_allies_173
+  - first:
+      213: -2939223954572379927
+    second: priest_allies_174
+  - first:
+      213: 617369066793748573
+    second: priest_allies_175
+  - first:
+      213: -7060882035985548429
+    second: priest_allies_176
+  - first:
+      213: -2943888967937786486
+    second: priest_allies_177
+  - first:
+      213: -7889731919892311023
+    second: priest_allies_178
+  - first:
+      213: 8738585731257896351
+    second: priest_allies_179
+  - first:
+      213: -2023494479680736887
+    second: priest_allies_180
+  - first:
+      213: -6188704889797047544
+    second: priest_allies_181
+  - first:
+      213: 2412154346336124149
+    second: priest_allies_182
+  - first:
+      213: -7918168701570942563
+    second: priest_allies_183
+  - first:
+      213: -4754974649498710936
+    second: priest_allies_184
+  - first:
+      213: 1411856209994542636
+    second: priest_allies_185
+  - first:
+      213: 5849987114151069217
+    second: priest_allies_186
+  - first:
+      213: 3695423663646841570
+    second: priest_allies_187
+  - first:
+      213: -5565234671044089201
+    second: priest_allies_188
+  - first:
+      213: 3575659271166013651
+    second: priest_allies_189
+  - first:
+      213: 2124725747975202285
+    second: priest_allies_190
+  - first:
+      213: 524915888796410946
+    second: priest_allies_191
+  - first:
+      213: 2896912997638299608
+    second: priest_allies_192
+  - first:
+      213: 2868709546175500183
+    second: priest_allies_193
+  - first:
+      213: 8456252535302314695
+    second: priest_allies_194
+  - first:
+      213: -3801169693515603793
+    second: priest_allies_195
+  - first:
+      213: -5062913610329417287
+    second: priest_allies_196
+  - first:
+      213: 4261189991040388764
+    second: priest_allies_197
+  - first:
+      213: -6145090517214667751
+    second: priest_allies_198
+  - first:
+      213: -4319781293301397429
+    second: priest_allies_199
+  - first:
+      213: -2973720022940552677
+    second: priest_allies_200
+  - first:
+      213: -5220950167084650728
+    second: priest_allies_201
+  - first:
+      213: 880469339758354848
+    second: priest_allies_202
+  - first:
+      213: 5436084655168755091
+    second: priest_allies_203
+  - first:
+      213: -4909169590107374117
+    second: priest_allies_204
+  - first:
+      213: -3459006522614988051
+    second: priest_allies_205
+  - first:
+      213: 7248261994142646891
+    second: priest_allies_206
+  - first:
+      213: -4749294630789099453
+    second: priest_allies_207
+  - first:
+      213: 3889857654729872227
+    second: priest_allies_208
+  - first:
+      213: 8107231324935514524
+    second: priest_allies_209
+  - first:
+      213: -7778889976884959930
+    second: priest_allies_210
+  - first:
+      213: 8727992406030560089
+    second: priest_allies_211
+  - first:
+      213: 776631235519097862
+    second: priest_allies_212
+  - first:
+      213: -6966465451744903072
+    second: priest_allies_213
+  - first:
+      213: 180961861106478214
+    second: priest_allies_214
+  - first:
+      213: -245641099663670225
+    second: priest_allies_215
+  - first:
+      213: -1878034925933647896
+    second: priest_allies_216
+  - first:
+      213: -4252410951000362620
+    second: priest_allies_217
+  - first:
+      213: 8077219212835201059
+    second: priest_allies_218
+  - first:
+      213: -2132361832350156422
+    second: priest_allies_219
+  - first:
+      213: -740075999762099219
+    second: priest_allies_220
+  - first:
+      213: 71595925911027690
+    second: priest_allies_221
+  - first:
+      213: 8182353956830187024
+    second: priest_allies_222
+  - first:
+      213: -1803438067910860959
+    second: priest_allies_223
+  - first:
+      213: 7155953851902633798
+    second: priest_allies_224
+  - first:
+      213: -4973350298288091955
+    second: priest_allies_225
+  - first:
+      213: -2158016420730990593
+    second: priest_allies_226
+  - first:
+      213: -1210904192668000186
+    second: priest_allies_227
+  - first:
+      213: -6502002927222984360
+    second: priest_allies_228
+  - first:
+      213: -3993273039930361163
+    second: priest_allies_229
+  - first:
+      213: 432581774775016788
+    second: priest_allies_230
+  - first:
+      213: 6337875823987785682
+    second: priest_allies_231
+  - first:
+      213: -5709714531196846919
+    second: priest_allies_232
+  - first:
+      213: -2461881311331529513
+    second: priest_allies_233
+  - first:
+      213: -7119843554889944325
+    second: priest_allies_234
+  - first:
+      213: -6255225770513245424
+    second: priest_allies_235
+  - first:
+      213: -4005891997514277644
+    second: priest_allies_236
+  - first:
+      213: -444229513955416334
+    second: priest_allies_237
+  - first:
+      213: 3133484224111916063
+    second: priest_allies_238
+  - first:
+      213: 16173505855939020
+    second: priest_allies_239
+  - first:
+      213: 7577625038732860497
+    second: priest_allies_240
+  - first:
+      213: 1651004352876225023
+    second: priest_allies_241
+  - first:
+      213: -877921644441048504
+    second: priest_allies_242
+  - first:
+      213: 8667310270825548745
+    second: priest_allies_243
+  - first:
+      213: 607762822696227659
+    second: priest_allies_244
+  - first:
+      213: 5009289314178826318
+    second: priest_allies_245
+  - first:
+      213: -3594980037531620574
+    second: priest_allies_246
+  - first:
+      213: -6793292124735239725
+    second: priest_allies_247
+  - first:
+      213: 5815050100953895986
+    second: priest_allies_248
+  - first:
+      213: -6784430852203752055
+    second: priest_allies_249
+  - first:
+      213: 9075109743044905331
+    second: priest_allies_250
+  - first:
+      213: -6577683840655595627
+    second: priest_allies_251
+  - first:
+      213: -8266166854868719255
+    second: priest_allies_252
+  - first:
+      213: 2143304693554653538
+    second: priest_allies_253
+  - first:
+      213: 7415983566354888736
+    second: priest_allies_254
+  - first:
+      213: -2699999493563946073
+    second: priest_allies_255
+  - first:
+      213: -7333677647442000775
+    second: priest_allies_256
+  - first:
+      213: -1533876979349536477
+    second: priest_allies_257
+  - first:
+      213: 4720838090516150542
+    second: priest_allies_258
+  - first:
+      213: 7066894438847173390
+    second: priest_allies_259
+  - first:
+      213: -8280997601274506818
+    second: priest_allies_260
+  - first:
+      213: 7657227672440816958
+    second: priest_allies_261
+  - first:
+      213: 2495177821373926369
+    second: priest_allies_262
+  - first:
+      213: 5052366758836579291
+    second: priest_allies_263
+  - first:
+      213: 5888521052525195209
+    second: priest_allies_264
+  - first:
+      213: 1574905213750666631
+    second: priest_allies_265
+  - first:
+      213: 330946569530902175
+    second: priest_allies_266
+  - first:
+      213: -3932642056173610030
+    second: priest_allies_267
+  - first:
+      213: -1902318922898854266
+    second: priest_allies_268
+  - first:
+      213: 2593927128196984619
+    second: priest_allies_269
+  - first:
+      213: -1040463288461487967
+    second: priest_allies_270
+  - first:
+      213: -7322218583964892753
+    second: priest_allies_271
+  - first:
+      213: 9145393866385757219
+    second: priest_allies_272
+  - first:
+      213: -5454441705909063676
+    second: priest_allies_273
+  - first:
+      213: -5450352243806694455
+    second: priest_allies_274
+  - first:
+      213: 4253192269912534817
+    second: priest_allies_275
+  - first:
+      213: 5563157084077374720
+    second: priest_allies_276
+  - first:
+      213: 2010006729616832212
+    second: priest_allies_277
+  - first:
+      213: 9048994616206352493
+    second: priest_allies_278
+  - first:
+      213: -2652108012344197546
+    second: priest_allies_279
+  - first:
+      213: 3865018448349423663
+    second: priest_allies_280
+  - first:
+      213: -7291820218455805026
+    second: priest_allies_281
+  - first:
+      213: -7194197051067728061
+    second: priest_allies_282
+  - first:
+      213: 7021110283634334891
+    second: priest_allies_283
+  - first:
+      213: -2427385678467388153
+    second: priest_allies_284
+  - first:
+      213: -1584022248207093348
+    second: priest_allies_285
+  - first:
+      213: 7781782384360987223
+    second: priest_allies_286
+  - first:
+      213: 6338273055626695725
+    second: priest_allies_287
+  - first:
+      213: -8728670359218521466
+    second: priest_allies_288
+  - first:
+      213: -4639075064145901298
+    second: priest_allies_289
+  - first:
+      213: 8443019703332787686
+    second: priest_allies_290
+  - first:
+      213: 5810975407884687796
+    second: priest_allies_291
+  - first:
+      213: -858967972445871283
+    second: priest_allies_292
+  - first:
+      213: -1764768968913077951
+    second: priest_allies_293
+  - first:
+      213: 4932017228057521141
+    second: priest_allies_294
+  - first:
+      213: 709997706966680442
+    second: priest_allies_295
+  - first:
+      213: 7026170900043659215
+    second: priest_allies_296
+  - first:
+      213: 8415494721563958897
+    second: priest_allies_297
+  - first:
+      213: -5756286791307205682
+    second: priest_allies_298
+  - first:
+      213: 8074288613232663952
+    second: priest_allies_299
+  - first:
+      213: -4048729114044200325
+    second: priest_allies_300
+  - first:
+      213: 5167886266418272396
+    second: priest_allies_301
+  - first:
+      213: 1507646590802963587
+    second: priest_allies_302
+  - first:
+      213: 8368729830471578528
+    second: priest_allies_303
+  - first:
+      213: -6994985794277251279
+    second: priest_allies_304
+  - first:
+      213: 144198128583793091
+    second: priest_allies_305
+  - first:
+      213: -7755057386109171149
+    second: priest_allies_306
+  - first:
+      213: -3583823113601784800
+    second: priest_allies_307
+  - first:
+      213: 3557342660843175084
+    second: priest_allies_308
+  - first:
+      213: -4050240042898821494
+    second: priest_allies_309
+  - first:
+      213: 5974703548312842670
+    second: priest_allies_310
+  - first:
+      213: -7008348867858471992
+    second: priest_allies_311
+  - first:
+      213: -98048833416571125
+    second: priest_allies_312
+  - first:
+      213: 8904476324869855587
+    second: priest_allies_313
+  - first:
+      213: 1518442980330402731
+    second: priest_allies_314
+  - first:
+      213: -5600956681768011070
+    second: priest_allies_315
+  - first:
+      213: -8892708936138182550
+    second: priest_allies_316
+  - first:
+      213: 1580964393687209279
+    second: priest_allies_317
+  - first:
+      213: 1270258574632511593
+    second: priest_allies_318
+  - first:
+      213: 2674362956040202588
+    second: priest_allies_319
+  - first:
+      213: -4571028096280176265
+    second: priest_allies_320
+  - first:
+      213: 7901643365778013563
+    second: priest_allies_321
+  - first:
+      213: 3368260301984298759
+    second: priest_allies_322
+  - first:
+      213: -7902155603113027241
+    second: priest_allies_323
+  - first:
+      213: -6362369027355763814
+    second: priest_allies_324
+  - first:
+      213: 2971668520031172252
+    second: priest_allies_325
+  - first:
+      213: 7547578252643262199
+    second: priest_allies_326
+  - first:
+      213: -1142317856785929970
+    second: priest_allies_327
+  - first:
+      213: 830611746619799592
+    second: priest_allies_328
+  - first:
+      213: 1724755992041396205
+    second: priest_allies_329
+  - first:
+      213: -8768486097770213533
+    second: priest_allies_330
+  - first:
+      213: -16691626070917977
+    second: priest_allies_331
+  - first:
+      213: 1848112784420094309
+    second: priest_allies_332
+  - first:
+      213: 1449335651603545764
+    second: priest_allies_333
+  - first:
+      213: -1402230081452480713
+    second: priest_allies_334
+  - first:
+      213: -6447519762201653466
+    second: priest_allies_335
+  - first:
+      213: 4497371615529832108
+    second: priest_allies_336
+  - first:
+      213: -5299514103605925284
+    second: priest_allies_337
+  - first:
+      213: 8738353872392192930
+    second: priest_allies_338
+  - first:
+      213: 2914130186069134412
+    second: priest_allies_339
+  - first:
+      213: -7120155462133370395
+    second: priest_allies_340
+  - first:
+      213: 9153806616902670246
+    second: priest_allies_341
+  - first:
+      213: 4797028823186218004
+    second: priest_allies_342
+  - first:
+      213: -3309204937516204514
+    second: priest_allies_343
+  - first:
+      213: -8406781927509537676
+    second: priest_allies_344
+  - first:
+      213: 3461187349708882237
+    second: priest_allies_345
+  - first:
+      213: -6635611282413603360
+    second: priest_allies_346
+  - first:
+      213: 9030262236479955685
+    second: priest_allies_347
+  - first:
+      213: 3344486947318105549
+    second: priest_allies_348
+  - first:
+      213: -8974697883486062377
+    second: priest_allies_349
+  - first:
+      213: 7785629710517429818
+    second: priest_allies_350
+  - first:
+      213: -5847941307266035896
+    second: priest_allies_351
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: priest_allies_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07d06529f12f25d00800000000000000
+      internalID: 960095887996358000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 008f9fdc260bd9b10800000000000000
+      internalID: 1989940548776622080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74cb10c04e12f710800000000000000
+      internalID: 1725474870686106751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 450
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb0a7be8fc8add50800000000000000
+      internalID: 6762872791180643293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a267fcf56218d2e0800000000000000
+      internalID: -2100908996923268448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25b59b1e78da54a0800000000000000
+      internalID: -6603727867445136082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_6
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627695eb1ac865080800000000000000
+      internalID: -9199010562546505946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 450
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d3012f0ebfff5570800000000000000
+      internalID: 8457759816987771861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_8
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 450
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0870966829460c580800000000000000
+      internalID: -8808930290653657216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 386
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94c7ecbf6ca4e940800000000000000
+      internalID: 5324570255369421983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 386
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cc026310adb0e70800000000000000
+      internalID: 9082592772260678733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_11
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 386
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fd656bf5b66ed9d0800000000000000
+      internalID: -2747645790856581647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_12
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 386
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9713bae38446b9d30800000000000000
+      internalID: 4439252119155585401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_13
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 386
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42bedc6c90477baf0800000000000000
+      internalID: -380708058150606044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_14
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 386
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e536dc4da5e21c110800000000000000
+      internalID: 1279354736802095966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_15
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 386
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee8a0cd860d2f8a0800000000000000
+      internalID: -6272722182186823966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_16
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 386
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad368909d76160d80800000000000000
+      internalID: -8284909735948819494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_17
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 386
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc00531cb2788b5a0800000000000000
+      internalID: -6505301039741861684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d6c138fe58b4300800000000000000
+      internalID: 237430669110439239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 174156e27054a50e0800000000000000
+      internalID: -2280434364164270991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_20
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8edfaec864ecd4910800000000000000
+      internalID: 1823340226562162152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_21
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 322
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b930b59aa933129b0800000000000000
+      internalID: -5106743763102137445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_22
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8111cc2c6cb3158a0800000000000000
+      internalID: -6318203077366378216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_23
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a1fab6ec9bed0ed0800000000000000
+      internalID: -2446039963473874525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_24
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39fd8d553fdd235a0800000000000000
+      internalID: -6542923271428841581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_25
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 322
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32d83c7929de05a0800000000000000
+      internalID: -6553061635576507841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_26
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 322
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f5347ef49506b60800000000000000
+      internalID: 7737282359539752719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_27
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 258
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d0eafb97ac5e6930800000000000000
+      internalID: 4138346982546268372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_28
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 258
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e70a678036103170800000000000000
+      internalID: 8156043322854082537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_29
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 258
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e2dc1006e49faf0800000000000000
+      internalID: -362172120772563440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 258
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 204a9947d0f794280800000000000000
+      internalID: -9058569479711513598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_31
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 258
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ed6d622d21733c0800000000000000
+      internalID: -4380011418790470142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_32
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 258
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1327e5ce44d1e6660800000000000000
+      internalID: 7380869021167415857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_33
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 258
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3e9ac0219e09980800000000000000
+      internalID: -8534065030135946289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_34
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 258
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee72b35e85e0c82c0800000000000000
+      internalID: -4428148558646269970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_35
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 258
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d05549e68545e890800000000000000
+      internalID: -7429455564536196906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 194
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dddfe3526c274c50800000000000000
+      internalID: 6649332175662472656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 194
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c9f42d3f3e298ef0800000000000000
+      internalID: -105502267122845240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_38
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 194
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d459d444c5d02d00800000000000000
+      internalID: 945990960693204185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_39
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 194
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32cddeabe9f434b90800000000000000
+      internalID: -7258870631231529949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_40
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 194
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2df75d2dfdef550800000000000000
+      internalID: 6196636233926431458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_41
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 194
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea39e4c071a00f240800000000000000
+      internalID: 4823366295020802990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_42
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 130
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0458923c7b35c9ff0800000000000000
+      internalID: -28055448952666816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 130
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a935f795a6ef39740800000000000000
+      internalID: 5157745730990855066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 130
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e30fffe6a219a40800000000000000
+      internalID: 5373122486658416197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_45
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 130
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f7ff8cdd2d49ed0800000000000000
+      internalID: -2408068050734579812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_46
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 130
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9a4580a1e94f5f20800000000000000
+      internalID: 3413528275979684509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_47
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 130
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13dadc210a9595d70800000000000000
+      internalID: 9032349071713348913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_48
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 66
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61b9036a2067b090800000000000000
+      internalID: -8018834876343406225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_49
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 66
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8195096255f16a7b0800000000000000
+      internalID: -5213445068055095016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_50
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 66
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20be4b4d28bf9fdd0800000000000000
+      internalID: -2451651982793577726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_51
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 66
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb4f8a80b279ff20800000000000000
+      internalID: 3456920291548023771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_52
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 66
+        width: 39
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014295814acd2f310800000000000000
+      internalID: 1437453828425851920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_53
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 66
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a830eb72cb47e0a90800000000000000
+      internalID: -7345805590725262454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_54
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 2
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cf77920f4ac6b90800000000000000
+      internalID: -7247236348951135155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_55
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 2
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcdce96c09f34eac0800000000000000
+      internalID: -3826863892317942321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_56
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 2
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11956f541a245100800000000000000
+      internalID: 95747759069827359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_57
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 2
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c21959c97834270800000000000000
+      internalID: 8233573650357365828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_58
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55e8468aeda75ac0800000000000000
+      internalID: -3866430532287404706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_allies_59
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 2
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba96f50cc83b56340800000000000000
+      internalID: 4856485190293219755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 75c0f9ed04d127145b3d6faa2d91dbad
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      priest_allies_0: 960095887996358000
+      priest_allies_1: 1989940548776622080
+      priest_allies_10: 9082592772260678733
+      priest_allies_11: -2747645790856581647
+      priest_allies_12: 4439252119155585401
+      priest_allies_13: -380708058150606044
+      priest_allies_14: 1279354736802095966
+      priest_allies_15: -6272722182186823966
+      priest_allies_16: -8284909735948819494
+      priest_allies_17: -6505301039741861684
+      priest_allies_18: 237430669110439239
+      priest_allies_19: -2280434364164270991
+      priest_allies_2: 1725474870686106751
+      priest_allies_20: 1823340226562162152
+      priest_allies_21: -5106743763102137445
+      priest_allies_22: -6318203077366378216
+      priest_allies_23: -2446039963473874525
+      priest_allies_24: -6542923271428841581
+      priest_allies_25: -6553061635576507841
+      priest_allies_26: 7737282359539752719
+      priest_allies_27: 4138346982546268372
+      priest_allies_28: 8156043322854082537
+      priest_allies_29: -362172120772563440
+      priest_allies_3: 6762872791180643293
+      priest_allies_30: -9058569479711513598
+      priest_allies_31: -4380011418790470142
+      priest_allies_32: 7380869021167415857
+      priest_allies_33: -8534065030135946289
+      priest_allies_34: -4428148558646269970
+      priest_allies_35: -7429455564536196906
+      priest_allies_36: 6649332175662472656
+      priest_allies_37: -105502267122845240
+      priest_allies_38: 945990960693204185
+      priest_allies_39: -7258870631231529949
+      priest_allies_4: -2100908996923268448
+      priest_allies_40: 6196636233926431458
+      priest_allies_41: 4823366295020802990
+      priest_allies_42: -28055448952666816
+      priest_allies_43: 5157745730990855066
+      priest_allies_44: 5373122486658416197
+      priest_allies_45: -2408068050734579812
+      priest_allies_46: 3413528275979684509
+      priest_allies_47: 9032349071713348913
+      priest_allies_48: -8018834876343406225
+      priest_allies_49: -5213445068055095016
+      priest_allies_5: -6603727867445136082
+      priest_allies_50: -2451651982793577726
+      priest_allies_51: 3456920291548023771
+      priest_allies_52: 1437453828425851920
+      priest_allies_53: -7345805590725262454
+      priest_allies_54: -7247236348951135155
+      priest_allies_55: -3826863892317942321
+      priest_allies_56: 95747759069827359
+      priest_allies_57: 8233573650357365828
+      priest_allies_58: -3866430532287404706
+      priest_allies_59: 4856485190293219755
+      priest_allies_6: -9199010562546505946
+      priest_allies_7: 8457759816987771861
+      priest_allies_8: -8808930290653657216
+      priest_allies_9: 5324570255369421983
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

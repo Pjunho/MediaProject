@@ -1,0 +1,2808 @@
+fileFormatVersion: 2
+guid: 4b62145767626354d8a7903d1e7a90dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8245967896728399768
+    second: warrior_allies_0
+  - first:
+      213: -6637692265368163507
+    second: warrior_allies_1
+  - first:
+      213: -1322490999932879232
+    second: warrior_allies_2
+  - first:
+      213: 6687358359586994314
+    second: warrior_allies_3
+  - first:
+      213: 8079053909396085673
+    second: warrior_allies_4
+  - first:
+      213: 5562266116602476651
+    second: warrior_allies_5
+  - first:
+      213: 1616951905607031114
+    second: warrior_allies_6
+  - first:
+      213: 3457895483055889006
+    second: warrior_allies_7
+  - first:
+      213: -7640425088116386513
+    second: warrior_allies_8
+  - first:
+      213: -6147087885478465498
+    second: warrior_allies_9
+  - first:
+      213: -435999632974816168
+    second: warrior_allies_10
+  - first:
+      213: -7976139061025668216
+    second: warrior_allies_11
+  - first:
+      213: 7764300050198478610
+    second: warrior_allies_12
+  - first:
+      213: -613073031057921391
+    second: warrior_allies_13
+  - first:
+      213: -2187542769922449917
+    second: warrior_allies_14
+  - first:
+      213: 8758536010358840621
+    second: warrior_allies_15
+  - first:
+      213: 752471346816507137
+    second: warrior_allies_16
+  - first:
+      213: -8495410493339552023
+    second: warrior_allies_17
+  - first:
+      213: -8989568435900443964
+    second: warrior_allies_18
+  - first:
+      213: -6232002164475149671
+    second: warrior_allies_19
+  - first:
+      213: 3828844213838858114
+    second: warrior_allies_20
+  - first:
+      213: 2386819161132966911
+    second: warrior_allies_21
+  - first:
+      213: -9071314127101701059
+    second: warrior_allies_22
+  - first:
+      213: -7507555071232348070
+    second: warrior_allies_23
+  - first:
+      213: -6713446890861353307
+    second: warrior_allies_24
+  - first:
+      213: -2162802076295933742
+    second: warrior_allies_25
+  - first:
+      213: -3150842662513138179
+    second: warrior_allies_26
+  - first:
+      213: 2605816636015827119
+    second: warrior_allies_27
+  - first:
+      213: -8472140034420887884
+    second: warrior_allies_28
+  - first:
+      213: 8417357410714630349
+    second: warrior_allies_29
+  - first:
+      213: -5044278573512345141
+    second: warrior_allies_30
+  - first:
+      213: 2934597434277096968
+    second: warrior_allies_31
+  - first:
+      213: -7366309225509768943
+    second: warrior_allies_32
+  - first:
+      213: -3360186850337505799
+    second: warrior_allies_33
+  - first:
+      213: -8737039231543966157
+    second: warrior_allies_34
+  - first:
+      213: -7855469666450919477
+    second: warrior_allies_35
+  - first:
+      213: -7442891905272984161
+    second: warrior_allies_36
+  - first:
+      213: -7124127233888087735
+    second: warrior_allies_37
+  - first:
+      213: -6829794243629028982
+    second: warrior_allies_38
+  - first:
+      213: -190794355209726703
+    second: warrior_allies_39
+  - first:
+      213: 1758311441447976714
+    second: warrior_allies_40
+  - first:
+      213: 732694115242185944
+    second: warrior_allies_41
+  - first:
+      213: 6603417862429890393
+    second: warrior_allies_42
+  - first:
+      213: 8196927638485947533
+    second: warrior_allies_43
+  - first:
+      213: 4632600438010578896
+    second: warrior_allies_44
+  - first:
+      213: -9103265280023442497
+    second: warrior_allies_45
+  - first:
+      213: 4165826886605192293
+    second: warrior_allies_46
+  - first:
+      213: -3033690712883740828
+    second: warrior_allies_47
+  - first:
+      213: -5432729398479109885
+    second: warrior_allies_48
+  - first:
+      213: 2807515634904806687
+    second: warrior_allies_49
+  - first:
+      213: -5515456306670435163
+    second: warrior_allies_50
+  - first:
+      213: 5765253477968304442
+    second: warrior_allies_51
+  - first:
+      213: 6324592185958013978
+    second: warrior_allies_52
+  - first:
+      213: 7767986178448827327
+    second: warrior_allies_53
+  - first:
+      213: 2070925125952209230
+    second: warrior_allies_54
+  - first:
+      213: -9220076367894938481
+    second: warrior_allies_55
+  - first:
+      213: -2692010289366158263
+    second: warrior_allies_56
+  - first:
+      213: 7024735028645922949
+    second: warrior_allies_57
+  - first:
+      213: -5952884027501479566
+    second: warrior_allies_58
+  - first:
+      213: 604741093887975029
+    second: warrior_allies_59
+  - first:
+      213: 698109815530742707
+    second: warrior_allies_60
+  - first:
+      213: -6239268633157316583
+    second: warrior_allies_61
+  - first:
+      213: 6681296347142651655
+    second: warrior_allies_62
+  - first:
+      213: 2311515065675082146
+    second: warrior_allies_63
+  - first:
+      213: 2970740591377843529
+    second: warrior_allies_64
+  - first:
+      213: -8660212470193925154
+    second: warrior_allies_65
+  - first:
+      213: -6715067876736797289
+    second: warrior_allies_66
+  - first:
+      213: -4709572760054992875
+    second: warrior_allies_67
+  - first:
+      213: 4537596683440269934
+    second: warrior_allies_68
+  - first:
+      213: -7634703292119099445
+    second: warrior_allies_69
+  - first:
+      213: 3916407160703280304
+    second: warrior_allies_70
+  - first:
+      213: 6080891310774160212
+    second: warrior_allies_71
+  - first:
+      213: -6836787306222686469
+    second: warrior_allies_72
+  - first:
+      213: 5394432211277886425
+    second: warrior_allies_73
+  - first:
+      213: -7536519911377428528
+    second: warrior_allies_74
+  - first:
+      213: -7974629219173028920
+    second: warrior_allies_75
+  - first:
+      213: 3683184954998206125
+    second: warrior_allies_76
+  - first:
+      213: -444283978547440029
+    second: warrior_allies_77
+  - first:
+      213: 7040040422357116786
+    second: warrior_allies_78
+  - first:
+      213: -2259934360191517940
+    second: warrior_allies_79
+  - first:
+      213: 5468920800410962393
+    second: warrior_allies_80
+  - first:
+      213: 3012930175380589323
+    second: warrior_allies_81
+  - first:
+      213: -7203805623384326986
+    second: warrior_allies_82
+  - first:
+      213: -909354153931981621
+    second: warrior_allies_83
+  - first:
+      213: 7693341465897918954
+    second: warrior_allies_84
+  - first:
+      213: 6259125626633747680
+    second: warrior_allies_85
+  - first:
+      213: -6014829092734001468
+    second: warrior_allies_86
+  - first:
+      213: 2816312399889605922
+    second: warrior_allies_87
+  - first:
+      213: -2964506682282577488
+    second: warrior_allies_88
+  - first:
+      213: 4061887354094152018
+    second: warrior_allies_89
+  - first:
+      213: -2290544182593659146
+    second: warrior_allies_90
+  - first:
+      213: -4662999159189469915
+    second: warrior_allies_91
+  - first:
+      213: -8981747258704659301
+    second: warrior_allies_92
+  - first:
+      213: -6673906123362825733
+    second: warrior_allies_93
+  - first:
+      213: -1514157501552556273
+    second: warrior_allies_94
+  - first:
+      213: 7597871687113107249
+    second: warrior_allies_95
+  - first:
+      213: -782835066617258207
+    second: warrior_allies_96
+  - first:
+      213: -4473388410008596729
+    second: warrior_allies_97
+  - first:
+      213: 1481176336798362912
+    second: warrior_allies_98
+  - first:
+      213: 3556126835128840334
+    second: warrior_allies_99
+  - first:
+      213: -8571906195690083
+    second: warrior_allies_100
+  - first:
+      213: -6069874589211805846
+    second: warrior_allies_101
+  - first:
+      213: -7160650452623443087
+    second: warrior_allies_102
+  - first:
+      213: -8182439168807111
+    second: warrior_allies_103
+  - first:
+      213: -2695340951104058947
+    second: warrior_allies_104
+  - first:
+      213: 1695902297269008873
+    second: warrior_allies_105
+  - first:
+      213: -1853685180540416269
+    second: warrior_allies_106
+  - first:
+      213: 2700915488465134042
+    second: warrior_allies_107
+  - first:
+      213: 2747753915883637190
+    second: warrior_allies_108
+  - first:
+      213: 1137031677577021891
+    second: warrior_allies_109
+  - first:
+      213: 290556141007536391
+    second: warrior_allies_110
+  - first:
+      213: 2813991498008875236
+    second: warrior_allies_111
+  - first:
+      213: 2410641245784768444
+    second: warrior_allies_112
+  - first:
+      213: 4127620785189596434
+    second: warrior_allies_113
+  - first:
+      213: 5789372126111493033
+    second: warrior_allies_114
+  - first:
+      213: 4329130217636540577
+    second: warrior_allies_115
+  - first:
+      213: 7394909300683864211
+    second: warrior_allies_116
+  - first:
+      213: -6472378283412139244
+    second: warrior_allies_117
+  - first:
+      213: -8226870522849262344
+    second: warrior_allies_118
+  - first:
+      213: -1067045480394797335
+    second: warrior_allies_119
+  - first:
+      213: -6329322596506981741
+    second: warrior_allies_120
+  - first:
+      213: 6987815316002412971
+    second: warrior_allies_121
+  - first:
+      213: -2221350361265755715
+    second: warrior_allies_122
+  - first:
+      213: 2548109936795077805
+    second: warrior_allies_123
+  - first:
+      213: 1773253941143721788
+    second: warrior_allies_124
+  - first:
+      213: -4190895398802335570
+    second: warrior_allies_125
+  - first:
+      213: 1767248826903281542
+    second: warrior_allies_126
+  - first:
+      213: 3478839188204107229
+    second: warrior_allies_127
+  - first:
+      213: -8929891470952642201
+    second: warrior_allies_128
+  - first:
+      213: -5168737844221300328
+    second: warrior_allies_129
+  - first:
+      213: -8971979558957832607
+    second: warrior_allies_130
+  - first:
+      213: -307071506267228784
+    second: warrior_allies_131
+  - first:
+      213: -2543773701678171612
+    second: warrior_allies_132
+  - first:
+      213: -4457414522601845670
+    second: warrior_allies_133
+  - first:
+      213: 1621893873850744369
+    second: warrior_allies_134
+  - first:
+      213: 8186002008044240565
+    second: warrior_allies_135
+  - first:
+      213: -1797521296838895351
+    second: warrior_allies_136
+  - first:
+      213: -8543267767037161909
+    second: warrior_allies_137
+  - first:
+      213: -770365845723662376
+    second: warrior_allies_138
+  - first:
+      213: 1773237939981184708
+    second: warrior_allies_139
+  - first:
+      213: -3968656512211773705
+    second: warrior_allies_140
+  - first:
+      213: 2176791907266683276
+    second: warrior_allies_141
+  - first:
+      213: -4680649530660372360
+    second: warrior_allies_142
+  - first:
+      213: -1776492766227756246
+    second: warrior_allies_143
+  - first:
+      213: -2951840087755602601
+    second: warrior_allies_144
+  - first:
+      213: -1209817508422212689
+    second: warrior_allies_145
+  - first:
+      213: -5952307112094530824
+    second: warrior_allies_146
+  - first:
+      213: -3445749926211022952
+    second: warrior_allies_147
+  - first:
+      213: -8888322630565352927
+    second: warrior_allies_148
+  - first:
+      213: 2151945871903115783
+    second: warrior_allies_149
+  - first:
+      213: -1687710260940305486
+    second: warrior_allies_150
+  - first:
+      213: 7093979937440759535
+    second: warrior_allies_151
+  - first:
+      213: -4824709456934491185
+    second: warrior_allies_152
+  - first:
+      213: -1722812727190997180
+    second: warrior_allies_153
+  - first:
+      213: -7505404257708302463
+    second: warrior_allies_154
+  - first:
+      213: 5358030461407508182
+    second: warrior_allies_155
+  - first:
+      213: -2147523047672598969
+    second: warrior_allies_156
+  - first:
+      213: -4305236887335593655
+    second: warrior_allies_157
+  - first:
+      213: -1252695384307691163
+    second: warrior_allies_158
+  - first:
+      213: -7286775499237673789
+    second: warrior_allies_159
+  - first:
+      213: 7621907544761340064
+    second: warrior_allies_160
+  - first:
+      213: 6685193396662131354
+    second: warrior_allies_161
+  - first:
+      213: -1233073273017578162
+    second: warrior_allies_162
+  - first:
+      213: 7370203140927485545
+    second: warrior_allies_163
+  - first:
+      213: -368097267994222458
+    second: warrior_allies_164
+  - first:
+      213: -2324116581168237698
+    second: warrior_allies_165
+  - first:
+      213: -9212757073011756955
+    second: warrior_allies_166
+  - first:
+      213: 119012747514127435
+    second: warrior_allies_167
+  - first:
+      213: 2807739587176660916
+    second: warrior_allies_168
+  - first:
+      213: 1164751353094258384
+    second: warrior_allies_169
+  - first:
+      213: 1656505178592962318
+    second: warrior_allies_170
+  - first:
+      213: -712688002129842923
+    second: warrior_allies_171
+  - first:
+      213: 5252249213584146733
+    second: warrior_allies_172
+  - first:
+      213: -927226010066267383
+    second: warrior_allies_173
+  - first:
+      213: 2372446774694614716
+    second: warrior_allies_174
+  - first:
+      213: 3237413572080504241
+    second: warrior_allies_175
+  - first:
+      213: 7249735178968356744
+    second: warrior_allies_176
+  - first:
+      213: -8846625457975648916
+    second: warrior_allies_177
+  - first:
+      213: 6587981903777842288
+    second: warrior_allies_178
+  - first:
+      213: -8026604686762926358
+    second: warrior_allies_179
+  - first:
+      213: 4786605315458235695
+    second: warrior_allies_180
+  - first:
+      213: 933104760236907283
+    second: warrior_allies_181
+  - first:
+      213: 1242744030409618056
+    second: warrior_allies_182
+  - first:
+      213: 6129251005782703909
+    second: warrior_allies_183
+  - first:
+      213: -8710635869459780167
+    second: warrior_allies_184
+  - first:
+      213: -7844620681445385489
+    second: warrior_allies_185
+  - first:
+      213: 1924846565000127607
+    second: warrior_allies_186
+  - first:
+      213: 7111769819957386285
+    second: warrior_allies_187
+  - first:
+      213: -3044534561619247962
+    second: warrior_allies_188
+  - first:
+      213: 3044536925995118277
+    second: warrior_allies_189
+  - first:
+      213: -241545699733712156
+    second: warrior_allies_190
+  - first:
+      213: 1917184969194360781
+    second: warrior_allies_191
+  - first:
+      213: -8744802424196616321
+    second: warrior_allies_192
+  - first:
+      213: -8572579398693049659
+    second: warrior_allies_193
+  - first:
+      213: -7212191797242806610
+    second: warrior_allies_194
+  - first:
+      213: -7571227167170939187
+    second: warrior_allies_195
+  - first:
+      213: 7125574893857048597
+    second: warrior_allies_196
+  - first:
+      213: 6462269700924160130
+    second: warrior_allies_197
+  - first:
+      213: -6559505839537970023
+    second: warrior_allies_198
+  - first:
+      213: -5231584172862123299
+    second: warrior_allies_199
+  - first:
+      213: -7119098532216542329
+    second: warrior_allies_200
+  - first:
+      213: 4419029404528994024
+    second: warrior_allies_201
+  - first:
+      213: -6069472429826883826
+    second: warrior_allies_202
+  - first:
+      213: -8756516122538277723
+    second: warrior_allies_203
+  - first:
+      213: 1314885992387591251
+    second: warrior_allies_204
+  - first:
+      213: -1343455496028512693
+    second: warrior_allies_205
+  - first:
+      213: 3354463388859488621
+    second: warrior_allies_206
+  - first:
+      213: -4418801808004710308
+    second: warrior_allies_207
+  - first:
+      213: -1295337399176269018
+    second: warrior_allies_208
+  - first:
+      213: 8435452020579738882
+    second: warrior_allies_209
+  - first:
+      213: 7480683166386234897
+    second: warrior_allies_210
+  - first:
+      213: 1040258877246832233
+    second: warrior_allies_211
+  - first:
+      213: 6156971111964834463
+    second: warrior_allies_212
+  - first:
+      213: 6507145787357100905
+    second: warrior_allies_213
+  - first:
+      213: -8164530226796162363
+    second: warrior_allies_214
+  - first:
+      213: 5284155239832667806
+    second: warrior_allies_215
+  - first:
+      213: -5980701635437904085
+    second: warrior_allies_216
+  - first:
+      213: -3307532367040049234
+    second: warrior_allies_217
+  - first:
+      213: -4464672130903321436
+    second: warrior_allies_218
+  - first:
+      213: -2065455957926956504
+    second: warrior_allies_219
+  - first:
+      213: 4151846366720871066
+    second: warrior_allies_220
+  - first:
+      213: -437646164855310525
+    second: warrior_allies_221
+  - first:
+      213: 5452339376248229182
+    second: warrior_allies_222
+  - first:
+      213: -3077115073284777173
+    second: warrior_allies_223
+  - first:
+      213: -1043159349991093778
+    second: warrior_allies_224
+  - first:
+      213: -5097055530867605594
+    second: warrior_allies_225
+  - first:
+      213: -2327405668859211904
+    second: warrior_allies_226
+  - first:
+      213: -7229186709812694565
+    second: warrior_allies_227
+  - first:
+      213: 7064702644559116614
+    second: warrior_allies_228
+  - first:
+      213: -8790420437815669645
+    second: warrior_allies_229
+  - first:
+      213: -6811808265632275550
+    second: warrior_allies_230
+  - first:
+      213: -1337598690427923023
+    second: warrior_allies_231
+  - first:
+      213: -315418367118804170
+    second: warrior_allies_232
+  - first:
+      213: -1768161426154396114
+    second: warrior_allies_233
+  - first:
+      213: -6484472777924227862
+    second: warrior_allies_234
+  - first:
+      213: -7242590551198489546
+    second: warrior_allies_235
+  - first:
+      213: 549731544088402187
+    second: warrior_allies_236
+  - first:
+      213: -4000316470140052676
+    second: warrior_allies_237
+  - first:
+      213: -1171844299869322993
+    second: warrior_allies_238
+  - first:
+      213: 5879878443150537864
+    second: warrior_allies_239
+  - first:
+      213: 5090861678528792951
+    second: warrior_allies_240
+  - first:
+      213: -3069450358266731137
+    second: warrior_allies_241
+  - first:
+      213: -3434427920256711181
+    second: warrior_allies_242
+  - first:
+      213: 8343804566554458315
+    second: warrior_allies_243
+  - first:
+      213: -7780180299990069903
+    second: warrior_allies_244
+  - first:
+      213: 6476626897706093813
+    second: warrior_allies_245
+  - first:
+      213: -5423849800788980512
+    second: warrior_allies_246
+  - first:
+      213: -223058997803541066
+    second: warrior_allies_247
+  - first:
+      213: -2099115211538598341
+    second: warrior_allies_248
+  - first:
+      213: -8073547423541206862
+    second: warrior_allies_249
+  - first:
+      213: 5055214271240866594
+    second: warrior_allies_250
+  - first:
+      213: -2951624782272525301
+    second: warrior_allies_251
+  - first:
+      213: 30903772746927031
+    second: warrior_allies_252
+  - first:
+      213: -6323565127570260301
+    second: warrior_allies_253
+  - first:
+      213: -3684047513146994138
+    second: warrior_allies_254
+  - first:
+      213: -6175923305907689314
+    second: warrior_allies_255
+  - first:
+      213: -5074393575226640710
+    second: warrior_allies_256
+  - first:
+      213: -6193228170152710356
+    second: warrior_allies_257
+  - first:
+      213: -3634798463957560181
+    second: warrior_allies_258
+  - first:
+      213: 3272267075829414327
+    second: warrior_allies_259
+  - first:
+      213: -8581982736720599401
+    second: warrior_allies_260
+  - first:
+      213: -7544209882466901245
+    second: warrior_allies_261
+  - first:
+      213: -2113932751284079216
+    second: warrior_allies_262
+  - first:
+      213: -4817017108013569956
+    second: warrior_allies_263
+  - first:
+      213: 6045510085986301784
+    second: warrior_allies_264
+  - first:
+      213: -3707484006186553274
+    second: warrior_allies_265
+  - first:
+      213: 2558529326902532927
+    second: warrior_allies_266
+  - first:
+      213: -2708592670530299643
+    second: warrior_allies_267
+  - first:
+      213: -5526111386208914662
+    second: warrior_allies_268
+  - first:
+      213: 710259708007397134
+    second: warrior_allies_269
+  - first:
+      213: -4051567881290108098
+    second: warrior_allies_270
+  - first:
+      213: 1097726743855291200
+    second: warrior_allies_271
+  - first:
+      213: -3760081302791612947
+    second: warrior_allies_272
+  - first:
+      213: 9193040733701462380
+    second: warrior_allies_273
+  - first:
+      213: 937996261953191726
+    second: warrior_allies_274
+  - first:
+      213: 1682552084667650509
+    second: warrior_allies_275
+  - first:
+      213: 533503514471791335
+    second: warrior_allies_276
+  - first:
+      213: -3291521966688051886
+    second: warrior_allies_277
+  - first:
+      213: -4479935261502029252
+    second: warrior_allies_278
+  - first:
+      213: 8822262782479130901
+    second: warrior_allies_279
+  - first:
+      213: 4949299474575154447
+    second: warrior_allies_280
+  - first:
+      213: 6861783631627314040
+    second: warrior_allies_281
+  - first:
+      213: 5487632285426308858
+    second: warrior_allies_282
+  - first:
+      213: -6522834791415846350
+    second: warrior_allies_283
+  - first:
+      213: 1811315036113363104
+    second: warrior_allies_284
+  - first:
+      213: -7261349494227930101
+    second: warrior_allies_285
+  - first:
+      213: -1201613549760154829
+    second: warrior_allies_286
+  - first:
+      213: -8562030642094135188
+    second: warrior_allies_287
+  - first:
+      213: 3460185578093943514
+    second: warrior_allies_288
+  - first:
+      213: 2476687512810401909
+    second: warrior_allies_289
+  - first:
+      213: -81682858819992102
+    second: warrior_allies_290
+  - first:
+      213: -1451644822570594366
+    second: warrior_allies_291
+  - first:
+      213: -7696458909758007279
+    second: warrior_allies_292
+  - first:
+      213: -1085873232897217161
+    second: warrior_allies_293
+  - first:
+      213: -1095220781393755319
+    second: warrior_allies_294
+  - first:
+      213: 4546281250209896597
+    second: warrior_allies_295
+  - first:
+      213: -5411710118617175908
+    second: warrior_allies_296
+  - first:
+      213: -7584952500089053107
+    second: warrior_allies_297
+  - first:
+      213: 4458511742403533820
+    second: warrior_allies_298
+  - first:
+      213: -5518567976461983397
+    second: warrior_allies_299
+  - first:
+      213: -3516492472613621160
+    second: warrior_allies_300
+  - first:
+      213: -4993921442531833909
+    second: warrior_allies_301
+  - first:
+      213: 1508929857227465498
+    second: warrior_allies_302
+  - first:
+      213: -303896173378103671
+    second: warrior_allies_303
+  - first:
+      213: 5068055940809173698
+    second: warrior_allies_304
+  - first:
+      213: 6975608165597706586
+    second: warrior_allies_305
+  - first:
+      213: 2010580849616647966
+    second: warrior_allies_306
+  - first:
+      213: 9193405453812620292
+    second: warrior_allies_307
+  - first:
+      213: 2650838348324332825
+    second: warrior_allies_308
+  - first:
+      213: 2656152180250002686
+    second: warrior_allies_309
+  - first:
+      213: 7061318608411195565
+    second: warrior_allies_310
+  - first:
+      213: 7190444114145535220
+    second: warrior_allies_311
+  - first:
+      213: 7013867098902590660
+    second: warrior_allies_312
+  - first:
+      213: -3818735533714412133
+    second: warrior_allies_313
+  - first:
+      213: -6758020948293243960
+    second: warrior_allies_314
+  - first:
+      213: 7807462054641385780
+    second: warrior_allies_315
+  - first:
+      213: -6113793619166053357
+    second: warrior_allies_316
+  - first:
+      213: -7036659049808347882
+    second: warrior_allies_317
+  - first:
+      213: 214930245768377723
+    second: warrior_allies_318
+  - first:
+      213: 3879708780278221361
+    second: warrior_allies_319
+  - first:
+      213: 371192993704130761
+    second: warrior_allies_320
+  - first:
+      213: 7151355573041961659
+    second: warrior_allies_321
+  - first:
+      213: -5952727135432384634
+    second: warrior_allies_322
+  - first:
+      213: 2236470959672620357
+    second: warrior_allies_323
+  - first:
+      213: 4918923098573844277
+    second: warrior_allies_324
+  - first:
+      213: -8199798366184241402
+    second: warrior_allies_325
+  - first:
+      213: 8631768994285031484
+    second: warrior_allies_326
+  - first:
+      213: -3713974548994730674
+    second: warrior_allies_327
+  - first:
+      213: -6600761796064857844
+    second: warrior_allies_328
+  - first:
+      213: 5141381076687556899
+    second: warrior_allies_329
+  - first:
+      213: -3820250411137562535
+    second: warrior_allies_330
+  - first:
+      213: 2163663690875933823
+    second: warrior_allies_331
+  - first:
+      213: 3788245177149930819
+    second: warrior_allies_332
+  - first:
+      213: 4689935414049055557
+    second: warrior_allies_333
+  - first:
+      213: 1569809171829262817
+    second: warrior_allies_334
+  - first:
+      213: 2454168038105118171
+    second: warrior_allies_335
+  - first:
+      213: -7071676084199012478
+    second: warrior_allies_336
+  - first:
+      213: -6479005262291410125
+    second: warrior_allies_337
+  - first:
+      213: 6783509594605332797
+    second: warrior_allies_338
+  - first:
+      213: 7017041944382006082
+    second: warrior_allies_339
+  - first:
+      213: 8888846873731375776
+    second: warrior_allies_340
+  - first:
+      213: -6472847619630489634
+    second: warrior_allies_341
+  - first:
+      213: 1769509771707842360
+    second: warrior_allies_342
+  - first:
+      213: 8773926240233767439
+    second: warrior_allies_343
+  - first:
+      213: 55288497657162265
+    second: warrior_allies_344
+  - first:
+      213: 6881889171202583552
+    second: warrior_allies_345
+  - first:
+      213: 4807377649946943982
+    second: warrior_allies_346
+  - first:
+      213: 2902482027835041240
+    second: warrior_allies_347
+  - first:
+      213: -6458517283447259492
+    second: warrior_allies_348
+  - first:
+      213: 8204471246936078026
+    second: warrior_allies_349
+  - first:
+      213: 2889034045786575443
+    second: warrior_allies_350
+  - first:
+      213: 6942047008448426185
+    second: warrior_allies_351
+  - first:
+      213: 2539875365871358618
+    second: warrior_allies_352
+  - first:
+      213: -4567698380695398785
+    second: warrior_allies_353
+  - first:
+      213: 8682454586085257772
+    second: warrior_allies_354
+  - first:
+      213: 8113328995988031657
+    second: warrior_allies_355
+  - first:
+      213: -5879102490780913334
+    second: warrior_allies_356
+  - first:
+      213: 1499248190749692989
+    second: warrior_allies_357
+  - first:
+      213: 7356037087623361943
+    second: warrior_allies_358
+  - first:
+      213: 1751146100814685389
+    second: warrior_allies_359
+  - first:
+      213: -4230219145115657829
+    second: warrior_allies_360
+  - first:
+      213: 8907038201589128976
+    second: warrior_allies_361
+  - first:
+      213: -3484297091819889908
+    second: warrior_allies_362
+  - first:
+      213: 5895826248203664980
+    second: warrior_allies_363
+  - first:
+      213: -8712567936045780989
+    second: warrior_allies_364
+  - first:
+      213: -4959284072812051703
+    second: warrior_allies_365
+  - first:
+      213: 1661747392386583494
+    second: warrior_allies_366
+  - first:
+      213: -2468528590616071459
+    second: warrior_allies_367
+  - first:
+      213: 2339317922962528943
+    second: warrior_allies_368
+  - first:
+      213: -1060613410981170397
+    second: warrior_allies_369
+  - first:
+      213: -8143860773810903488
+    second: warrior_allies_370
+  - first:
+      213: 982929045607454254
+    second: warrior_allies_371
+  - first:
+      213: 6395261891116466903
+    second: warrior_allies_372
+  - first:
+      213: 4925757804776983384
+    second: warrior_allies_373
+  - first:
+      213: 448786236306081632
+    second: warrior_allies_374
+  - first:
+      213: 6372143143835499278
+    second: warrior_allies_375
+  - first:
+      213: -2174819781942990221
+    second: warrior_allies_376
+  - first:
+      213: -7835408178288896691
+    second: warrior_allies_377
+  - first:
+      213: 223112273887388846
+    second: warrior_allies_378
+  - first:
+      213: -4910293529808233110
+    second: warrior_allies_379
+  - first:
+      213: 4004662724725091356
+    second: warrior_allies_380
+  - first:
+      213: 6211997087335630398
+    second: warrior_allies_381
+  - first:
+      213: -4740743469460394597
+    second: warrior_allies_382
+  - first:
+      213: 144220998505428246
+    second: warrior_allies_383
+  - first:
+      213: -5623211795571662195
+    second: warrior_allies_384
+  - first:
+      213: 9111729605851845409
+    second: warrior_allies_385
+  - first:
+      213: -465393141846294685
+    second: warrior_allies_386
+  - first:
+      213: 7651898704034810712
+    second: warrior_allies_387
+  - first:
+      213: -3832137149631881094
+    second: warrior_allies_388
+  - first:
+      213: 6629975067210167959
+    second: warrior_allies_389
+  - first:
+      213: 2772708754159455765
+    second: warrior_allies_390
+  - first:
+      213: -4542134137053054057
+    second: warrior_allies_391
+  - first:
+      213: -2922905787257679494
+    second: warrior_allies_392
+  - first:
+      213: 7607439753064178330
+    second: warrior_allies_393
+  - first:
+      213: 4681572076799895779
+    second: warrior_allies_394
+  - first:
+      213: 9137783926188669213
+    second: warrior_allies_395
+  - first:
+      213: -7136917432063355923
+    second: warrior_allies_396
+  - first:
+      213: -7727131204966732327
+    second: warrior_allies_397
+  - first:
+      213: -2411025986692489963
+    second: warrior_allies_398
+  - first:
+      213: 37196318529197459
+    second: warrior_allies_399
+  - first:
+      213: 8829703182406416061
+    second: warrior_allies_400
+  - first:
+      213: -6229113962889021974
+    second: warrior_allies_401
+  - first:
+      213: 952928724692132646
+    second: warrior_allies_402
+  - first:
+      213: -2961059607599140619
+    second: warrior_allies_403
+  - first:
+      213: 3662191536887589040
+    second: warrior_allies_404
+  - first:
+      213: 4902782566122327940
+    second: warrior_allies_405
+  - first:
+      213: -1531267930037200944
+    second: warrior_allies_406
+  - first:
+      213: 8642894707177904693
+    second: warrior_allies_407
+  - first:
+      213: -131795141745395861
+    second: warrior_allies_408
+  - first:
+      213: 8987452878919431669
+    second: warrior_allies_409
+  - first:
+      213: -1907555523293161134
+    second: warrior_allies_410
+  - first:
+      213: 7574510750793602409
+    second: warrior_allies_411
+  - first:
+      213: -6546545344709769264
+    second: warrior_allies_412
+  - first:
+      213: -6707724820103803209
+    second: warrior_allies_413
+  - first:
+      213: 6907674876629223289
+    second: warrior_allies_414
+  - first:
+      213: 3914130704514042104
+    second: warrior_allies_415
+  - first:
+      213: -4099606034375836800
+    second: warrior_allies_416
+  - first:
+      213: 820955421129817710
+    second: warrior_allies_417
+  - first:
+      213: -4573274065958158459
+    second: warrior_allies_418
+  - first:
+      213: -457112132527683150
+    second: warrior_allies_419
+  - first:
+      213: 3717080296409697354
+    second: warrior_allies_420
+  - first:
+      213: -1325182385578809188
+    second: warrior_allies_421
+  - first:
+      213: 1756201726540945130
+    second: warrior_allies_422
+  - first:
+      213: -7530518424531883653
+    second: warrior_allies_423
+  - first:
+      213: 607041967918469680
+    second: warrior_allies_424
+  - first:
+      213: 4362154423888137696
+    second: warrior_allies_425
+  - first:
+      213: -8754343001416152600
+    second: warrior_allies_426
+  - first:
+      213: 5450567108910656360
+    second: warrior_allies_427
+  - first:
+      213: -6203332323396184995
+    second: warrior_allies_428
+  - first:
+      213: 1268725998290763864
+    second: warrior_allies_429
+  - first:
+      213: 6625610986168688137
+    second: warrior_allies_430
+  - first:
+      213: -2317825645700235391
+    second: warrior_allies_431
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: warrior_allies_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 452
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8609a3e03ef609d80800000000000000
+      internalID: -8245967896728399768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 452
+        width: 43
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b6f5a7d0e22e3a0800000000000000
+      internalID: -6637692265368163507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_2
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 452
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e7952417195ade0800000000000000
+      internalID: -1322490999932879232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_3
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 452
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a88fbe43ff44ecc50800000000000000
+      internalID: 6687358359586994314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_4
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 452
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abd8c6d9b09e1070800000000000000
+      internalID: 8079053909396085673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_5
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 452
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68384a1093213d40800000000000000
+      internalID: 5562266116602476651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_6
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 452
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a491990f031907610800000000000000
+      internalID: 1616951905607031114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_7
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 452
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a59f10f99ecff20800000000000000
+      internalID: 3457895483055889006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_8
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 452
+        width: 43
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2517d1fcd1c7f590800000000000000
+      internalID: -7640425088116386513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 388
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620f2f6032821baa0800000000000000
+      internalID: -6147087885478465498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 388
+        width: 51
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85cd552d4a403f9f0800000000000000
+      internalID: -435999632974816168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 388
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 883827c88cf0f4190800000000000000
+      internalID: -7976139061025668216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_12
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 388
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21fb0a532c550cb60800000000000000
+      internalID: 7764300050198478610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_13
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 388
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19aab62935ded77f0800000000000000
+      internalID: -613073031057921391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_14
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 388
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30e5ccbd07944a1e0800000000000000
+      internalID: -2187542769922449917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_15
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 388
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2dd7e1c8129c8970800000000000000
+      internalID: 8758536010358840621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_16
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 388
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d58a204b0517a00800000000000000
+      internalID: 752471346816507137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 388
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6be5bba2d3a1a80800000000000000
+      internalID: -8495410493339552023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_18
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 324
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c21716e223ae3380800000000000000
+      internalID: -8989568435900443964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_19
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 324
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9924efacc0b7389a0800000000000000
+      internalID: -6232002164475149671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_20
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 324
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 287cc22c689c22530800000000000000
+      internalID: 3828844213838858114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_21
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 324
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff32d62916faf1120800000000000000
+      internalID: 2386819161132966911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_22
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 324
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34de100dd73c1280800000000000000
+      internalID: -9071314127101701059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_23
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 324
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a50738f707ecfc790800000000000000
+      internalID: -7507555071232348070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_24
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 324
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a622c34f9b05d2a0800000000000000
+      internalID: -6713446890861353307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_25
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 324
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d057ea78fe2cf1e0800000000000000
+      internalID: -2162802076295933742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_26
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 324
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df522c5da45f544d0800000000000000
+      internalID: -3150842662513138179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_27
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 260
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa8d68b9c68b92420800000000000000
+      internalID: 2605816636015827119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_28
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 260
+        width: 51
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be2af8a689ec6a80800000000000000
+      internalID: -8472140034420887884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_29
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 260
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc8b52dc7f570d470800000000000000
+      internalID: 8417357410714630349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_30
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 260
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9bea5fc5f1ff9b0800000000000000
+      internalID: -5044278573512345141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_31
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 260
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80eebdc71d8c9b820800000000000000
+      internalID: 2934597434277096968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_32
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 260
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 111becba9cc95c990800000000000000
+      internalID: -7366309225509768943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_33
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 260
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdb1b6dcd73e51d0800000000000000
+      internalID: -3360186850337505799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_34
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 260
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3368b271c1dcfb680800000000000000
+      internalID: -8737039231543966157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_35
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 260
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf265b55f3cbf290800000000000000
+      internalID: -7855469666450919477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_36
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 196
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9dc29c0f3985b890800000000000000
+      internalID: -7442891905272984161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_37
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 196
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9411a69a604022d90800000000000000
+      internalID: -7124127233888087735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_38
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 196
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89eb7b3252b731a0800000000000000
+      internalID: -6829794243629028982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_39
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 196
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11513987b892a5df0800000000000000
+      internalID: -190794355209726703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_40
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 196
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ff208a0f6c66810800000000000000
+      internalID: 1758311441447976714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 196
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d497047a6d0b2a00800000000000000
+      internalID: 732694115242185944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_42
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 132
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9575a993f8d04ab50800000000000000
+      internalID: 6603417862429890393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 132
+        width: 35
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84598d024651c170800000000000000
+      internalID: 8196927638485947533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_44
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 132
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d780f5cd8d4a4040800000000000000
+      internalID: 4632600438010578896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_45
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 132
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbb4e008574baa180800000000000000
+      internalID: -9103265280023442497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_46
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 132
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56cbfdb5b7dffc930800000000000000
+      internalID: 4165826886605192293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_47
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 132
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46fb92cae5a26e5d0800000000000000
+      internalID: -3033690712883740828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_48
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 68
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301c4da55611b94b0800000000000000
+      internalID: -5432729398479109885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_49
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 68
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f153bd7589c46f620800000000000000
+      internalID: 2807515634904806687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_50
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 68
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a488b216b92573b0800000000000000
+      internalID: -5515456306670435163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_51
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 68
+        width: 35
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a39d26a1e7b420050800000000000000
+      internalID: 5765253477968304442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_52
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 68
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c1d31851775c750800000000000000
+      internalID: 6324592185958013978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_53
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 68
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb32692d54e6dcb60800000000000000
+      internalID: 7767986178448827327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_54
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 4
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4100d80e676dbc10800000000000000
+      internalID: 2070925125952209230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_55
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 4
+        width: 34
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8cf5a9b465bb0080800000000000000
+      internalID: -9220076367894938481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_56
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 4
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94432aa97ee04aad0800000000000000
+      internalID: -2692010289366158263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_57
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 4
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5880fa73a4fdc7160800000000000000
+      internalID: 7024735028645922949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_58
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 4
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2797da7448b136da0800000000000000
+      internalID: -5952884027501479566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warrior_allies_59
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 4
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e164222d8746800800000000000000
+      internalID: 604741093887975029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 09cfeac24385695458bf6820439a8a4e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      warrior_allies_0: -8245967896728399768
+      warrior_allies_1: -6637692265368163507
+      warrior_allies_10: -435999632974816168
+      warrior_allies_11: -7976139061025668216
+      warrior_allies_12: 7764300050198478610
+      warrior_allies_13: -613073031057921391
+      warrior_allies_14: -2187542769922449917
+      warrior_allies_15: 8758536010358840621
+      warrior_allies_16: 752471346816507137
+      warrior_allies_17: -8495410493339552023
+      warrior_allies_18: -8989568435900443964
+      warrior_allies_19: -6232002164475149671
+      warrior_allies_2: -1322490999932879232
+      warrior_allies_20: 3828844213838858114
+      warrior_allies_21: 2386819161132966911
+      warrior_allies_22: -9071314127101701059
+      warrior_allies_23: -7507555071232348070
+      warrior_allies_24: -6713446890861353307
+      warrior_allies_25: -2162802076295933742
+      warrior_allies_26: -3150842662513138179
+      warrior_allies_27: 2605816636015827119
+      warrior_allies_28: -8472140034420887884
+      warrior_allies_29: 8417357410714630349
+      warrior_allies_3: 6687358359586994314
+      warrior_allies_30: -5044278573512345141
+      warrior_allies_31: 2934597434277096968
+      warrior_allies_32: -7366309225509768943
+      warrior_allies_33: -3360186850337505799
+      warrior_allies_34: -8737039231543966157
+      warrior_allies_35: -7855469666450919477
+      warrior_allies_36: -7442891905272984161
+      warrior_allies_37: -7124127233888087735
+      warrior_allies_38: -6829794243629028982
+      warrior_allies_39: -190794355209726703
+      warrior_allies_4: 8079053909396085673
+      warrior_allies_40: 1758311441447976714
+      warrior_allies_41: 732694115242185944
+      warrior_allies_42: 6603417862429890393
+      warrior_allies_43: 8196927638485947533
+      warrior_allies_44: 4632600438010578896
+      warrior_allies_45: -9103265280023442497
+      warrior_allies_46: 4165826886605192293
+      warrior_allies_47: -3033690712883740828
+      warrior_allies_48: -5432729398479109885
+      warrior_allies_49: 2807515634904806687
+      warrior_allies_5: 5562266116602476651
+      warrior_allies_50: -5515456306670435163
+      warrior_allies_51: 5765253477968304442
+      warrior_allies_52: 6324592185958013978
+      warrior_allies_53: 7767986178448827327
+      warrior_allies_54: 2070925125952209230
+      warrior_allies_55: -9220076367894938481
+      warrior_allies_56: -2692010289366158263
+      warrior_allies_57: 7024735028645922949
+      warrior_allies_58: -5952884027501479566
+      warrior_allies_59: 604741093887975029
+      warrior_allies_6: 1616951905607031114
+      warrior_allies_7: 3457895483055889006
+      warrior_allies_8: -7640425088116386513
+      warrior_allies_9: -6147087885478465498
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
