@@ -349,10 +349,10 @@ public class Map : MonoBehaviour
 
     int GetRoadTileIndex(int x, int y, int variant)
     {
-        if (CountNonRoadSides(x, y) >= 3)
+        if (CountNonRoadSides(x, y) == 3)
             return 15;
 
-        int[] candidates = { 15, 16, 17 };
+        int[] candidates = { 16, 17 };
         return candidates[Mathf.Abs(variant) % candidates.Length];
     }
 
