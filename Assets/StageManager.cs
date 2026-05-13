@@ -156,14 +156,8 @@ public class StageManager : MonoBehaviour
         int mapHeight = EnsureOdd(cfg.mapHeight + phase * 2);
         float extraPassageRate = Mathf.Clamp01(cfg.extraPassageRate + phase * 0.08f + waveInPhase * 0.015f);
 
-        int lateTotal = cfg.sniperCount + cfg.spearmanCount + cfg.brawlerCount;
-        float phaseScale = phase switch
-        {
-            0 => 0.45f,
-            1 => 0.70f,
-            _ => 1.00f
-        };
-        int totalEnemies = Mathf.Max(3, Mathf.RoundToInt(lateTotal * phaseScale) + waveInPhase / 2);
+        int[] counts = GetFixedWaveEnemyCounts(stageIndex, phase);
+        int totalEnemies = counts[0] + counts[1] + counts[2];
 
         int minNearRouteSpawns = phase switch
         {
@@ -198,7 +192,6 @@ public class StageManager : MonoBehaviour
             _ => 1.85f
         }) - (stageIndex - 1) * 0.12f - waveInPhase * 0.05f);
 
-        int[] counts = SplitEnemyCounts(cfg, totalEnemies);
         int goalRequirement = Mathf.Clamp((phase + 1) + Mathf.Max(0, (stageIndex - 1) / 2), 1, allyCount);
 
         return new WaveConfig
@@ -220,49 +213,43 @@ public class StageManager : MonoBehaviour
         };
     }
 
-    static int[] SplitEnemyCounts(StageConfig cfg, int totalEnemies)
+    static int[] GetFixedWaveEnemyCounts(int stageIndex, int phase)
     {
-        float totalWeight = cfg.sniperCount + cfg.spearmanCount + cfg.brawlerCount;
-        if (totalWeight <= 0f)
-            return new[] { 1, 1, Mathf.Max(1, totalEnemies - 2) };
+        int sniperBase;
+        int spearmanBase;
+        int brawlerBase;
 
-        float sniperExact = totalEnemies * (cfg.sniperCount / totalWeight);
-        float spearmanExact = totalEnemies * (cfg.spearmanCount / totalWeight);
-
-        int sniper = Mathf.Clamp(Mathf.RoundToInt(sniperExact), 0, totalEnemies);
-        int spearman = Mathf.Clamp(Mathf.RoundToInt(spearmanExact), 0, totalEnemies - sniper);
-        int brawler = Mathf.Max(0, totalEnemies - sniper - spearman);
-        int minBrawler = GetMinimumBrawlerCount(totalEnemies);
-        if (brawler < minBrawler)
+        switch (stageIndex)
         {
-            int need = minBrawler - brawler;
-            while (need > 0 && (sniper > 0 || spearman > 0))
-            {
-                if (sniper >= spearman && sniper > 0) sniper--;
-                else if (spearman > 0) spearman--;
-                else sniper--;
-
-                brawler++;
-                need--;
-            }
+            case 1:
+                sniperBase = 1;
+                spearmanBase = 2;
+                brawlerBase = 2;
+                break;
+            case 2:
+                sniperBase = 2;
+                spearmanBase = 2;
+                brawlerBase = 2;
+                break;
+            case 3:
+                sniperBase = 3;
+                spearmanBase = 2;
+                brawlerBase = 3;
+                break;
+            default:
+                var cfg = GetStageConfig(stageIndex);
+                sniperBase = Mathf.Max(1, cfg.sniperCount);
+                spearmanBase = Mathf.Max(1, cfg.spearmanCount);
+                brawlerBase = Mathf.Max(1, cfg.brawlerCount);
+                break;
         }
 
-        if (cfg.brawlerCount >= cfg.sniperCount && cfg.brawlerCount >= cfg.spearmanCount && brawler == 0)
+        return new[]
         {
-            if (sniper > spearman && sniper > 0) sniper--;
-            else if (spearman > 0) spearman--;
-            brawler = 1;
-        }
-
-        return new[] { sniper, spearman, brawler };
-    }
-
-    static int GetMinimumBrawlerCount(int totalEnemies)
-    {
-        if (totalEnemies <= 3) return 1;
-        if (totalEnemies <= 5) return 2;
-        if (totalEnemies <= 8) return 3;
-        return Mathf.CeilToInt(totalEnemies * 0.35f);
+            sniperBase + phase,
+            spearmanBase + phase,
+            brawlerBase + phase
+        };
     }
 
     static int EnsureOdd(int value) => value % 2 == 0 ? value + 1 : value;

@@ -110,8 +110,8 @@ public class EnemyAutoSpawner : MonoBehaviour
         var allCandidates = GetValidGrassTiles();
         if (allCandidates.Count == 0)
         {
-            Debug.LogWarning("[EnemyAutoSpawner] 배치 가능한 타일이 없습니다.");
-            return;
+            allCandidates = GetEmergencyTiles();
+            Debug.LogWarning("[EnemyAutoSpawner] 일반 배치 후보가 없어 비상 후보로 적 배치를 진행합니다.");
         }
 
         int stage = StageManager.Instance?.currentStageIndex ?? 1;
@@ -130,10 +130,10 @@ public class EnemyAutoSpawner : MonoBehaviour
             platformPool.Sort(CompareNearCandidates);
 
             // 근접: 바위섬 플랫폼 중에서도 최단 경로 가까운 곳을 최우선 사용
-            SpawnEnemyType(platformPool, null, brawlerCount,  "근접 적",  brawlerType);
-            // 원거리/중거리도 남은 플랫폼만 사용해 용암 위 배치를 방지
-            SpawnEnemyType(platformPool, null, sniperCount,   "장거리 적", sniperType);
-            SpawnEnemyType(platformPool, null, spearmanCount, "중거리 적", spearmanType);
+            SpawnEnemyType(platformPool, allCandidates, brawlerCount,  "근접 적",  brawlerType);
+            // 플랫폼이 부족하면 전체 후보로 완화해 웨이브별 지정 수를 보장한다.
+            SpawnEnemyType(platformPool, allCandidates, sniperCount,   "장거리 적", sniperType);
+            SpawnEnemyType(platformPool, allCandidates, spearmanCount, "중거리 적", spearmanType);
         }
         else
         {
@@ -181,7 +181,8 @@ public class EnemyAutoSpawner : MonoBehaviour
             if (!TryTakeFrom(primary, out Vector3 pos) &&
                 !TryTakeFrom(secondary, out pos) &&
                 !TryTakeAny(primary, out pos) &&
-                !TryTakeAny(secondary, out pos))
+                !TryTakeAny(secondary, out pos) &&
+                !TryTakeEmergencyPosition(out pos))
             {
                 Debug.LogWarning(
                     $"[EnemyAutoSpawner] {label} 배치 위치 부족 — {spawned}/{count}명만 배치됨");
@@ -242,6 +243,41 @@ public class EnemyAutoSpawner : MonoBehaviour
         return true;
     }
 
+    bool TryTakeEmergencyPosition(out Vector3 pos)
+    {
+        if (map == null)
+        {
+            pos = new Vector3(reservedPositions.Count * 0.35f, 0f, -1f);
+            reservedPositions.Add(pos);
+            return true;
+        }
+
+        int width  = Mathf.Max(1, map.mapWidth);
+        int height = Mathf.Max(1, map.mapHeight);
+        int innerW = Mathf.Max(1, width - 2);
+        int innerH = Mathf.Max(1, height - 2);
+        int seed   = reservedPositions.Count + spawnedEnemies.Count;
+        int tries  = Mathf.Max(1, width * height);
+
+        for (int i = 0; i < tries; i++)
+        {
+            int x = Mathf.Clamp(1 + ((seed * 3 + i * 5) % innerW), 0, width - 1);
+            int y = Mathf.Clamp(1 + ((seed * 5 + i * 7) % innerH), 0, height - 1);
+            Vector3 candidate = map.GetWorldPosition(x, y);
+
+            if (!HasEnoughSpacing(candidate) && i < tries - 1)
+                continue;
+
+            pos = candidate;
+            reservedPositions.Add(pos);
+            return true;
+        }
+
+        pos = map.GetWorldPosition(width / 2, height / 2) + Vector3.right * (reservedPositions.Count * 0.25f);
+        reservedPositions.Add(pos);
+        return true;
+    }
+
     // ── 유틸리티 ─────────────────────────────────────────────────
 
     void ClearSpawnedEnemies()
@@ -297,9 +333,32 @@ public class EnemyAutoSpawner : MonoBehaviour
             int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
             if (pref != 0) return pref;
             int cmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
-            return cmp != 0 ? cmp : Random.Range(-1, 2);
+            return cmp != 0 ? cmp : CompareTileOrder(a, b);
         });
 
+        return result;
+    }
+
+    List<SpawnCandidate> GetEmergencyTiles()
+    {
+        var result = new List<SpawnCandidate>();
+        if (map == null) return result;
+
+        Vector3 center = map.GetWorldPosition(map.mapWidth / 2, map.mapHeight / 2);
+        for (int x = 0; x < map.mapWidth; x++)
+        for (int y = 0; y < map.mapHeight; y++)
+        {
+            Vector3 wp = map.GetWorldPosition(x, y);
+            result.Add(new SpawnCandidate
+            {
+                tile              = new Vector2Int(x, y),
+                world             = wp,
+                distanceFromRoute = Vector2.Distance(wp, center),
+                preferredPlatform = map.IsEnemyPlatformTile(x, y)
+            });
+        }
+
+        result.Sort(CompareFarCandidates);
         return result;
     }
 
@@ -308,7 +367,7 @@ public class EnemyAutoSpawner : MonoBehaviour
         int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
         if (pref != 0) return pref;
         int cmp = a.distanceFromRoute.CompareTo(b.distanceFromRoute);
-        return cmp != 0 ? cmp : Random.Range(-1, 2);
+        return cmp != 0 ? cmp : CompareTileOrder(a, b);
     }
 
     int CompareFarCandidates(SpawnCandidate a, SpawnCandidate b)
@@ -316,7 +375,13 @@ public class EnemyAutoSpawner : MonoBehaviour
         int pref = b.preferredPlatform.CompareTo(a.preferredPlatform);
         if (pref != 0) return pref;
         int cmp = b.distanceFromRoute.CompareTo(a.distanceFromRoute);
-        return cmp != 0 ? cmp : Random.Range(-1, 2);
+        return cmp != 0 ? cmp : CompareTileOrder(a, b);
+    }
+
+    int CompareTileOrder(SpawnCandidate a, SpawnCandidate b)
+    {
+        int x = a.tile.x.CompareTo(b.tile.x);
+        return x != 0 ? x : a.tile.y.CompareTo(b.tile.y);
     }
 
     /// <summary>점 p에서 선분 a-b까지의 최단 거리</summary>
