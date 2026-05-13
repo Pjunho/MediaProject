@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +11,7 @@ public class GameAudio : MonoBehaviour
     public static GameAudio Instance { get; private set; }
 
     const float BGM_VOLUME = 0.34f;
-    const float SFX_VOLUME = 1.00f;
+    const float SFX_VOLUME = 0.60f;
     const float FADE_SECONDS = 0.65f;
 
     AudioSource bgmSource;
@@ -19,10 +19,33 @@ public class GameAudio : MonoBehaviour
     Coroutine fadeRoutine;
     string currentBgmPath = "";
 
-    AudioClip uiClickClip;
+    AudioClip[] uiClickClips;
     AudioClip confirmClip;
     AudioClip waveClearClip;
     AudioClip failClip;
+
+    // ── 전투 SFX ──────────────────────────────────────────────────────────
+    AudioClip[] hitDamageClips;
+    AudioClip[] allyDeathClips;
+    AudioClip[] bluntSwingClips;
+    AudioClip[] arrowShootClips;
+    AudioClip[] shieldBlockClips;
+    AudioClip   sniperShotClip;
+
+    // ── 스킬 SFX ──────────────────────────────────────────────────────────
+    AudioClip healClip;
+    AudioClip smokeBombClip;
+    AudioClip paralysisClip;
+    AudioClip paralysisShootClip;
+    AudioClip barrierClip;
+
+    // ── UI SFX (파일 기반) ─────────────────────────────────────────────────
+    AudioClip uiSelectClip;
+    AudioClip uiBackClip;
+    AudioClip uiErrorClip;
+    AudioClip uiOpenClip;
+    AudioClip uiCloseClip;
+    AudioClip uiToggleClip;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Bootstrap()
@@ -50,6 +73,9 @@ public class GameAudio : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // 씬 전환과 무관하게 항상 오디오 출력을 보장하는 영구 AudioListener
+        gameObject.AddComponent<AudioListener>();
+
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = true;
         bgmSource.playOnAwake = false;
@@ -60,10 +86,7 @@ public class GameAudio : MonoBehaviour
         sfxSource.playOnAwake = false;
         sfxSource.volume = SFX_VOLUME;
 
-        uiClickClip = CreateToneClip("UiClick", 660f, 0.045f, 0.22f, Wave.Sine);
-        confirmClip = CreateDualToneClip("Confirm", 523f, 784f, 0.14f, 0.25f);
-        waveClearClip = CreateDualToneClip("WaveClear", 659f, 988f, 0.24f, 0.26f);
-        failClip = CreateDualToneClip("Fail", 220f, 146f, 0.28f, 0.28f);
+        LoadSfxAssets();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -76,6 +99,13 @@ public class GameAudio : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 씬 카메라 등에 붙은 중복 AudioListener 비활성화 (GameAudio 것만 유지)
+        foreach (var al in FindObjectsByType<AudioListener>(FindObjectsSortMode.None))
+        {
+            if (al.gameObject != gameObject)
+                al.enabled = false;
+        }
+
         if (scene.name == "MediaProject")
         {
             int stage = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
@@ -87,10 +117,35 @@ public class GameAudio : MonoBehaviour
         }
     }
 
-    public static void PlayUiClick() => Ensure().PlaySfx(Ensure().uiClickClip, 0.95f);
-    public static void PlayConfirm() => Ensure().PlaySfx(Ensure().confirmClip, 0.95f);
+    public static void PlayUiClick()   => Ensure().PlayRandom(Ensure().uiClickClips, 0.85f);
+    public static void PlayConfirm()   => Ensure().PlaySfx(Ensure().confirmClip,   0.95f);
     public static void PlayWaveClear() => Ensure().PlaySfx(Ensure().waveClearClip, 1.00f);
-    public static void PlayFail() => Ensure().PlaySfx(Ensure().failClip, 1.00f);
+    public static void PlayFail()      => Ensure().PlaySfx(Ensure().failClip,      1.00f);
+    public static void StopBgm()          => Ensure().FadeOutBgm();
+    public static void SetBgmPitch(float pitch) => Ensure().bgmSource.pitch = pitch;
+
+    // ── 전투 SFX ──────────────────────────────────────────────────────────
+    public static void PlayHitDamage()  => Ensure().PlayRandom(Ensure().hitDamageClips,  0.90f);
+    public static void PlayAllyDeath()  => Ensure().PlayRandom(Ensure().allyDeathClips,  1.00f);
+    public static void PlayBluntSwing() => Ensure().PlayRandom(Ensure().bluntSwingClips, 0.85f);
+    public static void PlayArrowShoot() => Ensure().PlayRandom(Ensure().arrowShootClips, 0.90f);
+    public static void PlayShieldBlock()=> Ensure().PlayRandom(Ensure().shieldBlockClips, 1.00f);
+    public static void PlaySniperShot() => Ensure().PlaySfx(Ensure().sniperShotClip,    0.80f);
+
+    // ── 스킬 SFX ──────────────────────────────────────────────────────────
+    public static void PlayHeal()      => Ensure().PlaySfx(Ensure().healClip,      0.80f);
+    public static void PlaySmokeBomb() => Ensure().PlaySfx(Ensure().smokeBombClip, 0.90f);
+    public static void PlayParalysis()      => Ensure().PlaySfx(Ensure().paralysisClip,      0.65f);
+    public static void PlayParalysisShoot() => Ensure().PlaySfx(Ensure().paralysisShootClip, 0.80f);
+    public static void PlayBarrier()   => Ensure().PlaySfx(Ensure().barrierClip,   0.85f);
+
+    // ── UI SFX (파일 기반) ─────────────────────────────────────────────────
+    public static void PlayUiSelect()  => Ensure().PlaySfx(Ensure().uiSelectClip, 0.90f);
+    public static void PlayUiBack()    => Ensure().PlaySfx(Ensure().uiBackClip,   0.90f);
+    public static void PlayUiError()   => Ensure().PlaySfx(Ensure().uiErrorClip,  0.90f);
+    public static void PlayUiOpen()    => Ensure().PlaySfx(Ensure().uiOpenClip,   0.80f);
+    public static void PlayUiClose()   => Ensure().PlaySfx(Ensure().uiCloseClip,  0.80f);
+    public static void PlayUiToggle()  => Ensure().PlaySfx(Ensure().uiToggleClip, 0.85f);
 
     public void PlayMenuBgm()
     {
@@ -111,8 +166,18 @@ public class GameAudio : MonoBehaviour
 
     void PlayBgm(string path)
     {
-        if (currentBgmPath == path && bgmSource.isPlaying)
+        if (currentBgmPath == path)
+        {
+            // 같은 BGM이 요청됨 — 재시작 금지
+            // Unity 씬 전환 직후 isPlaying이 순간적으로 false가 될 수 있으므로
+            // fadeRoutine이 없고 실제로 멈춰 있을 때만 무음 복구
+            if (!bgmSource.isPlaying && fadeRoutine == null)
+            {
+                bgmSource.volume = BGM_VOLUME;
+                bgmSource.Play();
+            }
             return;
+        }
 
         var clip = Resources.Load<AudioClip>(path);
         if (clip == null)
@@ -184,6 +249,69 @@ public class GameAudio : MonoBehaviour
         sfxSource.PlayOneShot(clip, Mathf.Clamp01(volumeScale));
     }
 
+    void PlayRandom(AudioClip[] clips, float volumeScale)
+    {
+        if (clips == null || clips.Length == 0) return;
+        PlaySfx(clips[UnityEngine.Random.Range(0, clips.Length)], volumeScale);
+    }
+
+    void LoadSfxAssets()
+    {
+        hitDamageClips  = new AudioClip[]
+        {
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactGeneric_light_000"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactGeneric_light_001"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactGeneric_light_002"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactGeneric_light_003"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactGeneric_light_004"),
+        };
+        allyDeathClips  = LoadClipArray("Audio/SFX/Combat/ally_death",  2);
+        bluntSwingClips = LoadClipArray("Audio/SFX/Combat/blunt_swing", 3);
+        arrowShootClips = LoadClipArray("Audio/SFX/Combat/arrow_shoot", 2);
+        shieldBlockClips = new AudioClip[]
+        {
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactPlate_heavy_000"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactPlate_heavy_001"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactPlate_heavy_002"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactPlate_heavy_003"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_impact-sounds/Audio/impactPlate_heavy_004"),
+        };
+        sniperShotClip  = Resources.Load<AudioClip>("Audio/SFX/Combat/sniper_shot");
+
+        healClip      = Resources.Load<AudioClip>("Audio/SFX/Skill/sound_healing");
+        smokeBombClip = Resources.Load<AudioClip>("Audio/SFX/Skill/sound_smoke");
+        paralysisClip      = Retrofy(Resources.Load<AudioClip>("Audio/SFX/Skill/sound_paralized"), 4, 4);
+        paralysisShootClip = Resources.Load<AudioClip>("Audio/SFX/Combat/arrow_shoot_1");
+        barrierClip   = Resources.Load<AudioClip>("Audio/SFX/Skill/sound_forcefield");
+
+        uiClickClips = new AudioClip[]
+        {
+            Resources.Load<AudioClip>("Audio/SFX/kenney_ui-audio/Audio/click1"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_ui-audio/Audio/click2"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_ui-audio/Audio/click3"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_ui-audio/Audio/click4"),
+            Resources.Load<AudioClip>("Audio/SFX/kenney_ui-audio/Audio/click5"),
+        };
+        confirmClip   = Resources.Load<AudioClip>("Audio/SFX/kenney_interface-sounds/Audio/confirmation_001");
+        waveClearClip = Resources.Load<AudioClip>("Audio/SFX/kenney_digital-audio/Audio/phaserUp5");
+        failClip      = Resources.Load<AudioClip>("Audio/SFX/kenney_digital-audio/Audio/lowDown");
+
+        uiSelectClip = Resources.Load<AudioClip>("Audio/SFX/UI/ui_select");
+        uiBackClip   = Resources.Load<AudioClip>("Audio/SFX/UI/ui_back");
+        uiErrorClip  = Resources.Load<AudioClip>("Audio/SFX/UI/ui_error");
+        uiOpenClip   = Resources.Load<AudioClip>("Audio/SFX/kenney_interface-sounds/Audio/open_001");
+        uiCloseClip  = Resources.Load<AudioClip>("Audio/SFX/kenney_interface-sounds/Audio/close_001");
+        uiToggleClip = Resources.Load<AudioClip>("Audio/SFX/kenney_interface-sounds/Audio/toggle_001");
+    }
+
+    static AudioClip[] LoadClipArray(string basePath, int count)
+    {
+        var clips = new AudioClip[count];
+        for (int i = 0; i < count; i++)
+            clips[i] = Resources.Load<AudioClip>($"{basePath}_{i + 1}");
+        return clips;
+    }
+
     static string GetStageBgmPath(int stageIndex) => stageIndex switch
     {
         1 => "Audio/BGM/stage_grass_peaceful",
@@ -192,45 +320,29 @@ public class GameAudio : MonoBehaviour
         _ => ""
     };
 
-    enum Wave { Sine, Square }
 
-    static AudioClip CreateDualToneClip(string name, float freqA, float freqB, float seconds, float gain)
+    // 비트 크러싱 + 샘플 홀드로 레트로(8비트) 느낌 생성
+    static AudioClip Retrofy(AudioClip source, int bits = 4, int sampleRateDiv = 4)
     {
-        const int sampleRate = 44100;
-        int samples = Mathf.CeilToInt(sampleRate * seconds);
-        var data = new float[samples];
-        int split = Mathf.Max(1, samples / 2);
+        if (source == null) return null;
+        int total = source.samples * source.channels;
+        var data  = new float[total];
+        source.GetData(data, 0);
 
-        for (int i = 0; i < samples; i++)
+        // 샘플 홀드: sampleRateDiv 샘플마다 값 고정 (저해상도 DAC 시뮬레이션)
+        float held = 0f;
+        for (int i = 0; i < total; i++)
         {
-            float freq = i < split ? freqA : freqB;
-            float t = i / (float)sampleRate;
-            float env = 1f - i / (float)samples;
-            data[i] = Mathf.Sin(2f * Mathf.PI * freq * t) * gain * env;
+            if (i % sampleRateDiv == 0) held = data[i];
+            data[i] = held;
         }
 
-        var clip = AudioClip.Create(name, samples, 1, sampleRate, false);
-        clip.SetData(data, 0);
-        return clip;
-    }
+        // 비트 크러싱: bits 비트 해상도로 양자화
+        float steps = Mathf.Pow(2f, bits) - 1f;
+        for (int i = 0; i < total; i++)
+            data[i] = Mathf.Round(data[i] * steps) / steps;
 
-    static AudioClip CreateToneClip(string name, float freq, float seconds, float gain, Wave wave)
-    {
-        const int sampleRate = 44100;
-        int samples = Mathf.CeilToInt(sampleRate * seconds);
-        var data = new float[samples];
-
-        for (int i = 0; i < samples; i++)
-        {
-            float t = i / (float)sampleRate;
-            float env = 1f - i / (float)samples;
-            float sample = Mathf.Sin(2f * Mathf.PI * freq * t);
-            if (wave == Wave.Square)
-                sample = sample >= 0f ? 1f : -1f;
-            data[i] = sample * gain * env;
-        }
-
-        var clip = AudioClip.Create(name, samples, 1, sampleRate, false);
+        var clip = AudioClip.Create(source.name + "_retro", source.samples, source.channels, source.frequency, false);
         clip.SetData(data, 0);
         return clip;
     }
