@@ -280,7 +280,7 @@ TextureImporter:
         width: 351
         height: 305
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: clean_green_arrow_effect_1
       rect:
         serializedVersion: 2
-        x: 1409
+        x: 1377
         y: 50
-        width: 418
+        width: 450
         height: 355
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,10 +319,10 @@ TextureImporter:
       name: clean_green_arrow_effect_2
       rect:
         serializedVersion: 2
-        x: 1975
-        y: 325
-        width: 27
-        height: 29
+        x: 3225
+        y: 90
+        width: 243
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,7 +346,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -360,37 +360,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_4
-      rect:
-        serializedVersion: 2
-        x: 2054
-        y: 325
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cea4c5acb09631050800000000000000
-      internalID: 5770071046952340204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_5
       rect:
         serializedVersion: 2
         x: 1903
         y: 51
         width: 349
-        height: 265
+        height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -404,37 +382,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_6
-      rect:
-        serializedVersion: 2
-        x: 1926
-        y: 297
-        width: 27
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e820c7fb36489330800000000000000
-      internalID: 3717798715767924965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_7
       rect:
         serializedVersion: 2
-        x: 575
+        x: 542
         y: 74
-        width: 201
-        height: 204
+        width: 268
+        height: 209
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -448,37 +404,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_8
-      rect:
-        serializedVersion: 2
-        x: 646
-        y: 253
-        width: 23
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ff6aea724d1996a90800000000000000
-      internalID: -7320159378929178881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_9
       rect:
         serializedVersion: 2
-        x: 2387
-        y: 77
-        width: 234
-        height: 177
+        x: 2356
+        y: 72
+        width: 301
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -492,191 +426,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_10
-      rect:
-        serializedVersion: 2
-        x: 2499
-        y: 249
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 160968ea7a995cdd0800000000000000
-      internalID: -2466396275448835999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_11
-      rect:
-        serializedVersion: 2
-        x: 2554
-        y: 243
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2b0ed76e49c58b180800000000000000
-      internalID: -9099421252510162766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_12
-      rect:
-        serializedVersion: 2
-        x: 2602
-        y: 247
-        width: 25
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 280dd474f3d724830800000000000000
-      internalID: 4053940325319561346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_13
-      rect:
-        serializedVersion: 2
-        x: 2888
-        y: 220
-        width: 33
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42ee3db94c4c03b40800000000000000
-      internalID: 5418046700433698340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_14
-      rect:
-        serializedVersion: 2
-        x: 2624
-        y: 237
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6708dc3b23ca37e50800000000000000
-      internalID: 6805972795651883126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_15
-      rect:
-        serializedVersion: 2
-        x: 3278
-        y: 223
-        width: 27
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de202266c50e7f340800000000000000
-      internalID: 4897629807243821805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_16
-      rect:
-        serializedVersion: 2
-        x: 2221
-        y: 188
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 65c3e3219d3e4d4d0800000000000000
-      internalID: -3110610921152693162
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_17
-      rect:
-        serializedVersion: 2
-        x: 2993
-        y: 221
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce13da83cda5af4f0800000000000000
-      internalID: -794222482387291668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_18
       rect:
         serializedVersion: 2
         x: 138
         y: 90
-        width: 156
+        width: 164
         height: 117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -690,37 +448,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_19
-      rect:
-        serializedVersion: 2
-        x: 772
-        y: 192
-        width: 13
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b186422c47911c000800000000000000
-      internalID: 54352659769223195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_20
       rect:
         serializedVersion: 2
         x: 2797
-        y: 78
-        width: 177
-        height: 123
+        y: 68
+        width: 247
+        height: 186
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -734,688 +470,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clean_green_arrow_effect_21
-      rect:
-        serializedVersion: 2
-        x: 2943
-        y: 196
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e57b322fbdb5aff0800000000000000
-      internalID: -25405594269944346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_22
-      rect:
-        serializedVersion: 2
-        x: 777
-        y: 173
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6cf519a4717ba47b0800000000000000
-      internalID: -5239173905828978746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_23
-      rect:
-        serializedVersion: 2
-        x: 2356
-        y: 158
-        width: 30
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 932d51cc1016d27d0800000000000000
-      internalID: -2941588321256222151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_24
-      rect:
-        serializedVersion: 2
-        x: 2629
-        y: 156
-        width: 30
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca4e832f9f9854d90800000000000000
-      internalID: -7114128329758153556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_25
-      rect:
-        serializedVersion: 2
-        x: 2996
-        y: 180
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3fc985db6c4fef10800000000000000
-      internalID: 2301141960637402938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_26
-      rect:
-        serializedVersion: 2
-        x: 3004
-        y: 172
-        width: 10
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 97d6ea28d4b69d340800000000000000
-      internalID: 4889056851136507257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_27
-      rect:
-        serializedVersion: 2
-        x: 3266
-        y: 175
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc8ac3287ef6c8d80800000000000000
-      internalID: -8247093777509078833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_28
-      rect:
-        serializedVersion: 2
-        x: 3373
-        y: 176
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 83bf17993c0de8ee0800000000000000
-      internalID: -1256837707478205640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_29
-      rect:
-        serializedVersion: 2
-        x: 541
-        y: 142
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fc52b6b37a087c40800000000000000
-      internalID: 5510165636190461173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_30
-      rect:
-        serializedVersion: 2
-        x: 788
-        y: 135
-        width: 23
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e20231b307dc33250800000000000000
-      internalID: 5923303816833474606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_31
-      rect:
-        serializedVersion: 2
-        x: 1378
-        y: 145
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58db0ec433a0ba2a0800000000000000
-      internalID: -6725270403098296955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_32
-      rect:
-        serializedVersion: 2
-        x: 3018
-        y: 131
-        width: 26
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b37d262c20e972160800000000000000
-      internalID: 7000737880459106107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_33
-      rect:
-        serializedVersion: 2
-        x: 3252
-        y: 156
-        width: 11
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6872428b866875d20800000000000000
-      internalID: 3267227839004682118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_34
-      rect:
-        serializedVersion: 2
-        x: 3281
-        y: 157
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1062c701f5b5a7a0800000000000000
-      internalID: -6366482451396403172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_35
-      rect:
-        serializedVersion: 2
-        x: 3426
-        y: 156
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 27693db898ff65970800000000000000
-      internalID: 8743456692807898738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_36
-      rect:
-        serializedVersion: 2
-        x: 2978
-        y: 134
-        width: 17
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b8fa86f33307b1d20800000000000000
-      internalID: 3250314921487413131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_37
-      rect:
-        serializedVersion: 2
-        x: 3268
-        y: 141
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c9af3960a4272bb0800000000000000
-      internalID: -4960956193146164799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_38
-      rect:
-        serializedVersion: 2
-        x: 287
-        y: 125
-        width: 16
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f878a0fd8536bf90800000000000000
-      internalID: -6938299292173436686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_39
-      rect:
-        serializedVersion: 2
-        x: 2632
-        y: 122
-        width: 15
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b9423e02d44aef710800000000000000
-      internalID: 1728999958128043163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_40
-      rect:
-        serializedVersion: 2
-        x: 2995
-        y: 125
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 324d6dde2a690c390800000000000000
-      internalID: -7800068928086551517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_41
-      rect:
-        serializedVersion: 2
-        x: 3246
-        y: 117
-        width: 12
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4375d56ec86f90440800000000000000
-      internalID: 4902720754390226740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_42
-      rect:
-        serializedVersion: 2
-        x: 3446
-        y: 117
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dffab64f39c1ee770800000000000000
-      internalID: 8641876156757028861
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_43
-      rect:
-        serializedVersion: 2
-        x: 543
-        y: 83
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f32e374559eaef510800000000000000
-      internalID: 1584896075271234111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_44
-      rect:
-        serializedVersion: 2
-        x: 1396
-        y: 90
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7cc7e097e0088a890800000000000000
-      internalID: -7446561184208225081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_45
-      rect:
-        serializedVersion: 2
-        x: 3224
-        y: 100
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 725eeee1413457900800000000000000
-      internalID: 681524672313877799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_46
-      rect:
-        serializedVersion: 2
-        x: 3239
-        y: 112
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf88ea149daab4630800000000000000
-      internalID: 3912408551387990268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_47
-      rect:
-        serializedVersion: 2
-        x: 3245
-        y: 106
-        width: 12
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ddb725589477a5150800000000000000
-      internalID: 5862129022629215197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_48
-      rect:
-        serializedVersion: 2
-        x: 754
-        y: 71
-        width: 33
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abf1179e00a9f61f0800000000000000
-      internalID: -1049450859446853702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_49
-      rect:
-        serializedVersion: 2
-        x: 2595
-        y: 71
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e81fbc4f98a25b0d0800000000000000
-      internalID: -3407770771030019698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_50
-      rect:
-        serializedVersion: 2
-        x: 2972
-        y: 66
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10197440356d95e60800000000000000
-      internalID: 7951622269141750017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clean_green_arrow_effect_51
-      rect:
-        serializedVersion: 2
-        x: 3303
-        y: 92
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d825d4eefeb07a580800000000000000
-      internalID: -8816064620431322483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: clean_green_arrow_effect_52
       rect:
         serializedVersion: 2
@@ -1424,7 +478,7 @@ TextureImporter:
         width: 7
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1446,7 +500,7 @@ TextureImporter:
         width: 9
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1463,7 +517,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c8351a9227af71c46820966413162097
     internalID: 0
     vertices: []
     indices: 

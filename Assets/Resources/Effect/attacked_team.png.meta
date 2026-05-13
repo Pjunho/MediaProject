@@ -200,10 +200,10 @@ TextureImporter:
       name: attacked_team_0
       rect:
         serializedVersion: 2
-        x: 83
-        y: 606
-        width: 555
-        height: 418
+        x: 146
+        y: 508
+        width: 91
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +222,10 @@ TextureImporter:
       name: attacked_team_1
       rect:
         serializedVersion: 2
-        x: 382
-        y: 596
-        width: 13
-        height: 18
+        x: 299
+        y: 496
+        width: 136
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +244,10 @@ TextureImporter:
       name: attacked_team_2
       rect:
         serializedVersion: 2
-        x: 478
-        y: 1
-        width: 252
-        height: 616
+        x: 472
+        y: 496
+        width: 155
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: attacked_team_3
       rect:
         serializedVersion: 2
-        x: 655
-        y: 495
-        width: 147
-        height: 122
+        x: 658
+        y: 497
+        width: 148
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,10 +288,10 @@ TextureImporter:
       name: attacked_team_4
       rect:
         serializedVersion: 2
-        x: 730
-        y: 605
-        width: 12
-        height: 19
+        x: 848
+        y: 503
+        width: 119
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +310,10 @@ TextureImporter:
       name: attacked_team_5
       rect:
         serializedVersion: 2
-        x: 782
-        y: 0
-        width: 723
-        height: 1024
+        x: 1025
+        y: 508
+        width: 108
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,10 +332,10 @@ TextureImporter:
       name: attacked_team_6
       rect:
         serializedVersion: 2
-        x: 200
-        y: 568
-        width: 25
-        height: 25
+        x: 1209
+        y: 519
+        width: 86
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,10 +354,10 @@ TextureImporter:
       name: attacked_team_7
       rect:
         serializedVersion: 2
-        x: 295
-        y: 393
-        width: 139
-        height: 210
+        x: 1370
+        y: 521
+        width: 77
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,473 +372,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: attacked_team_8
-      rect:
-        serializedVersion: 2
-        x: 604
-        y: 582
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ce6d806ac5767820800000000000000
-      internalID: 2915647320832700098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_9
-      rect:
-        serializedVersion: 2
-        x: 782
-        y: 576
-        width: 23
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00621da7344380890800000000000000
-      internalID: -7491680515702839808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_10
-      rect:
-        serializedVersion: 2
-        x: 852
-        y: 511
-        width: 117
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cbea900ee3e8fd00800000000000000
-      internalID: 1006805128069180355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_11
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 0
-        width: 211
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d52c116728c5780e0800000000000000
-      internalID: -2267742171961376163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_12
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 550
-        width: 21
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a92f8e213eb48b420800000000000000
-      internalID: 2645948219727082138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_13
-      rect:
-        serializedVersion: 2
-        x: 474
-        y: 569
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a568331a6d5a650d0800000000000000
-      internalID: -3434375324577331622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_14
-      rect:
-        serializedVersion: 2
-        x: 614
-        y: 545
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 785f6ff34048c2510800000000000000
-      internalID: 1525739527559640455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_15
-      rect:
-        serializedVersion: 2
-        x: 1206
-        y: 519
-        width: 60
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b80a2ac197216b50800000000000000
-      internalID: 6584587637307869369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_16
-      rect:
-        serializedVersion: 2
-        x: 1263
-        y: 543
-        width: 10
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 355c1153c3d4d3150800000000000000
-      internalID: 5853920011635246419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_17
-      rect:
-        serializedVersion: 2
-        x: 1270
-        y: 534
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f8a2c0b9253233810800000000000000
-      internalID: 1743776318418070159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_18
-      rect:
-        serializedVersion: 2
-        x: 1373
-        y: 542
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b07d42508f8962b80800000000000000
-      internalID: -8419874262316951797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_19
-      rect:
-        serializedVersion: 2
-        x: 1383
-        y: 522
-        width: 24
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25310d3215c2a34f0800000000000000
-      internalID: -848316852801105070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_20
-      rect:
-        serializedVersion: 2
-        x: 1407
-        y: 543
-        width: 13
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55db69103ddefe270800000000000000
-      internalID: 8282099730278169941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_21
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 532
-        width: 17
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c22b0d723ada2d980800000000000000
-      internalID: -8515553029144923604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_22
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 530
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0abbd938692bfb8a0800000000000000
-      internalID: -6287110195262932064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_23
-      rect:
-        serializedVersion: 2
-        x: 1124
-        y: 531
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fb4d088e1dc2b190800000000000000
-      internalID: -7948064861340218380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_24
-      rect:
-        serializedVersion: 2
-        x: 1284
-        y: 529
-        width: 13
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 259f9ebcafef0f650800000000000000
-      internalID: 6264787434788747602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_25
-      rect:
-        serializedVersion: 2
-        x: 1370
-        y: 522
-        width: 12
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6a9b56548246a770800000000000000
-      internalID: 8621651672799353452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_26
-      rect:
-        serializedVersion: 2
-        x: 1418
-        y: 530
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef11c46152a12e6f0800000000000000
-      internalID: -656933849052474882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_27
-      rect:
-        serializedVersion: 2
-        x: 1437
-        y: 530
-        width: 12
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d9dd2058d78c6e530800000000000000
-      internalID: 3884012170081656221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attacked_team_28
-      rect:
-        serializedVersion: 2
-        x: 919
-        y: 503
-        width: 10
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd3f1be2882eca1f0800000000000000
-      internalID: -1032201140047842337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 860e2a0101478554dae5dd18f9ceca6c
     internalID: 0
     vertices: []
     indices: 

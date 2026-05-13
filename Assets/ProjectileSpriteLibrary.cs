@@ -7,8 +7,33 @@ public static class ProjectileSpriteLibrary
     const int ArrowFrameCount = 8;
     const float ArrowPixelsPerUnit = 170f;
 
+    const string BoomerangPath = "Effect/clean_boomerang_effect";
+    const float BoomerangPpu = 443f;
+
     static Sprite[] arrowFrames;
     static Sprite fallbackArrow;
+    static Sprite[] boomerangFrames;
+
+    public static Sprite[] GetBoomerangFrames()
+    {
+        if (boomerangFrames != null) return boomerangFrames;
+
+        Texture2D sheet = Resources.Load<Texture2D>(BoomerangPath);
+        if (sheet == null) { boomerangFrames = new Sprite[0]; return boomerangFrames; }
+
+        sheet.filterMode = FilterMode.Point;
+        sheet.wrapMode   = TextureWrapMode.Clamp;
+
+        int frameCount = Mathf.Max(1, Mathf.RoundToInt((float)sheet.width / sheet.height));
+        float frameW   = sheet.width / (float)frameCount;
+        boomerangFrames = new Sprite[frameCount];
+        for (int i = 0; i < frameCount; i++)
+        {
+            var rect = new Rect(i * frameW, 0f, frameW, sheet.height);
+            boomerangFrames[i] = Sprite.Create(sheet, rect, new Vector2(0.5f, 0.5f), BoomerangPpu);
+        }
+        return boomerangFrames;
+    }
 
     public static Sprite[] GetArrowFrames()
     {
