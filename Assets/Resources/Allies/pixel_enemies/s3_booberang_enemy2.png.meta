@@ -1,0 +1,1692 @@
+fileFormatVersion: 2
+guid: ce4c4f1d5500d2f4683ead4628bcf18e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3482338948265247265
+    second: s3_booberang_enemy2_0
+  - first:
+      213: 5235009296850114495
+    second: s3_booberang_enemy2_1
+  - first:
+      213: -4972857407932023439
+    second: s3_booberang_enemy2_2
+  - first:
+      213: 6533401590078981017
+    second: s3_booberang_enemy2_3
+  - first:
+      213: -7744018969365752912
+    second: s3_booberang_enemy2_4
+  - first:
+      213: 2777085400612365203
+    second: s3_booberang_enemy2_5
+  - first:
+      213: -3741389555393973080
+    second: s3_booberang_enemy2_6
+  - first:
+      213: 7379622093558999066
+    second: s3_booberang_enemy2_7
+  - first:
+      213: -3368086023569085143
+    second: s3_booberang_enemy2_8
+  - first:
+      213: 234419643958620103
+    second: s3_booberang_enemy2_9
+  - first:
+      213: -171538269403732128
+    second: s3_booberang_enemy2_10
+  - first:
+      213: 9026289788214493711
+    second: s3_booberang_enemy2_11
+  - first:
+      213: 8461546584267163445
+    second: s3_booberang_enemy2_12
+  - first:
+      213: -143450781318567115
+    second: s3_booberang_enemy2_13
+  - first:
+      213: -7191111237570219290
+    second: s3_booberang_enemy2_14
+  - first:
+      213: 6296413033961596286
+    second: s3_booberang_enemy2_15
+  - first:
+      213: -8689955474669313657
+    second: s3_booberang_enemy2_16
+  - first:
+      213: 6523244679811207359
+    second: s3_booberang_enemy2_17
+  - first:
+      213: -3056599434430485457
+    second: s3_booberang_enemy2_18
+  - first:
+      213: 391523565064216538
+    second: s3_booberang_enemy2_19
+  - first:
+      213: -5413781129298438644
+    second: s3_booberang_enemy2_20
+  - first:
+      213: 632964952941934315
+    second: s3_booberang_enemy2_21
+  - first:
+      213: -2113278091010652754
+    second: s3_booberang_enemy2_22
+  - first:
+      213: -5983754036584838277
+    second: s3_booberang_enemy2_23
+  - first:
+      213: -3760518453614472711
+    second: s3_booberang_enemy2_24
+  - first:
+      213: 193173576918766542
+    second: s3_booberang_enemy2_25
+  - first:
+      213: 8604603798846992278
+    second: s3_booberang_enemy2_26
+  - first:
+      213: 6148938705119078461
+    second: s3_booberang_enemy2_27
+  - first:
+      213: -7071566802652195815
+    second: s3_booberang_enemy2_28
+  - first:
+      213: -5203472640387185424
+    second: s3_booberang_enemy2_29
+  - first:
+      213: -2967956392270657650
+    second: s3_booberang_enemy2_30
+  - first:
+      213: 5176288446231459276
+    second: s3_booberang_enemy2_31
+  - first:
+      213: 3144724685256156567
+    second: s3_booberang_enemy2_32
+  - first:
+      213: 3021438629238085928
+    second: s3_booberang_enemy2_33
+  - first:
+      213: -3198907966267460079
+    second: s3_booberang_enemy2_34
+  - first:
+      213: -5190422704912338651
+    second: s3_booberang_enemy2_35
+  - first:
+      213: -832257797381028723
+    second: s3_booberang_enemy2_36
+  - first:
+      213: 1944330191592870240
+    second: s3_booberang_enemy2_37
+  - first:
+      213: -3741975936266677935
+    second: s3_booberang_enemy2_38
+  - first:
+      213: -5586023083753261235
+    second: s3_booberang_enemy2_39
+  - first:
+      213: -7474158940810281026
+    second: s3_booberang_enemy2_40
+  - first:
+      213: 6865069051783404009
+    second: s3_booberang_enemy2_41
+  - first:
+      213: 5040633141693958872
+    second: s3_booberang_enemy2_42
+  - first:
+      213: -2920553978157932902
+    second: s3_booberang_enemy2_43
+  - first:
+      213: 1960519997219695622
+    second: s3_booberang_enemy2_44
+  - first:
+      213: 2847611331899990855
+    second: s3_booberang_enemy2_45
+  - first:
+      213: 8982066764008960795
+    second: s3_booberang_enemy2_46
+  - first:
+      213: -6261832374660518088
+    second: s3_booberang_enemy2_47
+  - first:
+      213: 4157053298117717926
+    second: s3_booberang_enemy2_48
+  - first:
+      213: 457969060554619393
+    second: s3_booberang_enemy2_49
+  - first:
+      213: 38987255504740418
+    second: s3_booberang_enemy2_50
+  - first:
+      213: -8834430350292810333
+    second: s3_booberang_enemy2_51
+  - first:
+      213: -2685693861368325850
+    second: s3_booberang_enemy2_52
+  - first:
+      213: -8234572529898525942
+    second: s3_booberang_enemy2_53
+  - first:
+      213: 3469176987725563483
+    second: s3_booberang_enemy2_54
+  - first:
+      213: 5291216694400561175
+    second: s3_booberang_enemy2_55
+  - first:
+      213: -9172501338326925085
+    second: s3_booberang_enemy2_56
+  - first:
+      213: -3291659130837721504
+    second: s3_booberang_enemy2_57
+  - first:
+      213: -2725364320788031694
+    second: s3_booberang_enemy2_58
+  - first:
+      213: -2244171571247795716
+    second: s3_booberang_enemy2_59
+  - first:
+      213: -6088850904675994156
+    second: s3_booberang_enemy2_60
+  - first:
+      213: -7257780156647574352
+    second: s3_booberang_enemy2_61
+  - first:
+      213: -1879282001182712199
+    second: s3_booberang_enemy2_62
+  - first:
+      213: 3605238691759276608
+    second: s3_booberang_enemy2_63
+  - first:
+      213: -529217708231002654
+    second: s3_booberang_enemy2_64
+  - first:
+      213: -387556725429328635
+    second: s3_booberang_enemy2_65
+  - first:
+      213: -4323703684144785922
+    second: s3_booberang_enemy2_66
+  - first:
+      213: 5851316475193893917
+    second: s3_booberang_enemy2_67
+  - first:
+      213: -8616058743296336487
+    second: s3_booberang_enemy2_68
+  - first:
+      213: -8365285072717645997
+    second: s3_booberang_enemy2_69
+  - first:
+      213: -8888701896317987083
+    second: s3_booberang_enemy2_70
+  - first:
+      213: -2456284494676712430
+    second: s3_booberang_enemy2_71
+  - first:
+      213: -4993598977336725785
+    second: s3_booberang_enemy2_72
+  - first:
+      213: 7754194497797723882
+    second: s3_booberang_enemy2_73
+  - first:
+      213: -1516835810715510831
+    second: s3_booberang_enemy2_74
+  - first:
+      213: -65110615571327259
+    second: s3_booberang_enemy2_75
+  - first:
+      213: -3641197042278742839
+    second: s3_booberang_enemy2_76
+  - first:
+      213: -6941582727757557307
+    second: s3_booberang_enemy2_77
+  - first:
+      213: 6106130832739997039
+    second: s3_booberang_enemy2_78
+  - first:
+      213: 3561867043329624716
+    second: s3_booberang_enemy2_79
+  - first:
+      213: 4098899582979938835
+    second: s3_booberang_enemy2_80
+  - first:
+      213: -522054188201676274
+    second: s3_booberang_enemy2_81
+  - first:
+      213: 2760663013755889946
+    second: s3_booberang_enemy2_82
+  - first:
+      213: -3623199267909674868
+    second: s3_booberang_enemy2_83
+  - first:
+      213: -3018583436369381434
+    second: s3_booberang_enemy2_84
+  - first:
+      213: -1725580362625995665
+    second: s3_booberang_enemy2_85
+  - first:
+      213: 5077661151719500456
+    second: s3_booberang_enemy2_86
+  - first:
+      213: -5411177525351640302
+    second: s3_booberang_enemy2_87
+  - first:
+      213: 1180601803485597644
+    second: s3_booberang_enemy2_88
+  - first:
+      213: 7640999764204923883
+    second: s3_booberang_enemy2_89
+  - first:
+      213: -6990945571602304770
+    second: s3_booberang_enemy2_90
+  - first:
+      213: -7296673186085045851
+    second: s3_booberang_enemy2_91
+  - first:
+      213: 3225122341683599555
+    second: s3_booberang_enemy2_92
+  - first:
+      213: -2349446693710759794
+    second: s3_booberang_enemy2_93
+  - first:
+      213: 5369131393198696729
+    second: s3_booberang_enemy2_94
+  - first:
+      213: -4289402987081127207
+    second: s3_booberang_enemy2_95
+  - first:
+      213: -7484245097370440810
+    second: s3_booberang_enemy2_96
+  - first:
+      213: -6532693294579492254
+    second: s3_booberang_enemy2_97
+  - first:
+      213: -8943378761777471005
+    second: s3_booberang_enemy2_98
+  - first:
+      213: 2498658369488540471
+    second: s3_booberang_enemy2_99
+  - first:
+      213: -768653358270831287
+    second: s3_booberang_enemy2_100
+  - first:
+      213: 6512047508479827992
+    second: s3_booberang_enemy2_101
+  - first:
+      213: 4346269860019057973
+    second: s3_booberang_enemy2_102
+  - first:
+      213: 2280085960295063144
+    second: s3_booberang_enemy2_103
+  - first:
+      213: 3383755565452940863
+    second: s3_booberang_enemy2_104
+  - first:
+      213: 1439325200576135253
+    second: s3_booberang_enemy2_105
+  - first:
+      213: -5355889894893081697
+    second: s3_booberang_enemy2_106
+  - first:
+      213: 5237517767578753943
+    second: s3_booberang_enemy2_107
+  - first:
+      213: -3566900966771248179
+    second: s3_booberang_enemy2_108
+  - first:
+      213: 1163110956306383763
+    second: s3_booberang_enemy2_109
+  - first:
+      213: -1185124689774005696
+    second: s3_booberang_enemy2_110
+  - first:
+      213: 5299608090966902625
+    second: s3_booberang_enemy2_111
+  - first:
+      213: -7829814838376120345
+    second: s3_booberang_enemy2_112
+  - first:
+      213: 868629784924326910
+    second: s3_booberang_enemy2_113
+  - first:
+      213: 728083068097962312
+    second: s3_booberang_enemy2_114
+  - first:
+      213: 6729271424181867380
+    second: s3_booberang_enemy2_115
+  - first:
+      213: -7765544281264413032
+    second: s3_booberang_enemy2_116
+  - first:
+      213: 6255186072626017873
+    second: s3_booberang_enemy2_117
+  - first:
+      213: 3150519870950633334
+    second: s3_booberang_enemy2_118
+  - first:
+      213: 5022761961506955863
+    second: s3_booberang_enemy2_119
+  - first:
+      213: 732273836042096561
+    second: s3_booberang_enemy2_120
+  - first:
+      213: 7719491981407882366
+    second: s3_booberang_enemy2_121
+  - first:
+      213: -3656680281252239083
+    second: s3_booberang_enemy2_122
+  - first:
+      213: -6463198287607321448
+    second: s3_booberang_enemy2_123
+  - first:
+      213: 1343699533102033519
+    second: s3_booberang_enemy2_124
+  - first:
+      213: 3119124124210056058
+    second: s3_booberang_enemy2_125
+  - first:
+      213: -7145280922984620721
+    second: s3_booberang_enemy2_126
+  - first:
+      213: 583781370101597729
+    second: s3_booberang_enemy2_127
+  - first:
+      213: -2719381205949414271
+    second: s3_booberang_enemy2_128
+  - first:
+      213: 827832626140428655
+    second: s3_booberang_enemy2_129
+  - first:
+      213: 4340261955765591589
+    second: s3_booberang_enemy2_130
+  - first:
+      213: 3241300273233454348
+    second: s3_booberang_enemy2_131
+  - first:
+      213: 8385337782943027317
+    second: s3_booberang_enemy2_132
+  - first:
+      213: 592056993819891005
+    second: s3_booberang_enemy2_133
+  - first:
+      213: 2612045324609623609
+    second: s3_booberang_enemy2_134
+  - first:
+      213: -2739758061939769903
+    second: s3_booberang_enemy2_135
+  - first:
+      213: -1379266140419268174
+    second: s3_booberang_enemy2_136
+  - first:
+      213: -5510459147223267365
+    second: s3_booberang_enemy2_137
+  - first:
+      213: 4193943624227051622
+    second: s3_booberang_enemy2_138
+  - first:
+      213: -8464542359615553328
+    second: s3_booberang_enemy2_139
+  - first:
+      213: 3060320749728538503
+    second: s3_booberang_enemy2_140
+  - first:
+      213: -69818673426232912
+    second: s3_booberang_enemy2_141
+  - first:
+      213: -5967382165621886200
+    second: s3_booberang_enemy2_142
+  - first:
+      213: -7173150447471446462
+    second: s3_booberang_enemy2_143
+  - first:
+      213: 149428888329571225
+    second: s3_booberang_enemy2_144
+  - first:
+      213: 6121414807425850474
+    second: s3_booberang_enemy2_145
+  - first:
+      213: 2399911561766628785
+    second: s3_booberang_enemy2_146
+  - first:
+      213: 8781468045038434731
+    second: s3_booberang_enemy2_147
+  - first:
+      213: -1951514689930952837
+    second: s3_booberang_enemy2_148
+  - first:
+      213: 8855213970715229044
+    second: s3_booberang_enemy2_149
+  - first:
+      213: -3435892084385571652
+    second: s3_booberang_enemy2_150
+  - first:
+      213: -6264541476987751890
+    second: s3_booberang_enemy2_151
+  - first:
+      213: 4038836174346608840
+    second: s3_booberang_enemy2_152
+  - first:
+      213: -3710450407117453937
+    second: s3_booberang_enemy2_153
+  - first:
+      213: 6272873416201233931
+    second: s3_booberang_enemy2_154
+  - first:
+      213: 8286346681656605560
+    second: s3_booberang_enemy2_155
+  - first:
+      213: 6562810706552141916
+    second: s3_booberang_enemy2_156
+  - first:
+      213: 1740790177482862175
+    second: s3_booberang_enemy2_157
+  - first:
+      213: 6639679274137940895
+    second: s3_booberang_enemy2_158
+  - first:
+      213: -4512617906312774154
+    second: s3_booberang_enemy2_159
+  - first:
+      213: 1156773751174929944
+    second: s3_booberang_enemy2_160
+  - first:
+      213: -4357896143629307538
+    second: s3_booberang_enemy2_161
+  - first:
+      213: -8065490110234650601
+    second: s3_booberang_enemy2_162
+  - first:
+      213: -4881589557150966893
+    second: s3_booberang_enemy2_163
+  - first:
+      213: -1685563068342609472
+    second: s3_booberang_enemy2_164
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1985
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd74214d2f3cafc0800000000000000
+      internalID: -3482338948265247265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1921
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99341a7712e4baa50800000000000000
+      internalID: 6533401590078981017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1857
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4b268a50ae31cc0800000000000000
+      internalID: -3741389555393973080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1793
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cfe6869c63d04300800000000000000
+      internalID: 234419643958620103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_128
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 707
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184038a7331d24ad0800000000000000
+      internalID: -2719381205949414271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_129
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 724
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f69349e236d0d7b00800000000000000
+      internalID: 827832626140428655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_130
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 640
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52edc89c045bb3c30800000000000000
+      internalID: 4340261955765591589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_131
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 640
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05e474ec696bfc20800000000000000
+      internalID: 3241300273233454348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_132
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 640
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5701bf14944be5470800000000000000
+      internalID: 8385337782943027317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_133
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 640
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d359b63f2b8673800800000000000000
+      internalID: 592056993819891005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_134
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 640
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936939e2269df3420800000000000000
+      internalID: 2612045324609623609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_135
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 641
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd319bfe8c6af9d0800000000000000
+      internalID: -2739758061939769903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_136
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 449
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1e591c0ccdbdce0800000000000000
+      internalID: -1379266140419268174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_137
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 449
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7847ce99ae683b0800000000000000
+      internalID: -5510459147223267365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_138
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 462
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 668511a7181e33a30800000000000000
+      internalID: 4193943624227051622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_139
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 449
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d04edc2297e78a80800000000000000
+      internalID: -8464542359615553328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_140
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 461
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f9352f181787a20800000000000000
+      internalID: 3060320749728538503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_141
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 449
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b98db35944f70ff0800000000000000
+      internalID: -69818673426232912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_142
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 458
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8033b1379899f2da0800000000000000
+      internalID: -5967382165621886200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_143
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 449
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 246b70a4ca9d37c90800000000000000
+      internalID: -7173150447471446462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_144
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 456
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99bc01048c0e21200800000000000000
+      internalID: 149428888329571225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_145
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 449
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c1f6fa552a3f450800000000000000
+      internalID: 6121414807425850474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_146
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 257
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bde373a9d23e4120800000000000000
+      internalID: 2399911561766628785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_147
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 257
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9b5f629aa0ed970800000000000000
+      internalID: 8781468045038434731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_148
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 257
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f75b4aab3dae4e0800000000000000
+      internalID: -1951514689930952837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_149
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 257
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47bbe8e703a04ea70800000000000000
+      internalID: 8855213970715229044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_150
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 257
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc1f977a524150d0800000000000000
+      internalID: -3435892084385571652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_151
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 257
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e22b177b7b0ef09a0800000000000000
+      internalID: -6264541476987751890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_152
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 231
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c06de51a14dc0830800000000000000
+      internalID: 4038836174346608840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_153
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 218
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f858f077305d18cc0800000000000000
+      internalID: -3710450407117453937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_154
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 198
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b066aad0329bd0750800000000000000
+      internalID: 6272873416201233931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_155
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 65
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87bf0ed67640ff270800000000000000
+      internalID: 8286346681656605560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_156
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 65
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58bb2cf099c31b50800000000000000
+      internalID: 6562810706552141916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_157
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 65
+        width: 34
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5eea5d7177882810800000000000000
+      internalID: 1740790177482862175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_158
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 78
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93f38d0f11e42c50800000000000000
+      internalID: 6639679274137940895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_159
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 65
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdf82f4ce5ff51c0800000000000000
+      internalID: -4512617906312774154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_160
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 77
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e174c099fad0010800000000000000
+      internalID: 1156773751174929944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_161
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e613ee6eb84a583c0800000000000000
+      internalID: -4357896143629307538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_162
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 74
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71899004a7f911090800000000000000
+      internalID: -8065490110234650601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_163
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 65
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b92ca592c114cb0800000000000000
+      internalID: -4881589557150966893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s3_booberang_enemy2_164
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 72
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9dbe0e15dab98e0800000000000000
+      internalID: -1685563068342609472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7e83b91bf0d8ec349a2f85ce9f45fd66
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      s3_booberang_enemy2_0: -3482338948265247265
+      s3_booberang_enemy2_1: 5235009296850114495
+      s3_booberang_enemy2_10: -171538269403732128
+      s3_booberang_enemy2_100: -768653358270831287
+      s3_booberang_enemy2_101: 6512047508479827992
+      s3_booberang_enemy2_102: 4346269860019057973
+      s3_booberang_enemy2_103: 2280085960295063144
+      s3_booberang_enemy2_104: 3383755565452940863
+      s3_booberang_enemy2_105: 1439325200576135253
+      s3_booberang_enemy2_106: -5355889894893081697
+      s3_booberang_enemy2_107: 5237517767578753943
+      s3_booberang_enemy2_108: -3566900966771248179
+      s3_booberang_enemy2_109: 1163110956306383763
+      s3_booberang_enemy2_11: 9026289788214493711
+      s3_booberang_enemy2_110: -1185124689774005696
+      s3_booberang_enemy2_111: 5299608090966902625
+      s3_booberang_enemy2_112: -7829814838376120345
+      s3_booberang_enemy2_113: 868629784924326910
+      s3_booberang_enemy2_114: 728083068097962312
+      s3_booberang_enemy2_115: 6729271424181867380
+      s3_booberang_enemy2_116: -7765544281264413032
+      s3_booberang_enemy2_117: 6255186072626017873
+      s3_booberang_enemy2_118: 3150519870950633334
+      s3_booberang_enemy2_119: 5022761961506955863
+      s3_booberang_enemy2_12: 8461546584267163445
+      s3_booberang_enemy2_120: 732273836042096561
+      s3_booberang_enemy2_121: 7719491981407882366
+      s3_booberang_enemy2_122: -3656680281252239083
+      s3_booberang_enemy2_123: -6463198287607321448
+      s3_booberang_enemy2_124: 1343699533102033519
+      s3_booberang_enemy2_125: 3119124124210056058
+      s3_booberang_enemy2_126: -7145280922984620721
+      s3_booberang_enemy2_127: 583781370101597729
+      s3_booberang_enemy2_128: -2719381205949414271
+      s3_booberang_enemy2_129: 827832626140428655
+      s3_booberang_enemy2_13: -143450781318567115
+      s3_booberang_enemy2_130: 4340261955765591589
+      s3_booberang_enemy2_131: 3241300273233454348
+      s3_booberang_enemy2_132: 8385337782943027317
+      s3_booberang_enemy2_133: 592056993819891005
+      s3_booberang_enemy2_134: 2612045324609623609
+      s3_booberang_enemy2_135: -2739758061939769903
+      s3_booberang_enemy2_136: -1379266140419268174
+      s3_booberang_enemy2_137: -5510459147223267365
+      s3_booberang_enemy2_138: 4193943624227051622
+      s3_booberang_enemy2_139: -8464542359615553328
+      s3_booberang_enemy2_14: -7191111237570219290
+      s3_booberang_enemy2_140: 3060320749728538503
+      s3_booberang_enemy2_141: -69818673426232912
+      s3_booberang_enemy2_142: -5967382165621886200
+      s3_booberang_enemy2_143: -7173150447471446462
+      s3_booberang_enemy2_144: 149428888329571225
+      s3_booberang_enemy2_145: 6121414807425850474
+      s3_booberang_enemy2_146: 2399911561766628785
+      s3_booberang_enemy2_147: 8781468045038434731
+      s3_booberang_enemy2_148: -1951514689930952837
+      s3_booberang_enemy2_149: 8855213970715229044
+      s3_booberang_enemy2_15: 6296413033961596286
+      s3_booberang_enemy2_150: -3435892084385571652
+      s3_booberang_enemy2_151: -6264541476987751890
+      s3_booberang_enemy2_152: 4038836174346608840
+      s3_booberang_enemy2_153: -3710450407117453937
+      s3_booberang_enemy2_154: 6272873416201233931
+      s3_booberang_enemy2_155: 8286346681656605560
+      s3_booberang_enemy2_156: 6562810706552141916
+      s3_booberang_enemy2_157: 1740790177482862175
+      s3_booberang_enemy2_158: 6639679274137940895
+      s3_booberang_enemy2_159: -4512617906312774154
+      s3_booberang_enemy2_16: -8689955474669313657
+      s3_booberang_enemy2_160: 1156773751174929944
+      s3_booberang_enemy2_161: -4357896143629307538
+      s3_booberang_enemy2_162: -8065490110234650601
+      s3_booberang_enemy2_163: -4881589557150966893
+      s3_booberang_enemy2_164: -1685563068342609472
+      s3_booberang_enemy2_17: 6523244679811207359
+      s3_booberang_enemy2_18: -3056599434430485457
+      s3_booberang_enemy2_19: 391523565064216538
+      s3_booberang_enemy2_2: -4972857407932023439
+      s3_booberang_enemy2_20: -5413781129298438644
+      s3_booberang_enemy2_21: 632964952941934315
+      s3_booberang_enemy2_22: -2113278091010652754
+      s3_booberang_enemy2_23: -5983754036584838277
+      s3_booberang_enemy2_24: -3760518453614472711
+      s3_booberang_enemy2_25: 193173576918766542
+      s3_booberang_enemy2_26: 8604603798846992278
+      s3_booberang_enemy2_27: 6148938705119078461
+      s3_booberang_enemy2_28: -7071566802652195815
+      s3_booberang_enemy2_29: -5203472640387185424
+      s3_booberang_enemy2_3: 6533401590078981017
+      s3_booberang_enemy2_30: -2967956392270657650
+      s3_booberang_enemy2_31: 5176288446231459276
+      s3_booberang_enemy2_32: 3144724685256156567
+      s3_booberang_enemy2_33: 3021438629238085928
+      s3_booberang_enemy2_34: -3198907966267460079
+      s3_booberang_enemy2_35: -5190422704912338651
+      s3_booberang_enemy2_36: -832257797381028723
+      s3_booberang_enemy2_37: 1944330191592870240
+      s3_booberang_enemy2_38: -3741975936266677935
+      s3_booberang_enemy2_39: -5586023083753261235
+      s3_booberang_enemy2_4: -7744018969365752912
+      s3_booberang_enemy2_40: -7474158940810281026
+      s3_booberang_enemy2_41: 6865069051783404009
+      s3_booberang_enemy2_42: 5040633141693958872
+      s3_booberang_enemy2_43: -2920553978157932902
+      s3_booberang_enemy2_44: 1960519997219695622
+      s3_booberang_enemy2_45: 2847611331899990855
+      s3_booberang_enemy2_46: 8982066764008960795
+      s3_booberang_enemy2_47: -6261832374660518088
+      s3_booberang_enemy2_48: 4157053298117717926
+      s3_booberang_enemy2_49: 457969060554619393
+      s3_booberang_enemy2_5: 2777085400612365203
+      s3_booberang_enemy2_50: 38987255504740418
+      s3_booberang_enemy2_51: -8834430350292810333
+      s3_booberang_enemy2_52: -2685693861368325850
+      s3_booberang_enemy2_53: -8234572529898525942
+      s3_booberang_enemy2_54: 3469176987725563483
+      s3_booberang_enemy2_55: 5291216694400561175
+      s3_booberang_enemy2_56: -9172501338326925085
+      s3_booberang_enemy2_57: -3291659130837721504
+      s3_booberang_enemy2_58: -2725364320788031694
+      s3_booberang_enemy2_59: -2244171571247795716
+      s3_booberang_enemy2_6: -3741389555393973080
+      s3_booberang_enemy2_60: -6088850904675994156
+      s3_booberang_enemy2_61: -7257780156647574352
+      s3_booberang_enemy2_62: -1879282001182712199
+      s3_booberang_enemy2_63: 3605238691759276608
+      s3_booberang_enemy2_64: -529217708231002654
+      s3_booberang_enemy2_65: -387556725429328635
+      s3_booberang_enemy2_66: -4323703684144785922
+      s3_booberang_enemy2_67: 5851316475193893917
+      s3_booberang_enemy2_68: -8616058743296336487
+      s3_booberang_enemy2_69: -8365285072717645997
+      s3_booberang_enemy2_7: 7379622093558999066
+      s3_booberang_enemy2_70: -8888701896317987083
+      s3_booberang_enemy2_71: -2456284494676712430
+      s3_booberang_enemy2_72: -4993598977336725785
+      s3_booberang_enemy2_73: 7754194497797723882
+      s3_booberang_enemy2_74: -1516835810715510831
+      s3_booberang_enemy2_75: -65110615571327259
+      s3_booberang_enemy2_76: -3641197042278742839
+      s3_booberang_enemy2_77: -6941582727757557307
+      s3_booberang_enemy2_78: 6106130832739997039
+      s3_booberang_enemy2_79: 3561867043329624716
+      s3_booberang_enemy2_8: -3368086023569085143
+      s3_booberang_enemy2_80: 4098899582979938835
+      s3_booberang_enemy2_81: -522054188201676274
+      s3_booberang_enemy2_82: 2760663013755889946
+      s3_booberang_enemy2_83: -3623199267909674868
+      s3_booberang_enemy2_84: -3018583436369381434
+      s3_booberang_enemy2_85: -1725580362625995665
+      s3_booberang_enemy2_86: 5077661151719500456
+      s3_booberang_enemy2_87: -5411177525351640302
+      s3_booberang_enemy2_88: 1180601803485597644
+      s3_booberang_enemy2_89: 7640999764204923883
+      s3_booberang_enemy2_9: 234419643958620103
+      s3_booberang_enemy2_90: -6990945571602304770
+      s3_booberang_enemy2_91: -7296673186085045851
+      s3_booberang_enemy2_92: 3225122341683599555
+      s3_booberang_enemy2_93: -2349446693710759794
+      s3_booberang_enemy2_94: 5369131393198696729
+      s3_booberang_enemy2_95: -4289402987081127207
+      s3_booberang_enemy2_96: -7484245097370440810
+      s3_booberang_enemy2_97: -6532693294579492254
+      s3_booberang_enemy2_98: -8943378761777471005
+      s3_booberang_enemy2_99: 2498658369488540471
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

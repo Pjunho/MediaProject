@@ -294,10 +294,10 @@ public static class EnemyVisualGenerator
     /// ppu: Pixels-Per-Unit (0이면 frameW/2 사용). 파일 없으면 null 반환.
     /// </summary>
     public static Sprite TryLoadSheetFrame(string resourceName,
-        int col, int row, int frameW = 64, int frameH = 64, float ppu = 0f)
+        int col, int row, int frameW = 64, int frameH = 64, float ppu = 0f, float pivotX = 0.5f)
     {
         if (ppu <= 0f) ppu = frameW / 2f;  // 기본값: 32 → 2배 크기
-        string cacheKey = $"{resourceName}_{col}_{row}_{(int)ppu}";
+        string cacheKey = $"{resourceName}_{col}_{row}_{frameW}_{(int)ppu}_{pivotX:F2}";
         if (pixelEnemySpriteCache.TryGetValue(cacheKey, out var cached) && cached != null)
             return cached;
 
@@ -310,7 +310,7 @@ public static class EnemyVisualGenerator
         // Unity 텍스처 좌표계는 좌하단 원점 → y 반전
         int flippedY = texture.height - (row + 1) * frameH;
         var rect     = new Rect(col * frameW, flippedY, frameW, frameH);
-        var sprite   = Sprite.Create(texture, rect, new Vector2(0.5f, 0.08f), ppu);
+        var sprite   = Sprite.Create(texture, rect, new Vector2(pivotX, 0.08f), ppu);
 
         pixelEnemySpriteCache[cacheKey] = sprite;
         return sprite;

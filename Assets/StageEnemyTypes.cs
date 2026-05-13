@@ -221,26 +221,50 @@ public class VolcanoSniper : SheetEnemyBase
     }
 }
 
-/// <summary>부메랑 투척수 — 부메랑이 지그재그로 날아감 (s3_booberang_enemy)</summary>
+/// <summary>부메랑 투척수 — 부메랑을 던지는 동작 (s3_booberang_enemy2)</summary>
 public class VolcanoSpearman : SheetEnemyBase
 {
     static readonly Color Armor  = new Color(0.22f, 0.14f, 0.12f);
     static readonly Color Accent = new Color(0.90f, 0.32f, 0.04f);
     static readonly Color Weapon = new Color(0.65f, 0.30f, 0.10f);
 
-    protected override string SheetName     => "s3_booberang_enemy";
-    protected override int[]  IdleRows      => new[] { 8, 9, 10, 11 };
-    protected override int[]  AtkRows       => new[] { 16, 17, 18, 19 }; // throw
-    protected override int    AtkFrameCount => 8;
-    protected override int    ReleaseFrame  => 5;
-    protected override float  AnimFps       => 12f;
+    // 아이들: 서있는 포즈 행 (4방향) — 시트 배치 순서: 위(0)·오른(3)·아래(6)·왼(9)
+    protected override string SheetName     => "s3_booberang_enemy2";
+    protected override int[]  IdleRows      => new[] { 0, 9, 6, 3 };
+
+    // 던지기 공격: LoadSheetFrames 후 Awake에서 192px 너비 프레임으로 재로드됨
+    protected override int[]  AtkRows       => new[] { 21, 24, 27, 30 };
+    protected override int    AtkFrameCount => 6;
+    protected override int    ReleaseFrame  => 2;
+    protected override float  AnimFps       => 10f;
+
+    // 부메랑 던지기 행은 캐릭터+부메랑이 한 프레임(192px)에 포함된 레이아웃
+    const int   ThrowFrameW  = 192;
+    const float ThrowPivotX  = 0.55f; // 192px 프레임 내 캐릭터 중심 정렬
 
     protected override void Awake()
     {
         enemyName = "부메랑 투척수"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
-        LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
+        var fallback = EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+
+        // 아이들 프레임 로드 (64px 표준)
+        LoadSheetFrames(fallback);
+
+        // 공격 프레임: 192px 너비 + 캐릭터 정렬 피벗으로 재로드
+        int[] throwRows = AtkRows;
+        for (int d = 0; d < 4; d++)
+        {
+            AtkByDir[d] = new Sprite[AtkFrameCount];
+            for (int f = 0; f < AtkFrameCount; f++)
+                AtkByDir[d][f] = EnemyVisualGenerator.TryLoadSheetFrame(
+                    SheetName, f, throwRows[d],
+                    frameW: ThrowFrameW, frameH: 64,
+                    ppu: Ppu, pivotX: ThrowPivotX) ?? IdleByDir[d];
+        }
+        SetupSpriteAnimation(IdleByDir[2], AtkByDir[2]);
     }
+
     protected override Color RangeColor()      => new Color(0.9f, 0.3f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.4f, 0.05f);
     protected override IEnumerator OnReleaseEffect(AllyBase target)
@@ -294,9 +318,12 @@ public class ShadowSniper : EnemyBase
         enemyName = "영혼 저격수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s4_sn") ??
                 EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.55f, 0.1f, 0.8f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.65f, 0.1f, 0.9f);
@@ -317,9 +344,12 @@ public class ShadowSpearman : EnemyBase
         enemyName = "공허 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s4_sp") ??
                 EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.5f, 0.1f, 0.7f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.55f, 0.08f, 0.8f);
@@ -339,9 +369,12 @@ public class ShadowBrawler : EnemyBase
         enemyName = "그림자 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s4_br") ??
                 EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.5f, 0.1f, 0.7f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.5f, 0.08f, 0.75f);
@@ -366,9 +399,12 @@ public class FortressSniper : EnemyBase
         enemyName = "황금 저격수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s5_sn") ??
                 EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.9f, 0.75f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(1.0f, 0.88f, 0.0f);
@@ -400,9 +436,12 @@ public class FortressSpearman : EnemyBase
         enemyName = "요새 창병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s5_sp") ??
                 EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.2f, 0.4f, 0.9f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.3f, 0.55f, 1.0f);
@@ -422,9 +461,12 @@ public class FortressBrawler : EnemyBase
         enemyName = "철벽 전사"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
         base.Awake();
         if (spriteRenderer != null)
+        {
             spriteRenderer.sprite =
                 EnemyVisualGenerator.TryLoadSprite("s5_br") ??
                 EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent);
+            NormalizeScale(EnemyStage1Height);
+        }
     }
     protected override Color RangeColor()      => new Color(0.7f, 0.6f, 0.1f, 0.7f);
     protected override Color AttackLineColor() => new Color(0.9f, 0.75f, 0.1f);

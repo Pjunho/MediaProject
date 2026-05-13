@@ -38,7 +38,10 @@ public class EnemyBase : MonoBehaviour
     // ── 숨쉬기 애니메이션 ──────────────────────────────────────────────
     private float     breathCycle;
     private Vector3   breathBasePosition;
-    private Vector3   breathBaseScale;
+    protected Vector3 breathBaseScale;
+
+    // Stage 1 SheetEnemyBase 기준 크기 (64px / 44ppu)
+    protected const float EnemyStage1Height = 64f / 44f;
 
     protected bool IsParalyzed => paralysisTimer > 0f;
 
@@ -577,34 +580,32 @@ public class EnemyBase : MonoBehaviour
             SpawnImpactFlash(dst, hitColor, 0.23f);
     }
 
-    protected IEnumerator BoomerangEffect(AllyBase target, Color colorA, Color colorB,
+    protected IEnumerator BoomerangEffect(AllyBase target, Color trailColor, Color impactColor,
         float speed = 13f, float curveHeight = 0.55f)
     {
         if (target == null) yield break;
         Vector3 src = transform.position + Vector3.up * 0.14f;
         Vector3 dst = target.transform.position;
         float dist = Vector3.Distance(src, dst);
-        Vector3 dir = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
+        Vector3 dir  = (dst - src).sqrMagnitude > 0.0001f ? (dst - src).normalized : Vector3.right;
         Vector3 perp = new Vector3(-dir.y, dir.x, 0f);
 
-        Sprite[] boomerangFrames = LoadEffectFrames("clean_boomerang_effect", 8, 443f);
+        Sprite[] frames  = ProjectileSpriteLibrary.GetBoomerangFrames();
+        bool     hasSheet = frames != null && frames.Length > 0;
+
         var go = new GameObject("BoomerangProj");
         var sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = boomerangFrames != null && boomerangFrames.Length > 0 ? boomerangFrames[0] : MakeBoomerangSprite();
-        sr.color = colorA;
+        sr.sprite       = hasSheet ? frames[0] : MakeBoomerangSprite();
+        sr.color        = Color.white;   // 나무 원색 그대로
         sr.sortingOrder = 36;
-        go.transform.localScale = Vector3.one * (boomerangFrames != null
-            ? NormalizeEffectScale(boomerangFrames, 0.44f)
-            : 0.30f);
+        // ppu=443 → 자연 크기 1 world unit → 0.52f 배율로 표시
+        go.transform.localScale = Vector3.one * (hasSheet ? 0.52f : 0.30f);
 
-        var trail = CreateTempLineRenderer(7, new Color(colorA.r, colorA.g, colorA.b, 0.55f), 0.08f, 35);
-        trail.endColor = new Color(colorB.r, colorB.g, colorB.b, 0f);
-        Vector3[] trailPts = new Vector3[7];
-        for (int i = 0; i < trailPts.Length; i++)
-        {
-            trailPts[i] = src;
-            trail.SetPosition(i, src);
-        }
+        // 불꽃 트레일
+        var trail = CreateTempLineRenderer(8, new Color(trailColor.r, trailColor.g, trailColor.b, 0.70f), 0.11f, 35);
+        trail.endColor = new Color(impactColor.r, impactColor.g, impactColor.b, 0f);
+        Vector3[] trailPts = new Vector3[8];
+        for (int i = 0; i < trailPts.Length; i++) { trailPts[i] = src; trail.SetPosition(i, src); }
 
         float elapsed = 0f, duration = Mathf.Max(0.18f, dist / speed);
         while (elapsed < duration)
@@ -612,12 +613,20 @@ public class EnemyBase : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
             if (target != null) dst = target.transform.position;
+
+            // 측면 곡선 + 약간의 수직 아치 → 입체적인 부메랑 궤도
             Vector3 basePos = Vector3.Lerp(src, dst, Mathf.SmoothStep(0f, 1f, t));
-            Vector3 pos = basePos + perp * (Mathf.Sin(t * Mathf.PI) * curveHeight);
+            float   arc     = Mathf.Sin(t * Mathf.PI);
+            Vector3 pos     = basePos
+                              + perp     * (arc * curveHeight)
+                              + Vector3.up * (arc * 0.22f);
+
             go.transform.position = pos;
-            go.transform.rotation = Quaternion.Euler(0f, 0f, Time.time * 900f);
-            if (boomerangFrames != null && boomerangFrames.Length > 0)
-                sr.sprite = boomerangFrames[Mathf.Min((int)(t * boomerangFrames.Length * 1.35f) % boomerangFrames.Length, boomerangFrames.Length - 1)];
+            go.transform.rotation = Quaternion.Euler(0f, 0f, Time.time * 720f);  // 720°/s 회전
+
+            if (hasSheet)
+                sr.sprite = frames[(int)(elapsed * 18f) % frames.Length];
+
             for (int i = trailPts.Length - 1; i > 0; i--) trailPts[i] = trailPts[i - 1];
             trailPts[0] = pos;
             for (int i = 0; i < trailPts.Length; i++) trail.SetPosition(i, trailPts[i]);
@@ -625,7 +634,7 @@ public class EnemyBase : MonoBehaviour
         }
         Destroy(trail.gameObject);
         Destroy(go);
-        SpawnImpactFlash(dst, colorB, 0.22f);
+        SpawnImpactFlash(dst, impactColor, 0.22f);
     }
 
     /// <summary>얇은 빔 페이드. Sniper 계열(화산/어둠/요새) 전용.</summary>
@@ -688,6 +697,16 @@ public class EnemyBase : MonoBehaviour
             tex.SetPixel(x, y, color);
     }
 
+    /// <summary>스프라이트 자연 높이 기준으로 transform.localScale을 조정하고 breathBaseScale도 갱신한다.</summary>
+    protected void NormalizeScale(float targetWorldHeight)
+    {
+        if (spriteRenderer == null || spriteRenderer.sprite == null) return;
+        float naturalH = spriteRenderer.sprite.bounds.size.y;
+        if (naturalH <= 0.001f) return;
+        transform.localScale = Vector3.one * (targetWorldHeight / naturalH);
+        breathBaseScale = transform.localScale;
+    }
+
     void CreateAttackLine()
     {
         var go = new GameObject("AttackLine");
@@ -711,6 +730,21 @@ public class EnemyBase : MonoBehaviour
         AllyBase[] allies = FindObjectsByType<AllyBase>(FindObjectsSortMode.None);
         AllyBase nearest  = null;
         float minDist = attackRange;
+        foreach (var ally in allies)
+        {
+            if (ally == null || ally.isDead) continue;
+            float d = Vector3.Distance(transform.position, ally.transform.position);
+            if (d < minDist) { minDist = d; nearest = ally; }
+        }
+        return nearest;
+    }
+
+    /// <summary>사거리 무관하게 가장 가까운 아군을 반환 (방향 전환용)</summary>
+    protected AllyBase FindNearestAllyForFacing()
+    {
+        AllyBase[] allies = FindObjectsByType<AllyBase>(FindObjectsSortMode.None);
+        AllyBase nearest  = null;
+        float minDist = float.MaxValue;
         foreach (var ally in allies)
         {
             if (ally == null || ally.isDead) continue;
@@ -841,6 +875,7 @@ public class EnemyBase : MonoBehaviour
 
     public void ApplyParalysis(float duration)
     {
+        GameAudio.PlayParalysis();
         paralysisTimer = Mathf.Max(paralysisTimer, duration);
         attackTimer = Mathf.Max(attackTimer, attackCooldown);
         CreateParalysisVisual();
@@ -864,8 +899,8 @@ public class EnemyBase : MonoBehaviour
             paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
             if (paralysisEffectFrames != null)
             {
-                _paralysisNormScale = NormalizeEffectScale(paralysisEffectFrames, 1f);
-                paralysisVisual.transform.localScale = new Vector3(0.55f * _paralysisNormScale, 0.55f * _paralysisNormScale, 1f);
+                _paralysisNormScale = NormalizeEffectScale(paralysisEffectFrames, 1f, 1.1f);
+                paralysisVisual.transform.localScale = Vector3.one * _paralysisNormScale;
             }
             else
             {
@@ -896,7 +931,7 @@ public class EnemyBase : MonoBehaviour
                 paralysisVisualRenderer.sortingOrder = spriteRenderer != null ? spriteRenderer.sortingOrder + 2 : 38;
             }
             float pulse = paralysisEffectFrames != null
-                ? (0.55f + Mathf.Sin(Time.time * 10f) * 0.03f) * _paralysisNormScale
+                ? (1.0f + Mathf.Sin(Time.time * 10f) * 0.05f) * _paralysisNormScale
                 : 0.38f + Mathf.Sin(Time.time * 10f) * 0.06f;
             paralysisVisual.transform.localScale = Vector3.one * pulse;
         }

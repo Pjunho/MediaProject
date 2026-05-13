@@ -65,13 +65,17 @@ public abstract class SheetEnemyBase : EnemyBase
     protected override void Update()
     {
         base.Update();
-        if (!IsParalyzed && !isPlayingAttackAnim && currentTarget != null && spriteRenderer != null)
+        if (!IsParalyzed && !isPlayingAttackAnim && spriteRenderer != null)
         {
-            int d = DirIndex(currentTarget.transform.position - transform.position);
-            if (spriteRenderer.sprite != IdleByDir[d])
+            AllyBase facingTarget = currentTarget ?? FindNearestAllyForFacing();
+            if (facingTarget != null)
             {
-                spriteRenderer.sprite = IdleByDir[d];
-                idleSprite            = IdleByDir[d];
+                int d = DirIndex(facingTarget.transform.position - transform.position);
+                if (spriteRenderer.sprite != IdleByDir[d])
+                {
+                    spriteRenderer.sprite = IdleByDir[d];
+                    idleSprite            = IdleByDir[d];
+                }
             }
         }
     }
