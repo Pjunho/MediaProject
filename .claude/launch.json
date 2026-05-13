@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Unity MCP Server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["Library/PackageCache/com.quaza.unitymcp@d1515b326e2f/mcpServer/build/index.js"],
+      "port": 5010
+    }
+  ]
+}

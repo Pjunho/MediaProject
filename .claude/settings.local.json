@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__unity-mcp-server__verify_connection",
+      "mcp__unity-mcp-server__get_editor_state",
+      "mcp__unity-mcp-server__directory_tree",
+      "WebFetch(domain:1217pgy.tistory.com)",
+      "Bash(ls -d \"C:\\\\Users\\\\박준호\\\\Desktop\\\\아주대학교\\\\미디어학과\\\\4학년 1학기\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\MediaProject\\\\Assets\"/*/)",
+      "Bash(xargs wc:*)",
+      "Bash(find \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\\\\\\\\Assets\" -type f \\\\\\( -name \"*.cs\" -o -name \"*.unity\" -o -name \"*.prefab\" \\\\\\))",
+      "Bash(ls -la \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\\\\\\\\Assets\\\\\\\\\")",
+      "Bash(find \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\\\\\\\\Assets\" -type f -name \"*.cs\" ! -path \"*/MCPForUnity/*\")",
+      "Bash(find \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\\\\\\\\Assets\" -type d -not -path \"*/\\\\.*\")",
+      "Bash(find \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\" -type f \\\\\\( -name \"*.unity\" -o -name \"*.prefab\" \\\\\\))",
+      "Bash(find \"C:\\\\\\\\Users\\\\\\\\박준호\\\\\\\\Desktop\\\\\\\\아주대학교\\\\\\\\미디어학과\\\\\\\\4학년 1학기\\\\\\\\미디어프로젝트\\(종합설계\\)\\(M024-1\\)\\\\\\\\MediaProject\\\\\\\\Assets\" -maxdepth 1 -type f -name \"*.cs\")",
+      "Bash(xargs -I {} basename {})",
+      "Bash(date /T)",
+      "Bash(time /T)",
+      "Skill(schedule)",
+      "Skill(schedule:*)",
+      "mcp__unity-mcp-server__list_directory",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
+      "Bash(find \"/c/Users/박준호/Desktop/아주대학교/미디어학과/4학년 1학기/미디어프로젝트\\(종합설계\\)\\(M024-1\\)/MediaProject/Assets\" -name \"*.cs\" -type f)",
+      "Read(//tmp/**)",
+      "Bash(grep \"\\\\.cs$\")",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "Bash(grep -i \"\\\\\\\\\\\\\\\\Map\\\\\\\\\\\\\\\\\")",
+      "Bash(grep -v \"\\\\.meta$\")",
+      "mcp__unity-mcp-server__read_file",
+      "mcp__unity-mcp-server__edit_file",
+      "mcp__unity-mcp-server__find_assets_by_type"
+    ]
+  }
+}
