@@ -217,6 +217,12 @@ public static class SkillSystem
                 GameManager.Instance?.ShowToast("불굴의 의지 발동!", new Color(1f, 0.85f, 0.2f));
                 activated = true; break;
             case AllyType.Archer:
+                if (IsTargeting)
+                {
+                    CancelTargeting();
+                    GameManager.Instance?.ShowToast("마비 화살 조준 취소", new Color(0.8f, 0.8f, 0.8f));
+                    return true;
+                }
                 BeginArcherTargeting(caster);
                 // 실제 발사 시점에 쿨다운 기록 — 취소 시 쿨다운 없음
                 return true;
@@ -276,8 +282,14 @@ public static class SkillSystem
         // ── 마우스 버튼 눌림: 대상 예약 ─────────────────────────────────
         if (mouse.leftButton.wasPressedThisFrame && Time.frameCount != targetingStartFrame)
         {
-            pendingMouseDownStarted = true;
             pendingMouseDownEnemy = FindEnemyAtScreenPosition(screenPos);
+            if (pendingMouseDownEnemy == null)
+            {
+                CancelTargeting();
+                GameManager.Instance?.ShowToast("마비 화살 조준 취소", new Color(0.8f, 0.8f, 0.8f));
+                return true;
+            }
+            pendingMouseDownStarted = true;
             return true;
         }
 
