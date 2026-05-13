@@ -87,83 +87,6 @@ public static class TileTextureGenerator
         new[] { 450, 451 },              // Stage 5
     };
 
-    // ── 스테이지별 mask → 스프라이트 이름 매핑 ────────────────────────
-    // (bit0=상, bit1=우, bit2=하, bit3=좌)
-    static readonly string[] STAGE1_ROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage1_Road_Map_15", // mask  0: 고립
-        "Stage1_Road_Map_7",  // mask  1: 상(↑) 끝단
-        "Stage1_Road_Map_3",  // mask  2: 우(→) 끝단
-        "Stage1_Road_Map_6",  // mask  3: 상+우 꺾기
-        "Stage1_Road_Map_1",  // mask  4: 하(↓) 끝단
-        "Stage1_Road_Map_13", // mask  5: 상+하 세로직선
-        "Stage1_Road_Map_0",  // mask  6: 우+하 꺾기
-        "Stage1_Road_Map_11", // mask  7: 상+우+하 T(좌열림)
-        "Stage1_Road_Map_5",  // mask  8: 좌(←) 끝단
-        "Stage1_Road_Map_8",  // mask  9: 상+좌 꺾기
-        "Stage1_Road_Map_10", // mask 10: 좌+우 가로직선
-        "Stage1_Road_Map_14", // mask 11: 상+좌+우 T(하열림)
-        "Stage1_Road_Map_2",  // mask 12: 하+좌 꺾기
-        "Stage1_Road_Map_12", // mask 13: 상+하+좌 T(우열림)
-        "Stage1_Road_Map_9",  // mask 14: 우+하+좌 T(상열림)
-        "Stage1_Road_Map_4",  // mask 15: 전체(십자)
-    };
-    static readonly string[] STAGE1_NROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage1_NRoad_Map_15", // mask  0: 인접 road 없음 (내부 벽)
-        "Stage1_NRoad_Map_7",  // mask  1: 위쪽이 road
-        "Stage1_NRoad_Map_3",  // mask  2: 오른쪽이 road
-        "Stage1_NRoad_Map_6",  // mask  3: 위+오른쪽 road
-        "Stage1_NRoad_Map_1",  // mask  4: 아래가 road
-        "Stage1_NRoad_Map_13", // mask  5: 위+아래 road
-        "Stage1_NRoad_Map_0",  // mask  6: 오른쪽+아래 road
-        "Stage1_NRoad_Map_11", // mask  7: 위+오른쪽+아래 road
-        "Stage1_NRoad_Map_5",  // mask  8: 왼쪽이 road
-        "Stage1_NRoad_Map_8",  // mask  9: 위+왼쪽 road
-        "Stage1_NRoad_Map_10", // mask 10: 왼쪽+오른쪽 road
-        "Stage1_NRoad_Map_14", // mask 11: 위+왼쪽+오른쪽 road
-        "Stage1_NRoad_Map_2",  // mask 12: 아래+왼쪽 road
-        "Stage1_NRoad_Map_12", // mask 13: 위+아래+왼쪽 road
-        "Stage1_NRoad_Map_9",  // mask 14: 오른쪽+아래+왼쪽 road
-        "Stage1_NRoad_Map_4",  // mask 15: 사방 road
-    };
-    static readonly string[] STAGE2_ROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage2_Road_Map_15", "Stage2_Road_Map_7",  "Stage2_Road_Map_3",
-        "Stage2_Road_Map_6",  "Stage2_Road_Map_1",  "Stage2_Road_Map_13",
-        "Stage2_Road_Map_0",  "Stage2_Road_Map_11", "Stage2_Road_Map_5",
-        "Stage2_Road_Map_8",  "Stage2_Road_Map_10", "Stage2_Road_Map_14",
-        "Stage2_Road_Map_2",  "Stage2_Road_Map_12", "Stage2_Road_Map_9",
-        "Stage2_Road_Map_4",
-    };
-    static readonly string[] STAGE2_NROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage2_NRoad_Map_15", "Stage2_NRoad_Map_7",  "Stage2_NRoad_Map_3",
-        "Stage2_NRoad_Map_6",  "Stage2_NRoad_Map_1",  "Stage2_NRoad_Map_13",
-        "Stage2_NRoad_Map_0",  "Stage2_NRoad_Map_11", "Stage2_NRoad_Map_5",
-        "Stage2_NRoad_Map_8",  "Stage2_NRoad_Map_10", "Stage2_NRoad_Map_14",
-        "Stage2_NRoad_Map_2",  "Stage2_NRoad_Map_12", "Stage2_NRoad_Map_9",
-        "Stage2_NRoad_Map_4",
-    };
-    static readonly string[] STAGE3_ROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage3_Road_Map_15", "Stage3_Road_Map_7",  "Stage3_Road_Map_3",
-        "Stage3_Road_Map_6",  "Stage3_Road_Map_1",  "Stage3_Road_Map_13",
-        "Stage3_Road_Map_0",  "Stage3_Road_Map_11", "Stage3_Road_Map_5",
-        "Stage3_Road_Map_8",  "Stage3_Road_Map_10", "Stage3_Road_Map_14",
-        "Stage3_Road_Map_2",  "Stage3_Road_Map_12", "Stage3_Road_Map_9",
-        "Stage3_Road_Map_4",
-    };
-    static readonly string[] STAGE3_NROAD_SPRITE_NAMES = new string[16]
-    {
-        "Stage3_NRoad_Map_15", "Stage3_NRoad_Map_7",  "Stage3_NRoad_Map_3",
-        "Stage3_NRoad_Map_6",  "Stage3_NRoad_Map_1",  "Stage3_NRoad_Map_13",
-        "Stage3_NRoad_Map_0",  "Stage3_NRoad_Map_11", "Stage3_NRoad_Map_5",
-        "Stage3_NRoad_Map_8",  "Stage3_NRoad_Map_10", "Stage3_NRoad_Map_14",
-        "Stage3_NRoad_Map_2",  "Stage3_NRoad_Map_12", "Stage3_NRoad_Map_9",
-        "Stage3_NRoad_Map_4",
-    };
-
     // ── 장식 타일 ────────────────────────────────────────────────────
     static readonly string[] STAGE_DECOR_TEX =
     {
@@ -316,11 +239,10 @@ public static class TileTextureGenerator
         int idx = ClampStage(stageIndex);
         connectionMask &= 0x0F;
 
-        string[] roadNames = GetStageRoadSpriteNames(idx);
-        if (roadNames != null)
+        if (idx >= 1 && idx <= 3)
         {
             EnsureStageRoadLoaded(idx);
-            Sprite sp = GetStageRoadSpriteVariant(idx, connectionMask, variant);
+            Sprite sp = GetStageRoadSpriteVariant(idx, variant);
             if (sp != null) return sp;
         }
 
@@ -482,33 +404,17 @@ public static class TileTextureGenerator
         if (loaded) return;
         loaded = true;
 
-        // Sprite sheet을 Texture2D로 직접 로드해 그리드 위치로 스프라이트 생성.
-        // Unity meta의 spriteSheet.sprites 배열이 불완전해도 안전하게 동작한다.
-        var tex = Resources.Load<Texture2D>(path);
-        if (tex == null)
+        var sprites = Resources.LoadAll<Sprite>(path);
+        if (sprites == null || sprites.Length == 0)
         {
             Debug.LogWarning($"[TileTextureGenerator] '{path}' 로드 실패 → 폴백");
             return;
         }
-        tex.filterMode = FilterMode.Point;
 
-        int cols = Mathf.Max(1, tex.width  / TILE_SZ);
-        int rows = Mathf.Max(1, tex.height / TILE_SZ);
-        // 리소스 경로에서 파일명만 추출 (예: "Map/Stage1_Road_Map" → "Stage1_Road_Map")
-        string baseName = path.Contains("/")
-            ? path.Substring(path.LastIndexOf('/') + 1)
-            : path;
-
-        // 스프라이트 번호: 이미지 상단 왼쪽 → 오른쪽 → 다음 행 순서
-        for (int i = 0; i < cols * rows; i++)
+        foreach (var sprite in sprites)
         {
-            int rowFromTop = i / cols;
-            int col        = i % cols;
-            float x = col * TILE_SZ;
-            float y = (rows - 1 - rowFromTop) * TILE_SZ; // Unity y=0은 이미지 하단
-            string name = $"{baseName}_{i}";
-            _stageMapCache[name] = Sprite.Create(
-                tex, new Rect(x, y, TILE_SZ, TILE_SZ), PIVOT, PPU);
+            sprite.texture.filterMode = FilterMode.Point;
+            _stageMapCache[sprite.name] = Sprite.Create(sprite.texture, sprite.rect, PIVOT, PPU);
         }
     }
 
@@ -518,32 +424,24 @@ public static class TileTextureGenerator
         return _stageMapCache.TryGetValue(name, out var sp) ? sp : null;
     }
 
-    static string[] GetStageRoadSpriteNames(int stageIdx) => stageIdx switch
+    // StageN_Road_Map은 현재 직접 잘라둔 10/15/16/17만 사용한다.
+    // 일반 길은 10번을 제외한 15/16/17 중에서만 선택한다.
+    static Sprite GetStageRoadSpriteVariant(int idx, int variant)
     {
-        1 => STAGE1_ROAD_SPRITE_NAMES,
-        2 => STAGE2_ROAD_SPRITE_NAMES,
-        3 => STAGE3_ROAD_SPRITE_NAMES,
-        _ => null,
-    };
-
-    static string[] GetStageNRoadSpriteNames(int stageIdx) => stageIdx switch
-    {
-        1 => STAGE1_NROAD_SPRITE_NAMES,
-        2 => STAGE2_NROAD_SPRITE_NAMES,
-        3 => STAGE3_NROAD_SPRITE_NAMES,
-        _ => null,
-    };
-
-    // mask 0-15 → StageN_Road_Map 스프라이트 직접 룩업
-    static Sprite GetStageRoadSpriteVariant(int idx, int mask, int variant)
-    {
-        string[] names = GetStageRoadSpriteNames(idx);
-        return names != null ? GetStageMapSprite(names[mask & 0x0F]) : null;
+        int[] candidates = { 15, 16, 17 };
+        int start = Mathf.Abs(variant) % candidates.Length;
+        for (int i = 0; i < candidates.Length; i++)
+        {
+            Sprite sprite = GetStageMapSprite($"Stage{idx}_Road_Map_{candidates[(start + i) % candidates.Length]}");
+            if (sprite != null)
+                return sprite;
+        }
+        return null;
     }
 
     static Sprite GetStageRoadFallbackSprite(int idx, int roadTileIndex, int variant)
     {
-        int[] candidates = { roadTileIndex, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17 };
+        int[] candidates = { roadTileIndex, 15, 16, 17 };
         int start = Mathf.Abs(variant) % candidates.Length;
         for (int i = 0; i < candidates.Length; i++)
         {

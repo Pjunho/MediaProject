@@ -352,7 +352,7 @@ public class Map : MonoBehaviour
         if (CountNonRoadSides(x, y) >= 3)
             return 10;
 
-        int[] candidates = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17 };
+        int[] candidates = { 15, 16, 17 };
         return candidates[Mathf.Abs(variant) % candidates.Length];
     }
 
