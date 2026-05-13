@@ -327,6 +327,7 @@ public static class SkillSystem
         targetingStartFrame = Time.frameCount;
         previousTimeScale = Mathf.Max(Time.timeScale, 0.0001f);
         Time.timeScale = 0.1f;
+        GameAudio.SetBgmPitch(0.1f);
         CreateArcherAimVisual(archer);
         GameManager.Instance?.ShowToast("적을 클릭해 마비 화살을 발사하세요", new Color(0.65f, 1f, 0.45f));
     }
@@ -339,6 +340,7 @@ public static class SkillSystem
         pendingMouseDownStarted = false;
         targetingStartFrame = -1;
         Time.timeScale = previousTimeScale;
+        GameAudio.SetBgmPitch(1f);
     }
 
     static void CreateArcherAimVisual(AllyBase archer)
