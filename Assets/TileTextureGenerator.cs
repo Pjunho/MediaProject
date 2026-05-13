@@ -297,6 +297,20 @@ public static class TileTextureGenerator
         return GetFallback(ref _dirtFallback, CreateDirtSprite);
     }
 
+    // roadTileIndex: 이미 잘라둔 StageN_Road_Map_{번호} 스프라이트 번호
+    public static Sprite GetRoadSprite(int stageIndex, int roadTileIndex, int variant = 0)
+    {
+        int idx = ClampStage(stageIndex);
+        EnsureStageRoadLoaded(idx);
+
+        Sprite sp = GetStageMapSprite($"Stage{idx}_Road_Map_{roadTileIndex}");
+        if (sp != null) return sp;
+        if (idx <= 3)
+            return GetStageRoadFallbackSprite(idx, roadTileIndex, variant);
+
+        return GetConnectedPathSprite(idx, 0x0F, variant);
+    }
+
     public static Sprite GetConnectedPathSprite(int stageIndex, int connectionMask, int variant = 0)
     {
         int idx = ClampStage(stageIndex);
@@ -527,26 +541,31 @@ public static class TileTextureGenerator
         return names != null ? GetStageMapSprite(names[mask & 0x0F]) : null;
     }
 
+    static Sprite GetStageRoadFallbackSprite(int idx, int roadTileIndex, int variant)
+    {
+        int[] candidates = { roadTileIndex, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17 };
+        int start = Mathf.Abs(variant) % candidates.Length;
+        for (int i = 0; i < candidates.Length; i++)
+        {
+            Sprite sprite = GetStageMapSprite($"Stage{idx}_Road_Map_{candidates[(start + i) % candidates.Length]}");
+            if (sprite != null)
+                return sprite;
+        }
+        return null;
+    }
+
     // StageN_NRoad_Map_{번호} 스프라이트 직접 룩업
     static Sprite GetStageNRoadSpriteVariant(int idx, int nRoadTileIndex, int variant)
     {
         if (idx < 1 || idx > 3)
             return null;
 
-        if (nRoadTileIndex == 10 || nRoadTileIndex == 15 || nRoadTileIndex == 16 || nRoadTileIndex == 17)
-        {
-            int[] variants = { 10, 15, 16, 17 };
-            Sprite variantSprite = GetStageMapSprite($"Stage{idx}_NRoad_Map_{variants[Mathf.Abs(variant) % variants.Length]}");
-            if (variantSprite != null)
-                return variantSprite;
-        }
-
         return GetStageMapSprite($"Stage{idx}_NRoad_Map_{nRoadTileIndex}");
     }
 
     static Sprite GetStageNRoadFallbackSprite(int idx, int nRoadTileIndex, int variant)
     {
-        int[] candidates = { nRoadTileIndex, 10, 15, 16, 17, 6, 7, 8, 9, 11, 12, 13, 14 };
+        int[] candidates = { nRoadTileIndex, 10, 15, 16, 17 };
         int start = Mathf.Abs(variant) % candidates.Length;
         for (int i = 0; i < candidates.Length; i++)
         {

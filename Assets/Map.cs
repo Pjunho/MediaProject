@@ -147,14 +147,15 @@ public class Map : MonoBehaviour
                     int variant = StableVariant(stageIdx, x, y);
                     if (type == TileType.Dirt)
                     {
-                        sr.sprite = TileTextureGenerator.GetConnectedPathSprite(stageIdx, GetPathConnectionMask(x, y), variant);
+                        int roadTileIndex = GetRoadTileIndex(x, y, variant);
+                        sr.sprite = TileTextureGenerator.GetRoadSprite(stageIdx, roadTileIndex, variant);
                     }
                     else
                     {
                         if (IsVolcanoBlockedPathTile(stageIdx, x, y))
                             _volcanoPlatforms.Add(new Vector2Int(x, y));
 
-                        int nRoadTileIndex = GetNRoadTileIndex(x, y);
+                        int nRoadTileIndex = GetNRoadTileIndex(variant);
                         sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, nRoadTileIndex, variant);
                     }
                 }
@@ -346,35 +347,29 @@ public class Map : MonoBehaviour
         return count;
     }
 
-    // 1 2 3
-    // 4 5 6  <- 5번 자리에 놓일 NRoad 시트 번호를 주변 Road 배치로 결정
-    // 7 8 9
-    int GetNRoadTileIndex(int x, int y)
+    int GetRoadTileIndex(int x, int y, int variant)
     {
-        bool pos1 = GetTileType(x - 1, y + 1) == TileType.Dirt;
-        bool pos2 = GetTileType(x,     y + 1) == TileType.Dirt;
-        bool pos3 = GetTileType(x + 1, y + 1) == TileType.Dirt;
-        bool pos4 = GetTileType(x - 1, y    ) == TileType.Dirt;
-        bool pos6 = GetTileType(x + 1, y    ) == TileType.Dirt;
-        bool pos7 = GetTileType(x - 1, y - 1) == TileType.Dirt;
-        bool pos8 = GetTileType(x,     y - 1) == TileType.Dirt;
-        bool pos9 = GetTileType(x + 1, y - 1) == TileType.Dirt;
+        if (CountNonRoadSides(x, y) >= 3)
+            return 10;
 
-        int count = (pos1?1:0)+(pos2?1:0)+(pos3?1:0)+(pos4?1:0)
-                  +(pos6?1:0)+(pos7?1:0)+(pos8?1:0)+(pos9?1:0);
+        int[] candidates = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17 };
+        return candidates[Mathf.Abs(variant) % candidates.Length];
+    }
 
-        if (count >= 2) return 10;
-        if (count == 0) return 10;
+    int GetNRoadTileIndex(int variant)
+    {
+        int[] candidates = { 10, 15, 16, 17 };
+        return candidates[Mathf.Abs(variant) % candidates.Length];
+    }
 
-        if (pos3) return 6;
-        if (pos2) return 7;
-        if (pos1) return 8;
-        if (pos6) return 9;
-        if (pos4) return 11;
-        if (pos9) return 12;
-        if (pos8) return 13;
-        if (pos7) return 14;
-        return 10;
+    int CountNonRoadSides(int x, int y)
+    {
+        int count = 0;
+        if (GetTileType(x, y + 1) != TileType.Dirt) count++;
+        if (GetTileType(x + 1, y) != TileType.Dirt) count++;
+        if (GetTileType(x, y - 1) != TileType.Dirt) count++;
+        if (GetTileType(x - 1, y) != TileType.Dirt) count++;
+        return count;
     }
 
     int StableVariant(int stageIdx, int x, int y)
