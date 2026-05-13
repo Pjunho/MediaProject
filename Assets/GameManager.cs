@@ -406,6 +406,7 @@ public class GameManager : MonoBehaviour
         if (!wavePassed)
         {
             GameAudio.PlayFail();
+            GameAudio.StopBgm();
             Debug.Log($"[GameManager] ✗ 웨이브 {currentWaveIndex + 1} 실패 " +
                       $"(골 도달: {waveGoalCount}/{wave.goalRequirement})");
             EndStage();
@@ -962,23 +963,29 @@ public class GameManager : MonoBehaviour
         gemPanelGo.SetActive(gemPanelOpen);
         if (gemPanelOpen)
         {
+            GameAudio.PlayUiOpen();
             RefreshGemBagContents();
             SwitchGemTab(0);
+        }
+        else
+        {
+            GameAudio.PlayUiClose();
         }
         // 버튼 색상: 열려 있으면 밝게 유지
         if (gemBagBtnFill != null)
             gemBagBtnFill.color = gemPanelOpen ? new Color(1f, 0.95f, 0.72f, 1f) : Color.white;
     }
 
-    void CloseGemPanel()
+        void CloseGemPanel()
     {
         if (!gemPanelOpen) return;
+        GameAudio.PlayUiClose();
         gemPanelOpen = false;
         if (gemPanelGo      != null) gemPanelGo.SetActive(false);
         if (gemBagBtnFill   != null) gemBagBtnFill.color = Color.white;
     }
 
-    bool IsPointerOnOpenGemPanel(Vector2 screenPoint)
+        bool IsPointerOnOpenGemPanel(Vector2 screenPoint)
     {
         if (!gemPanelOpen || gemPanelGo == null || !gemPanelGo.activeSelf)
             return false;
@@ -1248,17 +1255,20 @@ public class GameManager : MonoBehaviour
         isPaused = paused;
         if (pausePanel != null) pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : speedSteps[speedIndex];
+        if (isPaused) GameAudio.PlayUiOpen();
+        else          GameAudio.PlayUiClose();
     }
 
-    void OnResume()    { SetPaused(false); }
+        void OnResume()    { SetPaused(false); }
     void OnSettings()
     {
         if (settingsVolumeLbl != null) settingsVolumeLbl.text = VolumePct();
         if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
         if (pauseBox != null) pauseBox.SetActive(false);
         if (settingsPanel != null) settingsPanel.SetActive(true);
+        GameAudio.PlayUiOpen();
     }
-    void OnExit()      { Time.timeScale = 1f; isPaused = false; EndStage(); }
+        void OnExit()      { Time.timeScale = 1f; isPaused = false; EndStage(); }
 
     void BuildSettingsPanel(Transform parent)
     {
@@ -1360,9 +1370,10 @@ public class GameManager : MonoBehaviour
     {
         if (settingsPanel != null) settingsPanel.SetActive(false);
         if (pauseBox != null) pauseBox.SetActive(true);
+        GameAudio.PlayUiClose();
     }
 
-    string VolumePct() => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
+        string VolumePct() => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
     string FsText()    => SettingsManager.IsFullscreen ? "ON" : "OFF";
 
     /// <summary>AllyOrderPanel 등에서 코인으로 스킬 해금 시 호출</summary>

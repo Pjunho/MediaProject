@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -515,11 +515,12 @@ public class MainMenu : MonoBehaviour
     void OnStart()    => SceneManager.LoadScene("StageSelect", LoadSceneMode.Single);
     void OnGemMenu()
     {
+        GameAudio.PlayUiOpen();
         RefreshGemPanel();
         gemPanel.SetActive(true);
     }
-    void CloseGemMenu() => gemPanel.SetActive(false);
-    void ToggleGem(int stageIndex)
+        void CloseGemMenu() { GameAudio.PlayUiClose(); gemPanel.SetActive(false); }
+        void ToggleGem(int stageIndex)
     {
         if (!GemInventory.IsUnlocked(stageIndex))
             return;
@@ -533,9 +534,10 @@ public class MainMenu : MonoBehaviour
         if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
         RefreshVolumeSlider();
         settingsPanel.SetActive(true);
+        GameAudio.PlayUiOpen();
     }
 
-    void BuildSettingsPanel(Transform parent)
+        void BuildSettingsPanel(Transform parent)
     {
         settingsPanel = new GameObject("SettingsPanel");
         settingsPanel.transform.SetParent(parent, false);
@@ -628,8 +630,8 @@ public class MainMenu : MonoBehaviour
         if (settingsFsStatLbl != null) settingsFsStatLbl.text = FsText();
     }
 
-    void CloseSettings() => settingsPanel.SetActive(false);
-    string VolumePct()  => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
+    void CloseSettings() { GameAudio.PlayUiClose(); settingsPanel.SetActive(false); }
+        string VolumePct()  => $"{Mathf.RoundToInt(SettingsManager.Volume * 100)}%";
     string FsText()     => SettingsManager.IsFullscreen ? "ON" : "OFF";
     void OnExit()
     {

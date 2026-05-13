@@ -771,6 +771,7 @@ public class StageSelect : MonoBehaviour
             var pgo     = new GameObject("Portrait");
             pgo.transform.SetParent(item.transform, false);
             var portrait = pgo.AddComponent<Image>();
+            portrait.preserveAspect = true;
             SR(pgo.GetComponent<RectTransform>(), Vector2.zero, new Vector2(80, 80));
             prepAvailPortraits.Add(portrait);
 
@@ -782,7 +783,7 @@ public class StageSelect : MonoBehaviour
             RegBtn(item.transform, $"avail_{i}", "",
                    Vector2.zero, new Vector2(90, 90),
                    new Color(0f,0f,0f,0.01f), new Color(1f,1f,1f,0.22f),
-                   () => SelectPrepAlly(cap), false);
+                   () => SelectPrepAlly(cap), false, hideOuter: true);
         }
 
         // ── 우측 헤더 "선택된 출전 순서" ────────────────────────────
@@ -812,6 +813,7 @@ public class StageSelect : MonoBehaviour
             var pgo     = new GameObject("Portrait");
             pgo.transform.SetParent(slot.transform, false);
             var portrait = pgo.AddComponent<Image>();
+            portrait.preserveAspect = true;
             SR(pgo.GetComponent<RectTransform>(), new Vector2(-155f, 0f), new Vector2(52, 52));
             prepSlotPortraits.Add(portrait);
 
@@ -826,7 +828,7 @@ public class StageSelect : MonoBehaviour
             RegBtn(slot.transform, $"slot_{i}", "",
                    Vector2.zero, new Vector2(380, 66),
                    new Color(0f,0f,0f,0.01f), new Color(1f,1f,1f,0.08f),
-                   () => RemovePrepAllyAt(cap), false);
+                   () => RemovePrepAllyAt(cap), false, hideOuter: true);
         }
 
         // ── 하단 버튼 ────────────────────────────────────────────────
@@ -861,6 +863,7 @@ public class StageSelect : MonoBehaviour
         var pgo = new GameObject("Portrait");
         pgo.transform.SetParent(dp, false);
         detailPortraitImg = pgo.AddComponent<Image>();
+        detailPortraitImg.preserveAspect = true;
         SR(pgo.GetComponent<RectTransform>(), new Vector2(0f, 155f), new Vector2(100f, 100f));
 
         // ── 이름 / 역할 ──────────────────────────────────────────────
@@ -884,11 +887,12 @@ public class StageSelect : MonoBehaviour
                    new Vector2(0f, -14f), new Vector2(268f, 22f), 13);
 
         // ── 스킬 아이콘 (중앙, 80×80) ────────────────────────────────
+        MkImgChild(dp, new Color(1f,1f,1f,0.20f), new Vector2(0f, -75f), new Vector2(84f, 84f));
         var iconGo = new GameObject("SkillIcon");
         iconGo.transform.SetParent(dp, false);
         detailSkillIconImg = iconGo.AddComponent<Image>();
+        detailSkillIconImg.preserveAspect = true;
         SR(iconGo.GetComponent<RectTransform>(), new Vector2(0f, -75f), new Vector2(80f, 80f));
-        MkImgChild(dp, new Color(1f,1f,1f,0.20f), new Vector2(0f, -75f), new Vector2(84f, 84f));
 
         // ── 호버 힌트 (아이콘 왼쪽, 창 안) ──────────────────────────
         MkTxtChild(dp, "커서를 올리면\n설명 표시", new Color(1f,1f,1f,0.30f),
@@ -1127,11 +1131,12 @@ public class StageSelect : MonoBehaviour
     // ── 버튼 등록 ─────────────────────────────────────────────────────
     void RegBtn(Transform p, string id, string label,
                 Vector2 pos, Vector2 size,
-                Color n, Color h, System.Action cb, bool inScroll)
+                Color n, Color h, System.Action cb, bool inScroll,
+                bool hideOuter = false)
     {
         var outer = new GameObject("Btn_" + id);
         outer.transform.SetParent(p, false);
-        outer.AddComponent<Image>().color = new Color(1,1,1,0.12f);
+        outer.AddComponent<Image>().color = hideOuter ? new Color(0,0,0,0) : new Color(1,1,1,0.12f);
         SR(outer.GetComponent<RectTransform>(), pos, size + new Vector2(3,3));
 
         var inner = new GameObject("Fill");
