@@ -156,7 +156,7 @@ public static class SkillSystem
     /// 스킬 해금 시도. 성공 시 true 반환 및 costSpent에 차감 코인 수 기록.
     /// 코인 차감은 호출자(GameManager)가 직접 수행한다.
     /// </summary>
-    public static bool TryUnlock(AllyType allyType, int availableCoins, out int costSpent)
+    public static bool TryUnlock(AllyType allyType, float availableCoins, out int costSpent)
     {
         costSpent = 0;
         for (int i = 0; i < skills.Length; i++)

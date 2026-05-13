@@ -42,7 +42,7 @@ public static class UpgradeSystem
     /// 업그레이드 시도. 성공 시 true 및 costSpent에 차감 금액 기록.
     /// 코인 차감은 호출자(GameManager)가 수행한다.
     /// </summary>
-    public static bool TryUpgrade(AllyType t, StatType stat, int availableCoins, out int costSpent)
+    public static bool TryUpgrade(AllyType t, StatType stat, float availableCoins, out int costSpent)
     {
         costSpent = 0;
         int cost = GetNextCost(t, stat);

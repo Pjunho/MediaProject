@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private bool resultShown    = false;
     private bool gameStarted    = false;
     private int  speedIndex     = 0;
-    private int  currentCoins   = 0;
+    private float currentCoins  = 0f;
     private int  clearedWaveCount = 0;
 
     // ── 개별 출전 (Space / Click) ─────────────────────────────────────────
@@ -139,9 +139,10 @@ public class GameManager : MonoBehaviour
             ? StageManager.Instance.currentStageIndex : 1;
         SkillSystem.ResetForStage();
         UpgradeSystem.ResetForStage();
-        currentCoins = StageManager.GetStageConfig(stageIdx).startingCoins;
+        float startingCoinReward = CalculateCoinReward(StageManager.GetStageConfig(stageIdx).startingCoins);
+        currentCoins = startingCoinReward;
         UpdateCoinHUD();
-        Debug.Log($"[GameManager] 스테이지 진입 — 초기 코인 {currentCoins}개 지급");
+        Debug.Log($"[GameManager] 스테이지 진입 — 초기 코인 {FormatCoins(startingCoinReward)}개 지급");
     }
 
     void Start() { }
@@ -431,7 +432,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaveClearTransition(int clearedWaveNumber)
     {
-        string stats = $"통과 {waveGoalCount} / {waveAllyCount}명  •  코인 +{waveGoalCount}  •  다음 경로를 설정하세요";
+        string stats = $"통과 {waveGoalCount} / {waveAllyCount}명  •  코인 +{FormatCoins(CalculateCoinReward(waveGoalCount))}  •  다음 경로를 설정하세요";
         ShowWaveBanner($"웨이브 {clearedWaveNumber} 클리어!", stats);
         yield return new WaitForSecondsRealtime(2.2f);
         HideWaveBanner();
@@ -486,10 +487,10 @@ public class GameManager : MonoBehaviour
         goalCount++;
         waveGoalCount++;
         waveAllyDone++;
-        currentCoins++;
+        float reward = AddCoins(1f);
         UpdateCoinHUD();
         UpdateWaveHUD();
-        Debug.Log($"[GameManager] 골 도달 — 총: {goalCount}명, 이번 웨이브: {waveGoalCount}명 (+1코인, 잔여 {currentCoins})");
+        Debug.Log($"[GameManager] 골 도달 — 총: {goalCount}명, 이번 웨이브: {waveGoalCount}명 (+{FormatCoins(reward)}코인, 잔여 {FormatCoins(currentCoins)})");
         CheckWaveCompletion();
     }
 
@@ -502,10 +503,10 @@ public class GameManager : MonoBehaviour
 
     public void CollectBonusCoin(Vector3 worldPosition)
     {
-        currentCoins++;
+        float reward = AddCoins(1f);
         UpdateCoinHUD();
-        FloatingText.Spawn(worldPosition + Vector3.up * 0.35f, "+1 코인", COL_GOLD);
-        Debug.Log($"[GameManager] 보너스 코인 획득 (+1코인, 잔여 {currentCoins})");
+        FloatingText.Spawn(worldPosition + Vector3.up * 0.35f, $"+{FormatCoins(reward)} 코인", COL_GOLD);
+        Debug.Log($"[GameManager] 보너스 코인 획득 (+{FormatCoins(reward)}코인, 잔여 {FormatCoins(currentCoins)})");
     }
 
     public bool ShouldBlockGameplayInput()
@@ -1371,7 +1372,7 @@ public class GameManager : MonoBehaviour
         {
             currentCoins -= cost;
             UpdateCoinHUD();
-            Debug.Log($"[GameManager] 스킬 해금: {allyType} (-{cost}코인, 잔여 {currentCoins})");
+            Debug.Log($"[GameManager] 스킬 해금: {allyType} (-{cost}코인, 잔여 {FormatCoins(currentCoins)})");
             return true;
         }
         if (!SkillSystem.IsUnlocked(allyType))
@@ -1379,7 +1380,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public int GetCurrentCoins() => currentCoins;
+    public float GetCurrentCoins() => currentCoins;
 
     /// <summary>AllyOrderPanel에서 속도/체력 업그레이드 요청 시 호출</summary>
     public bool TryUpgrade(AllyType allyType, UpgradeSystem.StatType stat)
@@ -1388,7 +1389,7 @@ public class GameManager : MonoBehaviour
         {
             currentCoins -= cost;
             UpdateCoinHUD();
-            Debug.Log($"[GameManager] 업그레이드: {allyType} {stat} (-{cost}코인, 잔여 {currentCoins})");
+            Debug.Log($"[GameManager] 업그레이드: {allyType} {stat} (-{cost}코인, 잔여 {FormatCoins(currentCoins)})");
             return true;
         }
         if (UpgradeSystem.GetNextCost(allyType, stat) < 0)
@@ -1424,7 +1425,24 @@ public class GameManager : MonoBehaviour
     void UpdateCoinHUD()
     {
         if (coinTxt != null)
-            coinTxt.text = $"코인: {currentCoins}";
+            coinTxt.text = $"코인: {FormatCoins(currentCoins)}";
+    }
+
+    float AddCoins(float baseAmount)
+    {
+        float reward = CalculateCoinReward(baseAmount);
+        currentCoins += reward;
+        return reward;
+    }
+
+    float CalculateCoinReward(float baseAmount)
+    {
+        return baseAmount * GemInventory.GetCoinMultiplier();
+    }
+
+    string FormatCoins(float amount)
+    {
+        return amount.ToString("0.0");
     }
 
     void SpawnWaveBonusCoins()

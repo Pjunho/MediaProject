@@ -30,7 +30,7 @@ public static class GemInventory
         {
             stageIndex = 3,
             gemName = "화산의 보석",
-            effectSummary = "이동 속도 +10%, HP +10%",
+            effectSummary = "획득 코인 +50%",
             color = new Color(0.95f, 0.34f, 0.24f)
         }
     };
@@ -83,7 +83,6 @@ public static class GemInventory
     {
         float mult = 1f;
         if (IsActive(1)) mult += 0.15f;  // 초원의 보석: 속도 +15%
-        if (IsActive(3)) mult += 0.10f;  // 화산의 보석: 속도 +10%
         return mult;
     }
 
@@ -92,7 +91,14 @@ public static class GemInventory
     {
         float mult = 1f;
         if (IsActive(2)) mult += 0.20f;  // 사막의 보석: HP +20%
-        if (IsActive(3)) mult += 0.10f;  // 화산의 보석: HP +10%
+        return mult;
+    }
+
+    /// <summary>현재 활성화된 보석들을 기반으로 코인 획득 배율을 반환</summary>
+    public static float GetCoinMultiplier()
+    {
+        float mult = 1f;
+        if (IsActive(3)) mult += 0.50f;  // 화산의 보석: 획득 코인 +50%
         return mult;
     }
 
