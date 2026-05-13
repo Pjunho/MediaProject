@@ -218,7 +218,8 @@ public static class SkillSystem
                 activated = true; break;
             case AllyType.Archer:
                 BeginArcherTargeting(caster);
-                activated = true; break;
+                // 실제 발사 시점에 쿨다운 기록 — 취소 시 쿨다운 없음
+                return true;
             case AllyType.Mage:
                 caster.ActivateMageBarrier();
                 GameManager.Instance?.ShowToast("순간 보호막 발동!", new Color(0.45f, 0.75f, 1f));
@@ -311,6 +312,9 @@ public static class SkillSystem
                 return true;
             }
 
+            for (int i = 0; i < skills.Length; i++)
+                if (skills[i].allyType == AllyType.Archer)
+                { skillActivationTimes[i] = Time.time; break; }
             pendingArcher.FireParalysisArrow(downEnemy);
             CancelTargeting();
             GameManager.Instance?.ShowToast("마비 화살 적중!", new Color(0.65f, 1f, 0.45f));
