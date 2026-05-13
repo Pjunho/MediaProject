@@ -123,7 +123,10 @@ public class Map : MonoBehaviour
             {
                 Vector3  pos  = GetWorldPosition(x, y);
                 TileType type = tileMap[x, y];
-                GameObject prefab = (type == TileType.Dirt) ? dirtTilePrefab : grassTilePrefab;
+                bool useStageSpriteSheets = stageIdx >= 1 && stageIdx <= 3;
+                GameObject prefab = useStageSpriteSheets
+                    ? null
+                    : (type == TileType.Dirt) ? dirtTilePrefab : grassTilePrefab;
 
                 GameObject tile;
                 if (prefab != null)
@@ -146,16 +149,13 @@ public class Map : MonoBehaviour
                     {
                         sr.sprite = TileTextureGenerator.GetConnectedPathSprite(stageIdx, GetPathConnectionMask(x, y), variant);
                     }
-                    else if (IsVolcanoBlockedPathTile(stageIdx, x, y))
-                    {
-                        sr.sprite = TileTextureGenerator.GetVolcanoBlockedPathSprite(
-                            GetVolcanoPlatformConnectionMask(x, y), variant);
-                        _volcanoPlatforms.Add(new Vector2Int(x, y));
-                    }
                     else
                     {
-                        int roadMask = GetRoadAdjacencyMask(x, y);
-                        sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, roadMask, variant);
+                        if (IsVolcanoBlockedPathTile(stageIdx, x, y))
+                            _volcanoPlatforms.Add(new Vector2Int(x, y));
+
+                        int nRoadTileIndex = GetNRoadTileIndex(x, y);
+                        sr.sprite = TileTextureGenerator.GetWallSprite(stageIdx, nRoadTileIndex, variant);
                     }
                 }
 
@@ -184,6 +184,11 @@ public class Map : MonoBehaviour
                 // 길 타일에는 장식 없음 (깔끔한 룩 유지)
                 if (type == TileType.Grass)
                 {
+                    if (stageIdx >= 1 && stageIdx <= 3)
+                    {
+                        continue;
+                    }
+
                     if (IsVolcanoBlockedPathTile(stageIdx, x, y))
                     {
                         continue;
@@ -341,36 +346,35 @@ public class Map : MonoBehaviour
         return count;
     }
 
-    // 벽 타일 기준, 8방향(상하좌우 + 대각선) 이웃 Road 수에 따라 mask 결정:
-    //   2개 이상 → 15 (꽉 찬 타일), 0개 → 0 (내부 벽)
-    //   정확히 1개 → 방향별 mask (대각선은 두 인접 카디널 방향 코너로 매핑)
-    // (bit0=상, bit1=우, bit2=하, bit3=좌)  — TileTextureGenerator.GetWallSprite 와 동일 규약
-    int GetRoadAdjacencyMask(int x, int y)
+    // 1 2 3
+    // 4 5 6  <- 5번 자리에 놓일 NRoad 시트 번호를 주변 Road 배치로 결정
+    // 7 8 9
+    int GetNRoadTileIndex(int x, int y)
     {
-        bool u  = GetTileType(x,     y + 1) == TileType.Dirt;
-        bool r  = GetTileType(x + 1, y    ) == TileType.Dirt;
-        bool d  = GetTileType(x,     y - 1) == TileType.Dirt;
-        bool l  = GetTileType(x - 1, y    ) == TileType.Dirt;
-        bool ur = GetTileType(x + 1, y + 1) == TileType.Dirt;
-        bool dr = GetTileType(x + 1, y - 1) == TileType.Dirt;
-        bool dl = GetTileType(x - 1, y - 1) == TileType.Dirt;
-        bool ul = GetTileType(x - 1, y + 1) == TileType.Dirt;
+        bool pos1 = GetTileType(x - 1, y + 1) == TileType.Dirt;
+        bool pos2 = GetTileType(x,     y + 1) == TileType.Dirt;
+        bool pos3 = GetTileType(x + 1, y + 1) == TileType.Dirt;
+        bool pos4 = GetTileType(x - 1, y    ) == TileType.Dirt;
+        bool pos6 = GetTileType(x + 1, y    ) == TileType.Dirt;
+        bool pos7 = GetTileType(x - 1, y - 1) == TileType.Dirt;
+        bool pos8 = GetTileType(x,     y - 1) == TileType.Dirt;
+        bool pos9 = GetTileType(x + 1, y - 1) == TileType.Dirt;
 
-        int count = (u?1:0)+(r?1:0)+(d?1:0)+(l?1:0)+(ur?1:0)+(dr?1:0)+(dl?1:0)+(ul?1:0);
+        int count = (pos1?1:0)+(pos2?1:0)+(pos3?1:0)+(pos4?1:0)
+                  +(pos6?1:0)+(pos7?1:0)+(pos8?1:0)+(pos9?1:0);
 
-        if (count >= 2) return 15;  // 2개 이상 → 꽉 찬 NRoad 타일
-        if (count == 0) return 0;   // 이웃 road 없음 → 내부 벽
+        if (count >= 2) return 10;
+        if (count == 0) return 10;
 
-        // 정확히 1개 이웃 — 카디널 우선, 그 다음 대각선
-        if (u)  return 1;   // 상 단독
-        if (r)  return 2;   // 우 단독
-        if (d)  return 4;   // 하 단독
-        if (l)  return 8;   // 좌 단독
-        if (ur) return 3;   // 우상 대각선 → 상+우 코너
-        if (dr) return 6;   // 우하 대각선 → 우+하 코너
-        if (dl) return 12;  // 좌하 대각선 → 하+좌 코너
-        if (ul) return 9;   // 좌상 대각선 → 상+좌 코너
-        return 0;
+        if (pos3) return 6;
+        if (pos2) return 7;
+        if (pos1) return 8;
+        if (pos6) return 9;
+        if (pos4) return 11;
+        if (pos9) return 12;
+        if (pos8) return 13;
+        if (pos7) return 14;
+        return 10;
     }
 
     int StableVariant(int stageIdx, int x, int y)
