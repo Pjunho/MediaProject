@@ -444,7 +444,7 @@ public class MainMenu : MonoBehaviour
             SetButtonColors(ui.buttonIndex, BuildGemButtonColor(def.color, unlocked, active, false),
                 BuildGemButtonColor(def.color, unlocked, active, true));
             ui.title.text = $"STAGE {def.stageIndex}  {def.gemName}";
-            ui.desc.text = unlocked ? def.effectSummary : "아직 해금되지 않았습니다";
+            ui.desc.text = def.effectSummary;
             ui.status.text = !unlocked ? "잠김" : (active ? "활성" : "비활성");
             ui.status.color = !unlocked
                 ? new Color(0.65f, 0.68f, 0.74f)
