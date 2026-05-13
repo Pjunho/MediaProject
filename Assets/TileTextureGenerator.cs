@@ -465,14 +465,35 @@ public static class TileTextureGenerator
     {
         if (loaded) return;
         loaded = true;
-        var sprites = Resources.LoadAll<Sprite>(path);
-        if (sprites == null || sprites.Length == 0)
+
+        // Sprite sheet을 Texture2D로 직접 로드해 그리드 위치로 스프라이트 생성.
+        // Unity meta의 spriteSheet.sprites 배열이 불완전해도 안전하게 동작한다.
+        var tex = Resources.Load<Texture2D>(path);
+        if (tex == null)
         {
             Debug.LogWarning($"[TileTextureGenerator] '{path}' 로드 실패 → 폴백");
             return;
         }
-        foreach (var s in sprites)
-            _stageMapCache[s.name] = Sprite.Create(s.texture, s.rect, PIVOT, PPU);
+        tex.filterMode = FilterMode.Point;
+
+        int cols = Mathf.Max(1, tex.width  / TILE_SZ);
+        int rows = Mathf.Max(1, tex.height / TILE_SZ);
+        // 리소스 경로에서 파일명만 추출 (예: "Map/Stage1_Road_Map" → "Stage1_Road_Map")
+        string baseName = path.Contains("/")
+            ? path.Substring(path.LastIndexOf('/') + 1)
+            : path;
+
+        // 스프라이트 번호: 이미지 상단 왼쪽 → 오른쪽 → 다음 행 순서
+        for (int i = 0; i < cols * rows; i++)
+        {
+            int rowFromTop = i / cols;
+            int col        = i % cols;
+            float x = col * TILE_SZ;
+            float y = (rows - 1 - rowFromTop) * TILE_SZ; // Unity y=0은 이미지 하단
+            string name = $"{baseName}_{i}";
+            _stageMapCache[name] = Sprite.Create(
+                tex, new Rect(x, y, TILE_SZ, TILE_SZ), PIVOT, PPU);
+        }
     }
 
     static Sprite GetStageMapSprite(string name)
