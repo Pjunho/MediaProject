@@ -205,41 +205,34 @@ public class StageManager : MonoBehaviour
 
     static int[] GetFixedWaveEnemyCounts(int stageIndex, int phase)
     {
-        int sniperBase;
-        int spearmanBase;
-        int brawlerBase;
-
+        // [stageIndex][phase] → { sniper, spearman, brawler }
         switch (stageIndex)
         {
-            case 1:
-                sniperBase = 1;
-                spearmanBase = 2;
-                brawlerBase = 2;
-                break;
-            case 2:
-                sniperBase = 2;
-                spearmanBase = 2;
-                brawlerBase = 2;
-                break;
-            case 3:
-                sniperBase = 3;
-                spearmanBase = 2;
-                brawlerBase = 3;
-                break;
+            case 1: return phase switch
+            {
+                0 => new[] { 1, 1, 1 },
+                1 => new[] { 1, 2, 2 },
+                _ => new[] { 2, 3, 3 }
+            };
+            case 2: return phase switch
+            {
+                0 => new[] { 1, 2, 2 },
+                1 => new[] { 1, 3, 3 },
+                _ => new[] { 2, 3, 3 }
+            };
+            case 3: return phase switch
+            {
+                0 => new[] { 2, 2, 2 },
+                1 => new[] { 2, 3, 3 },
+                _ => new[] { 3, 4, 4 }
+            };
             default:
                 var cfg = GetStageConfig(stageIndex);
-                sniperBase = Mathf.Max(1, cfg.sniperCount);
-                spearmanBase = Mathf.Max(1, cfg.spearmanCount);
-                brawlerBase = Mathf.Max(1, cfg.brawlerCount);
-                break;
+                int s = Mathf.Max(1, cfg.sniperCount);
+                int sp = Mathf.Max(1, cfg.spearmanCount);
+                int b = Mathf.Max(1, cfg.brawlerCount);
+                return new[] { s + phase, sp + phase, b + phase };
         }
-
-        return new[]
-        {
-            sniperBase + phase,
-            spearmanBase + phase,
-            brawlerBase + phase
-        };
     }
 
     static int EnsureOdd(int value) => value % 2 == 0 ? value + 1 : value;
