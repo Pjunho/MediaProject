@@ -159,30 +159,20 @@ public class StageManager : MonoBehaviour
         int[] counts = GetFixedWaveEnemyCounts(stageIndex, phase);
         int totalEnemies = counts[0] + counts[1] + counts[2];
 
-        int minNearRouteSpawns = phase switch
-        {
-            0 => waveInPhase < 2 ? 1 : 2,
-            1 => waveInPhase < 2 ? 3 : 4,
-            _ => waveInPhase < 2 ? 5 : 6
-        };
+        // nearPool에서 실제로 배치할 수 있는 최대 적 수
+        // Stage 1: Phase 0→1, Phase 1→2, Phase 2→3
+        // Stage 2: +1씩, Stage 3: +2씩
+        int maxNearRouteSpawns = Mathf.Min((phase + 1) + (stageIndex - 1), totalEnemies);
+        int minNearRouteSpawns = 0;
+        float nearRouteRatio   = 0f;
 
-        float nearRouteRatio = Mathf.Clamp01((phase switch
-        {
-            0 => 0.08f,
-            1 => 0.28f,
-            _ => 0.55f
-        }) + (stageIndex - 1) * 0.05f + waveInPhase * 0.025f);
-
-        int maxNearRouteSpawns = Mathf.Max(minNearRouteSpawns,
-            Mathf.RoundToInt(totalEnemies * nearRouteRatio));
-        minNearRouteSpawns = Mathf.Min(minNearRouteSpawns, totalEnemies);
-        maxNearRouteSpawns = Mathf.Clamp(maxNearRouteSpawns, minNearRouteSpawns, totalEnemies);
-
+        // Phase 0(초반)은 경로 근처 풀을 작게 유지해 적이 경로에서 멀리 배치되도록 함
+        // Phase 2(후반)는 값이 커져 경로 근처 압박이 강해짐
         float minDistFromPath = Mathf.Max(0.70f, (phase switch
         {
-            0 => 2.80f,
+            0 => 0.90f,
             1 => 1.90f,
-            _ => 1.10f
+            _ => 2.80f
         }) - (stageIndex - 1) * 0.18f - waveInPhase * 0.08f);
 
         float minEnemySpacing = Mathf.Max(1.35f, (phase switch
@@ -215,41 +205,34 @@ public class StageManager : MonoBehaviour
 
     static int[] GetFixedWaveEnemyCounts(int stageIndex, int phase)
     {
-        int sniperBase;
-        int spearmanBase;
-        int brawlerBase;
-
+        // [stageIndex][phase] → { sniper, spearman, brawler }
         switch (stageIndex)
         {
-            case 1:
-                sniperBase = 1;
-                spearmanBase = 2;
-                brawlerBase = 2;
-                break;
-            case 2:
-                sniperBase = 2;
-                spearmanBase = 2;
-                brawlerBase = 2;
-                break;
-            case 3:
-                sniperBase = 3;
-                spearmanBase = 2;
-                brawlerBase = 3;
-                break;
+            case 1: return phase switch
+            {
+                0 => new[] { 1, 1, 1 },
+                1 => new[] { 1, 2, 2 },
+                _ => new[] { 2, 3, 3 }
+            };
+            case 2: return phase switch
+            {
+                0 => new[] { 1, 2, 2 },
+                1 => new[] { 1, 3, 3 },
+                _ => new[] { 2, 3, 3 }
+            };
+            case 3: return phase switch
+            {
+                0 => new[] { 2, 2, 2 },
+                1 => new[] { 2, 3, 3 },
+                _ => new[] { 3, 4, 4 }
+            };
             default:
                 var cfg = GetStageConfig(stageIndex);
-                sniperBase = Mathf.Max(1, cfg.sniperCount);
-                spearmanBase = Mathf.Max(1, cfg.spearmanCount);
-                brawlerBase = Mathf.Max(1, cfg.brawlerCount);
-                break;
+                int s = Mathf.Max(1, cfg.sniperCount);
+                int sp = Mathf.Max(1, cfg.spearmanCount);
+                int b = Mathf.Max(1, cfg.brawlerCount);
+                return new[] { s + phase, sp + phase, b + phase };
         }
-
-        return new[]
-        {
-            sniperBase + phase,
-            spearmanBase + phase,
-            brawlerBase + phase
-        };
     }
 
     static int EnsureOdd(int value) => value % 2 == 0 ? value + 1 : value;

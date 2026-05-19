@@ -21,7 +21,7 @@ public class GrassSniper : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "숲 사수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "숲 사수"; attackRange = 3.5f; attackDamage = 55f; attackCooldown = 3.5f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
@@ -51,7 +51,7 @@ public class GrassSpearman : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "숲 새총병"; attackRange = 3.5f; attackDamage = 60f; attackCooldown = 1.5f;
+        enemyName = "숲 새총병"; attackRange = 2.0f; attackDamage = 40f; attackCooldown = 1.8f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateSpearmanSprite(Armor, Accent, Weapon));
     }
@@ -80,7 +80,7 @@ public class GrassBrawler : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "도끼 좀비"; attackRange = 1.5f; attackDamage = 40f; attackCooldown = 0.6f;
+        enemyName = "도끼 좀비"; attackRange = 1.5f; attackDamage = 28f; attackCooldown = 0.9f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateBrawlerSprite(Armor, Accent));
     }
@@ -114,7 +114,7 @@ public class DesertSniper : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "사막 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "사막 궁수"; attackRange = 5f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
