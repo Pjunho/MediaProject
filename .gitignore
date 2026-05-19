@@ -67,6 +67,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Work logs
+WorkLogs/
+
 # Unity auto-generated URP settings (local environment dependent)
 Assets/Settings/UniversalRP.asset
 Assets/UniversalRenderPipelineGlobalSettings.asset
