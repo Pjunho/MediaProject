@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     private List<Vector3> currentRoutePath = new List<Vector3>();
     private List<AllyType> currentSkillOrder = new List<AllyType>();
     private readonly List<BonusCoinPickup> activeBonusCoins = new List<BonusCoinPickup>();
+    private bool bonusCoinsPrerolled = false;
 
     struct BonusCoinCandidate
     {
@@ -351,7 +352,10 @@ public class GameManager : MonoBehaviour
         waveAllyDone  = 0;
         waveAllyCount = 0;
         waveInProgress = true;
-        SpawnWaveBonusCoins();
+        if (bonusCoinsPrerolled)
+            bonusCoinsPrerolled = false;
+        else
+            SpawnWaveBonusCoins();
 
         // Stage 3 화산 체력 감소 시작
         volcanoHazard?.StartDrain();
@@ -594,12 +598,12 @@ public class GameManager : MonoBehaviour
             int si = StageManager.Instance != null ? StageManager.Instance.currentStageIndex : 1;
             int totalWaves = StageManager.GetWaves(si).Length;
             waveInfoTxt = BuildTopLabel(cgo.transform, "wave", $"웨이브 1 / {totalWaves}",
-                new Vector2(-400, 320), new Vector2(200, 40));
+                new Vector2(-340, 320), new Vector2(200, 40));
         }
 
         // 별 진행 표시 (웨이브 텍스트 아래)
         starProgressTxt = BuildTopLabel(cgo.transform, "star", "☆ ☆ ☆",
-            new Vector2(-400, 276), new Vector2(200, 34));
+            new Vector2(-340, 276), new Vector2(200, 34));
         if (starProgressTxt != null)
         {
             starProgressTxt.color    = COL_GOLD;
@@ -1454,6 +1458,34 @@ public class GameManager : MonoBehaviour
     string FormatCoins(float amount)
     {
         return amount.ToString("0.0");
+    }
+
+    public void PreviewBonusCoins(List<Vector3> worldPath)
+    {
+        ClearBonusCoins();
+        bonusCoinsPrerolled = false;
+
+        if (worldPath == null || worldPath.Count < 3) return;
+
+        currentRoutePath = new List<Vector3>(worldPath);
+        int coinCount = RollBonusCoinCount();
+        if (coinCount <= 0) return;
+
+        bonusCoinsPrerolled = true;
+        var positions = PickBonusCoinPositions(coinCount);
+        for (int i = 0; i < positions.Count; i++)
+        {
+            var go = new GameObject("BonusCoin");
+            var coin = go.AddComponent<BonusCoinPickup>();
+            coin.Init(positions[i]);
+            activeBonusCoins.Add(coin);
+        }
+    }
+
+    public void ClearPreviewCoins()
+    {
+        ClearBonusCoins();
+        bonusCoinsPrerolled = false;
     }
 
     void SpawnWaveBonusCoins()

@@ -119,6 +119,7 @@ public class RouteDrawer : MonoBehaviour
         SetupHUD();
         UpdatePathLine();
 
+        GameManager.Instance?.PreviewBonusCoins(GetMapDefaultWorldPath());
         StartCoroutine(RespawnEnemiesAfterUiReady());
     }
 
@@ -375,6 +376,42 @@ public class RouteDrawer : MonoBehaviour
 
         var rt = startBtnFill.GetComponent<RectTransform>();
         return rt != null && RectTransformUtility.RectangleContainsScreenPoint(rt, screenPosition, null);
+    }
+
+    List<Vector3> GetCurrentWorldPath()
+    {
+        var result = new List<Vector3>(drawnPath.Count);
+        foreach (var tile in drawnPath)
+            result.Add(ToWorld(tile));
+        return result;
+    }
+
+    List<Vector3> GetMapDefaultWorldPath()
+    {
+        var start = map.pathWaypoints[0];
+        var goal  = map.pathWaypoints[map.pathWaypoints.Length - 1];
+
+        var result = new List<Vector3>();
+        result.Add(ToWorld(start));
+
+        for (int x = 0; x < map.mapWidth; x++)
+            for (int y = 0; y < map.mapHeight; y++)
+            {
+                var tile = new Vector2Int(x, y);
+                if (tile == start || tile == goal) continue;
+                if (map.GetTileType(x, y) == Map.TileType.Dirt)
+                    result.Add(ToWorld(tile));
+            }
+
+        result.Add(ToWorld(goal));
+        return result;
+    }
+
+    Vector3 ToWorld(Vector2Int tile)
+    {
+        Vector3 wp = map.GetWorldPosition(tile.x, tile.y);
+        wp.z = -1f;
+        return wp;
     }
 
     // ── 경로 확장 ──────────────────────────────────────────────────
