@@ -166,7 +166,7 @@ public class StageManager : MonoBehaviour
             _ => 1.85f
         }) - (stageIndex - 1) * 0.12f - waveInPhase * 0.05f);
 
-        int goalRequirement = Mathf.Clamp((phase + 1) + Mathf.Max(0, (stageIndex - 1) / 2), 1, allyCount);
+        int goalRequirement = 1;
 
         return new WaveConfig
         {
