@@ -129,18 +129,10 @@ public class EnemyAutoSpawner : MonoBehaviour
         nearPool.Sort(CompareNearCandidates);
         farPool.Sort(CompareFarCandidates);
 
-        // nearPool을 maxNearRouteSpawns 개로 제한 — 초과분은 farPool로 이동
-        if (nearPool.Count > maxNearRouteSpawns)
-        {
-            for (int i = maxNearRouteSpawns; i < nearPool.Count; i++)
-                farPool.Add(nearPool[i]);
-            nearPool.RemoveRange(maxNearRouteSpawns, nearPool.Count - maxNearRouteSpawns);
-            farPool.Sort(CompareFarCandidates);
-        }
-
-        SpawnEnemyType(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
-        SpawnEnemyType(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
-        SpawnEnemyType(nearPool, farPool, spearmanCount, "중거리 적", spearmanType);
+        // 각 적마다 50% 확률로 nearPool/farPool 중 어느 쪽을 우선 시도할지 결정
+        SpawnTypeWithChance(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
+        SpawnTypeWithChance(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
+        SpawnTypeWithChance(nearPool, farPool, spearmanCount, "중거리 적", spearmanType);
 
         Debug.Log($"[EnemyAutoSpawner] Stage {stage} 배치 완료 — {spawnedEnemies.Count}명 " +
                   $"({sniperType.Name} {sniperCount} / {spearmanType.Name} {spearmanCount} / {brawlerType.Name} {brawlerCount})");
@@ -157,6 +149,21 @@ public class EnemyAutoSpawner : MonoBehaviour
             5 => (typeof(FortressSniper), typeof(FortressSpearman),typeof(FortressBrawler)),
             _ => (typeof(EnemySniper),    typeof(EnemySpearman),   typeof(EnemyBrawler))
         };
+
+    /// <summary>적 1명마다 50% 확률로 nearPool/farPool 우선순위를 결정해 배치.</summary>
+    void SpawnTypeWithChance(
+        List<SpawnCandidate> nearPool,
+        List<SpawnCandidate> farPool,
+        int count, string label, System.Type enemyType)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (Random.value < 0.5f)
+                SpawnEnemyType(nearPool, farPool, 1, label, enemyType);
+            else
+                SpawnEnemyType(farPool, nearPool, 1, label, enemyType);
+        }
+    }
 
     /// <summary>primary → secondary 순서로 배치. 타입은 런타임에 결정.</summary>
     void SpawnEnemyType(

@@ -159,10 +159,8 @@ public class StageManager : MonoBehaviour
         int[] counts = GetFixedWaveEnemyCounts(stageIndex, phase);
         int totalEnemies = counts[0] + counts[1] + counts[2];
 
-        // nearPool에서 실제로 배치할 수 있는 최대 적 수
-        // Stage 1: Phase 0→1, Phase 1→2, Phase 2→3
-        // Stage 2: +1씩, Stage 3: +2씩
-        int maxNearRouteSpawns = Mathf.Min((phase + 1) + (stageIndex - 1), totalEnemies);
+        // nearPool 상한 = 해당 웨이브 전체 적 수 (실제 배치는 50% 확률로 결정)
+        int maxNearRouteSpawns = totalEnemies;
         int minNearRouteSpawns = 0;
         float nearRouteRatio   = 0f;
 
