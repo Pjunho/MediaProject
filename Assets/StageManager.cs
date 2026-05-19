@@ -178,11 +178,13 @@ public class StageManager : MonoBehaviour
         minNearRouteSpawns = Mathf.Min(minNearRouteSpawns, totalEnemies);
         maxNearRouteSpawns = Mathf.Clamp(maxNearRouteSpawns, minNearRouteSpawns, totalEnemies);
 
+        // Phase 0(초반)은 경로 근처 풀을 작게 유지해 적이 경로에서 멀리 배치되도록 함
+        // Phase 2(후반)는 값이 커져 경로 근처 압박이 강해짐
         float minDistFromPath = Mathf.Max(0.70f, (phase switch
         {
-            0 => 2.80f,
+            0 => 0.90f,
             1 => 1.90f,
-            _ => 1.10f
+            _ => 2.80f
         }) - (stageIndex - 1) * 0.18f - waveInPhase * 0.08f);
 
         float minEnemySpacing = Mathf.Max(1.35f, (phase switch
