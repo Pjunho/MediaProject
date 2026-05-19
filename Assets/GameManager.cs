@@ -1468,10 +1468,10 @@ public class GameManager : MonoBehaviour
         if (worldPath == null || worldPath.Count < 3) return;
 
         currentRoutePath = new List<Vector3>(worldPath);
+        bonusCoinsPrerolled = true;
+
         int coinCount = RollBonusCoinCount();
         if (coinCount <= 0) return;
-
-        bonusCoinsPrerolled = true;
         var positions = PickBonusCoinPositions(coinCount);
         for (int i = 0; i < positions.Count; i++)
         {
