@@ -21,11 +21,20 @@ public static class ResetSaveData
                 return;
             }
 
-            string[] stageKeys = { "Stage_1_Stars", "Stage_2_Stars", "Stage_3_Stars", "Stage_4_Stars", "Stage_5_Stars",
-                                   "Gem_1_Unlocked", "Gem_2_Unlocked", "Gem_3_Unlocked", "Gem_4_Unlocked", "Gem_5_Unlocked",
-                                   "Gem_1_Active",   "Gem_2_Active",   "Gem_3_Active",   "Gem_4_Active",   "Gem_5_Active" };
-            foreach (var k in stageKeys)
-                key.DeleteValue(k, throwOnMissingValue: false);
+            // Unity는 레지스트리에 키 이름 뒤에 해시를 붙여 저장 (예: Stage_1_Stars_h904089719)
+            // 정확한 이름 대신 접두사로 패턴 매칭하여 삭제
+            string[] prefixes = { "Stage_", "Gem_" };
+            foreach (string valueName in key.GetValueNames())
+            {
+                foreach (string prefix in prefixes)
+                {
+                    if (valueName.StartsWith(prefix))
+                    {
+                        key.DeleteValue(valueName, throwOnMissingValue: false);
+                        break;
+                    }
+                }
+            }
         }
 
         Debug.Log($"[Build] 스테이지 데이터 초기화 완료: HKCU\\{keyPath}");
