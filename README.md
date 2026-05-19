@@ -100,4 +100,3 @@ MediaProject/
 ## 참고 문서
 
 - 게임 기획: [`Docs/GAME_DESIGN.md`](Docs/GAME_DESIGN.md)
-- 변경 이력: [`Docs/CHANGELOG.md`](Docs/CHANGELOG.md)
