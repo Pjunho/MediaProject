@@ -164,14 +164,8 @@ public class StageManager : MonoBehaviour
         int minNearRouteSpawns = 0;
         float nearRouteRatio   = 0f;
 
-        // Phase 0(초반)은 경로 근처 풀을 작게 유지해 적이 경로에서 멀리 배치되도록 함
-        // Phase 2(후반)는 값이 커져 경로 근처 압박이 강해짐
-        float minDistFromPath = Mathf.Max(0.70f, (phase switch
-        {
-            0 => 0.90f,
-            1 => 1.90f,
-            _ => 2.80f
-        }) - (stageIndex - 1) * 0.18f - waveInPhase * 0.08f);
+        // 경로 근처 타일의 범위 — 50% 확률 배치가 의미 있으려면 nearPool에 충분한 후보가 있어야 함
+        float minDistFromPath = 2.5f;
 
         float minEnemySpacing = Mathf.Max(1.35f, (phase switch
         {
