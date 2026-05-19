@@ -119,50 +119,28 @@ public class EnemyAutoSpawner : MonoBehaviour
         int stage = StageManager.Instance?.currentStageIndex ?? 1;
         var (sniperType, spearmanType, brawlerType) = GetStageEnemyTypes(stage);
 
-        if (stage == 3)
+        var nearPool = new List<SpawnCandidate>();
+        var farPool  = new List<SpawnCandidate>();
+        foreach (var c in allCandidates)
         {
-            // ── Stage 3 화산 전용 배치 ────────────────────────────────
-            // 적은 용암 위가 아니라 어두운 바위섬(플랫폼) 위에만 배치한다.
-            var platformPool = new List<SpawnCandidate>();
-            foreach (var c in allCandidates)
-            {
-                if (c.preferredPlatform)
-                    platformPool.Add(c);
-            }
-            platformPool.Sort(CompareNearCandidates);
-
-            // 근접: 바위섬 플랫폼 중에서도 최단 경로 가까운 곳을 최우선 사용
-            SpawnEnemyType(platformPool, allCandidates, brawlerCount,  "근접 적",  brawlerType);
-            // 플랫폼이 부족하면 전체 후보로 완화해 웨이브별 지정 수를 보장한다.
-            SpawnEnemyType(platformPool, allCandidates, sniperCount,   "장거리 적", sniperType);
-            SpawnEnemyType(platformPool, allCandidates, spearmanCount, "중거리 적", spearmanType);
+            if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
+            else                                        farPool.Add(c);
         }
-        else
+        nearPool.Sort(CompareNearCandidates);
+        farPool.Sort(CompareFarCandidates);
+
+        // nearPool을 maxNearRouteSpawns 개로 제한 — 초과분은 farPool로 이동
+        if (nearPool.Count > maxNearRouteSpawns)
         {
-            // ── 일반 스테이지 배치 ────────────────────────────────────
-            var nearPool = new List<SpawnCandidate>();
-            var farPool  = new List<SpawnCandidate>();
-            foreach (var c in allCandidates)
-            {
-                if (c.distanceFromRoute < minDistFromPath) nearPool.Add(c);
-                else                                        farPool.Add(c);
-            }
-            nearPool.Sort(CompareNearCandidates);
+            for (int i = maxNearRouteSpawns; i < nearPool.Count; i++)
+                farPool.Add(nearPool[i]);
+            nearPool.RemoveRange(maxNearRouteSpawns, nearPool.Count - maxNearRouteSpawns);
             farPool.Sort(CompareFarCandidates);
-
-            // nearPool을 maxNearRouteSpawns 개로 제한 — 초과분은 farPool로 이동
-            if (nearPool.Count > maxNearRouteSpawns)
-            {
-                for (int i = maxNearRouteSpawns; i < nearPool.Count; i++)
-                    farPool.Add(nearPool[i]);
-                nearPool.RemoveRange(maxNearRouteSpawns, nearPool.Count - maxNearRouteSpawns);
-                farPool.Sort(CompareFarCandidates);
-            }
-
-            SpawnEnemyType(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
-            SpawnEnemyType(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
-            SpawnEnemyType(nearPool, farPool, spearmanCount, "중거리 적", spearmanType);
         }
+
+        SpawnEnemyType(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
+        SpawnEnemyType(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
+        SpawnEnemyType(nearPool, farPool, spearmanCount, "중거리 적", spearmanType);
 
         Debug.Log($"[EnemyAutoSpawner] Stage {stage} 배치 완료 — {spawnedEnemies.Count}명 " +
                   $"({sniperType.Name} {sniperCount} / {spearmanType.Name} {spearmanCount} / {brawlerType.Name} {brawlerCount})");
