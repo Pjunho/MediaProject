@@ -35,8 +35,6 @@ public class EnemyAutoSpawner : MonoBehaviour
     [Tooltip("적끼리 최소 간격")]
     public float minEnemySpacing = 2.35f;
 
-    [Tooltip("nearPool에서 배치할 수 있는 최대 적 수")]
-    public int maxNearRouteSpawns = 1;
 
     // ── 상태 ─────────────────────────────────────────────────────
     readonly List<EnemyBase>        spawnedEnemies     = new();
@@ -78,9 +76,8 @@ public class EnemyAutoSpawner : MonoBehaviour
         sniperCount     = waveCfg.sniperCount;
         spearmanCount   = waveCfg.spearmanCount;
         brawlerCount    = waveCfg.brawlerCount;
-        minDistFromPath    = waveCfg.minDistFromPath;
-        minEnemySpacing    = waveCfg.minEnemySpacing;
-        maxNearRouteSpawns = waveCfg.maxNearRouteSpawns;
+        minDistFromPath = waveCfg.minDistFromPath;
+        minEnemySpacing = waveCfg.minEnemySpacing;
     }
 
     // ── 공개 API ─────────────────────────────────────────────────

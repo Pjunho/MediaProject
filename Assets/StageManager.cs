@@ -42,9 +42,6 @@ public class StageManager : MonoBehaviour
         public float extraPassageRate;
         public float minDistFromPath;
         public float minEnemySpacing;
-        public int minNearRouteSpawns;
-        public int maxNearRouteSpawns;
-        public float nearRouteRatio;
     }
 
     [Header("현재 스테이지")]
@@ -159,12 +156,7 @@ public class StageManager : MonoBehaviour
         int[] counts = GetFixedWaveEnemyCounts(stageIndex, phase);
         int totalEnemies = counts[0] + counts[1] + counts[2];
 
-        // nearPool 상한 = 해당 웨이브 전체 적 수 (실제 배치는 50% 확률로 결정)
-        int maxNearRouteSpawns = totalEnemies;
-        int minNearRouteSpawns = 0;
-        float nearRouteRatio   = 0f;
-
-        // 경로 근처 타일의 범위 — 50% 확률 배치가 의미 있으려면 nearPool에 충분한 후보가 있어야 함
+        // 경로 근처 타일의 범위 — nearPool에 충분한 후보가 있어야 50% 확률 배치가 의미 있음
         float minDistFromPath = 2.5f;
 
         float minEnemySpacing = Mathf.Max(1.35f, (phase switch
@@ -188,10 +180,7 @@ public class StageManager : MonoBehaviour
             mapHeight = mapHeight,
             extraPassageRate = extraPassageRate,
             minDistFromPath = minDistFromPath,
-            minEnemySpacing = minEnemySpacing,
-            minNearRouteSpawns = minNearRouteSpawns,
-            maxNearRouteSpawns = maxNearRouteSpawns,
-            nearRouteRatio = nearRouteRatio
+            minEnemySpacing = minEnemySpacing
         };
     }
 
