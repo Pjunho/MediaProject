@@ -13,9 +13,6 @@ public class AllyPlacer : MonoBehaviour
     [Header("References")]
     public Map map;
 
-    [Header("Spawn Settings")]
-    public float spawnInterval = 1.5f;  // 아군 사이 출전 간격 (초) — 현재 동시 출전이므로 간격용
-
     private List<Vector3>   pathPositions = new List<Vector3>();
     private List<AllyType>  deployOrder   = new List<AllyType>();
 
@@ -50,31 +47,6 @@ public class AllyPlacer : MonoBehaviour
         deployOrder   = new List<AllyType>(order);
 
         Debug.Log($"[AllyPlacer] 경로·출전 순서 등록 완료 — 총 {order.Count}명");
-    }
-
-    /// <summary>
-    /// 현재 웨이브에서 투입할 count명을 스폰한다.
-    /// 선택한 출전 명단의 앞쪽부터 count명만 사용한다.
-    /// </summary>
-    /// <returns>실제 투입된 인원 수</returns>
-    public int DeployWave(int count)
-    {
-        if (pathPositions == null || pathPositions.Count < 2)
-        {
-            Debug.LogError("[AllyPlacer] 경로 미등록 상태에서 DeployWave 호출!");
-            return 0;
-        }
-
-        int deployed = 0;
-        int spawnCount = Mathf.Min(Mathf.Max(0, count), deployOrder.Count);
-        for (int i = 0; i < spawnCount; i++)
-        {
-            DeployAlly(deployOrder[i], deployed);
-            deployed++;
-        }
-
-        Debug.Log($"[AllyPlacer] 웨이브 투입 완료 — {deployed}명 (요청값: {count})");
-        return deployed;
     }
 
     /// <summary>
