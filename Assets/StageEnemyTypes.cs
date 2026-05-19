@@ -114,7 +114,7 @@ public class DesertSniper : SheetEnemyBase
 
     protected override void Awake()
     {
-        enemyName = "사막 궁수"; attackRange = 6f; attackDamage = 80f; attackCooldown = 3.0f;
+        enemyName = "사막 궁수"; attackRange = 5f; attackDamage = 80f; attackCooldown = 3.0f;
         base.Awake();
         LoadSheetFrames(EnemyVisualGenerator.CreateSniperSprite(Robe, Dark, Eye));
     }
