@@ -159,24 +159,12 @@ public class StageManager : MonoBehaviour
         int[] counts = GetFixedWaveEnemyCounts(stageIndex, phase);
         int totalEnemies = counts[0] + counts[1] + counts[2];
 
-        int minNearRouteSpawns = phase switch
-        {
-            0 => waveInPhase < 2 ? 1 : 2,
-            1 => waveInPhase < 2 ? 3 : 4,
-            _ => waveInPhase < 2 ? 5 : 6
-        };
-
-        float nearRouteRatio = Mathf.Clamp01((phase switch
-        {
-            0 => 0.08f,
-            1 => 0.28f,
-            _ => 0.55f
-        }) + (stageIndex - 1) * 0.05f + waveInPhase * 0.025f);
-
-        int maxNearRouteSpawns = Mathf.Max(minNearRouteSpawns,
-            Mathf.RoundToInt(totalEnemies * nearRouteRatio));
-        minNearRouteSpawns = Mathf.Min(minNearRouteSpawns, totalEnemies);
-        maxNearRouteSpawns = Mathf.Clamp(maxNearRouteSpawns, minNearRouteSpawns, totalEnemies);
+        // nearPool에서 실제로 배치할 수 있는 최대 적 수
+        // Stage 1: Phase 0→1, Phase 1→2, Phase 2→3
+        // Stage 2: +1씩, Stage 3: +2씩
+        int maxNearRouteSpawns = Mathf.Min((phase + 1) + (stageIndex - 1), totalEnemies);
+        int minNearRouteSpawns = 0;
+        float nearRouteRatio   = 0f;
 
         // Phase 0(초반)은 경로 근처 풀을 작게 유지해 적이 경로에서 멀리 배치되도록 함
         // Phase 2(후반)는 값이 커져 경로 근처 압박이 강해짐

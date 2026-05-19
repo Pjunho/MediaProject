@@ -35,6 +35,9 @@ public class EnemyAutoSpawner : MonoBehaviour
     [Tooltip("적끼리 최소 간격")]
     public float minEnemySpacing = 2.35f;
 
+    [Tooltip("nearPool에서 배치할 수 있는 최대 적 수")]
+    public int maxNearRouteSpawns = 1;
+
     // ── 상태 ─────────────────────────────────────────────────────
     readonly List<EnemyBase>        spawnedEnemies     = new();
     readonly List<Vector3>          reservedPositions  = new();
@@ -75,10 +78,9 @@ public class EnemyAutoSpawner : MonoBehaviour
         sniperCount     = waveCfg.sniperCount;
         spearmanCount   = waveCfg.spearmanCount;
         brawlerCount    = waveCfg.brawlerCount;
-        minDistFromPath = waveCfg.minDistFromPath;
-        minEnemySpacing = waveCfg.minEnemySpacing;
-        // nearRouteRatio·minNearRouteSpawns·maxNearRouteSpawns 는
-        // 새 풀 분리 방식에서 사용하지 않으므로 무시
+        minDistFromPath    = waveCfg.minDistFromPath;
+        minEnemySpacing    = waveCfg.minEnemySpacing;
+        maxNearRouteSpawns = waveCfg.maxNearRouteSpawns;
     }
 
     // ── 공개 API ─────────────────────────────────────────────────
@@ -147,6 +149,15 @@ public class EnemyAutoSpawner : MonoBehaviour
             }
             nearPool.Sort(CompareNearCandidates);
             farPool.Sort(CompareFarCandidates);
+
+            // nearPool을 maxNearRouteSpawns 개로 제한 — 초과분은 farPool로 이동
+            if (nearPool.Count > maxNearRouteSpawns)
+            {
+                for (int i = maxNearRouteSpawns; i < nearPool.Count; i++)
+                    farPool.Add(nearPool[i]);
+                nearPool.RemoveRange(maxNearRouteSpawns, nearPool.Count - maxNearRouteSpawns);
+                farPool.Sort(CompareFarCandidates);
+            }
 
             SpawnEnemyType(nearPool, farPool, brawlerCount,  "근접 적",  brawlerType);
             SpawnEnemyType(nearPool, farPool, sniperCount,   "장거리 적", sniperType);
